@@ -1,14 +1,8 @@
 import type {
-  CardProgress,
-  DailyActivity,
-  DashboardStats,
   FullBackupPayload,
-  LearningProgress,
   LibraryQuestion,
   LibrarySet,
   LibraryState,
-  QuestionStats,
-  QuestionStatTotals,
   SetMembership,
   SetSharePayload,
   SharedSet,
@@ -18,7 +12,6 @@ import type {
 } from "@/types";
 import { FULL_BACKUP_VERSION } from "@/constants";
 import { normalizeFolderParentId, UNCATEGORIZED_FOLDER_ID } from "./folders";
-import { QUESTION_STAT_KEYS } from "./learning-defaults";
 import { asSenseId, buildSetWordKey, normalizeWordKey } from "./library";
 import {
   isolateLibrarySets,
@@ -26,7 +19,6 @@ import {
   scopeSetContent,
   type LibraryScopeMigration,
 } from "./library-set-migration";
-import { remapLearningSnapshot } from "./learning-scope-migration";
 import { keysOf } from "./record";
 import { parseLibraryImportValue } from "./library-import";
 import {
@@ -39,11 +31,6 @@ import {
   requiredObject,
   requiredText,
 } from "./schema";
-
-function optionalText(value: unknown, field: string): string {
-  if (typeof value !== "string") throw new Error(`${field} 格式錯誤`);
-  return value.trim();
-}
 
 function normalizeWord(value: unknown, index: number): WordEntry {
   const parsed = parseLibraryImportValue({
@@ -436,238 +423,6 @@ export function normalizeLibraryState(value: unknown): LibraryState {
   return normalizeLibraryStateWithMigration(value).state;
 }
 
-/**
- * Records written before scheduling was removed carry spaced-repetition fields
- * (due, stability, lapses, ...). They are accepted and dropped; only the
- * answer counts survive.
- */
-const LEGACY_CARD_KEYS = [
-  "due",
-  "stability",
-  "difficulty",
-  "elapsedDays",
-  "scheduledDays",
-  "learningSteps",
-  "reps",
-  "lapses",
-  "state",
-];
-
-/** Whether stored progress still carries spaced-repetition fields to clean up. */
-export function hasLegacyCardFields(value: unknown): boolean {
-  if (!value || typeof value !== "object") return false;
-  const cards = (value as { cards?: unknown }).cards;
-  if (!cards || typeof cards !== "object") return false;
-  return Object.values(cards).some(
-    (card) =>
-      !!card &&
-      typeof card === "object" &&
-      (LEGACY_CARD_KEYS.some((key) => key in card) ||
-        !("wrongCount" in card) ||
-        !("streak" in card)),
-  );
-}
-
-function normalizeCard(value: unknown, field: string): CardProgress {
-  const source = requiredObject(value, field);
-  assertKnownKeys(
-    source,
-    [
-      ...LEGACY_CARD_KEYS,
-      "reviewCount",
-      "correctCount",
-      "wrongCount",
-      "streak",
-      "lastReview",
-    ],
-    field,
-  );
-  const reviewCount = requiredNumber(source.reviewCount, `${field}.reviewCount`);
-  const correctCount = requiredNumber(
-    source.correctCount,
-    `${field}.correctCount`,
-  );
-  const card: CardProgress = {
-    reviewCount,
-    correctCount,
-    wrongCount:
-      source.wrongCount === undefined
-        ? Math.max(0, reviewCount - correctCount)
-        : requiredNumber(source.wrongCount, `${field}.wrongCount`),
-    streak:
-      source.streak === undefined
-        ? 0
-        : requiredNumber(source.streak, `${field}.streak`),
-  };
-  if (source.lastReview !== undefined)
-    card.lastReview = requiredText(source.lastReview, `${field}.lastReview`);
-  return card;
-}
-
-export function normalizeLearningProgress(value: unknown): LearningProgress {
-  const source = requiredObject(value, "learning");
-  assertKnownKeys(source, ["cards", "updatedAt"], "learning");
-  const rawCards = requiredObject(source.cards, "learning.cards");
-  const cards: LearningProgress["cards"] = {};
-  for (const [senseId, card] of Object.entries(rawCards))
-    cards[asSenseId(senseId)] = normalizeCard(
-      card,
-      `learning.cards.${senseId}`,
-    );
-  return {
-    cards,
-    updatedAt: requiredText(source.updatedAt, "learning.updatedAt"),
-  };
-}
-
-/**
- * Question stats are sparse: a format/difficulty row exists only once it has
- * been practised. Storing all eighteen rows per sense and per day is what used
- * to push the cloud stats document towards Firestore's one-megabyte limit.
- */
-function normalizeQuestionStats(
-  value: unknown,
-  field: string,
-): QuestionStatTotals {
-  const source = requiredObject(value, field);
-  assertKnownKeys(source, QUESTION_STAT_KEYS, field);
-  const totals: QuestionStatTotals = {};
-  for (const key of QUESTION_STAT_KEYS) {
-    if (source[key] === undefined) continue;
-    const stat = requiredObject(source[key], `${field}.${key}`);
-    assertKnownKeys(stat, ["total", "correct", "retry"], `${field}.${key}`);
-    const row: QuestionStats = {
-      total: requiredNumber(stat.total, `${field}.${key}.total`),
-      correct: requiredNumber(stat.correct, `${field}.${key}.correct`),
-      retry: requiredNumber(stat.retry, `${field}.${key}.retry`),
-    };
-    if (row.total || row.correct || row.retry) totals[key] = row;
-  }
-  return totals;
-}
-
-function normalizeQuestionStatsBySense(
-  value: unknown,
-  field: string,
-): DashboardStats["questionStatsBySense"] {
-  const source = requiredObject(value, field);
-  const bySense: DashboardStats["questionStatsBySense"] = {};
-  for (const [senseId, stats] of Object.entries(source)) {
-    const totals = normalizeQuestionStats(stats, `${field}.${senseId}`);
-    if (Object.keys(totals).length) bySense[asSenseId(senseId)] = totals;
-  }
-  return bySense;
-}
-
-function normalizeDailyActivity(value: unknown, field: string): DailyActivity {
-  const source = requiredObject(value, field);
-  assertKnownKeys(
-    source,
-    ["date", "memoryAgain", "memoryGood", "questionTotal"],
-    field,
-  );
-  return {
-    date: requiredText(source.date, `${field}.date`),
-    memoryAgain: requiredNumber(source.memoryAgain, `${field}.memoryAgain`),
-    memoryGood: requiredNumber(source.memoryGood, `${field}.memoryGood`),
-    questionTotal: requiredNumber(
-      source.questionTotal,
-      `${field}.questionTotal`,
-    ),
-  };
-}
-
-export function normalizeDashboardStats(value: unknown): DashboardStats {
-  const source = requiredObject(value, "stats");
-  assertKnownKeys(
-    source,
-    [
-      "totalMemoryReviews",
-      "correctMemoryReviews",
-      "totalQuestionReviews",
-      "correctQuestionReviews",
-      "streakDays",
-      "longestStreak",
-      "streakFreezes",
-      "lastStudyDate",
-      "dailyWordGoal",
-      "dailyQuestionGoal",
-      "todayMemoryReviews",
-      "todayMemoryCorrectReviews",
-      "todayQuestionReviews",
-      "todayQuestionCorrectReviews",
-      "questionStatsBySense",
-      "dailyHistory",
-      "updatedAt",
-    ],
-    "stats",
-  );
-  const dailyHistory = requiredObject(
-    source.dailyHistory,
-    "stats.dailyHistory",
-  );
-  const normalizedDailyHistory = Object.fromEntries(
-    Object.entries(dailyHistory).map(([date, activity]) => {
-      const normalized = normalizeDailyActivity(
-        activity,
-        `stats.dailyHistory.${date}`,
-      );
-      if (normalized.date !== date)
-        throw new Error(`stats.dailyHistory.${date}.date 必須與 key 相符`);
-      return [date, normalized];
-    }),
-  );
-  return {
-    totalMemoryReviews: requiredNumber(
-      source.totalMemoryReviews,
-      "stats.totalMemoryReviews",
-    ),
-    correctMemoryReviews: requiredNumber(
-      source.correctMemoryReviews,
-      "stats.correctMemoryReviews",
-    ),
-    totalQuestionReviews: requiredNumber(
-      source.totalQuestionReviews,
-      "stats.totalQuestionReviews",
-    ),
-    correctQuestionReviews: requiredNumber(
-      source.correctQuestionReviews,
-      "stats.correctQuestionReviews",
-    ),
-    streakDays: requiredNumber(source.streakDays, "stats.streakDays"),
-    longestStreak: requiredNumber(source.longestStreak, "stats.longestStreak"),
-    streakFreezes: requiredNumber(source.streakFreezes, "stats.streakFreezes"),
-    lastStudyDate: optionalText(source.lastStudyDate, "stats.lastStudyDate"),
-    dailyWordGoal: requiredNumber(source.dailyWordGoal, "stats.dailyWordGoal"),
-    dailyQuestionGoal: requiredNumber(
-      source.dailyQuestionGoal,
-      "stats.dailyQuestionGoal",
-    ),
-    todayMemoryReviews: requiredNumber(
-      source.todayMemoryReviews,
-      "stats.todayMemoryReviews",
-    ),
-    todayMemoryCorrectReviews: requiredNumber(
-      source.todayMemoryCorrectReviews,
-      "stats.todayMemoryCorrectReviews",
-    ),
-    todayQuestionReviews: requiredNumber(
-      source.todayQuestionReviews,
-      "stats.todayQuestionReviews",
-    ),
-    todayQuestionCorrectReviews: requiredNumber(
-      source.todayQuestionCorrectReviews,
-      "stats.todayQuestionCorrectReviews",
-    ),
-    questionStatsBySense: normalizeQuestionStatsBySense(
-      source.questionStatsBySense,
-      "stats.questionStatsBySense",
-    ),
-    dailyHistory: normalizedDailyHistory,
-    updatedAt: requiredText(source.updatedAt, "stats.updatedAt"),
-  };
-}
-
 export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
   const source = requiredObject(value, "完整備份");
   assertKnownKeys(
@@ -685,21 +440,15 @@ export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
   );
   if (source.kind !== "full-backup") throw new Error("不是有效的完整備份檔");
   const version = requiredNumber(source.version, "version");
-  if (version !== FULL_BACKUP_VERSION && version !== 4)
+  if (version !== FULL_BACKUP_VERSION && version !== 5 && version !== 4)
     throw new Error("不支援此完整備份版本");
-  const migrated = normalizeLibraryStateWithMigration(source.library);
-  const learning = remapLearningSnapshot(
-    normalizeLearningProgress(source.learning),
-    normalizeDashboardStats(source.stats),
-    migrated.senseRemaps,
-  );
+  // Versions 4 and 5 also carried learning progress and statistics; both were
+  // removed from the app, so those parts of an old backup are ignored.
   return {
     version: FULL_BACKUP_VERSION,
     exportedAt: requiredText(source.exportedAt, "exportedAt"),
     appName: requiredText(source.appName, "appName"),
     kind: "full-backup",
-    library: migrated.state,
-    learning: learning.progress,
-    stats: learning.stats,
+    library: normalizeLibraryStateWithMigration(source.library).state,
   };
 }

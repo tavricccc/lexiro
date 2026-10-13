@@ -9,19 +9,7 @@ export type {
 export type {
   CloudRecordType,
 } from "./cloud";
-export type {
-  CardProgress,
-  DailyActivity,
-  DashboardStats,
-  LearningProgress,
-  QuestionStatKey,
-  QuestionStats,
-  QuestionStatTotals,
-  QuestionStatType,
-  ReviewEntry,
-  ReviewRating,
-  SyncStatus,
-} from "./learning";
+export type { SyncStatus } from "./sync";
 export type {
   LibraryQuestion,
   LibraryQuestionBase,
@@ -72,8 +60,3 @@ export type {
   PracticeQuestionType,
   WordDraft,
 } from "./set";
-export type {
-  StatsMemorySummary,
-  StatsQuestionRow,
-  StatsSetRow,
-} from "./stats";

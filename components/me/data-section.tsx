@@ -9,7 +9,6 @@ import { t } from "@/lib/i18n";
 import { importFullBackup, prepareFullBackup } from "@/lib/backup-actions";
 import { getStorageNamespace } from "@/src/lib/persist";
 import type { FullBackupPayload } from "@/types";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
   downloadFullBackup,
@@ -20,7 +19,6 @@ import {
 
 export function DataSection() {
   const library = useLibraryStore();
-  const learning = useLearningStore();
   const [pending, setPending] = useState<{
     backup: FullBackupPayload;
     namespace: string;
@@ -34,9 +32,9 @@ export function DataSection() {
   const preview = useMemo(
     () =>
       pending
-        ? previewBackupImport(pending.backup, library.state, learning.progress)
+        ? previewBackupImport(pending.backup, library.state)
         : null,
-    [pending, library.state, learning.progress],
+    [pending, library.state],
   );
   const displayed = operation === "importing" ? reviewed : preview;
   const accountChanged =
@@ -152,7 +150,6 @@ export function DataSection() {
             ? t("settings.importPreview", {
                 sets: displayed.sets,
                 questions: displayed.questions,
-                cards: displayed.cards,
               })
             : ""
         }

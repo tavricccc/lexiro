@@ -15,7 +15,6 @@ import type {
 interface PracticeSetupDraft {
   amount: number;
   difficulty: WorkspaceQuestionDifficulty;
-  leechOnly: boolean;
   oneSensePerWord: boolean;
   setId: string;
   tasks: PracticeTask[];
@@ -35,7 +34,6 @@ export function usePracticeSetupChoices(
     {
       amount: 10,
       difficulty: "all",
-      leechOnly: false,
       oneSensePerWord: true,
       setId: initialSet,
       tasks: initialTasks(),
@@ -46,7 +44,6 @@ export function usePracticeSetupChoices(
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] =
     useState<WorkspaceQuestionDifficulty>("all");
-  const [leechOnly, setLeechOnly] = useState(false);
   const [oneSensePerWord, setOneSensePerWord] = useState(true);
 
   const reset = () => {
@@ -54,7 +51,6 @@ export function usePracticeSetupChoices(
     setSetId(initialSet);
     setAmount(10);
     setDifficulty("all");
-    setLeechOnly(false);
     setOneSensePerWord(true);
   };
   const restart = () => {
@@ -74,14 +70,12 @@ export function usePracticeSetupChoices(
     setSetId(draft.setId);
     setAmount(draft.amount);
     setDifficulty(draft.difficulty);
-    setLeechOnly(draft.leechOnly);
     setOneSensePerWord(draft.oneSensePerWord);
   };
 
   return {
     amount,
     difficulty,
-    leechOnly,
     oneSensePerWord,
     setId,
     tasks,
@@ -96,10 +90,6 @@ export function usePracticeSetupChoices(
     changeDifficulty: (value: WorkspaceQuestionDifficulty) => {
       setDifficulty(value);
       saved.update({ difficulty: value });
-    },
-    changeLeechOnly: (value: boolean) => {
-      setLeechOnly(value);
-      saved.update({ leechOnly: value });
     },
     changeOneSense: (value: boolean) => {
       setOneSensePerWord(value);

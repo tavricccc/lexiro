@@ -16,7 +16,6 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { syncStatusLabel } from "@/lib/sync-status";
 import { useCloudStore } from "@/stores/cloud-store";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 
 /**
@@ -33,7 +32,6 @@ import { useLibraryStore } from "@/stores/library-store";
 export function AccountSection() {
   const cloud = useCloudStore();
   const library = useLibraryStore((store) => store.state);
-  const stats = useLearningStore((store) => store.stats);
   const [confirmSignIn, setConfirmSignIn] = useState(false);
   const [working, setWorking] = useState<"in" | "sync" | "out" | null>(null);
   const currentAction = useRef(0);
@@ -90,10 +88,7 @@ export function AccountSection() {
     );
 
   const requestSignIn = () => {
-    const hasGuestData =
-      library.sets.length > 0 ||
-      stats.totalMemoryReviews > 0 ||
-      stats.totalQuestionReviews > 0;
+    const hasGuestData = library.sets.length > 0;
     if (hasGuestData) setConfirmSignIn(true);
     else void signIn();
   };

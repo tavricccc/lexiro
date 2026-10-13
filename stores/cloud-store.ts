@@ -6,10 +6,6 @@ import { getCloudClient, accountNamespace, type CloudClient } from "@/src/lib/cl
 import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
-import {
-  flushLearningMutations,
-  useLearningStore,
-} from "@/stores/learning-store";
 import { flushLibraryMutations, useLibraryStore } from "@/stores/library-store";
 import {
   flushAiPreferenceMutations,
@@ -19,13 +15,7 @@ import { writeCloudPreferences } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
-import {
-  mergeProgress,
-  mergeStats,
-  readCloudBlobs,
-  writeCloudProgress,
-  writeCloudStats,
-} from "@/src/lib/cloud-account";
+import { readCloudBlobs } from "@/src/lib/cloud-account";
 import {
   pendingRecords,
   pullRecords,
@@ -36,7 +26,11 @@ import {
   configureFirebaseAuth,
 } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
-import { getStorageNamespace, setStorageNamespace } from "@/src/lib/persist";
+import {
+  getStorageNamespace,
+  removeRetiredLearningData,
+  setStorageNamespace,
+} from "@/src/lib/persist";
 import {
   clearBlobDirty,
   clearPushedRecords,
@@ -138,21 +132,16 @@ function online(): boolean {
 
 /** Loads this namespace's local data. The namespace must already be set. */
 async function hydrateLocal(): Promise<void> {
-  // Library migration durably remaps the learning snapshot before publishing
-  // the new head. Its dependent store must not race that read/write sequence.
   await useLibraryStore.getState().hydrate();
   const libraryError = useLibraryStore.getState().error;
   if (libraryError) throw new Error(libraryError);
-  await Promise.all([
-    useLearningStore.getState().hydrate(),
-    useAiPreferencesStore.getState().hydrate(),
-  ]);
+  await useAiPreferencesStore.getState().hydrate();
+  await removeRetiredLearningData();
 }
 
 const enterNamespace = serializeAccountDataAction(
   async (namespace: string): Promise<void> => {
     await flushLibraryMutations();
-    await flushLearningMutations();
     await flushAiPreferenceMutations();
     setStorageNamespace(namespace);
     accountDocumentsRead = "";
@@ -160,10 +149,8 @@ const enterNamespace = serializeAccountDataAction(
     await useLibraryStore.getState().reloadNamespace();
     const libraryError = useLibraryStore.getState().error;
     if (libraryError) throw new Error(libraryError);
-    await Promise.all([
-      useLearningStore.getState().reloadNamespace(),
-      useAiPreferencesStore.getState().reloadNamespace(),
-    ]);
+    await useAiPreferencesStore.getState().reloadNamespace();
+    await removeRetiredLearningData();
   },
 );
 
@@ -359,14 +346,11 @@ async function refreshPending(set: SetState): Promise<void> {
   set({ pending: pendingCountOf(await loadSyncJournal()) });
 }
 
-/**
- * Merges the account's progress and statistics with the cloud's copy, then
- * writes back whichever side this device owes.
- */
+/** Reads the account's preferences from the cloud, then writes back whichever side this device owes. */
 async function reconcileAccountDocuments(
   db: CloudClient,
   uid: string,
-  dirtyBlobs: { progress: number; stats: number; preferences: number },
+  dirtyBlobs: { preferences: number },
 ): Promise<void> {
   const blobs = await readCloudBlobs(db, uid);
   if (
@@ -378,50 +362,8 @@ async function reconcileAccountDocuments(
   accountDocumentsRead = uid;
   if (blobs.preferences)
     await useAiPreferencesStore.getState().applyRemote(blobs.preferences);
-  const merged = await useLearningStore
-    .getState()
-    .applyRemoteState((current) =>
-      getStorageNamespace() === accountNamespace(uid) &&
-      useCloudStore.getState().user?.uid === uid &&
-      useCloudStore.getState().ready
-        ? (() => {
-            const senseIds = new Set<string>(
-              Object.values(useLibraryStore.getState().state.words).flatMap(
-                (word) => word.senses.map((sense) => sense.id),
-              ),
-            );
-            const progress = mergeProgress(current.progress, blobs.progress);
-            const stats = mergeStats(current.stats, blobs.stats);
-            return {
-              progress: {
-                ...progress,
-                cards: Object.fromEntries(
-                  Object.entries(progress.cards).filter(([id]) =>
-                    senseIds.has(id),
-                  ),
-                ),
-              },
-              stats: {
-                ...stats,
-                questionStatsBySense: Object.fromEntries(
-                  Object.entries(stats.questionStatsBySense).filter(([id]) =>
-                    senseIds.has(id),
-                  ),
-                ),
-              },
-            };
-          })()
-        : null,
-    );
-  if (!merged) return;
-  const { progress, stats } = merged;
-
   const work: (() => Promise<unknown>)[] = [];
   if (getStorageNamespace() !== accountNamespace(uid)) return;
-  if (dirtyBlobs.progress > 0 || !blobs.progress || blobs.progressLegacy)
-    work.push(() => writeCloudProgress(db, uid, progress));
-  if (dirtyBlobs.stats > 0 || !blobs.stats)
-    work.push(() => writeCloudStats(db, uid, stats));
   if (dirtyBlobs.preferences > 0 || !blobs.preferences)
     work.push(
       () => writeCloudPreferences(
@@ -434,8 +376,6 @@ async function reconcileAccountDocuments(
   if (getStorageNamespace() !== accountNamespace(uid)) return;
   await writeSyncForAccount(uid, () =>
     clearBlobDirty([
-      { kind: "progress", version: dirtyBlobs.progress },
-      { kind: "stats", version: dirtyBlobs.stats },
       { kind: "preferences", version: dirtyBlobs.preferences },
     ]),
   );
@@ -498,8 +438,6 @@ async function runSync(
     if (
       reconcileAccount ||
       accountDocumentsRead !== user.uid ||
-      dirtyBlobs.progress > 0 ||
-      dirtyBlobs.stats > 0 ||
       dirtyBlobs.preferences > 0
     )
       await reconcileAccountDocuments(db, user.uid, dirtyBlobs);

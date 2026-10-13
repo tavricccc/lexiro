@@ -84,10 +84,10 @@ describe("navigation selection", () => {
       "false",
     );
   });
-  it("treats the four primary destinations as peers and retains their child ownership", () => {
-    for (const from of ["/app", "/app/library", "/app/progress", "/app/me"]) {
+  it("treats the three primary destinations as peers and retains their child ownership", () => {
+    for (const from of ["/app", "/app/library", "/app/me"]) {
       rememberRoutePath(from);
-      for (const to of ["/app", "/app/library", "/app/progress", "/app/me"]) {
+      for (const to of ["/app", "/app/library", "/app/me"]) {
         expect(consumeRouteDirection(to)).toBe("root");
       }
     }
@@ -113,7 +113,7 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/app/me/admin/usage")).toBe("child");
   });
   it("names the destinations primary navigation points at", () => {
-    for (const destination of ["/app", "/app/library", "/app/progress", "/app/me"]) {
+    for (const destination of ["/app", "/app/library", "/app/me"]) {
       expect(isRootRoute(destination)).toBe(true);
     }
     // A screen you arrive at from a destination is not one of them, however

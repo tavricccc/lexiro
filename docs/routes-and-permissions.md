@@ -14,7 +14,6 @@
 | `/app/questions`、`/app/questions/generate` | 題庫與生成 |
 | `/app/questions/[questionId]/edit`、`/app/questions/reading/[questionId]/edit` | 題目／文章包編輯 |
 | `/app/practice` | 設定、作答、重練與結果 |
-| `/app/progress`、`coverage`、`history`、`questions` | 進度概覽、掌握、活動、題型 |
 | `/app/me`、`preferences`、`plan`、`data` | 帳號入口、偏好、方案、備份 |
 | `/app/sync` | 登入與同步操作 |
 | `/app/me/admin`、`accounts`、`accounts/[uid]`、`usage`、`settings` | 管理目錄、帳號、報表、預設 |

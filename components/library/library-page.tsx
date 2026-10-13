@@ -20,7 +20,6 @@ import { StepActions } from "@/components/ui/step-actions";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
   ALL_FOLDER_ID,
@@ -35,7 +34,7 @@ import { copySharedSet, readSetShare } from "@/src/lib/set-share";
 import { setMatchesQuery } from "@/src/lib/library-search";
 import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
 
-const NO_METRICS = { learned: 0, questionCount: 0, senseCount: 0 };
+const NO_METRICS = { questionCount: 0, senseCount: 0 };
 
 /** The Library is one place for browsing and organising saved word sets. */
 export function LibraryPage({
@@ -52,7 +51,6 @@ export function LibraryPage({
   const deleteFolder = useLibraryStore((store) => store.deleteFolder);
   const saveSet = useLibraryStore((store) => store.saveSet);
   const saveQuestion = useLibraryStore((store) => store.saveQuestion);
-  const cards = useLearningStore((store) => store.progress.cards);
 
   const [query, setQuery] = useState(initialQuery);
   const [currentFolderId, setCurrentFolderId] = useState(
@@ -63,8 +61,8 @@ export function LibraryPage({
   const importInput = useRef<HTMLInputElement>(null);
 
   const setMetrics = useMemo(
-    () => buildLibrarySetMetrics(state, cards),
-    [cards, state],
+    () => buildLibrarySetMetrics(state),
+    [state],
   );
   const currentFolder = state.folders.find(
     (folder) =>

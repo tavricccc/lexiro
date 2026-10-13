@@ -94,9 +94,7 @@ describe("local English-to-Chinese questions", () => {
       tasks: ["meaning"],
       oneSensePerWord: false,
       allowedSenseIds: new Set(words.map((word) => word.id)),
-      cards: {},
       difficulty: "3",
-      leechOnly: false,
       questionGroups: groups,
       studyItems: words,
     });

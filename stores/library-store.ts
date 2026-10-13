@@ -120,9 +120,6 @@ async function loadCurrentLibrary(): Promise<LibraryState> {
     await repository.commit(migration.state);
   }
   if (intent) {
-    const { useLearningStore } = await import("@/stores/learning-store");
-    await useLearningStore.getState().reloadNamespace();
-    await useLearningStore.getState().isolateSenses(intent.senseRemaps);
     await remapPendingLibraryRefs(intent.recordRemaps, intent.legacyPending);
     await recordLocalChanges(intent.initialChanged, []);
     await setSyncCursor("");
@@ -287,16 +284,6 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-    const { useLearningStore } = await import("@/stores/learning-store");
-    await useLearningStore
-      .getState()
-      .pruneToSenseIds(
-        new Set(
-          Object.values(words).flatMap((word) =>
-            word.senses.map((sense) => sense.id),
-          ),
-        ),
-      );
   }),
 
   moveSet: serial(async (id, folderId) => {
@@ -469,16 +456,6 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     };
     await commit(state);
     set({ state });
-    const { useLearningStore } = await import("@/stores/learning-store");
-    await useLearningStore
-      .getState()
-      .pruneToSenseIds(
-        new Set(
-          Object.values(words).flatMap((word) =>
-            word.senses.map((sense) => sense.id),
-          ),
-        ),
-      );
   }),
 
   saveQuestion: serial(async (question) => {

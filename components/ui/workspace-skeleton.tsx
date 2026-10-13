@@ -185,21 +185,6 @@ function HomePageSkeleton() {
   );
 }
 
-export function ProgressPageSkeleton() {
-  return (
-    <div className="mx-auto w-full max-w-2xl">
-      <HeaderSkeleton root />
-      <section className="rule-card space-y-2 py-6">
-        <Skeleton className="h-14 w-20 rounded-lg" />
-        <Skeleton className="h-4 w-40 rounded" />
-      </section>
-      <div className="section-gap">
-        <ListSkeleton rows={7} />
-      </div>
-    </div>
-  );
-}
-
 function MePageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-2xl">
@@ -394,14 +379,13 @@ function WorkspaceSkeletonContent({ location }: { location: string }) {
   if (pathname === "/app") return <HomePageSkeleton />;
   if (pathname === "/app/library") return <LibraryPageSkeleton />;
   if (pathname === "/app/questions") return <QuestionsPageSkeleton />;
-  if (pathname === "/app/progress") return <ProgressPageSkeleton />;
   if (pathname === "/app/practice") return <PracticePageSkeleton />;
   if (pathname === "/app/me") return <MePageSkeleton />;
   if (pathname === "/app/sync") return <SyncPageSkeleton />;
   if (pathname === "/app/sets/new") return <SetEditorPageSkeleton newSet />;
   if (pathname === "/app/sets/new/organize")
     return <SubpageSkeleton flow wide />;
-  if (pathname.startsWith("/app/me/") || pathname.startsWith("/app/progress/"))
+  if (pathname.startsWith("/app/me/"))
     return <SubpageSkeleton />;
   if (
     /^\/app\/sets\/[^/]+\/(add|supplement|settings|words\/[^/]+\/edit)$/.test(

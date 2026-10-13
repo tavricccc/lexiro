@@ -30,7 +30,7 @@ import {
  * `dirty` and `tombstones` are mutually exclusive per record: recreating a
  * deleted record clears its tombstone, deleting a dirty record replaces it.
  */
-export type SyncBlobKind = "progress" | "stats" | "preferences";
+export type SyncBlobKind = "preferences";
 
 export interface SyncDirtyEntry extends LibraryRecordRef {
   version: number;
@@ -91,7 +91,7 @@ function emptyJournal(): SyncJournal {
     dirty: {},
     tombstones: {},
     legacyPendingRefs: {},
-    blobs: { progress: 0, stats: 0, preferences: 0 },
+    blobs: { preferences: 0 },
   };
 }
 
@@ -138,15 +138,19 @@ async function readJournal(): Promise<SyncJournal> {
           ...previous,
           schemaVersion: SYNC_JOURNAL_SCHEMA_VERSION,
           legacyPendingRefs: {},
-          blobs: {
-            progress: previous.blobs.progress,
-            stats: previous.blobs.stats,
-            preferences: previous.blobs.preferences ?? 0,
-          },
+          blobs: { preferences: previous.blobs.preferences ?? 0 },
         };
         migrated = isJournal(parsed);
       }
-      if (isJournal(parsed)) journal = parsed;
+      if (isJournal(parsed)) {
+        journal = parsed;
+        // Progress and statistics blobs were removed; a pending mark for them
+        // would otherwise count as unsynced work forever.
+        if (Object.keys(journal.blobs).some((kind) => kind !== "preferences")) {
+          journal.blobs = { preferences: journal.blobs.preferences ?? 0 };
+          migrated = true;
+        }
+      }
     }
   } catch {
     // A damaged journal costs one extra full push, never data: `seeded` goes

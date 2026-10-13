@@ -7,7 +7,6 @@ import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
 
 export interface SetRowMetrics {
-  learned: number;
   questionCount: number;
   senseCount: number;
 }
@@ -60,14 +59,11 @@ export function FolderRow({
  */
 export function SetRow({
   id,
-  learned,
   name,
   questionCount,
   senseCount,
   returnTo,
 }: SetRowMetrics & { id: string; name: string; returnTo?: string }) {
-  const coverage = senseCount ? learned / senseCount : 0;
-
   return (
     <Link
       className="t-row group flex min-h-[3.25rem] items-center gap-3.5 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
@@ -83,19 +79,8 @@ export function SetRow({
         <span className="block truncate font-medium group-hover:text-primary">
           {name}
         </span>
-        <span
-          aria-hidden
-          className="mt-2 block h-0.5 w-full max-w-32 overflow-hidden rounded-full bg-brand-100"
-        >
-          <span
-            className="dashboard-bar block h-full w-full bg-brand-500"
-            style={{ "--dashboard-bar": coverage } as React.CSSProperties}
-          />
-        </span>
         <span className="mt-1.5 block truncate text-xs text-muted-foreground">
           {t("library.senseCount", { count: senseCount })}
-          {" · "}
-          {t("setDetail.learnedCount", { count: learned })}
           {questionCount > 0 && (
             <> · {t("library.questionCount", { count: questionCount })}</>
           )}

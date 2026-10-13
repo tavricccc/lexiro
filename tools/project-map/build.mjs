@@ -37,7 +37,7 @@ const models=modelSpecs.map(([name,p,key,lifecycle,usage,related])=>({name,path:
 const settings=settingSpecs.map(([key,title,p,name,store,effect,timing])=>({key,title,path:p,constant:name,store,effect,timing,initial:constant(sources[p].text,p,name),range:'依目前程式契約',section:['dailyWordGoal','dailyQuestionGoal','model','tiers'].includes(key)?'使用者偏好':'程式政策'}));
 for(const s of settings)if(s.key==='dailyWordGoal'||s.key==='dailyQuestionGoal'){s.initial=s.initial[0];s.range='1-100整數';}
 for(const [key,title,effect] of [
-  ['tasks','練習題型','詞義、拼字與已存題型共用佇列。'],['amount','練習題數','依實際可用題數與所選格式限制，草稿保留選擇。'],['difficulty','練習難度','all 或1／2／3，篩選既有題目。'],['oneSensePerWord','每字一義','預設開啟，詞義題每字最多一次。'],['leechOnly','只練難記項目','依 card lapses 判斷難記項目。'],
+  ['tasks','練習題型','詞義、拼字與已存題型共用佇列。'],['amount','練習題數','依實際可用題數與所選格式限制，草稿保留選擇。'],['difficulty','練習難度','all 或1／2／3，篩選既有題目。'],['oneSensePerWord','每字一義','預設開啟，詞義題每字最多一次。'],
 ])settings.push({key:'practice.'+key,title,path:'components/practice/use-practice-setup-choices.ts',constant:key,store:'namespace 練習草稿',effect,timing:'下一次建立練習佇列；已開始 session 保留原設定。',initial:undefined,range:'依設定頁可用選項',section:'練習設定'});
 const limits=constant(sources['packages/ai-contract/src/index.ts'].text,'packages/ai-contract/src/index.ts','LIMITS');
 for(const [key,value] of Object.entries(limits))settings.push({key:'LIMITS.'+key,title:'AI 上限：'+key,path:'packages/ai-contract/src/index.ts',constant:'LIMITS',store:'公開 AI 契約',effect:'前後端以相同 LIMITS 限定來源、圖片、輸入或輸出。實際欄位用途見原碼。',timing:'新 request 的輸入檢查／生成配置。',initial:value,range:'程式固定',section:'AI 請求上限'});
@@ -51,7 +51,7 @@ const routeFlows=routes.map(route=>{
   const [title,domain,component]=routeSpecs[route.route];
   const sourceRefs=[ref(route.path),ref(component)];
   const remote=['ai','admin','account','sync'].includes(domain);
-  const store=domain==='learning'||domain==='practice'?'stores/learning-store.ts':domain==='preferences'?'stores/ai-preferences-store.ts':'stores/library-store.ts';
+  const store=domain==='preferences'?'stores/ai-preferences-store.ts':'stores/library-store.ts';
   return {id:'route:'+route.route,title:route.route,group:'頁面入口',section:domain,summary:title,notes:['此圖是頁面的責任入口；完整操作請從使用者／AI／管理／同步流程閱讀。'],nodes:[
     {title,text:'Next.js page 組裝此任務，相關畫面與原碼在下面。',layer:'browser',pathStart:true,pathTitle:route.route,refs:sourceRefs},
     {title:remote?'身份與線上服務':'Domain 與目前帳號資料',text:remote?'線上功能要求對應帳號／權限。Worker 與 Firestore 有各自邊界，不由 page 直接授權。':'教材／練習與畫面狀態從目前 namespace 的 store 取得。介紹或錯誤頁主要提供示範／重試入口。',layer:'browser',refs:[ref(remote?'docs/routes-and-permissions.md':store)]},
@@ -104,7 +104,7 @@ const data={
   groups,flows:allFlows,models,settings,sources,routes,endpoints,timers,
   inventory:{intro:allFlows.length+' 個流程、'+models.length+' 個資料模型、'+settings.length+' 組設定、'+routes.length+' 個 page 入口。Lexiro 沒有 Novae 的 action registry／PostgreSQL triggers，操作依 store／domain／Worker endpoint 追蹤。',sections:[
     {title:'Private Worker 核對範圍',paragraphs:['Worker 版本：'+workerHead,'共用 AI contract：'+contractVersion,'Cron：'+cron+'，UTC00:00／臺灣08:00','不內嵌 private prompt、Worker 原碼、憑證、provider input 或帳號資料。'],headers:['Migration'],rows:migrations.map(p=>[p])},
-    {title:'保存與同步的責任',paragraphs:['Library repository v2、journal v4、Firestore v8、practice v4、AI preference v1、full backup v4、set share v1。','Library 依 server writtenAt 合併，未送 dirty 保留；learning／preference 另有自己的合併規則。','Browser 日程不是 Worker Cron；答題進度／每日學習資料在 App 讀寫時更新。']},
+    {title:'保存與同步的責任',paragraphs:['Library repository v2、journal v4、Firestore v8、practice v4、AI preference v1、full backup v6、set share v1。','Library 依 server writtenAt 合併，未送 dirty 保留；preference 另有自己的合併規則。','App 不保存學習進度或每日統計。']},
   ]},
 };
 let html=fs.readFileSync(path.join(here,'template.html'),'utf8').replace('/*__PROJECT_DATA__*/',()=>JSON.stringify(data).replaceAll('<','\\u003c').replaceAll('\u2028','\\u2028').replaceAll('\u2029','\\u2029')).replace('/*__MAP_CSS__*/',()=>fs.readFileSync(path.join(here,'map.css'),'utf8')).replace('/*__MAP_JS__*/',()=>fs.readFileSync(path.join(here,'map.js'),'utf8'));

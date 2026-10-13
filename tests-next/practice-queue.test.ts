@@ -1,5 +1,4 @@
 import type {
-  CardProgress,
   LibraryQuestion,
   SenseId,
   StudyWord,
@@ -25,16 +24,6 @@ function word(index: number): StudyWord {
     supplementary: false,
     examples: [],
     example: "",
-  };
-}
-
-function dueCard(): CardProgress {
-  return {
-    wrongCount: 0,
-    streak: 1,
-    lastReview: "2020-01-01T00:00:00.000Z",
-    reviewCount: 1,
-    correctCount: 1,
   };
 }
 
@@ -80,16 +69,11 @@ function readingQuestion(senseIndexes: number[]): LibraryQuestion {
 }
 
 const studyItems = [1, 2, 3, 4].map(word);
-const cards = Object.fromEntries(
-  studyItems.map((item) => [item.id, dueCard()]),
-) as Record<SenseId, CardProgress>;
 const allowedSenseIds = new Set(studyItems.map((item) => item.id));
 
 const base = {
   allowedSenseIds,
-  cards,
   difficulty: "all" as const,
-  leechOnly: false,
   oneSensePerWord: false,
   questionGroups: [],
   studyItems,

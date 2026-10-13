@@ -1,10 +1,21 @@
 import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { useAutosave } from "@/components/me/use-autosave";
-import { parseGoalPatch } from "@/src/lib/preference-drafts";
+import { z } from "zod";
 import { setStorageNamespace } from "@/src/lib/persist";
 import { flushAccountDataActions } from "@/src/lib/account-data-queue";
 
+// A two-field numeric draft exercises the autosave hook independently of any
+// real preference.
+const goal = z.number().int().min(1).max(100).optional();
+const goals = z
+  .object({ dailyWordGoal: goal, dailyQuestionGoal: goal })
+  .strict()
+  .refine((value) => Object.keys(value).length > 0);
+const parseGoalPatch = (value: unknown) => {
+  const result = goals.safeParse(value);
+  return result.success ? result.data : null;
+};
 const options = { key: "goals", parse: parseGoalPatch, delay: 0 };
 const draftKey = "guest:lexiro_pending_goals_v1";
 beforeEach(() => {

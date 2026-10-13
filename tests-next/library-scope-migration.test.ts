@@ -1,4 +1,4 @@
-import type { LibraryState, LearningProgress } from "@/types";
+import type { LibraryState } from "@/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   buildSenseId,
@@ -9,8 +9,6 @@ import {
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { canonicalHash } from "@/src/lib/hash";
 import { isolateLibrarySets } from "@/src/lib/library-set-migration";
-import { remapLearningSnapshot } from "@/src/lib/learning-scope-migration";
-import { createDefaultStats } from "@/src/lib/learning-defaults";
 import {
   emptyLibraryState,
   getLibraryRepository,
@@ -23,8 +21,6 @@ import {
 } from "@/src/lib/sync-journal";
 import { setStorageNamespace } from "@/src/lib/persist";
 import { useLibraryStore } from "@/stores/library-store";
-import { useLearningStore } from "@/stores/learning-store";
-import { LEARNING_STORAGE_KEY } from "@/constants";
 
 const disk = vi.hoisted(() => ({
   values: new Map<string, unknown>(),
@@ -110,42 +106,6 @@ function legacyLibrary(): LibraryState {
     updatedAt: at,
   };
 }
-function historicalLearning() {
-  const progress: LearningProgress = {
-    cards: {
-      [senseId]: {
-        lastReview: at,
-        reviewCount: 4,
-        correctCount: 3,
-        wrongCount: 1,
-        streak: 0,
-      },
-    },
-    updatedAt: at,
-  };
-  const stats = {
-    ...createDefaultStats(),
-    totalQuestionReviews: 4,
-    correctQuestionReviews: 3,
-    streakDays: 2,
-    longestStreak: 5,
-    streakFreezes: 1,
-    lastStudyDate: "2026-10-09",
-    dailyHistory: {
-      "2026-10-09": {
-        date: "2026-10-09",
-        memoryAgain: 1,
-        memoryGood: 3,
-        questionTotal: 4,
-      },
-    },
-    questionStatsBySense: {
-      [senseId]: { "vocabulary:2": { total: 4, correct: 3, retry: 1 } },
-    },
-    updatedAt: at,
-  };
-  return { progress, stats };
-}
 /** Write the actual prior repository envelope, without today's commit normalizer. */
 function seedSchema2(state: LibraryState) {
   const entries: Record<string, Record<string, string>> = {
@@ -209,15 +169,10 @@ beforeEach(() => {
     status: "idle",
     error: null,
   });
-  useLearningStore.setState({
-    loaded: false,
-    progress: { cards: {}, updatedAt: at },
-    stats: createDefaultStats(),
-  });
 });
 
 describe("set-owned content migration", () => {
-  it("copies historical content and learning once without multiplying account history", () => {
+  it("copies historical content into each set once", () => {
     const source = legacyLibrary();
     const migration = isolateLibrarySets(source);
     const a = migration.state.memberships.a[0];
@@ -238,29 +193,6 @@ describe("set-owned content migration", () => {
     expect(source.words[calm].senses[0].examples).toEqual([
       "The sea was calm.",
     ]);
-    const history = historicalLearning();
-    const migrated = remapLearningSnapshot(
-      history.progress,
-      history.stats,
-      migration.senseRemaps,
-    );
-    expect(migrated.progress.cards[a.senseIds[0]]).toEqual(
-      history.progress.cards[senseId],
-    );
-    expect(migrated.progress.cards[b.senseIds[0]]).toEqual(
-      history.progress.cards[senseId],
-    );
-    expect(migrated.progress.cards[senseId]).toBeUndefined();
-    expect(migrated.stats.totalQuestionReviews).toBe(4);
-    expect(migrated.stats.dailyHistory).toEqual(history.stats.dailyHistory);
-    expect(migrated.stats.streakDays).toBe(2);
-    expect(
-      remapLearningSnapshot(
-        migrated.progress,
-        migrated.stats,
-        migration.senseRemaps,
-      ),
-    ).toEqual(migrated);
     expect(isolateLibrarySets(migration.state).state).toBe(migration.state);
   });
 
@@ -333,11 +265,6 @@ describe("set-owned content migration", () => {
 
   it("resumes after the v3 head is published but the journal write fails, preserving pending provenance", async () => {
     seedSchema2(legacyLibrary());
-    const history = historicalLearning();
-    disk.values.set(
-      `scope-test:${LEARNING_STORAGE_KEY}`,
-      JSON.stringify({ version: 1, ...history }),
-    );
     disk.values.set(
       "scope-test:lexiro_sync_journal",
       JSON.stringify({
@@ -383,15 +310,7 @@ describe("set-owned content migration", () => {
     ).toBe(8);
     expect(journal.blobs.preferences).toBe(6);
     expect(await getLibraryRepository().scopeMigrationIntent()).toBeUndefined();
-    expect(
-      useLearningStore.getState().progress.cards[
-        state.memberships.a[0].senseIds[0]
-      ],
-    ).toEqual(history.progress.cards[senseId]);
-    expect(useLearningStore.getState().stats.totalQuestionReviews).toBe(4);
-    expect(useLearningStore.getState().stats.dailyHistory).toEqual(
-      history.stats.dailyHistory,
-    );
+    expect(state.memberships.a[0].senseIds[0]).not.toBe(senseId);
     await remapPendingLibraryRefs([
       {
         source: { kind: "question", id: "deleted-old-question" },

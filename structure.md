@@ -9,8 +9,8 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 | `app/` | App Router、公開首頁、/app 工作區、manifest、Service Worker |
 | `components/` | Domain 畫面、React UI、AI 流程與動態 |
 | `lib/` | Client orchestration、managed API、路由、更新、備份 |
-| `stores/` | Library、learning、cloud、AI preference、UI、update state |
-| `src/lib/` | 詞義、題目、答題進度、儲存、同步、備份與 migration |
+| `stores/` | Library、cloud、AI preference、UI、update state |
+| `src/lib/` | 詞義、題目、儲存、同步、備份與 migration |
 | `src/types/`、`src/constants/` | Canonical domain 型別、版本與上限 |
 | `packages/ai-contract/` | 公開來源 parser、API 型別、模型與價格算術 |
 | `config/`、`src/generated/` | 動態 token 的來源／生成輸出 |
@@ -32,9 +32,9 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 
 Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer，內容 hash records → manifest → head；詳細模型、世代與版號見[資料與同步](docs/data-and-sync.md)。
 
-`components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share、full-backup 和 learning-backup 處理。
+`components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share 和 full-backup 處理。
 
-`library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源；`learning-scope-migration.ts` 承接歷史卡片與明細，不增加帳號總量。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認、保存回饋及重新生成入口。保存例句不建立題目。
+`library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認、保存回饋及重新生成入口。保存例句不建立題目。
 
 Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-word-forms 檢查來源合法詞形，question-discourse 檢查完整非相鄰刪句，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依模型輸出順序配對。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
 
@@ -44,15 +44,15 @@ QuestionMetadata 在手機收合標題與難度；錯誤展開後聚焦，桌機
 
 ## 練習與學習
 
-Practice setup／queue 統一英選中與五種學測題型。Meaning questions 本機建立四選項；question-card 判分，session actions 保存成績及必要進度 rating，persistence 保存 v5 題序／答案／原選項。practice-session 一次移除舊拼字／文法 entry 並重排；Keyboard hook 隔離組字、編輯和忙碌狀態。退役的 review-card 及其拼字測試已移除。
+Practice setup／queue 統一英選中與五種學測題型。Meaning questions 本機建立四選項；question-card 判分，session actions 只在本輪判分，persistence 保存 v5 題序／答案／原選項。practice-session 一次移除舊拼字／文法 entry 並重排；Keyboard hook 隔離組字、編輯和忙碌狀態。退役的 review-card 及其拼字測試已移除。
 
 Meaning questions 的可接受答案依本集 wordKey 取得；同拼字在其他集的合法詞義只用於排除歧義錯項，不合併成本集內容。
 
 `practice-scope-migration.ts` 從最新 Library 反算舊 entry／sense 身份，一次遷移練習草稿並保存當次呈現選項；缺來源或寫入失敗時保留原稿供明確重新開始。Queue 套用已存選項，不因新 ID 重新抽順序。
 
-QuestionCard 協調文章分頁、定位、一鍵返回與同篇閱讀位置；QuestionOptions／QuestionFeedback 分別管選取及本小題解說。practice-content 的 usedBlankForOption 讓共用已用答案在點擊及快捷鍵共用相同判斷。Session actions 等學習紀錄成功才揭答，pendingChoice 只表示暫時選取。
+QuestionCard 協調文章分頁、定位、一鍵返回與同篇閱讀位置；QuestionOptions／QuestionFeedback 分別管選取及本小題解說。practice-content 的 usedBlankForOption 讓共用已用答案在點擊及快捷鍵共用相同判斷。Session actions 選答即揭答，不寫入長期紀錄。
 
-Learning store、learning-persistence 和 card-progress 保存 card／stats，進度頁從 library-metrics 與 learning-defaults 計算掌握、每日活動和連續學習。資料先保存才前進，失敗可重試；詳見[練習](docs/practice.md)。
+App 不保存學習進度；詳見[練習](docs/practice.md)。
 
 ## 同步與帳號
 

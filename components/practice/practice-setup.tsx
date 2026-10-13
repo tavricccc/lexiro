@@ -31,12 +31,10 @@ export function PracticeSetup({
   draftPersistence = "idle",
   hasWords,
   hasQuestionContent,
-  leechOnly,
   oneSensePerWord,
   onAmountChange,
   onBegin,
   onDifficultyChange,
-  onLeechOnlyChange,
   onOneSenseChange,
   onSetChange,
   onTasksChange,
@@ -53,12 +51,10 @@ export function PracticeSetup({
   draftPersistence?: DraftPersistence;
   hasWords: boolean;
   hasQuestionContent: boolean;
-  leechOnly: boolean;
   oneSensePerWord: boolean;
   onAmountChange: (amount: number) => void;
   onBegin: () => void;
   onDifficultyChange: (difficulty: WorkspaceQuestionDifficulty) => void;
-  onLeechOnlyChange: (leechOnly: boolean) => void;
   onOneSenseChange: (oneSensePerWord: boolean) => void;
   onSetChange: (setId: string) => void;
   onTasksChange: (tasks: PracticeTask[]) => void;
@@ -216,12 +212,6 @@ export function PracticeSetup({
               detail={t("practice.oneSenseHint")}
               label={t("practice.oneSensePerWord")}
               onCheckedChange={onOneSenseChange}
-            />
-            <ListSwitchRow
-              checked={leechOnly}
-              detail={t("practice.leechOnlyHint")}
-              label={t("practice.leechOnly")}
-              onCheckedChange={onLeechOnlyChange}
             />
             <ListPicker
               label={t("practice.difficulty")}

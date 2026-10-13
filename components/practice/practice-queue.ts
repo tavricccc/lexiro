@@ -1,5 +1,4 @@
 import type {
-  CardProgress,
   PracticeQuestionTask,
   PracticeTask,
   SenseId,
@@ -99,15 +98,13 @@ export interface QueueInput {
   allowedSenseIds: Set<SenseId>;
   amount: number;
   oneSensePerWord: boolean;
-  cards: Record<SenseId, CardProgress>;
   difficulty: WorkspaceQuestionDifficulty;
-  leechOnly: boolean;
   questionGroups: QuestionItem[][];
   studyItems: StudyWord[];
   tasks: readonly PracticeTask[];
 }
 
-type PoolInput = Pick<QueueInput, "cards" | "leechOnly" | "studyItems">;
+type PoolInput = Pick<QueueInput, "studyItems">;
 type GroupInput = Pick<
   QueueInput,
   "allowedSenseIds" | "difficulty" | "questionGroups"

@@ -1,9 +1,8 @@
 import Link from "next/link";
-import type { CardProgress, SenseId, WordKey, WordSense } from "@/types";
+import type { WordKey, WordSense } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
-import { isLeech } from "@/src/lib/card-progress";
 import { withReturnTo } from "@/lib/browse-routes";
 
 export interface ViewWord {
@@ -15,12 +14,10 @@ export interface ViewWord {
 export function SetWordRow({
   entry,
   setId,
-  cards,
   returnTo,
 }: {
   entry: ViewWord;
   setId: string;
-  cards: Record<SenseId, CardProgress>;
   returnTo?: string;
 }) {
   const editHref = `/app/sets/${setId}/words/${encodeURIComponent(entry.wordKey)}/edit`;
@@ -41,7 +38,6 @@ export function SetWordRow({
       </div>
       <dl className="mt-2 grid gap-3">
         {entry.senses.map((sense) => {
-          const card = cards[sense.id] ?? null;
           return (
             <div key={sense.id}>
               <dt className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-sm">
@@ -50,11 +46,6 @@ export function SetWordRow({
                 {sense.supplementary && (
                   <span className="text-xs text-muted-foreground">
                     {t("supplement.badge")}
-                  </span>
-                )}
-                {isLeech(card) && (
-                  <span className="text-xs text-destructive">
-                    {t("setDetail.leechBadge")}
                   </span>
                 )}
               </dt>

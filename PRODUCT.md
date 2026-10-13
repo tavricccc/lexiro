@@ -24,11 +24,11 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 - A word may contain multiple Chinese meanings, parts of speech, and examples within its own set.
 - New vocabulary is entered manually or organized by AI; validated generated results are reviewed and added explicitly, with completed output retained for recovery.
 - Questions may be authored manually or generated with AI; generated questions are reviewed with their target senses before they are added to the Library.
-- Saving examples never creates saved questions. A saved set can clear its own questions, and the question bank can clear all questions; both preserve vocabulary, examples, and learning history and offer generation after successful deletion.
+- Saving examples never creates saved questions. A saved set can clear its own questions, and the question bank can clear all questions; both preserve vocabulary and examples and offer generation after successful deletion.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and review of frequently missed words.
 - 英選中保留為單字複習；AI 與題庫練習只提供學測的詞彙、綜合測驗、文意選填、篇章結構與閱讀。拼字及獨立文法題停用，舊資料保留供備份。
 - The application is expected to remain useful offline and synchronize later when signed in.
-- Learning goals and AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
+- AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
 
 ## Capabilities and Constraints
 
@@ -80,7 +80,7 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 1. Optimize for one person's daily learning flow, not administrative completeness.
 2. Keep one canonical set-owned data model linking senses, questions, review, and statistics.
 3. Make capture lightweight and consequential edits explicit, previewable, and reversible where practical.
-4. Remain trustworthy offline; migration and synchronization must never silently discard learning data.
+4. Remain trustworthy offline; migration and synchronization must never silently discard study material.
 5. Prefer a smaller number of coherent workflows over parallel legacy paths and duplicated settings.
 
 ## Accessibility & Inclusion

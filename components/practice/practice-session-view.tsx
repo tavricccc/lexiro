@@ -31,7 +31,6 @@ export function PracticeSessionView({
   persistence,
   selected,
   pendingChoice,
-  recordFailed = false,
   answeredBlanks,
   marked,
   busy,
@@ -49,7 +48,6 @@ export function PracticeSessionView({
   persistence: DraftPersistence;
   selected: number | null;
   pendingChoice: number | null;
-  recordFailed?: boolean;
   answeredBlanks: Record<number, AnsweredBlank>;
   marked: boolean;
   busy: boolean;
@@ -149,11 +147,6 @@ export function PracticeSessionView({
           </div>
         )}
       </div>
-      {recordFailed && (
-        <p role="alert" className="mb-4 text-sm leading-6 text-destructive">
-          {t("practice.recordFailed")} {t("practice.recordRetryHint")}
-        </p>
-      )}
       <motion.div
         className="flex flex-col"
         key={passage ? `passage:${passage.id}` : entry.id}

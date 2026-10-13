@@ -18,7 +18,7 @@ beforeEach(() => {
   setStorageNamespace("a");
 });
 describe("managed settings migration", () => {
-  it("adds model preferences to a v3 journal without losing pending learning uploads", async () => {
+  it("adds model preferences to a v3 journal and drops retired learning uploads", async () => {
     const previous = {
       schemaVersion: 3,
       cursor: "cursor",
@@ -33,7 +33,7 @@ describe("managed settings migration", () => {
       ...previous,
       schemaVersion: 5,
       legacyPendingRefs: {},
-      blobs: { progress: 4, stats: 3, preferences: 0 },
+      blobs: { preferences: 0 },
     });
   });
   it("preserves queued edits and deletions while retiring only this account's AI settings", async () => {
@@ -62,7 +62,7 @@ describe("managed settings migration", () => {
       ...previous,
       schemaVersion: 5,
       legacyPendingRefs: {},
-      blobs: { progress: 4, stats: 3, preferences: 0 },
+      blobs: { preferences: 0 },
     });
     expect(storage.has("a:lexiro_ai_settings")).toBe(false);
     expect(storage.has("a:lexiro_ai_api_key")).toBe(false);

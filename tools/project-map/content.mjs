@@ -5,8 +5,8 @@ export const groups=['程式架構','資料模型','使用者操作','AI 生成'
 export const flows=[
   flow('overview','整個專案：教材到學習結果','程式架構','教材先存在本機，練習共享詞義身份；登入後同步，AI 另由 Worker 處理。',[
     step('畫面接收操作','今天、教材、題庫、練習與我的，使用同一組 domain store。','browser','app/app/layout.tsx','已驗證操作與目前帳號'),
-    step('Store 排入修改','Library／learning／preferences 的 mutation queue 讀取最新狀態，避免兩次修改互蓋。','browser','src/lib/mutation-queue.ts','新的 canonical state'),
-    step('IndexedDB 正式保存','Library 寫 changed records 和 manifest，最後 publish head；learning 另存單一 blob。','database','src/lib/library-repository.ts','已保存結果與 dirty refs'),
+    step('Store 排入修改','Library／preferences 的 mutation queue 讀取最新狀態，避免兩次修改互蓋。','browser','src/lib/mutation-queue.ts','新的 canonical state'),
+    step('IndexedDB 正式保存','Library 寫 changed records 和 manifest，最後 publish head。','database','src/lib/library-repository.ts','已保存結果與 dirty refs'),
     step('畫面採用結果','Store 保存成功才採正式資料；失敗保留編輯和重試。練習必須完成保存才能前進。','browser','stores/library-store.ts','未送出的 journal version'),
     step('同步是另一條工作','登入且連線後 reconcile Firestore。AI 生成走另一個 Worker，不負責這筆教材保存。','async','stores/cloud-store.ts','完成'),
   ],['本機資料、Firestore 副本與 D1 計費是三個不同儲存邊界。']),
@@ -42,52 +42,40 @@ export const flows=[
     step('保存操作草稿','Local flow draft 依 namespace 隔離，返回可接續，較新正式資料不直接被舊草稿覆蓋。','database','components/ai/use-resumable-draft.ts','驗證後的修改'),
     step('正式 commit','只在保存成功時採用新 Library；失敗保留內容，確認對話框執行中鎖定。','browser','components/ui/confirm-dialog.tsx','完成'),
   ]),
-  flow('practice','一次練習：判分到保存','使用者操作','詞義、拼字與已存題目共用佇列，先保存學習事實才前進。',[
+  flow('practice','一次練習：判分與結果','使用者操作','詞義與已存題目共用佇列，只在本輪判分，不保存長期學習資料。',[
     step('選集合與 tasks','選題型、數量／難度和每字一義，從同一設定頁開始。','browser','components/practice/practice-setup.tsx','穩定的 entryIds 與題序'),
     step('產生練習佇列','本機詞義選項／拼字／已存題目組合；不足選項的詞義題略過。','browser','components/practice/practice-queue.ts','本題與接受答案'),
-    step('回答與判定','Question／review card 顯示答案回饋；輸入法、編輯欄位與忙碌狀態不觸發切題捷徑。','browser','components/practice/use-practice-session-actions.ts','成績及必要 rating'),
-    step('Learning 保存','按 sense 更新答題進度／題型統計，await IndexedDB；失敗復原本次作答供重試。','database','stores/learning-store.ts','保存完成'),
-    step('前進與結果','保存完成才能往下。結果列錯誤／略過／標記，可重新練習或線上解說。','browser','components/practice/practice-page.tsx','完成'),
+    step('回答與判定','Question／review card 顯示答案回饋；輸入法、編輯欄位與忙碌狀態不觸發切題捷徑。','browser','components/practice/use-practice-session-actions.ts','本輪成績'),
+    step('前進與結果','選答即揭答。結果列錯誤／略過／標記，可重新練習或線上解說。','browser','components/practice/practice-page.tsx','完成'),
   ]),
   flow('meaning','本機四選一中文詞義題','使用者操作','無模型、無網路，用教材產生可重現選項。',[
     step('取該字所有詞義','同 wordKey 的意思全部列為可接受範圍。','browser','components/practice/meaning-questions.ts','可接受的中文答案'),
     step('選三個干擾答案','排除同字、目標詞義交集及重複中文；找不到三個就不產題。','browser','components/practice/meaning-questions.ts','四個不同選項'),
     step('種子排序與保存','固定 entry ID 種子，snapshot v4 保存原選項，接續不重新亂排。','database','components/practice/use-practice-persistence.ts','使用者選擇'),
-    step('判分與學習','接受任一目標意思；記 meaning:1，並依本次首次錯誤／當日複習條件決定進度 rating。','browser','components/practice/use-practice-session-actions.ts','完成'),
-  ]),
-  flow('card-progress','答題進度與掌握程度','自動化與時間','以詞義保存對錯計數，不排程、沒有到期。',[
-    step('記錄作答','again／good 更新作答、答對、答錯次數與連續答對。','browser','src/lib/card-progress.ts','新 CardProgress'),
-    step('持久化後生效','Learning store 保存新 card；相同單字集的共享 SenseId 讀到同份進度。','database','stores/learning-store.ts','掌握與進度讀取'),
-    step('統計閱讀','連續答對 >=3 計入掌握，答錯 >=4 為難記項目；數字是程式規則。','browser','src/constants/learning.ts','完成'),
+    step('判分','接受任一目標意思；只計入本輪成績。','browser','components/practice/use-practice-session-actions.ts','完成'),
   ]),
   flow('practice-resume','中斷練習與精確接續','自動化與時間','題序、已答狀態與詞義選項都保留，接續不是新一輪計分。',[
     step('Snapshot v4','Tasks、entryIds、答案、錯題、index 和 meaningChoices 保存到 namespace localStorage。','database','src/types/session.ts','下一次恢復讀取'),
     step('檢查與 migration','恢復驗版本和教材關聯，v3 card 草稿遷移到詞義題；損壞草稿顯示處理選擇。','browser','components/practice/use-practice-persistence.ts','使用者接續選擇'),
-    step('接回原題序','保留原選項、選中答案與已完成狀態，已保存學習事實不再記一次。','browser','components/practice/practice-page.tsx','完成'),
-  ]),
-  flow('daily','日期滾動、連續學習與歷史','自動化與時間','資料讀／寫時按日期更新，每日歷史保留 90 天。',[
-    step('讀取今日統計','Learning defaults 按本機日期滾動今天的目標與完成數。','browser','src/lib/learning-defaults.ts','日期差與既有 streak'),
-    step('連續日與 freeze','連續七日可取得一次，最多兩次；單次缺日可消耗一個保留 streak。','browser','src/constants/learning.ts','更新後 stats'),
-    step('保留必要歷史','Daily history 只保留圖表使用欄位，90 天外清除。','database','src/lib/learning-defaults.ts','進度呈現'),
-    step('進度子頁','掌握、活動與題型從保存資料計算，沒有點按次數的經驗值。','browser','components/progress/progress-page.tsx','完成'),
+    step('接回原題序','保留原選項、選中答案與已完成狀態。','browser','components/practice/practice-page.tsx','完成'),
   ]),
   flow('sync-auto','同步 debounce 與重試','自動化與時間','待同步變更合併 3 秒，最多等待 15 秒；離線保留 journal。',[
-    step('Journal 發訊號','Commit／learning／preferences 將新版本標待送。','database','src/lib/sync-journal.ts','pending event'),
+    step('Journal 發訊號','Commit／preferences 將新版本標待送。','database','src/lib/sync-journal.ts','pending event'),
     step('合併排程','Cloud store debounce 3 秒，但持續修改最多等 15 秒；pagehide／visibility 會 flush。','async','stores/cloud-store.ts','一次 sync'),
     step('有界 request','單次最多 10 秒，同步中有新修改就記 rerun；失敗最多三次自動重試。','external','src/lib/cloud-sync.ts','成功或保留 pending'),
     step('重新連線／手動','恢復連線或按同步重新 reconcile，不刷新當前練習頁。','browser','stores/cloud-store.ts','完成'),
   ]),
   flow('account-switch','登入、登出與帳號交接','使用者操作','舊帳號非同步結果不落到新帳號，所有資料先按 namespace 載入。',[
     step('Firebase session 變更','Guest 或已登入 UID 決定當前空間；AI 要已登入 token。','external','src/lib/firebase.ts','新的 UID／guest'),
-    step('排空舊保存','Account queue 等 Library、learning、AI preferences 的 mutation flush。','browser','src/lib/account-data-queue.ts','安全的 namespace 切換'),
+    step('排空舊保存','Account queue 等 Library、AI preferences 的 mutation flush。','browser','src/lib/account-data-queue.ts','安全的 namespace 切換'),
     step('切換本機資料','清舊 listener／cursor 狀態，設定 namespace 並 reload 三個 store。','database','stores/cloud-store.ts','帳號資料已就緒'),
     step('拒絕舊回應','每次保存／sync completion 驗 owner；AI 舊 request 也不套新 session。','browser','lib/managed-client.ts','完成'),
   ]),
   flow('backup','完整備份：預覽與套用','使用者操作','匯出等待保存，匯入確認後合併最新資料。',[
-    step('匯出等待 queue','Backup action 固定帳號，等待目前保存再組完整 ZIP。','browser','lib/backup-actions.ts','library + learning snapshot'),
-    step('ZIP v4','lexiro-backup.json 包教材與學習；匯出供使用者保管，舊完整格式拒絕。','database','src/lib/full-backup.ts','讀檔與預覽數量'),
+    step('匯出等待 queue','Backup action 固定帳號，等待目前保存再組完整 ZIP。','browser','lib/backup-actions.ts','library snapshot'),
+    step('ZIP v6','lexiro-backup.json 只包教材；v4／v5 的學習資料讀取時忽略。','database','src/lib/full-backup.ts','讀檔與預覽數量'),
     step('預覽後確認','預覽只保存數量／操作選擇，不保存會覆寫後續編輯的舊 Library。','browser','components/me/data-section.tsx','原帳號匯入操作'),
-    step('兩段合併保存','Queue 裡合併最新教材與學習，兩段都完成才回成功；失敗可重試。','database','src/lib/learning-backup.ts','完成'),
+    step('合併保存','Queue 裡合併最新教材，完成才回成功；失敗可重試。','database','stores/library-store.ts','完成'),
   ]),
   flow('share','集合分享與教材匯入','使用者操作','分享一份集合格式，不包含私人計費或供應商設定。',[
     step('選教材並匯出','集合與收錄詞義／題目由 domain 組分享資料。','browser','src/lib/share.ts','set share v1'),
@@ -168,7 +156,7 @@ export const flows=[
 
 export const routeSpecs={
   '/':['公開介紹與互動示範','marketing','components/marketing/landing-practice.tsx'],
-  '/app':['每日任務與最近教材','learning','components/home/focus-canvas.tsx'],
+  '/app':['開始練習與最近教材','practice','components/home/focus-canvas.tsx'],
   '/app/library':['資料夾與單字集瀏覽','library','stores/library-store.ts'],
   '/app/sets/new':['手動建立單字集','library','components/library/set-editor.tsx'],
   '/app/sets/new/organize':['AI 來源整理與單字生成','ai','components/library/ai-set-organizer.tsx'],
@@ -182,10 +170,6 @@ export const routeSpecs={
   '/app/questions/[questionId]/edit':['單句題編輯','library','components/questions/question-editor.tsx'],
   '/app/questions/reading/[questionId]/edit':['文章包與子題編輯','library','components/questions/reading-editor.tsx'],
   '/app/practice':['設定、作答、重練與結果','practice','components/practice/practice-page.tsx'],
-  '/app/progress':['學習進度概覽','learning','components/progress/progress-page.tsx'],
-  '/app/progress/coverage':['詞義掌握程度','learning','components/progress/progress-coverage.tsx'],
-  '/app/progress/history':['每日活動紀錄','learning','components/progress/progress-history.tsx'],
-  '/app/progress/questions':['題型表現','learning','components/progress/progress-question-performance.tsx'],
   '/app/me':['帳號與設定入口','account','components/me/me-page.tsx'],
   '/app/me/preferences':['目標、外觀與AI模型','preferences','components/me/use-autosave.ts'],
   '/app/me/plan':['點數與月額度','account','components/me/plan-section.tsx'],

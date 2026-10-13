@@ -32,12 +32,10 @@ import { usePracticeSessionActions } from "@/components/practice/use-practice-se
 import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
 import { practiceStorageKey } from "@/src/lib/practice-storage";
 import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
 import { senseToStudyWord } from "@/src/lib/library";
 import { buildMeaningQuestionGroups } from "./meaning-questions";
-import { isLeech } from "@/src/lib/card-progress";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen
@@ -53,11 +51,9 @@ export function PracticePage({
 }) {
   const state = useLibraryStore((store) => store.state);
   const libraryStatus = useLibraryStore((store) => store.status);
-  const progress = useLearningStore((store) => store.progress);
-  const learningLoaded = useLearningStore((store) => store.loaded);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
   const setup = usePracticeSetupChoices(initialSet, initialTrack);
-  const { amount, difficulty, leechOnly, oneSensePerWord, setId, tasks } =
+  const { amount, difficulty, oneSensePerWord, setId, tasks } =
     setup;
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
@@ -134,16 +130,8 @@ export function PracticePage({
   );
 
   const poolInput = {
-    allowedSenseIds: leechOnly
-      ? new Set(
-          [...allowedSenseIds].filter((id) =>
-            isLeech(progress.cards[id] ?? null),
-          ),
-        )
-      : allowedSenseIds,
-    cards: progress.cards,
+    allowedSenseIds,
     difficulty,
-    leechOnly,
     questionGroups,
     studyItems,
   };
@@ -152,8 +140,6 @@ export function PracticePage({
     [
       allowedSenseIds,
       difficulty,
-      leechOnly,
-      progress.cards,
       questionGroups,
       studyItems,
     ],
@@ -171,8 +157,6 @@ export function PracticePage({
     [
       allowedSenseIds,
       difficulty,
-      leechOnly,
-      progress.cards,
       studyItems,
       oneSensePerWord,
       questionGroups,
@@ -185,9 +169,7 @@ export function PracticePage({
       allowedSenseIds,
       amount,
       difficulty,
-      leechOnly,
       oneSensePerWord,
-      progress.cards,
       questionGroups,
       studyItems,
       tasks,
@@ -251,7 +233,7 @@ export function PracticePage({
   useRestorePracticeSession({
     allQuestionItems,
     allStudyItems,
-    enabled: libraryStatus === "ready" && learningLoaded,
+    enabled: libraryStatus === "ready",
     initialSet,
     library: state,
     retiredEntryIds,
@@ -287,10 +269,8 @@ export function PracticePage({
   const actions = usePracticeSessionActions({
     activeEntries,
     index,
-    progressCards: progress.cards,
     queue,
     questionFailedSenses,
-    retrying,
     selected,
     setters: {
       setAnswerChoices,
@@ -311,7 +291,7 @@ export function PracticePage({
   usePracticeKeyboard({
     enabled: started && !complete && Boolean(current),
     selected,
-    busy: actions.actionBusy,
+    busy: false,
     onAnswer: (choice) => {
       if (
         current &&
@@ -324,7 +304,7 @@ export function PracticePage({
     optionCount: current?.kind === "question" ? current.item.options.length : 4,
   });
 
-  if (libraryStatus !== "ready" || !learningLoaded) {
+  if (libraryStatus !== "ready") {
     return <PracticePageSkeleton />;
   }
   if (!resumeChecked) return <PracticePageSkeleton />;
@@ -411,7 +391,6 @@ export function PracticePage({
         difficulty={difficulty}
         hasWords={hasWords}
         hasQuestionContent={hasQuestionContent}
-        leechOnly={leechOnly}
         oneSensePerWord={oneSensePerWord}
         onAmountChange={setup.changeAmount}
         onBegin={() => {
@@ -419,7 +398,6 @@ export function PracticePage({
           actions.begin();
         }}
         onDifficultyChange={setup.changeDifficulty}
-        onLeechOnlyChange={setup.changeLeechOnly}
         onOneSenseChange={setup.changeOneSense}
         onSetChange={setup.changeSet}
         onTasksChange={setup.changeTasks}
@@ -457,11 +435,10 @@ export function PracticePage({
       progressRatio={progressRatio}
       persistence={sessionPersistence}
       selected={selected}
-      pendingChoice={actions.pendingChoice}
-      recordFailed={actions.recordFailed}
+      pendingChoice={null}
       answeredBlanks={answeredBlanks}
       marked={marked.includes(index)}
-      busy={actions.actionBusy}
+      busy={false}
       animateCard={actions.animateNextCard}
       backHref={initialSet ? `/app/sets/${initialSet}` : "/app"}
       onToggleMark={() =>

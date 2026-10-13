@@ -1,18 +1,17 @@
 # Lexiro
 
-Lexiro 是個人英文單字學習 PWA。把文字、照片或手動輸入整理成單字與詞義後，可以練習中文詞義選擇、拼字與學測題型並追蹤進度。教材與練習結果先保存在本機；登入後可同步到其他裝置。
+Lexiro 是個人英文單字學習 PWA。把文字、照片或手動輸入整理成單字與詞義後，可以練習中文詞義選擇、拼字與學測題型。教材先保存在本機；登入後可同步到其他裝置。
 
 ## 問題與目標
 
-同一個單字可能出現在不同教材，也可能有多個詞義。如果每個單字集各保存一份，修改例句和查看成績就會互相分離。Lexiro 以詞義作為共享單位：單字集保存收錄關係，題目、進度和統計都指向相同的 `SenseId`。
+同一個單字可能出現在不同教材，也可能有多個詞義。如果每個單字集各保存一份，修改例句就會互相分離。Lexiro 以詞義作為共享單位：單字集保存收錄關係，題目都指向相同的 `SenseId`。
 
 ## 核心功能
 
 - 教材：巢狀資料夾、單字集、詞義與例句編輯、搜尋、移動、匯入與分享。
 - 擷取：手動輸入，或用 AI 整理文字／照片，再校對、生成並加入教材。
 - 練習：本機四選一詞義題、拼字、詞彙、文法、克漏字、文意選填、篇章結構與閱讀。
-- 複習：錯誤重練、難記項目、標記項目與中斷接續。
-- 進度：每日目標、連續學習、掌握程度、活動與題型表現。
+- 複習：錯誤重練、標記項目與中斷接續。
 - 資料：IndexedDB 保存、帳號隔離、選用 Firestore 同步、完整 ZIP 備份。
 - AI：帳號模型偏好、Lite／Thinking／Pro 檔位、串流結果、部分成果接續與管理用量。
 - PWA：可安裝、離線教材與練習、亮暗色，以及保存後才接管新版的更新流程。
@@ -31,7 +30,7 @@ flowchart LR
     W --> Provider[Responses provider]
 ```
 
-教材、題目和學習紀錄由 browser domain 處理；Firestore 是帳號資料的遠端副本。獨立的 `lexiro-worker` 管理 AI prompt、供應商憑證、點數與管理員，沒有教材資料庫的寫入職責。公開前端的 `packages/ai-contract` 只包含請求型別、解析器與程式採用的價格契約。
+教材和題目由 browser domain 處理；Firestore 是帳號資料的遠端副本。獨立的 `lexiro-worker` 管理 AI prompt、供應商憑證、點數與管理員，沒有教材資料庫的寫入職責。公開前端的 `packages/ai-contract` 只包含請求型別、解析器與程式採用的價格契約。
 
 一次練習的答案會先保存學習資料，再推進畫面。一次 AI 生成則由 Worker 驗證身分、預留額度、呼叫供應商及結算；前端校對有效結果，按「加入」才寫入 Library。完整時序見[架構](docs/architecture.md)、[資料與同步](docs/data-and-sync.md)及[AI API](docs/ai-api.md)。
 
@@ -77,7 +76,7 @@ npm run build
 - [路由、帳號與權限](docs/routes-and-permissions.md)
 - [系統架構](docs/architecture.md)
 - [資料模型、保存與同步](docs/data-and-sync.md)
-- [練習與進度](docs/practice.md)
+- [練習](docs/practice.md)
 - [AI 生成與 API](docs/ai-api.md)
 - [設定參考](docs/configuration.md)
 - [本機開發](docs/local-development.md)

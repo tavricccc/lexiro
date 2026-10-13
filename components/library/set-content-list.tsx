@@ -8,7 +8,7 @@ import { EmptyState } from "@/components/ui/page-state";
 import { questionEditHref } from "@/components/questions/question-list";
 import { t } from "@/lib/i18n";
 import { questionFormatLabel } from "@/lib/question-options";
-import type { CardProgress, LibraryQuestion, SenseId } from "@/types";
+import type { LibraryQuestion } from "@/types";
 
 interface SearchState {
   filtering: boolean;
@@ -33,14 +33,12 @@ function SearchEmpty({ onClear }: Pick<SearchState, "onClear">) {
 
 export function SetWordList({
   words,
-  cards,
   setId,
   returnTo,
   filtering,
   onClear,
 }: SearchState & {
   words: ViewWord[];
-  cards: Record<SenseId, CardProgress>;
   setId: string;
   returnTo: string;
 }) {
@@ -64,7 +62,6 @@ export function SetWordList({
           key={entry.wordKey}
         >
           <SetWordRow
-            cards={cards}
             entry={entry}
             setId={setId}
             returnTo={returnTo}

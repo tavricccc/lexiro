@@ -9,13 +9,8 @@ import { LearningRows } from "./learning-row";
 import { ContentTransition } from "@/components/motion/state-transition";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
-import {
-  countQuestionItems,
-} from "@/src/lib/library-metrics";
-import { localDateKey } from "@/src/lib/date";
-import { StudyProgress } from "./study-progress";
+import { countQuestionItems } from "@/src/lib/library-metrics";
 import { buildMeaningQuestionGroups } from "@/components/practice/meaning-questions";
 import { senseToStudyWord } from "@/src/lib/library";
 
@@ -28,7 +23,6 @@ const GUIDE = [
 export function FocusCanvas() {
   const [tab, setTab] = useState("today");
   const library = useLibraryStore((store) => store.state);
-  const stats = useLearningStore((store) => store.stats);
   const senseCount = useMemo(
     () =>
       Object.values(library.words).reduce(
@@ -52,13 +46,6 @@ export function FocusCanvas() {
     [library],
   );
   const hasContent = Object.keys(library.words).length > 0;
-  const activity = stats.dailyHistory[localDateKey()];
-  const wordsToday = activity ? activity.memoryAgain + activity.memoryGood : 0;
-  const questionsToday =
-    stats.lastStudyDate === localDateKey() ? stats.todayQuestionReviews : 0;
-  const goalMet =
-    wordsToday >= stats.dailyWordGoal &&
-    questionsToday >= stats.dailyQuestionGoal;
   const primaryHref = !hasContent
     ? "/app/sets/new"
     : questionCount > 0
@@ -91,21 +78,11 @@ export function FocusCanvas() {
               <div className="study-invitation-copy">
                 <h2>
                   {t(
-                    !hasContent
-                      ? "home.appWelcomeTitle"
-                      : goalMet
-                        ? "home.finishedTitle"
-                        : "home.appStudyTitle",
+                    !hasContent ? "home.appWelcomeTitle" : "home.appStudyTitle",
                   )}
                 </h2>
                 <p>
-                  {t(
-                    !hasContent
-                      ? "home.appWelcomeHint"
-                      : goalMet
-                        ? "home.todayDone"
-                        : "home.appStudyHint",
-                  )}
+                  {t(!hasContent ? "home.appWelcomeHint" : "home.appStudyHint")}
                 </p>
                 {hasContent && (
                   <span className="study-available">
@@ -120,23 +97,6 @@ export function FocusCanvas() {
 
             {hasContent ? (
               <>
-                <div className="study-checklist">
-                  <StudyProgress
-                    href="/app/practice"
-                    label={t("home.wordsToday")}
-                    value={wordsToday}
-                    goal={stats.dailyWordGoal}
-                    disabled={senseCount === 0}
-                    emptyHint={t("home.nothingDue")}
-                  />
-                  <StudyProgress
-                    href="/app/practice"
-                    label={t("home.questionsToday")}
-                    value={questionsToday}
-                    goal={stats.dailyQuestionGoal}
-                    disabled={questionCount === 0}
-                  />
-                </div>
                 <div className="study-tools">
                   <Link href="/app/questions/generate">
                     <Icons.generate aria-hidden className="size-4" />

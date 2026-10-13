@@ -1,15 +1,11 @@
 "use client";
 
 import type { Dispatch, SetStateAction } from "react";
-import { useRef, useState } from "react";
-import { toast } from "sonner";
+import { useState } from "react";
 
 import type { PracticeEntry } from "@/components/practice/practice-queue";
-import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
-import { isSameLocalDay } from "@/src/lib/date";
 import { isCorrectChoice } from "./meaning-questions";
-import type { CardProgress, SenseId } from "@/types";
+import type { SenseId } from "@/types";
 
 type Setter<T> = Dispatch<SetStateAction<T>>;
 
@@ -28,36 +24,23 @@ interface SessionSetters {
   setWrong: Setter<number[]>;
 }
 
-/**
- * Every action reads the entry at the cursor rather than a session-wide mode:
- * rating belongs to a card, answering and skipping belong to a question, and a
- * mixed queue moves between the two from one index to the next.
- */
+/** Every action reads the entry at the cursor; nothing is recorded beyond the session. */
 export function usePracticeSessionActions({
   activeEntries,
   index,
-  progressCards,
   queue,
   questionFailedSenses,
-  retrying,
   selected,
   setters,
 }: {
   activeEntries: PracticeEntry[];
   index: number;
-  progressCards: Record<SenseId, CardProgress>;
   queue: PracticeEntry[];
   questionFailedSenses: SenseId[];
-  retrying: boolean;
   selected: number | null;
   setters: SessionSetters;
 }) {
-  const [actionBusy, setActionBusy] = useState(false);
-  const [pendingChoice, setPendingChoice] = useState<number | null>(null);
-  const [recordFailed, setRecordFailed] = useState(false);
   const [animateNextCard, setAnimateNextCard] = useState(true);
-  const actionPending = useRef(false);
-  const recordQuestion = useLearningStore((store) => store.recordQuestion);
 
   const questionAt = (position: number) => {
     const entry = activeEntries[position];
@@ -65,10 +48,6 @@ export function usePracticeSessionActions({
   };
 
   const resetAttempt = () => {
-    actionPending.current = false;
-    setActionBusy(false);
-    setPendingChoice(null);
-    setRecordFailed(false);
     setters.setIndex(0);
     setters.setCorrect(0);
     setters.setWrong([]);
@@ -80,94 +59,38 @@ export function usePracticeSessionActions({
   };
 
   const advance = (fromKeyboard = false) => {
-    setRecordFailed(false);
     setAnimateNextCard(!fromKeyboard);
     setters.setIndex((value) => value + 1);
     setters.setRevealed(false);
     setters.setSelected(null);
   };
 
-  const next = (fromKeyboard = false) => {
-    if (!actionPending.current) advance(fromKeyboard);
-  };
+  const next = (fromKeyboard = false) => advance(fromKeyboard);
 
-  const answer = async (choice: number) => {
-    if (selected !== null || actionPending.current) return;
+  const answer = (choice: number) => {
+    if (selected !== null) return;
     const item = questionAt(index);
     if (!item) return;
-    actionPending.current = true;
-    setRecordFailed(false);
-    setActionBusy(true);
-    setPendingChoice(choice);
     const isCorrect = isCorrectChoice(item, choice);
-    const addedFailedSense =
-      !isCorrect && !questionFailedSenses.includes(item.senseId);
-    try {
-      const card = progressCards[item.senseId];
-      const reviewedToday = card?.lastReview
-        ? isSameLocalDay(new Date(card.lastReview), new Date())
-        : false;
-      const rating = addedFailedSense
-        ? "again"
-        : isCorrect && !reviewedToday
-          ? "good"
-          : undefined;
-      await recordQuestion(
-        item.senseId,
-        item.type,
-        item.difficulty,
-        isCorrect,
-        retrying,
-        rating,
-      );
-      setters.setSelected(choice);
-      setters.setRevealed(true);
-      setters.setAnswerChoices((values) => {
-        const nextChoices = [...values];
-        while (nextChoices.length <= index) nextChoices.push(null);
-        nextChoices[index] = choice;
-        return nextChoices;
-      });
-      if (isCorrect) setters.setCorrect((value) => value + 1);
-      else setters.setWrong((value) => [...value, index]);
-      if (addedFailedSense)
-        setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
-    } catch (reason) {
-      setRecordFailed(true);
-      console.error(reason);
-      toast.error(t("practice.recordFailed"));
-    } finally {
-      actionPending.current = false;
-      setActionBusy(false);
-      setPendingChoice(null);
-    }
+    setters.setSelected(choice);
+    setters.setRevealed(true);
+    setters.setAnswerChoices((values) => {
+      const nextChoices = [...values];
+      while (nextChoices.length <= index) nextChoices.push(null);
+      nextChoices[index] = choice;
+      return nextChoices;
+    });
+    if (isCorrect) setters.setCorrect((value) => value + 1);
+    else setters.setWrong((value) => [...value, index]);
+    if (!isCorrect && !questionFailedSenses.includes(item.senseId))
+      setters.setQuestionFailedSenses((values) => [...values, item.senseId]);
   };
 
-  const skip = async () => {
-    const item = questionAt(index);
-    if (!item || selected !== null || actionPending.current) return;
-    actionPending.current = true;
-    setRecordFailed(false);
-    setActionBusy(true);
-    try {
-      await recordQuestion(
-        item.senseId,
-        item.type,
-        item.difficulty,
-        false,
-        retrying,
-      );
-      setters.setSkipped((values) => [...values, index]);
-      setters.setWrong((values) => [...values, index]);
-      advance();
-    } catch (reason) {
-      setRecordFailed(true);
-      console.error(reason);
-      toast.error(t("practice.recordFailed"));
-    } finally {
-      actionPending.current = false;
-      setActionBusy(false);
-    }
+  const skip = () => {
+    if (!questionAt(index) || selected !== null) return;
+    setters.setSkipped((values) => [...values, index]);
+    setters.setWrong((values) => [...values, index]);
+    advance();
   };
 
   const begin = () => {
@@ -190,9 +113,6 @@ export function usePracticeSessionActions({
   };
 
   return {
-    actionBusy,
-    pendingChoice,
-    recordFailed,
     animateNextCard,
     answer,
     begin,

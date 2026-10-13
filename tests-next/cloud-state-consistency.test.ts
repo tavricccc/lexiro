@@ -5,7 +5,6 @@ import type {
 import type { LibraryCommitStats } from "@/src/lib/library-repository";
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
 import { emptyLibraryState } from "@/src/lib/library-repository";
-import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { getStorageNamespace, setStorageNamespace } from "@/src/lib/persist";
 const mocks = vi.hoisted(() => ({
   pull: vi.fn(),
@@ -63,12 +62,10 @@ vi.mock("@/src/lib/cloud-sync", async (original) => ({
 vi.mock("@/src/lib/cloud-account", async (original) => ({
   ...(await original<typeof import("@/src/lib/cloud-account")>()),
   readCloudBlobs: mocks.blobs,
-  writeCloudProgress: async () => {},
-  writeCloudStats: async () => {},
 }));
 const { useCloudStore } = await import("@/stores/cloud-store");
 const { useLibraryStore } = await import("@/stores/library-store");
-const { useLearningStore } = await import("@/stores/learning-store");
+const { useAiPreferencesStore } = await import("@/stores/ai-preferences-store");
 const noChange: LibraryCommitStats = {
   writtenBlobs: 0,
   totalRecords: 0,
@@ -88,16 +85,12 @@ beforeEach(() => {
     dirty: {},
     tombstones: {},
     legacyPendingRefs: {},
-    blobs: { progress: 0, stats: 0, preferences: 0 },
+    blobs: { preferences: 0 },
   };
   mocks.commit.mockResolvedValue(noChange);
   mocks.auth.mockResolvedValue(null);
   mocks.push.mockResolvedValue(undefined);
-  mocks.blobs.mockResolvedValue({
-    progress: { cards: {}, updatedAt: "2026-10-01T00:00:00.000Z" },
-    stats: createDefaultStats(),
-    preferences: null,
-  });
+  mocks.blobs.mockResolvedValue({ preferences: null });
   mocks.pull.mockResolvedValue({ records: [], cursor: "after" });
   useLibraryStore.setState({ state: emptyLibraryState(), status: "ready" });
   useCloudStore.setState({
@@ -125,12 +118,18 @@ describe("synchronization state consistency", () => {
       () =>
         new Promise((resolve) => {
           finishRead = () =>
-            resolve({ progress: null, stats: null, preferences: null });
+            resolve({
+              preferences: {
+                schemaVersion: 1,
+                model: "gpt-6-luna",
+                updatedAt: "2026-10-01T00:00:00.000Z",
+              },
+            });
         }),
     );
     const synced = useCloudStore.getState().sync({ reconcileAccount: true });
     await vi.waitFor(() => expect(mocks.blobs).toHaveBeenCalledOnce());
-    const apply = vi.spyOn(useLearningStore.getState(), "applyRemoteState");
+    const apply = vi.spyOn(useAiPreferencesStore.getState(), "applyRemote");
     useCloudStore.setState({
       ready: false,
       user: { uid: "account-b" } as User,

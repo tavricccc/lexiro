@@ -1,11 +1,6 @@
 import { strFromU8, strToU8, unzipSync, zipSync } from "fflate";
 
-import type {
-  DashboardStats,
-  FullBackupPayload,
-  LearningProgress,
-  LibraryState,
-} from "@/types";
+import type { FullBackupPayload, LibraryState } from "@/types";
 import {
   APP_NAME,
   BACKUP_FILE_PREFIX,
@@ -14,28 +9,20 @@ import {
 } from "@/constants";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { normalizeFullBackupPayload } from "@/src/lib/share";
-import { keysOf } from "@/src/lib/record";
 import { localDateKey } from "@/src/lib/date";
 
 export interface BackupImportPreview {
-  cards: number;
   questions: number;
   sets: number;
 }
 
-export function createFullBackup(
-  library: LibraryState,
-  progress: LearningProgress,
-  stats: DashboardStats,
-): FullBackupPayload {
+export function createFullBackup(library: LibraryState): FullBackupPayload {
   return {
     version: FULL_BACKUP_VERSION,
     exportedAt: new Date().toISOString(),
     appName: APP_NAME,
     kind: "full-backup",
     library,
-    learning: progress,
-    stats,
   };
 }
 
@@ -63,14 +50,10 @@ export async function readFullBackup(file: File): Promise<FullBackupPayload> {
 export function previewBackupImport(
   backup: FullBackupPayload,
   currentLibrary: LibraryState,
-  currentProgress: LearningProgress,
 ): BackupImportPreview {
   const mergedLibrary = mergeLibraryStates(currentLibrary, backup.library);
   return {
     sets: mergedLibrary.result.addedSets,
     questions: mergedLibrary.result.addedQuestions,
-    cards: keysOf(backup.learning.cards).filter(
-      (senseId) => !currentProgress.cards[senseId],
-    ).length,
   };
 }

@@ -6,7 +6,7 @@ README 是入口，docs 說明目前行為，structure 對應模組。產品／�
 | --- | --- |
 | 路由／導覽 | app、browse-routes、navigation-memory → routes-and-permissions |
 | 詞義／題目／保存 | types、repository、store → data-and-sync、structure |
-| 練習／進度 | practice components、card-progress、learning store → practice |
+| 練習 | practice components → practice |
 | Firebase／同步 | cloud files、Rules／indexes → configuration、data-and-sync |
 | AI 請求／模型 | ai-contract、managed client、private Worker → ai-api |
 | 環境／workflow | .env.example、package.json、deploy.yml → local-development、deployment、testing |

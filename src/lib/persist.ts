@@ -65,6 +65,15 @@ export async function removeRetiredAiSettings(): Promise<void> {
   ));
 }
 
+/**
+ * Learning progress and statistics were removed from the app. Their stored
+ * copy for this namespace is deleted on load; captures the namespace first.
+ */
+export async function removeRetiredLearningData(): Promise<void> {
+  const resolved = `${storageNamespace}:lexiro_learning_data`;
+  await enqueueWrite(resolved, () => del(resolved));
+}
+
 /** Debounced save helper: schedule() coalesces writes; flush() writes immediately. */
 export function createDebouncedSaver(write: () => void, delayMs = 300) {
   let timer: ReturnType<typeof setTimeout> | null = null;

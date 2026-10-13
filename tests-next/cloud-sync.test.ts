@@ -1,13 +1,9 @@
-import type { CardProgress, LearningProgress, LibraryState } from "@/types";
+import type { LibraryState } from "@/types";
 import type { SyncJournal } from "@/src/lib/sync-journal";
 import { describe, expect, it } from "vitest";
 
 
-import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { applyCloudRecords, cloudRecordId } from "@/src/lib/cloud-records";
-import { normalizeCloudProgress } from "@/src/lib/cloud-sync-schema";
-import { mergeProgress, mergeStats } from "@/src/lib/cloud-account";
-import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";
 import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
@@ -79,7 +75,7 @@ function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
     dirty: {},
     tombstones: {},
     legacyPendingRefs: {},
-    blobs: { progress: 0, stats: 0, preferences: 0 },
+    blobs: { preferences: 0 },
     ...patch,
   };
 }
@@ -297,98 +293,5 @@ describe("repairLibraryState", () => {
       updatedAt: LATER,
     });
     expect(repaired.sets).toEqual([]);
-  });
-});
-
-describe("mergeProgress", () => {
-  const card = (lastReview: string, reps: number): CardProgress => ({
-    lastReview,
-    reviewCount: reps,
-    correctCount: reps,
-    wrongCount: 0,
-    streak: reps,
-  });
-
-  it("keeps the more recent review of each card and loses neither device's work", () => {
-    const local: LearningProgress = {
-      cards: { a: card(LATER, 3), b: card(EARLIER, 1) },
-      updatedAt: LATER,
-    } as unknown as LearningProgress;
-    const remote: LearningProgress = {
-      cards: { a: card(EARLIER, 1), b: card(LATER, 4), c: card(LATER, 2) },
-      updatedAt: EARLIER,
-    } as unknown as LearningProgress;
-
-    const merged = mergeProgress(local, remote);
-    expect(Object.keys(merged.cards).sort()).toEqual(["a", "b", "c"]);
-    expect(merged.cards["a" as keyof typeof merged.cards].reviewCount).toBe(3);
-    expect(merged.cards["b" as keyof typeof merged.cards].reviewCount).toBe(4);
-  });
-
-  it("keeps local progress when the cloud has none", () => {
-    const local: LearningProgress = { cards: {}, updatedAt: LATER };
-    expect(mergeProgress(local, null)).toBe(local);
-  });
-});
-
-describe("mergeStats", () => {
-  it("retains newer remote per-sense counts and each device's sparse formats after identity migration", () => {
-    const senseId = buildSenseId(buildSetWordKey("one", "adapt"), "v.", "適應");
-    const local = {
-      ...createDefaultStats(),
-      updatedAt: EARLIER,
-      totalQuestionReviews: 4,
-      questionStatsBySense: {
-        [senseId]: {
-          "vocabulary:1": { total: 3, correct: 1, retry: 1 },
-          "reading:2": { total: 1, correct: 1, retry: 0 },
-        },
-      },
-    };
-    const remote = {
-      ...createDefaultStats(),
-      updatedAt: LATER,
-      totalQuestionReviews: 9,
-      questionStatsBySense: {
-        [senseId]: {
-          "vocabulary:1": { total: 5, correct: 4, retry: 2 },
-          "cloze:2": { total: 4, correct: 3, retry: 1 },
-        },
-      },
-    };
-    const merged = mergeStats(local, remote);
-    expect(merged.questionStatsBySense[senseId]).toEqual({
-      "vocabulary:1": { total: 5, correct: 4, retry: 2 },
-      "reading:2": { total: 1, correct: 1, retry: 0 },
-      "cloze:2": { total: 4, correct: 3, retry: 1 },
-    });
-    expect(merged.totalQuestionReviews).toBe(9);
-    expect(mergeStats(merged, remote)).toEqual(merged);
-  });
-});
-
-describe("normalizeCloudProgress", () => {
-  const UID = "user-1";
-  const document = {
-    cards: {},
-    ownerId: UID,
-    schemaVersion: CLOUD_SCHEMA_VERSION,
-    updatedAt: "2026-09-11T03:00:00.000Z",
-  };
-
-  it("reads a well-formed cloud document", () => {
-    expect(normalizeCloudProgress(document, UID).updatedAt).toBe(
-      "2026-09-11T03:00:00.000Z",
-    );
-  });
-
-  it("refuses a document belonging to another account", () => {
-    expect(() => normalizeCloudProgress(document, "someone-else")).toThrow();
-  });
-
-  it("refuses a document written by an unsupported version", () => {
-    expect(() =>
-      normalizeCloudProgress({ ...document, schemaVersion: 5 }, UID),
-    ).toThrow();
   });
 });

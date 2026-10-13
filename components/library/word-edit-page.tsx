@@ -11,7 +11,6 @@ import { t } from "@/lib/i18n";
 import { prepareWordEdit } from "@/src/lib/word-edit";
 import type { WordDraft, WordKey } from "@/types";
 import { useCloudStore } from "@/stores/cloud-store";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 
 export function WordEditPage({
@@ -112,8 +111,6 @@ function WordEditFlow({
           const store = useLibraryStore.getState();
           const input = prepareWordEdit(store.state, setId, wordKey, draft);
           await store.saveSet(input);
-          if (input.remaps.length)
-            await useLearningStore.getState().remapSenses(input.remaps);
           saved.clear();
           onDone();
         }}

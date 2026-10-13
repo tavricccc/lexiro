@@ -1,4 +1,3 @@
-export const LEARNING_STORAGE_KEY = "lexiro_learning_data";
 export const AI_PREFERENCES_STORAGE_KEY = "lexiro_ai_preferences";
 export const SYNC_JOURNAL_STORAGE_KEY = "lexiro_sync_journal";
 export const CLOUD_SYNC_PENDING_EVENT = "lexiro:sync-pending";
@@ -10,7 +9,6 @@ export const PRACTICE_SESSION_STORAGE_KEY = "lexiro-practice-session-v3";
  * switching accounts cannot mix two people's data.
  */
 export const NAMESPACE_SCOPED_KEYS: readonly string[] = [
-  LEARNING_STORAGE_KEY,
   AI_PREFERENCES_STORAGE_KEY,
   SYNC_JOURNAL_STORAGE_KEY,
 ];

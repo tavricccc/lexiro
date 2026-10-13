@@ -7,7 +7,6 @@ import { emptyLibraryState } from "@/src/lib/library-repository";
 import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 import { practiceStorageKey } from "@/src/lib/practice-storage";
 import { useLibraryStore } from "@/stores/library-store";
-import { useLearningStore } from "@/stores/learning-store";
 
 const { navigate } = vi.hoisted(() => ({ navigate: vi.fn() }));
 vi.mock("next/link", () => ({
@@ -28,7 +27,6 @@ vi.mock("next/link", () => ({
   ),
 }));
 
-const recordQuestion = useLearningStore.getState().recordQuestion;
 beforeEach(() => {
   localStorage.clear();
   navigate.mockClear();
@@ -77,15 +75,10 @@ beforeEach(() => {
     },
   ];
   useLibraryStore.setState({ state: library, status: "ready" });
-  useLearningStore.setState({
-    loaded: true,
-    recordQuestion: vi.fn().mockResolvedValue(undefined),
-  });
 });
 afterEach(() => {
   cleanup();
   localStorage.clear();
-  useLearningStore.setState({ recordQuestion });
 });
 
 describe("leaving practice", () => {
@@ -124,7 +117,6 @@ describe("leaving practice", () => {
       expect(
         await screen.findByRole("button", { name: "查看結果" }),
       ).toBeVisible();
-      expect(useLearningStore.getState().recordQuestion).toHaveBeenCalledOnce();
     },
   );
 });

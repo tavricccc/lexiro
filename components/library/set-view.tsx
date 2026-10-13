@@ -16,7 +16,6 @@ import { SearchField } from "@/components/ui/search-field";
 import { EmptyState } from "@/components/ui/page-state";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
-import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import {
@@ -67,7 +66,6 @@ export function SetView({
 }) {
   const router = useRouter();
   const { state, status, deleteSet, moveSet } = useLibraryStore();
-  const cards = useLearningStore((store) => store.progress.cards);
   const [tab, setTab] = useState<SetTab>(
     initialTab === "questions" || initialTab === "tools" ? initialTab : "words",
   );
@@ -98,7 +96,6 @@ export function SetView({
     () => words.flatMap((entry) => entry.senses.map((sense) => sense.id)),
     [words],
   );
-  const learned = senseIds.filter((id) => cards[id]).length;
 
   const savedQuestions = useMemo(
     () =>
@@ -198,7 +195,6 @@ export function SetView({
       <p className="-mt-2 mb-6 text-sm tabular-nums text-muted-foreground">
         {t("setDetail.summary", {
           senses: senseIds.length,
-          learned,
           questions: questions.length,
         })}
       </p>
@@ -261,7 +257,6 @@ export function SetView({
         {tab === "words" ? (
           <SetWordList
             words={visibleWords}
-            cards={cards}
             setId={setId}
             returnTo={browseHref}
             filtering={filtering && words.length > 0}
