@@ -15,12 +15,14 @@ interface SessionSetters {
   setEntries: Setter<PracticeEntry[] | null>;
   setIndex: Setter<number>;
   setMarked: Setter<number[]>;
+  setPendingChoice: Setter<number | null>;
   setQuestionFailedSenses: Setter<SenseId[]>;
   setRetrying: Setter<boolean>;
   setRevealed: Setter<boolean>;
   setSelected: Setter<number | null>;
   setSkipped: Setter<number[]>;
   setStarted: Setter<boolean>;
+  setViewIndex: Setter<number | null>;
   setWrong: Setter<number[]>;
 }
 
@@ -56,6 +58,8 @@ export function usePracticeSessionActions({
     setters.setSelected(null);
     setters.setRevealed(false);
     setters.setAnswerChoices([]);
+    setters.setPendingChoice(null);
+    setters.setViewIndex(null);
   };
 
   const advance = (fromKeyboard = false) => {
@@ -63,6 +67,8 @@ export function usePracticeSessionActions({
     setters.setIndex((value) => value + 1);
     setters.setRevealed(false);
     setters.setSelected(null);
+    setters.setPendingChoice(null);
+    setters.setViewIndex(null);
   };
 
   const next = (fromKeyboard = false) => advance(fromKeyboard);
@@ -73,6 +79,7 @@ export function usePracticeSessionActions({
     if (!item) return;
     const isCorrect = isCorrectChoice(item, choice);
     setters.setSelected(choice);
+    setters.setPendingChoice(null);
     setters.setRevealed(true);
     setters.setAnswerChoices((values) => {
       const nextChoices = [...values];

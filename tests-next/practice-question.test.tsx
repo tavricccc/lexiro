@@ -158,7 +158,7 @@ describe("practice reading workspace", () => {
         item={item}
         selected={null}
         pendingChoice={null}
-        busy={false}
+        readOnly={false}
         answeredBlanks={{ 1: { answer: "committee" } }}
         onAnswer={onAnswer}
       />,
@@ -173,13 +173,13 @@ describe("practice reading workspace", () => {
     expect(onAnswer).toHaveBeenCalledWith(1);
   });
   it.each([0, 1])(
-    "keeps feedback private while saving and reveals every option reason after choosing %i",
+    "keeps feedback private while a choice is pending and reveals every option reason after confirming %i",
     (choice) => {
       const props = {
         item: itemAt(0),
         selected: null as number | null,
         pendingChoice: 1 as number | null,
-        busy: true,
+        readOnly: false,
         answeredBlanks: {},
         onAnswer: vi.fn(),
       };
@@ -198,7 +198,6 @@ describe("practice reading workspace", () => {
           {...props}
           selected={choice}
           pendingChoice={null}
-          busy={false}
         />,
       );
       for (const reason of Object.values(props.item.whyWrong!)) {
@@ -231,21 +230,21 @@ describe("practice reading workspace", () => {
       total: 2,
       progressRatio: 0,
       persistence: "idle" as const,
-      revealed: false,
       selected: null,
       pendingChoice: null,
       answeredBlanks: {},
       marked: false,
-      busy: false,
+      reviewing: false,
+      canGoBack: false,
       animateCard: false,
       backHref: "/app",
-      onReveal: vi.fn(),
-      onRate: vi.fn(),
       onToggleMark: vi.fn(),
       onSkip: vi.fn(),
-      onAnswer: vi.fn(),
-      onCheckSpelling: vi.fn(),
+      onSelect: vi.fn(),
+      onConfirm: vi.fn(),
       onNext: vi.fn(),
+      onPrevious: vi.fn(),
+      onForward: vi.fn(),
     };
     try {
       const { rerender } = render(<PracticeSessionView {...props} />);

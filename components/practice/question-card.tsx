@@ -18,14 +18,14 @@ export function QuestionCard({
   item,
   selected,
   pendingChoice,
-  busy,
+  readOnly,
   answeredBlanks,
   onAnswer,
 }: {
   item: QuestionItem;
   selected: number | null;
   pendingChoice: number | null;
-  busy: boolean;
+  readOnly: boolean;
   answeredBlanks: Record<number, AnsweredBlank>;
   onAnswer: (choice: number) => void;
 }) {
@@ -166,13 +166,13 @@ export function QuestionCard({
             item={item}
             selected={selected}
             pendingChoice={pendingChoice}
-            busy={busy}
+            readOnly={readOnly}
             onAnswer={onAnswer}
             answeredBlanks={answeredBlanks}
           />
-          {busy && pendingChoice !== null && (
-            <p role="status" className="mt-4 text-sm text-muted-foreground">
-              {t("practice.recording")}
+          {readOnly && selected === null && (
+            <p className="mt-4 text-sm text-muted-foreground">
+              {t("practice.skippedNote")}
             </p>
           )}
           {selected !== null && (

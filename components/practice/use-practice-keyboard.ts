@@ -3,23 +3,33 @@
 import { useEffect } from "react";
 
 /**
- * Which shortcuts are live follows the entry under the cursor, not the session:
- * a card answers to Enter/A/G and a question to the option keys, and a mixed
- * queue swaps between them as it advances.
+ * Option keys only pick a choice; Enter confirms it, so a learner can change
+ * their mind before anything is scored. The arrows walk back through entries
+ * already answered and forward again to the one still open.
  */
 export function usePracticeKeyboard({
   enabled,
   selected,
-  busy,
-  onAnswer,
+  pendingChoice,
+  reviewing,
+  canGoBack,
+  onSelect,
+  onConfirm,
   onNext,
+  onPrevious,
+  onForward,
   optionCount = 4,
 }: {
   enabled: boolean;
   selected: number | null;
-  busy: boolean;
-  onAnswer: (choice: number) => void;
+  pendingChoice: number | null;
+  reviewing: boolean;
+  canGoBack: boolean;
+  onSelect: (choice: number) => void;
+  onConfirm: () => void;
   onNext: () => void;
+  onPrevious: () => void;
+  onForward: () => void;
   /** A 文意選填 bank can run to ten options, so the letter keys go past D. */
   optionCount?: number;
 }) {
@@ -27,7 +37,6 @@ export function usePracticeKeyboard({
     if (!enabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (
-        busy ||
         event.defaultPrevented ||
         event.repeat ||
         event.isComposing ||
@@ -41,15 +50,47 @@ export function usePracticeKeyboard({
       if (
         target instanceof Element &&
         target.closest(
-          'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="combobox"], [role="listbox"], [role="menu"]',
+          'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="dialog"], [role="combobox"], [role="listbox"], [role="menu"], [role="tablist"]',
         )
       )
         return;
-      const nativeEnterControl =
-        event.key === "Enter" &&
-        (target instanceof HTMLButtonElement ||
-          target instanceof HTMLAnchorElement);
-      if (nativeEnterControl) return;
+      if (event.key === "ArrowLeft") {
+        if (!canGoBack) return;
+        event.preventDefault();
+        onPrevious();
+        return;
+      }
+      if (event.key === "ArrowRight") {
+        if (!reviewing) return;
+        event.preventDefault();
+        onForward();
+        return;
+      }
+      if (event.key === "Enter") {
+        // A focused control already handles its own Enter, except an option:
+        // Enter after tapping one confirms it instead of picking it again.
+        const option =
+          target instanceof Element &&
+          target.closest("[data-practice-option]") !== null;
+        if (
+          !option &&
+          (target instanceof HTMLButtonElement ||
+            target instanceof HTMLAnchorElement)
+        )
+          return;
+        if (reviewing) {
+          event.preventDefault();
+          onForward();
+        } else if (selected !== null) {
+          event.preventDefault();
+          onNext();
+        } else if (pendingChoice !== null) {
+          event.preventDefault();
+          onConfirm();
+        }
+        return;
+      }
+      if (reviewing || selected !== null) return;
       const key = event.key.toLocaleLowerCase();
       const digits = Array.from(
         { length: Math.min(optionCount, 9) },
@@ -60,15 +101,24 @@ export function usePracticeKeyboard({
       );
       const choice =
         digits.indexOf(key) >= 0 ? digits.indexOf(key) : letters.indexOf(key);
-      if (selected === null && choice >= 0) {
+      if (choice >= 0) {
         event.preventDefault();
-        onAnswer(choice);
-      } else if (selected !== null && !busy && event.key === "Enter") {
-        event.preventDefault();
-        onNext();
+        onSelect(choice);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [busy, enabled, onAnswer, onNext, optionCount, selected]);
+  }, [
+    canGoBack,
+    enabled,
+    onConfirm,
+    onForward,
+    onNext,
+    onPrevious,
+    onSelect,
+    optionCount,
+    pendingChoice,
+    reviewing,
+    selected,
+  ]);
 }

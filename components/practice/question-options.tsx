@@ -10,14 +10,15 @@ export function QuestionOptions({
   item,
   selected,
   pendingChoice,
-  busy,
+  readOnly,
   onAnswer,
   answeredBlanks,
 }: {
   item: QuestionItem;
   selected: number | null;
   pendingChoice: number | null;
-  busy: boolean;
+  /** A question revisited after it was answered or skipped. */
+  readOnly: boolean;
   onAnswer: (choice: number) => void;
   answeredBlanks: Record<number, AnsweredBlank>;
 }) {
@@ -56,7 +57,8 @@ export function QuestionOptions({
           <button
             key={`${item.id}:${optionIndex}`}
             type="button"
-            disabled={answered || busy || usedBlank !== undefined}
+            data-practice-option
+            disabled={answered || readOnly || usedBlank !== undefined}
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
@@ -80,12 +82,6 @@ export function QuestionOptions({
                 </span>
               )}
             </span>
-            {isPending && (
-              <Icons.loading
-                aria-hidden
-                className="size-4 shrink-0 animate-spin text-primary motion-reduce:animate-none"
-              />
-            )}
             {answered && isCorrect && (
               <Icons.success
                 aria-hidden

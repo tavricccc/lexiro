@@ -33,15 +33,20 @@ export function PracticeSessionView({
   pendingChoice,
   answeredBlanks,
   marked,
-  busy,
+  reviewing,
+  canGoBack,
   animateCard,
   backHref,
   onToggleMark,
   onSkip,
-  onAnswer,
+  onSelect,
+  onConfirm,
   onNext,
+  onPrevious,
+  onForward,
 }: {
   entry: PracticeEntry;
+  /** Position of the entry on screen; behind the frontier while reviewing. */
   index: number;
   total: number;
   progressRatio: number;
@@ -50,18 +55,25 @@ export function PracticeSessionView({
   pendingChoice: number | null;
   answeredBlanks: Record<number, AnsweredBlank>;
   marked: boolean;
-  busy: boolean;
+  /** An earlier entry is on screen; it only shows what was recorded. */
+  reviewing: boolean;
+  canGoBack: boolean;
   animateCard: boolean;
   backHref: string;
   onToggleMark: () => void;
   onSkip: () => void;
-  onAnswer: (choice: number) => void;
+  onSelect: (choice: number) => void;
+  onConfirm: () => void;
   onNext: () => void;
+  onPrevious: () => void;
+  /** Steps one entry toward the frontier. */
+  onForward: () => void;
 }) {
   const passage =
     entry.kind === "question" && entry.item.question?.kind === "reading"
       ? entry.item.question
       : null;
+  const answered = selected !== null;
   return (
     // Keep the question directly below progress; extra viewport height never
     // pushes short questions or their answer choices downward.
@@ -72,25 +84,28 @@ export function PracticeSessionView({
       <div className="page-header" data-practice-header>
         <HeaderBackdrop contained />
         <div className="flex items-center gap-1 text-sm text-muted-foreground md:gap-2">
-          <div inert={busy} className={busy ? "opacity-50" : undefined}>
-            <BackControl href={backHref} label={t("practice.exit")} />
-          </div>
+          <BackControl href={backHref} label={t("practice.exit")} />
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
               <span className="whitespace-nowrap tabular-nums">
                 {t("practice.progress", { current: index + 1, total })}
               </span>
-              <DraftSaveStatus
-                compact
-                status={persistence === "saved" ? "saved" : "idle"}
-              />
+              {reviewing ? (
+                <span className="rounded-full bg-muted px-2 py-0.5 text-xs">
+                  {t("practice.reviewing")}
+                </span>
+              ) : (
+                <DraftSaveStatus
+                  compact
+                  status={persistence === "saved" ? "saved" : "idle"}
+                />
+              )}
             </div>
             <PracticeTaskLabel task={entry.item.type} />
           </div>
           <Button
             size="icon"
             variant={marked ? "secondary" : "ghost"}
-            disabled={busy}
             aria-label={t("practice.mark")}
             aria-pressed={marked}
             title={t("practice.mark")}
@@ -98,27 +113,15 @@ export function PracticeSessionView({
           >
             <Icons.mark aria-hidden />
           </Button>
-          {selected === null && (
+          {!reviewing && !answered && (
             <Button
               size="icon"
               variant="ghost"
-              disabled={busy}
-              aria-label={t(
-                busy && pendingChoice === null
-                  ? "practice.recording"
-                  : "practice.skip",
-              )}
+              aria-label={t("practice.skip")}
               title={t("practice.skip")}
               onClick={onSkip}
             >
-              {busy && pendingChoice === null ? (
-                <Icons.loading
-                  aria-hidden
-                  className="animate-spin motion-reduce:animate-none"
-                />
-              ) : (
-                <Icons.skip aria-hidden />
-              )}
+              <Icons.skip aria-hidden />
             </Button>
           )}
           <div
@@ -158,27 +161,52 @@ export function PracticeSessionView({
           <QuestionCard
             item={entry.item}
             selected={selected}
-            pendingChoice={pendingChoice}
+            pendingChoice={reviewing ? null : pendingChoice}
             answeredBlanks={answeredBlanks}
-            busy={busy}
-            onAnswer={onAnswer}
+            readOnly={reviewing}
+            onAnswer={onSelect}
           />
         </div>
       </motion.div>
-      {entry.kind === "question" && selected !== null && (
-        <StepActions width="wide">
-          <Button className="w-full" size="lg" disabled={busy} onClick={onNext}>
-            {busy
-              ? t("practice.recording")
-              : t(
-                  index === total - 1 ? "practice.viewResult" : "practice.next",
-                )}
-          </Button>
-        </StepActions>
-      )}
+      <StepActions width="wide">
+        <div className="flex gap-2">
+          {canGoBack && (
+            <Button
+              className="shrink-0"
+              size="lg"
+              variant="secondary"
+              onClick={onPrevious}
+            >
+              <Icons.back aria-hidden />
+              {t("practice.previous")}
+            </Button>
+          )}
+          {reviewing ? (
+            <Button className="flex-1" size="lg" onClick={onForward}>
+              {t("practice.forward")}
+              <Icons.next aria-hidden />
+            </Button>
+          ) : answered ? (
+            <Button className="flex-1" size="lg" onClick={onNext}>
+              {t(index === total - 1 ? "practice.viewResult" : "practice.next")}
+            </Button>
+          ) : (
+            <Button
+              className="flex-1"
+              size="lg"
+              disabled={pendingChoice === null}
+              onClick={onConfirm}
+            >
+              {t("practice.confirm")}
+            </Button>
+          )}
+        </div>
+      </StepActions>
       <KeyboardHints
         optionCount={entry.item.options.length}
-        answered={selected !== null}
+        answered={answered}
+        reviewing={reviewing}
+        canGoBack={canGoBack}
       />
     </div>
   );
@@ -187,22 +215,35 @@ export function PracticeSessionView({
 function KeyboardHints({
   optionCount,
   answered,
+  reviewing,
+  canGoBack,
 }: {
   optionCount: number;
   answered: boolean;
+  reviewing: boolean;
+  canGoBack: boolean;
 }) {
   return (
     <div
       aria-hidden
       className="mt-6 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground md:flex"
     >
-      {!answered && (
-        <ShortcutHint
-          keys={optionCount > 9 ? "A – J" : `1 – ${optionCount}`}
-          label={t("practice.shortcutAnswer")}
-        />
+      {!answered && !reviewing && (
+        <>
+          <ShortcutHint
+            keys={optionCount > 9 ? "A – J" : `1 – ${optionCount}`}
+            label={t("practice.shortcutAnswer")}
+          />
+          <ShortcutHint keys="Enter" label={t("practice.shortcutConfirm")} />
+        </>
       )}
-      {answered && <ShortcutHint keys="Enter" label={t("practice.next")} />}
+      {answered && !reviewing && (
+        <ShortcutHint keys="Enter" label={t("practice.next")} />
+      )}
+      {reviewing && <ShortcutHint keys="→" label={t("practice.forward")} />}
+      {canGoBack && (
+        <ShortcutHint keys="←" label={t("practice.shortcutPrevious")} />
+      )}
     </div>
   );
 }

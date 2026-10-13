@@ -59,6 +59,10 @@ export function PracticePage({
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
+  // Picked but not yet confirmed; nothing is scored until the learner confirms.
+  const [pendingChoice, setPendingChoice] = useState<number | null>(null);
+  // An earlier entry being looked back at; null keeps the open entry on screen.
+  const [viewIndex, setViewIndex] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState<number[]>([]);
   const [skipped, setSkipped] = useState<number[]>([]);
@@ -180,6 +184,12 @@ export function PracticePage({
   const total = activeEntries.length;
   const complete = started && index >= total;
   const current = activeEntries[index];
+  const reviewing = viewIndex !== null && viewIndex < index;
+  const viewPosition = reviewing ? viewIndex : index;
+  const viewed = activeEntries[viewPosition];
+  const viewedChoice = reviewing
+    ? (answerChoices[viewPosition] ?? null)
+    : selected;
   const hasWords = Object.keys(state.words).length > 0;
   const completedSteps =
     current?.kind === "question" && selected !== null ? index + 1 : index;
@@ -187,10 +197,10 @@ export function PracticePage({
   const wrongContent = buildWrongContent(wrong, activeEntries, answerChoices);
   const answeredBlanks: Record<number, AnsweredBlank> = {};
   if (
-    current?.kind === "question" &&
-    current.item.question?.kind === "reading"
+    viewed?.kind === "question" &&
+    viewed.item.question?.kind === "reading"
   ) {
-    const questionId = current.item.question.id;
+    const questionId = viewed.item.question.id;
     activeEntries.forEach((entry, position) => {
       if (
         entry.kind === "question" &&
@@ -220,6 +230,8 @@ export function PracticePage({
       setSkipped(saved.skipped);
       setMarked(saved.marked);
       setSelected(saved.selected);
+      setPendingChoice(null);
+      setViewIndex(null);
       setRevealed(saved.revealed);
       setRetrying(saved.retrying);
       setQuestionFailedSenses(saved.failedSenseIds);
@@ -278,30 +290,51 @@ export function PracticePage({
       setEntries,
       setIndex,
       setMarked,
+      setPendingChoice,
       setQuestionFailedSenses,
       setRetrying,
       setRevealed,
       setSelected,
       setSkipped,
       setStarted,
+      setViewIndex,
       setWrong,
     },
   });
 
+  const selectChoice = (choice: number) => {
+    if (
+      reviewing ||
+      selected !== null ||
+      !current ||
+      usedBlankForOption(current.item, choice, answeredBlanks) !== undefined
+    )
+      return;
+    setPendingChoice(choice);
+  };
+  const confirmChoice = () => {
+    if (pendingChoice !== null) actions.answer(pendingChoice);
+  };
+  const goPrevious = () => {
+    if (viewPosition > 0) setViewIndex(viewPosition - 1);
+  };
+  const goForward = () => {
+    const nextPosition = viewPosition + 1;
+    setViewIndex(nextPosition < index ? nextPosition : null);
+  };
+
   usePracticeKeyboard({
     enabled: started && !complete && Boolean(current),
     selected,
-    busy: false,
-    onAnswer: (choice) => {
-      if (
-        current &&
-        usedBlankForOption(current.item, choice, answeredBlanks) !== undefined
-      )
-        return;
-      void actions.answer(choice);
-    },
+    pendingChoice,
+    reviewing,
+    canGoBack: viewPosition > 0,
+    onSelect: selectChoice,
+    onConfirm: confirmChoice,
     onNext: () => actions.next(true),
-    optionCount: current?.kind === "question" ? current.item.options.length : 4,
+    onPrevious: goPrevious,
+    onForward: goForward,
+    optionCount: viewed?.kind === "question" ? viewed.item.options.length : 4,
   });
 
   if (libraryStatus !== "ready") {
@@ -425,38 +458,36 @@ export function PracticePage({
     );
   }
 
-  if (!current) return <PracticePageSkeleton />;
+  if (!current || !viewed) return <PracticePageSkeleton />;
 
   return (
     <PracticeSessionView
-      entry={current}
-      index={index}
+      entry={viewed}
+      index={viewPosition}
       total={total}
       progressRatio={progressRatio}
       persistence={sessionPersistence}
-      selected={selected}
-      pendingChoice={null}
+      selected={viewedChoice}
+      pendingChoice={pendingChoice}
       answeredBlanks={answeredBlanks}
-      marked={marked.includes(index)}
-      busy={false}
+      marked={marked.includes(viewPosition)}
+      reviewing={reviewing}
+      canGoBack={viewPosition > 0}
       animateCard={actions.animateNextCard}
       backHref={initialSet ? `/app/sets/${initialSet}` : "/app"}
       onToggleMark={() =>
         setMarked((values) =>
-          values.includes(index)
-            ? values.filter((value) => value !== index)
-            : [...values, index],
+          values.includes(viewPosition)
+            ? values.filter((value) => value !== viewPosition)
+            : [...values, viewPosition],
         )
       }
-      onSkip={() => void actions.skip()}
-      onAnswer={(choice) => {
-        if (
-          usedBlankForOption(current.item, choice, answeredBlanks) !== undefined
-        )
-          return;
-        void actions.answer(choice);
-      }}
+      onSkip={actions.skip}
+      onSelect={selectChoice}
+      onConfirm={confirmChoice}
       onNext={() => actions.next()}
+      onPrevious={goPrevious}
+      onForward={goForward}
     />
   );
 }

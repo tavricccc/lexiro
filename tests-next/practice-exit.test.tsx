@@ -95,6 +95,8 @@ describe("leaving practice", () => {
         await screen.findByRole("button", { name: "開始這 1 題" }),
       );
       fireEvent.click(await screen.findByRole("button", { name: /A.*A/ }));
+      expect(screen.queryByRole("button", { name: "查看結果" })).toBeNull();
+      fireEvent.click(screen.getByRole("button", { name: "確認答案" }));
       await screen.findByRole("button", { name: "查看結果" });
       const saved = localStorage.getItem(practiceStorageKey());
       expect(JSON.parse(saved!)).toMatchObject({
@@ -119,4 +121,66 @@ describe("leaving practice", () => {
       ).toBeVisible();
     },
   );
+});
+
+describe("moving through practice", () => {
+  it("confirms a picked answer and lets the learner look back at it", async () => {
+    const library = structuredClone(useLibraryStore.getState().state);
+    const wordKey = buildSetWordKey("set", "river");
+    const senseId = buildSenseId(wordKey, "n.", "河流");
+    const [first] = library.questions;
+    library.words[wordKey] = {
+      ...library.words[first.wordKey],
+      wordKey,
+      word: "river",
+      senses: [{ ...library.words[first.wordKey].senses[0], id: senseId }],
+    };
+    library.memberships.set.push({ wordKey, senseIds: [senseId] });
+    library.questions.push({
+      ...first,
+      id: "question-2",
+      wordKey,
+      senseId,
+      prompt: "Which river is long?",
+      fingerprint: "river",
+    });
+    useLibraryStore.setState({ state: library });
+    render(<PracticePage initialSet="set" initialTrack="questions" />);
+    fireEvent.click(await screen.findByRole("button", { name: /開始這 2 題/ }));
+
+    const confirm = await screen.findByRole("button", { name: "確認答案" });
+    expect(confirm).toBeDisabled();
+    expect(screen.queryByRole("button", { name: /上一題/ })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: /^B/ }));
+    fireEvent.click(screen.getByRole("button", { name: /^A/ }));
+    expect(screen.queryByText("答對了")).toBeNull();
+    fireEvent.click(confirm);
+    const firstPrompt = screen.getByRole("heading", { level: 1 }).textContent;
+    fireEvent.click(await screen.findByRole("button", { name: "下一題" }));
+
+    const secondPrompt = screen.getByRole("heading", { level: 1 }).textContent;
+    expect(secondPrompt).not.toBe(firstPrompt);
+    fireEvent.click(screen.getByRole("button", { name: /^C/ }));
+    fireEvent.click(screen.getByRole("button", { name: /上一題/ }));
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      firstPrompt!,
+    );
+    expect(screen.getByText("回顧中")).toBeVisible();
+    expect(screen.getByRole("button", { name: /^A/ })).toBeDisabled();
+    expect(screen.getByRole("button", { name: /^A/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /往後一題/ }));
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      secondPrompt!,
+    );
+    // The pick made before looking back is still waiting for confirmation.
+    expect(screen.getByRole("button", { name: /^C/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: "確認答案" })).toBeEnabled();
+  });
 });
