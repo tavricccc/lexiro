@@ -281,9 +281,10 @@ function QuestionStage({
   const secondsLeft = useSecondsLeft(state.endsAt, offset);
   const locked = state.yourChoice !== null || reveal !== null;
 
-  const confirm = () => {
-    if (pending === null || locked) return;
-    onAnswer(pending);
+  const choose = (index: number) => {
+    if (locked || pending !== null) return;
+    setPending(index);
+    onAnswer(index);
   };
 
   useEffect(() => {
@@ -292,10 +293,10 @@ function QuestionStage({
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       const digit = Number(event.key);
       if (digit >= 1 && digit <= question.options.length) {
-        setPending(digit - 1);
-        event.preventDefault();
-      } else if (event.key === "Enter" && pending !== null) {
-        onAnswer(pending);
+        if (pending === null) {
+          setPending(digit - 1);
+          onAnswer(digit - 1);
+        }
         event.preventDefault();
       }
     };
@@ -397,7 +398,7 @@ function QuestionStage({
                   type="button"
                   aria-pressed={chosen || isPending}
                   disabled={locked || used !== undefined}
-                  onClick={() => setPending(index)}
+                  onClick={() => choose(index)}
                   className={cn(
                     "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default",
                     reveal && accepted
@@ -438,17 +439,6 @@ function QuestionStage({
             })}
           </div>
 
-          {!reveal && state.yourChoice === null && (
-            <Button
-              className="mt-5 w-full"
-              size="lg"
-              disabled={pending === null}
-              onClick={confirm}
-            >
-              <Icons.success />
-              {t("rooms.confirm")}
-            </Button>
-          )}
           {!reveal && state.yourChoice !== null && (
             <p className="mt-5 text-center text-muted-foreground" role="status">
               {t("rooms.answered")}
