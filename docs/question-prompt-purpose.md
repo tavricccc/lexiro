@@ -94,3 +94,7 @@ v23 在 vendor 4 工作區完成 typecheck、lint、build 與 15 個測試檔／
 第 6／8／16／17 題依本次英文計數為 24／24／27／26 詞，低於既定進階 28–48；篇幅記結構欄，不把它們都判語意錯。報告位於 purpose-prompts 的 ignored `review-v24-b4-low-quality.json`，另存六份獨立命名 readable JSON。Native 保留 20／24 是主代理回報的結構回收結果，沒有審任何 recovery 新稿，不能把它當品質百分比。v23 的對照用 medium、此輪用 low 且場景不同，這些觀察也不能單獨歸因為提示改善或模型優劣。
 
 [OpenAI reasoning best practices](https://developers.openai.com/api/docs/guides/reasoning-best-practices) 支持明確完成標準與貼近任務的示範，不要求模型輸出思考步驟。[Latency optimization](https://developers.openai.com/api/docs/guides/latency-optimization) 說明小模型可嘗試較詳細提示與例子、獨立工作可並行；這些是評測方向，並非本專案的品質或甜蜜點結論。
+
+## v26 精簡錯項（2026-10-13）
+
+錯項說明改為依題型精簡：詞彙與綜合測驗的意義選項只寫該選項簡短詞義，易混淆時才以「；」補一短句；文法選形與閱讀各寫一短句。文意選填每格只寫 explanation，整組以 `optionMeanings` 列一次選項詞義；篇章結構每格只寫 explanation，以 `unusedReason` 說明未使用句子一次。輸出由每組約 90／16 條理由降為 10 個詞義／1 句，提示快取改為 v26、子題修復改為 v16。這次只改提示與格式，沒有重跑模型品質評測。MCP 指示另要求 Opus 代理在能開子代理時，把出題交給最多三個並行的 Sonnet 子代理；子代理自行生成、驗證並寫入，只回報題數、錯誤與 revision，Opus 不讀取題目內容。

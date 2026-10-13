@@ -42,15 +42,24 @@ export function validateReviewedQuestion(prepared: PreparedGeneration, result: R
     const count = countEnglishWords(value);
     if (count < range.min || count > range.max) reject(`全文有 ${count} 詞，必須為 ${range.min}–${range.max} 詞`);
   }
-  if (list.some((item) => !/\p{Script=Han}/u.test(String(item.explanation)) || (item.whyWrong as { reason: string }[]).some(({ reason }) => !/\p{Script=Han}/u.test(reason)))) reject("缺少繁體中文逐題解說");
-  for (const item of list) {
-    const answer = String(kind === "discourse" ? item.sentence : item.answer);
-    const options = ["wordBank", "discourse"].includes(kind)
-      ? (result.options as string[]).filter((option) => option !== answer)
-      : item.distractors as string[];
-    const reasons = item.whyWrong as { option: string; reason: string }[];
-    const actual = new Set(reasons.map(({ option }) => option));
-    if (actual.size !== reasons.length || actual.size !== options.length || options.some((option) => !actual.has(option))) reject("錯項解說必須逐字且完整對應本題候選");
+  const han = (value: unknown) => /\p{Script=Han}/u.test(String(value));
+  if (list.some((item) => !han(item.explanation))) reject("缺少繁體中文逐題解說");
+  if (kind === "wordBank") {
+    const options = result.options as string[];
+    const meanings = result.optionMeanings as { option: string; meaning: string }[];
+    const covered = new Set(meanings.map(({ option }) => option));
+    if (covered.size !== meanings.length || covered.size !== options.length || options.some((option) => !covered.has(option)) || meanings.some(({ meaning }) => !han(meaning)))
+      reject("optionMeanings 必須逐字且完整對應共用選項，並附繁中詞義");
+  } else if (kind === "discourse") {
+    if (!han(result.unusedReason)) reject("缺少未使用句子的繁中說明");
+  } else {
+    for (const item of list) {
+      const reasons = item.whyWrong as { option: string; reason: string }[];
+      const options = item.distractors as string[];
+      const actual = new Set(reasons.map(({ option }) => option));
+      if (reasons.some(({ reason }) => !han(reason))) reject("缺少繁體中文逐題解說");
+      if (actual.size !== reasons.length || actual.size !== options.length || options.some((option) => !actual.has(option))) reject("錯項解說必須逐字且完整對應本題候選");
+    }
   }
   if (["vocabulary", "cloze", "reading"].includes(kind)) {
     if (list.some((item) => (item.distractors as string[]).length !== 3 || new Set([item.answer, ...(item.distractors as string[])].map((option) => key(String(option)))).size !== 4)) reject("四選項不足或重複");

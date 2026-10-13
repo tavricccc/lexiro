@@ -10,6 +10,14 @@ export const teaching = (count: number) => ({
   explanation: chinese,
   whyWrong: z.array(z.object({ option: english, reason: chinese })).length(count),
 });
+// Meaning items gloss each wrong option; only a confusable one adds "；" and one short note.
+const glossTeaching = {
+  explanation: chinese,
+  whyWrong: z.array(z.object({ option: english, reason: chinese.describe("該選項本身的簡短繁中詞義，如「顧客」；只有與正解易混淆時才加「；」與一短句差異。文法選形則寫一短句選形障礙。") })).length(3),
+};
+const sharedExplanation = { explanation: chinese };
+const optionMeanings = z.array(z.object({ option: english, meaning: chinese.describe("此選項的簡短繁中詞義，整組只寫一次。") })).length(10);
+const unusedReason = chinese.describe("未使用的那句為何放在任何空格都不合，一句話。");
 const anchoredUsage = english.describe("先定位原文中恰好一處的完整自然用法span；目標answer只需在該usage內恰好一次，其他位置可有同字，依明確usage定位實際空格。可保留分離片語中的受詞。");
 export const wordBankSourceRef = text.regex(/^s[1-9]\d*$/).describe("本空格對應的來源 ref，逐字複製 sources.ref；每個來源恰好一次。陣列位置不是來源身分。單題修復保留原題 targetRef。");
 const wordBankBlank = z.object({ ref: wordBankSourceRef, usage: anchoredUsage, answer: english });
@@ -54,22 +62,24 @@ export const wordOutput = ({ min, max }: { min: number; max: number }) =>
   });
 export function questionOutput(kind: GeneratedQuestionKind) {
   if (kind === "vocabulary")
-    return z.object({ items: z.array(sentenceQuestionItem.extend(teaching(3))) });
+    return z.object({ items: z.array(sentenceQuestionItem.extend(glossTeaching)) });
   if (kind === "cloze")
-    return z.object({ title: english, passage: prose, blanks: z.array(choices.extend(teaching(3))) });
+    return z.object({ title: english, passage: prose, blanks: z.array(choices.extend(glossTeaching)) });
   if (kind === "wordBank")
     return z.object({
       title: english,
       passage: prose,
       options: texts.length(10),
-      blanks: z.array(wordBankBlank.extend(teaching(9))).min(1).max(10),
+      optionMeanings,
+      blanks: z.array(wordBankBlank.extend(sharedExplanation)).min(1).max(10),
     });
   if (kind === "discourse")
     return z.object({
       title: english,
       passage: prose,
       options: texts.length(5),
-      removals: z.array(z.object({ sentence: english, ...teaching(4) })).length(4),
+      unusedReason,
+      removals: z.array(z.object({ sentence: english, ...sharedExplanation })).length(4),
     });
   return z.object({
     title: english,
@@ -78,9 +88,9 @@ export function questionOutput(kind: GeneratedQuestionKind) {
   });
 }
 export function questionItemOutput(kind: GeneratedQuestionKind) {
-  const item = kind === "cloze" ? choices.extend(teaching(3))
-    : kind === "wordBank" ? wordBankBlank.extend(teaching(9))
-    : kind === "discourse" ? z.object({ sentence: english, ...teaching(4) })
+  const item = kind === "cloze" ? choices.extend(glossTeaching)
+    : kind === "wordBank" ? wordBankBlank.extend(sharedExplanation)
+    : kind === "discourse" ? z.object({ sentence: english, ...sharedExplanation })
     : readingQuestionItem.extend(teaching(3));
   return z.object({ items: z.array(item).length(1) });
 }

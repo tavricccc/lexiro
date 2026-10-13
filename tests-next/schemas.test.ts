@@ -136,7 +136,7 @@ describe("structured output schemas", () => {
     const answer = "is";
     const options = [answer, "are", "am", "been", "was", "were", "be", "has", "have", "being"];
     const item = { ...(kind === "wordBank" ? { ref: "s1" } : {}), usage: "The hall is reserved", answer, ...(kind === "cloze" ? { distractors: options.slice(1, 4) } : {}), explanation: "由此位置的主詞與用法判斷。", whyWrong: options.slice(1, kind === "cloze" ? 4 : 10).map((option) => ({ option, reason: "此形式不符合這個位置的用法。" })) };
-    const raw = { title: "A room", passage: "The hall is reserved and the entrance is marked.", ...(kind === "wordBank" ? { options } : {}), blanks: [item] };
+    const raw = { title: "A room", passage: "The hall is reserved and the entrance is marked.", ...(kind === "wordBank" ? { options, optionMeanings: options.map((option) => ({ option, meaning: "詞義" })) } : {}), blanks: [item] };
     expect(() => questionOutput(kind).parse(raw)).not.toThrow();
     const { usage: _usage, ...retiredItem } = item;
     expect(() => questionOutput(kind).parse({ ...raw, blanks: [retiredItem] })).toThrow();
@@ -144,8 +144,11 @@ describe("structured output schemas", () => {
   it("requires the explicit canonical source ref for a WordBank blank and its repair", () => {
     const options = ["cloud", "recover", "archive", "report", "compare", "measure", "prepare", "recent", "steady", "isolate"];
     const item = { ref: "s2", usage: "The cloud map", answer: "cloud", explanation: "此題對應雲的來源。", whyWrong: options.slice(1).map((option) => ({ option, reason: "此候選不符合這個位置。" })) };
-    const raw = { title: "A map", passage: "The cloud map helped the students find the route.", options, blanks: [item] };
+    const raw = { title: "A map", passage: "The cloud map helped the students find the route.", options, optionMeanings: options.map((option) => ({ option, meaning: "詞義" })), blanks: [item] };
     expect(questionOutput("wordBank").parse(raw)).toMatchObject({ blanks: [{ ref: "s2" }] });
+    const { optionMeanings: _meanings, ...withoutMeanings } = raw;
+    expect(() => questionOutput("wordBank").parse(withoutMeanings)).toThrow();
+    expect(questionOutput("wordBank").parse(raw)).not.toHaveProperty("blanks.0.whyWrong");
     expect(questionItemOutput("wordBank").parse({ items: [item] })).toMatchObject({ items: [{ ref: "s2" }] });
     const { ref: _ref, ...withoutRef } = item;
     for (const invalid of [withoutRef, { ...item, ref: "s0" }, { ...item, ref: "source-2" }]) {

@@ -5,6 +5,7 @@ import { jsonSchema } from "../src/schemas";
 import type { QuestionKind } from "@lexiro/ai-contract";
 
 const whyWrong = (options: string[]) => options.map((option) => ({ option, reason: "此選項與題句的明確資訊不符。" }));
+const meanings = (options: string[]) => options.map((option) => ({ option, meaning: "詞義" }));
 const teaching = (options: string[]) => ({ explanation: "依前後文的健康改善結果判斷正解。", whyWrong: whyWrong(options) });
 const sentence = "After missing several weeks of school because of a serious illness, Leo followed his doctor's plan and gradually began to recover; soon he could attend classes without feeling weak.";
 async function prepared(kind: QuestionKind, count = 1) {
@@ -41,9 +42,9 @@ describe("reviewed-result admission", () => {
     const preparedBank = await prepared("wordBank", 2);
     const preparedCloze = await prepared("cloze", 2);
     const options = ["took care", "cloud", "cloud", "archive", "report", "compare", "measure", "prepare", "recent", "steady"];
-    const bank = { title: "Observations", passage: `The students took care of the cloud records. ${passage}`, options,
+    const bank = { title: "Observations", passage: `The students took care of the cloud records. ${passage}`, options, optionMeanings: meanings(options),
       blanks: [{ ref: "s1", usage: "took care of the cloud records", answer: "took care", explanation: "第一格解說。", whyWrong: whyWrong(options.slice(1)) }, { ref: "s2", usage: "took care of the cloud records", answer: "cloud", explanation: "第二格解說。", whyWrong: whyWrong(options.filter((_, index) => index !== 1)) }] };
-    expect(() => approvedQuestionResult(preparedBank, wrapper(bank, 2))).toThrow(/候選|重複/);
+    expect(() => approvedQuestionResult(preparedBank, wrapper(bank, 2))).toThrow(/候選|重複|optionMeanings/);
     const cloze = { title: "Observations", passage: `The students took care of the records. ${passage.split(/(?<=\.)\s/).slice(0, 8).join(" ")}`,
       blanks: [{ usage: "took care of the records", answer: "took care", distractors: ["watched", "ignored", "forgot"], ...teaching(["watched", "ignored", "forgot"]) },
         { usage: "took care of the records", answer: "care of", distractors: ["look at", "listen to", "wait for"], ...teaching(["look at", "listen to", "wait for"]) }] };
@@ -52,7 +53,7 @@ describe("reviewed-result admission", () => {
   it("accepts passage-order banks with exact source-ref coverage and rejects misbinding", async () => {
     const config = await prepared("wordBank", 2);
     const options = ["recover", "cloud", "archive", "report", "compare", "measure", "prepare", "recent", "steady", "isolate"];
-    const bank = { title: "Observations", passage: `The cloud map helped the students recover their missing records. ${passage}`, options,
+    const bank = { title: "Observations", passage: `The cloud map helped the students recover their missing records. ${passage}`, options, optionMeanings: meanings(options),
       blanks: [{ ref: "s2", usage: "The cloud map", answer: "cloud", ...teaching(options.filter((option) => option !== "cloud")) },
         { ref: "s1", usage: "recover their missing records", answer: "recover", ...teaching(options.filter((option) => option !== "recover")) }] };
     expect(() => approvedQuestionResult(config, wrapper(bank, 2))).not.toThrow();
@@ -76,7 +77,7 @@ describe("reviewed-result admission", () => {
     const sentences = passage.split(/(?<=\.)\s/);
     const make = (indices: number[]) => {
       const options = [...indices.map((index) => sentences[index]), "The parents moved the exhibition to another town before the project began."];
-      return wrapper({ title: "Observations", passage, options,
+      return wrapper({ title: "Observations", passage, options, unusedReason: "與專案開始後的展覽記錄矛盾。",
         removals: indices.map((index) => ({ sentence: sentences[index], explanation: "本句接續前後資訊。", whyWrong: whyWrong(options.filter((option) => option !== sentences[index])) })) });
     };
     expect(() => approvedQuestionResult(config, make([0, 2, 4, 6]))).toThrow(/首句/);

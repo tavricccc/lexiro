@@ -43,6 +43,7 @@ const bankRequest = () => ({
 });
 const bankResult = (refs = ["s2", "s1"]) => ({
   title: "A hall", passage: bankPassage, options: bankOptions,
+  optionMeanings: bankOptions.map((option) => ({ option, meaning: "詞義" })),
   blanks: refs.map((ref, index) => ({ ...bankBlanks[index], ref })),
 });
 

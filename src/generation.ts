@@ -172,12 +172,12 @@ export async function prepareGeneration(
         targetRef = target.data.ref;
       }
       const built = questionPrompt(request.kind, sources, request.difficulty);
-      instructions = built.instructions + "\n本輪只完成指定 index 的一個子題，檢查其候選與理由後輸出，不重做整批。既有 passage、共用候選及其他題目固定，整組數量／篇幅規則不要求你另寫全文。綜合測驗／文意選填先定位既有文章中唯一的完整usage，再逐字取其中唯一answer；別處同字不影響此位置，實際空格不得與其他題重疊。綜合測驗可取來源詞或相關grammar實際字形，不強制移到另一個不存在的語法位置；不同usage可有相同answer。文意選填沿用此位置的實際來源及固定bank，片語可取內部固定目標詞，不猜sourcehead，bank每個答案仍用於一格。篇章結構沿用固定bank的完整句，不改移除位置來假修整篇。閱讀先選skill與既有本文的必要evidence再寫本題，答案可改述或推論；沒有兩個必要事實就不用虛假inference標籤。whyWrong沿用{option,reason}逐字綁定實際錯項；共用bank由既有items的answer／sentence與extraOptions合成。只輸出{items:[一個新子題]}，完成候選代入、原文依據與解說核對，不輸出檢查過程。";
+      instructions = built.instructions + "\n本輪只完成指定 index 的一個子題，檢查其候選與理由後輸出，不重做整批。既有 passage、共用候選及其他題目固定，整組數量／篇幅規則不要求你另寫全文。綜合測驗／文意選填先定位既有文章中唯一的完整usage，再逐字取其中唯一answer；別處同字不影響此位置，實際空格不得與其他題重疊。綜合測驗可取來源詞或相關grammar實際字形，不強制移到另一個不存在的語法位置；不同usage可有相同answer。文意選填沿用此位置的實際來源及固定bank，片語可取內部固定目標詞，不猜sourcehead，bank每個答案仍用於一格。篇章結構沿用固定bank的完整句，不改移除位置來假修整篇。閱讀先選skill與既有本文的必要evidence再寫本題，答案可改述或推論；沒有兩個必要事實就不用虛假inference標籤。綜合測驗與閱讀的whyWrong沿用{option,reason}逐字綁定實際錯項：意義選項寫該選項簡短詞義，文法選形寫一短句障礙，閱讀寫一短句原文依據。文意選填與篇章結構只寫本格explanation，不寫whyWrong；共用bank由既有items的answer／sentence與extraOptions合成。只輸出{items:[一個新子題]}，完成候選代入、原文依據與解說核對，不輸出檢查過程。";
       if (request.kind === "wordBank")
         instructions += "\n文意選填的 index 是既有 raw items 陣列位置，不是來源 index。只修此位置，逐字保留該題 targetRef／ref，按 ref 查對來源，不用陣列位置猜來源，不重標成另一 ref。";
       input = JSON.stringify({ kind: request.kind, difficulty: request.difficulty, sources, ...request.itemRepair, ...(targetRef ? { targetRef } : {}) });
       schema = jsonSchema(questionItemOutput(request.kind));
-      cacheKey = "lexiro-question-item-20261009-v15";
+      cacheKey = "lexiro-question-item-20261013-v16";
       rawUnits = [input];
     } else {
     const built = questionPrompt(request.kind, sources, request.difficulty);
