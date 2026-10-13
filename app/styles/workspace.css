@@ -3,6 +3,11 @@
   /* Chrome that content scrolls under: frosted, with the canvas showing through. */
   --chrome-glass: color-mix(in oklab, var(--card) 45%, transparent);
   --chrome-blur: blur(20px) saturate(1.5);
+  /* Floating glass shared by the dock, sidebar, tab rail and action bar:
+     mostly white, with only a hint of the canvas showing through. */
+  --float-glass: color-mix(in oklab, var(--card) 86%, transparent);
+  --float-glass-blur: blur(24px) saturate(1.6);
+  --float-glass-border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
   --mobile-nav-height: 3.875rem;
   --mobile-nav-bottom-gap: max(1.125rem, var(--safe-bottom));
   --workspace-title-height: 3.75rem;
@@ -91,7 +96,11 @@
   display: flex;
   width: 100%;
   border-radius: var(--radius-control);
-  background: var(--card);
+  border: var(--float-glass-border);
+  background: var(--float-glass);
+  -webkit-backdrop-filter: var(--float-glass-blur);
+  backdrop-filter: var(--float-glass-blur);
+  box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 7%, transparent);
   overflow: hidden;
 }
 .workspace-tabs .t-tab {
@@ -126,11 +135,11 @@
   left: max(1rem, var(--safe-left));
   bottom: var(--mobile-nav-bottom-gap);
   height: var(--mobile-nav-height);
-  border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
+  border: var(--float-glass-border);
   padding-bottom: 0.375rem;
-  background: color-mix(in oklab, var(--card) 68%, transparent);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  backdrop-filter: blur(24px) saturate(1.6);
+  background: var(--float-glass);
+  -webkit-backdrop-filter: var(--float-glass-blur);
+  backdrop-filter: var(--float-glass-blur);
   box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 9%, transparent);
 }
 .app-shell .app-mobile-nav [data-liquid-nav-index] {
@@ -340,11 +349,11 @@
     flex-direction: column;
     gap: 1rem;
     padding: 1.5rem 0.875rem 1rem;
-    border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
+    border: var(--float-glass-border);
     border-radius: 1.5rem;
-    background: color-mix(in oklab, var(--card) 68%, transparent);
-    -webkit-backdrop-filter: blur(24px) saturate(1.6);
-    backdrop-filter: blur(24px) saturate(1.6);
+    background: var(--float-glass);
+    -webkit-backdrop-filter: var(--float-glass-blur);
+    backdrop-filter: var(--float-glass-blur);
     box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 7%, transparent);
     z-index: 20;
   }
@@ -491,9 +500,12 @@
     max-width: 28rem;
     margin-inline: auto;
     padding: 0.625rem;
-    border: 0;
+    border: var(--float-glass-border);
     border-radius: calc(var(--radius-control) + 0.625rem);
-    box-shadow: var(--shadow-floating);
+    background: var(--float-glass);
+    -webkit-backdrop-filter: var(--float-glass-blur);
+    backdrop-filter: var(--float-glass-blur);
+    box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 9%, transparent);
   }
   .app-shell .study-home .action-space,
   .library-workspace .action-space {
