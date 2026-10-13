@@ -25,6 +25,7 @@ import {
 import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
 import { SetMoveDialog } from "@/components/library/set-move-dialog";
 import { AgentAccessDialog } from "@/components/agent/access-dialog";
+import { ShareLinkDialog } from "@/components/library/share-link-dialog";
 import type { ViewWord } from "@/components/library/set-word-row";
 import {
   SetQuestionList,
@@ -73,6 +74,7 @@ export function SetView({
   const [query, setQuery] = useState(initialQuery);
   const [moveOpen, setMoveOpen] = useState(false);
   const [agentOpen, setAgentOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
 
   const current = state.sets.find((entry) => entry.id === setId);
 
@@ -169,6 +171,11 @@ export function SetView({
                   icon: Icons.folder,
                   label: t("library.moveSet"),
                   onSelect: () => setMoveOpen(true),
+                },
+                {
+                  icon: Icons.shareLink,
+                  label: t("setDetail.shareLink"),
+                  onSelect: () => setShareOpen(true),
                 },
                 {
                   icon: Icons.export,
@@ -328,6 +335,11 @@ export function SetView({
       <AgentAccessDialog
         open={agentOpen}
         onOpenChange={setAgentOpen}
+        setId={setId}
+      />
+      <ShareLinkDialog
+        open={shareOpen}
+        onOpenChange={setShareOpen}
         setId={setId}
       />
 

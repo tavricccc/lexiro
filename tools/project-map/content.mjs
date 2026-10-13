@@ -165,6 +165,7 @@ export const routeSpecs={
   '/app/sets/[setId]/supplement':['補充未收錄詞義','ai','components/library/set-sense-supplement.tsx'],
   '/app/sets/[setId]/settings':['集合名稱／資料夾與metadata','library','components/library/set-metadata.tsx'],
   '/app/sets/[setId]/words/[wordKey]/edit':['詞義與例句編輯','library','components/library/word-edit-page.tsx'],
+  '/app/shared/[shareId]':['分享連結預覽與存入題庫','library','components/library/shared-set-page.tsx'],
   '/app/questions':['題庫搜尋與篩選','library','components/questions/question-bank-page.tsx'],
   '/app/questions/generate':['依單字集產題與校對','ai','components/questions/question-generator.tsx'],
   '/app/questions/[questionId]/edit':['單句題編輯','library','components/questions/question-editor.tsx'],

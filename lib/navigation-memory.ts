@@ -52,6 +52,7 @@ const ADOPTED_PARENTS: ReadonlyArray<
   ["/app/practice", "/app"],
   ["/app/sets", "/app/library"],
   ["/app/questions", "/app/library"],
+  ["/app/shared", "/app/library"],
   ["/app/sync", "/app/me"],
   ["/app/me", "/app/me"],
 ];

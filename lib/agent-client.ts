@@ -55,6 +55,8 @@ export async function agentJson<T>(
           ? t("agent.syncFirst")
           : code === "authorization_expired"
             ? t("agent.authorizationExpired")
+            : code === "share_unavailable"
+              ? t("share.unavailable")
             : (value.error?.message ?? t("agent.requestFailed")),
       );
     }

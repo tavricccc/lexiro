@@ -11,6 +11,7 @@
 | `/app/sets/[setId]` | 單字、題目與工具 |
 | `/app/sets/[setId]/add`、`supplement`、`settings` | 加字、補充多義、集合資訊 |
 | `/app/sets/[setId]/words/[wordKey]/edit` | 詞義與例句編輯 |
+| `/app/shared/[shareId]` | 分享連結預覽，存入自己的題庫（需登入） |
 | `/app/questions`、`/app/questions/generate` | 題庫與生成 |
 | `/app/questions/[questionId]/edit`、`/app/questions/reading/[questionId]/edit` | 題目／文章包編輯 |
 | `/app/practice` | 設定、作答、重練與結果 |
@@ -26,7 +27,7 @@
 
 ## 存取邊界
 
-本機教材與練習不要求登入。Firestore 要求 Firebase UID 等於文件 owner；AI Worker 要求 Firebase ID token。App Check 的啟用由明確開關控制，屬 Firebase 資料存取的 attestation；目前 Worker 本身驗 ID token 與 Origin，不驗 App Check token。
+本機教材與練習不要求登入；所有連網功能（AI、雲端同步、分享連結、教材助手、連線對戰）都要登入，前端先擋，Worker 再驗 Firebase ID token。分享連結只要登入即可讀取擁有者最新同步的單字集，擁有者可隨時停止分享。Firestore 要求 Firebase UID 等於文件 owner；AI Worker 要求 Firebase ID token。App Check 的啟用由明確開關控制，屬 Firebase 資料存取的 attestation；目前 Worker 本身驗 ID token 與 Origin，不驗 App Check token。
 
 Worker 管理員必須有已驗證 email 並列於 server `ADMIN_EMAILS`，一般帳號不能呼叫 `/admin/*`。前端管理入口只顯示已取得管理身份的畫面，實際拒絕由後端執行。
 
