@@ -42,6 +42,11 @@ export function PracticeSetup({
   setId,
   sets,
   tasks,
+  title = t("practice.scopeTitle"),
+  beginLabel = (count) => t("practice.beginCount", { count }),
+  busy = false,
+  maxAmount = Infinity,
+  showDraftStatus = true,
 }: {
   amount: number;
   availableQuestionCount: number;
@@ -62,10 +67,18 @@ export function PracticeSetup({
   setId: string;
   sets: LibrarySet[];
   tasks: PracticeTask[];
+  /** A live room reuses this screen to pick its questions. */
+  title?: string;
+  beginLabel?: (count: number) => string;
+  busy?: boolean;
+  /** Rooms cap how many questions one game can hold. */
+  maxAmount?: number;
+  showDraftStatus?: boolean;
 }) {
+  const sliderMax = Math.min(availableQuestionCount, maxAmount);
   const availableFormats = PRACTICE_TASKS.filter((task) => counts[task] > 0);
   const needsContent = !hasWords && !hasQuestionContent;
-  const shownAmount = Math.min(amount, Math.max(1, availableQuestionCount));
+  const shownAmount = Math.min(amount, Math.max(1, sliderMax));
   const footer = needsContent ? (
     <Button asChild className="w-full" size="lg">
       <Link href="/app/sets/new">
@@ -77,14 +90,12 @@ export function PracticeSetup({
     <>
       <Button
         className="w-full"
-        disabled={!queueLength}
+        disabled={!queueLength || busy}
         onClick={onBegin}
         size="lg"
       >
         <Icons.start />
-        {queueLength
-          ? t("practice.beginCount", { count: queueLength })
-          : t("practice.noSelection")}
+        {queueLength ? beginLabel(queueLength) : t("practice.noSelection")}
       </Button>
       <p className="mt-4 text-center">
         <Link
@@ -101,9 +112,11 @@ export function PracticeSetup({
       back={<BackControl href={backHref} />}
       current={1}
       total={1}
-      status={<DraftSaveStatus status={draftPersistence} />}
+      status={
+        showDraftStatus ? <DraftSaveStatus status={draftPersistence} /> : undefined
+      }
       footer={footer}
-      title={t("practice.scopeTitle")}
+      title={title}
       recap={
         needsContent ? undefined : (
           <StepRecap
@@ -148,7 +161,7 @@ export function PracticeSetup({
                 <input
                   className="practice-amount-slider"
                   id="practice-amount"
-                  max={availableQuestionCount}
+                  max={sliderMax}
                   min={1}
                   onChange={(event) =>
                     onAmountChange(Number(event.target.value))
@@ -159,7 +172,7 @@ export function PracticeSetup({
                 <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
                   <span>1</span>
                   <span>
-                    {t("practice.amountMax", { count: availableQuestionCount })}
+                    {t("practice.amountMax", { count: sliderMax })}
                   </span>
                 </div>
               </div>

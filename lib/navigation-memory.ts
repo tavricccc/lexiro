@@ -28,6 +28,7 @@ export const PRIMARY_DESTINATIONS = [
   // every link that starts a session, but not a slot of its own.
   { activePathPrefix: "/app/practice", href: "/app" },
   { href: "/app/library" },
+  { href: "/app/rooms" },
   { href: "/app/me" },
 ] as const satisfies ReadonlyArray<{
   activePathPrefix?: string;
@@ -55,6 +56,7 @@ const ADOPTED_PARENTS: ReadonlyArray<
   ["/app/shared", "/app/library"],
   ["/app/sync", "/app/me"],
   ["/app/me", "/app/me"],
+  ["/app/rooms", "/app/rooms"],
 ];
 
 export function adoptedParent(pathname: string) {

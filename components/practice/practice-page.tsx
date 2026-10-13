@@ -4,10 +4,8 @@ import type { PracticeSessionSnapshot, PracticeTrack, SenseId } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 
-import {
-  buildQuestionGroups,
-  usedBlankForOption,
-} from "@/components/practice/practice-content";
+import { usedBlankForOption } from "@/components/practice/practice-content";
+import { usePracticePool } from "@/components/practice/use-practice-pool";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import {
   buildPracticeQueue,
@@ -35,8 +33,6 @@ import { PRACTICE_DRAFT_REMOTE_EVENT } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
-import { senseToStudyWord } from "@/src/lib/library";
-import { buildMeaningQuestionGroups } from "./meaning-questions";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen
@@ -85,43 +81,13 @@ export function PracticePage({
   const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const restoreAttempted = useRef(false);
   const [restoreCheck, setRestoreCheck] = useState(0);
-  const allowedSenseIds = useMemo(
-    () =>
-      new Set(
-        (setId
-          ? (state.memberships[setId] ?? [])
-          : Object.values(state.memberships).flat()
-        ).flatMap((entry) => entry.senseIds),
-      ),
-    [setId, state.memberships],
-  );
-  const studyItems = useMemo(
-    () =>
-      Object.values(state.words).flatMap((word) =>
-        word.senses
-          .filter((sense) => allowedSenseIds.has(sense.id))
-          .map((sense) => senseToStudyWord(word, sense)),
-      ),
-    [allowedSenseIds, state.words],
-  );
-  const allStudyItems = useMemo(
-    () =>
-      Object.values(state.words).flatMap((word) =>
-        word.senses.map((sense) => senseToStudyWord(word, sense)),
-      ),
-    [state.words],
-  );
-  const questionGroups = useMemo(
-    () => [
-      ...buildMeaningQuestionGroups(allStudyItems),
-      ...buildQuestionGroups(state.questions, state.words),
-    ],
-    [allStudyItems, state.questions, state.words],
-  );
-  const allQuestionItems = useMemo(
-    () => questionGroups.flat(),
-    [questionGroups],
-  );
+  const {
+    allowedSenseIds,
+    studyItems,
+    allStudyItems,
+    questionGroups,
+    allQuestionItems,
+  } = usePracticePool(state, setId);
   const retiredEntryIds = useMemo(
     () =>
       new Set(

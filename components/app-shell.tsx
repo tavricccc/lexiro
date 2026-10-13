@@ -25,6 +25,7 @@ const presentation: Record<
 > = {
   "/app": { icon: Icons.today, label: "nav.study" },
   "/app/library": { icon: Icons.library, label: "nav.library" },
+  "/app/rooms": { icon: Icons.rooms, label: "nav.rooms" },
   "/app/me": { icon: Icons.account, label: "nav.me" },
 };
 

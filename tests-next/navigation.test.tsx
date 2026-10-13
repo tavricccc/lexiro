@@ -84,10 +84,11 @@ describe("navigation selection", () => {
       "false",
     );
   });
-  it("treats the three primary destinations as peers and retains their child ownership", () => {
-    for (const from of ["/app", "/app/library", "/app/me"]) {
+  it("treats the primary destinations as peers and retains their child ownership", () => {
+    const destinations = ["/app", "/app/library", "/app/rooms", "/app/me"];
+    for (const from of destinations) {
       rememberRoutePath(from);
-      for (const to of ["/app", "/app/library", "/app/me"]) {
+      for (const to of destinations) {
         expect(consumeRouteDirection(to)).toBe("root");
       }
     }
@@ -98,6 +99,7 @@ describe("navigation selection", () => {
     expect(adoptedParent("/app/sets/example")).toBe("/app/library");
     expect(adoptedParent("/app/sync")).toBe("/app/me");
     expect(adoptedParent("/app/me/preferences")).toBe("/app/me");
+    expect(adoptedParent("/app/rooms/ABCDEF")).toBe("/app/rooms");
   });
   it("pushes into a page the destination it was opened from does not own", () => {
     // A set reached from 今天 is filed under the Library, and reading that as a
@@ -113,13 +115,14 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/app/me/admin/usage")).toBe("child");
   });
   it("names the destinations primary navigation points at", () => {
-    for (const destination of ["/app", "/app/library", "/app/me"]) {
+    for (const destination of ["/app", "/app/library", "/app/rooms", "/app/me"]) {
       expect(isRootRoute(destination)).toBe(true);
     }
     // A screen you arrive at from a destination is not one of them, however
     // shallow its URL looks.
     expect(isRootRoute("/app/practice")).toBe(false);
     expect(isRootRoute("/app/sync")).toBe(false);
+    expect(isRootRoute("/app/rooms/ABCDEF")).toBe(false);
     expect(isRootRoute("/app/sets/example")).toBe(false);
     expect(isRootRoute("/app/questions/generate")).toBe(false);
   });
