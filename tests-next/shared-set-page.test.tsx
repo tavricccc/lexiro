@@ -65,7 +65,7 @@ describe("shared set page", () => {
     render(<SharedSetPage shareId="abc" />);
     expect(await screen.findByText("harbor")).toBeVisible();
     expect(screen.getByText("n. 港口")).toBeVisible();
-    fireEvent.click(screen.getByRole("button", { name: "存入我的題庫" }));
+    fireEvent.click(screen.getByRole("button", { name: "存一份副本到我的題庫" }));
     await vi.waitFor(() => expect(mocks.push).toHaveBeenCalledWith("/app/sets/copied"));
     expect(mocks.copy).toHaveBeenCalledWith(
       sharedSet,
@@ -81,7 +81,7 @@ describe("shared set page", () => {
       "href",
       "/app/sets/their-set",
     );
-    expect(screen.queryByRole("button", { name: "存入我的題庫" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "存一份副本到我的題庫" })).toBeNull();
   });
 
   it("explains a link that no longer works", async () => {

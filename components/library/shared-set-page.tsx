@@ -147,13 +147,18 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
             </Button>
           </>
         ) : (
-          <Button
-            size="lg"
-            disabled={saving || libraryStatus !== "ready"}
-            onClick={() => void save()}
-          >
-            {t(saving ? "share.saving" : "share.save")}
-          </Button>
+          <>
+            <p className="text-sm text-muted-foreground">
+              {t("share.copyHint")}
+            </p>
+            <Button
+              size="lg"
+              disabled={saving || libraryStatus !== "ready"}
+              onClick={() => void save()}
+            >
+              {t(saving ? "share.saving" : "share.save")}
+            </Button>
+          </>
         )}
       </StepActions>
     </div>

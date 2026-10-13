@@ -296,18 +296,27 @@
   }
   .app-shell {
     display: grid;
-    grid-template-columns: 13rem minmax(0, 1fr);
+    grid-template-columns: 14.5rem minmax(0, 1fr);
   }
+  /* A glass panel floating over the canvas, not a column fused to the edge. */
   .workspace-sidebar {
     grid-column: 1;
     grid-row: 1;
-    height: 100%;
+    position: sticky;
+    top: 0.75rem;
+    height: calc(100dvh - 1.5rem);
     min-height: 0;
+    margin: 0.75rem 0 0.75rem 0.75rem;
     flex-direction: column;
     gap: 1rem;
     padding: 1.25rem 0.75rem;
-    background: var(--card);
-    border-right: 1px solid var(--rule);
+    border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
+    border-radius: var(--radius-3xl);
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: var(--shadow-floating);
+    z-index: 20;
   }
   .workspace-brand {
     padding-inline: 0.75rem;
