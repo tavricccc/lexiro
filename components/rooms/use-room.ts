@@ -8,7 +8,13 @@ import {
   type RoomState,
 } from "@/lib/room-client";
 
-export type RoomConnection = "connecting" | "open" | "reconnecting" | "closed";
+export type RoomConnection =
+  | "connecting"
+  | "open"
+  | "reconnecting"
+  | "closed"
+  /** This player opened the room on another device, which took the seat. */
+  | "replaced";
 
 const PING_MS = 25_000;
 const MAX_BACKOFF_MS = 8_000;
@@ -25,6 +31,8 @@ export function useRoom(code: string, name: string, enabled: boolean) {
   /** Server clock minus this device's clock, so deadlines read the same everywhere. */
   const [offset, setOffset] = useState(0);
   const socketRef = useRef<WebSocket | null>(null);
+  /** Bumped to sit back down on this device after another one took over. */
+  const [claim, setClaim] = useState(0);
 
   useEffect(() => {
     if (!enabled) return;
@@ -32,6 +40,7 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     let attempt = 0;
     let retry: ReturnType<typeof setTimeout> | null = null;
     let ping: ReturnType<typeof setInterval> | null = null;
+    let replaced = false;
 
     const schedule = () => {
       if (disposed || retry) return;
@@ -45,7 +54,7 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     };
 
     const connect = async () => {
-      if (disposed) return;
+      if (disposed || replaced) return;
       const current = socketRef.current;
       if (
         current &&
@@ -95,6 +104,11 @@ export function useRoom(code: string, name: string, enabled: boolean) {
         if (socketRef.current === socket) socketRef.current = null;
         if (ping) clearInterval(ping);
         if (disposed) return;
+        if (event.code === 4409) {
+          replaced = true;
+          setConnection("replaced");
+          return;
+        }
         if (event.code === 4404) {
           setConnection("closed");
           return;
@@ -104,7 +118,7 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     };
 
     const resume = () => {
-      if (document.visibilityState === "hidden") return;
+      if (document.visibilityState === "hidden" || replaced) return;
       if (retry) {
         clearTimeout(retry);
         retry = null;
@@ -124,7 +138,7 @@ export function useRoom(code: string, name: string, enabled: boolean) {
       socketRef.current?.close();
       socketRef.current = null;
     };
-  }, [code, enabled, name]);
+  }, [claim, code, enabled, name]);
 
   const send = useCallback(
     (
@@ -141,5 +155,10 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     [],
   );
 
-  return { state, connection, error, offset, send };
+  const takeBack = useCallback(() => {
+    setConnection("connecting");
+    setClaim((value) => value + 1);
+  }, []);
+
+  return { state, connection, error, offset, send, takeBack };
 }

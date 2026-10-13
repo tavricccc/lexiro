@@ -38,10 +38,27 @@ export function RoomPage({ code }: { code: string }) {
 }
 
 function LiveRoom({ code, name }: { code: string; name: string }) {
-  const { state, connection, error, offset, send } = useRoom(code, name, true);
+  const { state, connection, error, offset, send, takeBack } = useRoom(
+    code,
+    name,
+    true,
+  );
   const [confirmEnd, setConfirmEnd] = useState(false);
   const back = <BackControl href="/app/rooms" label={t("rooms.leave")} />;
 
+  if (connection === "replaced")
+    return (
+      <div className="mx-auto max-w-xl">
+        <PageHeader back={back} title={state?.title ?? t("rooms.title")} />
+        <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
+          <Icons.rooms aria-hidden className="mx-auto size-8 text-muted-foreground" />
+          <p className="mt-3">{t("rooms.replaced")}</p>
+          <Button className="mt-5" onClick={takeBack}>
+            {t("rooms.takeBack")}
+          </Button>
+        </section>
+      </div>
+    );
   if (connection === "closed" && (!state || error))
     return (
       <div className="mx-auto max-w-xl">

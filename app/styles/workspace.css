@@ -536,3 +536,28 @@
     visibility: hidden;
   }
 }
+
+/* A room this person hosts elsewhere, offered for takeover on this device. */
+.active-room-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border: var(--float-glass-border);
+  border-radius: var(--radius-card);
+  background: var(--float-glass);
+  -webkit-backdrop-filter: var(--float-glass-blur);
+  backdrop-filter: var(--float-glass-blur);
+  box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 7%, transparent);
+}
+
+/* Quiet buttons share the floating glass, so they read as one family with the
+   navigation instead of opaque chips. Hover tints still win (utilities). */
+@layer components {
+  .glass-control {
+    border-color: color-mix(in oklab, var(--foreground) 7%, transparent);
+    background-color: var(--float-glass);
+    -webkit-backdrop-filter: var(--float-glass-blur);
+    backdrop-filter: var(--float-glass-blur);
+  }
+}

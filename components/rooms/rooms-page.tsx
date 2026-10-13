@@ -13,6 +13,7 @@ import {
 } from "@/components/practice/practice-queue";
 import { PracticeSetup } from "@/components/practice/practice-setup";
 import { usePracticePool } from "@/components/practice/use-practice-pool";
+import { ActiveRoomCard } from "@/components/rooms/active-room-card";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
@@ -61,6 +62,7 @@ export function RoomsPage() {
   return (
     <div className="mx-auto max-w-xl">
       <PageHeader title={t("rooms.title")} />
+      <ActiveRoomCard className="mb-4" />
       <section className="rounded-[var(--radius-card)] bg-card p-5">
         <h2 className="type-section">{t("rooms.joinHeader")}</h2>
         <form

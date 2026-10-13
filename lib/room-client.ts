@@ -100,6 +100,13 @@ export function createRoom(input: {
   });
 }
 
+/** The room this person is hosting right now, if any, so this device can take it over. */
+export function fetchActiveRoom() {
+  return agentJson<{
+    room: { code: string; title: string; phase: string } | null;
+  }>("/rooms/active", { method: "GET" });
+}
+
 export function requestRoomTicket(code: string, name: string) {
   return agentJson<{ ticket: string }>(
     `/rooms/${encodeURIComponent(code)}/ticket`,

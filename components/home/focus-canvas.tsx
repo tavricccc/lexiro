@@ -8,6 +8,7 @@ import { StepActions } from "@/components/ui/step-actions";
 import { LearningRows } from "./learning-row";
 import { ContentTransition } from "@/components/motion/state-transition";
 import { Icons } from "@/components/ui/icons";
+import { ActiveRoomCard } from "@/components/rooms/active-room-card";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { countQuestionItems } from "@/src/lib/library-metrics";
@@ -69,6 +70,7 @@ export function FocusCanvas() {
         ]}
         value={tab}
       />
+      <ActiveRoomCard className="mb-3" />
       <ContentTransition identity={tab}>
         {tab === "recent" ? (
           <LearningRows />

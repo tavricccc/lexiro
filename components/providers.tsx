@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AppUpdateMonitor } from "@/components/app-update-monitor";
+import { InstallPrompt } from "@/components/system/install-prompt";
 import { NavigationFeedback } from "@/components/motion/navigation-feedback";
 import { timing } from "@/lib/motion-timing";
 import { useState, type ReactNode } from "react";
@@ -33,6 +34,7 @@ export function Providers({ children }: { children: ReactNode }) {
             <AppUpdateMonitor />
             {children}
             <NavigationFeedback />
+            <InstallPrompt />
             <Toaster position="bottom-center" />
           </QueryClientProvider>
         </TooltipProvider>
