@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { CloudGate } from "@/components/cloud-gate";
@@ -47,5 +47,25 @@ describe("cloud sync UI", () => {
     useCloudStore.setState({ configured: true, ready: true, user: { uid: "test-user" } as never, status: "error", error: "offline" });
     render(<CloudGate><div>offline practice</div></CloudGate>);
     expect(screen.getByText("offline practice")).toBeInTheDocument();
+  });
+
+  it("asks a signed-out visitor to sign in once, and remembers staying on this device", () => {
+    window.localStorage.removeItem("lexiro:local-only");
+    useCloudStore.setState({ configured: true, ready: true, user: null, status: "signed-out" });
+    render(<CloudGate><div>workspace</div></CloudGate>);
+    expect(screen.queryByText("workspace")).toBeNull();
+    expect(screen.getByRole("button", { name: "使用 Google 登入" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "先不登入，只用這台裝置" }));
+    expect(window.localStorage.getItem("lexiro:local-only")).toBe("1");
+    cleanup();
+    render(<CloudGate><div>workspace</div></CloudGate>);
+    expect(screen.getByText("workspace")).toBeInTheDocument();
+    window.localStorage.removeItem("lexiro:local-only");
+  });
+
+  it("never asks for an account when cloud sync is not set up", () => {
+    useCloudStore.setState({ configured: false, ready: true, user: null, status: "disabled" });
+    render(<CloudGate><div>workspace</div></CloudGate>);
+    expect(screen.getByText("workspace")).toBeInTheDocument();
   });
 });

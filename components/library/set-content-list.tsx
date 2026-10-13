@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 
 import { SetWordRow, type ViewWord } from "./set-word-row";
 import { StaggerItem, StaggerList } from "@/components/motion/stagger";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import type { WordKey, WordSense } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";

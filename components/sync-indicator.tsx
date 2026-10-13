@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 
 import type { SyncStatus } from "@/types";
 import { Button } from "@/components/ui/button";

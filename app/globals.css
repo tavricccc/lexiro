@@ -270,6 +270,14 @@ body {
 
 /* The gradient canvas, fixed to the viewport so sticky chrome can match its
    top colour. */
+/* The startup screen sits on the same canvas as the app it gives way to. */
+.startup-screen {
+  background-color: var(--canvas-foot);
+  background-image: var(--canvas-gradient);
+  padding-top: var(--safe-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 body::before {
   position: fixed;
   z-index: -1;

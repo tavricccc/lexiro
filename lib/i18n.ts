@@ -996,7 +996,16 @@ export const zhTW = {
     creditEquivalent: "等值 {credits} 點",
     unlimited: "無限額度",
   },
+  startup: {
+    session: "正在確認登入狀態…",
+    library: "正在載入你的單字…",
+    signInTitle: "登入 Lexiro",
+    signInBody: "登入後單字集和練習進度會在每台裝置同步，也能分享單字集、和朋友開房對戰。",
+    localOnly: "先不登入，只用這台裝置",
+  },
   common: {
+    notFoundTitle: "找不到這個頁面",
+    notFoundDescription: "網址可能打錯了，或這個頁面已經移除。",
     processing: "正在處理…",
     actionFailed: "操作未完成：{message}",
     clearSearch: "清除搜尋",

@@ -1,8 +1,8 @@
 "use client";
 
 import type { PracticeTask, WorkspaceQuestionDifficulty } from "@/types";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/ui/app-link";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 

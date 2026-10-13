@@ -1,7 +1,7 @@
 "use client";
 
 import type { AppIcon } from "@/components/ui/icons";
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import { useLayoutEffect } from "react";
 
 import { Button } from "@/components/ui/button";

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import { useEffect, useState } from "react";
 import { estimatePoints, type JobKind, type Tier } from "@lexiro/ai-contract";
 import type { AiRunState } from "./use-ai-generation";

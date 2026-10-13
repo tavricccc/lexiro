@@ -2,6 +2,10 @@
 
 ## Route map
 
+`/app` 底下只有一個 catch-all 頁面（`app/app/[[...view]]/page.tsx`，什麼都不渲染）。所有畫面由 client 的 view host（`components/app-views.tsx`）依網址繪製；App 內的連結與 `router.push` 走 `history.pushState`（`lib/app-navigation.ts`、`components/ui/app-link.tsx`、`lib/use-app-router.ts`），換畫面不向伺服器要頁面。直接開網址或重新整理仍可進入任何畫面。新增畫面時把網址樣式加進 view host 的表，並在 project map 的 `routeSpecs` 補說明。
+
+開 App 時先顯示啟動畫面，直到帳號與本機教材讀完；已設定雲端但未登入時會請使用者登入，或選「先不登入，只用這台裝置」（記在 localStorage，之後不再詢問；需要連線的功能仍各自要求登入）。
+
 | 路由 | 用途 |
 | --- | --- |
 | `/` | 公開介紹與示範練習 |

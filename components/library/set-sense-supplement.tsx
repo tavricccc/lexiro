@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
+import Link from "@/components/ui/app-link";
 import { useMemo, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";

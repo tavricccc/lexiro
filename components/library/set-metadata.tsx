@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useRef, useState } from "react";
 
 import { useResumableDraft } from "@/components/ai/use-resumable-draft";

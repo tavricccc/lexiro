@@ -1,7 +1,7 @@
 "use client";
 
 import type { LibraryQuestion } from "@/types";
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { AiRunPanel } from "@/components/ai/ai-run-panel";

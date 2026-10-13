@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/ui/app-link";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";

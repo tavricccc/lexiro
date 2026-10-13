@@ -5,7 +5,7 @@ import type {
   PracticeTask,
   WorkspaceQuestionDifficulty,
 } from "@/types";
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { BackControl } from "@/components/ui/back-control";
 import { ChoiceChecklist } from "@/components/ui/choice-checklist";

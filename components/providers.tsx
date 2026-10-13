@@ -5,7 +5,6 @@ import { MotionConfig } from "motion/react";
 import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
-import { AppPreload } from "@/components/app-preload";
 import { AppUpdateMonitor } from "@/components/app-update-monitor";
 import { NavigationFeedback } from "@/components/motion/navigation-feedback";
 import { timing } from "@/lib/motion-timing";
@@ -31,7 +30,6 @@ export function Providers({ children }: { children: ReactNode }) {
       <MotionConfig reducedMotion="user" transition={timing("control")}>
         <TooltipProvider>
           <QueryClientProvider client={queryClient}>
-            <AppPreload />
             <AppUpdateMonitor />
             {children}
             <NavigationFeedback />

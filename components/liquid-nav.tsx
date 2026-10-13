@@ -1,7 +1,8 @@
 "use client";
 
-import Link, { useLinkStatus } from "next/link";
-import { useRouter } from "next/navigation";
+import { useLinkStatus } from "next/link";
+import Link from "@/components/ui/app-link";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import * as React from "react";
 import { LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { timing } from "@/lib/motion-timing";

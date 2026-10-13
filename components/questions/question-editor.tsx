@@ -5,7 +5,7 @@ import type {
   MultipleChoiceQuestion,
   QuestionStyle,
 } from "@/types";
-import { useRouter } from "next/navigation";
+import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 

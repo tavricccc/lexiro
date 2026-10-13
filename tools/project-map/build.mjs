@@ -44,7 +44,18 @@ for(const [key,value] of Object.entries(limits))settings.push({key:'LIMITS.'+key
 const environmentNames=[...read('.env.example').matchAll(/^(NEXT_PUBLIC_[A-Z_]+)=/gm)].map(match=>match[1]);
 for(const name of environmentNames)settings.push({key:name,title:name,path:'docs/configuration.md',constant:name,store:'build-time 公開環境設定',effect:'設定責任與必要條件見配置文件。公開值不可放 provider key；地圖不讀實際環境檔。',timing:'重啟 dev 或重新 build／發布才進 browser bundle。',initial:undefined,range:'依配置文件',section:'前端環境'});
 
-const routes=paths.filter(p=>p.startsWith('app/')&&p.endsWith('/page.tsx')).map(p=>({path:p,route:'/'+p.slice(4,-9).split('/').filter(s=>s&&!s.startsWith('(')&&!s.startsWith('@')).join('/'),sheet:false}));
+const fileRoutes=paths.filter(p=>p.startsWith('app/')&&p.endsWith('/page.tsx')).map(p=>({path:p,route:'/'+p.slice(4,-9).split('/').filter(s=>s&&!s.startsWith('(')&&!s.startsWith('@')).join('/'),sheet:false}));
+// Every screen under /app is drawn by the client view host from one catch-all
+// page, so its addresses come from the host's screen table instead of files.
+const VIEW_HOST='components/app-views.tsx';
+const starred=route=>route.replace(/\[[^\]]+\]/g,'*');
+const screenRoutes=[...sources[VIEW_HOST].text.matchAll(/^\s*\[\s*"([a-z/*]*)",/gm)].map(m=>{
+  const route=m[1]?'/app/'+m[1]:'/app';
+  const spec=Object.keys(routeSpecs).find(key=>starred(key)===route);
+  if(!spec)throw new Error('尚未解說畫面：'+route);
+  return {path:VIEW_HOST,route:spec,sheet:false};
+});
+const routes=[...fileRoutes.filter(route=>route.route!=='/app/[[...view]]'),...screenRoutes];
 for(const route of routes)if(!routeSpecs[route.route])throw new Error('尚未解說路由：'+route.route);
 for(const name of Object.keys(routeSpecs))if(!routes.some(route=>route.route===name))throw new Error('路由已移除：'+name);
 const routeFlows=routes.map(route=>{

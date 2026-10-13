@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import type { LibrarySet, WordEntry } from "@/types";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";

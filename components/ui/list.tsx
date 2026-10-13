@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/app-link";
 import type { AppIcon } from "@/components/ui/icons";
 import { type ReactNode } from "react";
 import { RadioGroup } from "radix-ui";
