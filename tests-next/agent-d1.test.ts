@@ -1222,6 +1222,41 @@ describe("frontend synchronization API using the same native D1 records", () => 
           ],
         }),
       ).rejects.toMatchObject({ code: "duplicate_blob" });
+      const practiceAt = new Date().toISOString();
+      expect(
+        await post({
+          ...envelope,
+          operationId: randomUUID(),
+          expectedRevision: 1,
+          blobs: [
+            {
+              kind: "practice",
+              data: { updatedAt: practiceAt, snapshot: { index: 3 } },
+            },
+          ],
+        }),
+      ).toEqual({ revision: 2 });
+      const withPractice = (await (
+        await handleCloudApi(
+          new Request("http://local.invalid/sync/blobs"),
+          "a",
+          f.db,
+        )
+      ).json()) as { blobs: Record<string, unknown> };
+      expect(withPractice.blobs.practice).toEqual({
+        updatedAt: practiceAt,
+        snapshot: { index: 3 },
+        ownerId: "a",
+        schemaVersion: 1,
+      });
+      await expect(
+        post({
+          ...envelope,
+          operationId: randomUUID(),
+          expectedRevision: 2,
+          blobs: [{ kind: "practice", data: { snapshot: null } }],
+        }),
+      ).rejects.toThrow();
     } finally {
       await f.runtime.dispose();
     }

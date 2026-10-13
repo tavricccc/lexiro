@@ -10,7 +10,7 @@ function validate<T>(parse: () => T): T {
 }
 const blobsSchema = z.strictObject({
   ...writeBase, expectedRevision: z.number().int().nonnegative(),
-  blobs: z.array(z.strictObject({ kind: z.enum(["preferences"]), data: z.record(z.string(), z.unknown()) })).min(1).max(2),
+  blobs: z.array(z.strictObject({ kind: z.enum(["preferences", "practice"]), data: z.record(z.string(), z.unknown()) })).min(1).max(2),
 });
 export async function handleCloudApi(request: Request, uid: string, db: D1Database) {
   const path = new URL(request.url).pathname, cloud = new CloudD1Repository(db);
