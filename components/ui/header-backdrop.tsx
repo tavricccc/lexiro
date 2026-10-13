@@ -9,10 +9,12 @@ export function HeaderBackdrop({
       data-progressive="true"
       style={contained ? { left: 0, right: 0 } : undefined}
     >
-      <span data-status-bar-backdrop="" />
-      <span data-blur-step="strong" />
-      <span data-blur-step="medium" />
-      <span data-blur-step="soft" />
+      <span />
+      <span />
+      <span />
+      <span />
+      <span />
+      <span />
     </span>
   );
 }
