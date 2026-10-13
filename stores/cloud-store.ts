@@ -15,7 +15,11 @@ import { writeCloudPreferences } from "@/src/lib/cloud-preferences";
 import { applyCloudRecords } from "@/src/lib/cloud-records";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
-import { readCloudBlobs } from "@/src/lib/cloud-account";
+import { readCloudBlobs, writeCloudBlob } from "@/src/lib/cloud-account";
+import {
+  applyRemotePracticeDraft,
+  localPracticeDraft,
+} from "@/src/lib/practice-storage";
 import {
   pendingRecords,
   pullRecords,
@@ -71,10 +75,9 @@ interface CloudStore {
   signIn: () => Promise<void>;
   signOut: () => Promise<void>;
   /**
-   * `reconcileAccount` also reads the account's progress and statistics
-   * documents. Pressing 同步 means "make sure I have everything", so it asks
-   * for them; a background run decides for itself whether they are worth two
-   * reads.
+   * `reconcileAccount` also reads the account's preferences and open practice
+   * session. Pressing 同步 means "make sure I have everything", so it asks for
+   * them; a background run decides for itself whether they are worth a read.
    */
   sync: (options?: { reconcileAccount?: boolean }) => Promise<void>;
 }
@@ -346,11 +349,11 @@ async function refreshPending(set: SetState): Promise<void> {
   set({ pending: pendingCountOf(await loadSyncJournal()) });
 }
 
-/** Reads the account's preferences from the cloud, then writes back whichever side this device owes. */
+/** Reads the account's preferences and open practice session, then writes back whichever side this device owes. */
 async function reconcileAccountDocuments(
   db: CloudClient,
   uid: string,
-  dirtyBlobs: { preferences: number },
+  dirtyBlobs: { preferences: number; practice: number },
 ): Promise<void> {
   const blobs = await readCloudBlobs(db, uid);
   if (
@@ -372,11 +375,21 @@ async function reconcileAccountDocuments(
         useAiPreferencesStore.getState().preferences,
       ),
     );
+  // The newer session wins, whichever device it came from.
+  const localPractice = localPracticeDraft();
+  if (
+    blobs.practice &&
+    (!localPractice || blobs.practice.updatedAt > localPractice.updatedAt)
+  )
+    applyRemotePracticeDraft(blobs.practice);
+  else if (localPractice && (dirtyBlobs.practice > 0 || !blobs.practice))
+    work.push(() => writeCloudBlob(db, uid, "practice", localPractice));
   for (const write of work) await write();
   if (getStorageNamespace() !== accountNamespace(uid)) return;
   await writeSyncForAccount(uid, () =>
     clearBlobDirty([
       { kind: "preferences", version: dirtyBlobs.preferences },
+      { kind: "practice", version: dirtyBlobs.practice },
     ]),
   );
 }
@@ -438,7 +451,8 @@ async function runSync(
     if (
       reconcileAccount ||
       accountDocumentsRead !== user.uid ||
-      dirtyBlobs.preferences > 0
+      dirtyBlobs.preferences > 0 ||
+      dirtyBlobs.practice > 0
     )
       await reconcileAccountDocuments(db, user.uid, dirtyBlobs);
     if (!sameAccount()) return;

@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 import {
-  practiceStorageKey,
+  clearPracticeDraft,
   readPracticeDraft,
+  writePracticeDraft,
 } from "@/src/lib/practice-storage";
 import type {
   PracticeSessionSnapshot,
@@ -29,6 +30,7 @@ export type PracticeRestoreIssue = "unreadable" | "source" | "storage";
 export function useRestorePracticeSession({
   allQuestionItems,
   allStudyItems,
+  checkRevision,
   enabled,
   initialSet,
   library,
@@ -40,6 +42,8 @@ export function useRestorePracticeSession({
 }: {
   allQuestionItems: QuestionItem[];
   allStudyItems: StudyWord[];
+  /** Bumped to check again after another device replaced the draft. */
+  checkRevision: number;
   enabled: boolean;
   initialSet: string;
   library: LibraryState;
@@ -89,7 +93,7 @@ export function useRestorePracticeSession({
     );
     if (migrated.changed) {
       try {
-        localStorage.setItem(practiceStorageKey(), JSON.stringify(restored));
+        writePracticeDraft(restored);
       } catch {
         onUnavailable("storage");
         onChecked();
@@ -115,6 +119,7 @@ export function useRestorePracticeSession({
   }, [
     allQuestionItems,
     allStudyItems,
+    checkRevision,
     enabled,
     initialSet,
     library,
@@ -168,7 +173,7 @@ export function usePersistPracticeSession({
     if (!started) return;
     if (complete) {
       try {
-        localStorage.removeItem(practiceStorageKey());
+        clearPracticeDraft();
         setPersistence("idle");
       } catch {
         setPersistence("error");
@@ -194,7 +199,7 @@ export function usePersistPracticeSession({
       retrying,
     });
     try {
-      localStorage.setItem(practiceStorageKey(), JSON.stringify(snapshot));
+      writePracticeDraft(snapshot);
       setPersistence("saved");
     } catch {
       setPersistence("error");

@@ -30,7 +30,8 @@ import {
 } from "@/components/practice/use-practice-persistence";
 import { usePracticeSessionActions } from "@/components/practice/use-practice-session-actions";
 import { usePracticeSetupChoices } from "@/components/practice/use-practice-setup-choices";
-import { practiceStorageKey } from "@/src/lib/practice-storage";
+import { clearPracticeDraft } from "@/src/lib/practice-storage";
+import { PRACTICE_DRAFT_REMOTE_EVENT } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
@@ -83,6 +84,7 @@ export function PracticePage({
   );
   const [answerChoices, setAnswerChoices] = useState<Array<number | null>>([]);
   const restoreAttempted = useRef(false);
+  const [restoreCheck, setRestoreCheck] = useState(0);
   const allowedSenseIds = useMemo(
     () =>
       new Set(
@@ -242,9 +244,25 @@ export function PracticePage({
     [setup],
   );
 
+  // Another device's session can land while this page waits on the setup or
+  // resume screen; offer that one instead. A running session keeps going and
+  // its next answer makes it the newer one again.
+  useEffect(() => {
+    if (started) return;
+    const recheck = () => {
+      restoreAttempted.current = false;
+      setPendingSession(null);
+      setRestoreIssue(null);
+      setRestoreCheck((value) => value + 1);
+    };
+    window.addEventListener(PRACTICE_DRAFT_REMOTE_EVENT, recheck);
+    return () => window.removeEventListener(PRACTICE_DRAFT_REMOTE_EVENT, recheck);
+  }, [started]);
+
   useRestorePracticeSession({
     allQuestionItems,
     allStudyItems,
+    checkRevision: restoreCheck,
     enabled: libraryStatus === "ready",
     initialSet,
     library: state,
@@ -371,7 +389,7 @@ export function PracticePage({
           }}
           onRestart={() => {
             try {
-              localStorage.removeItem(practiceStorageKey());
+              clearPracticeDraft();
               setup.restart();
               setPendingSession(null);
               setRestoreIssue(null);

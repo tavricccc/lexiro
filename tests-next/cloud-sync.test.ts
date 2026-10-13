@@ -75,7 +75,7 @@ function journal(patch: Partial<SyncJournal> = {}): SyncJournal {
     dirty: {},
     tombstones: {},
     legacyPendingRefs: {},
-    blobs: { preferences: 0 },
+    blobs: { preferences: 0, practice: 0 },
     ...patch,
   };
 }

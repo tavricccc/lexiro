@@ -30,7 +30,8 @@ import {
  * `dirty` and `tombstones` are mutually exclusive per record: recreating a
  * deleted record clears its tombstone, deleting a dirty record replaces it.
  */
-export type SyncBlobKind = "preferences";
+export type SyncBlobKind = "preferences" | "practice";
+const SYNC_BLOB_KINDS: readonly SyncBlobKind[] = ["preferences", "practice"];
 
 export interface SyncDirtyEntry extends LibraryRecordRef {
   version: number;
@@ -91,7 +92,7 @@ function emptyJournal(): SyncJournal {
     dirty: {},
     tombstones: {},
     legacyPendingRefs: {},
-    blobs: { preferences: 0 },
+    blobs: { preferences: 0, practice: 0 },
   };
 }
 
@@ -138,16 +139,24 @@ async function readJournal(): Promise<SyncJournal> {
           ...previous,
           schemaVersion: SYNC_JOURNAL_SCHEMA_VERSION,
           legacyPendingRefs: {},
-          blobs: { preferences: previous.blobs.preferences ?? 0 },
+          blobs: { preferences: previous.blobs.preferences ?? 0, practice: 0 },
         };
         migrated = isJournal(parsed);
       }
       if (isJournal(parsed)) {
         journal = parsed;
         // Progress and statistics blobs were removed; a pending mark for them
-        // would otherwise count as unsynced work forever.
-        if (Object.keys(journal.blobs).some((kind) => kind !== "preferences")) {
-          journal.blobs = { preferences: journal.blobs.preferences ?? 0 };
+        // would otherwise count as unsynced work forever. Practice arrived
+        // later, so older journals simply have no mark for it yet.
+        const kinds = Object.keys(journal.blobs);
+        if (
+          kinds.length !== SYNC_BLOB_KINDS.length ||
+          kinds.some((kind) => !SYNC_BLOB_KINDS.includes(kind as SyncBlobKind))
+        ) {
+          journal.blobs = {
+            preferences: journal.blobs.preferences ?? 0,
+            practice: journal.blobs.practice ?? 0,
+          };
           migrated = true;
         }
       }

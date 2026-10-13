@@ -35,15 +35,15 @@ Journal 更新先持久化，成功後才替換記憶體副本；失敗不假裝
 
 ## 同步規則
 
-D1 `cloud_records` 保存 folder／set／membership／word／question，以 uid＋recordId 為主鍵。刪除保留 tombstone，其他裝置才能看見刪除。cloud_accounts 保存 record／blob revision 和寫入來源，偏好放 cloud_blobs；Agent 和前端使用同一 repository。
+D1 `cloud_records` 保存 folder／set／membership／word／question，以 uid＋recordId 為主鍵。刪除保留 tombstone，其他裝置才能看見刪除。cloud_accounts 保存 record／blob revision 和寫入來源，偏好與進行中的練習放 cloud_blobs；Agent 和前端使用同一 repository。
 
 Firestore cloud migration、SDK、rules／indexes 與 service-account REST 已移除。namespace 為 `d1-v1:<uid>`／`d1-v1:guest`，避免舊 cursor、journal 或資料自動進入新後端。
 
 增量按 server `(seq,recordId)`，每頁／寫入批次 400。Cursor 同時記 sequence 與 ID，避免同批跨頁漏資料。Merge 依 server 寫入順序，本機尚未送的 dirty／tombstone 保留。寫入以 D1 batch＋CAS ticket＋operation 回條原子提交；未變動 records／來源不重寫。
 
-Journal 是 sidecar，記未送 record、刪除與 preference blob。每筆有本機 version，push 只清自己送出的版本，送出期間的新編輯仍待同步。帳號切換隔離 cursor、journal、listener 與回應。
+Journal 是 sidecar，記未送 record、刪除與 preferences／practice blob。每筆有本機 version，push 只清自己送出的版本，送出期間的新編輯仍待同步。帳號切換隔離 cursor、journal、listener 與回應。
 
-模型偏好按 updatedAt 合併；blob revision 拒絕過期覆蓋。學習進度與統計已移除：本機 `lexiro_learning_data` 在載入 namespace 時刪除，journal 的 progress／stats 標記丟棄。visible／online 每 30 秒查一筆狀態，有外部改動才拉增量；隱藏／離線停止請求。
+模型偏好按 updatedAt 合併；blob revision 拒絕過期覆蓋。進行中的練習草稿同步為 `practice` blob（`{updatedAt, snapshot|null}`），較新的 updatedAt 勝出；完成或重新開始寫入 null，其他裝置才不再提供接續。套用遠端草稿不重新標記待送，停在設定或接續畫面的練習頁會重新檢查。學習進度與統計已移除：本機 `lexiro_learning_data` 在載入 namespace 時刪除，journal 的 progress／stats 標記丟棄。visible／online 每 30 秒查一筆狀態，有外部改動才拉增量；隱藏／離線停止請求。
 
 同步單次 request 上限 10 秒，失敗保留 journal。這些是程式配置，不是已量測的雲端成本。
 
@@ -58,6 +58,7 @@ Journal 是 sidecar，記未送 record、刪除與 preference blob。每筆有�
 | D1 library schema | 1 | library-migrations/0001_library.sql |
 | Practice snapshot | 5 | types/session.ts，v3 先轉詞義題，v4 移除退役模式並重排位置／答案 |
 | AI preferences | 1 | ai-preferences.ts、cloud_blobs |
+| Practice blob | 1 | practice-storage.ts、cloud_blobs |
 | Flow drafts | 1 | use-resumable-draft.ts |
 | Pending preference drafts | 1 | preference-drafts.ts，只存編輯欄位 |
 | Full backup ZIP | 5 | lexiro-backup.json；v4 一次匯入升級 |

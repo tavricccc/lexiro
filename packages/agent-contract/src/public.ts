@@ -123,7 +123,7 @@ export interface AgentCloudRecord {
   payload: Record<string, unknown> | null;
 }
 export declare function agentCloudRecord(value: unknown, uid: string): AgentCloudRecord;
-export declare function agentCloudBlob(kind: "preferences", value: unknown, uid: string): Record<string, unknown>;
+export declare function agentCloudBlob(kind: "preferences" | "practice", value: unknown, uid: string): Record<string, unknown>;
 export declare function agentFoldersRevision(folders: VocabFolder[]): string;
 export declare function mutateAgentFolders(
   folders: VocabFolder[],

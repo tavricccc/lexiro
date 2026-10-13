@@ -33,7 +33,7 @@ describe("managed settings migration", () => {
       ...previous,
       schemaVersion: 5,
       legacyPendingRefs: {},
-      blobs: { preferences: 0 },
+      blobs: { preferences: 0, practice: 0 },
     });
   });
   it("preserves queued edits and deletions while retiring only this account's AI settings", async () => {
@@ -62,7 +62,7 @@ describe("managed settings migration", () => {
       ...previous,
       schemaVersion: 5,
       legacyPendingRefs: {},
-      blobs: { preferences: 0 },
+      blobs: { preferences: 0, practice: 0 },
     });
     expect(storage.has("a:lexiro_ai_settings")).toBe(false);
     expect(storage.has("a:lexiro_ai_api_key")).toBe(false);
