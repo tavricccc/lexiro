@@ -48,6 +48,7 @@ interface Room {
   code: string;
   hostUid: string;
   title: string;
+  seconds?: number;
   questions: CreateRoomInput["questions"];
   players: Player[];
   phase: Phase;
@@ -179,6 +180,7 @@ export class GameRoom {
       code,
       hostUid,
       title: input.title,
+      seconds: input.seconds,
       questions: input.questions,
       players: [{ uid: hostUid, name: input.name, score: 0 }],
       phase: "lobby",
@@ -306,7 +308,7 @@ export class GameRoom {
   private async beginQuestion(room: Room, index: number) {
     room.phase = "question";
     room.index = index;
-    room.endsAt = this.now() + questionDuration(room.questions[index].display);
+    room.endsAt = this.now() + questionDuration(room.questions[index].display, room.seconds);
     room.answers[index] ??= {};
     room.expiresAt = this.now() + ROOM_TTL_MS;
     await this.save(room);
@@ -335,7 +337,7 @@ export class GameRoom {
       gained: scoreFor(
         isAccepted(question, choice),
         (room.endsAt ?? 0) - this.now(),
-        questionDuration(question.display),
+        questionDuration(question.display, room.seconds),
       ),
     };
     // Only people still here are waited for; anyone gone simply scores nothing.
@@ -413,7 +415,7 @@ export class GameRoom {
       index: room.index,
       total: room.questions.length,
       endsAt: room.endsAt,
-      duration: showing ? questionDuration(current.display) : null,
+      duration: showing ? questionDuration(current.display, room.seconds) : null,
       players: room.players
         .map((player) => ({
           uid: player.uid,

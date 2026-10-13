@@ -28,6 +28,8 @@ export type LiveQuestion = z.infer<typeof liveQuestion>;
 export const createRoomInput = z.strictObject({
   name: text(40).min(1),
   title: text(120).min(1),
+  /** Seconds per question the host picked; a reading passage gets twice this. */
+  seconds: z.number().int().min(10).max(40).optional(),
   questions: z
     .array(
       z.strictObject({
@@ -67,7 +69,8 @@ export const clientMessage = z.discriminatedUnion("type", [
 export type ClientMessage = z.infer<typeof clientMessage>;
 
 /** Time allowed per question. A passage needs reading before the first answer. */
-export function questionDuration(question: LiveQuestion): number {
+export function questionDuration(question: LiveQuestion, seconds?: number): number {
+  if (seconds) return seconds * 1000 * (question.type === "reading" ? 2 : 1);
   switch (question.type) {
     case "meaning":
       return 15_000;
