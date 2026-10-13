@@ -7,7 +7,10 @@ import type {
   WorkspaceQuestionDifficulty,
 } from "@/types";
 
-import type { QuestionItem } from "@/components/practice/practice-content";
+import {
+  shuffleOptions,
+  type QuestionItem,
+} from "@/components/practice/practice-content";
 import { PRACTICE_QUESTION_TASKS } from "@/constants";
 import { buildMeaningQuestionGroups } from "./meaning-questions";
 
@@ -85,6 +88,48 @@ export function entriesFromIds(
   return entries;
 }
 
+const SEEN_KEY = "lexiro:question-seen";
+
+function readSeen(): Record<string, number> {
+  try {
+    return JSON.parse(globalThis.localStorage?.getItem(SEEN_KEY) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function recordSeen(ids: string[]) {
+  try {
+    const seen = readSeen();
+    for (const id of ids) seen[id] = (seen[id] ?? 0) + 1;
+    globalThis.localStorage?.setItem(SEEN_KEY, JSON.stringify(seen));
+  } catch {
+    // Storage full or unavailable: dedup is best effort.
+  }
+}
+
+/** Least-shown groups first; shuffled order breaks ties. */
+function byLeastSeen(groups: QuestionItem[][]): QuestionItem[][] {
+  const seen = readSeen();
+  const score = (group: QuestionItem[]) =>
+    Math.min(...group.map((item) => seen[item.id] ?? 0));
+  return groups
+    .map((group) => ({ group, score: score(group) }))
+    .sort((a, b) => a.score - b.score)
+    .map(({ group }) => group);
+}
+
+/** A fresh a-b-c-d order every session, except fixed shared banks. */
+function reshuffleOptions(item: QuestionItem): QuestionItem {
+  if (item.optionBank) return item;
+  const shuffled = shuffleOptions(
+    item.options,
+    item.answerIndex,
+    `${item.id}:${Math.random()}`,
+  );
+  return { ...item, ...shuffled };
+}
+
 export function shuffleSession<T>(items: T[]): T[] {
   const result = [...items];
   for (let index = result.length - 1; index > 0; index -= 1) {
@@ -130,7 +175,9 @@ function questionPool(
     );
   // Easy, medium and hard alternate so a short session is not all one level.
   const buckets = [1, 2, 3].map((level) =>
-    shuffleSession(groups.filter((group) => group[0]?.difficulty === level)),
+    byLeastSeen(
+      shuffleSession(groups.filter((group) => group[0]?.difficulty === level)),
+    ),
   );
   const ordered: QuestionItem[][] = [];
   while (buckets.some((bucket) => bucket.length)) {
@@ -265,7 +312,11 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
     }
   }
 
-  return shuffleSession(units).flat();
+  const entries = shuffleSession(units)
+    .flat()
+    .map((entry) => ({ ...entry, item: reshuffleOptions(entry.item) }));
+  recordSeen(entries.map((entry) => entry.id));
+  return entries;
 }
 
 export function buildWrongContent(

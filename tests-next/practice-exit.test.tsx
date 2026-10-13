@@ -94,15 +94,15 @@ describe("leaving practice", () => {
       fireEvent.click(
         await screen.findByRole("button", { name: "開始這 1 題" }),
       );
-      fireEvent.click(await screen.findByRole("button", { name: /A.*A/ }));
+      fireEvent.click(await screen.findByRole("button", { name: /A$/ }));
       expect(screen.queryByRole("button", { name: "查看結果" })).toBeNull();
       fireEvent.click(screen.getByRole("button", { name: "確認答案" }));
       await screen.findByRole("button", { name: "查看結果" });
       const saved = localStorage.getItem(practiceStorageKey());
       expect(JSON.parse(saved!)).toMatchObject({
-        selected: 0,
+        selected: expect.any(Number),
         correct: 1,
-        answerChoices: [0],
+        answerChoices: [expect.any(Number)],
       });
       const exit = screen.getByRole("link", { name: "退出練習" });
       expect(exit).toHaveAttribute("href", destination);
