@@ -12,13 +12,10 @@
 }
 .page-header > .header-backdrop {
   --header-fade: 1rem;
-  --header-solid-fill: var(--surface-stage);
-  --header-glass-fill: color-mix(
-    in srgb,
-    var(--header-solid-fill) 82%,
-    transparent
-  );
-  --header-blur-strong: 12px;
+  /* Frosted rather than solid: what scrolls under the title shows through. */
+  --header-solid-fill: var(--chrome-glass);
+  --header-glass-fill: var(--chrome-glass);
+  --header-blur-strong: 20px;
   position: absolute;
   z-index: 0;
   top: 0;
@@ -43,6 +40,8 @@
   top: calc(-1 * var(--header-top));
   bottom: 100%;
   background: var(--header-solid-fill);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
 }
 .page-header > .header-backdrop [data-blur-step="strong"] {
   backdrop-filter: blur(var(--header-blur-strong));

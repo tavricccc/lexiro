@@ -79,7 +79,7 @@
   --brand-800: #1f3a30;
   --brand-900: #14261e;
   /* A green sky in the novae shape: deeper at the top, thinning to near white
-     toward the foot. Painted on a fixed layer (see .app-canvas) so the top of
+     toward the foot. Painted on the root (see html) so the top of
      the viewport always shows --canvas-top, which sticky headers then match. */
   --canvas-top: #a6cdb6;
   --canvas-foot: #eef6f1;
@@ -239,8 +239,15 @@ html {
   overscroll-behavior: none;
   touch-action: manipulation;
   interpolate-size: allow-keywords;
-  /* The foot colour reaches any band the fixed canvas layer leaves uncovered. */
-  background: var(--canvas-foot);
+  /* The gradient is painted on the root itself, never on a fixed layer: an
+     installed app on iOS 26 stops drawing fixed layers short of the screen's
+     foot on a page too short to scroll, while the root's background always
+     reaches it. `100vh` is the whole screen there. (Same as Novae.) */
+  min-height: 100vh;
+  background-color: var(--canvas-foot);
+  background-image: var(--canvas-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -278,17 +285,6 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-body::before {
-  position: fixed;
-  z-index: -1;
-  inset: 0;
-  content: "";
-  pointer-events: none;
-  background-color: var(--canvas-foot);
-  background-image: var(--canvas-gradient);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
 
 button,
 input,
