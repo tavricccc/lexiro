@@ -88,7 +88,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         <div
           aria-hidden={!showMobileNavigation}
-          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full bg-card px-3 py-1.5 shadow-[var(--shadow-floating)] md:hidden"
+          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full px-3 py-1.5 md:hidden"
           data-visible={showMobileNavigation}
           inert={!showMobileNavigation}
         >

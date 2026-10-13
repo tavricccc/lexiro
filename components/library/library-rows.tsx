@@ -34,7 +34,8 @@ export function FolderRow({
     >
       <Icons.folder
         aria-hidden
-        className="size-5 shrink-0 fill-brand-100 text-brand-500"
+        className="size-5 shrink-0 text-success"
+        weight="duotone"
       />
       <span className="min-w-0 flex-1">
         <span className="block truncate font-medium group-hover:text-primary">

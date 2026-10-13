@@ -109,11 +109,24 @@
   left: max(1rem, var(--safe-left));
   bottom: var(--mobile-nav-bottom-gap);
   height: var(--mobile-nav-height);
-  border: 0;
+  border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
   padding-bottom: 0.375rem;
+  background: color-mix(in oklab, var(--card) 62%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 9%, transparent);
 }
 .app-shell .app-mobile-nav [data-liquid-nav-index] {
   border-radius: 9999px;
+}
+/* Both navigations select with a quiet tint and accent text. */
+.app-mobile-nav .t-nav-selection {
+  background: color-mix(in oklab, var(--foreground) 9%, transparent);
+}
+.app-mobile-nav [data-liquid-nav-index][data-active="true"],
+.app-mobile-nav [data-liquid-nav-index][data-active="true"]:hover {
+  color: var(--success);
+  font-weight: 600;
 }
 .library-toolbar {
   position: sticky;
