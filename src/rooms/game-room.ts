@@ -2,6 +2,7 @@ import { HttpError, readBody } from "../http";
 import {
   clientMessage,
   createRoomInput,
+  isAccepted,
   MAX_PLAYERS,
   questionDuration,
   REVEAL_MS,
@@ -290,7 +291,7 @@ export class GameRoom {
     answers[uid] = {
       choice,
       gained: scoreFor(
-        choice === question.answerIndex,
+        isAccepted(question, choice),
         (room.endsAt ?? 0) - this.now(),
         questionDuration(question.display),
       ),
@@ -386,6 +387,9 @@ export class GameRoom {
       reveal: revealing
         ? {
             answerIndex: current.answerIndex,
+            accepted: [
+              ...new Set([current.answerIndex, ...(current.accepted ?? [])]),
+            ],
             explanation: current.explanation ?? null,
             gained: Object.fromEntries(
               Object.entries(answers).map(([player, answer]) => [

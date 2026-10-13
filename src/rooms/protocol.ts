@@ -31,14 +31,21 @@ export const createRoomInput = z.strictObject({
       z.strictObject({
         display: liveQuestion,
         answerIndex: z.number().int().nonnegative(),
+        /** Every option that counts as right; a meaning can match more than one. */
+        accepted: z.array(z.number().int().nonnegative()).max(10).optional(),
         explanation: text(4000).optional(),
       }),
     )
     .min(1)
     .max(MAX_QUESTIONS)
     .refine(
-      (items) => items.every((item) => item.answerIndex < item.display.options.length),
-      "answerIndex out of range",
+      (items) =>
+        items.every(
+          (item) =>
+            item.answerIndex < item.display.options.length &&
+            (item.accepted ?? []).every((index) => index < item.display.options.length),
+        ),
+      "answer out of range",
     ),
 });
 export type CreateRoomInput = z.infer<typeof createRoomInput>;
@@ -86,3 +93,10 @@ export function newRoomCode() {
   return Array.from(bytes, (byte) => CODE_ALPHABET[byte % CODE_ALPHABET.length]).join("");
 }
 export const ROOM_CODE = /^[A-HJ-NP-Z2-9]{6}$/;
+
+export function isAccepted(
+  question: { answerIndex: number; accepted?: number[] },
+  choice: number,
+) {
+  return choice === question.answerIndex || Boolean(question.accepted?.includes(choice));
+}

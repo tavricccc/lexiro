@@ -168,6 +168,19 @@ describe("live game room", () => {
     expect(host.last()).toEqual({ type: "error", code: "invalid_message" });
   });
 
+  it("accepts any option the host marked as right", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", {
+      ...input,
+      questions: [{ ...input.questions[1], accepted: [3] }],
+    });
+    const host = await f.join("host");
+    await f.room.webSocketMessage(host, JSON.stringify({ type: "start" }));
+    await f.room.webSocketMessage(host, JSON.stringify({ type: "answer", index: 0, choice: 3 }));
+    expect(host.last().reveal.accepted).toEqual([0, 3]);
+    expect(host.last().players[0].score).toBeGreaterThan(0);
+  });
+
   it("rejects a question bank whose answer is not one of its options", () => {
     expect(() =>
       createRoomInput.parse({
