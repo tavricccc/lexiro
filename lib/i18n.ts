@@ -277,8 +277,8 @@ export const zhTW = {
     guideStepOneHint: "手動輸入，或貼一串字讓 AI 整理成詞義。",
     guideStepTwo: "讓 AI 出題",
     guideStepTwoHint: "用你自己的字產生學測型式的題目。",
-    guideStepThree: "每天打開就練",
-    guideStepThreeHint: "Lexiro 會依你的記憶狀況決定今天該複習什麼。",
+    guideStepThree: "練一輪、找朋友比",
+    guideStepThreeHint: "自己選題型練習，答錯的題目可以馬上重練；也能開房間和朋友即時對戰。",
     wordCount: "{count} 個單字",
   },
   sets: {

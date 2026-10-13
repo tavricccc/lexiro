@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/components/ui/icons";
 import { DropdownMenu as MenuPrimitive } from "radix-ui";
 import type { ReactNode } from "react";
 
@@ -11,7 +11,7 @@ import { t } from "@/lib/i18n";
 
 export interface MenuAction {
   disabled?: boolean;
-  icon: LucideIcon;
+  icon: AppIcon;
   label: string;
   onSelect: () => void;
   tone?: "default" | "destructive";

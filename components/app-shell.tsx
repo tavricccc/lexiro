@@ -58,7 +58,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="app-shell min-h-[100dvh] bg-[var(--surface-stage)]"
+      className="app-shell min-h-[100dvh]"
       data-focus={practiceActive}
     >
       <aside className="workspace-sidebar hidden md:flex">

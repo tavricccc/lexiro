@@ -1,4 +1,4 @@
-import { LoaderCircle } from "lucide-react";
+import { CircleNotch } from "@phosphor-icons/react/ssr";
 import { cn } from "@/lib/cn";
 
 export function ActionFeedbackIcon({
@@ -20,7 +20,7 @@ export function ActionFeedbackIcon({
       data-state={state === "success" ? "complete" : "loading"}
       data-surface={surface}
     >
-      <LoaderCircle className="t-spinner t-spinner-check-loader" />
+      <CircleNotch className="t-spinner t-spinner-check-loader" />
       <svg className="t-spinner-check-success" viewBox="0 0 24 24">
         <path d="m6.5 12.5 3.25 3.25 7.75-8" />
       </svg>

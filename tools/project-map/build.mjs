@@ -7,7 +7,7 @@ import { Script } from 'node:vm';
 import { DatabaseSync } from 'node:sqlite';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { X,Menu,Plus,Minus } from 'lucide-react';
+import { X,List as Menu,Plus,Minus } from '@phosphor-icons/react/ssr';
 import { flows,groups,routeSpecs } from './content.mjs';
 import { modelSpecs,makeModelFlows,billingModelSpecs } from './models.mjs';
 import { settingSpecs,settingFlow } from './settings.mjs';

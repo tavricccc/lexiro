@@ -68,55 +68,68 @@
 
 :root {
   color-scheme: light;
-  --brand-50: #e7f0ea;
-  --brand-100: #d2e4d9;
-  --brand-200: #b0cfbc;
-  --brand-300: #94b9a4;
-  --brand-400: #649879;
-  --brand-500: #427a5b;
+  --brand-50: #e3f0e8;
+  --brand-100: #cfe5d8;
+  --brand-200: #acd2bb;
+  --brand-300: #8bbf9f;
+  --brand-400: #5f9d78;
+  --brand-500: #3f7c5a;
   --brand-600: #2f5d4a;
   --brand-700: #26493b;
   --brand-800: #1f3a30;
-  --brand-900: #172b24;
-  --background: #fbfcfb;
-  --foreground: #121a16;
+  --brand-900: #14261e;
+  /* A green sky in the novae shape: deeper at the top, thinning to near white
+     toward the foot. Painted on a fixed layer (see .app-canvas) so the top of
+     the viewport always shows --canvas-top, which sticky headers then match. */
+  --canvas-top: #a6cdb6;
+  --canvas-foot: #eef6f1;
+  /* The top 30% stays flat: sticky headers and tab strips sit there and use
+     --canvas-top as their solid fill, so they must not show as bands. */
+  --canvas-gradient:
+    radial-gradient(120% 35% at 50% 82%, rgb(255 255 255 / 70%), transparent 70%),
+    linear-gradient(180deg, var(--canvas-top) 0%, var(--canvas-top) 30%, #c9e2d3 52%, #e3f0e8 76%, var(--canvas-foot) 100%);
+  --background: transparent;
+  --foreground: #13201a;
+  /* Cards are opaque: text over a see-through card reads poorly. */
   --card: #ffffff;
-  --card-foreground: #121a16;
+  --card-foreground: #13201a;
   --popover: #ffffff;
-  --popover-foreground: #121a16;
-  --primary: var(--brand-600);
-  --primary-foreground: #f6faf7;
-  --primary-hover: var(--brand-700);
-  --secondary: #dfebe3;
-  --secondary-foreground: var(--brand-800);
-  --secondary-hover: #d2e2d8;
-  --muted: #f1f5f2;
-  --muted-foreground: #5c6b63;
-  --accent: #e6ede8;
-  --accent-foreground: var(--brand-800);
-  --destructive: #c33b3b;
+  --popover-foreground: #13201a;
+  /* The one emphatic fill (novae's contrast pill): near-black on light, near
+     white on dark. Emphasis comes from it, not from hue. */
+  --primary: #15211b;
+  --primary-foreground: #f4f8f5;
+  --primary-hover: #26362e;
+  --secondary: rgb(19 32 26 / 6%);
+  --secondary-foreground: #13201a;
+  --secondary-hover: rgb(19 32 26 / 10%);
+  --muted: rgb(19 32 26 / 4.5%);
+  --muted-foreground: #4f6157;
+  --accent: rgb(19 32 26 / 7%);
+  --accent-foreground: #13201a;
+  --destructive: #c83b3b;
   --destructive-foreground: #ffffff;
-  --success: #087661;
+  --success: #1f8a5d;
   --success-foreground: #ffffff;
-  --warning: #9a6413;
-  --border: rgb(31 58 48 / 9%);
-  --rule: rgb(31 58 48 / 15%);
-  --input: rgb(31 58 48 / 13%);
-  --ring: rgb(47 93 74 / 45%);
-  --surface-stage: #f4f8f5;
-  --surface-inset: #eaf0ec;
-  --surface-canvas: #e4eee8;
-  --surface-hover: rgb(31 58 48 / 4%);
-  --surface-active: rgb(31 58 48 / 7%);
+  --warning: #a86a0f;
+  --border: rgb(19 32 26 / 10%);
+  --rule: rgb(19 32 26 / 14%);
+  --input: rgb(19 32 26 / 14%);
+  --ring: rgb(21 33 27 / 45%);
+  /* Solid fill for sticky chrome; equals the canvas at the top of the screen. */
+  --surface-stage: var(--canvas-top);
+  --surface-inset: rgb(19 32 26 / 5%);
+  --surface-canvas: #e4efe8;
+  --surface-hover: rgb(19 32 26 / 4.5%);
+  --surface-active: rgb(19 32 26 / 8%);
   /* A row that is on, rather than one being touched. Opaque, because it stays. */
-  --surface-selected: var(--brand-50);
-  --backdrop: rgb(18 26 22 / 26%);
+  --surface-selected: #e6f0ea;
+  --backdrop: rgb(16 28 22 / 36%);
   --radius: var(--radius-card);
-  --shadow-control: 0 1px 1px rgb(23 43 36 / 5%), 0 0 0 1px rgb(23 43 36 / 6%);
-  --shadow-card: 0 1px 3px rgb(23 43 36 / 5%);
+  --shadow-control: none;
+  --shadow-card: 0 0 0 1px rgb(19 32 26 / 5%), 0 8px 24px rgb(30 60 45 / 8%);
   --shadow-floating:
-    0 4px 42px rgb(23 43 36 / 8%), 0 2px 6px rgb(23 43 36 / 6%),
-    0 0 0 1px rgb(23 43 36 / 7%);
+    0 0 0 1px rgb(19 32 26 / 6%), 0 16px 40px rgb(30 60 45 / 16%);
   --content-max: 64rem;
   --study-ink: #173f32;
   --study-paper: #f4fbf6;
@@ -139,9 +152,9 @@
 
 .dark {
   color-scheme: dark;
-  --brand-50: #17291f;
-  --brand-100: #1e392e;
-  --brand-200: #27493a;
+  --brand-50: #16261d;
+  --brand-100: #1d3428;
+  --brand-200: #264536;
   --brand-300: #2f5d4a;
   --brand-400: #427a5b;
   --brand-500: #649879;
@@ -149,43 +162,48 @@
   --brand-700: #a9dbc1;
   --brand-800: #c7e8d6;
   --brand-900: #e4f4ec;
-  --background: #0f1512;
-  --foreground: #eaf1ec;
-  --card: #161d19;
-  --card-foreground: #eaf1ec;
-  --popover: #1a221e;
-  --popover-foreground: #eaf1ec;
-  --primary: var(--brand-600);
-  --primary-foreground: #0c1712;
-  --primary-hover: var(--brand-700);
-  --secondary: #212b26;
-  --secondary-foreground: #e2ece6;
-  --secondary-hover: #2a3630;
-  --muted: #1c2420;
-  --muted-foreground: #93a49b;
-  --accent: #26312b;
-  --accent-foreground: #eaf1ec;
-  --destructive: #e26a6a;
+  /* Deep forest at the top, lightening toward the foot of the screen. */
+  --canvas-top: #0f1813;
+  --canvas-foot: #2a3d32;
+  --canvas-gradient:
+    radial-gradient(80% 30% at 100% 66%, rgb(110 170 134 / 16%), transparent 70%),
+    linear-gradient(180deg, var(--canvas-top) 0%, var(--canvas-top) 30%, #18251d 50%, #1f3027 68%, var(--canvas-foot) 88%, var(--canvas-foot) 100%);
+  --background: transparent;
+  --foreground: #eef4f0;
+  --card: #0c130f;
+  --card-foreground: #eef4f0;
+  --popover: #111a15;
+  --popover-foreground: #eef4f0;
+  --primary: #f3f7f4;
+  --primary-foreground: #0f1813;
+  --primary-hover: #dce6df;
+  --secondary: rgb(255 255 255 / 7%);
+  --secondary-foreground: #eef4f0;
+  --secondary-hover: rgb(255 255 255 / 11%);
+  --muted: rgb(255 255 255 / 4.5%);
+  --muted-foreground: #a3b5aa;
+  --accent: rgb(255 255 255 / 8%);
+  --accent-foreground: #eef4f0;
+  --destructive: #ff7a7a;
   --destructive-foreground: #1a0a0a;
-  --success: #4fd0ae;
+  --success: #5cc99a;
   --success-foreground: #04211a;
-  --warning: #d5a554;
-  --border: rgb(190 230 210 / 9%);
-  --rule: rgb(190 230 210 / 16%);
-  --input: rgb(190 230 210 / 13%);
-  --ring: rgb(142 205 171 / 45%);
-  --surface-stage: #0d1310;
-  --surface-inset: #1a221e;
+  --warning: #e9b866;
+  --border: rgb(255 255 255 / 8%);
+  --rule: rgb(255 255 255 / 13%);
+  --input: rgb(255 255 255 / 12%);
+  --ring: rgb(243 247 244 / 55%);
+  --surface-stage: var(--canvas-top);
+  --surface-inset: rgb(255 255 255 / 5%);
   --surface-canvas: #16241d;
-  --surface-hover: rgb(190 230 210 / 6%);
-  --surface-active: rgb(190 230 210 / 9%);
-  --surface-selected: var(--brand-50);
-  --backdrop: rgb(4 10 7 / 66%);
-  --shadow-control: 0 1px 1px rgb(0 0 0 / 24%), 0 0 0 1px rgb(190 230 210 / 7%);
-  --shadow-card: 0 1px 3px rgb(0 0 0 / 30%);
+  --surface-hover: rgb(255 255 255 / 5%);
+  --surface-active: rgb(255 255 255 / 9%);
+  --surface-selected: #18251e;
+  --backdrop: rgb(4 10 7 / 62%);
+  --shadow-control: none;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(2 8 5 / 28%);
   --shadow-floating:
-    0 18px 48px rgb(0 0 0 / 42%), 0 3px 10px rgb(0 0 0 / 30%),
-    0 0 0 1px rgb(190 230 210 / 8%);
+    0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(2 8 5 / 45%);
 }
 
 * {
@@ -221,7 +239,8 @@ html {
   overscroll-behavior: none;
   touch-action: manipulation;
   interpolate-size: allow-keywords;
-  background: var(--surface-stage);
+  /* The foot colour reaches any band the fixed canvas layer leaves uncovered. */
+  background: var(--canvas-foot);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -232,7 +251,7 @@ body {
   margin: 0;
   overflow-x: clip;
   overscroll-behavior: none;
-  background: var(--surface-stage);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -246,7 +265,21 @@ body {
   padding-top: max(1.5rem, var(--safe-top));
   padding-bottom: max(1.5rem, var(--safe-bottom));
   padding-inline: max(1.5rem, var(--safe-left), var(--safe-right));
-  background: var(--surface-stage);
+  background: transparent;
+}
+
+/* The gradient canvas, fixed to the viewport so sticky chrome can match its
+   top colour. */
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-color: var(--canvas-foot);
+  background-image: var(--canvas-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 button,

@@ -2,22 +2,22 @@
 name: Lexiro
 description: 導覽與操作位置穩定的個人單字學習工作區
 colors:
-  primary: "#2f5d4a"
-  primary-dark: "#8ecdab"
-  primary-foreground: "#f6faf7"
-  primary-foreground-dark: "#0c1712"
-  background: "#fbfcfb"
-  background-dark: "#0f1512"
-  foreground: "#121a16"
-  foreground-dark: "#eaf1ec"
+  primary: "#15211b"
+  primary-dark: "#f3f7f4"
+  primary-foreground: "#f4f8f5"
+  primary-foreground-dark: "#0f1813"
+  canvas-top: "#a6cdb6"
+  canvas-top-dark: "#0f1813"
+  canvas-foot: "#eef6f1"
+  canvas-foot-dark: "#2a3d32"
+  foreground: "#13201a"
+  foreground-dark: "#eef4f0"
   card: "#ffffff"
-  card-dark: "#161d19"
-  surface-stage: "#f4f8f5"
-  surface-stage-dark: "#0d1310"
-  surface-inset: "#eaf0ec"
-  surface-inset-dark: "#1a221e"
-  muted-foreground: "#5c6b63"
-  muted-foreground-dark: "#93a49b"
+  card-dark: "#0c130f"
+  surface-stage: "#a6cdb6"
+  surface-stage-dark: "#0f1813"
+  muted-foreground: "#4f6157"
+  muted-foreground-dark: "#a3b5aa"
   study-ink: "#173f32"
   study-paper: "#f4fbf6"
   study-soft: "#c6dfd1"
@@ -132,17 +132,17 @@ components:
 
 ## Colors
 
-主色來自帶灰的森林綠；中性色略帶綠，完成回饋延續墨綠與春綠。
+畫布是綠色漸層（淺色是淡綠天空、深色是森林），卡片不透明；唯一強調填色是 contrast pill（淺色近黑、深色近白），沿用 novae 的語言。完成回饋延續墨綠與春綠。
 
 ### Primary
 
-`primary` 用於主要行動、選取、進度與首頁空狀態插畫；`study-ink` 是完成區的底色，
+`primary` 是 contrast pill，用於主要行動、目前導覽、分段控制選取、進度與首頁空狀態插畫；按鈕一律是 pill；`study-ink` 是完成區的底色，
 `study-lime` 用於完成區勾選。完成區文字分為
 `study-paper` 與較安靜的 `study-soft`。
 
 ### Neutral
 
-`surface-stage` 是殼層，`background` 是頁面底色，`card` 承載分組，
+畫布由 `--canvas-gradient` 畫在固定圖層，`background` 透明；`surface-stage` 等於畫布頂端色，給黏附頁首使用；`card` 承載分組，
 `surface-inset` 用於內嵌區與進度軌道。次要文字使用 `muted-foreground`。
 
 深色模式由 `app/globals.css` 的 `.dark` 覆寫語意色與品牌色階；frontmatter 中

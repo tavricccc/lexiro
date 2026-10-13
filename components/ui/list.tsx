@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/components/ui/icons";
 import { type ReactNode } from "react";
 import { RadioGroup } from "radix-ui";
 
@@ -62,7 +62,7 @@ export function ListSection({
 
 interface RowContent {
   /** The leading glyph, for rows that are a destination rather than a setting. */
-  icon?: LucideIcon;
+  icon?: AppIcon;
   label: ReactNode;
   /** The second line: what this row is for, in the reader's words. */
   detail?: ReactNode;

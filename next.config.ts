@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   // Dev server binds to 0.0.0.0, so allow requests from LAN/VPN addresses.
   allowedDevOrigins: ["192.168.1.*", "100.*.*.*", "*.local"],
   experimental: {
-    optimizePackageImports: ["lucide-react", "motion", "radix-ui"],
+    optimizePackageImports: ["@phosphor-icons/react", "motion", "radix-ui"],
   },
   // Keep old workspace deep links working after the public site takes /.
   redirects: async () => [

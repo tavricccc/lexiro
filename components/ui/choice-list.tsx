@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/components/ui/icons";
 
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
@@ -9,7 +9,7 @@ export interface Choice {
   /** Why someone would pick this, in their words, not the system's. */
   description: string;
   disabled?: boolean;
-  icon?: LucideIcon;
+  icon?: AppIcon;
   label: string;
   /** The one number that decides the choice — how much is waiting here. */
   meta?: string;

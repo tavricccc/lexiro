@@ -32,7 +32,7 @@ function NavigationContents({
       {active && (
         <motion.span
           aria-hidden
-          className="t-nav-selection absolute inset-0 z-0 rounded-[inherit] bg-brand-100 shadow-[var(--shadow-control)]"
+          className="t-nav-selection absolute inset-0 z-0 rounded-[inherit] bg-primary"
           layoutId={reduceMotion ? undefined : "selection"}
           transition={timing("nav", "nav")}
         />
@@ -113,7 +113,7 @@ export function LiquidNav({
                 vertical
                   ? "gap-3 px-3"
                   : "flex-1 flex-col justify-center gap-1 px-1 py-1.5 text-[0.6875rem]",
-                active && "text-brand-700",
+                active && "text-primary-foreground hover:bg-transparent hover:text-primary-foreground",
               )}
               data-liquid-nav-index={index}
               data-active={active}

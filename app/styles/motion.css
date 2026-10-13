@@ -22,9 +22,11 @@
   --pulse-min: 0.6;
   --skeleton-appear-delay: 0ms;
   --tabs-text-muted: var(--muted-foreground);
-  --tabs-text-active: var(--foreground);
-  --tabs-bar-bg: color-mix(in srgb, var(--secondary) 78%, var(--card));
-  --tabs-pill-bg: var(--card);
+  /* Segmented controls follow novae: an opaque track, and the selection is
+     the same contrast pill as the primary action. */
+  --tabs-text-active: var(--primary-foreground);
+  --tabs-bar-bg: var(--card);
+  --tabs-pill-bg: var(--primary);
   --shimmer-base: #7c7c7c;
   --shimmer-highlight: #0d0d0d;
 }
@@ -41,7 +43,6 @@
   width: min(100%, var(--content-max));
   margin-inline: auto;
   flex: 1 0 auto;
-  background: var(--surface-stage);
 }
 
 /* RouteSurface reveals ready content through the Web Animations API. */

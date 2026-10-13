@@ -1,12 +1,12 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/components/ui/icons";
 
 import { ListCheckRow } from "@/components/ui/list";
 
 export interface ChecklistChoice {
   description: string;
-  icon?: LucideIcon;
+  icon?: AppIcon;
   label: string;
   /** The one number that decides the choice — how much is waiting here. */
   meta?: string;

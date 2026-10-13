@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/components/ui/icons";
 import Link from "next/link";
 import { useLayoutEffect } from "react";
 
@@ -28,7 +28,7 @@ export function FinishPanel({
 }: {
   description?: string;
   finishHref: string;
-  moreIcon: LucideIcon;
+  moreIcon: AppIcon;
   moreLabel: string;
   onMore: () => void;
   title: string;

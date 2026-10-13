@@ -1,14 +1,25 @@
 # Lexiro design system
 
-Lexiro 是固定操作的個人單字學習工作區。森林綠標示主要行動與選取，中性色承載
-閱讀、整理與作答；緊湊分頁切換內容，桌機操作位於黏附頁首，手機操作保留底部
-位置。插畫輔助空狀態，完成回饋保留墨綠與春綠。
+Lexiro 跟 novae 用同一套視覺語言，只是把藍色換成綠色：漸層畫布、不透明卡片，
+以及唯一的強調填色「contrast pill」（淺色主題是近黑底白字，深色主題是近白底黑字），
+用在主要行動、目前導覽與分段控制的選取。強調來自 pill，不來自色相。按鈕一律是
+pill；圖示是 Phosphor（`@phosphor-icons/react/ssr`），集中在 `components/ui/icons.ts`。
 
 `DESIGN.md` 記錄可重用的視覺 token 與規範；本文件補充元件、互動和實作規則。
 
 ## Colour
 
-The palette is forest ink green on mist-white neutrals, per `PRODUCT.md`.
+The canvas is a green gradient in both themes (a pale green sky in light, deep
+forest in dark), painted by a fixed `body::before` layer from
+`--canvas-gradient`; `html` carries `--canvas-foot` for any band the layer
+misses. The top 30% of the gradient is flat `--canvas-top`, and
+`--surface-stage` equals it: sticky headers, tab strips and toolbars use that
+solid fill and therefore never show as bands. Page grounds (`body`, the shell,
+`.route-page`) are transparent.
+
+Cards (`--card`, `--popover`) are opaque — white in light, darker than the
+canvas in dark. `--primary` is the contrast pill, not a green; secondary,
+muted, accent and hover fills are translucent ink over whatever they sit on.
 
 Text inputs, textareas and boxed selects share one focused border and a soft
 outer halo. Grouped list inputs highlight their row and underline the value;
@@ -20,30 +31,27 @@ and registers it in `@theme inline`, so `bg-brand-50`, `text-brand-600` and the
 rest are real Tailwind utilities.
 
 The dark theme **inverts the ramp** rather than adding a second one: `--brand-50`
-is the palest tint in light mode and the deepest green in dark mode, and
-`--brand-600` is the primary in both. A component written as `bg-brand-50` with
+is the palest tint in light mode and the deepest green in dark mode. The ramp
+is for green accents only; the primary is the contrast pill. A component written as `bg-brand-50` with
 `text-brand-600` therefore works in both themes with no `dark:` variant. Reach
 for `dark:` only where the ramp genuinely cannot express the intent.
 
-The pale end of the light ramp remains a visible sage (`--brand-50`), used for
-selected surfaces. Check selected navigation and progress tracks against the
-page ground in both themes.
+Selected navigation and segmented controls use the contrast pill; check them
+and progress tracks against the canvas in both themes.
 
 完成區使用 `--study-ink`、`--study-paper`、`--study-soft` 與 `--study-lime` 勾選；
 這組顏色在深色模式保留相同值。首頁任務表面使用 `--card`，空狀態閱讀插畫與
-主要行動使用 `--primary`。工作區使用 `--surface-stage`，桌機側欄使用 `--card`。
+主要行動使用 `--primary`。黏附頁首使用 `--surface-stage`，桌機側欄使用 `--card`。
 
-Semantic tokens (`--primary`, `--muted`, `--border`, `--destructive`, …) all
-resolve to the ramp or to green-tinted neutrals; borders are green-tinted
-translucent black rather than pure black, which is what keeps large hairline
-areas from looking grey against the mist-white ground.
+Borders and the translucent fills are green-tinted ink rather than pure black
+or white, which keeps large hairline areas from looking grey on the canvas.
 
-`--success` sits deliberately in teal, away from the brand green, so a success
-state cannot be mistaken for ordinary brand chrome. Success and failure always
+Status colours (`--success`, `--warning`, `--destructive`) describe state only;
+they never become a control's theme. Success and failure always
 pair an icon with text — colour is never the only signal.
 
-Surfaces: `--background` is the page ground, `--card` is a raised surface,
-`--surface-stage` is the app frame, and `--surface-inset` is a recessed panel —
+Surfaces: `--background` is transparent (the canvas shows through), `--card`
+is a raised surface, `--surface-stage` is the solid fill for sticky chrome, and `--surface-inset` is a recessed panel —
 the inline forms in the folder toolbar, the settings toggle row, the track behind
 a proportion bar.
 
