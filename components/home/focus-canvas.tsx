@@ -13,7 +13,6 @@ import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import {
   countQuestionItems,
-  countReviewableSenses,
 } from "@/src/lib/library-metrics";
 import { localDateKey } from "@/src/lib/date";
 import { StudyProgress } from "./study-progress";
@@ -29,11 +28,14 @@ const GUIDE = [
 export function FocusCanvas() {
   const [tab, setTab] = useState("today");
   const library = useLibraryStore((store) => store.state);
-  const cards = useLearningStore((store) => store.progress.cards);
   const stats = useLearningStore((store) => store.stats);
-  const reviewCount = useMemo(
-    () => countReviewableSenses(library.words, cards),
-    [cards, library.words],
+  const senseCount = useMemo(
+    () =>
+      Object.values(library.words).reduce(
+        (total, word) => total + word.senses.length,
+        0,
+      ),
+    [library.words],
   );
   const questionCount = useMemo(
     () =>
@@ -107,7 +109,7 @@ export function FocusCanvas() {
                 </p>
                 {hasContent && (
                   <span className="study-available">
-                    {t("home.available", { count: reviewCount })}
+                    {t("home.available", { count: senseCount })}
                   </span>
                 )}
               </div>
@@ -124,7 +126,7 @@ export function FocusCanvas() {
                     label={t("home.wordsToday")}
                     value={wordsToday}
                     goal={stats.dailyWordGoal}
-                    disabled={reviewCount === 0}
+                    disabled={senseCount === 0}
                     emptyHint={t("home.nothingDue")}
                   />
                   <StudyProgress

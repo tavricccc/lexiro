@@ -418,7 +418,7 @@ async function reconcileAccountDocuments(
 
   const work: (() => Promise<unknown>)[] = [];
   if (getStorageNamespace() !== accountNamespace(uid)) return;
-  if (dirtyBlobs.progress > 0 || !blobs.progress)
+  if (dirtyBlobs.progress > 0 || !blobs.progress || blobs.progressLegacy)
     work.push(() => writeCloudProgress(db, uid, progress));
   if (dirtyBlobs.stats > 0 || !blobs.stats)
     work.push(() => writeCloudStats(db, uid, stats));

@@ -3,7 +3,7 @@ import { LEARNING_STORAGE_KEY } from "@/constants";
 import { useLearningStore } from "@/stores/learning-store";
 import { asSenseId } from "@/src/lib/library";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
-import { reviewCard } from "@/src/lib/fsrs";
+import { reviewCard } from "@/src/lib/card-progress";
 import { mergeProgress, mergeStats } from "@/src/lib/cloud-account";
 
 const storage = vi.hoisted(() => ({

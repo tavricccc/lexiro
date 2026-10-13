@@ -37,7 +37,7 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
 import { senseToStudyWord } from "@/src/lib/library";
 import { buildMeaningQuestionGroups } from "./meaning-questions";
-import { isLeech } from "@/src/lib/fsrs";
+import { isLeech } from "@/src/lib/card-progress";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen

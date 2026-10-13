@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { asSenseId, buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
-import { createInitialProgress, isDue, reviewCard } from "@/src/lib/fsrs";
+import { createInitialProgress, isLeech, isMastered, reviewCard } from "@/src/lib/card-progress";
+import { hasLegacyCardFields, normalizeLearningProgress } from "@/src/lib/share";
 
 describe("canonical vocabulary", () => {
   it("normalizes word and part of speech identity", () => {
@@ -29,12 +30,35 @@ describe("canonical vocabulary", () => {
   });
 });
 
-describe("FSRS review", () => {
-  it("schedules Again and Good ratings", () => {
+describe("card progress", () => {
+  it("counts answers, tracks the streak and flags leeches", () => {
     const now = new Date("2026-08-12T00:00:00.000Z");
-    const initial = createInitialProgress(now);
-    expect(isDue(initial, now)).toBe(true);
-    expect(reviewCard(initial, "again", now).reviewCount).toBe(1);
-    expect(reviewCard(initial, "good", now).correctCount).toBe(1);
+    const initial = createInitialProgress();
+    const wrong = reviewCard(initial, "again", now);
+    expect(wrong).toEqual({ reviewCount: 1, correctCount: 0, wrongCount: 1, streak: 0, lastReview: now.toISOString() });
+    let card = reviewCard(wrong, "good", now);
+    card = reviewCard(card, "good", now);
+    expect(isMastered(card)).toBe(false);
+    card = reviewCard(card, "good", now);
+    expect(isMastered(card)).toBe(true);
+    expect(isMastered(reviewCard(card, "again", now))).toBe(false);
+    let leech = initial;
+    for (let i = 0; i < 4; i += 1) leech = reviewCard(leech, "again", now);
+    expect(isLeech(leech)).toBe(true);
+  });
+});
+
+describe("legacy card cleanup", () => {
+  it("drops spaced-repetition fields and keeps answer counts", () => {
+    const legacy = {
+      cards: {
+        a: { due: "2026-01-01T00:00:00.000Z", stability: 3, difficulty: 5, elapsedDays: 1, scheduledDays: 2, learningSteps: 0, reps: 5, lapses: 1, state: 2, reviewCount: 5, correctCount: 3, lastReview: "2026-01-01T00:00:00.000Z" },
+      },
+      updatedAt: "2026-01-01T00:00:00.000Z",
+    };
+    expect(hasLegacyCardFields(legacy)).toBe(true);
+    const cleaned = normalizeLearningProgress(legacy);
+    expect(cleaned.cards[asSenseId("a")]).toEqual({ reviewCount: 5, correctCount: 3, wrongCount: 2, streak: 0, lastReview: "2026-01-01T00:00:00.000Z" });
+    expect(hasLegacyCardFields(cleaned)).toBe(false);
   });
 });

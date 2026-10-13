@@ -19,7 +19,6 @@ import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
-import { isDue } from "@/src/lib/fsrs";
 import {
   isExamQuestion,
   questionBelongsToMemberships,
@@ -100,10 +99,6 @@ export function SetView({
     [words],
   );
   const learned = senseIds.filter((id) => cards[id]).length;
-  const due = senseIds.filter((id) => {
-    const card = cards[id];
-    return card && isDue(card);
-  }).length;
 
   const savedQuestions = useMemo(
     () =>
@@ -204,7 +199,6 @@ export function SetView({
         {t("setDetail.summary", {
           senses: senseIds.length,
           learned,
-          due,
           questions: questions.length,
         })}
       </p>

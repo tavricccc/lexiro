@@ -16,6 +16,7 @@ import {
   normalizeCloudStats,
 } from "./cloud-sync-schema";
 import { estimateJsonBytes } from "./hash";
+import { hasLegacyCardFields } from "./share";
 import { normalizeCloudPreferences } from "./cloud-preferences";
 import type { AiPreferences } from "./ai-preferences";
 import { QUESTION_STAT_KEYS } from "./learning-defaults";
@@ -139,6 +140,8 @@ export function mergeStats(
 export interface CloudBlobs {
   preferences: AiPreferences | null;
   progress: LearningProgress | null;
+  /** The cloud copy still has spaced-repetition fields and should be rewritten. */
+  progressLegacy: boolean;
   stats: DashboardStats | null;
 }
 
@@ -153,6 +156,7 @@ export async function readCloudBlobs(
   return {
     preferences: blobs.preferences ? normalizeCloudPreferences(blobs.preferences, uid) : null,
     progress: blobs.progress ? normalizeCloudProgress(blobs.progress, uid) : null,
+    progressLegacy: hasLegacyCardFields(blobs.progress),
     stats: blobs.stats ? normalizeCloudStats(blobs.stats, uid) : null,
   };
 }

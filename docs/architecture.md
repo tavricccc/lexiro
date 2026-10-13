@@ -5,7 +5,7 @@
 | `app/` | 公開介紹、`/app` routes、layout、offline page、Service Worker |
 | `components/` | 教材、練習、進度、設定與共用視覺元件 |
 | `stores/` | Zustand Library／learning／cloud／AI preference state |
-| `src/lib/` | Domain 操作、FSRS、保存、同步、備份、解析與 migration |
+| `src/lib/` | Domain 操作、答題進度、保存、同步、備份、解析與 migration |
 | `lib/` | 路由、managed API、更新與跨 store 操作協調 |
 | `packages/ai-contract/` | 無秘密的 AI 型別、來源解析、價格算術 |
 

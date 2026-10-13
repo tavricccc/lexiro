@@ -35,7 +35,7 @@ import { copySharedSet, readSetShare } from "@/src/lib/set-share";
 import { setMatchesQuery } from "@/src/lib/library-search";
 import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
 
-const NO_METRICS = { due: 0, learned: 0, questionCount: 0, senseCount: 0 };
+const NO_METRICS = { learned: 0, questionCount: 0, senseCount: 0 };
 
 /** The Library is one place for browsing and organising saved word sets. */
 export function LibraryPage({

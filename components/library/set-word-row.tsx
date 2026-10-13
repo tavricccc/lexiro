@@ -3,7 +3,7 @@ import type { CardProgress, SenseId, WordKey, WordSense } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
-import { isDue, isLeech } from "@/src/lib/fsrs";
+import { isLeech } from "@/src/lib/card-progress";
 import { withReturnTo } from "@/lib/browse-routes";
 
 export interface ViewWord {
@@ -50,11 +50,6 @@ export function SetWordRow({
                 {sense.supplementary && (
                   <span className="text-xs text-muted-foreground">
                     {t("supplement.badge")}
-                  </span>
-                )}
-                {card && isDue(card) && (
-                  <span className="text-xs text-brand-600">
-                    {t("setDetail.dueBadge")}
                   </span>
                 )}
                 {isLeech(card) && (

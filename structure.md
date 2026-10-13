@@ -10,7 +10,7 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 | `components/` | Domain 畫面、React UI、AI 流程與動態 |
 | `lib/` | Client orchestration、managed API、路由、更新、備份 |
 | `stores/` | Library、learning、cloud、AI preference、UI、update state |
-| `src/lib/` | 詞義、題目、FSRS、儲存、同步、備份與 migration |
+| `src/lib/` | 詞義、題目、答題進度、儲存、同步、備份與 migration |
 | `src/types/`、`src/constants/` | Canonical domain 型別、版本與上限 |
 | `packages/ai-contract/` | 公開來源 parser、API 型別、模型與價格算術 |
 | `config/`、`src/generated/` | 動態 token 的來源／生成輸出 |
@@ -44,7 +44,7 @@ QuestionMetadata 在手機收合標題與難度；錯誤展開後聚焦，桌機
 
 ## 練習與學習
 
-Practice setup／queue 統一英選中與五種學測題型。Meaning questions 本機建立四選項；question-card 判分，session actions 保存成績及必要 FSRS rating，persistence 保存 v5 題序／答案／原選項。practice-session 一次移除舊拼字／文法 entry 並重排；Keyboard hook 隔離組字、編輯和忙碌狀態。退役的 review-card 及其拼字測試已移除。
+Practice setup／queue 統一英選中與五種學測題型。Meaning questions 本機建立四選項；question-card 判分，session actions 保存成績及必要進度 rating，persistence 保存 v5 題序／答案／原選項。practice-session 一次移除舊拼字／文法 entry 並重排；Keyboard hook 隔離組字、編輯和忙碌狀態。退役的 review-card 及其拼字測試已移除。
 
 Meaning questions 的可接受答案依本集 wordKey 取得；同拼字在其他集的合法詞義只用於排除歧義錯項，不合併成本集內容。
 
@@ -52,7 +52,7 @@ Meaning questions 的可接受答案依本集 wordKey 取得；同拼字在其�
 
 QuestionCard 協調文章分頁、定位、一鍵返回與同篇閱讀位置；QuestionOptions／QuestionFeedback 分別管選取及本小題解說。practice-content 的 usedBlankForOption 讓共用已用答案在點擊及快捷鍵共用相同判斷。Session actions 等學習紀錄成功才揭答，pendingChoice 只表示暫時選取。
 
-Learning store、learning-persistence 和 fsrs 保存 card／stats，進度頁從 library-metrics 與 learning-defaults 計算掌握、每日活動和連續學習。資料先保存才前進，失敗可重試；詳見[練習](docs/practice.md)。
+Learning store、learning-persistence 和 card-progress 保存 card／stats，進度頁從 library-metrics 與 learning-defaults 計算掌握、每日活動和連續學習。資料先保存才前進，失敗可重試；詳見[練習](docs/practice.md)。
 
 ## 同步與帳號
 

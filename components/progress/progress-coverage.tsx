@@ -8,7 +8,6 @@ import { ProgressPageSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
 import { useLearningStore } from "@/stores/learning-store";
 import { useLibraryStore } from "@/stores/library-store";
-import { isDue } from "@/src/lib/fsrs";
 
 export function ProgressCoverage() {
   const { progress, loaded } = useLearningStore();
@@ -26,12 +25,6 @@ export function ProgressCoverage() {
   );
   const learned = useMemo(
     () => senseIds.filter((id) => progress.cards[id]).length,
-    [progress.cards, senseIds],
-  );
-  const due = useMemo(
-    () =>
-      senseIds.filter((id) => progress.cards[id] && isDue(progress.cards[id]))
-        .length,
     [progress.cards, senseIds],
   );
 
@@ -69,7 +62,6 @@ export function ProgressCoverage() {
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
             {t("progress.coverageDetail", { learned, total: senseIds.length })}
-            {due > 0 && ` · ${t("progress.dueDetail", { count: due })}`}
           </p>
         </section>
       )}

@@ -8,7 +8,7 @@ import { mergeBackupLearning } from "@/src/lib/learning-backup";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { normalizeFullBackupPayload } from "@/src/lib/share";
-import { reviewCard } from "@/src/lib/fsrs";
+import { reviewCard } from "@/src/lib/card-progress";
 
 function library(
   setId: string,

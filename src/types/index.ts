@@ -73,7 +73,6 @@ export type {
   WordDraft,
 } from "./set";
 export type {
-  FsrsStatusCounts,
   StatsMemorySummary,
   StatsQuestionRow,
   StatsSetRow,

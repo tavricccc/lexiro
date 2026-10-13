@@ -114,18 +114,11 @@ function historicalLearning() {
   const progress: LearningProgress = {
     cards: {
       [senseId]: {
-        due: at,
-        stability: 8,
-        difficulty: 4,
-        elapsedDays: 3,
-        scheduledDays: 7,
-        learningSteps: 0,
-        reps: 4,
-        lapses: 1,
-        state: 2,
         lastReview: at,
         reviewCount: 4,
         correctCount: 3,
+        wrongCount: 1,
+        streak: 0,
       },
     },
     updatedAt: at,

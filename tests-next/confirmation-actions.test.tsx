@@ -17,7 +17,7 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useLearningStore } from "@/stores/learning-store";
 import type { FullBackupPayload } from "@/types";
 import { asSenseId } from "@/src/lib/library";
-import { reviewCard } from "@/src/lib/fsrs";
+import { reviewCard } from "@/src/lib/card-progress";
 import { createDefaultStats } from "@/src/lib/learning-defaults";
 
 const { readBackup, success } = vi.hoisted(() => ({

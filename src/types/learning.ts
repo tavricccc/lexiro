@@ -38,18 +38,12 @@ export interface DailyActivity {
 }
 
 export interface CardProgress {
-  due: string;
-  stability: number;
-  difficulty: number;
-  elapsedDays: number;
-  scheduledDays: number;
-  learningSteps: number;
-  reps: number;
-  lapses: number;
-  state: number;
-  lastReview?: string;
   reviewCount: number;
   correctCount: number;
+  wrongCount: number;
+  /** Correct answers in a row; reset by a wrong one. */
+  streak: number;
+  lastReview?: string;
 }
 
 export interface LearningProgress {

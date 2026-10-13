@@ -11,5 +11,8 @@ export const DAILY_QUESTION_GOAL_OPTIONS = [5, 10, 15, 20, 25] as const
 export const STREAK_FREEZE_EARNED_EVERY_DAYS = 7
 export const MAX_STREAK_FREEZES = 2
 
-/** Stability, in days, at which a sense counts as learned rather than in progress. */
-export const MASTERED_STABILITY_DAYS = 21
+/** Correct answers in a row at which a sense counts as learned rather than in progress. */
+export const MASTERED_STREAK = 3
+
+/** Wrong answers at which a sense is flagged as hard to remember. */
+export const LEECH_WRONG_THRESHOLD = 4

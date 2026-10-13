@@ -1,4 +1,5 @@
 import type {
+  CardProgress,
   DailyActivity,
   DashboardStats,
   FullBackupPayload,
@@ -435,50 +436,71 @@ export function normalizeLibraryState(value: unknown): LibraryState {
   return normalizeLibraryStateWithMigration(value).state;
 }
 
-function normalizeCard(value: unknown, field: string) {
+/**
+ * Records written before scheduling was removed carry spaced-repetition fields
+ * (due, stability, lapses, ...). They are accepted and dropped; only the
+ * answer counts survive.
+ */
+const LEGACY_CARD_KEYS = [
+  "due",
+  "stability",
+  "difficulty",
+  "elapsedDays",
+  "scheduledDays",
+  "learningSteps",
+  "reps",
+  "lapses",
+  "state",
+];
+
+/** Whether stored progress still carries spaced-repetition fields to clean up. */
+export function hasLegacyCardFields(value: unknown): boolean {
+  if (!value || typeof value !== "object") return false;
+  const cards = (value as { cards?: unknown }).cards;
+  if (!cards || typeof cards !== "object") return false;
+  return Object.values(cards).some(
+    (card) =>
+      !!card &&
+      typeof card === "object" &&
+      (LEGACY_CARD_KEYS.some((key) => key in card) ||
+        !("wrongCount" in card) ||
+        !("streak" in card)),
+  );
+}
+
+function normalizeCard(value: unknown, field: string): CardProgress {
   const source = requiredObject(value, field);
   assertKnownKeys(
     source,
     [
-      "due",
-      "stability",
-      "difficulty",
-      "elapsedDays",
-      "scheduledDays",
-      "learningSteps",
-      "reps",
-      "lapses",
-      "state",
+      ...LEGACY_CARD_KEYS,
       "reviewCount",
       "correctCount",
+      "wrongCount",
+      "streak",
       "lastReview",
     ],
     field,
   );
-  const card = {
-    due: requiredText(source.due, `${field}.due`),
-    stability: requiredNumber(source.stability, `${field}.stability`),
-    difficulty: requiredNumber(source.difficulty, `${field}.difficulty`),
-    elapsedDays: requiredNumber(source.elapsedDays, `${field}.elapsedDays`),
-    scheduledDays: requiredNumber(
-      source.scheduledDays,
-      `${field}.scheduledDays`,
-    ),
-    learningSteps: requiredNumber(
-      source.learningSteps,
-      `${field}.learningSteps`,
-    ),
-    reps: requiredNumber(source.reps, `${field}.reps`),
-    lapses: requiredNumber(source.lapses, `${field}.lapses`),
-    state: requiredNumber(source.state, `${field}.state`),
-    reviewCount: requiredNumber(source.reviewCount, `${field}.reviewCount`),
-    correctCount: requiredNumber(source.correctCount, `${field}.correctCount`),
+  const reviewCount = requiredNumber(source.reviewCount, `${field}.reviewCount`);
+  const correctCount = requiredNumber(
+    source.correctCount,
+    `${field}.correctCount`,
+  );
+  const card: CardProgress = {
+    reviewCount,
+    correctCount,
+    wrongCount:
+      source.wrongCount === undefined
+        ? Math.max(0, reviewCount - correctCount)
+        : requiredNumber(source.wrongCount, `${field}.wrongCount`),
+    streak:
+      source.streak === undefined
+        ? 0
+        : requiredNumber(source.streak, `${field}.streak`),
   };
   if (source.lastReview !== undefined)
-    return {
-      ...card,
-      lastReview: requiredText(source.lastReview, `${field}.lastReview`),
-    };
+    card.lastReview = requiredText(source.lastReview, `${field}.lastReview`);
   return card;
 }
 

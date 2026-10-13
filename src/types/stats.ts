@@ -6,13 +6,6 @@ export interface StatsMemorySummary {
   accuracy: number
 }
 
-export interface FsrsStatusCounts {
-  unlearned: number
-  learning: number
-  scheduled: number
-  due: number
-}
-
 export interface StatsQuestionRow {
   key: string
   label: string
@@ -26,6 +19,5 @@ export interface StatsQuestionRow {
 export interface StatsSetRow {
   set: LibrarySet
   learned: number
-  due: number
   total: number
 }

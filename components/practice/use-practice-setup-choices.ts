@@ -27,7 +27,7 @@ export function usePracticeSetupChoices(
 ) {
   const uid = useCloudStore((store) => store.user?.uid);
   const initialTasks = () =>
-    initialTrack === "fsrs"
+    initialTrack === "words"
       ? [...DEFAULT_CARD_TASKS]
       : [...DEFAULT_QUESTION_TASKS];
   const saved = useResumableDraft<PracticeSetupDraft>(

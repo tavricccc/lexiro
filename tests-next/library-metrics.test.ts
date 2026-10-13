@@ -2,10 +2,10 @@ import type { LibraryState } from '@/types'
 import { describe, expect, it } from 'vitest'
 
 import { createUncategorizedFolder, UNCATEGORIZED_FOLDER_ID } from '@/src/lib/folders'
-import { createInitialProgress } from '@/src/lib/fsrs'
+import { createInitialProgress } from '@/src/lib/card-progress'
 import { asSenseId, normalizeWordKey } from '@/src/lib/library'
-import { buildLibrarySetMetrics, countMastery, countQuestionItems, countReviewableSenses } from '@/src/lib/library-metrics'
-import { MASTERED_STABILITY_DAYS } from '@/constants'
+import { buildLibrarySetMetrics, countMastery, countQuestionItems } from '@/src/lib/library-metrics'
+import { MASTERED_STREAK } from '@/constants'
 
 const timestamp = '2026-08-23T00:00:00.000Z'
 const CALM = normalizeWordKey('calm')
@@ -72,32 +72,29 @@ function library(): LibraryState {
 }
 
 describe('library metrics', () => {
-  it('counts reviewable senses and individual reading questions', () => {
+  it('counts individual reading questions', () => {
     const state = library()
-    const futureCard = { ...createInitialProgress(new Date(timestamp)), due: '2026-08-25T00:00:00.000Z' }
 
-    expect(countReviewableSenses(state.words, { [CALM_ADJECTIVE]: futureCard }, new Date(timestamp))).toBe(1)
     expect(countQuestionItems(state)).toBe(3)
   })
 
   it('builds per-set metrics in one pass without double-counting a reading pack', () => {
     const state = library()
-    const dueCard = { ...createInitialProgress(new Date(timestamp)), due: '2026-08-22T00:00:00.000Z' }
-    const metrics = buildLibrarySetMetrics(state, { [CALM_ADJECTIVE]: dueCard }, new Date(timestamp))
+    const metrics = buildLibrarySetMetrics(state, { [CALM_ADJECTIVE]: createInitialProgress() })
 
-    expect(metrics.get('set-a')).toEqual({ due: 1, learned: 1, questionCount: 2, senseCount: 2 })
-    expect(metrics.get('set-b')).toEqual({ due: 1, learned: 1, questionCount: 1, senseCount: 1 })
+    expect(metrics.get('set-a')).toEqual({ learned: 1, questionCount: 2, senseCount: 2 })
+    expect(metrics.get('set-b')).toEqual({ learned: 1, questionCount: 1, senseCount: 1 })
   })
 
-  it('splits senses into mastered, in progress and untouched by stability', () => {
+  it('splits senses into mastered, in progress and untouched by correct streak', () => {
     const state = library()
-    const fresh = createInitialProgress(new Date(timestamp))
+    const fresh = createInitialProgress()
 
     expect(countMastery(state.words, {})).toEqual({ mastered: 0, learning: 0, untouched: 2, total: 2 })
     expect(
       countMastery(state.words, {
-        [CALM_ADJECTIVE]: { ...fresh, stability: MASTERED_STABILITY_DAYS },
-        [CALM_VERB]: { ...fresh, stability: MASTERED_STABILITY_DAYS - 1 },
+        [CALM_ADJECTIVE]: { ...fresh, streak: MASTERED_STREAK },
+        [CALM_VERB]: { ...fresh, streak: MASTERED_STREAK - 1 },
       }),
     ).toEqual({ mastered: 1, learning: 1, untouched: 0, total: 2 })
   })

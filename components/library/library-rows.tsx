@@ -7,7 +7,6 @@ import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
 
 export interface SetRowMetrics {
-  due: number;
   learned: number;
   questionCount: number;
   senseCount: number;
@@ -60,7 +59,6 @@ export function FolderRow({
  * only after opening the set.
  */
 export function SetRow({
-  due,
   id,
   learned,
   name,
@@ -103,11 +101,6 @@ export function SetRow({
           )}
         </span>
       </span>
-      {due > 0 && (
-        <span className="shrink-0 text-xs font-medium tabular-nums text-brand-600">
-          {t("setDetail.dueCount", { count: due })}
-        </span>
-      )}
       <Icons.open
         aria-hidden
         className="size-4 shrink-0 text-muted-foreground"

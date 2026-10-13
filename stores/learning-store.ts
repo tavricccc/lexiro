@@ -20,7 +20,7 @@ import type { SenseScopeRemap } from "@/src/lib/library-set-migration";
 
 import { LEARNING_STORAGE_KEY } from "@/constants";
 import { localDateKey } from "@/src/lib/date";
-import { reviewCard } from "@/src/lib/fsrs";
+import { reviewCard } from "@/src/lib/card-progress";
 import {
   addQuestionAttempt,
   createDefaultStats,
@@ -33,6 +33,7 @@ import { loadFromStorage, saveToStorage } from "@/src/lib/persist";
 import { entriesOf } from "@/src/lib/record";
 import {
   normalizeDashboardStats,
+  hasLegacyCardFields,
   normalizeLearningProgress,
 } from "@/src/lib/share";
 import { markBlobDirty } from "@/src/lib/sync-journal";
@@ -98,6 +99,7 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
     if (get().loaded) return;
     const stored = await loadFromStorage(LEARNING_STORAGE_KEY);
     if (stored.value) {
+      let legacy = false;
       try {
         const value: unknown = JSON.parse(stored.value);
         if (
@@ -115,15 +117,17 @@ export const useLearningStore = create<LearningStore>((set, get) => ({
           stats: unknown;
           version: 1;
         };
-        set({
-          progress: normalizeLearningProgress(record.progress),
-          stats: normalizeDashboardStats(record.stats),
-          loaded: true,
-        });
-        return;
+        const progress = normalizeLearningProgress(record.progress);
+        const stats = normalizeDashboardStats(record.stats);
+        legacy = hasLegacyCardFields(record.progress);
+        set({ progress, stats, loaded: true });
       } catch {
         throw new Error(t("common.learningDataUnreadable"));
       }
+      // Rewrite records that still carry spaced-repetition fields; marking
+      // the blob dirty also replaces the cloud copy on the next sync.
+      if (legacy) await persist(get().progress, get().stats);
+      return;
     }
     set({ loaded: true });
   },

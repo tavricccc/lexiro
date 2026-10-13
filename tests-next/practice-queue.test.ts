@@ -28,18 +28,10 @@ function word(index: number): StudyWord {
   };
 }
 
-/** Scheduled long ago, so `isDue` is true whenever the test runs. */
 function dueCard(): CardProgress {
   return {
-    due: "2020-01-01T00:00:00.000Z",
-    stability: 1,
-    difficulty: 5,
-    elapsedDays: 1,
-    scheduledDays: 1,
-    learningSteps: 0,
-    reps: 1,
-    lapses: 0,
-    state: 2,
+    wrongCount: 0,
+    streak: 1,
     lastReview: "2020-01-01T00:00:00.000Z",
     reviewCount: 1,
     correctCount: 1,

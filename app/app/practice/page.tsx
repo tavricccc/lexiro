@@ -7,7 +7,7 @@ export default async function Page({
 }) {
   const query = await searchParams;
   const track =
-    query.track === "fsrs" || query.track === "questions"
+    query.track === "words" || query.track === "questions"
       ? query.track
       : undefined;
   return <PracticePage initialSet={query.set ?? ""} initialTrack={track} />;

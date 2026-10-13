@@ -73,7 +73,7 @@ export interface ResultRow {
  * Old entry links can preset a task selection; they no longer split the setup.
  * Local meaning questions, spelling and saved exam formats share one queue.
  */
-export type PracticeTrack = "fsrs" | "questions";
+export type PracticeTrack = "words" | "questions";
 export type PracticeQuestionTask = "meaning" | GeneratedQuestionKind;
 export type PracticeTask = PracticeQuestionTask;
 

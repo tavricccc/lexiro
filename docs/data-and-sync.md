@@ -10,12 +10,12 @@
 | `WordSense` | 由本集 wordKey、詞性與中文建立 SenseId；例句與 supplementary 旗標只屬於此詞義 |
 | `SetMembership` | 本集 wordKey + senseIds，不可指向其他集的內容 |
 | `LibraryQuestion` | 題目／文章包，全部 wordKey／senseId 來源必須在同一集 |
-| `LearningProgress` | 每個 SenseId 的 FSRS card、due、stability 等 |
+| `LearningProgress` | 每個 SenseId 的答題次數、答對／答錯次數、連續答對與最後作答時間；舊版 FSRS 欄位讀取時丟棄，並改寫本機與雲端 |
 | `DashboardStats` | 每詞義題型成績、每日活動、目標與連續學習 |
 
 定義在 `src/types/library.ts`、`learning.ts` 與 `session.ts`。`canonicalHash` 用 SHA-256 前 128 bits，checksum、詞義／題目指紋和 cloud record ID 都使用同一算法。
 
-同拼字在不同集有不同 wordKey／SenseId／題目指紋。`normalizeWordKey` 只供草稿拼字比對和舊資料遷移，不能用來建立新保存內容的全域身份。保存例句不會自動建立題目。`clearQuestions(setId)` 清空本集，不帶 setId 清空全題庫，包含歷史文法題；兩者保留單字、詞義、例句、FSRS 與學習紀錄。
+同拼字在不同集有不同 wordKey／SenseId／題目指紋。`normalizeWordKey` 只供草稿拼字比對和舊資料遷移，不能用來建立新保存內容的全域身份。保存例句不會自動建立題目。`clearQuestions(setId)` 清空本集，不帶 setId 清空全題庫，包含歷史文法題；兩者保留單字、詞義、例句與學習紀錄。
 
 ## 備份與本機 domain 格式
 

@@ -302,18 +302,11 @@ describe("repairLibraryState", () => {
 
 describe("mergeProgress", () => {
   const card = (lastReview: string, reps: number): CardProgress => ({
-    due: LATER,
-    stability: 1,
-    difficulty: 5,
-    elapsedDays: 0,
-    scheduledDays: 1,
-    learningSteps: 0,
-    reps,
-    lapses: 0,
-    state: 1,
     lastReview,
     reviewCount: reps,
     correctCount: reps,
+    wrongCount: 0,
+    streak: reps,
   });
 
   it("keeps the more recent review of each card and loses neither device's work", () => {
@@ -328,8 +321,8 @@ describe("mergeProgress", () => {
 
     const merged = mergeProgress(local, remote);
     expect(Object.keys(merged.cards).sort()).toEqual(["a", "b", "c"]);
-    expect(merged.cards["a" as keyof typeof merged.cards].reps).toBe(3);
-    expect(merged.cards["b" as keyof typeof merged.cards].reps).toBe(4);
+    expect(merged.cards["a" as keyof typeof merged.cards].reviewCount).toBe(3);
+    expect(merged.cards["b" as keyof typeof merged.cards].reviewCount).toBe(4);
   });
 
   it("keeps local progress when the cloud has none", () => {

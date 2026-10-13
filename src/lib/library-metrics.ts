@@ -6,29 +6,13 @@ import type {
   WordKey,
 } from "@/types";
 
-import { MASTERED_STABILITY_DAYS } from "@/constants";
-import { isDue } from "@/src/lib/fsrs";
+import { isMastered } from "@/src/lib/card-progress";
 import { isExamQuestion } from "./question-ownership";
 
 export interface LibrarySetMetrics {
-  due: number;
   learned: number;
   questionCount: number;
   senseCount: number;
-}
-
-export function countReviewableSenses(
-  words: Record<WordKey, WordEntry>,
-  cards: Record<SenseId, CardProgress>,
-  now = new Date(),
-): number {
-  let count = 0;
-  for (const word of Object.values(words)) {
-    for (const sense of word.senses) {
-      if (!cards[sense.id] || isDue(cards[sense.id], now)) count += 1;
-    }
-  }
-  return count;
 }
 
 export function countQuestionItems(state: LibraryState): number {
@@ -43,7 +27,6 @@ export function countQuestionItems(state: LibraryState): number {
 export function buildLibrarySetMetrics(
   state: LibraryState,
   cards: Record<SenseId, CardProgress>,
-  now = new Date(),
 ): Map<string, LibrarySetMetrics> {
   const metrics = new Map<string, LibrarySetMetrics>();
   const setIdsBySense = new Map<SenseId, Set<string>>();
@@ -55,12 +38,9 @@ export function buildLibrarySetMetrics(
       ),
     );
     let learned = 0;
-    let due = 0;
 
     for (const senseId of senseIds) {
-      const card = cards[senseId];
-      if (card) learned += 1;
-      if (card && isDue(card, now)) due += 1;
+      if (cards[senseId]) learned += 1;
 
       const setIds = setIdsBySense.get(senseId) ?? new Set<string>();
       setIds.add(set.id);
@@ -68,7 +48,6 @@ export function buildLibrarySetMetrics(
     }
 
     metrics.set(set.id, {
-      due,
       learned,
       questionCount: 0,
       senseCount: senseIds.size,
@@ -103,12 +82,10 @@ export interface MasteryCounts {
 }
 
 /**
- * How much of the Library is actually known, read straight off the schedule.
+ * How much of the Library is actually known.
  *
- * FSRS already holds the answer: a card's stability is how many days it is
- * expected to stay remembered. A sense the scheduler will not ask about for
- * three weeks is one you know, and that is worth far more than a count of how
- * many times you have tapped a button.
+ * A sense answered correctly several times in a row is one you know; a single
+ * wrong answer puts it back to learning.
  */
 export function countMastery(
   words: Record<WordKey, WordEntry>,
@@ -125,7 +102,7 @@ export function countMastery(
       counts.total += 1;
       const card = cards[sense.id];
       if (!card) counts.untouched += 1;
-      else if (card.stability >= MASTERED_STABILITY_DAYS) counts.mastered += 1;
+      else if (isMastered(card)) counts.mastered += 1;
       else counts.learning += 1;
     }
   return counts;
