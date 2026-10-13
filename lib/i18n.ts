@@ -146,6 +146,8 @@ export const zhTW = {
     needPlayers: "等至少一位朋友加入，或直接自己開始。",
     question: "第 {current} / {total} 題",
     secondsLeft: "{seconds} 秒",
+    secondsLabel: "每題秒數",
+    secondsHint: "閱讀題加倍",
     confirm: "確認答案",
     answered: "已作答，等其他人…",
     answeredCount: "{count} / {total} 人已作答",

@@ -47,6 +47,7 @@ export function PracticeSetup({
   busy = false,
   maxAmount = Infinity,
   showDraftStatus = true,
+  extraScope,
 }: {
   amount: number;
   availableQuestionCount: number;
@@ -74,6 +75,8 @@ export function PracticeSetup({
   /** Rooms cap how many questions one game can hold. */
   maxAmount?: number;
   showDraftStatus?: boolean;
+  /** Extra controls under the amount slider, e.g. a room's seconds per question. */
+  extraScope?: React.ReactNode;
 }) {
   const sliderMax = Math.min(availableQuestionCount, maxAmount);
   const availableFormats = PRACTICE_TASKS.filter((task) => counts[task] > 0);
@@ -177,6 +180,7 @@ export function PracticeSetup({
                 </div>
               </div>
             )}
+            {extraScope}
           </ListSection>
           {[
             {

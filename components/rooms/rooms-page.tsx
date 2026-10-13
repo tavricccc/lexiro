@@ -144,6 +144,7 @@ function RoomSetup() {
     ...DEFAULT_QUESTION_TASKS,
   ]);
   const [amount, setAmount] = useState(10);
+  const [seconds, setSeconds] = useState(20);
   const [difficulty, setDifficulty] =
     useState<WorkspaceQuestionDifficulty>("all");
   const [oneSensePerWord, setOneSensePerWord] = useState(true);
@@ -180,6 +181,7 @@ function RoomSetup() {
         title:
           state.sets.find((entry) => entry.id === setId)?.setName ??
           t("practice.allSets"),
+        seconds,
         questions: toRoomQuestions(queue),
       });
       router.push(`/app/rooms/${code}`);
@@ -216,6 +218,33 @@ function RoomSetup() {
       setId={setId}
       sets={state.sets}
       showDraftStatus={false}
+      extraScope={
+        <div className="py-4">
+          <div className="mb-2 flex items-baseline justify-between gap-3">
+            <label className="type-row" htmlFor="room-seconds">
+              {t("rooms.secondsLabel")}
+            </label>
+            <strong className="text-lg tabular-nums">
+              {t("rooms.secondsLeft", { seconds })}
+            </strong>
+          </div>
+          <input
+            className="practice-amount-slider"
+            id="room-seconds"
+            max={40}
+            min={10}
+            onChange={(event) => setSeconds(Number(event.target.value))}
+            step={5}
+            type="range"
+            value={seconds}
+          />
+          <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
+            <span>10</span>
+            <span>{t("rooms.secondsHint")}</span>
+            <span>40</span>
+          </div>
+        </div>
+      }
       tasks={tasks}
       title={t("rooms.setupTitle")}
     />

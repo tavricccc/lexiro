@@ -138,8 +138,8 @@ export function QuestionCard({
           <h1
             className={
               item.type === "meaning"
-                ? "question-text type-page text-center"
-                : "question-text text-lg font-semibold leading-8 tracking-[-0.01em]"
+                ? "question-text type-page text-left"
+                : "question-text text-[1.0625rem] font-normal leading-[1.75] tracking-normal text-foreground/90 [word-spacing:0.02em]"
             }
           >
             {item.blank

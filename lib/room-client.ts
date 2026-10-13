@@ -91,6 +91,7 @@ export function toRoomQuestions(entries: readonly PracticeEntry[]) {
 export function createRoom(input: {
   name: string;
   title: string;
+  seconds: number;
   questions: ReturnType<typeof toRoomQuestions>;
 }) {
   return agentJson<{ code: string }>("/rooms", {
