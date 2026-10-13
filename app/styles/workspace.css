@@ -1,7 +1,7 @@
 /* App workspace: one scrolling surface and stable navigation/action regions. */
 :root {
   /* Chrome that content scrolls under: frosted, with the canvas showing through. */
-  --chrome-glass: color-mix(in oklab, var(--card) 72%, transparent);
+  --chrome-glass: color-mix(in oklab, var(--card) 45%, transparent);
   --chrome-blur: blur(20px) saturate(1.5);
   --mobile-nav-height: 3.875rem;
   --mobile-nav-bottom-gap: max(1.125rem, var(--safe-bottom));
@@ -128,7 +128,7 @@
   height: var(--mobile-nav-height);
   border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
   padding-bottom: 0.375rem;
-  background: color-mix(in oklab, var(--card) 84%, transparent);
+  background: color-mix(in oklab, var(--card) 68%, transparent);
   -webkit-backdrop-filter: blur(24px) saturate(1.6);
   backdrop-filter: blur(24px) saturate(1.6);
   box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 9%, transparent);
@@ -342,7 +342,7 @@
     padding: 1.5rem 0.875rem 1rem;
     border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
     border-radius: 1.5rem;
-    background: color-mix(in oklab, var(--card) 84%, transparent);
+    background: color-mix(in oklab, var(--card) 68%, transparent);
     -webkit-backdrop-filter: blur(24px) saturate(1.6);
     backdrop-filter: blur(24px) saturate(1.6);
     box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 7%, transparent);
