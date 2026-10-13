@@ -40,9 +40,9 @@ function outputShape(kind: GeneratedQuestionKind) {
     : kind === "reading"
       ? z.object({ ...article, items: z.array(z.object({ ...source, question: text, answer: text, ...choices, ...teaching })).min(1) })
       : kind === "discourse"
-        ? z.object({ ...article, options: z.array(text).length(5), removals: z.array(z.object({ ...source, sentence: text, ...teaching })).min(1) })
+        ? z.object({ ...article, options: z.array(text).length(5), unusedReason: z.string().optional().describe("未使用句子為何放在任何空格都不合；每格只寫 explanation，不必逐一寫錯項。"), removals: z.array(z.object({ ...source, sentence: text, ...teaching })).min(1) })
         : kind === "wordBank"
-          ? z.object({ ...article, options: z.array(text).length(10), blanks: z.array(z.object(blank)).min(1) })
+          ? z.object({ ...article, options: z.array(text).length(10), optionMeanings: z.array(z.object({ option: text, meaning: text })).optional().describe("共用選項各自的簡短中文詞義，整組只寫一次；每格只寫 explanation，不必逐一寫錯項。"), blanks: z.array(z.object(blank)).min(1) })
           : z.object({ ...article, blanks: z.array(z.object({ ...blank, ...choices })).min(1) });
   return schema;
 }

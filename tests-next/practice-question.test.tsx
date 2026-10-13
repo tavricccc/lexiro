@@ -7,6 +7,7 @@ import {
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { QuestionCard } from "@/components/practice/question-card";
+import { QuestionFeedback } from "@/components/practice/question-feedback";
 import { PracticeSessionView } from "@/components/practice/practice-session-view";
 import type { QuestionItem } from "@/components/practice/practice-content";
 import type { ReadingPack } from "@/types";
@@ -68,6 +69,78 @@ function itemAt(index: number): QuestionItem {
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+});
+
+describe("practice option notes", () => {
+  it("shows vocabulary meanings beside each option and the answer meaning once", () => {
+    const item: QuestionItem = {
+      id: "question:victim",
+      question: null,
+      prompt: "The _____ reported the stolen bicycle.",
+      options: ["customer", "officer", "victim", "witness"],
+      answerIndex: 2,
+      wordKey: "victim",
+      senseId: "victim-sense",
+      type: "vocabulary",
+      difficulty: 2,
+      meaning: "受害者",
+      explanation: "句中女子是腳踏車遭偷的受害者。",
+      whyWrong: {
+        customer: "「customer」意為「顧客」，與女子是腳踏車遭偷的受害者不符。",
+        officer: "警員",
+        witness: "目擊者；只看見事件，句中女子是失主",
+      },
+    };
+    const { container } = render(<QuestionFeedback item={item} selected={2} />);
+    expect(screen.getByText("受害者")).toBeVisible();
+    expect(screen.getByText("顧客")).toBeVisible();
+    expect(screen.getByText("警員")).toBeVisible();
+    expect(screen.getByText("目擊者")).toBeVisible();
+    expect(screen.getByText("只看見事件，句中女子是失主")).toBeVisible();
+    expect(container.textContent).not.toContain("不符");
+    expect(container.querySelectorAll("p").length).toBe(3);
+  });
+
+  it("keeps only meanings in a word bank and only the unused sentence in discourse", () => {
+    const bank = ["plot", "current", "bank"];
+    const base = {
+      ...itemAt(0),
+      options: bank,
+      optionBank: bank,
+      answerIndex: 0,
+    };
+    const { unmount } = render(
+      <QuestionFeedback
+        item={{
+          ...base,
+          type: "wordBank",
+          whyWrong: { current: "目前的", bank: "這個選項不符合本格描述的情節線索。" },
+        }}
+        selected={0}
+      />,
+    );
+    expect(screen.getByText("目前的")).toBeVisible();
+    expect(screen.queryByText(/不符合本格/)).toBeNull();
+    unmount();
+    const group = {
+      ...passage,
+      format: "discourse" as const,
+      questions: [{ ...passage.questions[0], options: bank, answerIndex: 0 }, { ...passage.questions[1], options: bank, answerIndex: 1 }],
+    };
+    render(
+      <QuestionFeedback
+        item={{
+          ...base,
+          question: group,
+          type: "discourse",
+          whyWrong: { current: "第二格的句子。", bank: "放棄計畫與後文矛盾，放哪裡都不合。" },
+        }}
+        selected={0}
+      />,
+    );
+    expect(screen.getByText("放棄計畫與後文矛盾，放哪裡都不合。")).toBeVisible();
+    expect(screen.queryByText("第二格的句子。")).toBeNull();
+  });
 });
 
 describe("practice reading workspace", () => {

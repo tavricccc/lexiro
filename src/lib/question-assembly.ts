@@ -8,7 +8,11 @@ import { createSourceRef } from "./source-ref";
 import { isRecord } from "./schema";
 import { blankToken, PASSAGE_FORMATS, isPassageKind } from "./question-formats";
 import { placeAnswer } from "./question-builders";
-import { assembleAgentTeaching, assembleOptionTeaching } from "./question-teaching";
+import {
+  assembleAgentTeaching,
+  assembleOptionTeaching,
+  assembleSharedBankTeaching,
+} from "./question-teaching";
 import { sourceWordFormIssue } from "./question-word-forms";
 import {
   locateUsageAnswer,
@@ -431,6 +435,22 @@ function assemblePassage(
       answers.length
     )
       throw new Error("共用選項的每個答案只能配置到一個空格");
+    // Generated sets explain each blank once and keep option notes at set level;
+    // Agent writes may still attach their own per-blank reasons.
+    const sharedTeaching = (child: CutBlank, used: string[]) => {
+      const own = mode === "agent" ? assembleAgentTeaching(child.source) : {};
+      if (own.whyWrong) return own;
+      return {
+        ...own,
+        ...assembleSharedBankTeaching(
+          child.source,
+          value,
+          format as "wordBank" | "discourse",
+          child.answer,
+          used,
+        ),
+      };
+    };
     const bank = placeAnswer(
       candidates[0],
       candidates.slice(1),
@@ -457,11 +477,7 @@ function assemblePassage(
                 format === "wordBank"
                   ? child.slot!.sourceRef
                   : (child.slot ?? slots[index % slots.length]).sourceRef,
-              ...teaching(
-                child.source,
-                candidates.filter((option) => option !== child.answer),
-                mode,
-              ),
+              ...sharedTeaching(child, answers),
             })),
             title,
             wordKeys,

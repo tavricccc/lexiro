@@ -7,7 +7,8 @@ import {
 import type { GeneratedQuestionKind, QuestionDifficulty } from "@/types";
 import { isPassageKind } from "./question-formats";
 import { isRecord } from "./schema";
-import { optionTeachingIssue } from "./question-teaching";
+import { optionTeachingIssue, sharedBankTeachingIssue } from "./question-teaching";
+import { containsHan } from "./validation";
 import { discourseStructureIssue } from "./question-discourse";
 import { wordOccurrences } from "./question-spans";
 
@@ -122,19 +123,38 @@ function teachingIssue(
     const answer = kind === "discourse" ? item.sentence : item.answer;
     if (shared && (typeof answer !== "string" || !bank.includes(answer.trim())))
       return `第 ${index + 1} 題答案必須逐字對應共用選項`;
-    const distractors = shared
-      ? bank.filter((option) => option !== (answer as string).trim())
-      : Array.isArray(item.distractors)
+    if (shared) {
+      if (typeof item.explanation !== "string" || !item.explanation.trim())
+        return `第 ${index + 1} 題缺少作答解說`;
+      if (!containsHan(item.explanation))
+        return `第 ${index + 1} 題作答解說必須以中文說明`;
+      continue;
+    }
+    const distractors = Array.isArray(item.distractors)
         ? item.distractors
             .filter((option): option is string => typeof option === "string")
             .map((option) => option.trim())
         : [];
-    if (!shared && distractors.length !== 3)
-      return `第 ${index + 1} 題干擾選項不足`;
+    if (distractors.length !== 3) return `第 ${index + 1} 題干擾選項不足`;
     const issue = optionTeachingIssue(item, distractors);
     if (issue) return `第 ${index + 1} 題${issue}`;
   }
-  return null;
+  return shared ? sharedTeachingIssue(value, kind) : null;
+}
+
+/** Set-level option notes; a broken bank note needs the whole set regenerated. */
+export function sharedTeachingIssue(
+  value: Record<string, unknown>,
+  kind: GeneratedQuestionKind,
+): string | null {
+  if (kind !== "wordBank" && kind !== "discourse") return null;
+  const items = kind === "discourse" ? value.removals : value.blanks;
+  if (!Array.isArray(items) || sharedQuestionBankIssue(value, kind)) return null;
+  const answers = items.filter(isRecord).flatMap((item) => {
+    const answer = kind === "discourse" ? item.sentence : item.answer;
+    return typeof answer === "string" ? [answer.trim()] : [];
+  });
+  return sharedBankTeachingIssue(value, kind, answers);
 }
 
 /** The evidence is a generation audit; it is not persisted as a second question model. */

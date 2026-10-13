@@ -49,12 +49,6 @@ function fixture() {
     answer,
     usage,
     explanation,
-    whyWrong: options
-      .filter((option) => option !== answer)
-      .map((option) => ({
-        option,
-        reason: `${explanation}這個選項不符本格的線索。`,
-      })),
   });
   // Raw order deliberately differs from both source order and prose order.
   const blanks = [
@@ -68,6 +62,7 @@ function fixture() {
     title: "A school project",
     passage: `The plot of the novel is exciting. The children read together. A mechanical clock works through gears. She took her wet coat off. ${Array.from({ length: 238 }, () => "context").join(" ")}.`,
     options,
+    optionMeanings: options.map((option) => ({ option, meaning: `${option} 的詞義` })),
     blanks,
   };
   return { words, reply };
@@ -103,12 +98,9 @@ describe("WordBank declared source ownership", () => {
         "中段以齒輪運作。",
         "最後脫下外套。",
       ]);
-      expect(pack.questions[0].whyWrong?.current).toBe(
-        "開頭描述小說的情節。這個選項不符本格的線索。",
-      );
-      expect(pack.questions[4].whyWrong?.current).toBe(
-        "最後脫下外套。這個選項不符本格的線索。",
-      );
+      expect(pack.questions[0].whyWrong?.current).toBe("current 的詞義");
+      expect(pack.questions[0].whyWrong?.plot).toBeUndefined();
+      expect(Object.keys(pack.questions[4].whyWrong ?? {})).toHaveLength(9);
     }
   });
 
@@ -146,12 +138,7 @@ describe("WordBank declared source ownership", () => {
     const { words, reply } = fixture();
     const [step] = questionTask(words, "wordBank", 2).steps;
     const original = reply.blanks[0];
-    const invalid = {
-      ...original,
-      whyWrong: original.whyWrong.map((reason, index) =>
-        index === 0 ? { ...reason, option: "invented" } : reason,
-      ),
-    };
+    const invalid = { ...original, explanation: "Missing Chinese." };
     const recovery = step.recover!(
       JSON.stringify({ ...reply, blanks: [invalid, ...reply.blanks.slice(1)] }),
     );
@@ -226,10 +213,8 @@ describe("WordBank declared source ownership", () => {
           answer: item.word,
           usage: `The ${item.word} arrived`,
           explanation: "本格描述指定目標。",
-          whyWrong: options
-            .filter((option) => option !== item.word)
-            .map((option) => ({ option, reason: "不是本格的指定目標。" })),
         })),
+      optionMeanings: options.map((option) => ({ option, meaning: "詞義" })),
     };
     const [pack] = last.parse(JSON.stringify(reply));
     expect(

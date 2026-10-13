@@ -16,6 +16,7 @@ import {
   generatedQuestionQualityIssue,
   sharedQuestionBankIssue,
   sharedQuestionBankProseIssue,
+  sharedTeachingIssue,
 } from "../question-quality";
 import { extractJsonText } from "./json";
 import { discourseStructureIssue } from "../question-discourse";
@@ -57,6 +58,7 @@ export function passageRepairs({
     return null;
   if (sharedQuestionBankIssue(draft, kind)) return null;
   if (sharedQuestionBankProseIssue(draft, kind)) return null;
+  if (sharedTeachingIssue(draft, kind)) return null;
   if (kind === "discourse" && discourseStructureIssue(draft)) return null;
   const items = draft[field] as unknown[];
   let bankSlots: ReturnType<typeof wordBankSourceSlots> | null = null;
