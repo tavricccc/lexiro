@@ -311,7 +311,7 @@
     gap: 1rem;
     padding: 1.25rem 0.75rem;
     border: 1px solid color-mix(in oklab, var(--rule) 70%, transparent);
-    border-radius: var(--radius-3xl);
+    border-radius: 1.25rem;
     background: color-mix(in oklab, var(--card) 70%, transparent);
     -webkit-backdrop-filter: blur(20px) saturate(1.4);
     backdrop-filter: blur(20px) saturate(1.4);
