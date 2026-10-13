@@ -6,6 +6,8 @@ export const REVEAL_MS = 5_000;
 export const TICKET_TTL_MS = 60_000;
 /** A finished or abandoned room is kept briefly so late reconnects see the result. */
 export const ROOM_TTL_MS = 2 * 60 * 60_000;
+/** A room nobody is connected to closes sooner, unless someone comes back. */
+export const IDLE_TTL_MS = 30 * 60_000;
 
 const text = (max: number) => z.string().max(max);
 const task = z.enum(["meaning", "vocabulary", "cloze", "wordBank", "discourse", "reading"]);

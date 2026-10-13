@@ -47,9 +47,37 @@ export async function handleRoomApi(
       });
       if (response.status === 409) continue;
       await relay(response);
+      await rooms
+        .get(rooms.idFromName(`host:${uid}`))
+        .fetch("https://room/pin", {
+          method: "POST",
+          body: JSON.stringify({ code }),
+        });
       return Response.json({ code }, { status: 201 });
     }
     throw new HttpError(503, "room_code_exhausted");
+  }
+  // The room this person is hosting now, so another device can take it over.
+  if (path === "/rooms/active" && request.method === "GET") {
+    const pin = (await (
+      await rooms.get(rooms.idFromName(`host:${uid}`)).fetch("https://room/pin")
+    ).json()) as { code?: string } | null;
+    if (!pin?.code || !ROOM_CODE.test(pin.code))
+      return Response.json({ room: null });
+    const status = (await (
+      await roomStub(rooms, pin.code).fetch("https://room/status")
+    ).json()) as {
+      code: string;
+      title: string;
+      hostUid: string;
+      phase: string;
+    } | null;
+    const live = status && status.hostUid === uid && status.phase !== "ended";
+    return Response.json({
+      room: live
+        ? { code: status.code, title: status.title, phase: status.phase }
+        : null,
+    });
   }
   const ticket = /^\/rooms\/([^/]+)\/ticket$/.exec(path);
   if (ticket && request.method === "POST") {

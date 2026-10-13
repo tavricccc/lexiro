@@ -5,6 +5,7 @@ import {
   type RoomSocket,
 } from "../src/rooms/game-room";
 import {
+  IDLE_TTL_MS,
   MAX_PLAYERS,
   REVEAL_MS,
   createRoomInput,
@@ -18,7 +19,9 @@ class FakeSocket implements RoomSocket {
   send(data: string) {
     this.sent.push(JSON.parse(data));
   }
-  close() {
+  closedWith?: number;
+  close(code?: number) {
+    this.closedWith ??= code;
     this.readyState = 3;
   }
   serializeAttachment(value: unknown) {
@@ -62,6 +65,7 @@ function fixture() {
       clock += ms;
       if (alarm && alarm <= clock) await room.alarm();
     },
+    sockets,
     get alarm() {
       return alarm;
     },
@@ -85,6 +89,29 @@ const input = createRoomInput.parse({
 });
 
 describe("live game room", () => {
+  it("lets a second device take over the seat and closes the first", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", input);
+    const phone = await f.join("host", "Host");
+    const guest = await f.join("guest");
+    const laptop = await f.join("host", "Host");
+    expect(phone.closedWith).toBe(4409);
+    expect(guest.readyState).toBe(1);
+    expect(laptop.last().players).toHaveLength(2);
+    expect(laptop.last().players.find((p: any) => p.uid === "host").connected).toBe(true);
+  });
+
+  it("closes a room soon after everyone leaves, unless someone returns", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", input);
+    const host = await f.join("host");
+    host.close();
+    await f.room.webSocketClose(host);
+    expect(f.alarm).toBeLessThanOrEqual(1_000_000 + IDLE_TTL_MS);
+    await f.advance(IDLE_TTL_MS + 1);
+    await expect(f.room.issueTicket("host", "Host")).rejects.toMatchObject({ code: "room_not_found" });
+  });
+
   it("keeps the answer on the server until the question is over", async () => {
     const f = fixture();
     await f.room.init("ABCDEF", "host", input);

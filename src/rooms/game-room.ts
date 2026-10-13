@@ -1,6 +1,7 @@
 import { HttpError, readBody } from "../http";
 import {
   clientMessage,
+  IDLE_TTL_MS,
   createRoomInput,
   isAccepted,
   MAX_PLAYERS,
@@ -138,6 +139,29 @@ export class GameRoom {
           webSocket: pair[0],
         } as ResponseInit);
       }
+      if (url.pathname === "/status" && request.method === "GET") {
+        const room = await this.load();
+        return Response.json(
+          room
+            ? {
+                code: room.code,
+                title: room.title,
+                hostUid: room.hostUid,
+                phase: room.phase,
+                expiresAt: room.expiresAt,
+              }
+            : null,
+        );
+      }
+      // The same namespace keeps, per host, which room they opened last.
+      if (url.pathname === "/pin") {
+        if (request.method === "POST") {
+          const { code } = JSON.parse(await readBody(request, 200)) as { code: string };
+          await this.ctx.storage.put("pin", { code });
+          return Response.json({ ok: true });
+        }
+        return Response.json((await this.ctx.storage.get("pin")) ?? null);
+      }
       throw new HttpError(404, "not_found");
     } catch (reason) {
       if (reason instanceof HttpError)
@@ -201,9 +225,23 @@ export class GameRoom {
     return stored.uid;
   }
 
+  /**
+   * Seats a socket. One player is one seat: a device joining as someone
+   * already connected takes over, and the older device is told it was replaced.
+   */
   async attach(socket: RoomSocket, uid: string) {
+    for (const previous of this.ctx.getWebSockets(uid)) {
+      const owner = (previous.deserializeAttachment() as { uid?: string } | null)?.uid;
+      if (previous !== socket && owner === uid && previous.readyState === OPEN)
+        previous.close(4409, "replaced");
+    }
     socket.serializeAttachment({ uid });
     this.ctx.acceptWebSocket(socket, [uid]);
+    const room = await this.load();
+    if (room && room.phase !== "ended") {
+      room.expiresAt = Math.max(room.expiresAt, this.now() + ROOM_TTL_MS);
+      await this.save(room);
+    }
     this.broadcast();
   }
 
@@ -241,7 +279,11 @@ export class GameRoom {
 
   async webSocketClose(socket: RoomSocket) {
     socket.close();
-    await this.load();
+    const room = await this.load();
+    if (room && this.connectedUids().length === 0) {
+      room.expiresAt = Math.min(room.expiresAt, this.now() + IDLE_TTL_MS);
+      await this.save(room);
+    }
     this.broadcast();
   }
   async webSocketError(socket: RoomSocket) {
