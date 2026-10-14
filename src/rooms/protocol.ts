@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const MAX_PLAYERS = 8;
 export const MAX_QUESTIONS = 50;
-export const REVEAL_MS = 3_000;
+export const REVEAL_MS = 5_000;
 export const TICKET_TTL_MS = 60_000;
 /** A finished or abandoned room is kept briefly so late reconnects see the result. */
 export const ROOM_TTL_MS = 2 * 60 * 60_000;

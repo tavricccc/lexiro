@@ -455,7 +455,12 @@ export class GameRoom {
       index: room.index,
       total: room.questions.length,
       endsAt: room.endsAt,
-      duration: showing ? questionDuration(current.display, room.seconds) : null,
+      // The bar counts down whichever phase is on: answering or reading the result.
+      duration: revealing
+        ? REVEAL_MS
+        : showing
+          ? questionDuration(current.display, room.seconds)
+          : null,
       players: room.players
         .map((player) => ({
           uid: player.uid,
