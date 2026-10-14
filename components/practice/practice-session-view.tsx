@@ -153,9 +153,10 @@ export function PracticeSessionView({
       <motion.div
         className="flex flex-col"
         key={passage ? `passage:${passage.id}` : entry.id}
-        initial={animateCard ? { opacity: 0.72 } : false}
-        animate={{ opacity: 1 }}
-        transition={practiceTransition}
+        // The next question comes in from the side it is going: forward.
+        initial={animateCard ? { opacity: 0, x: 24 } : false}
+        animate={{ opacity: 1, x: 0 }}
+        transition={timing("nav", "arrive")}
       >
         <div className="pb-4" data-practice-question-group>
           <QuestionCard

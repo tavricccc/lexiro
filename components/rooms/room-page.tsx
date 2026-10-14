@@ -171,7 +171,7 @@ function Lobby({
       <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
         <p className="text-sm text-muted-foreground">{t("rooms.shareCode")}</p>
         <p
-          className="mt-2 font-mono text-4xl font-semibold tracking-[0.3em]"
+          className="t-celebrate mt-2 font-mono text-4xl font-semibold tracking-[0.3em]"
           data-testid="room-code"
         >
           {state.code}
@@ -524,7 +524,7 @@ function QuestionStage({
           </div>
 
           {!reveal && state.yourChoice !== null && (
-            <p className="mt-5 text-center text-muted-foreground" role="status">
+            <p className="t-result-in mt-5 text-center text-muted-foreground" role="status">
               {t("rooms.answered")}
             </p>
           )}
