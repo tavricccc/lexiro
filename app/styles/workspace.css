@@ -41,6 +41,10 @@
   overscroll-behavior-y: contain;
   scrollbar-gutter: stable;
 }
+/* A live room holds still: no bounce or pull at either end while answering. */
+.app-shell .workspace-body:has([data-room-live]) {
+  overscroll-behavior-y: none;
+}
 .app-shell .app-viewport {
   min-height: 0;
 }

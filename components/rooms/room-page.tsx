@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/ui/app-link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { PassageView } from "@/components/practice/passage-view";
@@ -14,7 +14,7 @@ import { SignInRequired } from "@/components/ui/sign-in-required";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
-import type { RoomPlayer, RoomState } from "@/lib/room-client";
+import type { RoomPlayer, RoomReview, RoomState } from "@/lib/room-client";
 import { useCloudStore } from "@/stores/cloud-store";
 import { playerName } from "./rooms-page";
 import { useRoom, type RoomConnection } from "./use-room";
@@ -84,7 +84,7 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
 
   const isHost = state.you === state.hostUid;
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-3xl" data-room-live>
       <PageHeader
         back={back}
         title={state.title}
@@ -278,6 +278,9 @@ function QuestionStage({
   const question = state.question;
   const reveal = state.reveal;
   const [pending, setPending] = useState<number | null>(null);
+  const [pressed, setPressed] = useState<number | null>(null);
+  const press = useRef<{ pointer: number; index: number } | null>(null);
+  const stage = useRef<HTMLDivElement>(null);
   const secondsLeft = useSecondsLeft(state.endsAt, offset);
   const locked = state.yourChoice !== null || reveal !== null;
 
@@ -286,6 +289,53 @@ function QuestionStage({
     setPending(index);
     onAnswer(index);
   };
+
+  // A new question starts at its own top, but only when the reader had
+  // scrolled past it; otherwise the page stays exactly where it is.
+  useEffect(() => {
+    const top = stage.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) stage.current?.scrollIntoView({ block: "start" });
+  }, []);
+
+  // A tap counts only when the finger is still on the option as it lifts, so
+  // sliding off cancels. It fires on release, same as a click always did.
+  const within = (event: React.PointerEvent<HTMLElement>) => {
+    const box = event.currentTarget.getBoundingClientRect();
+    return (
+      event.clientX >= box.left &&
+      event.clientX <= box.right &&
+      event.clientY >= box.top &&
+      event.clientY <= box.bottom
+    );
+  };
+  const tapHandlers = (index: number) => ({
+    onPointerDown: (event: React.PointerEvent<HTMLButtonElement>) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      press.current = { pointer: event.pointerId, index };
+      setPressed(index);
+    },
+    onPointerMove: (event: React.PointerEvent<HTMLButtonElement>) => {
+      if (press.current?.pointer !== event.pointerId) return;
+      setPressed(within(event) ? index : null);
+    },
+    onPointerUp: (event: React.PointerEvent<HTMLButtonElement>) => {
+      if (press.current?.pointer !== event.pointerId) return;
+      press.current = null;
+      setPressed(null);
+      if (within(event)) choose(index);
+    },
+    onPointerCancel: () => {
+      press.current = null;
+      setPressed(null);
+    },
+    onPointerLeave: (event: React.PointerEvent<HTMLButtonElement>) => {
+      if (press.current?.pointer === event.pointerId) setPressed(null);
+    },
+    // Pointers are handled above; a click with no pointer is the keyboard.
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (event.detail === 0) choose(index);
+    },
+  });
 
   useEffect(() => {
     if (locked || !question) return;
@@ -324,33 +374,36 @@ function QuestionStage({
     state.yourChoice !== null && reveal?.accepted.includes(state.yourChoice);
 
   return (
-    <div className="space-y-5">
+    <div ref={stage} className="scroll-mt-4 space-y-5">
+      {/* The pill and bar stay put through the reveal so nothing below jumps;
+          during the reveal they count down to the next question. */}
       <div className="flex items-center justify-between gap-3 text-sm">
         <span className="tabular-nums text-muted-foreground">
           {t("rooms.question", { current: state.index + 1, total: state.total })}
         </span>
-        {!reveal && (
-          <span
-            aria-live="off"
-            className={cn(
-              "rounded-full px-3 py-1 font-semibold tabular-nums",
-              secondsLeft <= 5 ? "bg-destructive/15 text-destructive" : "bg-muted",
-            )}
-          >
-            {t("rooms.secondsLeft", { seconds: secondsLeft })}
-          </span>
-        )}
+        <span
+          aria-live="off"
+          className={cn(
+            "rounded-full px-3 py-1 font-semibold tabular-nums",
+            !reveal && secondsLeft <= 5 ? "bg-destructive/15 text-destructive" : "bg-muted",
+          )}
+        >
+          {reveal
+            ? t("rooms.nextIn", { seconds: secondsLeft })
+            : t("rooms.secondsLeft", { seconds: secondsLeft })}
+        </span>
       </div>
-      {!reveal && state.duration && state.endsAt && (
-        <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
-          <div
-            className="h-full rounded-full bg-primary transition-[width] duration-200 ease-linear"
-            style={{
-              width: `${Math.min(100, (secondsLeft * 1000 * 100) / state.duration)}%`,
-            }}
-          />
-        </div>
-      )}
+      <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
+        <div
+          className={cn(
+            "h-full rounded-full transition-[width] duration-200 ease-linear",
+            reveal ? "bg-muted-foreground/40" : "bg-primary",
+          )}
+          style={{
+            width: `${state.duration ? Math.min(100, (secondsLeft * 1000 * 100) / state.duration) : 0}%`,
+          }}
+        />
+      </div>
 
       <div
         className={
@@ -398,8 +451,9 @@ function QuestionStage({
                   type="button"
                   aria-pressed={chosen || isPending}
                   disabled={locked || used !== undefined}
-                  onClick={() => choose(index)}
+                  {...tapHandlers(index)}
                   className={cn(
+                    "touch-manipulation select-none",
                     "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default",
                     reveal && accepted
                       ? "border-success/40 bg-success/10"
@@ -407,7 +461,9 @@ function QuestionStage({
                         ? "border-destructive/40 bg-destructive/10"
                         : chosen || isPending
                           ? "border-primary bg-primary/10"
-                          : used !== undefined
+                          : pressed === index && !locked
+                            ? "border-primary/60 bg-primary/5"
+                            : used !== undefined
                             ? "border-border/70 bg-muted/30 text-muted-foreground"
                             : "border-border/70 bg-card hover:border-primary/50",
                   )}
@@ -495,6 +551,83 @@ function QuestionStage({
   );
 }
 
+/** Your wrong and missed questions, each with the answer and explanation. */
+function Review({ review }: { review: RoomReview }) {
+  return (
+    <section className="rounded-[var(--radius-card)] bg-card p-5">
+      <h2 className="type-section">{t("rooms.review")}</h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        {review.items.length
+          ? t("rooms.reviewCount", { count: review.items.length })
+          : t("rooms.reviewEmpty")}
+      </p>
+      <ol className="mt-4 space-y-6">
+        {review.items.map((item) => {
+          const passage = item.question.passageId
+            ? review.passages[item.question.passageId]
+            : undefined;
+          return (
+            <li key={item.index} className="space-y-3">
+              <p className="text-xs tabular-nums text-muted-foreground">
+                {t("rooms.reviewItem", { number: item.index + 1 })}
+                {item.choice === null && ` · ${t("rooms.missed")}`}
+              </p>
+              {passage && (
+                <details className="rounded-[var(--radius-control)] bg-muted/40 px-4 py-3 text-sm">
+                  <summary className="cursor-pointer font-medium">
+                    {t("rooms.showPassage")} · {passage.title}
+                  </summary>
+                  <div className="mt-3">
+                    <PassageView activeBlank={item.question.blank} passage={passage.text} />
+                  </div>
+                </details>
+              )}
+              <p className="question-text font-semibold leading-7">
+                {item.question.blank
+                  ? t("questions.blankLabel", { index: item.question.blank })
+                  : item.question.prompt}
+              </p>
+              <ul className="grid gap-2">
+                {item.question.options.map((option, index) => {
+                  const accepted = item.accepted.includes(index);
+                  const chosen = item.choice === index;
+                  if (!accepted && !chosen) return null;
+                  return (
+                    <li
+                      key={index}
+                      className={cn(
+                        "flex items-start gap-3 rounded-[var(--radius-control)] border px-4 py-2.5 text-sm",
+                        accepted
+                          ? "border-success/40 bg-success/10"
+                          : "border-destructive/40 bg-destructive/10",
+                      )}
+                    >
+                      <span className="font-semibold">{String.fromCharCode(65 + index)}</span>
+                      <span className="min-w-0 flex-1 break-words">
+                        {option}
+                        {chosen && (
+                          <span className="ml-2 text-xs text-muted-foreground">
+                            {t("rooms.yourAnswer")}
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+              {item.explanation && (
+                <p className="rounded-[var(--radius-control)] bg-muted/50 p-4 text-sm leading-6">
+                  {item.explanation}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
+
 function Finished({ state }: { state: RoomState }) {
   const winner = state.players[0];
   return (
@@ -511,6 +644,7 @@ function Finished({ state }: { state: RoomState }) {
       <section className="rounded-[var(--radius-card)] bg-card p-5">
         <PlayerList state={state} showScore />
       </section>
+      {state.review && <Review review={state.review} />}
       <div className="grid gap-2 sm:grid-cols-2">
         <Button asChild size="lg" variant="secondary">
           <Link href="/app/rooms">
