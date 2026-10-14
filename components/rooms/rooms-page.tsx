@@ -240,7 +240,6 @@ function RoomSetup() {
           />
           <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
             <span>10</span>
-            <span>{t("rooms.secondsHint")}</span>
             <span>40</span>
           </div>
         </div>

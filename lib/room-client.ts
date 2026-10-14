@@ -26,6 +26,19 @@ export interface RoomPlayer {
   answered: boolean;
 }
 
+export interface RoomReviewItem {
+  index: number;
+  question: Omit<LiveQuestion, "passage"> & { passageId: string | null };
+  choice: number | null;
+  accepted: number[];
+  explanation: string | null;
+}
+
+export interface RoomReview {
+  items: RoomReviewItem[];
+  passages: Record<string, { title: string; text: string }>;
+}
+
 export type RoomPhase = "lobby" | "question" | "reveal" | "ended";
 
 export interface RoomState {
@@ -44,6 +57,8 @@ export interface RoomState {
   question: LiveQuestion | null;
   yourChoice: number | null;
   revealedBlanks: Record<number, string>;
+  /** Your wrong or missed questions, sent once the game has ended. */
+  review?: RoomReview | null;
   reveal: {
     answerIndex: number;
     accepted: number[];
