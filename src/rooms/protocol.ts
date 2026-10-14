@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const MAX_PLAYERS = 8;
 export const MAX_QUESTIONS = 50;
-export const REVEAL_MS = 5_000;
+export const REVEAL_MS = 3_000;
 export const TICKET_TTL_MS = 60_000;
 /** A finished or abandoned room is kept briefly so late reconnects see the result. */
 export const ROOM_TTL_MS = 2 * 60 * 60_000;
@@ -28,7 +28,7 @@ export type LiveQuestion = z.infer<typeof liveQuestion>;
 export const createRoomInput = z.strictObject({
   name: text(40).min(1),
   title: text(120).min(1),
-  /** Seconds per question the host picked; a reading passage gets twice this. */
+  /** Seconds per question the host picked, for every type alike. */
   seconds: z.number().int().min(10).max(40).optional(),
   questions: z
     .array(

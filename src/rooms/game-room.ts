@@ -401,6 +401,31 @@ export class GameRoom {
     }
   }
 
+  /**
+   * Every question this player got wrong or missed, once the game is over. A
+   * passage is sent once and referenced, so a long reading isn't repeated.
+   */
+  private review(room: Room, uid: string) {
+    const passages: Record<string, { title: string; text: string }> = {};
+    const items = room.questions.flatMap((question, index) => {
+      if (index > room.index) return [];
+      const answer = room.answers[index]?.[uid];
+      if (answer && isAccepted(question, answer.choice)) return [];
+      const { passage, ...display } = question.display;
+      if (passage) passages[passage.id] = { title: passage.title, text: passage.text };
+      return [
+        {
+          index,
+          question: { ...display, passageId: passage?.id ?? null },
+          choice: answer?.choice ?? null,
+          accepted: [...new Set([question.answerIndex, ...(question.accepted ?? [])])],
+          explanation: question.explanation ?? null,
+        },
+      ];
+    });
+    return { items, passages };
+  }
+
   /** One player's view. The answer appears only once the question is over. */
   view(room: Room, uid: string, connected: ReadonlySet<string>) {
     const current = room.questions[room.index];
@@ -443,6 +468,7 @@ export class GameRoom {
       question: showing ? current.display : null,
       yourChoice: showing ? (answers[uid]?.choice ?? null) : null,
       revealedBlanks,
+      review: room.phase === "ended" ? this.review(room, uid) : null,
       reveal: revealing
         ? {
             answerIndex: current.answerIndex,

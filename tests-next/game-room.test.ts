@@ -187,6 +187,10 @@ describe("live game room", () => {
     expect(host.last().phase).toBe("reveal");
     await f.advance(REVEAL_MS);
     expect(host.last().phase).toBe("ended");
+    // The host got the first right and missed the second; the guest missed both.
+    expect(host.last().review.items.map((item: { index: number }) => item.index)).toEqual([1]);
+    expect(host.last().review.items[0]).toMatchObject({ choice: null });
+    expect(back.last().review.items).toHaveLength(2);
   });
 
   it("seats at most eight players but always lets a player back in", async () => {
