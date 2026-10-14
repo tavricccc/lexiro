@@ -3,6 +3,7 @@
 import Link from "@/components/ui/app-link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
+import { CountUp } from "@/components/motion/animated-number";
 import { Button } from "@/components/ui/button";
 import { CreditBadge } from "@/components/ai/credit-badge";
 import { Icons } from "@/components/ui/icons";
@@ -88,12 +89,12 @@ export function ResultPanel({
         </div>
       </header>
       <div className="study-finish text-center">
-        <Icons.success className="mx-auto mb-6 size-10" aria-hidden />
+        <Icons.success className="t-celebrate mx-auto mb-6 size-10" aria-hidden />
         <h1 className="mb-5 type-page md:hidden">
           {t("practice.resultTitle")}
         </h1>
         <p className="text-[3.5rem] font-medium leading-none tabular-nums">
-          {correct}
+          <CountUp from={0} value={correct} />
           <span className="study-finish-total">/{total}</span>
         </p>
         <p className="mt-3 text-sm">{t("practice.resultHint")}</p>

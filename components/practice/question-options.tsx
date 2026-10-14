@@ -53,16 +53,28 @@ export function QuestionOptions({
               : isPending
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted text-muted-foreground";
+        // Only an answer given just now animates; a revisited one is still.
+        const result =
+          !answered || readOnly
+            ? undefined
+            : isSelected
+              ? isCorrect
+                ? "correct"
+                : "wrong"
+              : isCorrect
+                ? "revealed"
+                : undefined;
         return (
           <button
             key={`${item.id}:${optionIndex}`}
             type="button"
             data-practice-option
+            data-result={result}
             disabled={answered || readOnly || usedBlank !== undefined}
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
-              "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
+              "t-answer flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
               stateClass,
             )}
           >
@@ -85,13 +97,13 @@ export function QuestionOptions({
             {answered && isCorrect && (
               <Icons.success
                 aria-hidden
-                className="size-4 shrink-0 text-success"
+                className={cn("size-4 shrink-0 text-success", !readOnly && "t-answer-mark")}
               />
             )}
             {answered && isSelected && !isCorrect && (
               <Icons.incorrect
                 aria-hidden
-                className="size-4 shrink-0 text-destructive"
+                className={cn("size-4 shrink-0 text-destructive", !readOnly && "t-answer-mark")}
               />
             )}
           </button>

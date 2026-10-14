@@ -27,14 +27,14 @@ export function QuestionFeedback({
     >
       <p
         className={cn(
-          "flex items-center gap-2 text-sm font-semibold",
+          "t-result-in flex items-center gap-2 text-sm font-semibold",
           correct ? "text-success" : "text-destructive",
         )}
       >
         {correct ? (
-          <Icons.success aria-hidden className="size-4" />
+          <Icons.success aria-hidden className="t-answer-mark size-4" />
         ) : (
-          <Icons.incorrect aria-hidden className="size-4" />
+          <Icons.incorrect aria-hidden className="t-answer-mark size-4" />
         )}
         {correct ? t("practice.correct") : t("practice.incorrect")}
       </p>

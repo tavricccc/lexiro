@@ -477,6 +477,113 @@
   }
 }
 
+/* Answer feedback ---------------------------------------------------------- */
+
+/* The option that was picked answers the pick: a right one swells and settles,
+   a wrong one shakes its head. The right answer the player missed only
+   brightens, a beat later, so the eye goes from their pick to the answer. The
+   attribute appears on the change, so revisiting an answered question, which
+   is born with it absent, stays still. */
+.t-answer[data-result="correct"] {
+  animation: t-answer-pop var(--motion-nav) var(--ease-arrive);
+}
+.t-answer[data-result="wrong"] {
+  animation: t-shake var(--motion-control) linear;
+}
+.t-answer[data-result="revealed"] {
+  animation: t-answer-glow var(--motion-nav) var(--ease-move) var(--motion-control) backwards;
+}
+@keyframes t-answer-pop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes t-answer-glow {
+  from {
+    filter: brightness(1.15) saturate(0.6);
+    opacity: 0.6;
+  }
+  to {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* The mark beside a settled option springs in rather than appearing. */
+.t-answer-mark {
+  animation: t-mark-in var(--motion-nav) var(--ease-arrive) backwards;
+}
+@keyframes t-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Points won float up off the result and fade, once. */
+.t-points-float {
+  animation: t-points-float var(--motion-sheet) var(--ease-arrive) forwards;
+  pointer-events: none;
+}
+@keyframes t-points-float {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-28px) scale(1);
+  }
+}
+
+/* A result line arrives from just below, the way a toast does. */
+.t-result-in {
+  animation: t-result-in var(--motion-control) var(--ease-arrive) backwards;
+}
+@keyframes t-result-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-rise, 8px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A trophy or finish mark lands: it overshoots a touch, then settles. */
+.t-celebrate {
+  animation: t-celebrate var(--motion-sheet) var(--ease-arrive) backwards;
+}
+@keyframes t-celebrate {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Loading and confirmation ------------------------------------------------ */
 
 .t-skeleton {
@@ -749,6 +856,11 @@
   .t-spinner-check-success path,
   .t-progress-track > span,
   .t-shake,
+  .t-answer,
+  .t-answer-mark,
+  .t-points-float,
+  .t-result-in,
+  .t-celebrate,
   .t-skeleton,
   .t-shimmer::before,
   .t-toast,
