@@ -99,9 +99,11 @@ export function RouteSurface({
   }, [pathname]);
 
   return (
+    // No key here: these children are the whole app (startup gate, hydrator,
+    // view host), and remounting them on every move flashed the startup
+    // screen and rebuilt every screen's state. The view host keys each screen.
     <div
       ref={surface}
-      key={pathname}
       className={cn("route-page", className)}
       data-route-path={pathname}
     >

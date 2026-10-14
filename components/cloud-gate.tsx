@@ -31,7 +31,11 @@ export function CloudGate({ children }: { children: ReactNode }) {
   const error = useCloudStore((store) => store.error);
   const configured = useCloudStore((store) => store.configured);
   const user = useCloudStore((store) => store.user);
-  const [localOnly, setLocalOnly] = useState<boolean | null>(null);
+  // Once the store is ready this is client-only, so a remount reads the choice
+  // at once instead of showing the startup screen for a frame.
+  const [localOnly, setLocalOnly] = useState<boolean | null>(() =>
+    useCloudStore.getState().ready ? readLocalOnly() : null,
+  );
   useEffect(() => setLocalOnly(readLocalOnly()), []);
 
   const askSignIn = ready && configured && !user && localOnly === false;
