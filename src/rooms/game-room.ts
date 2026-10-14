@@ -42,6 +42,9 @@ interface Player {
 }
 interface Answer {
   choice: number;
+  /** Ms after the question opened; points are settled when it closes. */
+  elapsedMs?: number;
+  correct?: boolean;
   gained: number;
 }
 interface Room {
@@ -334,11 +337,9 @@ export class GameRoom {
       return;
     answers[uid] = {
       choice,
-      gained: scoreFor(
-        isAccepted(question, choice),
-        (room.endsAt ?? 0) - this.now(),
-        questionDuration(question.display, room.seconds),
-      ),
+      elapsedMs: this.now() - this.openedAt(room),
+      correct: isAccepted(question, choice),
+      gained: 0,
     };
     // Only people still here are waited for; anyone gone simply scores nothing.
     const present = new Set(this.connectedUids());
@@ -352,12 +353,26 @@ export class GameRoom {
 
   private async reveal(room: Room) {
     const answers = room.answers[room.index] ?? {};
+    // Speed counts against how long the question was really open. A lone
+    // answer has nobody to race, so it is measured against the full timer.
+    const duration = questionDuration(room.questions[room.index].display, room.seconds);
+    const timed = Object.values(answers).filter((answer) => answer.elapsedMs !== undefined);
+    const window =
+      timed.length > 1 ? Math.min(this.now() - this.openedAt(room), duration) : duration;
+    for (const answer of timed)
+      answer.gained = scoreFor(answer.correct ?? false, answer.elapsedMs ?? 0, window);
     for (const player of room.players)
       player.score += answers[player.uid]?.gained ?? 0;
     room.phase = "reveal";
     room.endsAt = this.now() + REVEAL_MS;
     await this.save(room);
     this.broadcast();
+  }
+
+  /** When the current question opened, derived from its deadline. */
+  private openedAt(room: Room) {
+    const duration = questionDuration(room.questions[room.index].display, room.seconds);
+    return (room.endsAt ?? this.now()) - duration;
   }
 
   private async finish(room: Room) {

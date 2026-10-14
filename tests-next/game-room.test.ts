@@ -139,9 +139,27 @@ describe("live game room", () => {
     expect(revealed.reveal).toMatchObject({ answerIndex: 2, explanation: "C is right" });
     expect(revealed.players[0]).toMatchObject({
       uid: "guest",
-      score: scoreFor(true, 15_000, 20_000),
+      // Both answered at 5s, so the guest was also the last one in.
+      score: 200,
     });
     expect(revealed.players[1]).toMatchObject({ uid: "host", score: 0 });
+  });
+
+  it("measures speed against when the last player answered", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", input);
+    const host = await f.join("host");
+    const guest = await f.join("guest");
+    await f.room.webSocketMessage(host, JSON.stringify({ type: "start" }));
+    await f.advance(1_000);
+    await f.room.webSocketMessage(host, JSON.stringify({ type: "answer", index: 0, choice: 2 }));
+    await f.advance(3_000);
+    await f.room.webSocketMessage(guest, JSON.stringify({ type: "answer", index: 0, choice: 2 }));
+    const scores = Object.fromEntries(
+      guest.last().players.map((p: { uid: string; score: number }) => [p.uid, p.score]),
+    );
+    expect(scores).toEqual({ host: scoreFor(true, 1_000, 4_000), guest: 200 });
+    expect(scores.host).toBe(575);
   });
 
   it("moves on without anyone who left and lets them rejoin at the current question", async () => {

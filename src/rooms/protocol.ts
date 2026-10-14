@@ -68,9 +68,9 @@ export const clientMessage = z.discriminatedUnion("type", [
 ]);
 export type ClientMessage = z.infer<typeof clientMessage>;
 
-/** Time allowed per question. A passage needs reading before the first answer. */
+/** Time allowed per question. The host's choice applies to every type alike. */
 export function questionDuration(question: LiveQuestion, seconds?: number): number {
-  if (seconds) return seconds * 1000 * (question.type === "reading" ? 2 : 1);
+  if (seconds) return seconds * 1000;
   switch (question.type) {
     case "meaning":
       return 15_000;
@@ -86,13 +86,14 @@ export function questionDuration(question: LiveQuestion, seconds?: number): numb
 }
 
 /**
- * A correct answer earns 200 plus up to 800 more for speed, so a quick answer
- * is worth far more than a slow one and a trailing player can catch up.
+ * A correct answer earns 200 plus up to 500 more for speed. Speed is measured
+ * against how long the question really stayed open (until the last answer or
+ * the timer), so the spread between quick and slow players stays wide.
  */
-export function scoreFor(correct: boolean, remainingMs: number, durationMs: number) {
+export function scoreFor(correct: boolean, elapsedMs: number, windowMs: number) {
   if (!correct) return 0;
-  const ratio = Math.max(0, Math.min(1, remainingMs / durationMs));
-  return Math.round(200 + 800 * ratio);
+  const ratio = windowMs > 0 ? Math.max(0, Math.min(1, 1 - elapsedMs / windowMs)) : 1;
+  return Math.round(200 + 500 * ratio);
 }
 
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
