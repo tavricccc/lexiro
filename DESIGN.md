@@ -6,16 +6,16 @@ colors:
   primary-dark: "#f3f7f4"
   primary-foreground: "#f4f8f5"
   primary-foreground-dark: "#0f1813"
-  canvas-top: "#a6cdb6"
-  canvas-top-dark: "#0f1813"
-  canvas-foot: "#eef6f1"
-  canvas-foot-dark: "#2a3d32"
+  canvas-top: "#eaf0ec"
+  canvas-top-dark: "#131d17"
+  canvas-foot: "#eaf0ec"
+  canvas-foot-dark: "#131d17"
   foreground: "#13201a"
   foreground-dark: "#eef4f0"
   card: "#ffffff"
   card-dark: "#0c130f"
-  surface-stage: "#a6cdb6"
-  surface-stage-dark: "#0f1813"
+  surface-stage: "#eaf0ec"
+  surface-stage-dark: "#131d17"
   muted-foreground: "#4f6157"
   muted-foreground-dark: "#a3b5aa"
   study-ink: "#173f32"
@@ -132,7 +132,7 @@ components:
 
 ## Colors
 
-畫布是綠色漸層（淺色是淡綠天空、深色是森林），卡片不透明；唯一強調填色是 contrast pill（淺色近黑、深色近白），沿用 novae 的語言。完成回饋延續墨綠與春綠。
+畫布是單一純色（淺色是帶一點綠的紙色、深色是深森林），不使用漸層，卡片不透明；唯一強調填色是 contrast pill（淺色近黑、深色近白），沿用 novae 的語言。完成回饋延續墨綠與春綠。
 
 ### Primary
 
@@ -142,7 +142,7 @@ components:
 
 ### Neutral
 
-畫布由 `--canvas-gradient` 畫在固定圖層，`background` 透明；`surface-stage` 等於畫布頂端色，給黏附頁首使用；`card` 承載分組，
+畫布由 `--canvas-top` 純色畫在根元素，`background` 透明；`surface-stage` 等於畫布頂端色，給黏附頁首使用；`card` 承載分組，
 `surface-inset` 用於內嵌區與進度軌道。次要文字使用 `muted-foreground`。
 
 深色模式由 `app/globals.css` 的 `.dark` 覆寫語意色與品牌色階；frontmatter 中

@@ -9,13 +9,11 @@ pill；圖示是 Phosphor（`@phosphor-icons/react/ssr`），集中在 `componen
 
 ## Colour
 
-The canvas is a green gradient in both themes (a pale green sky in light, deep
-forest in dark), painted by a fixed `body::before` layer from
-`--canvas-gradient`; `html` carries `--canvas-foot` for any band the layer
-misses. The top 30% of the gradient is flat `--canvas-top`, and
-`--surface-stage` equals it: sticky headers, tab strips and toolbars use that
-solid fill and therefore never show as bands. Page grounds (`body`, the shell,
-`.route-page`) are transparent.
+The canvas is a single flat colour in both themes (a barely-green paper tone in
+light, deep forest in dark), painted on the root from `--canvas-top`; there is
+no gradient (`--canvas-gradient` is `none`). `--surface-stage` equals the
+canvas, so sticky headers, tab strips and toolbars never show as bands. Page
+grounds (`body`, the shell, `.route-page`) are transparent.
 
 Cards (`--card`, `--popover`) are opaque — white in light, darker than the
 canvas in dark. `--primary` is the contrast pill, not a green; secondary,
