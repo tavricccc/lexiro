@@ -78,16 +78,12 @@
   --brand-700: #26493b;
   --brand-800: #1f3a30;
   --brand-900: #14261e;
-  /* A green sky in the novae shape: deeper at the top, thinning to near white
-     toward the foot. Painted on the root (see html) so the top of
-     the viewport always shows --canvas-top, which sticky headers then match. */
-  --canvas-top: #a6cdb6;
-  --canvas-foot: #eef6f1;
-  /* The top 30% stays flat: sticky headers and tab strips sit there and use
-     --canvas-top as their solid fill, so they must not show as bands. */
-  --canvas-gradient:
-    radial-gradient(120% 35% at 50% 82%, rgb(255 255 255 / 70%), transparent 70%),
-    linear-gradient(180deg, var(--canvas-top) 0%, var(--canvas-top) 30%, #c9e2d3 52%, #e3f0e8 76%, var(--canvas-foot) 100%);
+  /* A flat, quiet canvas: a barely-green paper tone. Depth comes from the
+     opaque white cards sitting on it, not from a gradient. Sticky chrome uses
+     the same solid fill (--surface-stage), so nothing shows as a band. */
+  --canvas-top: #eaf0ec;
+  --canvas-foot: #eaf0ec;
+  --canvas-gradient: none;
   --background: transparent;
   --foreground: #13201a;
   /* Cards are opaque: text over a see-through card reads poorly. */
@@ -162,12 +158,10 @@
   --brand-700: #a9dbc1;
   --brand-800: #c7e8d6;
   --brand-900: #e4f4ec;
-  /* Deep forest at the top, lightening toward the foot of the screen. */
-  --canvas-top: #0f1813;
-  --canvas-foot: #2a3d32;
-  --canvas-gradient:
-    radial-gradient(80% 30% at 100% 66%, rgb(110 170 134 / 16%), transparent 70%),
-    linear-gradient(180deg, var(--canvas-top) 0%, var(--canvas-top) 30%, #18251d 50%, #1f3027 68%, var(--canvas-foot) 88%, var(--canvas-foot) 100%);
+  /* Flat deep forest; cards sit darker than the canvas. */
+  --canvas-top: #131d17;
+  --canvas-foot: #131d17;
+  --canvas-gradient: none;
   --background: transparent;
   --foreground: #eef4f0;
   --card: #0c130f;
@@ -239,7 +233,7 @@ html {
   overscroll-behavior: none;
   touch-action: manipulation;
   interpolate-size: allow-keywords;
-  /* The gradient is painted on the root itself, never on a fixed layer: an
+  /* The canvas is painted on the root itself, never on a fixed layer: an
      installed app on iOS 26 stops drawing fixed layers short of the screen's
      foot on a page too short to scroll, while the root's background always
      reaches it. `100vh` is the whole screen there. (Same as Novae.) */
@@ -275,8 +269,6 @@ body {
   background: transparent;
 }
 
-/* The gradient canvas, fixed to the viewport so sticky chrome can match its
-   top colour. */
 /* The startup screen sits on the same canvas as the app it gives way to. */
 .startup-screen {
   background-color: var(--canvas-foot);
