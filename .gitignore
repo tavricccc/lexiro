@@ -31,3 +31,6 @@ dist-ssr
 .env
 .vercel
 .env*
+
+# Dev-mode service worker output
+dev-dist
