@@ -7,7 +7,8 @@
 | `src/response-stream.ts` | 保留 Responses SSE 協定；公開的 `response` 物件以白名單重建（`id`、`model`、`status`、`usage`、`incomplete_details.reason`、中和過的 `error`），供應商日後新增的欄位一律不轉發。文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆，並只為管理員附上已結算 credit 等值 |
 | `src/usage-recovery.ts`、`tests-next/usage-recovery.test.ts` | 驗證完整 usage、補查 stored response、持久化待核對結算，並在帳戶請求與 Cron 有界重試。只保存計費識別，不保存 prompt、圖片或生成內容；有產出的待核對帳戶保留預留，取消／失敗立即釋放預留但繼續補記成本 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
-| `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
+| `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、未認證端點限流、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
+| `src/agent/rate-limit.ts` | 未認證端點的 D1 固定視窗限流：`/authorize` 每 IP 每 60 秒 60 次、`/oauth/register` 10 次；key 為端點＋`CF-Connecting-IP`（缺標頭以 `unknown` 計），單一 upsert 原子遞增並以 `Retry-After` 回 429 `rate_limited`，D1 故障時 fail-open，`now` 由呼叫端注入 |
 | `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、5 個精簡工具（read／create_set／write／validate／delete），action.type 分派寫入；read 一次按需讀多種資料，完整 questionPrompt 獨立取得，寫入保留 senseId、partial／atomic 與寬鬆品質門檻 |
 | `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
 | `src/agent/edits.ts`、`resource-api.ts` | 單字／詞義／題目／子題 patch；單集 REST 路由及多資料 POST query，首次讀取只回摘要與操作指引 |
@@ -18,7 +19,7 @@
 | `library-migrations/0002_drop_learning_blobs.sql`、`0003_set_shares.sql` | 刪除學習進度／統計 blobs，blob 只留 preferences 與跨裝置 practice；單字集分享連結表（每集一條，撤銷即刪） |
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
 | `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |
-| `agent-migrations/0001_agent_access.sql` | Agent D1 schema v1，URL scope／到期／撤銷與一次性 OAuth 授權請求，與計費 migrations 分開 |
+| `agent-migrations/0001_agent_access.sql`、`0002_rate_limits.sql` | Agent D1 schema v2：URL scope／到期／撤銷與一次性 OAuth 授權請求，以及未認證端點（`/authorize`、`/oauth/register`）以端點＋IP 固定 60 秒視窗的計數表 `agent_rate_limits`，過期列沿用 7 天 cutoff 由 Cron 清除；與計費 migrations 分開 |
 | `vendor/lexiro-agent-contract-4.1.0.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功，支援綜合測驗文法空格；每批 200 筆，不含模型金鑰或 private prompt |
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
 | `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |

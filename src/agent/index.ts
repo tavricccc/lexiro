@@ -18,6 +18,7 @@ import {
   authorizationInfo,
   finishAuthorization,
 } from "./oauth";
+import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
 
 interface Dependencies {
   verify?: typeof verifyFirebaseToken;
@@ -38,8 +39,10 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
     async fetch(request: Request, env: AgentEnv): Promise<Response> {
       const path = new URL(request.url).pathname,
         repo = repository(env);
-      if (path === "/authorize" && request.method === "GET")
+      if (path === "/authorize" && request.method === "GET") {
+        await checkRateLimit(env.AGENT_DB, "authorize", request, Date.now());
         return startAuthorization(request, env);
+      }
       if (path === "/health")
         return Response.json({ service: "lexiro-agent", version: 1 });
       const access = /^\/access\/([0-9a-f-]{36})(\/.*)?$/.exec(path);
@@ -175,6 +178,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         env.AGENT_DB.prepare(
           "DELETE FROM agent_links WHERE expires_at<? OR revoked_at<?",
         ).bind(cutoff, cutoff),
+        env.AGENT_DB.prepare(RATE_LIMIT_PURGE_SQL).bind(cutoff),
       ]);
       const cursor = await env.OAUTH_KV.get("agent:purge-cursor");
       const result = await provider(env).purgeExpiredData(env, {
@@ -220,11 +224,21 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         // A socket upgrade must reach the client untouched: rebuilding the
         // response to add headers would drop the socket. Browsers always send
         // Origin on a WebSocket, so the app origin is required here.
-        if (isRoomSocketPath(new URL(request.url).pathname)) {
+        const path = new URL(request.url).pathname;
+        if (isRoomSocketPath(path)) {
           if (origin !== env.APP_ORIGIN)
             throw new HttpError(403, "forbidden_origin");
           return await connectRoom(request, env.ROOMS);
         }
+        // Dynamic client registration is handled inside the OAuth provider,
+        // so the unauthenticated throttle must run before it is delegated.
+        if (path === "/oauth/register" && request.method === "POST")
+          await checkRateLimit(
+            env.AGENT_DB,
+            "oauth_register",
+            request,
+            Date.now(),
+          );
         return decorate(await provider(env).fetch(request, env, ctx));
       } catch (reason) {
         const status =
@@ -254,7 +268,13 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
                   : {}),
               },
             },
-            { status },
+            {
+              status,
+              headers:
+                reason instanceof HttpError && reason.retryAfter
+                  ? { "retry-after": reason.retryAfter }
+                  : {},
+            },
           ),
         );
       }
