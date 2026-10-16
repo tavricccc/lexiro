@@ -34,3 +34,7 @@ dist-ssr
 
 # Dev-mode service worker output
 dev-dist
+
+# Generated teaching materials live outside the repo (../lexiro-materials)
+/output
+/review
