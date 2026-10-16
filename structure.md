@@ -32,7 +32,7 @@
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/generation-room.ts` | 每帳號／session 的 SQLite Durable Object，固定 operation ID 去重、獨立背景生成、SSE 訂閱／回放、10 分鐘上限與 30 分鐘結果清除；斷線不取消上游、不重複預留或結算 |
 | `src/generation-timing.ts` | 生成房間與 D1 維護共用的時序常數：10 分鐘生成上限 `GENERATION_TIMEOUT_MS` 與由此推導的 900 秒 stale-hold（加 300 秒邊際）；獨立小檔避免 `billing` 與 `generation-room` 循環引用 |
-| `src/provider-websocket.ts` | 一條持續 WebSocket 的最多四個可重用 stream_id lanes，共用事件 parser、獨立上下文；上游終止才重用名稱，中止後的晚到文字及舊 socket 事件不混入新工作；斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 60 秒關閉連線 |
+| `src/provider-websocket.ts` | 一條持續 WebSocket 的最多四個可重用 stream_id lanes，共用事件 parser、獨立上下文；上游終止才重用名稱，中止後的晚到文字及舊 socket 事件不混入新工作；斷線僅 GET 取回原 response，未啟用 HTTP 生成 fallback；閒置 60 秒關閉連線。另匯出 `awaitStoredResponse`：GET 輪詢 stored response 至離開 queued／in_progress，與 `generation-room` 的恢復路徑共用，僅由呼叫端決定無法取得時的錯誤 |
 | `src/generation-leases.ts`、`migrations/0014_generation_leases.sql` | 每 attempt 一個並行預留名額，同一帳號／session 最多四個；結算或失敗只釋放自己的名額，其他預留仍保持鎖定；轉換既有 inflight reservation |
 | `src/cache-probe-input.ts`、`scripts/probe-generation-cache.mjs` | 三個實際模型路由各一個暖快取與兩個並行小樣本，最多 128 輸出 tokens／次，讀取真實 cache read／write 用量及連線時間；首次部署以 [cache-probe] 啟用，之後按需手動重跑 |
 | `docs/generation-performance.md` | Pi 機制的版本化研究、暖快取後有限並行、批次／費用邊界與正式 cache probe 維護方法 |

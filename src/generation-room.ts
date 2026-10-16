@@ -8,7 +8,7 @@ import { sanitizeResponseStream, type StreamTerminal } from "./response-stream";
 import { settleGeneration, outputText } from "./settlement";
 import { createUsageRecovery } from "./usage-recovery";
 import { upstreamDiagnostic, UpstreamError } from "./upstream-error";
-import { ProviderWebSocket, recoverProviderStream, TransportError, providerFrame, type ProviderSender } from "./provider-websocket";
+import { ProviderWebSocket, recoverProviderStream, awaitStoredResponse, TransportError, providerFrame, type ProviderSender } from "./provider-websocket";
 import { fingerprint, HttpError } from "./http";
 
 export { GENERATION_TIMEOUT_MS };
@@ -107,25 +107,21 @@ export class GenerationRoom {
     }));
   }
   private async restoredStream(job: Job, signal: AbortSignal) {
-    if (!job.responseId) throw new TransportError("worker_restarted_before_identity", "Worker restarted before the provider returned a response identity");
-    for (;;) {
-      signal.throwIfAborted();
-      const fetcher = this.fetcher;
-      const response = await fetcher(`${this.env.OPENAI_BASE_URL}/responses/${encodeURIComponent(job.responseId)}`, { headers: { Authorization: `Bearer ${this.env.OPENAI_API_KEY}` }, signal });
-      if (!response.ok) throw new TransportError("stored_response_unavailable", "The provider could not retrieve the original response", { status: response.status });
-      const result = await response.json() as Record<string, unknown>;
-      if (result.id !== job.responseId) throw new TransportError("recovery_identity_changed", "Provider returned a different response identity");
-      if (["queued", "in_progress"].includes(String(result.status))) { await new Promise((resolve) => setTimeout(resolve, 2000)); continue; }
-      const text = outputText(result);
-      if (!text.startsWith(job.text)) throw new TransportError("recovery_text_changed", "Stored response did not match the received text");
-      const suffix = text.slice(job.text.length);
-      return new ReadableStream<Uint8Array>({ start(controller) {
-        controller.enqueue(providerFrame({ type: "response.created", response: { id: result.id, model: result.model } }));
-        if (suffix) controller.enqueue(providerFrame({ type: "response.output_text.delta", delta: suffix }));
-        controller.enqueue(providerFrame({ type: result.status === "completed" ? "response.completed" : result.status === "incomplete" ? "response.incomplete" : "response.failed", response: result }));
-        controller.close();
-      } });
-    }
+    const id = job.responseId;
+    if (!id) throw new TransportError("worker_restarted_before_identity", "Worker restarted before the provider returned a response identity");
+    const result = await awaitStoredResponse({
+      env: this.env, id, signal, fetcher: this.fetcher,
+      onUnavailable: (response) => { throw new TransportError("stored_response_unavailable", "The provider could not retrieve the original response", { status: response.status }); },
+    });
+    const text = outputText(result);
+    if (!text.startsWith(job.text)) throw new TransportError("recovery_text_changed", "Stored response did not match the received text");
+    const suffix = text.slice(job.text.length);
+    return new ReadableStream<Uint8Array>({ start(controller) {
+      controller.enqueue(providerFrame({ type: "response.created", response: { id: result.id, model: result.model } }));
+      if (suffix) controller.enqueue(providerFrame({ type: "response.output_text.delta", delta: suffix }));
+      controller.enqueue(providerFrame({ type: result.status === "completed" ? "response.completed" : result.status === "incomplete" ? "response.incomplete" : "response.failed", response: result }));
+      controller.close();
+    } });
   }
   private async run(job: Job, restore: boolean) {
     const model = job.prepared.request.model;

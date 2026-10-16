@@ -111,6 +111,28 @@ export class ProviderWebSocket {
   };
 }
 
+/**
+ * Poll the provider's stored response until it leaves queued/in_progress, then return it.
+ * The caller decides how an unavailable response fails through `onUnavailable`, which never returns.
+ */
+export async function awaitStoredResponse({ env, id, signal, fetcher, onUnavailable }: {
+  env: Env;
+  id: string;
+  signal: AbortSignal;
+  fetcher: typeof fetch;
+  onUnavailable(response: Response): Promise<never>;
+}): Promise<Record<string, unknown>> {
+  for (;;) {
+    signal.throwIfAborted();
+    const response = await fetcher(`${env.OPENAI_BASE_URL}/responses/${encodeURIComponent(id)}`, { headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` }, signal });
+    if (!response.ok) await onUnavailable(response);
+    const result = await response.json() as Record<string, unknown>;
+    if (result.id !== id) throw new TransportError("recovery_identity_changed", "Provider returned a different response identity");
+    if (result.status === "queued" || result.status === "in_progress") { await new Promise((resolve) => setTimeout(resolve, 2000)); continue; }
+    return result;
+  }
+}
+
 /** Recover the same stored response after an upstream disconnect; never create another response. */
 export function recoverProviderStream(stream: ReadableStream<Uint8Array>, env: Env, signal: AbortSignal, fetcher: typeof fetch = fetch) {
   const reader = stream.getReader();
@@ -136,20 +158,15 @@ export function recoverProviderStream(stream: ReadableStream<Uint8Array>, env: E
         } catch (reason) {
           if (!id || signal.aborted) throw reason;
           controller.enqueue(providerFrame({ type: "lexiro.recovering", responseId: id }));
-          for (;;) {
-            signal.throwIfAborted();
-            const response = await fetcher(`${env.OPENAI_BASE_URL}/responses/${encodeURIComponent(id)}`, { headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` }, signal });
-            if (!response.ok) { await response.body?.cancel(); throw reason; }
-            const result = await response.json() as Record<string, unknown>;
-            if (result.id !== id) throw new TransportError("recovery_identity_changed", "Provider returned a different response identity");
-            if (result.status === "queued" || result.status === "in_progress") { await new Promise((resolve) => setTimeout(resolve, 2000)); continue; }
-            const { outputText } = await import("./settlement");
-            const full = outputText(result);
-            if (!full.startsWith(text)) throw new TransportError("recovery_text_changed", "Stored response did not match the received text");
-            if (full.length > text.length) controller.enqueue(providerFrame({ type: "response.output_text.delta", delta: full.slice(text.length) }));
-            controller.enqueue(providerFrame({ type: result.status === "completed" ? "response.completed" : result.status === "incomplete" ? "response.incomplete" : "response.failed", response: result }));
-            break;
-          }
+          const result = await awaitStoredResponse({
+            env, id, signal, fetcher,
+            onUnavailable: async (response) => { await response.body?.cancel(); throw reason; },
+          });
+          const { outputText } = await import("./settlement");
+          const full = outputText(result);
+          if (!full.startsWith(text)) throw new TransportError("recovery_text_changed", "Stored response did not match the received text");
+          if (full.length > text.length) controller.enqueue(providerFrame({ type: "response.output_text.delta", delta: full.slice(text.length) }));
+          controller.enqueue(providerFrame({ type: result.status === "completed" ? "response.completed" : result.status === "incomplete" ? "response.incomplete" : "response.failed", response: result }));
         }
         controller.close();
       } catch (reason) { controller.error(reason); }
