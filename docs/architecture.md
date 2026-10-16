@@ -2,7 +2,7 @@
 
 ## HTTP
 
-入口是 src/index.ts，Origin 完整清單來自 ALLOWED_ORIGIN。Firebase token 驗簽、project、UID、時間；管理員另驗 verified email 和 ADMIN_EMAILS。Worker 回應 no-store，App Check 不在這個 Worker 的驗證契約內。
+入口是 src/index.ts，Origin 完整清單來自 ALLOWED_ORIGIN。Firebase token 驗簽、project、UID、時間；管理員另驗 verified email 和 ADMIN_EMAILS。Worker 回應 no-store。App Check 是選用閘（src/app-check.ts）：`APP_CHECK_MODE` 預設或無法辨識時為 off、完全跳過且行為不變；monitor 只記錄一行結構化訊息（不含 token）後放行；enforce 在缺少 `X-Firebase-AppCheck` 或驗證失敗時回 401。驗證為真正的 RS256 解簽，並檢查 App Check 的 iss、aud、exp 與非空 sub；任一帳號模式的請求都先過此閘，再驗 Firebase ID token。Agent Worker 只在瀏覽器 Firebase ID token 路徑套用，MCP bearer、link token 與 OAuth provider 端點不套用。
 
 | Method／path | 用途 |
 | --- | --- |

@@ -2,6 +2,7 @@ import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
 import type { ExecutionContext } from "@cloudflare/workers-types";
 import { z } from "zod";
 import { verifyFirebaseToken, AuthenticationError } from "../auth";
+import { checkAppCheck } from "../app-check";
 import { readBody, HttpError, issueText } from "../http";
 import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
@@ -57,6 +58,9 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
           access[2] ?? "",
         );
       }
+      // App Check only guards the browser Firebase ID token paths. MCP bearer,
+      // link tokens and OAuth provider endpoints never reach this call.
+      await checkAppCheck(request, env);
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
       if (path.startsWith("/sync/"))
         return handleCloudApi(request, identity.uid, env.CLOUD_DB);
@@ -203,7 +207,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
           ? { "Access-Control-Allow-Origin": origin }
           : {}),
         "Access-Control-Allow-Headers":
-          "Authorization, Content-Type, Accept, MCP-Protocol-Version",
+          "Authorization, Content-Type, Accept, MCP-Protocol-Version, X-Firebase-AppCheck",
         "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
         Vary: "Origin",
       };

@@ -22,6 +22,10 @@ export interface AgentEnv {
   AGENT_PUBLIC_URL: string;
   APP_ORIGIN: string;
   FIREBASE_PROJECT_ID: string;
+  /** Firebase project number for App Check; absent disables enforcement. */
+  FIREBASE_PROJECT_NUMBER?: string;
+  /** "off" | "monitor" | "enforce"; anything else (or absent) means off. */
+  APP_CHECK_MODE?: string;
   ROOMS: RoomNamespace;
 }
 export interface AgentIdentity {

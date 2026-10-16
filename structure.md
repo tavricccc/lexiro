@@ -7,7 +7,8 @@
 | `src/response-stream.ts` | 保留 Responses SSE 協定；公開的 `response` 物件以白名單重建（`id`、`model`、`status`、`usage`、`incomplete_details.reason`、中和過的 `error`），供應商日後新增的欄位一律不轉發。文字事件不解析 JSON，內部完成通知保留伺服器結算需要的原始回覆，並只為管理員附上已結算 credit 等值 |
 | `src/usage-recovery.ts`、`tests-next/usage-recovery.test.ts` | 驗證完整 usage、補查 stored response、持久化待核對結算，並在帳戶請求與 Cron 有界重試。只保存計費識別，不保存 prompt、圖片或生成內容；有產出的待核對帳戶保留預留，取消／失敗立即釋放預留但繼續補記成本 |
 | `src/auth.ts` | Google RS256 簽章、Firebase project/uid/時間驗證、Cache-Control 公鑰快取與 ADMIN_EMAILS 管理員判斷 |
-| `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、未認證端點限流、CORS 與過期資料 Cron；部署與生成 Worker 分開 |
+| `src/app-check.ts` | 選用的 Firebase App Check 閘，`APP_CHECK_MODE` 預設 off 時跳過；驗 App Check JWKS 的 RS256 簽章與 iss／aud／exp／非空 sub，金鑰快取比照 `src/auth.ts`（含 5 分鐘下限）；monitor 只 warn 一行結構化訊息（不含 token）後放行，enforce 缺 `X-Firebase-AppCheck` 或驗證失敗回 401，缺 `FIREBASE_PROJECT_NUMBER` 時 enforce 回 500、monitor 放行並 warn |
+| `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、未認證端點限流、CORS 與過期資料 Cron；部署與生成 Worker 分開。選用 App Check 只套用在瀏覽器 Firebase ID token 路徑，MCP bearer／link token／OAuth provider 端點不套用 |
 | `src/agent/rate-limit.ts` | 未認證端點的 D1 固定視窗限流：`/authorize` 每 IP 每 60 秒 60 次、`/oauth/register` 10 次；key 為端點＋`CF-Connecting-IP`（缺標頭以 `unknown` 計），單一 upsert 原子遞增並以 `Retry-After` 回 429 `rate_limited`，D1 故障時 fail-open，`now` 由呼叫端注入 |
 | `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、5 個精簡工具（read／create_set／write／validate／delete），action.type 分派寫入；read 一次按需讀多種資料，完整 questionPrompt 獨立取得，寫入保留 senseId、partial／atomic 與寬鬆品質門檻 |
 | `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
@@ -26,9 +27,10 @@
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
 | `docs/agent-deployment.md` | 2026-10-10 Agent 變更、正式資源與 secrets、獨立部署 workflow、Vercel 免費網域及首次發布驗收回條 |
 | `tests-next/auth.test.ts` | 錯誤簽章／claims、快取期限、並行讀取及已驗證管理員 email 的行為測試 |
+| `tests-next/app-check.test.ts` | App Check off／monitor／enforce 邊界、簽章／iss／aud／exp／sub 拒絕、缺 project number 與兩個 Worker 的 CORS 預檢允許 `X-Firebase-AppCheck` |
 | `src/billing.ts`、`src/credits.ts` | 任何登入者第一次請求就建立 accounts 列（`ensureAccount`），免費試用開啟時帶入新帳號預設點數與每期額度、關閉時為 0；D1 原子預留與實際扣款、供應商 usage 的整數 credit 換算、每來源冪等、cursor 擁有權與個別到期續期；換算基準只存在 private Worker。餘額大於 0 就能開始一批，預估超過餘額也照跑，結算以 0 為下限，帳戶不會變負數 |
 | `migrations/0001_billing.sql`～`0015_charges_uid_index.sql` | 計費初始 schema、來源/session 重試限制、實際 credit 紀錄、方案預設、usage 狀態與索引、管理版本、一次操作各回合 usage／cursor（舊單回合資料一次轉成單一 part）、generation_leases 並行預留，以及 charges(uid, created_at) 計費查詢索引 |
-| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量 |
+| `src/index.ts`、`src/env.ts`、`wrangler.toml` | HTTP/CORS、驗證、計費與串流連接、Cron 和部署設定；`ALLOWED_ORIGIN` 是逗號分隔的完整清單，沒有內建的 localhost 例外。串流中斷時以 stored response 補回 token 用量。管理員不預扣、不上鎖、不算重試次數，但仍結算以記錄 cursor 與 token 用量。選用 App Check 在 OPTIONS 之後、Firebase ID token 驗證之前套用 |
 | `src/http.ts` | 有界讀取及伺服器計算的 fingerprint |
 | `src/generation-room.ts` | 每帳號／session 的 SQLite Durable Object，固定 operation ID 去重、獨立背景生成、SSE 訂閱／回放、10 分鐘上限與 30 分鐘結果清除；斷線不取消上游、不重複預留或結算 |
 | `src/generation-timing.ts` | 生成房間與 D1 維護共用的時序常數：10 分鐘生成上限 `GENERATION_TIMEOUT_MS` 與由此推導的 900 秒 stale-hold（加 300 秒邊際）；獨立小檔避免 `billing` 與 `generation-room` 循環引用 |

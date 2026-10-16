@@ -15,6 +15,7 @@ import {
   scheduledMaintenance,
 } from "./billing";
 import { adminRequest } from "./admin";
+import { checkAppCheck } from "./app-check";
 import { HttpError, readBody } from "./http";
 import { prepareGeneration } from "./generation";
 import { UpstreamError } from "./upstream-error";
@@ -57,7 +58,7 @@ export function createWorker(
           ? { "access-control-allow-origin": origin }
           : {}),
         "access-control-allow-headers":
-          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-AI-Tier, X-Question-Contract, X-Generation-Id",
+          "Authorization, Content-Type, X-Session-Id, X-AI-Model, X-AI-Tier, X-Question-Contract, X-Generation-Id, X-Firebase-AppCheck",
         "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
         "access-control-expose-headers": "X-Generation-Id, Retry-After",
       };
@@ -76,6 +77,7 @@ export function createWorker(
           throw new HttpError(403, "forbidden_origin");
         if (request.method === "OPTIONS")
           return new Response(null, { status: 204, headers: cors });
+        await checkAppCheck(request, env, fetcher);
         const identity = await verify(request, env.FIREBASE_PROJECT_ID);
         admin = isAdministrator(identity, env.ADMIN_EMAILS);
         const path = new URL(request.url).pathname;
