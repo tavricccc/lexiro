@@ -50,7 +50,6 @@
 | `src/organize.ts` | 文字／照片共用整理 prompt 與其快取版號 `ORGANIZE_CACHE_KEY`、每批 1–10 張 WebP 輸入檢查與逐張計費來源；圖片不落地。`text/plain` body 每行一張 base64，每張至多 1.5 MB、整批 body 至多 20,000,009 bytes；同批只發一次多圖片 Responses 請求，仍逐張預留與記錄來源完成。整理輸出每列固定為「英文 詞性 中文」，詞性來源沒標就補 |
 | `src/prompts.ts`、`src/question-brief.ts`、`src/question-prompts.ts`、`src/schemas.ts` | Private 固定提示與 structured-output schema；共用命題目的／正反例／逐題檢查與題型規則分檔，reading 先 skill/evidence，挖空題先 usage 定位 actual answer；共享候選完整文字先定，再以 `{option,reason}` 解析 |
 | `src/question-review.ts`、`src/question-review-validation.ts` | 獨立審題 schema／規則及核准前門檻；先修訂與逐項解說，最後判定未解決問題及 approved，檢查篇幅、跨度、選項與原文依據 |
-| `src/reviewed-question-stream.ts` | 暫停使用的獨立審題流程，未匯入正式 Worker 入口 |
 | `tests-next/question-generation.test.ts` | 題目單次生成、即時文字串流、native fetch receiver、管理員診斷及舊契約拒絕 |
 | `tests-next/generation-item-repair.test.ts` | 文意選填按 raw item ref 綁定修復來源，拒絕缺失／未知 ref，不以 index 猜來源；其他題型的修復輸入保持原契約 |
 | `src/usage-parts.ts`、`tests-next/question-review-validation.test.ts` | 各回合完整用量、各自計價後加總；核准稿機器門檻及輸出判定順序的必要反例檢查 |
