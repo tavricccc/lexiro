@@ -2,6 +2,7 @@ import type { D1Database } from "@cloudflare/workers-types";
 import { MAX_PARALLEL_GENERATIONS, type AdminAccount } from "@lexiro/ai-contract";
 import type { UsagePart } from "./usage-parts";
 import { releaseLeaseStatements } from "./generation-leases";
+import { STALE_HOLD_SECONDS } from "./generation-timing";
 
 export class BillingError extends Error {
   constructor(public status: 402 | 409 | 429) {
@@ -126,13 +127,13 @@ export async function reserve(
         `UPDATE accounts SET version=version+1, points=points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))
       WHERE uid=? AND EXISTS(SELECT 1 FROM charges WHERE uid=? AND created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
-      .bind(uid, now - 900, uid, uid, now - 900),
+      .bind(uid, now - STALE_HOLD_SECONDS, uid, uid, now - STALE_HOLD_SECONDS),
     db
       .prepare(
         "DELETE FROM charges WHERE uid=? AND ((created_at<=? AND attempt_id NOT LIKE 'settled:%') OR (created_at<=? AND attempt_id LIKE 'settled:%')) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
-      .bind(uid, now - 900, now - 1800),
-    db.prepare("DELETE FROM generation_leases WHERE uid=? AND started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(uid, now - 900),
+      .bind(uid, now - STALE_HOLD_SECONDS, now - 1800),
+    db.prepare("DELETE FROM generation_leases WHERE uid=? AND started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(uid, now - STALE_HOLD_SECONDS),
     db.prepare(`INSERT INTO generation_leases(attempt_id,uid,session_id,started_at)
       SELECT ?,uid,?,? FROM accounts WHERE uid=?
       AND points+(SELECT COALESCE(SUM(points),0) FROM charges WHERE uid=accounts.uid AND attempt_id NOT LIKE 'settled:%')>0
@@ -329,13 +330,13 @@ export async function scheduledMaintenance(db: D1Database, now = nowSeconds()) {
       WHERE EXISTS(SELECT 1 FROM charges WHERE charges.uid=accounts.uid AND created_at<=? AND attempt_id NOT LIKE 'settled:%'
         AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id))`,
       )
-      .bind(now - 900, now - 900),
+      .bind(now - STALE_HOLD_SECONDS, now - STALE_HOLD_SECONDS),
     db
       .prepare(
         "DELETE FROM charges WHERE created_at<=? AND attempt_id NOT LIKE 'settled:%' AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=charges.attempt_id)",
       )
-      .bind(now - 900),
-    db.prepare("DELETE FROM generation_leases WHERE started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(now - 900),
+      .bind(now - STALE_HOLD_SECONDS),
+    db.prepare("DELETE FROM generation_leases WHERE started_at<=? AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE attempt_id=generation_leases.attempt_id)").bind(now - STALE_HOLD_SECONDS),
     db.prepare("UPDATE accounts SET version=version+1,inflight_id=NULL,inflight_at=NULL WHERE inflight_id IS NOT NULL AND NOT EXISTS(SELECT 1 FROM generation_leases WHERE uid=accounts.uid) AND NOT EXISTS(SELECT 1 FROM pending_usage WHERE uid=accounts.uid AND chargeable=1)"),
   ]);
   const due = await db

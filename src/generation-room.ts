@@ -2,6 +2,7 @@ import type { DurableObjectState } from "@cloudflare/workers-types";
 import { MAX_PARALLEL_GENERATIONS } from "@lexiro/ai-contract";
 import type { Env } from "./env";
 import { reserve, BillingError, type Reservation } from "./billing";
+import { GENERATION_TIMEOUT_MS } from "./generation-timing";
 import type { PreparedGeneration } from "./generation";
 import { sanitizeResponseStream, type StreamTerminal } from "./response-stream";
 import { settleGeneration, outputText } from "./settlement";
@@ -10,7 +11,7 @@ import { upstreamDiagnostic, UpstreamError } from "./upstream-error";
 import { ProviderWebSocket, recoverProviderStream, TransportError, providerFrame, type ProviderSender } from "./provider-websocket";
 import { fingerprint, HttpError } from "./http";
 
-export const GENERATION_TIMEOUT_MS = 600_000;
+export { GENERATION_TIMEOUT_MS };
 export const RESULT_TTL_MS = 1_800_000;
 interface Job {
   id: string; signature: string; startedAt: number; expiresAt: number;
