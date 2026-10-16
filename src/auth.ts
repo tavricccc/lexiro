@@ -13,6 +13,9 @@ export class AuthenticationError extends Error {
   constructor() { super("unauthorized"); }
 }
 
+/** Fallback key-cache lifetime when Google sends no usable max-age (5 minutes). */
+const MIN_JWKS_CACHE_MS = 300_000;
+
 /** Cache Google public keys for their advertised lifetime, shared by one isolate. */
 export function createFirebaseVerifier(fetcher: typeof fetch) {
   let cached: { keys: ReturnType<typeof createLocalJWKSet>; expires: number } | undefined;
@@ -27,8 +30,11 @@ export function createFirebaseVerifier(fetcher: typeof fetch) {
         const data = await response.json() as JSONWebKeySet;
         const resolver = createLocalJWKSet(data);
         const match = /(?:^|,)\s*max-age=(\d+)(?:\s|,|$)/i.exec(response.headers.get("cache-control") ?? "");
+        const advertised = match ? Number(match[1]) : Number.NaN;
         const age = Number(response.headers.get("age") ?? 0);
-        const lifetime = match ? Math.max(0, Number(match[1]) - age) * 1000 : 0;
+        const lifetime = Number.isFinite(advertised) && advertised > 0
+          ? Math.max(0, advertised - (Number.isFinite(age) ? age : 0)) * 1000
+          : MIN_JWKS_CACHE_MS;
         cached = { keys: resolver, expires: Date.now() + lifetime };
         return resolver;
       })().finally(() => { pending = undefined; });
