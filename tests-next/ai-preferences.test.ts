@@ -41,7 +41,11 @@ vi.mock("@/src/lib/cloud-sync", () => ({
     `users/${uid}/${collection}/${id}`,
   withDeadline: (operation: Promise<unknown>) => operation,
 }));
-const db = { uid: "a", blobRevision: 0, request: fixture.request } as CloudClient;
+const db = {
+  uid: "a",
+  blobRevision: 0,
+  request: fixture.request,
+} as CloudClient;
 afterEach(cleanup);
 beforeEach(async () => {
   await flushAiPreferenceMutations();
@@ -50,7 +54,11 @@ beforeEach(async () => {
   fixture.remote = null;
   db.blobRevision = 0;
   fixture.request.mockReset();
-  fixture.request.mockImplementation(async (_path: string, body?: unknown) => body ? { revision: 2 } : { revision: 1, blobs: { preferences: fixture.remote } });
+  fixture.request.mockImplementation(async (_path: string, body?: unknown) =>
+    body
+      ? { revision: 2 }
+      : { revision: 1, blobs: { preferences: fixture.remote } },
+  );
   resetSyncJournalCache();
   setStorageNamespace("a");
   useAiPreferencesStore.setState({
@@ -121,14 +129,20 @@ describe("per-account AI model preference", () => {
       "a",
       useAiPreferencesStore.getState().preferences,
     );
-    expect(fixture.request).toHaveBeenLastCalledWith("/sync/blobs", {
-      expectedRevision: 1,
-      blobs: [{ kind: "preferences", data: remote }],
-      origin: "this-tab",
-      operationId: expect.any(String),
-    }, undefined);
+    expect(fixture.request).toHaveBeenLastCalledWith(
+      "/sync/blobs",
+      {
+        expectedRevision: 1,
+        blobs: [{ kind: "preferences", data: remote }],
+        origin: "this-tab",
+        operationId: expect.any(String),
+      },
+      undefined,
+    );
     expect(db.blobRevision).toBe(2);
-    await expect(readCloudPreferences(db, "b")).rejects.toThrow("auth/account-changed");
+    await expect(readCloudPreferences(db, "b")).rejects.toThrow(
+      "auth/account-changed",
+    );
   });
   it("keeps a newer local edit when an older device syncs", () => {
     const local = {
@@ -149,9 +163,20 @@ describe("per-account AI model preference", () => {
       12,
     );
     expect(estimatePoints("organizeText", 1, "lite", "gpt-6-luna").max).toBe(5);
-    expect(estimatePoints("organizeText", 1, "pro", "gpt-5.6-luna")).toEqual(estimatePoints("organizeText", 1, "pro", "gpt-6-luna"));
-    expect(responseCost({ model: "gpt-6.1-sol", input: 1000, cached: 500, output: 100 })).toBeCloseTo(0.00205);
-    expect(responseCost({ model: "gpt-6.1-sol", input: 300_000, output: 100_000 })).toBeCloseTo(2.7);
+    expect(estimatePoints("organizeText", 1, "pro", "gpt-5.6-luna")).toEqual(
+      estimatePoints("organizeText", 1, "pro", "gpt-6-luna"),
+    );
+    expect(
+      responseCost({
+        model: "gpt-6.1-sol",
+        input: 1000,
+        cached: 500,
+        output: 100,
+      }),
+    ).toBeCloseTo(0.00205);
+    expect(
+      responseCost({ model: "gpt-6.1-sol", input: 300_000, output: 100_000 }),
+    ).toBeCloseTo(2.7);
     expect(
       responseCost({ model: "gpt-5.6-luna", input: 300_000, output: 100_000 }),
     ).toBeCloseTo(0.3);

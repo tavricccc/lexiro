@@ -65,20 +65,20 @@ describe("agent set contract", () => {
       words,
     ).snapshot!;
     const result = mutateAgentSet(snapshot, {
-        type: "put_questions",
-        questions: [
-          {
-            kind: "multipleChoice",
-            questionStyle: "vocabulary",
-            wordKey: "word-foreign",
-            senseId: "sense-foreign",
-            difficulty: 2,
-            prompt: "The team _____ the hikers.",
-            options: ["rescued", "ignored", "watched", "followed"],
-            answerIndex: 0,
-          },
-        ],
-      });
+      type: "put_questions",
+      questions: [
+        {
+          kind: "multipleChoice",
+          questionStyle: "vocabulary",
+          wordKey: "word-foreign",
+          senseId: "sense-foreign",
+          difficulty: 2,
+          prompt: "The team _____ the hikers.",
+          options: ["rescued", "ignored", "watched", "followed"],
+          answerIndex: 0,
+        },
+      ],
+    });
     expect(result.validation?.status).toBe("rejected");
     expect(result.validation?.savedCount).toBe(0);
     expect(result.validation?.errors[0].message).toContain("單字集");

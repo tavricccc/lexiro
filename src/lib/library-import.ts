@@ -337,9 +337,15 @@ function normalizeMultipleChoice(
   };
 }
 
-function readWhyWrong(value: unknown, field: string): Record<string, string> | undefined {
+function readWhyWrong(
+  value: unknown,
+  field: string,
+): Record<string, string> | undefined {
   if (value === undefined) return undefined;
-  if (!isRecord(value) || !Object.values(value).every((item) => typeof item === "string"))
+  if (
+    !isRecord(value) ||
+    !Object.values(value).every((item) => typeof item === "string")
+  )
     throw new Error(`${field} 格式錯誤`);
   return value as Record<string, string>;
 }
@@ -490,8 +496,14 @@ function normalizeReading(
       answerIndex,
       wordKey,
       senseId,
-      explanation: optionalText(child.explanation, `reading.questions[${childIndex}].explanation`),
-      whyWrong: readWhyWrong(child.whyWrong, `reading.questions[${childIndex}].whyWrong`),
+      explanation: optionalText(
+        child.explanation,
+        `reading.questions[${childIndex}].explanation`,
+      ),
+      whyWrong: readWhyWrong(
+        child.whyWrong,
+        `reading.questions[${childIndex}].whyWrong`,
+      ),
     };
     const id = refs
       ? childQuestionId(normalized)

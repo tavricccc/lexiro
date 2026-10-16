@@ -38,9 +38,7 @@ export async function findSetShareLink(
  * Readers see what the cloud holds, so the set has to reach it first; sharing
  * an edit that only lives on this device would show them an older copy.
  */
-export async function createSetShareLink(
-  setId: string,
-): Promise<SetShareLink> {
+export async function createSetShareLink(setId: string): Promise<SetShareLink> {
   const uid = useCloudStore.getState().user?.uid;
   await useCloudStore.getState().sync();
   const cloud = useCloudStore.getState();

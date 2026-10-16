@@ -140,5 +140,8 @@ export function roomSocketUrl(code: string, ticket: string) {
 }
 
 export function normalizeRoomCode(value: string) {
-  return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  return value
+    .trim()
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "");
 }

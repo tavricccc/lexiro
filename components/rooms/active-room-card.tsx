@@ -15,7 +15,9 @@ import { useCloudStore } from "@/stores/cloud-store";
  */
 export function ActiveRoomCard({ className }: { className?: string }) {
   const uid = useCloudStore((store) => store.user?.uid ?? null);
-  const [room, setRoom] = useState<{ code: string; title: string } | null>(null);
+  const [room, setRoom] = useState<{ code: string; title: string } | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!uid) return;
@@ -37,12 +39,17 @@ export function ActiveRoomCard({ className }: { className?: string }) {
   if (!uid || !room) return null;
   return (
     <section className={`active-room-card ${className ?? ""}`}>
-      <Icons.rooms aria-hidden className="size-5 shrink-0 text-[var(--success)]" />
+      <Icons.rooms
+        aria-hidden
+        className="size-5 shrink-0 text-[var(--success)]"
+      />
       <div className="min-w-0 flex-1">
         <p className="truncate font-medium">
           {t("rooms.activeRoom", { title: room.title })}
         </p>
-        <p className="text-sm text-muted-foreground">{t("rooms.activeRoomHint")}</p>
+        <p className="text-sm text-muted-foreground">
+          {t("rooms.activeRoomHint")}
+        </p>
       </div>
       <Button asChild size="sm">
         <Link href={`/app/rooms/${room.code}`}>{t("rooms.resumeRoom")}</Link>

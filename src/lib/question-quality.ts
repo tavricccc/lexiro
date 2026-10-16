@@ -7,7 +7,10 @@ import {
 import type { GeneratedQuestionKind, QuestionDifficulty } from "@/types";
 import { isPassageKind } from "./question-formats";
 import { isRecord } from "./schema";
-import { optionTeachingIssue, sharedBankTeachingIssue } from "./question-teaching";
+import {
+  optionTeachingIssue,
+  sharedBankTeachingIssue,
+} from "./question-teaching";
 import { containsHan } from "./validation";
 import { discourseStructureIssue } from "./question-discourse";
 import { wordOccurrences } from "./question-spans";
@@ -131,10 +134,10 @@ function teachingIssue(
       continue;
     }
     const distractors = Array.isArray(item.distractors)
-        ? item.distractors
-            .filter((option): option is string => typeof option === "string")
-            .map((option) => option.trim())
-        : [];
+      ? item.distractors
+          .filter((option): option is string => typeof option === "string")
+          .map((option) => option.trim())
+      : [];
     if (distractors.length !== 3) return `第 ${index + 1} 題干擾選項不足`;
     const issue = optionTeachingIssue(item, distractors);
     if (issue) return `第 ${index + 1} 題${issue}`;
@@ -149,7 +152,8 @@ export function sharedTeachingIssue(
 ): string | null {
   if (kind !== "wordBank" && kind !== "discourse") return null;
   const items = kind === "discourse" ? value.removals : value.blanks;
-  if (!Array.isArray(items) || sharedQuestionBankIssue(value, kind)) return null;
+  if (!Array.isArray(items) || sharedQuestionBankIssue(value, kind))
+    return null;
   const answers = items.filter(isRecord).flatMap((item) => {
     const answer = kind === "discourse" ? item.sentence : item.answer;
     return typeof answer === "string" ? [answer.trim()] : [];

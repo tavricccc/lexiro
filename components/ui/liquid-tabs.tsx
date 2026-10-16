@@ -81,7 +81,9 @@ export function LiquidTabs({
                     transition={timing("nav", "nav")}
                   />
                 )}
-                <span key="icon" className="relative z-10 contents">{option.icon}</span>
+                <span key="icon" className="relative z-10 contents">
+                  {option.icon}
+                </span>
                 <span
                   key="label"
                   className={cn(

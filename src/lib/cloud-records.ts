@@ -12,10 +12,7 @@ import { refKey, type SyncTombstone } from "./sync-journal";
 import { CLOUD_SCHEMA_VERSION } from "@/constants";
 import { CloudSyncError } from "./cloud-sync-errors";
 import { hashText } from "./hash";
-import {
-  repairLibraryState,
-  type LibraryDraft,
-} from "./library-repair";
+import { repairLibraryState, type LibraryDraft } from "./library-repair";
 import { isRecord } from "./schema";
 import { isSetWordKey } from "./library";
 import { normalizeLibraryState } from "./share";

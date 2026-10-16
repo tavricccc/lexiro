@@ -55,7 +55,10 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
       <div className="mx-auto max-w-xl">
         <PageHeader back={back} title={state?.title ?? t("rooms.title")} />
         <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-          <Icons.rooms aria-hidden className="mx-auto size-8 text-muted-foreground" />
+          <Icons.rooms
+            aria-hidden
+            className="mx-auto size-8 text-muted-foreground"
+          />
           <p className="mt-3">{t("rooms.replaced")}</p>
           <Button className="mt-5" onClick={takeBack}>
             {t("rooms.takeBack")}
@@ -68,7 +71,10 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
       <div className="mx-auto max-w-xl">
         <PageHeader back={back} title={t("rooms.title")} />
         <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-          <Icons.error aria-hidden className="mx-auto size-8 text-muted-foreground" />
+          <Icons.error
+            aria-hidden
+            className="mx-auto size-8 text-muted-foreground"
+          />
           <p className="mt-3">{error || t("rooms.notFound")}</p>
           <Button asChild className="mt-5" variant="secondary">
             <Link href="/app/rooms">{t("rooms.leave")}</Link>
@@ -119,7 +125,11 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
         tone="danger"
       />
       {state.phase === "lobby" && (
-        <Lobby state={state} isHost={isHost} onStart={() => send({ type: "start" })} />
+        <Lobby
+          state={state}
+          isHost={isHost}
+          onStart={() => send({ type: "start" })}
+        />
       )}
       {(state.phase === "question" || state.phase === "reveal") && (
         <QuestionStage
@@ -144,7 +154,9 @@ function ConnectionNotice({ connection }: { connection: RoomConnection }) {
       role="status"
     >
       <Icons.loading aria-hidden className="size-4 animate-spin" />
-      {connection === "reconnecting" ? t("rooms.reconnecting") : t("rooms.connecting")}
+      {connection === "reconnecting"
+        ? t("rooms.reconnecting")
+        : t("rooms.connecting")}
     </p>
   );
 }
@@ -176,7 +188,12 @@ function Lobby({
         >
           {state.code}
         </p>
-        <Button className="mt-4" size="sm" variant="secondary" onClick={() => void copy()}>
+        <Button
+          className="mt-4"
+          size="sm"
+          variant="secondary"
+          onClick={() => void copy()}
+        >
           <Icons.copy />
           {t("rooms.copyCode")}
         </Button>
@@ -190,7 +207,9 @@ function Lobby({
       {isHost ? (
         <div className="space-y-2 text-center">
           {state.players.length < 2 && (
-            <p className="text-sm text-muted-foreground">{t("rooms.needPlayers")}</p>
+            <p className="text-sm text-muted-foreground">
+              {t("rooms.needPlayers")}
+            </p>
           )}
           <Button className="w-full" size="lg" onClick={onStart}>
             <Icons.start />
@@ -220,41 +239,41 @@ function PlayerList({
     // slides in; the list a screen opens with is drawn as is.
     <ol className="mt-3">
       <AnimatePresence initial={false}>
-      {state.players.map((player, rank) => (
-        <motion.li
-          key={player.uid}
-          layout="position"
-          initial={{ opacity: 0, x: -16 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0 }}
-          transition={timing("nav")}
-          className={cn(
-            "flex items-center gap-3 border-border/60 py-2.5 [&:not(:first-child)]:border-t",
-            !player.connected && "text-muted-foreground",
-          )}
-        >
-          {showScore && (
-            <span className="w-6 text-center text-sm font-semibold tabular-nums">
-              {rank + 1}
+        {state.players.map((player, rank) => (
+          <motion.li
+            key={player.uid}
+            layout="position"
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={timing("nav")}
+            className={cn(
+              "flex items-center gap-3 border-border/60 py-2.5 [&:not(:first-child)]:border-t",
+              !player.connected && "text-muted-foreground",
+            )}
+          >
+            {showScore && (
+              <span className="w-6 text-center text-sm font-semibold tabular-nums">
+                {rank + 1}
+              </span>
+            )}
+            <span className="min-w-0 flex-1 truncate">
+              {player.name}
+              <PlayerTags player={player} state={state} />
             </span>
-          )}
-          <span className="min-w-0 flex-1 truncate">
-            {player.name}
-            <PlayerTags player={player} state={state} />
-          </span>
-          {showAnswered && player.answered && (
-            <Icons.success
-              aria-label={t("rooms.answered")}
-              className="t-answer-mark size-4 text-success"
-            />
-          )}
-          {showScore && (
-            <span className="text-sm font-semibold">
-              <CountUp format={formatPoints} value={player.score} />
-            </span>
-          )}
-        </motion.li>
-      ))}
+            {showAnswered && player.answered && (
+              <Icons.success
+                aria-label={t("rooms.answered")}
+                className="t-answer-mark size-4 text-success"
+              />
+            )}
+            {showScore && (
+              <span className="text-sm font-semibold">
+                <CountUp format={formatPoints} value={player.score} />
+              </span>
+            )}
+          </motion.li>
+        ))}
       </AnimatePresence>
     </ol>
   );
@@ -262,7 +281,13 @@ function PlayerList({
 
 const formatPoints = (points: number) => t("rooms.points", { points });
 
-function PlayerTags({ player, state }: { player: RoomPlayer; state: RoomState }) {
+function PlayerTags({
+  player,
+  state,
+}: {
+  player: RoomPlayer;
+  state: RoomState;
+}) {
   const tags = [
     player.uid === state.you && t("rooms.you"),
     player.uid === state.hostUid && t("rooms.host"),
@@ -270,7 +295,9 @@ function PlayerTags({ player, state }: { player: RoomPlayer; state: RoomState })
   ].filter(Boolean);
   if (!tags.length) return null;
   return (
-    <span className="ml-2 text-xs text-muted-foreground">{tags.join(" · ")}</span>
+    <span className="ml-2 text-xs text-muted-foreground">
+      {tags.join(" · ")}
+    </span>
   );
 }
 
@@ -397,13 +424,18 @@ function QuestionStage({
           during the reveal they count down to the next question. */}
       <div className="flex items-center justify-between gap-3 text-sm">
         <span className="tabular-nums text-muted-foreground">
-          {t("rooms.question", { current: state.index + 1, total: state.total })}
+          {t("rooms.question", {
+            current: state.index + 1,
+            total: state.total,
+          })}
         </span>
         <span
           aria-live="off"
           className={cn(
             "rounded-full px-3 py-1 font-semibold tabular-nums",
-            !reveal && secondsLeft <= 5 ? "bg-destructive/15 text-destructive" : "bg-muted",
+            !reveal && secondsLeft <= 5
+              ? "bg-destructive/15 text-destructive"
+              : "bg-muted",
           )}
         >
           {reveal
@@ -432,7 +464,9 @@ function QuestionStage({
       >
         {question.passage && (
           <section className="max-h-[50dvh] overflow-y-auto rounded-[var(--radius-card)] bg-card p-5 lg:max-h-[calc(100dvh-14rem)]">
-            <h2 className="question-text mb-3 font-semibold">{question.passage.title}</h2>
+            <h2 className="question-text mb-3 font-semibold">
+              {question.passage.title}
+            </h2>
             <PassageView
               activeBlank={question.blank}
               answeredBlanks={answeredBlanks}
@@ -492,8 +526,8 @@ function QuestionStage({
                           : pressed === index && !locked
                             ? "border-primary/60 bg-primary/5"
                             : used !== undefined
-                            ? "border-border/70 bg-muted/30 text-muted-foreground"
-                            : "border-border/70 bg-card hover:border-primary/50",
+                              ? "border-border/70 bg-muted/30 text-muted-foreground"
+                              : "border-border/70 bg-card hover:border-primary/50",
                   )}
                 >
                   <span
@@ -524,7 +558,10 @@ function QuestionStage({
           </div>
 
           {!reveal && state.yourChoice !== null && (
-            <p className="t-result-in mt-5 text-center text-muted-foreground" role="status">
+            <p
+              className="t-result-in mt-5 text-center text-muted-foreground"
+              role="status"
+            >
               {t("rooms.answered")}
             </p>
           )}
@@ -551,9 +588,15 @@ function QuestionStage({
               >
                 {state.yourChoice !== null &&
                   (correctChoice ? (
-                    <Icons.success aria-hidden className="t-answer-mark size-5" />
+                    <Icons.success
+                      aria-hidden
+                      className="t-answer-mark size-5"
+                    />
                   ) : (
-                    <Icons.incorrect aria-hidden className="t-answer-mark size-5" />
+                    <Icons.incorrect
+                      aria-hidden
+                      className="t-answer-mark size-5"
+                    />
                   ))}
                 {state.yourChoice === null
                   ? t("rooms.missed")
@@ -628,7 +671,10 @@ function Review({ review }: { review: RoomReview }) {
                     {t("rooms.showPassage")} · {passage.title}
                   </summary>
                   <div className="mt-3">
-                    <PassageView activeBlank={item.question.blank} passage={passage.text} />
+                    <PassageView
+                      activeBlank={item.question.blank}
+                      passage={passage.text}
+                    />
                   </div>
                 </details>
               )}
@@ -652,7 +698,9 @@ function Review({ review }: { review: RoomReview }) {
                           : "border-destructive/40 bg-destructive/10",
                       )}
                     >
-                      <span className="font-semibold">{String.fromCharCode(65 + index)}</span>
+                      <span className="font-semibold">
+                        {String.fromCharCode(65 + index)}
+                      </span>
                       <span className="min-w-0 flex-1 break-words">
                         {option}
                         {chosen && (
@@ -683,7 +731,10 @@ function Finished({ state }: { state: RoomState }) {
   return (
     <div className="mx-auto max-w-xl space-y-4">
       <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-        <Icons.levelUp aria-hidden className="t-celebrate mx-auto size-10 text-primary" />
+        <Icons.levelUp
+          aria-hidden
+          className="t-celebrate mx-auto size-10 text-primary"
+        />
         <h2 className="type-section mt-3">{t("rooms.final")}</h2>
         {winner && (
           <p className="t-result-in mt-1 text-lg font-semibold [animation-delay:var(--motion-control)]">

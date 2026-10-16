@@ -12,7 +12,9 @@ import {
 
 vi.mock("@/src/lib/library-repository", async (original) => ({
   ...(await original<typeof import("@/src/lib/library-repository")>()),
-  getLibraryRepository: () => ({ commit: async () => ({ changed: [], removed: [] }) }),
+  getLibraryRepository: () => ({
+    commit: async () => ({ changed: [], removed: [] }),
+  }),
 }));
 vi.mock("@/src/lib/sync-journal", () => ({
   recordLocalChanges: async () => {},
@@ -58,7 +60,11 @@ describe("supplementing a word's meanings", () => {
   });
 
   it("refuses a meaning the word already had", () => {
-    const again = { pos: "n.", meaningZh: "銀行", example: "I went to the bank." };
+    const again = {
+      pos: "n.",
+      meaningZh: "銀行",
+      example: "I went to the bank.",
+    };
     expect(() => parseSupplementaryJson(reply([again]), [bank], 2)).toThrow(
       /已經有的詞義/,
     );
@@ -108,14 +114,28 @@ describe("what a supplemented meaning survives", () => {
       setName: "set",
       folderId: "folder",
       words: [
-        { word: "bank", pos: "n.", meaningZh: "銀行", examples: [], supplementary: false },
-        { word: "bank", pos: "n.", meaningZh: "河岸", examples: [], supplementary: true },
+        {
+          word: "bank",
+          pos: "n.",
+          meaningZh: "銀行",
+          examples: [],
+          supplementary: false,
+        },
+        {
+          word: "bank",
+          pos: "n.",
+          meaningZh: "河岸",
+          examples: [],
+          supplementary: true,
+        },
       ],
     });
     const key = buildSetWordKey("set", "bank");
     const saved = () => useLibraryStore.getState().state.words[key].senses;
     expect(saved().map((sense) => sense.supplementary)).toEqual([false, true]);
-    expect(setWordDrafts(useLibraryStore.getState().state, "set")[1].supplementary).toBe(true);
+    expect(
+      setWordDrafts(useLibraryStore.getState().state, "set")[1].supplementary,
+    ).toBe(true);
 
     // Editing the word rewrites every row it owns, so the mark has to travel
     // with the row rather than being recreated from what is being edited.
@@ -131,8 +151,12 @@ describe("what a supplemented meaning survives", () => {
       })),
     });
     await useLibraryStore.getState().saveSet(input);
-    expect(saved().find((sense) => sense.meaningZh === "河岸")?.supplementary).toBe(true);
-    expect(saved().find((sense) => sense.meaningZh === "銀行")?.supplementary).toBe(false);
+    expect(
+      saved().find((sense) => sense.meaningZh === "河岸")?.supplementary,
+    ).toBe(true);
+    expect(
+      saved().find((sense) => sense.meaningZh === "銀行")?.supplementary,
+    ).toBe(false);
     expect(buildSenseId(key, "n.", "河岸")).toBe(
       saved().find((sense) => sense.meaningZh === "河岸")?.id,
     );

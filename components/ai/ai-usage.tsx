@@ -64,7 +64,9 @@ export function AiUsage({ usage }: { usage: TokenUsage }) {
       {cacheSavings !== null && (
         <p className="mt-3 text-xs tabular-nums text-muted-foreground">
           {t(
-            cacheSavings >= 0 ? "admin.cacheSavings" : "admin.cacheWritePremium",
+            cacheSavings >= 0
+              ? "admin.cacheSavings"
+              : "admin.cacheWritePremium",
             { cost: formatCost(Math.abs(cacheSavings)) },
           )}
         </p>

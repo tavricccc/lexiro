@@ -49,7 +49,15 @@ export function SetWordAddition({ setId }: { setId: string }) {
       input: { input: "", review: "", addingPhotos: false },
       manual: {
         word: "",
-        senses: [{ id: "new", pos: "", meaning: "", examples: [""], supplementary: false }],
+        senses: [
+          {
+            id: "new",
+            pos: "",
+            meaning: "",
+            examples: [""],
+            supplementary: false,
+          },
+        ],
       },
     },
   );
@@ -58,7 +66,11 @@ export function SetWordAddition({ setId }: { setId: string }) {
     return (
       <ResumeChoice
         header={false}
-        description={t(saved.status === "invalid" ? "draft.invalidDescription" : "draft.addWordsDescription")}
+        description={t(
+          saved.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.addWordsDescription",
+        )}
         invalid={saved.status === "invalid"}
         onRestart={saved.restart}
         onResume={saved.resume}
@@ -109,7 +121,11 @@ function AddWordsFlow({
       <DraftSaveStatus status={persistence} />
       <div hidden={mode !== "manual"}>
         <div className="flex justify-end">
-          <Button onClick={() => update({ mode: "ai" })} type="button" variant="outline">
+          <Button
+            onClick={() => update({ mode: "ai" })}
+            type="button"
+            variant="outline"
+          >
             <Icons.generate />
             {t("setEditor.aiOrganize")}
           </Button>
@@ -149,7 +165,7 @@ function AddWordsFlow({
       {mode === "ai" &&
         (sources ? (
           <>
-          <WordAssistant
+            <WordAssistant
               initialRun={draft.run}
               onApply={add}
               onPhase={(phase) => update({ phase })}

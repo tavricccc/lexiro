@@ -97,11 +97,17 @@ describe("issues found in real Luna prompt trials", () => {
       JSON.stringify({
         items: [
           {
-            sentence: "During the chemistry lesson, a sensor could detect a small gas leak before anyone smelled it, so the teacher opened the windows and led everyone outside.",
+            sentence:
+              "During the chemistry lesson, a sensor could detect a small gas leak before anyone smelled it, so the teacher opened the windows and led everyone outside.",
             answer: "detect",
             usage: "detect",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["prevent", "repair", "announce"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["prevent", "repair", "announce"].map(
+              (option, index) => ({
+                option,
+                reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+              }),
+            ),
             distractors: ["prevent", "repair", "announce"],
           },
           {
@@ -110,7 +116,10 @@ describe("issues found in real Luna prompt trials", () => {
             answer: "reluctant",
             usage: "reluctant",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["eager", "proud", "ready"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["eager", "proud", "ready"].map((option, index) => ({
+              option,
+              reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+            })),
             distractors: ["eager", "proud", "ready"],
           },
           {
@@ -119,7 +128,12 @@ describe("issues found in real Luna prompt trials", () => {
             answer: "consequence",
             usage: "consequence",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["benefit", "symptom", "decision"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["benefit", "symptom", "decision"].map(
+              (option, index) => ({
+                option,
+                reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+              }),
+            ),
             distractors: ["benefit", "symptom", "decision"],
           },
         ],
@@ -154,7 +168,14 @@ describe("issues found in real Luna prompt trials", () => {
       "build",
       "carry",
       "choose",
-      "create", "cross", "decide", "deliver", "discover", "explain", "finish", "follow",
+      "create",
+      "cross",
+      "decide",
+      "deliver",
+      "discover",
+      "explain",
+      "finish",
+      "follow",
       "close",
     ].map((w) => word(w));
     const task = questionTask(words, "vocabulary", 2);

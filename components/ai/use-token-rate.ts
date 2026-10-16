@@ -2,7 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Output tokens divided by this batch's elapsed time, refreshed every 100 ms. */
-export function useTokenRate(tokens: number, active: boolean, startedAt: number) {
+export function useTokenRate(
+  tokens: number,
+  active: boolean,
+  startedAt: number,
+) {
   const latest = useRef(tokens);
   latest.current = tokens;
   const [rate, setRate] = useState(0);

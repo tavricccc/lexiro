@@ -28,21 +28,51 @@ afterEach(() => {
 
 describe("managed AI boundary", () => {
   it("preserves administrator diagnostics from failed question streams", async () => {
-    const diagnostic = { phase: "draft", status: 400, requestId: "req_test", provider: { code: "unsupported_parameter", param: "reasoning.effort" } };
-    const stream = new Response(`data: ${JSON.stringify({ type: "error", code: "upstream_unavailable", diagnostic })}\n\n`);
-    await expect(readManagedStream(stream, {})).rejects.toMatchObject({ code: "upstream_unavailable", debugMessage: JSON.stringify(diagnostic) });
+    const diagnostic = {
+      phase: "draft",
+      status: 400,
+      requestId: "req_test",
+      provider: { code: "unsupported_parameter", param: "reasoning.effort" },
+    };
+    const stream = new Response(
+      `data: ${JSON.stringify({ type: "error", code: "upstream_unavailable", diagnostic })}\n\n`,
+    );
+    await expect(readManagedStream(stream, {})).rejects.toMatchObject({
+      code: "upstream_unavailable",
+      debugMessage: JSON.stringify(diagnostic),
+    });
   });
   it("declares the reviewed question contract only for question requests", async () => {
-    const fetcher = vi.fn<typeof fetch>(async () => new Response([
-      'data: {"type":"response.output_text.delta","delta":"{}"}\n\n',
-      'data: {"type":"response.completed","response":{}}\n\n',
-    ].join("")));
+    const fetcher = vi.fn<typeof fetch>(
+      async () =>
+        new Response(
+          [
+            'data: {"type":"response.output_text.delta","delta":"{}"}\n\n',
+            'data: {"type":"response.completed","response":{}}\n\n',
+          ].join(""),
+        ),
+    );
     vi.stubGlobal("fetch", fetcher);
-    const session: AiSession = {model:"gpt-6-luna",tier:"lite",sessionId:crypto.randomUUID(),context:"",notices:[],usage:{}};
-    await managedTurn(session, {kind:"vocabulary",sources:[],difficulty:2});
-    await managedTurn(session, {kind:"explain",raw:"test"});
-    expect(new Headers(fetcher.mock.calls[0][1]!.headers).get("X-Question-Contract")).toBe("single-pass-v3");
-    expect(new Headers(fetcher.mock.calls[1][1]!.headers).has("X-Question-Contract")).toBe(false);
+    const session: AiSession = {
+      model: "gpt-6-luna",
+      tier: "lite",
+      sessionId: crypto.randomUUID(),
+      context: "",
+      notices: [],
+      usage: {},
+    };
+    await managedTurn(session, {
+      kind: "vocabulary",
+      sources: [],
+      difficulty: 2,
+    });
+    await managedTurn(session, { kind: "explain", raw: "test" });
+    expect(
+      new Headers(fetcher.mock.calls[0][1]!.headers).get("X-Question-Contract"),
+    ).toBe("single-pass-v3");
+    expect(
+      new Headers(fetcher.mock.calls[1][1]!.headers).has("X-Question-Contract"),
+    ).toBe(false);
   });
   it("reports review progress and rejects unapproved work without retrying", async () => {
     const phases = vi.fn();
@@ -50,31 +80,56 @@ describe("managed AI boundary", () => {
     const frames = [
       { type: "lexiro.question.progress", phase: "draft", characters: 100 },
       { type: "lexiro.question.progress", phase: "review", characters: 20 },
-      { type: "error", code: "question_quality_rejected", response: {
-        model: "gpt-6-luna", lexiro: { usageParts: [
-          { model: "gpt-6-luna", input: 200_000, output: 1_000 },
-          { model: "gpt-6-luna", input: 200_000, output: 1_000 },
-        ] },
-      } },
-    ].map((event) => `data: ${JSON.stringify(event)}\n\n`).join("");
-    const result = readManagedStream(new Response(frames), { onPhase: phases, onCharacters: characters });
-    await expect(result).rejects.toMatchObject({ code: "question_quality_rejected", retryable: false });
+      {
+        type: "error",
+        code: "question_quality_rejected",
+        response: {
+          model: "gpt-6-luna",
+          lexiro: {
+            usageParts: [
+              { model: "gpt-6-luna", input: 200_000, output: 1_000 },
+              { model: "gpt-6-luna", input: 200_000, output: 1_000 },
+            ],
+          },
+        },
+      },
+    ]
+      .map((event) => `data: ${JSON.stringify(event)}\n\n`)
+      .join("");
+    const result = readManagedStream(new Response(frames), {
+      onPhase: phases,
+      onCharacters: characters,
+    });
+    await expect(result).rejects.toMatchObject({
+      code: "question_quality_rejected",
+      retryable: false,
+    });
     expect(phases.mock.calls).toEqual([["generating"], ["reviewing"]]);
     expect(characters.mock.calls).toEqual([[0], [100], [20]]);
-    try { await result; } catch (error) {
-      expect(addUsage({}, (error as {usage: Parameters<typeof addUsage>[1]}).usage).costUsd).toBeCloseTo(0.041);
+    try {
+      await result;
+    } catch (error) {
+      expect(
+        addUsage({}, (error as { usage: Parameters<typeof addUsage>[1] }).usage)
+          .costUsd,
+      ).toBeCloseTo(0.041);
     }
   });
   it("prices each review response individually before summing", () => {
     const parts = [
-      {model: "gpt-6-luna", input: 200_000, output: 1_000, cached: 50_000},
-      {model: "gpt-6-luna", input: 200_000, output: 1_000},
+      { model: "gpt-6-luna", input: 200_000, output: 1_000, cached: 50_000 },
+      { model: "gpt-6-luna", input: 200_000, output: 1_000 },
     ];
-    const usage = addUsage({}, {model: "gpt-6-luna", input: 400_000, output: 2_000, parts});
+    const usage = addUsage(
+      {},
+      { model: "gpt-6-luna", input: 400_000, output: 2_000, parts },
+    );
     expect(usage.costUsd).toBeCloseTo(0.0365);
     expect(usage.uncachedCostUsd).toBeCloseTo(0.041);
-    expect(responseCost({parts: [parts[0], {model: "gpt-6-luna"}]})).toBeNull();
-    addUsage(usage, {model: "gpt-6-luna", parts: [{model: "gpt-6-luna"}]});
+    expect(
+      responseCost({ parts: [parts[0], { model: "gpt-6-luna" }] }),
+    ).toBeNull();
+    addUsage(usage, { model: "gpt-6-luna", parts: [{ model: "gpt-6-luna" }] });
     addUsage(usage, parts[1]);
     expect(usage.costUsd).toBeUndefined();
   });

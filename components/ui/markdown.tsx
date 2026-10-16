@@ -108,13 +108,16 @@ function renderBlocks(content: string): ReactNode[] {
 const INLINE_PATTERN = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/gu;
 
 function renderInline(text: string): ReactNode[] {
-  return text.split(INLINE_PATTERN).filter(Boolean).map((token, index) => {
-    if (token.startsWith("**") && token.endsWith("**"))
-      return <strong key={index}>{token.slice(2, -2)}</strong>;
-    if (token.startsWith("`") && token.endsWith("`"))
-      return <code key={index}>{token.slice(1, -1)}</code>;
-    if (token.startsWith("*") && token.endsWith("*"))
-      return <em key={index}>{token.slice(1, -1)}</em>;
-    return <span key={index}>{token}</span>;
-  });
+  return text
+    .split(INLINE_PATTERN)
+    .filter(Boolean)
+    .map((token, index) => {
+      if (token.startsWith("**") && token.endsWith("**"))
+        return <strong key={index}>{token.slice(2, -2)}</strong>;
+      if (token.startsWith("`") && token.endsWith("`"))
+        return <code key={index}>{token.slice(1, -1)}</code>;
+      if (token.startsWith("*") && token.endsWith("*"))
+        return <em key={index}>{token.slice(1, -1)}</em>;
+      return <span key={index}>{token}</span>;
+    });
 }

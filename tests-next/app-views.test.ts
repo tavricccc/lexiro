@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { matchScreen } from "@/components/app-views";
-import { canNavigateInPlace, isInAppHref, navigate } from "@/lib/app-navigation";
+import {
+  canNavigateInPlace,
+  isInAppHref,
+  navigate,
+} from "@/lib/app-navigation";
 
 describe("client view host", () => {
   it("draws every app address and prefers literal segments over parameters", () => {
@@ -22,7 +26,10 @@ describe("client view host", () => {
       expect(matchScreen(pathname), pathname).not.toBeNull();
     expect(matchScreen("/app/sets/new")?.params).toEqual([]);
     expect(matchScreen("/app/rooms/new")?.params).toEqual([]);
-    expect(matchScreen("/app/sets/abc/words/w%201/edit")?.params).toEqual(["abc", "w 1"]);
+    expect(matchScreen("/app/sets/abc/words/w%201/edit")?.params).toEqual([
+      "abc",
+      "w 1",
+    ]);
     expect(matchScreen("/app/nothing/here")).toBeNull();
   });
 

@@ -54,17 +54,23 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
     }
   }, [key]);
 
-  const update = useCallback((patch: Partial<T>) => {
-    const next = { ...draftRef.current, ...patch };
-    draftRef.current = next;
-    setDraft(next);
-    try {
-      localStorage.setItem(key, JSON.stringify({ schemaVersion: 1, value: next }));
-      setPersistence("saved");
-    } catch {
-      setPersistence("error");
-    }
-  }, [key]);
+  const update = useCallback(
+    (patch: Partial<T>) => {
+      const next = { ...draftRef.current, ...patch };
+      draftRef.current = next;
+      setDraft(next);
+      try {
+        localStorage.setItem(
+          key,
+          JSON.stringify({ schemaVersion: 1, value: next }),
+        );
+        setPersistence("saved");
+      } catch {
+        setPersistence("error");
+      }
+    },
+    [key],
+  );
 
   const resume = useCallback(() => {
     const saved = pending!;
@@ -97,5 +103,14 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
     }
   }, [key]);
 
-  return { draft, pending, status, persistence, update, resume, restart, clear };
+  return {
+    draft,
+    pending,
+    status,
+    persistence,
+    update,
+    resume,
+    restart,
+    clear,
+  };
 }

@@ -61,11 +61,7 @@ export function SetWordList({
           className="py-[var(--row-padding-block)]"
           key={entry.wordKey}
         >
-          <SetWordRow
-            entry={entry}
-            setId={setId}
-            returnTo={returnTo}
-          />
+          <SetWordRow entry={entry} setId={setId} returnTo={returnTo} />
         </StaggerItem>
       ))}
     </StaggerList>

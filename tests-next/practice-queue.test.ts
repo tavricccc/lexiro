@@ -1,9 +1,4 @@
-import type {
-  LibraryQuestion,
-  SenseId,
-  StudyWord,
-  WordKey,
-} from "@/types";
+import type { LibraryQuestion, SenseId, StudyWord, WordKey } from "@/types";
 import { describe, expect, it } from "vitest";
 
 import { buildQuestionGroups } from "@/components/practice/practice-content";
@@ -95,13 +90,7 @@ describe("practice queue", () => {
     expect(new Set(queue.map((entry) => entry.task))).toEqual(
       new Set(["meaning", "vocabulary"]),
     );
-    expect(
-      new Set(
-        queue.map((entry) =>
-          entry.item.wordKey,
-        ),
-      ).size,
-    ).toBe(4);
+    expect(new Set(queue.map((entry) => entry.item.wordKey)).size).toBe(4);
   });
   it("stops at the requested length", () => {
     const queue = buildPracticeQueue({
@@ -131,7 +120,10 @@ describe("practice queue", () => {
   });
 
   it("keeps retired grammar records out of active practice without mutating the stored question", () => {
-    const retired = { ...vocabularyQuestion(1), questionStyle: "grammar" as const };
+    const retired = {
+      ...vocabularyQuestion(1),
+      questionStyle: "grammar" as const,
+    };
     expect(buildQuestionGroups([retired], {})).toEqual([[]]);
     expect(retired.questionStyle).toBe("grammar");
   });
@@ -215,6 +207,4 @@ describe("practice queue", () => {
     expect(counts.vocabulary).toBe(1);
     expect(counts.reading).toBe(0);
   });
-
-
 });

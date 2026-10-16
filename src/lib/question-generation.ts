@@ -163,7 +163,6 @@ export function filterQuestionsForWords(
   );
 }
 
-
 /**
  * Parses the model's reply and assembles finished questions from it.
  *
@@ -183,12 +182,7 @@ export function normalizeQuestionGenerationJson(
   }
   const qualityIssue = generatedQuestionQualityIssue(value, kind, difficulty);
   if (qualityIssue) throw new Error(qualityIssue);
-  const assembled = assembleGeneratedQuestions(
-    value,
-    kind,
-    difficulty,
-    words,
-  );
+  const assembled = assembleGeneratedQuestions(value, kind, difficulty, words);
   if (assembled.dropped.length) throw new Error(assembled.dropped.join("；"));
   return JSON.stringify(assembled.payload);
 }

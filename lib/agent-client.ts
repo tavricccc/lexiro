@@ -63,7 +63,7 @@ export async function agentJson<T>(
                   ? t("rooms.full")
                   : code === "room_ended"
                     ? t("rooms.ended")
-            : (value.error?.message ?? t("agent.requestFailed")),
+                    : (value.error?.message ?? t("agent.requestFailed")),
       );
     }
     return value as T;

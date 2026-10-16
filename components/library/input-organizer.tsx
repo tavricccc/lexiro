@@ -100,12 +100,18 @@ export function InputOrganizer({
   const tokenRate = useTokenRate(tokens, busy, startedAt);
   const controller = useRef<AbortController | null>(null);
   const textSession = useRef<ReturnType<typeof createAiSession> | null>(null);
-  const photoSessions = useRef(new Map<number, ReturnType<typeof createAiSession>>());
+  const photoSessions = useRef(
+    new Map<number, ReturnType<typeof createAiSession>>(),
+  );
   const onDraftRef = useRef(onDraftChange);
   onDraftRef.current = onDraftChange;
   const firstDraft = useRef(true);
-  const preferredModel = useAiPreferencesStore((store) => store.preferences.model);
-  const [modelOverride, setChosenModel] = useState<AiModel | undefined>(initialDraft?.model);
+  const preferredModel = useAiPreferencesStore(
+    (store) => store.preferences.model,
+  );
+  const [modelOverride, setChosenModel] = useState<AiModel | undefined>(
+    initialDraft?.model,
+  );
   const chosenModel = modelOverride ?? preferredModel;
   const [tier, setTier] = useState<Tier>(initialDraft?.tier ?? "lite");
   useEffect(() => {
@@ -186,15 +192,24 @@ export function InputOrganizer({
 
   const organizeText = async () => {
     const current = startRun();
-    const session = textSession.current?.pendingTurn && textSession.current.context === input && textSession.current.model === chosenModel && textSession.current.tier === tier
-      ? textSession.current : createAiSession(tier, input, chosenModel);
+    const session =
+      textSession.current?.pendingTurn &&
+      textSession.current.context === input &&
+      textSession.current.model === chosenModel &&
+      textSession.current.tier === tier
+        ? textSession.current
+        : createAiSession(tier, input, chosenModel);
     textSession.current = session;
     let reply: Awaited<ReturnType<typeof managedTurn>> | undefined;
     try {
       reply = await managedTurn(
         session,
         { kind: "organizeText", raw: input },
-        { signal: current.signal, onTokens: setTokens, onBatchStartedAt: setStartedAt },
+        {
+          signal: current.signal,
+          onTokens: setTokens,
+          onBatchStartedAt: setStartedAt,
+        },
       );
       recordUsage(reply.usage);
       current.signal.throwIfAborted();
@@ -286,7 +301,9 @@ export function InputOrganizer({
           }
         }
         let reply: Awaited<ReturnType<typeof readManagedStream>> | undefined;
-        const photoSession = photoSessions.current.get(batchStart) ?? createAiSession(tier, "photos", model);
+        const photoSession =
+          photoSessions.current.get(batchStart) ??
+          createAiSession(tier, "photos", model);
         photoSessions.current.set(batchStart, photoSession);
         const session = photoSession.sessionId;
         setTokens(0);
@@ -295,27 +312,32 @@ export function InputOrganizer({
           setPhotoProgress(
             (progress) => progress && { ...progress, phase: "organizing" },
           );
-          reply = await managedGeneration(photoSession, "/organize", {
-            method: "POST",
-            headers: {
-              "content-type": "text/plain",
-              "x-session-id": session,
-              "x-ai-model": model,
-              "x-ai-tier": tier,
+          reply = await managedGeneration(
+            photoSession,
+            "/organize",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "text/plain",
+                "x-session-id": session,
+                "x-ai-model": model,
+                "x-ai-tier": tier,
+              },
+              body: images.join("\n"),
+              signal: current.signal,
             },
-            body: images.join("\n"),
-            signal: current.signal,
-          }, {
-            signal: current.signal,
-            onTokens: setTokens,
-            onBatchStartedAt: setStartedAt,
-            onCharacters: (characters) =>
-              setPhotoProgress((progress) =>
-                controller.current === current && progress
-                  ? { ...progress, characters }
-                  : progress,
-              ),
-          });
+            {
+              signal: current.signal,
+              onTokens: setTokens,
+              onBatchStartedAt: setStartedAt,
+              onCharacters: (characters) =>
+                setPhotoProgress((progress) =>
+                  controller.current === current && progress
+                    ? { ...progress, characters }
+                    : progress,
+                ),
+            },
+          );
           recordUsage(reply.usage);
           photoSessions.current.delete(batchStart);
           current.signal.throwIfAborted();

@@ -2,7 +2,6 @@ import type { LibraryState } from "@/types";
 import type { SyncJournal } from "@/src/lib/sync-journal";
 import { describe, expect, it } from "vitest";
 
-
 import { applyCloudRecords, cloudRecordId } from "@/src/lib/cloud-records";
 import { pendingRecords } from "@/src/lib/cloud-sync";
 import { createUncategorizedFolder } from "@/src/lib/folders";

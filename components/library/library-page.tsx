@@ -60,10 +60,7 @@ export function LibraryPage({
   const [importing, setImporting] = useState(false);
   const importInput = useRef<HTMLInputElement>(null);
 
-  const setMetrics = useMemo(
-    () => buildLibrarySetMetrics(state),
-    [state],
-  );
+  const setMetrics = useMemo(() => buildLibrarySetMetrics(state), [state]);
   const currentFolder = state.folders.find(
     (folder) =>
       folder.id === currentFolderId && folder.id !== UNCATEGORIZED_FOLDER_ID,

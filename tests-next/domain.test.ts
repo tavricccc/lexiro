@@ -1,12 +1,20 @@
 import { describe, expect, it } from "vitest";
 
-import { asSenseId, buildSenseId, canonicalizeQuestion, normalizePartOfSpeech, normalizeWordKey } from "@/src/lib/library";
+import {
+  asSenseId,
+  buildSenseId,
+  canonicalizeQuestion,
+  normalizePartOfSpeech,
+  normalizeWordKey,
+} from "@/src/lib/library";
 
 describe("canonical vocabulary", () => {
   it("normalizes word and part of speech identity", () => {
     expect(normalizeWordKey("  Take   Off ")).toBe("take off");
     expect(normalizePartOfSpeech("Verb")).toBe("v.");
-    expect(buildSenseId(normalizeWordKey("Word"), "noun", "文字")).toBe(buildSenseId(normalizeWordKey("word"), "n.", "文字"));
+    expect(buildSenseId(normalizeWordKey("Word"), "noun", "文字")).toBe(
+      buildSenseId(normalizeWordKey("word"), "n.", "文字"),
+    );
   });
 
   it("creates stable question fingerprints from content", () => {
@@ -24,6 +32,8 @@ describe("canonical vocabulary", () => {
       createdAt: "2026-01-01T00:00:00.000Z",
       updatedAt: "2026-01-01T00:00:00.000Z",
     };
-    expect(canonicalizeQuestion(base).fingerprint).toBe(canonicalizeQuestion({ ...base, id: "two" }).fingerprint);
+    expect(canonicalizeQuestion(base).fingerprint).toBe(
+      canonicalizeQuestion({ ...base, id: "two" }).fingerprint,
+    );
   });
 });

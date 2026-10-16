@@ -90,9 +90,7 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
   ],
   [
     "sets/new/organize",
-    (_, query) => (
-      <AiSetOrganizer initialFolderId={param(query, "folderId")} />
-    ),
+    (_, query) => <AiSetOrganizer initialFolderId={param(query, "folderId")} />,
   ],
   [
     "sets/*",
@@ -195,10 +193,7 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
   ],
   ["rooms", () => <RoomsPage />],
   ["rooms/new", () => <RoomSetupPage />],
-  [
-    "rooms/*",
-    ([code]) => <RoomPage key={code} code={code.toUpperCase()} />,
-  ],
+  ["rooms/*", ([code]) => <RoomPage key={code} code={code.toUpperCase()} />],
   ["sync", () => <SyncPage />],
   ["me", () => <MePage />],
   ["me/agents", () => <AgentConnectionsPage />],

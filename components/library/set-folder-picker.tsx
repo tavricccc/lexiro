@@ -5,10 +5,7 @@ import type { VocabFolder } from "@/types";
 import type { SelectOption } from "@/components/ui/select-field";
 import { ListPicker, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
-import {
-  buildFolderOptions,
-  UNCATEGORIZED_FOLDER_ID,
-} from "@/src/lib/folders";
+import { buildFolderOptions, UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 
 export function buildSetFolderOptions(folders: VocabFolder[]): SelectOption[] {
   return [

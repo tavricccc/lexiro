@@ -2,7 +2,11 @@ import type { LibraryState } from "@/types";
 import { describe, expect, it } from "vitest";
 
 import { createUncategorizedFolder } from "@/src/lib/folders";
-import { buildSenseId, buildSetWordKey, normalizeWordKey } from "@/src/lib/library";
+import {
+  buildSenseId,
+  buildSetWordKey,
+  normalizeWordKey,
+} from "@/src/lib/library";
 import { createFullBackup, previewBackupImport } from "@/src/lib/full-backup";
 import { mergeLibraryStates } from "@/src/lib/library-merge";
 import { normalizeFullBackupPayload } from "@/src/lib/share";

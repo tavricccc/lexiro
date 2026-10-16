@@ -30,10 +30,7 @@ export function DataSection() {
   const working = useRef(false);
   const importInput = useRef<HTMLInputElement>(null);
   const preview = useMemo(
-    () =>
-      pending
-        ? previewBackupImport(pending.backup, library.state)
-        : null,
+    () => (pending ? previewBackupImport(pending.backup, library.state) : null),
     [pending, library.state],
   );
   const displayed = operation === "importing" ? reviewed : preview;

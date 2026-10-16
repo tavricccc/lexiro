@@ -1,7 +1,5 @@
 import type { User } from "firebase/auth";
-import type {
-  SyncJournal,
-} from "@/src/lib/sync-journal";
+import type { SyncJournal } from "@/src/lib/sync-journal";
 import type { LibraryCommitStats } from "@/src/lib/library-repository";
 import { beforeEach, afterEach, describe, expect, it, vi } from "vitest";
 import { emptyLibraryState } from "@/src/lib/library-repository";
@@ -31,7 +29,11 @@ vi.mock("@/src/lib/firebase", () => ({
 }));
 vi.mock("@/src/lib/cloud-client", () => ({
   accountNamespace: (uid: string) => `d1-v1:${uid}`,
-  getCloudClient: () => ({ uid: useCloudStore.getState().user?.uid, blobRevision: 0, request: vi.fn() }),
+  getCloudClient: () => ({
+    uid: useCloudStore.getState().user?.uid,
+    blobRevision: 0,
+    request: vi.fn(),
+  }),
 }));
 vi.mock("@/src/lib/library-repository", async (original) => ({
   ...(await original<typeof import("@/src/lib/library-repository")>()),

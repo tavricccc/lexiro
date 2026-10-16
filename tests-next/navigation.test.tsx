@@ -115,7 +115,12 @@ describe("navigation selection", () => {
     expect(consumeRouteDirection("/app/me/admin/usage")).toBe("child");
   });
   it("names the destinations primary navigation points at", () => {
-    for (const destination of ["/app", "/app/library", "/app/rooms", "/app/me"]) {
+    for (const destination of [
+      "/app",
+      "/app/library",
+      "/app/rooms",
+      "/app/me",
+    ]) {
       expect(isRootRoute(destination)).toBe(true);
     }
     // A screen you arrive at from a destination is not one of them, however

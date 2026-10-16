@@ -67,9 +67,11 @@ export function useRoom(code: string, name: string, enabled: boolean) {
         ({ ticket } = await requestRoomTicket(code, name));
       } catch (reason) {
         if (disposed) return;
-        const message = reason instanceof Error ? reason.message : String(reason);
+        const message =
+          reason instanceof Error ? reason.message : String(reason);
         // A room that is gone or full will not come back by retrying.
-        if (!navigator.onLine || /連線|network|fetch/i.test(message)) schedule();
+        if (!navigator.onLine || /連線|network|fetch/i.test(message))
+          schedule();
         else {
           setError(message);
           setConnection("closed");

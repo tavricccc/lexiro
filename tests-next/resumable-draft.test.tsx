@@ -23,14 +23,23 @@ describe("resumable flow drafts", () => {
     const second = renderHook(() => useResumableDraft(key, initial));
     await waitFor(() => expect(second.result.current.status).toBe("offer"));
     expect(second.result.current.draft).toEqual(initial);
-    expect(second.result.current.pending).toEqual({ step: "review", amount: 27 });
+    expect(second.result.current.pending).toEqual({
+      step: "review",
+      amount: 27,
+    });
     act(() => second.result.current.resume());
     expect(second.result.current.draft).toEqual({ step: "review", amount: 27 });
     expect(second.result.current.persistence).toBe("saved");
   });
 
   it("lets the user discard a saved run and begin again", async () => {
-    localStorage.setItem(key, JSON.stringify({ schemaVersion: 1, value: { step: "review", amount: 27 } }));
+    localStorage.setItem(
+      key,
+      JSON.stringify({
+        schemaVersion: 1,
+        value: { step: "review", amount: 27 },
+      }),
+    );
     const { result } = renderHook(() => useResumableDraft(key, initial));
     await waitFor(() => expect(result.current.status).toBe("offer"));
     act(() => result.current.restart());
@@ -52,6 +61,8 @@ describe("resumable flow drafts", () => {
 
     act(() => result.current.update({ amount: 13 }));
     expect(result.current.persistence).toBe("saved");
-    expect(JSON.parse(localStorage.getItem(key) ?? "null").value.amount).toBe(13);
+    expect(JSON.parse(localStorage.getItem(key) ?? "null").value.amount).toBe(
+      13,
+    );
   });
 });

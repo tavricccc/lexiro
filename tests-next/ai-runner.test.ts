@@ -19,13 +19,16 @@ function createRun(steps?: AiTaskStep<string>[]): AiRun<string> {
       count: 1,
       parse: (text: string) => [text],
     }));
-  const task = { id: "test", kind: "words" as const, billableCount: parts.length, context: "all sources", steps: parts };
+  const task = {
+    id: "test",
+    kind: "words" as const,
+    billableCount: parts.length,
+    context: "all sources",
+    steps: parts,
+  };
   return {
     task,
-    session: createAiSession(
-      "lite",
-      task.context,
-    ),
+    session: createAiSession("lite", task.context),
     pending: [...parts],
     items: [],
     completed: 0,
@@ -139,8 +142,11 @@ describe("task generation", () => {
       },
     ]);
     const send = vi.fn(
-      async (_session: unknown, _prompt: string, _options?: { repair?: string }) =>
-        reply("invalid"),
+      async (
+        _session: unknown,
+        _prompt: string,
+        _options?: { repair?: string },
+      ) => reply("invalid"),
     );
     const failure = await runTask(run, {
       signal: new AbortController().signal,

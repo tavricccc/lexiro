@@ -89,7 +89,10 @@ export function ResultPanel({
         </div>
       </header>
       <div className="study-finish text-center">
-        <Icons.success className="t-celebrate mx-auto mb-6 size-10" aria-hidden />
+        <Icons.success
+          className="t-celebrate mx-auto mb-6 size-10"
+          aria-hidden
+        />
         <h1 className="mb-5 type-page md:hidden">
           {t("practice.resultTitle")}
         </h1>

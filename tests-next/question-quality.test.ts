@@ -73,21 +73,42 @@ describe("high-school generation quality gate", () => {
         },
       ],
     };
-    reply.items.forEach((entry) => Object.assign(entry, {
-      explanation: "依據文章所述的行動與限制判斷。",
-      whyWrong: entry.distractors.map((option, index) => ({ option, reason: ["文章不支持這個選項。", "與文章情境矛盾。", "將可能性誤當成事實。"][index] })),
-    }));
+    reply.items.forEach((entry) =>
+      Object.assign(entry, {
+        explanation: "依據文章所述的行動與限制判斷。",
+        whyWrong: entry.distractors.map((option, index) => ({
+          option,
+          reason: [
+            "文章不支持這個選項。",
+            "與文章情境矛盾。",
+            "將可能性誤當成事實。",
+          ][index],
+        })),
+      }),
+    );
     const [step] = questionTask([source], "reading", 2).steps;
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(3);
-    const broken = { ...reply, items: reply.items.map((entry, index) => index === 1 ? { ...entry, evidence: ["Not in the passage."] } : entry) };
+    const broken = {
+      ...reply,
+      items: reply.items.map((entry, index) =>
+        index === 1 ? { ...entry, evidence: ["Not in the passage."] } : entry,
+      ),
+    };
     const recovery = step.recover!(JSON.stringify(broken));
     expect(recovery?.remaining).toHaveLength(1);
     const repairStep = recovery!.remaining[0];
-    expect(JSON.parse(repairStep.prompt).itemRepair).toMatchObject({ index: 1, passage: reply.passage });
+    expect(JSON.parse(repairStep.prompt).itemRepair).toMatchObject({
+      index: 1,
+      passage: reply.passage,
+    });
     expect(repairStep.stagedQuestions).toBe(2);
-    const [repaired] = repairStep.parse(JSON.stringify({ items: [reply.items[1]] }));
-    expect(repaired.kind === "reading" && repaired.passage).toBe(pack.kind === "reading" && pack.passage);
+    const [repaired] = repairStep.parse(
+      JSON.stringify({ items: [reply.items[1]] }),
+    );
+    expect(repaired.kind === "reading" && repaired.passage).toBe(
+      pack.kind === "reading" && pack.passage,
+    );
     expect(repaired.kind === "reading" && repaired.questions).toHaveLength(3);
     const noInference = {
       ...reply,
@@ -147,13 +168,31 @@ describe("high-school generation quality gate", () => {
 
   it("checks full passage length even for a final batch with one blank", () => {
     const [step] = questionTask([source], "wordBank", 2).steps;
-    const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
+    const options = [
+      "detect",
+      "repair",
+      "contain",
+      "prevent",
+      "support",
+      "observe",
+      "record",
+      "compare",
+      "measure",
+      "repeat",
+    ];
     const reply = {
       title: "A safety project",
       passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
       options,
       optionMeanings: options.map((option) => ({ option, meaning: "動作" })),
-      blanks: [{ ref: "s1", answer: "detect", usage: "detect signals", explanation: "察覺到訊號。" }],
+      blanks: [
+        {
+          ref: "s1",
+          answer: "detect",
+          usage: "detect signals",
+          explanation: "察覺到訊號。",
+        },
+      ],
     };
     const [pack] = step.parse(JSON.stringify(reply));
     expect(pack.kind === "reading" && pack.questions).toHaveLength(1);
@@ -167,56 +206,234 @@ describe("high-school generation quality gate", () => {
 
   it("keeps explanation ownership despite reason order and repairs only an unrelated option", () => {
     const [step] = questionTask([source], "vocabulary", 2).steps;
-    const [question] = step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [...item.whyWrong].reverse() }] }));
-    expect(question.kind === "multipleChoice" && question.whyWrong).toMatchObject({
-      prevent: "尚未阻止漏氣。", repair: "尚未進行修理。", contain: "沒有圍堵漏氣。",
+    const [question] = step.parse(
+      JSON.stringify({
+        items: [{ ...item, whyWrong: [...item.whyWrong].reverse() }],
+      }),
+    );
+    expect(
+      question.kind === "multipleChoice" && question.whyWrong,
+    ).toMatchObject({
+      prevent: "尚未阻止漏氣。",
+      repair: "尚未進行修理。",
+      contain: "沒有圍堵漏氣。",
     });
-    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [{ option: "detect", reason: "這是正解。" }, ...item.whyWrong.slice(1)] }] }))).toThrow(/不屬於本題干擾選項/);
-    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: [item.whyWrong[0], item.whyWrong[0], item.whyWrong[2]] }] }))).toThrow(/解說重複/);
-    expect(() => step.parse(JSON.stringify({ items: [{ ...item, explanation: "The sensor notices the leak first." }] }))).toThrow(/必須以中文/);
-    expect(() => step.parse(JSON.stringify({ items: [{ ...item, whyWrong: item.whyWrong.map((entry) => ({ ...entry, reason: "This action is not described." })) }] }))).toThrow(/必須以中文/);
+    expect(() =>
+      step.parse(
+        JSON.stringify({
+          items: [
+            {
+              ...item,
+              whyWrong: [
+                { option: "detect", reason: "這是正解。" },
+                ...item.whyWrong.slice(1),
+              ],
+            },
+          ],
+        }),
+      ),
+    ).toThrow(/不屬於本題干擾選項/);
+    expect(() =>
+      step.parse(
+        JSON.stringify({
+          items: [
+            {
+              ...item,
+              whyWrong: [item.whyWrong[0], item.whyWrong[0], item.whyWrong[2]],
+            },
+          ],
+        }),
+      ),
+    ).toThrow(/解說重複/);
+    expect(() =>
+      step.parse(
+        JSON.stringify({
+          items: [
+            { ...item, explanation: "The sensor notices the leak first." },
+          ],
+        }),
+      ),
+    ).toThrow(/必須以中文/);
+    expect(() =>
+      step.parse(
+        JSON.stringify({
+          items: [
+            {
+              ...item,
+              whyWrong: item.whyWrong.map((entry) => ({
+                ...entry,
+                reason: "This action is not described.",
+              })),
+            },
+          ],
+        }),
+      ),
+    ).toThrow(/必須以中文/);
   });
 
   it("explains shared-bank blanks once and keeps option meanings at set level", () => {
     const [step] = questionTask([source], "wordBank", 2).steps;
-    const options = ["detect", "repair", "contain", "prevent", "support", "observe", "record", "compare", "measure", "repeat"];
-    const optionMeanings = options.map((option) => ({ option, meaning: `${option} 詞義` }));
-    const valid = { ref: "s1", answer: "detect", usage: "detect signals", explanation: "察覺到訊號。" };
-    const draft = { title: "A safety project", passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`, options, optionMeanings, blanks: [{ ...valid, explanation: "Notices signals." }] };
+    const options = [
+      "detect",
+      "repair",
+      "contain",
+      "prevent",
+      "support",
+      "observe",
+      "record",
+      "compare",
+      "measure",
+      "repeat",
+    ];
+    const optionMeanings = options.map((option) => ({
+      option,
+      meaning: `${option} 詞義`,
+    }));
+    const valid = {
+      ref: "s1",
+      answer: "detect",
+      usage: "detect signals",
+      explanation: "察覺到訊號。",
+    };
+    const draft = {
+      title: "A safety project",
+      passage: `Students detect ${Array.from({ length: 238 }, () => "signals").join(" ")}.`,
+      options,
+      optionMeanings,
+      blanks: [{ ...valid, explanation: "Notices signals." }],
+    };
     const recovery = step.recover!(JSON.stringify(draft));
     expect(recovery?.remaining).toHaveLength(1);
-    expect(JSON.parse(recovery!.remaining[0].prompt).itemRepair.extraOptions).toEqual(options.slice(1));
-    const [pack] = recovery!.remaining[0].parse(JSON.stringify({ items: [valid] }));
+    expect(
+      JSON.parse(recovery!.remaining[0].prompt).itemRepair.extraOptions,
+    ).toEqual(options.slice(1));
+    const [pack] = recovery!.remaining[0].parse(
+      JSON.stringify({ items: [valid] }),
+    );
     expect(pack.kind === "reading" && pack.optionBank).toHaveLength(10);
-    expect(pack.kind === "reading" && pack.questions[0].whyWrong).toHaveProperty("repair", "repair 詞義");
-    expect(pack.kind === "reading" && pack.questions[0].whyWrong).not.toHaveProperty("detect");
-    expect(step.recover!(JSON.stringify({ ...draft, options: options.slice(1) }))).toBeNull();
-    expect(generatedQuestionQualityIssue({ ...draft, blanks: [valid], optionMeanings: optionMeanings.slice(1) }, "wordBank", 2)).toMatch(/optionMeanings/);
-    expect(step.recover!(JSON.stringify({ ...draft, blanks: [valid], optionMeanings: optionMeanings.slice(1) }))).toBeNull();
-    const extraInProse = { ...draft, passage: draft.passage.replace("Students detect", "Students repair tools and detect"), blanks: [valid] };
-    expect(generatedQuestionQualityIssue(extraInProse, "wordBank", 2)).toBeNull();
+    expect(
+      pack.kind === "reading" && pack.questions[0].whyWrong,
+    ).toHaveProperty("repair", "repair 詞義");
+    expect(
+      pack.kind === "reading" && pack.questions[0].whyWrong,
+    ).not.toHaveProperty("detect");
+    expect(
+      step.recover!(JSON.stringify({ ...draft, options: options.slice(1) })),
+    ).toBeNull();
+    expect(
+      generatedQuestionQualityIssue(
+        { ...draft, blanks: [valid], optionMeanings: optionMeanings.slice(1) },
+        "wordBank",
+        2,
+      ),
+    ).toMatch(/optionMeanings/);
+    expect(
+      step.recover!(
+        JSON.stringify({
+          ...draft,
+          blanks: [valid],
+          optionMeanings: optionMeanings.slice(1),
+        }),
+      ),
+    ).toBeNull();
+    const extraInProse = {
+      ...draft,
+      passage: draft.passage.replace(
+        "Students detect",
+        "Students repair tools and detect",
+      ),
+      blanks: [valid],
+    };
+    expect(
+      generatedQuestionQualityIssue(extraInProse, "wordBank", 2),
+    ).toBeNull();
     const [extraPack] = step.parse(JSON.stringify(extraInProse));
-    expect(extraPack.kind === "reading" && extraPack.passage).toContain("Students repair tools and __1__ signals");
+    expect(extraPack.kind === "reading" && extraPack.passage).toContain(
+      "Students repair tools and __1__ signals",
+    );
   });
   it("keeps whole, separated discourse sentences and rejects repairs that would change the bank", () => {
-    const sentences = Array.from({ length: 12 }, (_, index) => `During stage ${index + 1}, the students carefully recorded every result from their project before comparing the observations with earlier notes and discussing possible explanations together.`);
+    const sentences = Array.from(
+      { length: 12 },
+      (_, index) =>
+        `During stage ${index + 1}, the students carefully recorded every result from their project before comparing the observations with earlier notes and discussing possible explanations together.`,
+    );
     const selected = [2, 4, 6, 8].map((index) => sentences[index]);
-    const options = [...selected, "The team immediately abandoned the project without collecting any evidence."];
-    const draft = { title: "A project", passage: sentences.join(" "), options, unusedReason: "放棄專案與後續的紀錄步驟矛盾。",
-      removals: selected.map((sentence) => ({ sentence, explanation: "上下文描述同一階段的研究步驟。" })) };
+    const options = [
+      ...selected,
+      "The team immediately abandoned the project without collecting any evidence.",
+    ];
+    const draft = {
+      title: "A project",
+      passage: sentences.join(" "),
+      options,
+      unusedReason: "放棄專案與後續的紀錄步驟矛盾。",
+      removals: selected.map((sentence) => ({
+        sentence,
+        explanation: "上下文描述同一階段的研究步驟。",
+      })),
+    };
     expect(generatedQuestionQualityIssue(draft, "discourse", 2)).toBeNull();
-    expect(generatedQuestionQualityIssue({ ...draft, unusedReason: undefined }, "discourse", 2)).toMatch(/unusedReason/);
-    const [pack] = questionTask([source], "discourse", 2).steps[0].parse(JSON.stringify(draft));
-    expect(pack.kind === "reading" && pack.questions.map((child) => Object.keys(child.whyWrong ?? {}))).toEqual(Array(4).fill([options[4]]));
-    const withUnusedSentence = { ...draft, passage: sentences.map((sentence, index) => index === 10 ? options[4] : sentence).join(" ") };
-    expect(generatedQuestionQualityIssue(withUnusedSentence, "discourse", 2)).toMatch(/額外誘答選項.*文章/);
-    expect(questionTask([source], "discourse", 2).steps[0].recover!(JSON.stringify(withUnusedSentence))).toBeNull();
-    const adjacent = { ...draft, removals: draft.removals.map((entry, index) => index === 1 ? { ...entry, sentence: sentences[3] } : entry) };
-    expect(generatedQuestionQualityIssue(adjacent, "discourse", 2)).toMatch(/相鄰/);
-    expect(questionTask([source], "discourse", 2).steps[0].recover!(JSON.stringify(adjacent))).toBeNull();
+    expect(
+      generatedQuestionQualityIssue(
+        { ...draft, unusedReason: undefined },
+        "discourse",
+        2,
+      ),
+    ).toMatch(/unusedReason/);
+    const [pack] = questionTask([source], "discourse", 2).steps[0].parse(
+      JSON.stringify(draft),
+    );
+    expect(
+      pack.kind === "reading" &&
+        pack.questions.map((child) => Object.keys(child.whyWrong ?? {})),
+    ).toEqual(Array(4).fill([options[4]]));
+    const withUnusedSentence = {
+      ...draft,
+      passage: sentences
+        .map((sentence, index) => (index === 10 ? options[4] : sentence))
+        .join(" "),
+    };
+    expect(
+      generatedQuestionQualityIssue(withUnusedSentence, "discourse", 2),
+    ).toMatch(/額外誘答選項.*文章/);
+    expect(
+      questionTask([source], "discourse", 2).steps[0].recover!(
+        JSON.stringify(withUnusedSentence),
+      ),
+    ).toBeNull();
+    const adjacent = {
+      ...draft,
+      removals: draft.removals.map((entry, index) =>
+        index === 1 ? { ...entry, sentence: sentences[3] } : entry,
+      ),
+    };
+    expect(generatedQuestionQualityIssue(adjacent, "discourse", 2)).toMatch(
+      /相鄰/,
+    );
+    expect(
+      questionTask([source], "discourse", 2).steps[0].recover!(
+        JSON.stringify(adjacent),
+      ),
+    ).toBeNull();
     for (const sentence of [sentences[0], sentences[11]])
-      expect(generatedQuestionQualityIssue({ ...draft, removals: [{ ...draft.removals[0], sentence }] }, "discourse", 2)).toMatch(/首句或末句/);
-    expect(generatedQuestionQualityIssue({ ...draft, removals: [{ ...draft.removals[0], sentence: selected[0].slice(12) }] }, "discourse", 2)).toMatch(/完整原句/);
+      expect(
+        generatedQuestionQualityIssue(
+          { ...draft, removals: [{ ...draft.removals[0], sentence }] },
+          "discourse",
+          2,
+        ),
+      ).toMatch(/首句或末句/);
+    expect(
+      generatedQuestionQualityIssue(
+        {
+          ...draft,
+          removals: [{ ...draft.removals[0], sentence: selected[0].slice(12) }],
+        },
+        "discourse",
+        2,
+      ),
+    ).toMatch(/完整原句/);
   });
 
   it("applies both limits to original passages before cutting whole sentences", () => {

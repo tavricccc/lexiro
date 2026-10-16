@@ -47,11 +47,14 @@ function normalizeWord(value: unknown, index: number): WordEntry {
 
 function normalizeQuestions(value: unknown, field: string): LibraryQuestion[] {
   if (!Array.isArray(value)) throw new Error(`${field} 格式錯誤`);
-  const parsed = parseLibraryImportValue({
-    schemaVersion: 1,
-    kind: "questions",
-    questions: value,
-  }, { requireEnglish: false });
+  const parsed = parseLibraryImportValue(
+    {
+      schemaVersion: 1,
+      kind: "questions",
+      questions: value,
+    },
+    { requireEnglish: false },
+  );
   if (!parsed.valid || parsed.data.kind !== "questions")
     throw new Error(parsed.valid ? `${field} 格式錯誤` : parsed.error);
   return parsed.data.questions;

@@ -1,7 +1,11 @@
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { AiRequestError } from "@/src/lib/ai/errors";
 import type { AiSession, AiTurnOptions, AiTurnResult } from "@/src/types/ai";
-import { responseCost, QUESTION_KINDS, QUESTION_GENERATION_CONTRACT } from "@lexiro/ai-contract";
+import {
+  responseCost,
+  QUESTION_KINDS,
+  QUESTION_GENERATION_CONTRACT,
+} from "@lexiro/ai-contract";
 import type {
   AccountInfo,
   GenerationInput,
@@ -38,7 +42,11 @@ export async function managedFetch(
     ...init,
     signal: AbortSignal.any([
       ...(init.signal ? [init.signal] : []),
-      AbortSignal.timeout(/^\/(generate|organize|generation)(\/|$)/.test(path) ? 660_000 : 120_000),
+      AbortSignal.timeout(
+        /^\/(generate|organize|generation)(\/|$)/.test(path)
+          ? 660_000
+          : 120_000,
+      ),
     ]),
   };
   const base = process.env.NEXT_PUBLIC_AI_WORKER_URL;
@@ -103,7 +111,8 @@ export async function managedFetch(
           typeof body?.error?.code === "string" ? body.error.code : undefined;
         if (typeof body?.error?.message === "string")
           debugMessage = body.error.message;
-        if (body?.error?.diagnostic) debugMessage = JSON.stringify(body.error.diagnostic);
+        if (body?.error?.diagnostic)
+          debugMessage = JSON.stringify(body.error.diagnostic);
       } catch {
         /* Keep the response text so the photo flow can expose it for debugging. */
       }
@@ -129,14 +138,16 @@ export async function managedFetch(
                     ? "ai.generationExpired"
                     : code === "generation_update_required"
                       ? "managed.questionUpdateRequired"
-                  : code === "question_quality_rejected"
-                    ? "managed.questionQualityRejected"
-                    : code === "question_update_required"
-                      ? "managed.questionUpdateRequired"
-                  : adminRequest && adminMessages[response.status]
-                    ? adminMessages[response.status]
-                    : (messages[response.status] ??
-                      (adminRequest ? "admin.failed" : "managed.failed")),
+                      : code === "question_quality_rejected"
+                        ? "managed.questionQualityRejected"
+                        : code === "question_update_required"
+                          ? "managed.questionUpdateRequired"
+                          : adminRequest && adminMessages[response.status]
+                            ? adminMessages[response.status]
+                            : (messages[response.status] ??
+                              (adminRequest
+                                ? "admin.failed"
+                                : "managed.failed")),
         ),
         {
           status: response.status,
@@ -186,12 +197,17 @@ export async function readManagedStream(
     text = "",
     id: string | undefined,
     complete = false;
-  const { countTokens } = options.onTokens ? await import("gpt-tokenizer/encoding/o200k_base") : { countTokens: undefined };
+  const { countTokens } = options.onTokens
+    ? await import("gpt-tokenizer/encoding/o200k_base")
+    : { countTokens: undefined };
   let reviewed = false;
   options.onTokens?.(0);
-  const tokenTimer = countTokens ? setInterval(() => {
-    if (!reviewed) options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
-  }, 100) : undefined;
+  const tokenTimer = countTokens
+    ? setInterval(() => {
+        if (!reviewed)
+          options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
+      }, 100)
+    : undefined;
   const terminal: {
     stopReason: AiTurnResult["stopReason"];
     usage: TokenUsage;
@@ -246,12 +262,25 @@ export async function readManagedStream(
       options.onPhase?.("generating");
     }
     if (data.type === "error" || data.type === "response.failed")
-      throw new AiRequestError(t(data.code === "question_quality_rejected" ? "managed.questionQualityRejected" : "managed.failed"), {
-        code: data.error?.code ?? data.code ?? "generation_failed",
-        retryable: false,
-        usage: { ...terminal.usage },
-        debugMessage: data.error?.diagnostic ? JSON.stringify(data.error.diagnostic) : data.diagnostic ? JSON.stringify(data.diagnostic) : data.response?.lexiro?.diagnostic ? JSON.stringify(data.response.lexiro.diagnostic) : undefined,
-      });
+      throw new AiRequestError(
+        t(
+          data.code === "question_quality_rejected"
+            ? "managed.questionQualityRejected"
+            : "managed.failed",
+        ),
+        {
+          code: data.error?.code ?? data.code ?? "generation_failed",
+          retryable: false,
+          usage: { ...terminal.usage },
+          debugMessage: data.error?.diagnostic
+            ? JSON.stringify(data.error.diagnostic)
+            : data.diagnostic
+              ? JSON.stringify(data.diagnostic)
+              : data.response?.lexiro?.diagnostic
+                ? JSON.stringify(data.response.lexiro.diagnostic)
+                : undefined,
+        },
+      );
     if (data.type === "response.completed") {
       complete = true;
       terminal.stopReason = "complete";
@@ -278,7 +307,8 @@ export async function readManagedStream(
     }
   } finally {
     clearInterval(tokenTimer);
-    if (countTokens && !reviewed) options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
+    if (countTokens && !reviewed)
+      options.onTokens?.(countTokens(text, { allowedSpecial: new Set() }));
     await reader.cancel();
     reader.releaseLock();
     notifyManagedAccountChanged();
@@ -318,30 +348,36 @@ export async function managedTurn(
 ): Promise<AiTurnResult> {
   options.onPhase?.("connecting");
   const signal = options.signal;
-  const init =
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json",
-        ...((QUESTION_KINDS as readonly string[]).includes(input.kind)
-          ? { "X-Question-Contract": QUESTION_GENERATION_CONTRACT } : {}),
-      },
-      signal,
-      body: JSON.stringify({
-        ...input,
-        session: session.sessionId,
-        tier: session.tier,
-        model: session.model,
-        repair: options.repair,
-        // `append` belongs to the round, so every segment of it asks for fresh
-        // wording — but never a repair turn. Telling the model to rewrite
-        // everything differently while it is fixing a validation error is two
-        // instructions pulling against each other.
-        newVersion: session.append && !options.repair,
-      }),
-    };
+  const init = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...((QUESTION_KINDS as readonly string[]).includes(input.kind)
+        ? { "X-Question-Contract": QUESTION_GENERATION_CONTRACT }
+        : {}),
+    },
+    signal,
+    body: JSON.stringify({
+      ...input,
+      session: session.sessionId,
+      tier: session.tier,
+      model: session.model,
+      repair: options.repair,
+      // `append` belongs to the round, so every segment of it asks for fresh
+      // wording — but never a repair turn. Telling the model to rewrite
+      // everything differently while it is fixing a validation error is two
+      // instructions pulling against each other.
+      newVersion: session.append && !options.repair,
+    }),
+  };
   let result: AiTurnResult;
   try {
-    result = await managedGeneration(session, input.kind === "organizeText" ? "/organize" : "/generate", init, { ...options, signal });
+    result = await managedGeneration(
+      session,
+      input.kind === "organizeText" ? "/organize" : "/generate",
+      init,
+      { ...options, signal },
+    );
   } catch (reason) {
     if (reason instanceof AiRequestError) addUsage(session.usage, reason.usage);
     throw reason;
@@ -350,8 +386,20 @@ export async function managedTurn(
   return result;
 }
 
-export function managedGeneration(session: AiSession, path: string, init: RequestInit, options: AiTurnOptions) {
-  return resumeGeneration(session, path, init, options, managedFetch, readManagedStream);
+export function managedGeneration(
+  session: AiSession,
+  path: string,
+  init: RequestInit,
+  options: AiTurnOptions,
+) {
+  return resumeGeneration(
+    session,
+    path,
+    init,
+    options,
+    managedFetch,
+    readManagedStream,
+  );
 }
 
 /** A run is many turns; the readout is about the run, so the turns add up. */
@@ -359,7 +407,9 @@ export function addUsage(total: TokenUsage, turn: TokenUsage | undefined) {
   if (!turn) return total;
   total.parts = [...(total.parts ?? []), ...(turn.parts ?? [turn])];
   const cost = responseCost({ parts: total.parts });
-  const uncachedCost = responseCost({ parts: total.parts.map((part) => ({ ...part, cached: 0, cacheWrite: 0 })) });
+  const uncachedCost = responseCost({
+    parts: total.parts.map((part) => ({ ...part, cached: 0, cacheWrite: 0 })),
+  });
   if (cost !== null && uncachedCost !== null) {
     total.costUsd = cost;
     total.uncachedCostUsd = uncachedCost;

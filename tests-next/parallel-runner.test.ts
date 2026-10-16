@@ -4,7 +4,9 @@ import { createAiSession } from "@/src/lib/ai/session";
 import { AiRequestError } from "@/src/lib/ai/errors";
 
 const makeRun = (count = 6): AiRun<string> => {
-  const steps = Array.from({ length: count }, (_, index) => String(index + 1)).map((id) => ({
+  const steps = Array.from({ length: count }, (_, index) =>
+    String(index + 1),
+  ).map((id) => ({
     id,
     context: id,
     prompt: id,
@@ -32,7 +34,10 @@ describe("productive warmup and independent parallel batches", () => {
   it("warms with the first batch, runs at most four siblings, and keeps source order", async () => {
     const run = makeRun();
     const releases = new Map(
-      ["1", "2", "3", "4", "5", "6"].map((id) => [id, Promise.withResolvers<void>()]),
+      ["1", "2", "3", "4", "5", "6"].map((id) => [
+        id,
+        Promise.withResolvers<void>(),
+      ]),
     );
     let active = 0,
       peak = 0;

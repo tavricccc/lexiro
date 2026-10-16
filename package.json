@@ -13,8 +13,8 @@
     "typecheck": "tsc --noEmit",
     "generate:motion": "node scripts/generate-motion.mjs",
     "lint": "oxlint app components lib stores src tests-next",
-    "format": "prettier --write \"stores/**/*.{ts,tsx}\" \"src/lib/**/*.{ts,tsx}\"",
-    "format:check": "prettier --check \"stores/**/*.{ts,tsx}\" \"src/lib/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"app/**/*.{ts,tsx}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,tsx}\" \"stores/**/*.{ts,tsx}\" \"src/lib/**/*.{ts,tsx}\" \"tests-next/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx}\" \"components/**/*.{ts,tsx}\" \"lib/**/*.{ts,tsx}\" \"stores/**/*.{ts,tsx}\" \"src/lib/**/*.{ts,tsx}\" \"tests-next/**/*.{ts,tsx}\"",
     "test": "vitest run --config vitest.next.config.ts",
     "test:watch": "vitest --config vitest.next.config.ts"
   },

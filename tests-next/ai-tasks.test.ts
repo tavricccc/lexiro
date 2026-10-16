@@ -85,7 +85,14 @@ describe("AI task boundaries", () => {
       "build",
       "carry",
       "choose",
-      "create", "cross", "decide", "deliver", "discover", "explain", "finish", "follow",
+      "create",
+      "cross",
+      "decide",
+      "deliver",
+      "discover",
+      "explain",
+      "finish",
+      "follow",
       "close",
     ].map(word);
     const task = questionTask(words, "vocabulary", 2);
@@ -96,11 +103,15 @@ describe("AI task boundaries", () => {
         items: [
           {
             ref: "s17",
-            sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
+            sentence:
+              "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({
+              option,
+              reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+            })),
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -115,11 +126,15 @@ describe("AI task boundaries", () => {
         items: [
           {
             ref: "s1",
-            sentence: "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
+            sentence:
+              "Please close the classroom door before we leave for lunch, because the students next door are taking a listening test and need a quiet environment.",
             answer: "close",
             usage: "close",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["watch", "bring", "carry"].map((option, index) => ({
+              option,
+              reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+            })),
             distractors: ["watch", "bring", "carry"],
           },
         ],
@@ -150,11 +165,7 @@ describe("AI task boundaries", () => {
         meaningZh: "奉獻",
       },
     ];
-    const [step] = questionTask(
-      [phrase, commit],
-      "vocabulary",
-      2,
-    ).steps;
+    const [step] = questionTask([phrase, commit], "vocabulary", 2).steps;
     const questions = step.parse(
       JSON.stringify({
         items: [
@@ -165,7 +176,10 @@ describe("AI task boundaries", () => {
               "was accused of",
               "was charged with",
               "was suspected of",
-            ].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            ].map((option, index) => ({
+              option,
+              reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+            })),
             distractors: [
               "was accused of",
               "was charged with",
@@ -179,7 +193,12 @@ describe("AI task boundaries", () => {
           {
             answer: "committed",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["witnessed", "prevented", "reported"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["witnessed", "prevented", "reported"].map(
+              (option, index) => ({
+                option,
+                reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+              }),
+            ),
             distractors: ["witnessed", "prevented", "reported"],
             sentence:
               "The shop’s security video clearly showed that the thief committed the crime by breaking a window and taking several laptops while the owner was away.",
@@ -188,7 +207,12 @@ describe("AI task boundaries", () => {
           {
             answer: "committed",
             explanation: "這是結構測試用的審題解說。",
-            whyWrong: ["limited", "postponed", "considered"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+            whyWrong: ["limited", "postponed", "considered"].map(
+              (option, index) => ({
+                option,
+                reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+              }),
+            ),
             distractors: ["limited", "postponed", "considered"],
             sentence:
               "After volunteering at the animal shelter for a month, Leo committed himself to caring for abandoned pets every weekend instead of spending his free time playing games.",
@@ -198,11 +222,11 @@ describe("AI task boundaries", () => {
       }),
     );
     expect(questions).toHaveLength(3);
-    expect(questions.map((question) => question.kind === "reading" ? null : question.senseId)).toEqual([
-      phrase.senses[0].id,
-      commit.senses[0].id,
-      commit.senses[1].id,
-    ]);
+    expect(
+      questions.map((question) =>
+        question.kind === "reading" ? null : question.senseId,
+      ),
+    ).toEqual([phrase.senses[0].id, commit.senses[0].id, commit.senses[1].id]);
   });
   it("keeps a valid question when another question in the same reply fails", async () => {
     const words = [word("adapt"), word("formula")];
@@ -217,19 +241,27 @@ describe("AI task boundaries", () => {
       segments: 0,
     };
     const valid = {
-      sentence: "Students who move to a new school often adapt more quickly when classmates invite them to join activities and explain the routines of their new classroom.",
+      sentence:
+        "Students who move to a new school often adapt more quickly when classmates invite them to join activities and explain the routines of their new classroom.",
       answer: "adapt",
       usage: "adapt",
       explanation: "這是結構測試用的審題解說。",
-      whyWrong: ["sleep", "wait", "leave"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+      whyWrong: ["sleep", "wait", "leave"].map((option, index) => ({
+        option,
+        reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+      })),
       distractors: ["sleep", "wait", "leave"],
     };
     const invalid = {
-      sentence: "The method helps students solve difficult mathematical problems by separating each problem into smaller steps, allowing them to check their calculations before writing a final answer.",
+      sentence:
+        "The method helps students solve difficult mathematical problems by separating each problem into smaller steps, allowing them to check their calculations before writing a final answer.",
       answer: "method",
       usage: "formula",
       explanation: "這是結構測試用的審題解說。",
-      whyWrong: ["plan", "rule", "formula"].map((option, index) => ({ option, reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index] })),
+      whyWrong: ["plan", "rule", "formula"].map((option, index) => ({
+        option,
+        reason: ["不符線索一。", "不符線索二。", "不符線索三。"][index],
+      })),
       distractors: ["plan", "rule", "formula"],
     };
     const replies = [

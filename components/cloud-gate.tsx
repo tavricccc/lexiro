@@ -90,10 +90,12 @@ function Brand() {
 /** What fills the screen while this device's account and data are read. */
 function StartupScreen() {
   const user = useCloudStore((store) => store.user);
-  const label =
-    !user ? t("startup.session") : t("startup.library");
+  const label = !user ? t("startup.session") : t("startup.library");
   return (
-    <div className="flex flex-col items-center gap-6 text-center" data-startup-screen>
+    <div
+      className="flex flex-col items-center gap-6 text-center"
+      data-startup-screen
+    >
       <Brand />
       <p
         className="flex h-6 items-center gap-2.5 text-[0.9375rem] text-muted-foreground"

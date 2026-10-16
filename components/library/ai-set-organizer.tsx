@@ -62,7 +62,11 @@ export function AiSetOrganizer({
     return (
       <ResumeChoice
         back={<BackControl href={newSetHref} />}
-        description={t(draft.status === "invalid" ? "draft.invalidDescription" : "draft.aiSetDescription")}
+        description={t(
+          draft.status === "invalid"
+            ? "draft.invalidDescription"
+            : "draft.aiSetDescription",
+        )}
         invalid={draft.status === "invalid"}
         onRestart={draft.restart}
         onResume={draft.resume}
@@ -111,7 +115,10 @@ function AiSetFlow({
   const save = async (rows: AssistedWordRow[]) => {
     const saved = await saveSet({
       folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
-      setName: createUniqueSetName(name, sets.map((entry) => entry.setName)),
+      setName: createUniqueSetName(
+        name,
+        sets.map((entry) => entry.setName),
+      ),
       words: rows.map((row) => ({
         examples: row.examples.map((value) => value.trim()).filter(Boolean),
         meaningZh: row.meaningZh,

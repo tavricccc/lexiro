@@ -55,14 +55,18 @@ export async function loadFromStorage(key: string): Promise<StorageLoadResult> {
 /** One-way managed-AI migration; captures the namespace before asynchronous deletion. */
 export async function removeRetiredAiSettings(): Promise<void> {
   const namespace = storageNamespace;
-  await Promise.all(["lexiro_ai_settings", "lexiro_ai_api_key"].flatMap((key) =>
-    [`${namespace}:${key}`, ...(namespace === "guest" ? [key] : [])].map((resolved) =>
-      enqueueWrite(resolved, async () => {
-        await del(resolved);
-        if (typeof localStorage !== "undefined") localStorage.removeItem(resolved);
-      }),
+  await Promise.all(
+    ["lexiro_ai_settings", "lexiro_ai_api_key"].flatMap((key) =>
+      [`${namespace}:${key}`, ...(namespace === "guest" ? [key] : [])].map(
+        (resolved) =>
+          enqueueWrite(resolved, async () => {
+            await del(resolved);
+            if (typeof localStorage !== "undefined")
+              localStorage.removeItem(resolved);
+          }),
+      ),
     ),
-  ));
+  );
 }
 
 /**

@@ -158,7 +158,12 @@ export function questionTask(
   kind: GeneratedQuestionKind,
   difficulty: QuestionDifficulty,
 ): AiTask<LibraryQuestion> {
-  return createQuestionTask(words, kind, difficulty, splitGenerationBatches(words, kind));
+  return createQuestionTask(
+    words,
+    kind,
+    difficulty,
+    splitGenerationBatches(words, kind),
+  );
 }
 
 /** Executes a supplied complete batch through the same parser and recovery as production. */

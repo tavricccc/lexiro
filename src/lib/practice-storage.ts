@@ -78,7 +78,8 @@ export function localPracticeDraft(): PracticeDraftEnvelope | null {
 /** Adopts another device's newer session without queueing it back up. */
 export function applyRemotePracticeDraft(remote: PracticeDraftEnvelope): void {
   const key = practiceStorageKey();
-  if (remote.snapshot) localStorage.setItem(key, JSON.stringify(remote.snapshot));
+  if (remote.snapshot)
+    localStorage.setItem(key, JSON.stringify(remote.snapshot));
   else localStorage.removeItem(key);
   localStorage.setItem(practiceUpdatedAtKey(), remote.updatedAt);
   window.dispatchEvent(new Event(PRACTICE_DRAFT_REMOTE_EVENT));

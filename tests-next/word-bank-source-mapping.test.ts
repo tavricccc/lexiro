@@ -62,7 +62,10 @@ function fixture() {
     title: "A school project",
     passage: `The plot of the novel is exciting. The children read together. A mechanical clock works through gears. She took her wet coat off. ${Array.from({ length: 238 }, () => "context").join(" ")}.`,
     options,
-    optionMeanings: options.map((option) => ({ option, meaning: `${option} 的詞義` })),
+    optionMeanings: options.map((option) => ({
+      option,
+      meaning: `${option} 的詞義`,
+    })),
     blanks,
   };
   return { words, reply };
@@ -206,14 +209,12 @@ describe("WordBank declared source ownership", () => {
       title: "Another passage",
       passage: `${sources.map((item) => `The ${item.word} arrived.`).join(" ")} ${Array.from({ length: 240 }, () => "context").join(" ")}.`,
       options,
-      blanks: [...sources]
-        .reverse()
-        .map((item) => ({
-          ref: item.ref,
-          answer: item.word,
-          usage: `The ${item.word} arrived`,
-          explanation: "本格描述指定目標。",
-        })),
+      blanks: [...sources].reverse().map((item) => ({
+        ref: item.ref,
+        answer: item.word,
+        usage: `The ${item.word} arrived`,
+        explanation: "本格描述指定目標。",
+      })),
       optionMeanings: options.map((option) => ({ option, meaning: "詞義" })),
     };
     const [pack] = last.parse(JSON.stringify(reply));

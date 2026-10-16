@@ -3,11 +3,7 @@
 import type { UseFormReturn } from "react-hook-form";
 
 import type { SetFormValues } from "@/components/library/set-form";
-import {
-  ListActionRow,
-  ListInputRow,
-  ListSection,
-} from "@/components/ui/list";
+import { ListActionRow, ListInputRow, ListSection } from "@/components/ui/list";
 import { ExampleFields } from "@/components/library/example-fields";
 import { t } from "@/lib/i18n";
 

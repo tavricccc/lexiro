@@ -24,7 +24,13 @@ describe("readSharedSet", () => {
         wordKey,
         word: "harbor",
         senses: [
-          { id: senseId, pos: "n.", meaningZh: "港口", examples: [], supplementary: false },
+          {
+            id: senseId,
+            pos: "n.",
+            meaningZh: "港口",
+            examples: [],
+            supplementary: false,
+          },
         ],
         updatedAt: timestamp,
       },
@@ -32,16 +38,32 @@ describe("readSharedSet", () => {
     agentJson.mockResolvedValue({
       id: "abc",
       own: false,
-      snapshot: { set, words, memberships: [{ wordKey, senseIds: [senseId] }], questions: [] },
+      snapshot: {
+        set,
+        words,
+        memberships: [{ wordKey, senseIds: [senseId] }],
+        questions: [],
+      },
     });
     const view = await readSharedSet("abc");
-    expect(agentJson).toHaveBeenCalledWith("/shares/abc", { signal: undefined });
-    expect(view).toMatchObject({ id: "abc", own: false, set: { ...set, words } });
+    expect(agentJson).toHaveBeenCalledWith("/shares/abc", {
+      signal: undefined,
+    });
+    expect(view).toMatchObject({
+      id: "abc",
+      own: false,
+      set: { ...set, words },
+    });
 
     agentJson.mockResolvedValue({
       id: "abc",
       own: false,
-      snapshot: { set: { ...set, extra: 1 }, words, memberships: [], questions: [] },
+      snapshot: {
+        set: { ...set, extra: 1 },
+        words,
+        memberships: [],
+        questions: [],
+      },
     });
     await expect(readSharedSet("abc")).rejects.toThrow();
   });

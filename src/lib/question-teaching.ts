@@ -4,22 +4,30 @@ import { z } from "zod";
 
 const agentTeaching = z.object({
   explanation: z.string().optional(),
-  whyWrong: z.union([
-    z.array(z.object({ option: z.string(), reason: z.string() })),
-    z.record(z.string(), z.string()),
-  ]).optional(),
+  whyWrong: z
+    .union([
+      z.array(z.object({ option: z.string(), reason: z.string() })),
+      z.record(z.string(), z.string()),
+    ])
+    .optional(),
 });
 
 /** Agent-authored explanations may be partial and follow the user's language. */
 export function assembleAgentTeaching(item: Record<string, unknown>) {
   const parsed = agentTeaching.parse(item);
   return {
-    ...(parsed.explanation !== undefined ? { explanation: parsed.explanation } : {}),
-    ...(parsed.whyWrong !== undefined ? {
-      whyWrong: Array.isArray(parsed.whyWrong)
-        ? Object.fromEntries(parsed.whyWrong.map(({ option, reason }) => [option, reason]))
-        : parsed.whyWrong,
-    } : {}),
+    ...(parsed.explanation !== undefined
+      ? { explanation: parsed.explanation }
+      : {}),
+    ...(parsed.whyWrong !== undefined
+      ? {
+          whyWrong: Array.isArray(parsed.whyWrong)
+            ? Object.fromEntries(
+                parsed.whyWrong.map(({ option, reason }) => [option, reason]),
+              )
+            : parsed.whyWrong,
+        }
+      : {}),
   };
 }
 
@@ -69,18 +77,27 @@ export function sharedBankTeachingIssue(
   const bank = (value.options as string[]).map((option) => option.trim());
   if (kind === "discourse") {
     if (bank.every((option) => answers.includes(option))) return null;
-    return typeof value.unusedReason === "string" && containsHan(value.unusedReason)
+    return typeof value.unusedReason === "string" &&
+      containsHan(value.unusedReason)
       ? null
       : "篇章結構需要以中文 unusedReason 說明未使用的句子為何不適合任何空格";
   }
-  if (!Array.isArray(value.optionMeanings) || value.optionMeanings.length !== bank.length)
+  if (
+    !Array.isArray(value.optionMeanings) ||
+    value.optionMeanings.length !== bank.length
+  )
     return `文意選填需要 optionMeanings 逐一提供 ${bank.length} 個選項的中文詞義`;
   const seen = new Set<string>();
   for (const entry of value.optionMeanings) {
-    if (!isRecord(entry) || typeof entry.option !== "string" || typeof entry.meaning !== "string")
+    if (
+      !isRecord(entry) ||
+      typeof entry.option !== "string" ||
+      typeof entry.meaning !== "string"
+    )
       return "optionMeanings 必須包含實際選項 option 與詞義 meaning";
     const option = entry.option.trim();
-    if (!bank.includes(option)) return `optionMeanings 引用了不屬於共用選項的「${option}」`;
+    if (!bank.includes(option))
+      return `optionMeanings 引用了不屬於共用選項的「${option}」`;
     if (seen.has(option)) return `optionMeanings 的「${option}」重複`;
     if (!containsHan(entry.meaning)) return `選項「${option}」必須提供中文詞義`;
     seen.add(option);
@@ -102,23 +119,32 @@ export function assembleSharedBankTeaching(
       : {};
   if (kind === "wordBank") {
     if (!Array.isArray(value.optionMeanings)) return explanation;
-    const meanings = value.optionMeanings.filter(isRecord).flatMap((entry) =>
-      typeof entry.option === "string" &&
-      typeof entry.meaning === "string" &&
-      entry.option.trim() !== answer &&
-      entry.meaning.trim()
-        ? [[entry.option.trim(), entry.meaning.trim()] as const]
-        : [],
-    );
+    const meanings = value.optionMeanings
+      .filter(isRecord)
+      .flatMap((entry) =>
+        typeof entry.option === "string" &&
+        typeof entry.meaning === "string" &&
+        entry.option.trim() !== answer &&
+        entry.meaning.trim()
+          ? [[entry.option.trim(), entry.meaning.trim()] as const]
+          : [],
+      );
     return { ...explanation, whyWrong: Object.fromEntries(meanings) };
   }
   const unused = (value.options as string[])
     .map((option) => option.trim())
     .filter((option) => !answers.includes(option));
-  if (typeof value.unusedReason !== "string" || !value.unusedReason.trim() || !unused.length)
+  if (
+    typeof value.unusedReason !== "string" ||
+    !value.unusedReason.trim() ||
+    !unused.length
+  )
     return explanation;
   const reason = value.unusedReason.trim();
-  return { ...explanation, whyWrong: Object.fromEntries(unused.map((option) => [option, reason])) };
+  return {
+    ...explanation,
+    whyWrong: Object.fromEntries(unused.map((option) => [option, reason])),
+  };
 }
 
 export function assembleOptionTeaching(

@@ -22,7 +22,10 @@ export function BrandMark({
     >
       <img
         alt=""
-        className={cn("block size-full aspect-square object-cover", imageClassName)}
+        className={cn(
+          "block size-full aspect-square object-cover",
+          imageClassName,
+        )}
         src="/icons/lexiro.png"
       />
     </span>
@@ -48,7 +51,11 @@ export function BrandLockup({
   );
 
   if (!href) {
-    return <div className={cn("flex items-center gap-2.5", className)}>{content}</div>;
+    return (
+      <div className={cn("flex items-center gap-2.5", className)}>
+        {content}
+      </div>
+    );
   }
 
   return (

@@ -31,7 +31,13 @@ const sharedSet = {
       wordKey,
       word: "harbor",
       senses: [
-        { id: senseId, pos: "n.", meaningZh: "港口", examples: [], supplementary: false },
+        {
+          id: senseId,
+          pos: "n.",
+          meaningZh: "港口",
+          examples: [],
+          supplementary: false,
+        },
       ],
       updatedAt: timestamp,
     },
@@ -47,7 +53,11 @@ beforeEach(() => {
   const library = emptyLibraryState();
   library.sets = [{ ...sharedSet, id: "mine", words: undefined } as never];
   useLibraryStore.setState({ state: library, status: "ready" });
-  useCloudStore.setState({ ready: true, configured: true, user: { uid: "reader" } as User });
+  useCloudStore.setState({
+    ready: true,
+    configured: true,
+    user: { uid: "reader" } as User,
+  });
 });
 afterEach(cleanup);
 
@@ -65,8 +75,12 @@ describe("shared set page", () => {
     render(<SharedSetPage shareId="abc" />);
     expect(await screen.findByText("harbor")).toBeVisible();
     expect(screen.getByText("n. 港口")).toBeVisible();
-    fireEvent.click(screen.getByRole("button", { name: "存一份副本到我的題庫" }));
-    await vi.waitFor(() => expect(mocks.push).toHaveBeenCalledWith("/app/sets/copied"));
+    fireEvent.click(
+      screen.getByRole("button", { name: "存一份副本到我的題庫" }),
+    );
+    await vi.waitFor(() =>
+      expect(mocks.push).toHaveBeenCalledWith("/app/sets/copied"),
+    );
     expect(mocks.copy).toHaveBeenCalledWith(
       sharedSet,
       { setName: expect.not.stringMatching(/^Travel$/) },
@@ -77,15 +91,18 @@ describe("shared set page", () => {
   it("points the owner at their own set instead of offering a copy", async () => {
     mocks.read.mockResolvedValue({ id: "abc", own: true, set: sharedSet });
     render(<SharedSetPage shareId="abc" />);
-    expect(await screen.findByRole("link", { name: "打開單字集" })).toHaveAttribute(
-      "href",
-      "/app/sets/their-set",
-    );
-    expect(screen.queryByRole("button", { name: "存一份副本到我的題庫" })).toBeNull();
+    expect(
+      await screen.findByRole("link", { name: "打開單字集" }),
+    ).toHaveAttribute("href", "/app/sets/their-set");
+    expect(
+      screen.queryByRole("button", { name: "存一份副本到我的題庫" }),
+    ).toBeNull();
   });
 
   it("explains a link that no longer works", async () => {
-    mocks.read.mockRejectedValue(new Error("這個分享連結已失效，或單字集已被刪除。"));
+    mocks.read.mockRejectedValue(
+      new Error("這個分享連結已失效，或單字集已被刪除。"),
+    );
     render(<SharedSetPage shareId="abc" />);
     expect(
       await screen.findByText("這個分享連結已失效，或單字集已被刪除。"),

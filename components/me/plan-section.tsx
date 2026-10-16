@@ -15,53 +15,49 @@ export function PlanSection() {
   const account = useManagedAccount();
   const admin = account.data?.admin === true;
   return (
-      <ListSection footer={!user ? t("managed.signInHint") : undefined}>
-        {!user && (
-          <ListNavRow href="/app/sync" label={t("settings.signIn")} />
-        )}
-        {user && account.isPending && (
-          <ListRow label={t("common.loading")} />
-        )}
-        {user && account.error && (
-          <>
-            <ListRow label={account.error.message} tone="destructive" />
-            <ListActionRow onClick={() => void account.refetch()}>
-              {t("common.retry")}
-            </ListActionRow>
-          </>
-        )}
-        {/* An administrator has no balance to read, so they are told what they
+    <ListSection footer={!user ? t("managed.signInHint") : undefined}>
+      {!user && <ListNavRow href="/app/sync" label={t("settings.signIn")} />}
+      {user && account.isPending && <ListRow label={t("common.loading")} />}
+      {user && account.error && (
+        <>
+          <ListRow label={account.error.message} tone="destructive" />
+          <ListActionRow onClick={() => void account.refetch()}>
+            {t("common.retry")}
+          </ListActionRow>
+        </>
+      )}
+      {/* An administrator has no balance to read, so they are told what they
             have instead of a number that would mean nothing. */}
-        {admin && (
+      {admin && (
+        <ListRow
+          label={t("managed.allowanceLabel")}
+          value={t("admin.unlimited")}
+        />
+      )}
+      {account.data && !admin && (
+        <>
+          <ListRow
+            label={t("managed.pointsLabel")}
+            value={String(account.data.points)}
+          />
           <ListRow
             label={t("managed.allowanceLabel")}
-            value={t("admin.unlimited")}
+            value={
+              account.data.monthly > 0
+                ? t("managed.monthly", { points: account.data.monthly })
+                : t("managed.oneTime")
+            }
           />
-        )}
-        {account.data && !admin && (
-          <>
+          {account.data.renews_at && (
             <ListRow
-              label={t("managed.pointsLabel")}
-              value={String(account.data.points)}
+              label={t("managed.renewsLabel")}
+              value={new Date(account.data.renews_at * 1000).toLocaleDateString(
+                "zh-TW",
+              )}
             />
-            <ListRow
-              label={t("managed.allowanceLabel")}
-              value={
-                account.data.monthly > 0
-                  ? t("managed.monthly", { points: account.data.monthly })
-                  : t("managed.oneTime")
-              }
-            />
-            {account.data.renews_at && (
-              <ListRow
-                label={t("managed.renewsLabel")}
-                value={new Date(
-                  account.data.renews_at * 1000,
-                ).toLocaleDateString("zh-TW")}
-              />
-            )}
-          </>
-        )}
-      </ListSection>
+          )}
+        </>
+      )}
+    </ListSection>
   );
 }

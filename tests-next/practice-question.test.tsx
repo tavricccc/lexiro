@@ -114,7 +114,10 @@ describe("practice option notes", () => {
         item={{
           ...base,
           type: "wordBank",
-          whyWrong: { current: "目前的", bank: "這個選項不符合本格描述的情節線索。" },
+          whyWrong: {
+            current: "目前的",
+            bank: "這個選項不符合本格描述的情節線索。",
+          },
         }}
         selected={0}
       />,
@@ -125,7 +128,10 @@ describe("practice option notes", () => {
     const group = {
       ...passage,
       format: "discourse" as const,
-      questions: [{ ...passage.questions[0], options: bank, answerIndex: 0 }, { ...passage.questions[1], options: bank, answerIndex: 1 }],
+      questions: [
+        { ...passage.questions[0], options: bank, answerIndex: 0 },
+        { ...passage.questions[1], options: bank, answerIndex: 1 },
+      ],
     };
     render(
       <QuestionFeedback
@@ -133,12 +139,17 @@ describe("practice option notes", () => {
           ...base,
           question: group,
           type: "discourse",
-          whyWrong: { current: "第二格的句子。", bank: "放棄計畫與後文矛盾，放哪裡都不合。" },
+          whyWrong: {
+            current: "第二格的句子。",
+            bank: "放棄計畫與後文矛盾，放哪裡都不合。",
+          },
         }}
         selected={0}
       />,
     );
-    expect(screen.getByText("放棄計畫與後文矛盾，放哪裡都不合。")).toBeVisible();
+    expect(
+      screen.getByText("放棄計畫與後文矛盾，放哪裡都不合。"),
+    ).toBeVisible();
     expect(screen.queryByText("第二格的句子。")).toBeNull();
   });
 });
@@ -194,11 +205,7 @@ describe("practice reading workspace", () => {
         expect(screen.queryByText(reason)).toBeNull();
       }
       rerender(
-        <QuestionCard
-          {...props}
-          selected={choice}
-          pendingChoice={null}
-        />,
+        <QuestionCard {...props} selected={choice} pendingChoice={null} />,
       );
       for (const reason of Object.values(props.item.whyWrong!)) {
         expect(screen.getByText(reason)).toBeVisible();

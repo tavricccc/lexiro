@@ -79,7 +79,9 @@ export function ShareLinkDialog({
         <Dialog.Overlay className="t-overlay fixed inset-0 z-50 bg-[var(--backdrop)] backdrop-blur-[3px]" />
         <div className="pointer-events-none fixed inset-0 z-50 grid place-items-center p-4">
           <Dialog.Content className="t-dialog surface-floating pointer-events-auto w-full max-w-lg max-h-[calc(100dvh-2rem)] overflow-y-auto p-6 outline-none sm:p-7">
-            <Dialog.Title className="type-section">{t("share.title")}</Dialog.Title>
+            <Dialog.Title className="type-section">
+              {t("share.title")}
+            </Dialog.Title>
             <Dialog.Description className="mt-2 text-sm text-muted-foreground">
               {t("share.description")}
             </Dialog.Description>
@@ -141,7 +143,9 @@ export function ShareLinkDialog({
                 <Button
                   disabled={busy}
                   onClick={() =>
-                    void act(async () => setLink(await createSetShareLink(setId)))
+                    void act(async () =>
+                      setLink(await createSetShareLink(setId)),
+                    )
                   }
                 >
                   <Icons.shareLink />

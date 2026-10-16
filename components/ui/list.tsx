@@ -94,13 +94,22 @@ function RowInner({
         />
       )}
       <span className="min-w-0 flex-1">
-        <span className={cn("type-row block [overflow-wrap:anywhere]", toneClass[tone])}>{label}</span>
+        <span
+          className={cn(
+            "type-row block [overflow-wrap:anywhere]",
+            toneClass[tone],
+          )}
+        >
+          {label}
+        </span>
         {detail && (
           <span className="type-row-detail mt-0.5 block">{detail}</span>
         )}
       </span>
       {value !== undefined && value !== null && value !== "" && (
-        <span className="type-row-value min-w-0 max-w-[55%] text-right [overflow-wrap:anywhere]">{value}</span>
+        <span className="type-row-value min-w-0 max-w-[55%] text-right [overflow-wrap:anywhere]">
+          {value}
+        </span>
       )}
       {trailing}
     </>
@@ -153,7 +162,11 @@ export function ListNavRow({
   );
   const shared = cn(rowClass, disabled && "pointer-events-none opacity-45");
   if (href && disabled)
-    return <span aria-disabled="true" className={shared} role="link">{inner}</span>;
+    return (
+      <span aria-disabled="true" className={shared} role="link">
+        {inner}
+      </span>
+    );
   if (href)
     return (
       <Link className={shared} href={href}>
@@ -204,13 +217,19 @@ export function ListChoiceGroup<Value extends string>({
     >
       {options.map(({ id, disabled: optionDisabled, ...content }) => (
         <RadioGroup.Item
-          className={cn(rowClass, "disabled:pointer-events-none disabled:opacity-45")}
+          className={cn(
+            rowClass,
+            "disabled:pointer-events-none disabled:opacity-45",
+          )}
           data-selected={id === value}
           disabled={optionDisabled}
           key={id}
           value={id}
         >
-          <RowInner {...content} trailing={<RowCheck checked={id === value} />} />
+          <RowInner
+            {...content}
+            trailing={<RowCheck checked={id === value} />}
+          />
         </RadioGroup.Item>
       ))}
     </RadioGroup.Root>

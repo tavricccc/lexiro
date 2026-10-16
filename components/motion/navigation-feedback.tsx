@@ -86,7 +86,12 @@ export function NavigationFeedback() {
         return;
       }
       const target = interactiveTarget(event.target);
-      if (!target || target.closest("[data-primary-navigation]") || !internalAnchor(target)) return;
+      if (
+        !target ||
+        target.closest("[data-primary-navigation]") ||
+        !internalAnchor(target)
+      )
+        return;
       if (
         target.matches(":disabled, [aria-disabled='true'], [data-disabled]") ||
         target.closest(":disabled, [aria-disabled='true'], [data-disabled]")
@@ -127,7 +132,10 @@ export function NavigationFeedback() {
               // no announcement: the page is already there. The line holds at
               // nothing until the wait outlasts that rung, so a prefetched
               // route never draws one.
-              opacity: { ...timing("controlExit"), delay: motionSeconds.control },
+              opacity: {
+                ...timing("controlExit"),
+                delay: motionSeconds.control,
+              },
               // The crawl is indeterminate: it paces a wait of unknown length
               // rather than moving a known distance, so it takes a loop rather
               // than a rung of the ladder.

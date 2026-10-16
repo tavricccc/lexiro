@@ -13,18 +13,26 @@ export type InAppBrowserName =
 
 const IN_APP_BROWSERS: Array<[InAppBrowserName, RegExp]> = [
   ["LINE", /\bLine\//i],
-  ["Messenger", /\bFBAN\/MessengerForiOS|\bFB_IAB\/Messenger|\bMessengerLiteForiOS/i],
+  [
+    "Messenger",
+    /\bFBAN\/MessengerForiOS|\bFB_IAB\/Messenger|\bMessengerLiteForiOS/i,
+  ],
   ["Facebook", /\bFBAN\/|\bFBAV\/|\bFB_IAB\/FB4A/i],
   ["Instagram", /\bInstagram\b/i],
   ["Threads", /\bBarcelona\b|\bThreads\b/i],
   ["TikTok", /\bBytedanceWebview\b|\bTikTok\b|\bmusical_ly\b/i],
   ["WeChat", /\bMicroMessenger\b/i],
   ["Google", /\bGSA\//i],
-  ["Android WebView", /(?:;\s*wv\)|\bVersion\/4\.0\b.*\bChrome\/.*\bMobile Safari\/)/i],
+  [
+    "Android WebView",
+    /(?:;\s*wv\)|\bVersion\/4\.0\b.*\bChrome\/.*\bMobile Safari\/)/i,
+  ],
 ];
 
 export function detectInAppBrowser(userAgent: string) {
-  return IN_APP_BROWSERS.find(([, pattern]) => pattern.test(userAgent))?.[0] ?? null;
+  return (
+    IN_APP_BROWSERS.find(([, pattern]) => pattern.test(userAgent))?.[0] ?? null
+  );
 }
 
 export function isStandaloneMode() {
@@ -34,8 +42,15 @@ export function isStandaloneMode() {
   );
 }
 
-export function isIosDevice(userAgent: string, platform: string, touchPoints: number) {
-  return /iPad|iPhone|iPod/i.test(userAgent) || (platform === "MacIntel" && touchPoints > 1);
+export function isIosDevice(
+  userAgent: string,
+  platform: string,
+  touchPoints: number,
+) {
+  return (
+    /iPad|iPhone|iPod/i.test(userAgent) ||
+    (platform === "MacIntel" && touchPoints > 1)
+  );
 }
 
 export function isAndroidDevice(userAgent: string) {
@@ -43,7 +58,11 @@ export function isAndroidDevice(userAgent: string) {
 }
 
 /** Chrome or the Google app on iOS cannot add to the home screen; Safari can. */
-export function iosNonSafariBrowser(userAgent: string, platform: string, touchPoints: number) {
+export function iosNonSafariBrowser(
+  userAgent: string,
+  platform: string,
+  touchPoints: number,
+) {
   if (!isIosDevice(userAgent, platform, touchPoints)) return null;
   if (/\bCriOS\//i.test(userAgent)) return "Chrome";
   if (/\bGSA\//i.test(userAgent)) return "Google";
@@ -64,7 +83,8 @@ export function tryRedirectToExternalBrowser(userAgent: string) {
     window.location.replace(url.toString());
     return true;
   }
-  if (!isAndroidDevice(userAgent) || url.searchParams.has("intent_redirected")) return false;
+  if (!isAndroidDevice(userAgent) || url.searchParams.has("intent_redirected"))
+    return false;
   const fallback = new URL(url);
   fallback.searchParams.set("intent_redirected", "1");
   window.location.href =

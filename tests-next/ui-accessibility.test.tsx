@@ -1,4 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { useState, type FormEvent } from "react";
@@ -36,7 +42,9 @@ describe("shared accessible states", () => {
       usage: {},
       diagnostic: {
         request: JSON.stringify({ sources: [{ word: "formula" }] }),
-        response: JSON.stringify({ items: [{ sentence: "The method works.", answer: "method" }] }),
+        response: JSON.stringify({
+          items: [{ sentence: "The method works.", answer: "method" }],
+        }),
         responseId: "resp_test",
       },
     };
@@ -67,7 +75,9 @@ describe("shared accessible states", () => {
     render(<AiRunPanel {...props} />);
     expect(screen.queryByText("管理員診斷資訊")).toBeNull();
     expect(screen.queryByText(/The method works/)).toBeNull();
-    expect(screen.getByRole("button", { name: "查看已完成結果" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "查看已完成結果" }),
+    ).toBeInTheDocument();
   });
 
   it("reserves the full height of a fixed action panel", () => {
@@ -90,7 +100,9 @@ describe("shared accessible states", () => {
     render(
       <form id="fixed-action-form" onSubmit={submit}>
         <StepActions>
-          <button form="fixed-action-form" type="submit">儲存</button>
+          <button form="fixed-action-form" type="submit">
+            儲存
+          </button>
         </StepActions>
       </form>,
     );
@@ -101,24 +113,41 @@ describe("shared accessible states", () => {
   it("moves a single selection with arrow keys and skips disabled options", async () => {
     function Choices() {
       const [value, setValue] = useState("first");
-      return <ListChoiceGroup label="練習方式" value={value} onSelect={setValue}
-        options={[
-          { id: "first", label: "單字卡" },
-          { id: "second", label: "停用", disabled: true },
-          { id: "third", label: "拼字" },
-        ]} />;
+      return (
+        <ListChoiceGroup
+          label="練習方式"
+          value={value}
+          onSelect={setValue}
+          options={[
+            { id: "first", label: "單字卡" },
+            { id: "second", label: "停用", disabled: true },
+            { id: "third", label: "拼字" },
+          ]}
+        />
+      );
     }
     render(<Choices />);
     const first = screen.getByRole("radio", { name: "單字卡" });
     first.focus();
     fireEvent.keyDown(first, { key: "ArrowDown" });
-    await waitFor(() => expect(screen.getByRole("radio", { name: "拼字" })).toHaveFocus());
-    expect(screen.getByRole("radio", { name: "拼字" })).toHaveAttribute("aria-checked", "true");
+    await waitFor(() =>
+      expect(screen.getByRole("radio", { name: "拼字" })).toHaveFocus(),
+    );
+    expect(screen.getByRole("radio", { name: "拼字" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
     expect(first).toHaveAttribute("aria-checked", "false");
   });
 
   it("keeps empty-state instructions outside the decorative entry", () => {
-    render(<EmptyState title="尚無單字" description="先建立單字集" headword="hello" />);
+    render(
+      <EmptyState
+        title="尚無單字"
+        description="先建立單字集"
+        headword="hello"
+      />,
+    );
     const description = screen.getByText("先建立單字集");
     expect(description.closest('[aria-hidden="true"]')).toBeNull();
   });

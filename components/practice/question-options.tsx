@@ -97,13 +97,19 @@ export function QuestionOptions({
             {answered && isCorrect && (
               <Icons.success
                 aria-hidden
-                className={cn("size-4 shrink-0 text-success", !readOnly && "t-answer-mark")}
+                className={cn(
+                  "size-4 shrink-0 text-success",
+                  !readOnly && "t-answer-mark",
+                )}
               />
             )}
             {answered && isSelected && !isCorrect && (
               <Icons.incorrect
                 aria-hidden
-                className={cn("size-4 shrink-0 text-destructive", !readOnly && "t-answer-mark")}
+                className={cn(
+                  "size-4 shrink-0 text-destructive",
+                  !readOnly && "t-answer-mark",
+                )}
               />
             )}
           </button>

@@ -25,7 +25,12 @@ export function ResumeChoice({
 }) {
   return (
     <div className="mx-auto max-w-xl">
-      {header && <PageHeader back={back} title={t(invalid ? "draft.invalidTitle" : "draft.title")} />}
+      {header && (
+        <PageHeader
+          back={back}
+          title={t(invalid ? "draft.invalidTitle" : "draft.title")}
+        />
+      )}
       <p className="type-lead">{description}</p>
       <StepActions>
         {!invalid && (
@@ -34,7 +39,12 @@ export function ResumeChoice({
             {t("draft.resume")}
           </Button>
         )}
-        <Button className="w-full" onClick={onRestart} size="lg" variant={invalid ? "default" : "outline"}>
+        <Button
+          className="w-full"
+          onClick={onRestart}
+          size="lg"
+          variant={invalid ? "default" : "outline"}
+        >
           <Icons.create />
           {t("draft.restart")}
         </Button>

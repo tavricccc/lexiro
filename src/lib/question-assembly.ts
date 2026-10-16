@@ -38,8 +38,14 @@ export interface AssemblyResult {
 
 type AssemblyMode = "generated" | "agent";
 
-function teaching(source: Record<string, unknown>, distractors: string[], mode: AssemblyMode) {
-  return mode === "agent" ? assembleAgentTeaching(source) : assembleOptionTeaching(source, distractors);
+function teaching(
+  source: Record<string, unknown>,
+  distractors: string[],
+  mode: AssemblyMode,
+) {
+  return mode === "agent"
+    ? assembleAgentTeaching(source)
+    : assembleOptionTeaching(source, distractors);
 }
 
 function text(value: unknown): string {
@@ -114,7 +120,8 @@ export function wordBankSourceSlots(
     if (!ref) throw new Error(`文意選填第 ${index + 1} 格缺少來源 ref`);
     if (!slots.has(ref))
       throw new Error(`文意選填第 ${index + 1} 格有未知的來源 ref「${ref}」`);
-    if (mode === "generated" && seen.has(ref)) throw new Error(`文意選填來源 ref「${ref}」重複`);
+    if (mode === "generated" && seen.has(ref))
+      throw new Error(`文意選填來源 ref「${ref}」重複`);
     seen.add(ref);
   });
   if (mode === "generated" && seen.size !== slots.size)
@@ -198,7 +205,12 @@ function assembleSentences(
     if ("issue" in location)
       return dropped.push(`${slot.word.word}：${location.issue}`);
     if (mode === "generated") {
-      const wordFormIssue = sourceWordFormIssue(slot.word.word, slot.word.senses[slot.senseIndex].pos, answer, usage);
+      const wordFormIssue = sourceWordFormIssue(
+        slot.word.word,
+        slot.word.senses[slot.senseIndex].pos,
+        answer,
+        usage,
+      );
       if (wordFormIssue) return dropped.push(wordFormIssue);
     }
     const answerAt = location.at;
@@ -273,7 +285,12 @@ function assemblePassage(
     const items = Array.isArray(value.items) ? value.items : [];
     const children = items.flatMap((raw, position) => {
       if (!isRecord(raw)) return [];
-      const slot = resolveSlot(slots, text(raw.ref), position, text(raw.ref) ? mode : "generated");
+      const slot = resolveSlot(
+        slots,
+        text(raw.ref),
+        position,
+        text(raw.ref) ? mode : "generated",
+      );
       const question = text(raw.question);
       const answer = text(raw.answer);
       const distractors = usableDistractors(
@@ -348,7 +365,9 @@ function assemblePassage(
             ? [
                 {
                   answer: text(item.answer),
-                  usage: text(item.usage) || (mode === "agent" ? text(item.answer) : ""),
+                  usage:
+                    text(item.usage) ||
+                    (mode === "agent" ? text(item.answer) : ""),
                   ref: text(item.ref),
                   source: item,
                 },
@@ -360,7 +379,12 @@ function assemblePassage(
   raw.forEach((item, position) => {
     const slot = bankSlots
       ? bankSlots.get(item.ref)!
-      : resolveSlot(slots, item.ref, position, format === "discourse" ? "generated" : mode);
+      : resolveSlot(
+          slots,
+          item.ref,
+          position,
+          format === "discourse" ? "generated" : mode,
+        );
     if (mode === "agent" && !slot) {
       dropped.push(`第 ${position + 1} 格缺少有效來源 ref；請指定 sources.ref`);
       return;

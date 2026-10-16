@@ -11,11 +11,7 @@ export function getCardClassName(className?: string) {
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      data-slot="card"
-      className={getCardClassName(className)}
-      {...props}
-    />
+    <div data-slot="card" className={getCardClassName(className)} {...props} />
   );
 }
 

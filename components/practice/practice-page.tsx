@@ -50,8 +50,7 @@ export function PracticePage({
   const libraryStatus = useLibraryStore((store) => store.status);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
   const setup = usePracticeSetupChoices(initialSet, initialTrack);
-  const { amount, difficulty, oneSensePerWord, setId, tasks } =
-    setup;
+  const { amount, difficulty, oneSensePerWord, setId, tasks } = setup;
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -109,12 +108,7 @@ export function PracticePage({
   };
   const counts = useMemo(
     () => countTaskAvailability(poolInput),
-    [
-      allowedSenseIds,
-      difficulty,
-      questionGroups,
-      studyItems,
-    ],
+    [allowedSenseIds, difficulty, questionGroups, studyItems],
   );
   const hasQuestionContent = questionGroups.some(
     (group) => group[0]?.type !== "meaning" && group.length > 0,
@@ -164,10 +158,7 @@ export function PracticePage({
   const progressRatio = total ? Math.min(1, completedSteps / total) : 0;
   const wrongContent = buildWrongContent(wrong, activeEntries, answerChoices);
   const answeredBlanks: Record<number, AnsweredBlank> = {};
-  if (
-    viewed?.kind === "question" &&
-    viewed.item.question?.kind === "reading"
-  ) {
+  if (viewed?.kind === "question" && viewed.item.question?.kind === "reading") {
     const questionId = viewed.item.question.id;
     activeEntries.forEach((entry, position) => {
       if (
@@ -222,7 +213,8 @@ export function PracticePage({
       setRestoreCheck((value) => value + 1);
     };
     window.addEventListener(PRACTICE_DRAFT_REMOTE_EVENT, recheck);
-    return () => window.removeEventListener(PRACTICE_DRAFT_REMOTE_EVENT, recheck);
+    return () =>
+      window.removeEventListener(PRACTICE_DRAFT_REMOTE_EVENT, recheck);
   }, [started]);
 
   useRestorePracticeSession({

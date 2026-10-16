@@ -14,7 +14,10 @@ export function SignInRequired({ message }: { message: string }) {
   const [error, setError] = useState("");
   return (
     <div className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-      <Icons.signIn aria-hidden className="mx-auto size-6 text-muted-foreground" />
+      <Icons.signIn
+        aria-hidden
+        className="mx-auto size-6 text-muted-foreground"
+      />
       <p className="mt-3 text-sm text-muted-foreground">
         {configured ? message : t("settings.notConfigured")}
       </p>
@@ -29,7 +32,9 @@ export function SignInRequired({ message }: { message: string }) {
               .getState()
               .signIn()
               .catch((reason) =>
-                setError(reason instanceof Error ? reason.message : String(reason)),
+                setError(
+                  reason instanceof Error ? reason.message : String(reason),
+                ),
               )
               .finally(() => setBusy(false));
           }}

@@ -101,7 +101,8 @@ export function splitOptionReason(reason: string): {
   const [head, ...rest] = text.split("；");
   if (rest.length && head.length <= GLOSS_LIMIT)
     return { gloss: head, note: rest.join("；") };
-  if (text.length <= GLOSS_LIMIT && !/[。，]/.test(text)) return { gloss: text };
+  if (text.length <= GLOSS_LIMIT && !/[。，]/.test(text))
+    return { gloss: text };
   return { note: text };
 }
 

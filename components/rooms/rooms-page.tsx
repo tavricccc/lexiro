@@ -33,8 +33,13 @@ import {
 import { useCloudStore } from "@/stores/cloud-store";
 import { useLibraryStore } from "@/stores/library-store";
 
-export function playerName(user: { displayName: string | null; email: string | null } | null) {
-  return (user?.displayName || user?.email?.split("@")[0] || "Player").slice(0, 40);
+export function playerName(
+  user: { displayName: string | null; email: string | null } | null,
+) {
+  return (user?.displayName || user?.email?.split("@")[0] || "Player").slice(
+    0,
+    40,
+  );
 }
 
 /** Join a friend's room by its code, or open one with questions from your own bank. */
@@ -160,7 +165,14 @@ function RoomSetup() {
   );
   const available = useMemo(
     () => countQuestionAvailability({ ...pool, tasks, oneSensePerWord }),
-    [allowedSenseIds, difficulty, questionGroups, studyItems, tasks, oneSensePerWord],
+    [
+      allowedSenseIds,
+      difficulty,
+      questionGroups,
+      studyItems,
+      tasks,
+      oneSensePerWord,
+    ],
   );
   const queue = useMemo(
     () =>
@@ -170,7 +182,15 @@ function RoomSetup() {
         oneSensePerWord,
         tasks,
       }),
-    [allowedSenseIds, amount, difficulty, oneSensePerWord, questionGroups, studyItems, tasks],
+    [
+      allowedSenseIds,
+      amount,
+      difficulty,
+      oneSensePerWord,
+      questionGroups,
+      studyItems,
+      tasks,
+    ],
   );
 
   const open = async () => {

@@ -62,7 +62,9 @@ export function Field({
       {(label || hint) && (
         <span className="mb-1.5 flex items-baseline justify-between gap-3">
           {label && <span className="text-sm font-medium">{label}</span>}
-          {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
+          {hint && (
+            <span className="text-xs text-muted-foreground">{hint}</span>
+          )}
         </span>
       )}
       {description && (

@@ -16,7 +16,8 @@ import {
   tryRedirectToExternalBrowser,
 } from "@/lib/pwa-install";
 
-type Mode = "in-app-browser" | "ios-open-safari" | "ios-install" | "native-install";
+type Mode =
+  "in-app-browser" | "ios-open-safari" | "ios-install" | "native-install";
 
 interface InstallEvent extends Event {
   prompt(): Promise<void>;
@@ -115,14 +116,22 @@ export function InstallPrompt() {
     "ios-install": {
       title: t("install.iosTitle"),
       description: t("install.iosDescription"),
-      steps: [t("install.stepShare"), t("install.stepAddHome"), t("install.stepOpenFromHome")],
+      steps: [
+        t("install.stepShare"),
+        t("install.stepAddHome"),
+        t("install.stepOpenFromHome"),
+      ],
     },
     "native-install": {
       title: t("install.androidTitle"),
       description: t("install.androidDescription"),
       steps: native
         ? [t("install.stepTapInstall"), t("install.stepOpenFromHome")]
-        : [t("install.stepOpenMenu"), t("install.stepInstall"), t("install.stepOpenFromHome")],
+        : [
+            t("install.stepOpenMenu"),
+            t("install.stepInstall"),
+            t("install.stepOpenFromHome"),
+          ],
     },
   }[mode];
   const step = confirming
@@ -191,7 +200,8 @@ export function InstallPrompt() {
                       <Icons.export />
                       {t("install.install")}
                     </Button>
-                  ) : mode === "in-app-browser" || mode === "ios-open-safari" ? (
+                  ) : mode === "in-app-browser" ||
+                    mode === "ios-open-safari" ? (
                     <Button onClick={copy}>
                       <Icons.copy />
                       {t("install.copyUrl")}

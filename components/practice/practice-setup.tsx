@@ -116,7 +116,9 @@ export function PracticeSetup({
       current={1}
       total={1}
       status={
-        showDraftStatus ? <DraftSaveStatus status={draftPersistence} /> : undefined
+        showDraftStatus ? (
+          <DraftSaveStatus status={draftPersistence} />
+        ) : undefined
       }
       footer={footer}
       title={title}
@@ -174,9 +176,7 @@ export function PracticeSetup({
                 />
                 <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
                   <span>1</span>
-                  <span>
-                    {t("practice.amountMax", { count: sliderMax })}
-                  </span>
+                  <span>{t("practice.amountMax", { count: sliderMax })}</span>
                 </div>
               </div>
             )}

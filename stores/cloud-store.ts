@@ -2,7 +2,11 @@
 
 import type { SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
-import { getCloudClient, accountNamespace, type CloudClient } from "@/src/lib/cloud-client";
+import {
+  getCloudClient,
+  accountNamespace,
+  type CloudClient,
+} from "@/src/lib/cloud-client";
 import { create } from "zustand";
 
 import { CLOUD_SYNC_PENDING_EVENT } from "@/constants";
@@ -26,9 +30,7 @@ import {
   pushRecords,
   watchCloudChanges,
 } from "@/src/lib/cloud-sync";
-import {
-  configureFirebaseAuth,
-} from "@/src/lib/firebase";
+import { configureFirebaseAuth } from "@/src/lib/firebase";
 import { isFirebaseConfigured } from "@/src/lib/firebase-config";
 import {
   getStorageNamespace,
@@ -264,7 +266,8 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
               user.uid,
               (changedBy, accountChanged) => {
                 void get().sync({
-                  reconcileAccount: accountChanged || changedBy?.startsWith("agent:"),
+                  reconcileAccount:
+                    accountChanged || changedBy?.startsWith("agent:"),
                 });
               },
             );
@@ -368,8 +371,8 @@ async function reconcileAccountDocuments(
   const work: (() => Promise<unknown>)[] = [];
   if (getStorageNamespace() !== accountNamespace(uid)) return;
   if (dirtyBlobs.preferences > 0 || !blobs.preferences)
-    work.push(
-      () => writeCloudPreferences(
+    work.push(() =>
+      writeCloudPreferences(
         db,
         uid,
         useAiPreferencesStore.getState().preferences,
@@ -401,7 +404,12 @@ async function runSync(
 ): Promise<void> {
   const user = get().user;
   const db = getCloudClient();
-  if (!user || !db || !get().ready || getStorageNamespace() !== accountNamespace(user.uid))
+  if (
+    !user ||
+    !db ||
+    !get().ready ||
+    getStorageNamespace() !== accountNamespace(user.uid)
+  )
     return;
   const sameAccount = () =>
     get().ready &&

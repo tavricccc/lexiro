@@ -74,7 +74,8 @@ export const zhTW = {
     saved: "已建立副本「{name}」",
     saveFailed: "存入失敗：{message}",
     own: "這是你自己分享的單字集。",
-    copyHint: "存入的是一份獨立副本：之後分享者改了內容，你的副本不會跟著變；再打開這個連結就能看到最新版，可以再存一份。",
+    copyHint:
+      "存入的是一份獨立副本：之後分享者改了內容，你的副本不會跟著變；再打開這個連結就能看到最新版，可以再存一份。",
     openOwn: "打開單字集",
     summary: "{words} 個單字 · {senses} 個詞義 · {questions} 題",
     more: "還有 {count} 個單字",
@@ -83,15 +84,20 @@ export const zhTW = {
   },
   install: {
     inAppTitle: "請改用系統瀏覽器開啟",
-    inAppDescription: "目前在 {browser} 的內建瀏覽器裡，Google 登入可能無法回到 Lexiro。",
+    inAppDescription:
+      "目前在 {browser} 的內建瀏覽器裡，Google 登入可能無法回到 Lexiro。",
     openSafariTitle: "請先用 Safari 開啟",
-    openSafariDescription: "目前使用 {browser}。在 iPhone / iPad 上，請改用 Safari 開啟後再加入主畫面。",
+    openSafariDescription:
+      "目前使用 {browser}。在 iPhone / iPad 上，請改用 Safari 開啟後再加入主畫面。",
     iosTitle: "把 Lexiro 安裝成 App",
-    iosDescription: "從 Safari 加入主畫面後，可以像一般 App 一樣開啟，畫面也不會被瀏覽器擋住。",
+    iosDescription:
+      "從 Safari 加入主畫面後，可以像一般 App 一樣開啟，畫面也不會被瀏覽器擋住。",
     androidTitle: "把 Lexiro 安裝到主畫面",
-    androidDescription: "安裝後直接從主畫面開啟；瀏覽器支援的話會跳出系統安裝提示。",
+    androidDescription:
+      "安裝後直接從主畫面開啟；瀏覽器支援的話會跳出系統安裝提示。",
     stepOpenMenu: "打開目前 App 或瀏覽器的選單。",
-    stepOpenBrowser: "選「以瀏覽器開啟」、「在 Safari 中開啟」或系統預設瀏覽器。",
+    stepOpenBrowser:
+      "選「以瀏覽器開啟」、「在 Safari 中開啟」或系統預設瀏覽器。",
     stepCopyUrl: "複製目前的網址。",
     stepOpenSafari: "切到 Safari，貼上並開啟剛才的網址。",
     stepShare: "在 Safari 點分享按鈕。",
@@ -105,7 +111,8 @@ export const zhTW = {
     copied: "已複製網址",
     later: "稍後再說",
     dismissTitle: "真的要稍後再裝嗎？",
-    dismissDescription: "用瀏覽器也能用，但安裝成 App 開起來更快、畫面更完整。之後重新打開網頁還會再提醒你。",
+    dismissDescription:
+      "用瀏覽器也能用，但安裝成 App 開起來更快、畫面更完整。之後重新打開網頁還會再提醒你。",
     dismissBack: "返回安裝",
     dismissConfirm: "仍然稍後",
   },
@@ -369,7 +376,8 @@ export const zhTW = {
     guideStepTwo: "讓 AI 出題",
     guideStepTwoHint: "用你自己的字產生學測型式的題目。",
     guideStepThree: "練一輪、找朋友比",
-    guideStepThreeHint: "自己選題型練習，答錯的題目可以馬上重練；也能開房間和朋友即時對戰。",
+    guideStepThreeHint:
+      "自己選題型練習，答錯的題目可以馬上重練；也能開房間和朋友即時對戰。",
     wordCount: "{count} 個單字",
   },
   sets: {
@@ -829,8 +837,7 @@ export const zhTW = {
     start: "開始練這組字",
     startQuestions: "做這組字的題目",
     questions: "題目",
-    summary:
-      "{senses} 個詞義 · {questions} 題",
+    summary: "{senses} 個詞義 · {questions} 題",
     toolsHeader: "這組字的整理",
     deleteConfirm:
       "確定刪除「{name}」嗎？此集的詞義、例句與題目也會刪除，其他單字集會保留。",
@@ -1041,7 +1048,8 @@ export const zhTW = {
     session: "正在確認登入狀態…",
     library: "正在載入你的單字…",
     signInTitle: "登入 Lexiro",
-    signInBody: "登入後單字集和練習進度會在每台裝置同步，也能分享單字集、和朋友開房對戰。",
+    signInBody:
+      "登入後單字集和練習進度會在每台裝置同步，也能分享單字集、和朋友開房對戰。",
     localOnly: "先不登入，只用這台裝置",
   },
   common: {

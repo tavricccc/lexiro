@@ -5,7 +5,10 @@ afterEach(() => vi.useRealTimers());
 it("refreshes the batch average every 100 ms and starts over for the next batch", () => {
   vi.useFakeTimers();
   vi.setSystemTime(1000);
-  const { result, rerender } = renderHook(({ tokens, active, startedAt }) => useTokenRate(tokens, active, startedAt), { initialProps: { tokens: 0, active: true, startedAt: 1000 } });
+  const { result, rerender } = renderHook(
+    ({ tokens, active, startedAt }) => useTokenRate(tokens, active, startedAt),
+    { initialProps: { tokens: 0, active: true, startedAt: 1000 } },
+  );
   rerender({ tokens: 10, active: true, startedAt: 1000 });
   act(() => vi.advanceTimersByTime(99));
   expect(result.current).toBe(0);

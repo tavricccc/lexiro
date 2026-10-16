@@ -385,8 +385,7 @@ function WorkspaceSkeletonContent({ location }: { location: string }) {
   if (pathname === "/app/sets/new") return <SetEditorPageSkeleton newSet />;
   if (pathname === "/app/sets/new/organize")
     return <SubpageSkeleton flow wide />;
-  if (pathname.startsWith("/app/me/"))
-    return <SubpageSkeleton />;
+  if (pathname.startsWith("/app/me/")) return <SubpageSkeleton />;
   if (
     /^\/app\/sets\/[^/]+\/(add|supplement|settings|words\/[^/]+\/edit)$/.test(
       pathname,
@@ -416,4 +415,3 @@ export function WorkspaceSkeleton() {
   );
   return <WorkspaceSkeletonContent location={location} />;
 }
-
