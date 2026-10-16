@@ -1,6 +1,7 @@
 "use client";
 
 import { getFirebaseAuth } from "@/src/lib/firebase";
+import { appCheckHeaders } from "@/src/lib/app-check";
 import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
 
@@ -37,6 +38,8 @@ export async function agentJson<T>(
       throw new Error(t("agent.accountChanged"));
     const headers = new Headers(init.headers);
     headers.set("Authorization", `Bearer ${token}`);
+    for (const [name, value] of Object.entries(await appCheckHeaders()))
+      headers.set(name, value);
     headers.set("Content-Type", "application/json");
     const response = await fetch(`${base}${path}`, {
       ...init,

@@ -13,6 +13,7 @@ import type {
 } from "@lexiro/ai-contract";
 import { t, type TranslationKey } from "./i18n";
 import { resumeGeneration } from "./generation-connection";
+import { appCheckHeaders } from "@/src/lib/app-check";
 
 export const MANAGED_ACCOUNT_CHANGED = "lexiro:managed-account-changed";
 export function notifyManagedAccountChanged() {
@@ -77,6 +78,8 @@ export async function managedFetch(
       throw new DOMException("Account changed", "AbortError");
     const headers = new Headers(init.headers);
     headers.set("Authorization", `Bearer ${token}`);
+    for (const [name, value] of Object.entries(await appCheckHeaders()))
+      headers.set(name, value);
     let response: Response;
     try {
       response = await fetch(`${base.replace(/\/$/, "")}${path}`, {

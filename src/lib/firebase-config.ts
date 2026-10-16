@@ -8,6 +8,7 @@ export const firebaseEnvironment = {
   emulatorEnabled: process.env.NEXT_PUBLIC_FIREBASE_EMULATOR_ENABLED,
   emulatorHost: process.env.NEXT_PUBLIC_FIREBASE_EMULATOR_HOST,
   googleClientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+  appCheckSiteKey: process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY,
 };
 
 export function isFirebaseConfigured(): boolean {

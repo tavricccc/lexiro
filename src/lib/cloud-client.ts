@@ -1,4 +1,5 @@
 import { getFirebaseAuth } from "./firebase";
+import { appCheckHeaders } from "./app-check";
 import { CloudSyncError } from "./cloud-sync-errors";
 export interface CloudClient {
   uid: string;
@@ -35,10 +36,12 @@ export function getCloudClient(): CloudClient | null {
         const token = await user.getIdToken(refresh);
         if (auth.currentUser?.uid !== uid)
           throw new Error("auth/account-changed");
+        const appCheck = await appCheckHeaders();
         return fetch(origin + path, {
           method: body === undefined ? "GET" : "POST",
           headers: {
             Authorization: `Bearer ${token}`,
+            ...appCheck,
             ...(body !== undefined
               ? { "Content-Type": "application/json" }
               : {}),

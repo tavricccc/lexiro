@@ -34,7 +34,7 @@
 
 ## 存取邊界
 
-本機教材與練習不要求登入；所有連網功能（AI、雲端同步、分享連結、教材助手、連線對戰）都要登入，前端先擋，Worker 再驗 Firebase ID token。分享連結只要登入即可讀取擁有者最新同步的單字集，擁有者可隨時停止分享。Firestore 要求 Firebase UID 等於文件 owner；AI Worker 要求 Firebase ID token。App Check 的啟用由明確開關控制，屬 Firebase 資料存取的 attestation；目前 Worker 本身驗 ID token 與 Origin，不驗 App Check token。
+本機教材與練習不要求登入；所有連網功能（AI、雲端同步、分享連結、教材助手、連線對戰）都要登入，前端先擋，Worker 再驗 Firebase ID token。分享連結只要登入即可讀取擁有者最新同步的單字集，擁有者可隨時停止分享。Firestore 要求 Firebase UID 等於文件 owner；AI Worker 要求 Firebase ID token。App Check 為選用、預設關閉：設定 `NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY` 後前端才初始化，並在 Worker 請求帶上 `X-Firebase-AppCheck`；未設定時請求與過去完全相同。Worker 目前驗 ID token 與 Origin，是否驗 App Check token 由後端 enforce 決定；建議先在 Firebase console 以 monitor 觀察，確認正常再切為 enforce。
 
 Worker 管理員必須有已驗證 email 並列於 server `ADMIN_EMAILS`，一般帳號不能呼叫 `/admin/*`。前端管理入口只顯示已取得管理身份的畫面，實際拒絕由後端執行。
 

@@ -23,7 +23,7 @@ flowchart LR
     U[學習者] --> PWA[Next.js PWA]
     PWA --> IDB[(IndexedDB<br/>教材與學習結果)]
     PWA --> Draft[(localStorage<br/>流程草稿)]
-    PWA --> Auth[Firebase Auth / App Check]
+    PWA --> Auth[Firebase Auth<br/>App Check（選用）]
     PWA <-->|帳號資料同步| FS[(Firestore)]
     PWA -->|Firebase ID token<br/>data-only request| W[獨立 private Worker]
     W --> D1[(D1<br/>帳號與計費)]
@@ -42,7 +42,7 @@ flowchart LR
 | UI | Tailwind CSS 4、Radix UI、Motion、HarmonyOS Sans TC | 元件、字型、亮暗色與動態 |
 | State / forms | Zustand、TanStack Query、React Hook Form、Zod | Domain state、查詢與輸入 |
 | 保存 | idb-keyval | IndexedDB |
-| 帳號／同步 | Firebase Auth、Firestore、App Check | Google 登入、帳號資料與 attestation |
+| 帳號／同步 | Firebase Auth、Firestore、App Check（選用） | Google 登入、帳號資料與 attestation |
 | AI backend | Cloudflare Workers、D1、Responses API | 驗證、生成、計費與管理 |
 | 離線／備份 | Serwist 9、fflate | App 資產快取與 ZIP 備份 |
 | 驗證 | Vitest 4、Testing Library、Oxlint | 單元／元件檢查及 client boundary |
