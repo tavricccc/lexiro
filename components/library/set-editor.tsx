@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -29,7 +29,6 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { createUniqueSetName } from "@/src/lib/set-name";
-import { AgentAccessDialog } from "@/components/agent/access-dialog";
 
 interface SetEditorDraft {
   entry: "ask" | "manual";
@@ -90,8 +89,6 @@ function SetEditorFlow({
   clear: () => void;
 }) {
   const router = useRouter();
-  const [agentOpen, setAgentOpen] = useState(false);
-  const agentSetId = useRef<string | undefined>(undefined);
   const formRef = useRef<HTMLFormElement>(null);
   const { state, status, saveSet } = useLibraryStore();
   const entry = draft.entry;
@@ -106,48 +103,6 @@ function SetEditorFlow({
   }, [form, update]);
   const setName = form.watch("setName");
   const errors = form.formState.errors;
-
-  const createAgentSet = async () => {
-    const values = form.getValues();
-    const rows = values.words.filter(
-      (word) =>
-        word.word.trim() ||
-        word.pos.trim() ||
-        word.meaningZh.trim() ||
-        word.examples.some((example) => example.trim()),
-    );
-    if (
-      !values.setName.trim() ||
-      (rows.length &&
-        !setFormSchema.safeParse({ ...values, words: rows }).success)
-    )
-      throw new Error(t("setEditor.fixErrors"));
-    const saved = await saveSet({
-      folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
-      setName: createUniqueSetName(
-        values.setName,
-        state.sets.map((item) => item.setName),
-      ),
-      words: rows.map((word) => ({
-        ...word,
-        examples: word.examples.map((value) => value.trim()).filter(Boolean),
-      })),
-    });
-    agentSetId.current = saved.id;
-    clear();
-    return saved.id;
-  };
-  const agentDialog = (
-    <AgentAccessDialog
-      open={agentOpen}
-      onOpenChange={(open) => {
-        setAgentOpen(open);
-        if (!open && agentSetId.current)
-          router.push(`/app/sets/${agentSetId.current}`);
-      }}
-      createSet={createAgentSet}
-    />
-  );
 
   const submit = form.handleSubmit(
     async (values) => {
@@ -243,7 +198,6 @@ function SetEditorFlow({
         <ChoiceList
           onSelect={(value) => {
             if (value === "ai") router.push(organizeHref);
-            else if (value === "agent") setAgentOpen(true);
             else update({ entry: "manual" });
           }}
           options={[
@@ -259,15 +213,8 @@ function SetEditorFlow({
               label: t("setEditor.aiWay"),
               value: "ai",
             },
-            {
-              description: t("agent.agentWayHint"),
-              icon: Icons.ai,
-              label: t("agent.agentWay"),
-              value: "agent",
-            },
           ]}
         />
-        {agentDialog}
       </div>
     );
   }
@@ -283,14 +230,6 @@ function SetEditorFlow({
         actions={
           <>
             <DraftSaveStatus status={persistence} />
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setAgentOpen(true)}
-            >
-              <Icons.ai />
-              {t("agent.generateUrl")}
-            </Button>
             <Button asChild variant="outline">
               <Link href={organizeHref}>
                 <Icons.generate />
@@ -365,8 +304,6 @@ function SetEditorFlow({
           </Button>
         </StepActions>
       </div>
-
-      {agentDialog}
     </form>
   );
 }

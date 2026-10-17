@@ -7,13 +7,6 @@ import { t } from "@/lib/i18n";
 
 export const agentWorkerUrl = () =>
   process.env.NEXT_PUBLIC_AGENT_WORKER_URL?.trim().replace(/\/$/, "") ?? "";
-export interface AgentLink {
-  id: string;
-  setId: string;
-  expiresAt: number;
-  revokedAt: number | null;
-  url?: string;
-}
 export interface AgentConnection {
   id: string;
   clientId: string;
@@ -72,20 +65,4 @@ export async function agentJson<T>(
     return value as T;
   }
   throw new Error(t("agent.requestFailed"));
-}
-
-export async function generateAgentLink(
-  setId: string,
-  expiresInSeconds: number,
-) {
-  const uid = useCloudStore.getState().user?.uid;
-  await useCloudStore.getState().sync({ reconcileAccount: true });
-  const cloud = useCloudStore.getState();
-  if (cloud.user?.uid !== uid) throw new Error(t("agent.accountChanged"));
-  if (cloud.status !== "synced" || cloud.pending > 0)
-    throw new Error(t("agent.syncFirst"));
-  return agentJson<AgentLink & { url: string }>("/links", {
-    method: "POST",
-    body: JSON.stringify({ setId, expiresInSeconds }),
-  });
 }

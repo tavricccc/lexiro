@@ -11,17 +11,13 @@ import { LoadingState } from "@/components/ui/page-state";
 import {
   agentJson,
   agentWorkerUrl,
-  type AgentLink,
   type AgentConnection,
 } from "@/lib/agent-client";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
-import { useLibraryStore } from "@/stores/library-store";
 
 export function AgentConnectionsPage() {
   const { user, ready, signIn } = useCloudStore();
-  const sets = useLibraryStore((store) => store.state.sets);
-  const [links, setLinks] = useState<AgentLink[]>([]);
   const [connections, setConnections] = useState<AgentConnection[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -30,7 +26,6 @@ export function AgentConnectionsPage() {
   const [refresh, setRefresh] = useState(0);
   const endpoint = agentWorkerUrl() ? `${agentWorkerUrl()}/mcp` : "";
   useEffect(() => {
-    setLinks([]);
     setConnections([]);
     setError("");
     setLoading(true);
@@ -39,18 +34,12 @@ export function AgentConnectionsPage() {
       return;
     }
     const controller = new AbortController();
-    void Promise.all([
-      agentJson<{ links: AgentLink[] }>("/links", {
-        signal: controller.signal,
-      }),
-      agentJson<{ connections: AgentConnection[] }>("/connections", {
-        signal: controller.signal,
-      }),
-    ])
-      .then(([a, b]) => {
+    void agentJson<{ connections: AgentConnection[] }>("/connections", {
+      signal: controller.signal,
+    })
+      .then((a) => {
         if (!controller.signal.aborted) {
-          setLinks(a.links);
-          setConnections(b.connections);
+          setConnections(a.connections);
         }
       })
       .catch((reason) => {
@@ -164,49 +153,6 @@ export function AgentConnectionsPage() {
               ) : (
                 <p className="py-4 text-sm text-muted-foreground">
                   {t("agent.noConnections")}
-                </p>
-              )}
-            </ListSection>
-            <ListSection header={t("agent.links")}>
-              {links.length ? (
-                links.map((link) => {
-                  const inactive =
-                    link.revokedAt !== null || link.expiresAt <= Date.now();
-                  return (
-                    <div
-                      key={link.id}
-                      className="flex items-center gap-3 py-[var(--row-padding-block)]"
-                    >
-                      <div className="min-w-0 flex-1">
-                        <p className="type-row break-words">
-                          {sets.find((set) => set.id === link.setId)?.setName ??
-                            t("agent.unknownSet")}
-                        </p>
-                        <p className="type-row-detail">
-                          {link.revokedAt !== null
-                            ? t("agent.revoked")
-                            : link.expiresAt <= Date.now()
-                              ? t("agent.expired")
-                              : t("agent.expiresAt", {
-                                  time: new Date(link.expiresAt).toLocaleString(
-                                    "zh-TW",
-                                  ),
-                                })}
-                        </p>
-                      </div>
-                      <Button
-                        variant="outline"
-                        disabled={inactive || busy !== null}
-                        onClick={() => void revoke("/links", link.id)}
-                      >
-                        {t("agent.revoke")}
-                      </Button>
-                    </div>
-                  );
-                })
-              ) : (
-                <p className="py-4 text-sm text-muted-foreground">
-                  {t("agent.noLinks")}
                 </p>
               )}
             </ListSection>
