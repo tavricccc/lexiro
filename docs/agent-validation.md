@@ -37,7 +37,7 @@ requestedSenseIds／usedSenseIds／unusedSenseIds 可明確選取，只提供覆
 
 MCP 的 expectedRevision／operationId 選填；省略時服務用當前資料與新 UUID 執行，D1 CAS 仍保護交易期間的並發。提供 expectedRevision 可保護 Agent 先前讀過的版本。重送需沿用同一 UUID operationId，才能取得完全相同的回條。每筆回條直接附新 revision，不必每批額外重讀。
 
-單集 URL 的 PATCH 接受 `{action,expectedRevision?,operationId?}`，也可用細部 REST 路徑；題目內容與 partial／atomic 共用同一規則。整批拒絕回結構化診斷與零 savedCount，MCP 用 isError 提示 rejected；部分成功仍是成功回應，Agent 應如實回報未完成的項目。
+MCP 寫入同樣接受 `expectedRevision`／`operationId`；題目內容與 partial／atomic 共用同一規則。整批拒絕回結構化診斷與零 savedCount，MCP 用 isError 提示 rejected；部分成功仍是成功回應，Agent 應如實回報未完成的項目。
 
 ## 工程驗證
 
