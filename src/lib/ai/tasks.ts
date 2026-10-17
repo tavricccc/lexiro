@@ -166,15 +166,6 @@ export function questionTask(
   );
 }
 
-/** Executes a supplied complete batch through the same parser and recovery as production. */
-export function questionBatchTask(
-  words: WordEntry[],
-  kind: GeneratedQuestionKind,
-  difficulty: QuestionDifficulty,
-): AiTask<LibraryQuestion> {
-  return createQuestionTask(words, kind, difficulty, [words]);
-}
-
 function createQuestionTask(
   words: WordEntry[],
   kind: GeneratedQuestionKind,

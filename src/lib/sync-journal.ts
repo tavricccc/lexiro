@@ -198,7 +198,7 @@ export async function loadSyncJournal(): Promise<SyncJournal> {
 }
 
 /** Announces local work so the cloud store can debounce a sync around it. */
-export function notifySyncPending(): void {
+function notifySyncPending(): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new Event(CLOUD_SYNC_PENDING_EVENT));
 }

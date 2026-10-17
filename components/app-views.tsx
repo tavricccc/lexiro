@@ -279,11 +279,6 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
   ],
 ];
 
-/** The address patterns the view host draws, for docs and tests. */
-export const APP_SCREEN_PATTERNS = SCREENS.map(([pattern]) =>
-  pattern ? `/app/${pattern}` : "/app",
-);
-
 /** Finds the screen for a pathname; literal segments win over parameters. */
 export function matchScreen(pathname: string) {
   const segments = pathname

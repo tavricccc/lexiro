@@ -4,7 +4,7 @@ import type { AppIcon } from "@/components/ui/icons";
 
 import { ListCheckRow } from "@/components/ui/list";
 
-export interface ChecklistChoice {
+interface ChecklistChoice {
   description: string;
   icon?: AppIcon;
   label: string;

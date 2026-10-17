@@ -16,7 +16,7 @@ import {
   type AiRunCheckpoint,
 } from "@/src/lib/ai/run-checkpoint";
 
-export type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
+type AiRunStatus = "idle" | "running" | "done" | "error" | "cancelled";
 
 /**
  * Hands a finished run to the step that reviews it, once per run.

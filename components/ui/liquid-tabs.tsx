@@ -7,7 +7,7 @@ import { timing } from "@/lib/motion-timing";
 
 import { cn } from "@/lib/cn";
 
-export interface LiquidTabOption {
+interface LiquidTabOption {
   icon?: React.ReactNode;
   label: string;
   shortLabel?: string;

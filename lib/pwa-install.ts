@@ -1,6 +1,6 @@
 /** Where this page is running, for deciding how to get Lexiro onto the device. */
 
-export type InAppBrowserName =
+type InAppBrowserName =
   | "LINE"
   | "Facebook"
   | "Messenger"

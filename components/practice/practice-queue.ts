@@ -130,7 +130,7 @@ function reshuffleOptions(item: QuestionItem): QuestionItem {
   return { ...item, ...shuffled };
 }
 
-export function shuffleSession<T>(items: T[]): T[] {
+function shuffleSession<T>(items: T[]): T[] {
   const result = [...items];
   for (let index = result.length - 1; index > 0; index -= 1) {
     const swap = Math.floor(Math.random() * (index + 1));
@@ -139,7 +139,7 @@ export function shuffleSession<T>(items: T[]): T[] {
   return result;
 }
 
-export interface QueueInput {
+interface QueueInput {
   allowedSenseIds: Set<SenseId>;
   amount: number;
   oneSensePerWord: boolean;

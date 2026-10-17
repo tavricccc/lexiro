@@ -8,7 +8,7 @@ export function formatCost(cost: number | null): string {
   return `US$${cost.toFixed(6)}`;
 }
 
-export function usageFigures(usage: TokenUsage) {
+function usageFigures(usage: TokenUsage) {
   const cached = usage.cached ?? 0;
   const cacheWrite = usage.cacheWrite ?? 0;
   const input = usage.input ?? 0;

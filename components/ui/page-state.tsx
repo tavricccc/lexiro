@@ -3,10 +3,8 @@
 import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
-import { ActionFeedbackIcon } from "@/components/ui/action-feedback-icon";
 import { Icons } from "@/components/ui/icons";
 import { ListSkeleton } from "@/components/ui/workspace-skeleton";
-import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
 
 export function LoadingState({ rows = 4 }: { rows?: number }) {
@@ -101,35 +99,5 @@ export function ErrorState({
         </Button>
       )}
     </div>
-  );
-}
-
-export function BusyLabel({
-  busy,
-  busyLabel,
-  label,
-  success = false,
-}: {
-  busy: boolean;
-  busyLabel: string;
-  label: string;
-  success?: boolean;
-}) {
-  return (
-    <span className="inline-flex items-center gap-2">
-      {busy && (
-        <ActionFeedbackIcon
-          className="bg-transparent [&>svg]:size-4"
-          size="sm"
-          state={success ? "success" : "loading"}
-        />
-      )}
-      <span
-        className={cn(busy && "t-shimmer")}
-        data-text={busy ? busyLabel : undefined}
-      >
-        {busy ? busyLabel : label}
-      </span>
-    </span>
   );
 }

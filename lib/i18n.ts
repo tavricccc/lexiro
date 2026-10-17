@@ -994,8 +994,6 @@ export const zhTW = {
     more: "更多動作",
     stepOf: "步驟 {current} / {total}",
     flowProgress: "目前步驟",
-    decrease: "減少",
-    increase: "增加",
     cancel: "取消",
     confirm: "確認",
     loading: "載入中",

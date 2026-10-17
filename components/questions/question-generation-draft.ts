@@ -8,7 +8,7 @@ import type {
 import { rebindSetQuestionDrafts } from "@/src/lib/library-set-migration";
 import { t } from "@/lib/i18n";
 
-export type QuestionGenerationStep = "configure" | "run" | "review" | "done";
+type QuestionGenerationStep = "configure" | "run" | "review" | "done";
 export interface QuestionDraft {
   step: QuestionGenerationStep;
   chosenSetId: string;

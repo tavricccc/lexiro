@@ -5,10 +5,8 @@ import type {
   QuestionDifficulty,
   SetMembership,
   WordEntry,
-  WordKey,
 } from "@/types";
 import { senseKey } from "./library";
-import { questionUsesWords } from "./question-ownership";
 import { createSourceRef } from "./source-ref";
 import { extractJsonText } from "./ai/json";
 import { assembleGeneratedQuestions } from "./question-assembly";
@@ -149,18 +147,6 @@ export function splitGenerationBatches(
   }
   if (batch.length) batches.push(batch);
   return batches;
-}
-
-export function filterQuestionsForWords(
-  questions: LibraryQuestion[],
-  words: WordEntry[],
-): LibraryQuestion[] {
-  const allowedWords: Record<WordKey, WordEntry> = Object.fromEntries(
-    words.map((word) => [word.wordKey, word]),
-  );
-  return questions.filter((question) =>
-    questionUsesWords(question, allowedWords),
-  );
 }
 
 /**

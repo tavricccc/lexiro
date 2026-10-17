@@ -90,7 +90,7 @@ export function QuestionFeedback({
 const GLOSS_LIMIT = 16;
 
 /** Splits a stored reason into an inline meaning and an optional short note. */
-export function splitOptionReason(reason: string): {
+function splitOptionReason(reason: string): {
   gloss?: string;
   note?: string;
 } {

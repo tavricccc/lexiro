@@ -160,7 +160,3 @@ function canonicalize(value: unknown, inArray = false): unknown {
 export function canonicalHash(value: unknown): string {
   return hashText(JSON.stringify(canonicalize(value)) ?? "undefined");
 }
-
-export function estimateJsonBytes(value: unknown): number {
-  return encoder.encode(JSON.stringify(value)).byteLength;
-}

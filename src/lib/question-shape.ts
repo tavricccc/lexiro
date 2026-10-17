@@ -1,4 +1,4 @@
-import type { PassageFormat, QuestionDifficulty, QuestionStyle } from "@/types";
+import type { PassageFormat, QuestionStyle } from "@/types";
 import {
   PASSAGE_FORMATS,
   blankTokenNumbers,
@@ -51,21 +51,5 @@ export function passageBlankIssue(
     return "文章的空格必須從 __1__ 依序編號且不重複";
   if (spec.sharedBank && childCount > spec.optionCount)
     return `${format} 的空格數不可超過選項數`;
-  return null;
-}
-
-export function parseAnswerIndex(
-  value: string,
-  optionCount: number,
-): number | null {
-  const answerIndex = Number(value);
-  return isValidAnswerIndex(optionCount, answerIndex) ? answerIndex : null;
-}
-
-export function parseQuestionDifficulty(
-  value: string,
-): QuestionDifficulty | null {
-  if (value === "1" || value === "2" || value === "3")
-    return Number(value) as QuestionDifficulty;
   return null;
 }

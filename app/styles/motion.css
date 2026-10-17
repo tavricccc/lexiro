@@ -27,12 +27,10 @@
   --tabs-text-active: var(--primary-foreground);
   --tabs-bar-bg: var(--card);
   --tabs-pill-bg: var(--primary);
-  --shimmer-base: #7c7c7c;
   --shimmer-highlight: #0d0d0d;
 }
 
 .dark {
-  --shimmer-base: #797979;
   --shimmer-highlight: #ededed;
 }
 
@@ -640,38 +638,6 @@
   }
 }
 
-.t-shimmer {
-  position: relative;
-  display: inline-block;
-  color: var(--shimmer-base);
-}
-.t-shimmer::before {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  color: transparent;
-  background: linear-gradient(
-    90deg,
-    transparent 0 40%,
-    var(--shimmer-highlight) 50%,
-    transparent 60% 100%
-  );
-  background-clip: text;
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  pointer-events: none;
-  animation: t-shimmer var(--motion-pulse) linear infinite;
-}
-@keyframes t-shimmer {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-
 .t-action-icon {
   display: inline-grid;
   place-items: center;
@@ -862,7 +828,6 @@
   .t-result-in,
   .t-celebrate,
   .t-skeleton,
-  .t-shimmer::before,
   .t-toast,
   .t-dialog,
   .t-sheet,

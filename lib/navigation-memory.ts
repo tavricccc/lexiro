@@ -1,17 +1,11 @@
-interface ClientRouter {
-  back(): void;
-  push(href: string): void;
-}
-
 let currentPath = "";
-let previousPath = "";
 let pendingRouteDirection: RouteDirection | null = null;
 let pendingViewDirection: RouteDirection = "child";
 let currentHistoryIndex: number | null = null;
 let pendingHistoryIndex: number | null = null;
 const HISTORY_INDEX_KEY = "__lexiroHistoryIndex";
 
-export type RouteDirection = "back" | "child" | "root";
+type RouteDirection = "back" | "child" | "root";
 
 /**
  * The places primary navigation points at, in the order it shows them.
@@ -125,7 +119,6 @@ export function consumeRouteDirection(pathname: string) {
 
 export function rememberRoutePath(pathname: string) {
   if (!pathname || pathname === currentPath) return;
-  previousPath = currentPath;
   currentPath = pathname;
 }
 
@@ -181,35 +174,4 @@ export function markPopstateRouteDirection(state: unknown, pathname: string) {
         ? "root"
         : "child",
   );
-}
-
-export function returnToPreviousRoute(
-  router: ClientRouter,
-  fallback: string,
-  expectedPrefix: string,
-) {
-  if (
-    previousPath === expectedPrefix ||
-    previousPath.startsWith(`${expectedPrefix}/`) ||
-    previousPath.startsWith(`${expectedPrefix}?`)
-  ) {
-    markRouteDirection("back");
-    router.back();
-    return;
-  }
-  markRouteDirection("back");
-  router.push(fallback);
-}
-
-export function returnToPreviousInAppRoute(
-  router: ClientRouter,
-  fallback: string,
-) {
-  if (previousPath && previousPath !== currentPath) {
-    markRouteDirection("back");
-    router.back();
-    return;
-  }
-  markRouteDirection("back");
-  router.push(fallback);
 }

@@ -227,7 +227,7 @@ export function usePersistPracticeSession({
 }
 
 /** Use the same snapshot for disk persistence and an in-app pause. */
-export function buildPracticeSnapshot({
+function buildPracticeSnapshot({
   entries,
   answerChoices,
   ...session

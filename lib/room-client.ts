@@ -9,7 +9,7 @@ export const ROOM_MAX_QUESTIONS = 50;
 export const ROOM_CODE_PATTERN = /^[A-HJ-NP-Z2-9]{6}$/;
 
 /** What every player sees of a question. The answer is never part of it. */
-export interface LiveQuestion {
+interface LiveQuestion {
   type: PracticeQuestionTask;
   prompt: string;
   options: string[];
@@ -26,7 +26,7 @@ export interface RoomPlayer {
   answered: boolean;
 }
 
-export interface RoomReviewItem {
+interface RoomReviewItem {
   index: number;
   question: Omit<LiveQuestion, "passage"> & { passageId: string | null };
   choice: number | null;
@@ -39,7 +39,7 @@ export interface RoomReview {
   passages: Record<string, { title: string; text: string }>;
 }
 
-export type RoomPhase = "lobby" | "question" | "reveal" | "ended";
+type RoomPhase = "lobby" | "question" | "reveal" | "ended";
 
 export interface RoomState {
   type: "state";

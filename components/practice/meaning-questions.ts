@@ -3,7 +3,7 @@ import { normalizeWordKey } from "@/src/lib/library";
 import { seededShuffle, type QuestionItem } from "./practice-content";
 
 /** Ignore presentation punctuation when comparing saved Chinese meanings. */
-export function meaningKey(meaning: string): string {
+function meaningKey(meaning: string): string {
   return meaning.normalize("NFKC").replace(/[\s\p{P}\p{S}]/gu, "");
 }
 

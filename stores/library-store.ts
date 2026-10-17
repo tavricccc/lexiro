@@ -52,7 +52,7 @@ export interface WordDraftInput {
 }
 /** A question whose content already exists is reported, never silently dropped. */
 export type SaveQuestionResult = "saved" | "duplicate";
-export interface SenseRemap {
+interface SenseRemap {
   oldWordKey: WordKey;
   oldSenseId: SenseId;
   newWordKey: WordKey;

@@ -4,7 +4,6 @@ import type {
   MultipleChoiceQuestion,
   ReadingPack,
   SenseId,
-  SetMembership,
   StudyWord,
   WordEntry,
   WordKey,
@@ -112,7 +111,7 @@ export function mergeUniqueStrings(
   return result;
 }
 
-export function mergeSense(
+function mergeSense(
   existing: WordSense | undefined,
   incoming: WordSense,
 ): WordSense {
@@ -183,20 +182,6 @@ export function itemToWordEntry(
     word: item.word.trim(),
     senses,
     updatedAt: new Date().toISOString(),
-  };
-}
-
-export function itemToMembership(
-  item: Pick<EditorItem, "word" | "senses">,
-): SetMembership {
-  const wordKey = normalizeWordKey(item.word);
-  return {
-    wordKey,
-    senseIds: item.senses
-      .filter(
-        (sense) => normalizePartOfSpeech(sense.pos) && sense.meaning.trim(),
-      )
-      .map((sense) => buildSenseId(wordKey, sense.pos, sense.meaning)),
   };
 }
 

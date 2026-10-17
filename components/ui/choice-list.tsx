@@ -5,7 +5,7 @@ import type { AppIcon } from "@/components/ui/icons";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 
-export interface Choice {
+interface Choice {
   /** Why someone would pick this, in their words, not the system's. */
   description: string;
   disabled?: boolean;

@@ -77,16 +77,3 @@ export function Field({
     </label>
   );
 }
-
-/** Groups fields on one row, collapsing to a single column on phones. */
-export function FieldRow({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={cn("grid gap-4 sm:grid-cols-2", className)}>{children}</div>
-  );
-}

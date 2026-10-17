@@ -1,4 +1,3 @@
-import type { LibraryState } from "@/types";
 import { z } from "zod";
 
 /**
@@ -27,28 +26,3 @@ export const emptyWord = {
   supplementary: false,
   word: "",
 };
-
-/** Flattens a stored set back into the flat word/sense rows the form edits. */
-export function getSetWords(
-  state: LibraryState,
-  setId: string,
-): SetFormValues["words"] {
-  return (state.memberships[setId] ?? []).flatMap((membership) => {
-    const word = state.words[membership.wordKey];
-    if (!word) return [];
-    return membership.senseIds.flatMap((senseId) => {
-      const sense = word.senses.find((entry) => entry.id === senseId);
-      return sense
-        ? [
-            {
-              examples: sense.examples,
-              meaningZh: sense.meaningZh,
-              pos: sense.pos,
-              supplementary: sense.supplementary,
-              word: word.word,
-            },
-          ]
-        : [];
-    });
-  });
-}

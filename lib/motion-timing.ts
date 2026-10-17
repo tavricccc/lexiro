@@ -14,8 +14,3 @@ import {
 export function timing(rung: MotionRung, curve: MotionCurve = "arrive") {
   return { duration: motionSeconds[rung], ease: motionEasing[curve] };
 }
-
-/** The same rung as a plain millisecond count, for timers that shadow an animation. */
-export function timingMs(rung: MotionRung) {
-  return motionSeconds[rung] * 1_000;
-}

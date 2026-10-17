@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/cn";
-import { t } from "@/lib/i18n";
 
 /**
  * The grouped list.
@@ -369,85 +368,6 @@ export function ListSwitchRow({
 }
 
 /**
- * A small whole number, set by pressing rather than by typing.
- *
- * A daily goal moves by one or two at a time, so a keyboard is the wrong tool
- * for it: on a phone, tapping a number field covers half the screen to change
- * 15 into 16.
- */
-export function ListStepperRow({
-  disabled,
-  max,
-  min,
-  onChange,
-  step = 1,
-  value,
-  ...content
-}: Omit<RowContent, "value"> & {
-  max: number;
-  min: number;
-  disabled?: boolean;
-  onChange: (value: number) => void;
-  step?: number;
-  value: number;
-}) {
-  const set = (next: number) => onChange(Math.min(max, Math.max(min, next)));
-  return (
-    <div className={cn(rowClass, disabled && "opacity-45")}>
-      <RowInner
-        {...content}
-        trailing={
-          <span className="flex items-center gap-2">
-            <span className="type-row-value w-8 text-right tabular-nums">
-              {value}
-            </span>
-            <span className="flex items-center overflow-clip rounded-[var(--radius-control)] bg-[var(--surface-inset)]">
-              <StepperButton
-                disabled={disabled || value <= min}
-                label={t("common.decrease")}
-                onClick={() => set(value - step)}
-                symbol="−"
-              />
-              <span aria-hidden className="h-5 w-px bg-[var(--rule)]" />
-              <StepperButton
-                disabled={disabled || value >= max}
-                label={t("common.increase")}
-                onClick={() => set(value + step)}
-                symbol="+"
-              />
-            </span>
-          </span>
-        }
-      />
-    </div>
-  );
-}
-
-function StepperButton({
-  disabled,
-  label,
-  onClick,
-  symbol,
-}: {
-  disabled: boolean;
-  label: string;
-  onClick: () => void;
-  symbol: string;
-}) {
-  return (
-    <button
-      aria-label={label}
-      className="flex h-11 w-11 items-center justify-center text-base leading-none transition-[background-color,opacity] duration-[var(--motion-control)] active:bg-[var(--surface-active)] disabled:opacity-35"
-      disabled={disabled}
-      onClick={onClick}
-      type="button"
-    >
-      {symbol}
-    </button>
-  );
-}
-
-/**
  * A row that is an action rather than a setting: 登出, 匯出備份, 刪除.
  *
  * It is centred and tinted because that is how a phone says "this row does
@@ -571,23 +491,6 @@ export function ListInputRow({
         {field}
       </label>
       {trailing}
-    </div>
-  );
-}
-
-/** A row whose content is written by the caller, keeping the list's metrics. */
-export function ListCustomRow({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn("min-h-[3.25rem] py-[var(--row-padding-block)]", className)}
-    >
-      {children}
     </div>
   );
 }

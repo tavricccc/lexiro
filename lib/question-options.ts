@@ -12,7 +12,7 @@ import { t, type TranslationKey } from "@/lib/i18n";
  * order follows the 學測 paper: 詞彙題, 綜合測驗, 文意選填, 篇章結構, 閱讀測驗,
  */
 
-export interface LabelledOption {
+interface LabelledOption {
   label: string;
   value: string;
   description?: string;

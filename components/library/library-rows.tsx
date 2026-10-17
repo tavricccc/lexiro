@@ -6,7 +6,7 @@ import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
 
-export interface SetRowMetrics {
+interface SetRowMetrics {
   questionCount: number;
   senseCount: number;
 }

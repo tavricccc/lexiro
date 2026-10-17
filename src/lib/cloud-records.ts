@@ -44,9 +44,6 @@ const RECORD_TYPES: readonly LibraryRecordKind[] = [
   "question",
 ];
 
-export const CLOUD_RECORD_ID_PATTERN =
-  /^(folder|set|membership|word|question)-[0-9a-f]{32}$/u;
-
 /**
  * Hashing the Library's opaque, set-scoped id
  * gives every record a uniform, legal name, and lets the security rules check

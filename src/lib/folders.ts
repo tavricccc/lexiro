@@ -2,9 +2,9 @@ import type { VocabFolder } from "@/types";
 
 export const ALL_FOLDER_ID = "__all__";
 export const UNCATEGORIZED_FOLDER_ID = "__uncategorized__";
-export const UNCATEGORIZED_FOLDER_NAME = "未分類";
+const UNCATEGORIZED_FOLDER_NAME = "未分類";
 
-export interface FolderOption {
+interface FolderOption {
   id: string;
   label: string;
   name: string;
@@ -42,13 +42,6 @@ export function sortFolders(folders: VocabFolder[]): VocabFolder[] {
   );
 }
 
-export function getFolderChildren(
-  folders: VocabFolder[],
-  parentId?: string,
-): VocabFolder[] {
-  return sortFolders(folders.filter((folder) => folder.parentId === parentId));
-}
-
 export function buildFolderOptions(folders: VocabFolder[]): FolderOption[] {
   const byParent = new Map<string | undefined, VocabFolder[]>();
   for (const folder of folders) {
@@ -77,14 +70,6 @@ export function buildFolderOptions(folders: VocabFolder[]): FolderOption[] {
 
   visit(undefined, 0);
   return options;
-}
-
-export function folderIdFromSelection(value: string): string {
-  return value && value !== ALL_FOLDER_ID ? value : UNCATEGORIZED_FOLDER_ID;
-}
-
-export function folderParentIdFromSelection(value: string): string | undefined {
-  return normalizeFolderParentId(value);
 }
 
 /**

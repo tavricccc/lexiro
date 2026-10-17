@@ -129,8 +129,7 @@ every screen that asks for something uses it.
 - `ListRow` reports, `ListNavRow` leads somewhere (chevron), `ListChoiceGroup` is
   a labelled Radix radio group with checkmarked rows and arrow-key navigation, `ListPicker` uses the shared select popover instead
   of unfolding options into the current page, `ListSwitchRow` is on/off,
-  `ListStepperRow` is a small
-  whole number, `ListInputRow` is a value you type on the line that names it
+  `ListInputRow` is a value you type on the line that names it
   (`block` puts the label above for a sentence), and `ListActionRow` is a
   centred, tinted row that does something now.
 - A choice within a form or settings group uses `ListPicker`, whose shared select
@@ -408,7 +407,7 @@ SearchField 的清除按鈕與 Escape 保留焦點；中文組字時不攔截 Es
 Shared primitives live in `components/ui/` and are the only place a control's
 markup is defined:
 
-- **`Field` / `FieldRow`** — the one label-and-control pairing. `layout="stacked"`
+- **`Field`** — the one label-and-control pairing. `layout="stacked"`
   for editors, `layout="row"` for settings lists. There is no second Field.
 - **`SelectField`** — every select in the app. Call sites pass
   `options: {label, value}[]`; nobody hand-rolls a trigger and content, and

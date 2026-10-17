@@ -118,5 +118,3 @@ export const Icons = {
   today: SunHorizon,
   up: CaretLeft,
 } as const;
-
-export type IconName = keyof typeof Icons;

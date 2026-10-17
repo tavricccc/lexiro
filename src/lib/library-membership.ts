@@ -31,16 +31,3 @@ export function sanitizeMemberships(
   }
   return Array.from(byWord.values());
 }
-
-export function membershipsCoverWords(
-  words: WordEntry[],
-  memberships: SetMembership[],
-): boolean {
-  const wordKeys = new Set(words.map((word) => word.wordKey));
-  const membershipWordKeys = new Set(
-    memberships.map((membership) => membership.wordKey),
-  );
-  return Array.from(wordKeys).every((wordKey) =>
-    membershipWordKeys.has(wordKey),
-  );
-}
