@@ -2,7 +2,7 @@
 
 | 位置 | 責任 |
 | --- | --- |
-| `app/` | 公開介紹、`/app` routes、layout、offline page、Service Worker |
+| `app/` | `/app` routes、layout、offline page、Service Worker |
 | `components/` | 教材、練習、設定與共用視覺元件 |
 | `stores/` | Zustand Library／cloud／AI preference state |
 | `src/lib/` | Domain 操作、保存、同步、備份、解析與 migration |

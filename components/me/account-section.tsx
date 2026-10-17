@@ -8,7 +8,6 @@ import { GoogleMark } from "@/components/ui/google-mark";
 import { Icons } from "@/components/ui/icons";
 import {
   ListActionRow,
-  ListNavRow,
   ListRow,
   ListSection,
 } from "@/components/ui/list";
@@ -136,11 +135,6 @@ export function AccountSection() {
       </ListSection>
 
       <ListSection>
-        <ListNavRow
-          href="/"
-          icon={Icons.reading}
-          label={t("about.accountLink")}
-        />
         {cloud.configured && !cloud.user && (
           <ListActionRow
             busy={working === "in"}

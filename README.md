@@ -58,7 +58,7 @@ npm ci
 npm run dev
 ```
 
-開啟 `http://localhost:3000/app`。根路徑 `/` 是公開介紹頁，學習工作區位於 `/app`。純本機模式不設定 Firebase；要開啟登入同步才複製 `.env.example` 到 `.env.local` 並填真實值。AI 另外需要運作中的 Worker 和已登入帳號。離線功能用 production build 與 Service Worker 驗證，`next dev` 不註冊它。
+開啟 `http://localhost:3000/app`。根路徑 `/` 會直接轉址到 `/app`。純本機模式不設定 Firebase；要開啟登入同步才複製 `.env.example` 到 `.env.local` 並填真實值。AI 另外需要運作中的 Worker 和已登入帳號。離線功能用 production build 與 Service Worker 驗證，`next dev` 不註冊它。
 
 ```powershell
 npm run typecheck

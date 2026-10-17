@@ -6,7 +6,7 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 
 | 路徑 | 責任 |
 | --- | --- |
-| `app/` | App Router、公開首頁、/app 工作區、manifest、Service Worker |
+| `app/` | App Router、/app 工作區、manifest、Service Worker |
 | `components/` | Domain 畫面、React UI、AI 流程與動態 |
 | `lib/` | Client orchestration、managed API、路由、更新、備份 |
 | `stores/` | Library、cloud、AI preference、UI、update state |
@@ -22,7 +22,7 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 
 ## 畫面與導覽
 
-`app/page.tsx` 是公開介紹，`app/app/` 為工作區。`next.config.ts` 處理舊 deep links；實際 page 清單見[路由](docs/routes-and-permissions.md)。
+`app/app/` 為工作區，根路徑 `/` 轉址到 `/app`。`next.config.ts` 處理舊 deep links；實際 page 清單見[路由](docs/routes-and-permissions.md)。
 
 `components/ui/` 是 Field、SelectField、PageHeader、Loading／Empty／ErrorState、Markdown、Icons、List、LiquidTabs、StepActions 的共用定義。Feature 使用 Icons 語意表，不各自 import 圖示。`app/globals.css` 與 `app/styles/workspace.css` 承載 tokens／工作區；規則見 DESIGN 和 design-system。
 

@@ -17,9 +17,10 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@phosphor-icons/react", "motion", "radix-ui"],
   },
-  // Keep old workspace deep links working after the public site takes /.
+  // Keep old workspace deep links working now that / redirects to /app.
   redirects: async () => [
-    { source: "/about", destination: "/", permanent: true },
+    { source: "/", destination: "/app", permanent: true },
+    { source: "/about", destination: "/app", permanent: true },
     { source: "/settings", destination: "/app/me", permanent: true },
     {
       source: "/questions/new",

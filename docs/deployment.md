@@ -42,7 +42,7 @@ Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEX
 
 本機與 Vercel 都使用根路徑 `/`。Next.js App Router 會處理路由，不需要 SPA fallback rewrite。
 
-公開介紹位於 `/`，工作區位於 `/app`。完整 D1 設定、200 筆與資料夾操作及發布順序見 [D1 雲端](d1-cloud.md)。Agent URL 為 GitHub Production variable `NEXT_PUBLIC_AGENT_WORKER_URL`，先發布 private Agent Worker，再發布前端。
+根路徑 `/` 轉址到 `/app`。完整 D1 設定、200 筆與資料夾操作及發布順序見 [D1 雲端](d1-cloud.md)。Agent URL 為 GitHub Production variable `NEXT_PUBLIC_AGENT_WORKER_URL`，先發布 private Agent Worker，再發布前端。
 
 ## 前後端契約與發布確認
 

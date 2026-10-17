@@ -1,5 +1,3 @@
-import Link from "@/components/ui/app-link";
-
 import { cn } from "@/lib/cn";
 
 export function BrandMark({
@@ -29,44 +27,5 @@ export function BrandMark({
         src="/icons/lexiro.png"
       />
     </span>
-  );
-}
-
-export function BrandLockup({
-  className,
-  href,
-  markClassName,
-}: {
-  className?: string;
-  href?: string;
-  markClassName?: string;
-}) {
-  const content = (
-    <>
-      <BrandMark className={markClassName} />
-      <span className="text-lg font-medium leading-none tracking-[-0.01em]">
-        Lexiro
-      </span>
-    </>
-  );
-
-  if (!href) {
-    return (
-      <div className={cn("flex items-center gap-2.5", className)}>
-        {content}
-      </div>
-    );
-  }
-
-  return (
-    <Link
-      className={cn(
-        "group flex items-center gap-2.5 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring/40",
-        className,
-      )}
-      href={href}
-    >
-      {content}
-    </Link>
   );
 }
