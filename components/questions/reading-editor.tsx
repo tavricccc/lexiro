@@ -6,7 +6,7 @@ import type { ReadingPack } from "@/types";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { countEnglishWords } from "@lexiro/ai-contract";
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { PassageView } from "@/components/practice/passage-view";
 import {
   ReadingChildEditor,

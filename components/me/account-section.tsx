@@ -6,11 +6,7 @@ import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GoogleMark } from "@/components/ui/google-mark";
 import { Icons } from "@/components/ui/icons";
-import {
-  ListActionRow,
-  ListRow,
-  ListSection,
-} from "@/components/ui/list";
+import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { syncStatusLabel } from "@/lib/sync-status";

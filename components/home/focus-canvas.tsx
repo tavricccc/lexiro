@@ -97,17 +97,7 @@ export function FocusCanvas() {
               )}
             </div>
 
-            {hasContent ? (
-              <>
-                <div className="study-tools">
-                  <Link href="/app/questions/generate">
-                    <Icons.generate aria-hidden className="size-4" />
-                    {t("home.generateQuestions")}
-                    <Icons.next aria-hidden className="size-4" />
-                  </Link>
-                </div>
-              </>
-            ) : (
+            {!hasContent && (
               <ol className="study-guide">
                 {GUIDE.map(([label, hint], index) => (
                   <li key={label}>

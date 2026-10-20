@@ -69,7 +69,6 @@ vi.mock("@/src/lib/cloud-account", async (original) => ({
 }));
 const { useCloudStore } = await import("@/stores/cloud-store");
 const { useLibraryStore } = await import("@/stores/library-store");
-const { useAiPreferencesStore } = await import("@/stores/ai-preferences-store");
 const noChange: LibraryCommitStats = {
   writtenBlobs: 0,
   totalRecords: 0,
@@ -119,33 +118,6 @@ describe("synchronization state consistency", () => {
     await useCloudStore.getState().sync();
     expect(mocks.pull).not.toHaveBeenCalled();
     expect(mocks.cursor).not.toHaveBeenCalled();
-  });
-  it("discards account documents when a different sign-in starts before the read completes", async () => {
-    let finishRead!: () => void;
-    mocks.blobs.mockImplementationOnce(
-      () =>
-        new Promise((resolve) => {
-          finishRead = () =>
-            resolve({
-              preferences: {
-                schemaVersion: 1,
-                model: "gpt-6-luna",
-                updatedAt: "2026-10-01T00:00:00.000Z",
-              },
-            });
-        }),
-    );
-    const synced = useCloudStore.getState().sync({ reconcileAccount: true });
-    await vi.waitFor(() => expect(mocks.blobs).toHaveBeenCalledOnce());
-    const apply = vi.spyOn(useAiPreferencesStore.getState(), "applyRemote");
-    useCloudStore.setState({
-      ready: false,
-      user: { uid: "account-b" } as User,
-    });
-    finishRead();
-    await synced;
-    expect(apply).not.toHaveBeenCalled();
-    apply.mockRestore();
   });
   it("preserves a local rename that was saving when the remote tombstone arrived", async () => {
     const folder = await useLibraryStore.getState().createFolder("原名");

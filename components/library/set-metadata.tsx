@@ -3,7 +3,7 @@
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useRef, useState } from "react";
 
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { SetFolderPicker } from "@/components/library/set-folder-picker";
 import { Button } from "@/components/ui/button";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";

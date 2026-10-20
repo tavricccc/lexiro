@@ -13,11 +13,6 @@ export function SetTools({ setId }: { setId: string }) {
         label={t("setEditor.addWord")}
       />
       <ListNavRow
-        href={`/app/sets/${setId}/supplement`}
-        icon={Icons.ai}
-        label={t("supplement.title")}
-      />
-      <ListNavRow
         href={`/app/sets/${setId}/settings`}
         icon={Icons.edit}
         label={t("wordEdit.metadata")}

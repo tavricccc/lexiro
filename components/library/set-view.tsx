@@ -284,22 +284,14 @@ export function SetView({
       </ContentTransition>
       <StepActions width="wide">
         <div className="workspace-actions">
-          <Button asChild size="lg" variant="outline">
-            <Link
-              href={
-                tab === "questions"
-                  ? `/app/questions/generate?set=${setId}`
-                  : `/app/sets/${setId}/add`
-              }
-            >
-              {tab === "questions" ? <Icons.generate /> : <Icons.create />}
-              {t(
-                tab === "questions"
-                  ? "home.generateQuestions"
-                  : "setEditor.addWord",
-              )}
-            </Link>
-          </Button>
+          {tab !== "questions" && (
+            <Button asChild size="lg" variant="outline">
+              <Link href={`/app/sets/${setId}/add`}>
+                <Icons.create />
+                {t("setEditor.addWord")}
+              </Link>
+            </Button>
+          )}
           {(
             tab === "questions" ? questions.length > 0 : senseIds.length > 0
           ) ? (

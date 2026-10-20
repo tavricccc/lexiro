@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useRef } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -12,10 +11,9 @@ import {
   type SetFormValues,
 } from "@/components/library/set-form";
 import { SetWordFields } from "@/components/library/set-word-fields";
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { ChoiceList } from "@/components/ui/choice-list";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
@@ -31,17 +29,15 @@ import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { createUniqueSetName } from "@/src/lib/set-name";
 
 interface SetEditorDraft {
-  entry: "ask" | "manual";
   form: SetFormValues;
 }
 
-/** Choose manual entry or AI generation before opening either workflow. */
+/** Fill in a new set by hand. */
 export function SetEditor({ initialFolderId }: { initialFolderId?: string }) {
   const uid = useCloudStore((store) => store.user?.uid);
   const saved = useResumableDraft<SetEditorDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:manual-set:${initialFolderId ?? UNCATEGORIZED_FOLDER_ID}`,
     {
-      entry: "ask",
       form: { setName: t("setEditor.defaultSetName"), words: [emptyWord] },
     },
   );
@@ -91,7 +87,6 @@ function SetEditorFlow({
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const { state, status, saveSet } = useLibraryStore();
-  const entry = draft.entry;
   const form = useForm<SetFormValues>({
     defaultValues: draft.form,
     resolver: zodResolver(setFormSchema),
@@ -155,9 +150,6 @@ function SetEditorFlow({
     homeFolderId && homeFolderId !== UNCATEGORIZED_FOLDER_ID
       ? `/app/library?folderId=${encodeURIComponent(homeFolderId)}`
       : "/app/library";
-  const organizeHref = homeFolderId
-    ? `/app/sets/new/organize?folderId=${encodeURIComponent(homeFolderId)}`
-    : "/app/sets/new/organize";
 
   const metadataFields = (
     <div className="space-y-4">
@@ -188,37 +180,6 @@ function SetEditorFlow({
     <BackControl href={cancelHref} label={t("setEditor.cancel")} />
   );
 
-  if (entry === "ask") {
-    return (
-      <div className="mx-auto max-w-xl">
-        <PageHeader
-          back={<BackControl href={cancelHref} />}
-          title={t("setEditor.howTitle")}
-        />
-        <ChoiceList
-          onSelect={(value) => {
-            if (value === "ai") router.push(organizeHref);
-            else update({ entry: "manual" });
-          }}
-          options={[
-            {
-              description: t("setEditor.manualWayHint"),
-              icon: Icons.edit,
-              label: t("setEditor.manualWay"),
-              value: "manual",
-            },
-            {
-              description: t("setEditor.aiWayHint"),
-              icon: Icons.generate,
-              label: t("setEditor.aiWay"),
-              value: "ai",
-            },
-          ]}
-        />
-      </div>
-    );
-  }
-
   return (
     <form
       className="mx-auto max-w-3xl"
@@ -227,17 +188,7 @@ function SetEditorFlow({
       ref={formRef}
     >
       <PageHeader
-        actions={
-          <>
-            <DraftSaveStatus status={persistence} />
-            <Button asChild variant="outline">
-              <Link href={organizeHref}>
-                <Icons.generate />
-                {t("setEditor.aiOrganize")}
-              </Link>
-            </Button>
-          </>
-        }
+        actions={<DraftSaveStatus status={persistence} />}
         back={backLink}
         title={t("setEditor.createTitle")}
       />

@@ -6,7 +6,6 @@ import { useAppUpdateStore } from "@/stores/app-update-store";
 import { useCloudStore } from "@/stores/cloud-store";
 import { flushAccountDataActions } from "@/src/lib/account-data-queue";
 import { flushLibraryMutations } from "@/stores/library-store";
-import { flushAiPreferenceMutations } from "@/stores/ai-preferences-store";
 
 const UPDATE_CHECK_INTERVAL = 5 * 60_000;
 
@@ -56,7 +55,6 @@ export function AppUpdateMonitor() {
         persist: async () => {
           await flushAccountDataActions();
           await flushLibraryMutations();
-          await flushAiPreferenceMutations();
         },
         reload: () => window.location.reload(),
         changed: (patch) => useAppUpdateStore.setState(patch),

@@ -2,7 +2,7 @@
 
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { WordEditor } from "@/components/library/word-editor";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { EmptyState, LoadingState } from "@/components/ui/page-state";

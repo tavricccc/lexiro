@@ -1,20 +1,13 @@
 "use client";
 
 import Link from "@/components/ui/app-link";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect } from "react";
 
 import { CountUp } from "@/components/motion/animated-number";
 import { Button } from "@/components/ui/button";
-import { CreditBadge } from "@/components/ai/credit-badge";
 import { Icons } from "@/components/ui/icons";
 import { StepActions } from "@/components/ui/step-actions";
-import { Markdown } from "@/components/ui/markdown";
 import { t } from "@/lib/i18n";
-import { managedTurn } from "@/lib/managed-client";
-import { createAiSession } from "@/src/lib/ai/session";
-import { useCloudStore } from "@/stores/cloud-store";
-import { estimatePoints } from "@lexiro/ai-contract";
-import { useAiPreferencesStore } from "@/stores/ai-preferences-store";
 
 export function ResultPanel({
   correct,
@@ -35,47 +28,10 @@ export function ResultPanel({
   onRetry: () => void;
   onRetryMarked?: () => void;
 }) {
-  const [explanation, setExplanation] = useState("");
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  const requestRef = useRef<AbortController | null>(null);
-  const uid = useCloudStore((store) => store.user?.uid);
-  const model = useAiPreferencesStore((store) => store.preferences.model);
-  const explanationCost = estimatePoints("explain", 1, "lite", model).max;
-
-  // Leaving the result screen drops the request instead of letting it run to its
-  // timeout and then write into a component that is gone.
+  // The result screen always opens at the top of the page.
   useLayoutEffect(() => {
     window.scrollTo({ left: 0, top: 0 });
   }, []);
-
-  useEffect(() => {
-    return () => requestRef.current?.abort();
-  }, [uid]);
-
-  const explain = async () => {
-    if (requestRef.current) return;
-    const controller = new AbortController();
-    requestRef.current = controller;
-    setBusy(true);
-    setError("");
-    try {
-      const result = await managedTurn(
-        createAiSession("lite", wrongContent),
-        { kind: "explain", raw: wrongContent },
-        { signal: controller.signal },
-      );
-      if (!controller.signal.aborted) setExplanation(result.text);
-    } catch (reason) {
-      if (controller.signal.aborted) return;
-      setError(reason instanceof Error ? reason.message : String(reason));
-    } finally {
-      if (requestRef.current === controller) {
-        requestRef.current = null;
-        setBusy(false);
-      }
-    }
-  };
 
   return (
     <div
@@ -112,59 +68,6 @@ export function ResultPanel({
           </div>
         </dl>
       </div>
-
-      {wrongContent && !explanation && (
-        <div className="mt-6 flex flex-col items-center gap-2">
-          {uid ? (
-            <Button
-              variant="ghost"
-              disabled={busy}
-              onClick={() => void explain()}
-            >
-              <Icons.generate />
-              {t(
-                busy
-                  ? "practice.explaining"
-                  : mode === "cards"
-                    ? "practice.introduceWords"
-                    : mode === "mixed"
-                      ? "practice.explainLearning"
-                      : "practice.explainWrong",
-              )}
-              <CreditBadge
-                label={t("managed.expectedPoints", { points: explanationCost })}
-                value={t("managed.expectedShort", { points: explanationCost })}
-              />
-            </Button>
-          ) : (
-            <Button asChild variant="ghost">
-              <Link href="/app/me">
-                <Icons.ai />
-                {t("managed.signInRequired")}
-              </Link>
-            </Button>
-          )}
-        </div>
-      )}
-      {error && (
-        <p role="alert" className="mt-4 text-center text-sm text-destructive">
-          {error}
-        </p>
-      )}
-      {explanation && (
-        <section className="section-gap rule-t pt-6">
-          <h2 className="type-section">
-            {t(
-              mode === "cards"
-                ? "practice.wordIntroductionTitle"
-                : mode === "mixed"
-                  ? "practice.learningExplanationTitle"
-                  : "practice.explanationTitle",
-            )}
-          </h2>
-          <Markdown className="mt-4 text-sm" content={explanation} />
-        </section>
-      )}
 
       <StepActions>
         <Button asChild className="w-full" size="lg">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "@/components/ui/app-link";
 import type { LibraryQuestion } from "@/types";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -33,7 +32,6 @@ export function ClearQuestionsControl({
 }) {
   const { status, clearQuestions } = useLibraryStore();
   const [open, setOpen] = useState(false);
-  const [completed, setCompleted] = useState<number | null>(null);
   const count = questionCounts(questions);
   const title = t(setId ? "questions.clearSet" : "questions.clearAll");
   const description = [
@@ -49,33 +47,10 @@ export function ClearQuestionsControl({
 
   return (
     <div className="mb-4 flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
-      {completed !== null && (
-        <>
-          <p
-            className="mr-auto text-sm leading-6 text-muted-foreground"
-            role="status"
-          >
-            {t("questions.cleared", { count: completed })}
-          </p>
-          <Button asChild className="h-11 md:h-9" size="sm" variant="outline">
-            <Link
-              href={
-                setId
-                  ? `/app/questions/generate?set=${encodeURIComponent(setId)}`
-                  : "/app/questions/generate"
-              }
-            >
-              <Icons.generate />
-              {t("questions.generateAfterClear")}
-            </Link>
-          </Button>
-        </>
-      )}
       <Button
         className="h-11 md:h-9"
         disabled={status !== "ready" || questions.length === 0}
         onClick={() => {
-          setCompleted(null);
           setOpen(true);
         }}
         size="sm"
@@ -89,9 +64,7 @@ export function ClearQuestionsControl({
         confirmLabel={t("questions.confirmClear")}
         description={description}
         onConfirm={async () => {
-          const cleared = count.questions;
           await clearQuestions(setId);
-          setCompleted(cleared);
         }}
         onOpenChange={setOpen}
         open={open}

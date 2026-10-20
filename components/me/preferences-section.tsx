@@ -4,7 +4,6 @@ import { useTheme } from "next-themes";
 
 import { ListPicker, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";
-import { AiModelPreference } from "./ai-model-preference";
 
 const THEMES = ["system", "light", "dark"] as const;
 const THEME_LABEL = {
@@ -32,7 +31,6 @@ export function PreferencesSection() {
           value={current}
         />
       </ListSection>
-      <AiModelPreference />
     </div>
   );
 }

@@ -14,14 +14,13 @@ describe("client view host", () => {
       "/app/",
       "/app/library",
       "/app/sets/new",
-      "/app/sets/new/organize",
       "/app/sets/abc",
       "/app/sets/abc/words/w%201/edit",
       "/app/questions/reading/r1/edit",
       "/app/questions/q1/edit",
       "/app/rooms/new",
       "/app/rooms/ABCDEF",
-      "/app/me/admin/accounts/u1",
+      "/app/me/preferences",
     ])
       expect(matchScreen(pathname), pathname).not.toBeNull();
     expect(matchScreen("/app/sets/new")?.params).toEqual([]);

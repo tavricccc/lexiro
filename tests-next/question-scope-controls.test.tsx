@@ -159,9 +159,6 @@ describe("independent set question controls", () => {
       "裝置暫時無法寫入",
     );
     expect(useLibraryStore.getState().state.questions).toHaveLength(4);
-    expect(
-      screen.queryByText("已清空 4 題，可以重新生成。"),
-    ).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "重試" }));
     expect(
       await screen.findByRole("button", { name: "正在處理…" }),
@@ -181,13 +178,6 @@ describe("independent set question controls", () => {
       });
       finish();
     });
-    expect(
-      await screen.findByText("已清空 4 題，可以重新生成。"),
-    ).toBeVisible();
-    expect(screen.getByRole("link", { name: "重新生成題目" })).toHaveAttribute(
-      "href",
-      "/app/questions/generate?set=a",
-    );
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(
       useLibraryStore.getState().state.questions.map((question) => question.id),
@@ -207,13 +197,6 @@ describe("independent set question controls", () => {
     expect(clearQuestions).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button", { name: "清空全部題目" }));
     fireEvent.click(screen.getByRole("button", { name: "確認清空" }));
-    expect(
-      await screen.findByText("已清空 5 題，可以重新生成。"),
-    ).toBeVisible();
-    expect(screen.getByRole("link", { name: "重新生成題目" })).toHaveAttribute(
-      "href",
-      "/app/questions/generate",
-    );
     expect(clearQuestions).toHaveBeenCalledWith(undefined);
   });
 

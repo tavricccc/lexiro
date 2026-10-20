@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { DEFAULT_CARD_TASKS, DEFAULT_QUESTION_TASKS } from "@/constants";
 import { isPracticeTask } from "@/src/constants/practice";
 import { useCloudStore } from "@/stores/cloud-store";

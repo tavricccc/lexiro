@@ -158,14 +158,6 @@ export function QuestionList({
               pos="n."
               title={t("questions.empty")}
               description={t("questions.emptyDescription")}
-              action={
-                <Button asChild>
-                  <Link href="/app/questions/generate">
-                    <Icons.generate />
-                    {t("questions.generate")}
-                  </Link>
-                </Button>
-              }
             />
           ))}
         {questions.length > 0 && (

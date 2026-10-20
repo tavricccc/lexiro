@@ -2,7 +2,6 @@
 
 import { AccountRow } from "@/components/me/account-row";
 import { AppUpdateSection } from "./app-update-section";
-import { useManagedAccount } from "@/components/ai/use-managed-account";
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
 import { RootPageHeader } from "@/components/root-page-header";
@@ -18,7 +17,6 @@ import { t } from "@/lib/i18n";
  * longer one line of reading.
  */
 export function MePage() {
-  const account = useManagedAccount();
   return (
     <div className="mx-auto max-w-2xl pb-4">
       <RootPageHeader title={t("me.title")} />
@@ -28,18 +26,6 @@ export function MePage() {
           href="/app/me/preferences"
           icon={Icons.settings}
           label={t("me.preferences")}
-        />
-        <ListNavRow
-          href="/app/me/plan"
-          icon={Icons.credit}
-          label={t("managed.planTitle")}
-          value={
-            account.data?.admin
-              ? t("admin.unlimited")
-              : account.data
-                ? t("managed.points", { points: account.data.points })
-                : undefined
-          }
         />
         <ListNavRow
           href="/app/me/data"
@@ -52,13 +38,6 @@ export function MePage() {
           label={t("agent.connections")}
           detail={t("agent.connectionsHint")}
         />
-        {account.data?.admin && (
-          <ListNavRow
-            href="/app/me/admin"
-            icon={Icons.admin}
-            label={t("managed.admin")}
-          />
-        )}
       </ListSection>
       <AppUpdateSection />
     </div>

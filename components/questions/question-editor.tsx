@@ -9,7 +9,7 @@ import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { useResumableDraft } from "@/components/ai/use-resumable-draft";
+import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { AnswerOptions } from "@/components/questions/answer-options";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";

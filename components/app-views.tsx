@@ -5,32 +5,21 @@ import { useEffect, type ReactNode } from "react";
 
 import { AgentConnectionsPage } from "@/components/agent/connections-page";
 import { FocusCanvas } from "@/components/home/focus-canvas";
-import { AiSetOrganizer } from "@/components/library/ai-set-organizer";
 import { LibraryPage } from "@/components/library/library-page";
 import { SetEditor } from "@/components/library/set-editor";
 import { SetMetadata } from "@/components/library/set-metadata";
-import { SetSenseSupplement } from "@/components/library/set-sense-supplement";
 import { SetToolPage } from "@/components/library/set-tool-page";
 import { SetView } from "@/components/library/set-view";
 import { SetWordAddition } from "@/components/library/set-word-addition";
 import { SharedSetPage } from "@/components/library/shared-set-page";
 import { WordEditPage } from "@/components/library/word-edit-page";
-import {
-  AdminAccountEditor,
-  AdminAccountList,
-} from "@/components/me/admin-accounts";
-import { AdminPanel } from "@/components/me/admin-panel";
-import { AdminSettings } from "@/components/me/admin-settings";
-import { AdminUsage } from "@/components/me/admin-usage";
 import { DataSection } from "@/components/me/data-section";
 import { MePage } from "@/components/me/me-page";
 import { MeSubpage } from "@/components/me/me-subpage";
-import { PlanSection } from "@/components/me/plan-section";
 import { PreferencesSection } from "@/components/me/preferences-section";
 import { PracticePage } from "@/components/practice/practice-page";
 import { QuestionBankPage } from "@/components/questions/question-bank-page";
 import { QuestionEditor } from "@/components/questions/question-editor";
-import { QuestionGenerator } from "@/components/questions/question-generator";
 import { ReadingEditor } from "@/components/questions/reading-editor";
 import { RootPageHeader } from "@/components/root-page-header";
 import { RoomPage } from "@/components/rooms/room-page";
@@ -89,10 +78,6 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
     (_, query) => <SetEditor initialFolderId={param(query, "folderId")} />,
   ],
   [
-    "sets/new/organize",
-    (_, query) => <AiSetOrganizer initialFolderId={param(query, "folderId")} />,
-  ],
-  [
     "sets/*",
     ([setId], query) => (
       <SetView
@@ -117,14 +102,6 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
     ([setId]) => (
       <SetToolPage setId={setId} title={t("wordEdit.metadata")}>
         <SetMetadata setId={setId} />
-      </SetToolPage>
-    ),
-  ],
-  [
-    "sets/*/supplement",
-    ([setId]) => (
-      <SetToolPage setId={setId} title={t("supplement.title")}>
-        <SetSenseSupplement setId={setId} />
       </SetToolPage>
     ),
   ],
@@ -168,10 +145,6 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
     },
   ],
   [
-    "questions/generate",
-    (_, query) => <QuestionGenerator setId={param(query, "set")} />,
-  ],
-  [
     "questions/*/edit",
     ([questionId], query) => (
       <QuestionEditor
@@ -206,74 +179,10 @@ const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
     ),
   ],
   [
-    "me/plan",
-    () => (
-      <MeSubpage title={t("managed.planTitle")}>
-        <PlanSection />
-      </MeSubpage>
-    ),
-  ],
-  [
     "me/data",
     () => (
       <MeSubpage title={t("settings.data")}>
         <DataSection />
-      </MeSubpage>
-    ),
-  ],
-  [
-    "me/admin",
-    () => (
-      <MeSubpage title={t("managed.admin")}>
-        <AdminPanel />
-      </MeSubpage>
-    ),
-  ],
-  [
-    "me/admin/accounts",
-    () => (
-      <MeSubpage
-        parentHref="/app/me/admin"
-        parentLabel={t("managed.admin")}
-        title={t("admin.accounts")}
-      >
-        <AdminAccountList />
-      </MeSubpage>
-    ),
-  ],
-  [
-    "me/admin/accounts/*",
-    ([uid]) => (
-      <MeSubpage
-        parentHref="/app/me/admin/accounts"
-        parentLabel={t("admin.accounts")}
-        title={t("admin.editAccount")}
-      >
-        <AdminAccountEditor key={uid} accountUid={uid} />
-      </MeSubpage>
-    ),
-  ],
-  [
-    "me/admin/settings",
-    () => (
-      <MeSubpage
-        parentHref="/app/me/admin"
-        parentLabel={t("managed.admin")}
-        title={t("admin.settings")}
-      >
-        <AdminSettings />
-      </MeSubpage>
-    ),
-  ],
-  [
-    "me/admin/usage",
-    () => (
-      <MeSubpage
-        parentHref="/app/me/admin"
-        parentLabel={t("managed.admin")}
-        title={t("admin.usage")}
-      >
-        <AdminUsage />
       </MeSubpage>
     ),
   ],
