@@ -48,3 +48,15 @@
 .library-toolbar {
   top: calc(var(--header-top) + var(--workspace-title-height));
 }
+/* iOS 26+ blurs whatever passes under the status bar of an installed app,
+   unless a solid full-width bar meets the top edge: WebKit then extends that
+   colour instead. Installed, the title band is solid canvas, not a veil. */
+@media (display-mode: standalone) {
+  .page-header > .header-backdrop {
+    bottom: 0;
+    background: var(--surface-stage);
+  }
+  .page-header > .header-backdrop > span {
+    display: none;
+  }
+}
