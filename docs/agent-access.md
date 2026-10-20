@@ -1,6 +1,6 @@
 # Agent 存取
 
-Agent 自己產生內容；Worker 驗證並存入 D1，不呼叫模型 API、不扣生成點數。資料庫與前端同步相同，Firebase 只驗證登入。正式配置及發布見 [D1 Agent 部署](agent-deployment.md)。
+Agent 自己產生內容；Worker 驗證並存入 D1，不呼叫模型 API。資料庫與前端同步相同，Firebase 只驗證登入。正式配置及發布見 [D1 Agent 部署](agent-deployment.md)。
 
 MCP URL：`https://lexiro-agent.tavric.workers.dev/mcp`。OAuth 提供 PKCE、DCR／CIMD、discovery、access／refresh token 及撤銷；完整授權可管理自己的教材與資料夾。MCP 只有 5 個 tools 以減少每次對話的 token：read（批次讀任何 resource）、create_set、write、validate（唯讀檢查生成題）、delete；write／delete 以 `action.type` 指定操作。許多 client 不顯示 server instructions，所以 action 清單、各 action 欄位與 read 的 request 欄位都寫在 tool description／inputSchema（`action.type`、`resource` 為 enum，read request 為 strict，拼錯欄位會回欄位名）；instructions 只留流程。錯誤訊息為「路徑: 原因」並列出合法值；生成題格式錯誤時回條附 `hint` 指向 prompt 的 outputSchema。tools/list 加 instructions 約 6.2k 字元（約 1.85k tokens）。
 

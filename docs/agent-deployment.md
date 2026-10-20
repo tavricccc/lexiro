@@ -14,7 +14,7 @@
 | CLOUD_DB | `lexiro-library`／`95e08f1b-c448-40c5-bb65-ec99226e1ecf`；教材及同步 |
 | OAUTH_KV | `8dbae4f064ff4a5f8f0c7037b6c57345`；OAuth |
 
-Agent Worker 不需要 Google service-account secret 或模型 API key。生成／計費 Worker 仍獨立使用原本 DB 與模型設定；這次不改既有點數或方案。
+Agent Worker 不需要 Google service-account secret 或模型 API key。
 
 ## 架構與限制
 
@@ -36,15 +36,9 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。生成�
 gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
 ```
 
-獨立 workflow 執行 typecheck／lint／test／build、兩組 D1 migrations、deploy、health／OAuth discovery／MCP 401 檢查。Cloudflare 初次網址傳播的有限重試保留；不呼叫模型、不複製生成 Worker 的 keys。
+獨立 workflow 執行 typecheck／lint／test／build、兩組 D1 migrations、deploy、health／OAuth discovery／MCP 401 檢查。Cloudflare 初次網址傳播的有限重試保留；不呼叫模型。
 
-有前端 runtime 變動時，後端成功後再發布前端；本次按需查詢只改 Agent runtime，不需執行以下前端命令：
-
-```powershell
-gh workflow run deploy.yml --repo tavricccc/lexiro --ref main
-```
-
-Frontend workflow 同步 NEXT_PUBLIC_AGENT_WORKER_URL 至 Vercel，再 build／deploy。已移除 Google service-account、Firestore rules／indexes 步驟。新版 namespace 為 d1-v1，PWA 需依既有流程由使用者啟用更新。
+有前端 runtime 變動時，後端成功後再依前端 repo 的發布流程發布。Frontend workflow 同步 NEXT_PUBLIC_AGENT_WORKER_URL 至 Vercel，再 build／deploy。已移除 Google service-account、Firestore rules／indexes 步驟。新版 namespace 為 d1-v1，PWA 需依既有流程由使用者啟用更新。
 
 ## 驗證與維護
 
@@ -70,7 +64,7 @@ Agent runtime 的 FIREBASE_SERVICE_ACCOUNT 與 private GitHub Production 對應�
 
 ## 所有題型提示詞恢復
 
-2026-10-11，`54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。MCP／單集 URL 的 rules／specification 重新直接使用內建 questionPrompt，五型品質指引完整恢復；Agent 通用 instructions 只補充使用者優先及寫入操作。內建提示內容、QUESTION_CACHE_KEY 和生成／計費 Worker 均未更動。沒有模型呼叫。
+2026-10-11，`54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。MCP／單集 URL 的 rules／specification 重新直接使用內建 questionPrompt，五型品質指引完整恢復；Agent 通用 instructions 只補充使用者優先及寫入操作。內建提示內容未更動。沒有模型呼叫。
 
 共用契約 3.0.1 支援原提示中的綜合測驗文法題，來源 continual 的句子可挖空 been；仍要求有效來源、唯一答案定位及正確選項。前後端 599 個本機測試、typecheck／lint／build 通過，五型回傳提示與內建輸出逐一完全相同，brief 不改資料庫 revision；partial／atomic 和 Warning 仍通過。本次僅 Agent 有執行程式變動，因此只發布 Agent Worker；公開前端更新套件及文件，不需 Vercel 發布。正式 health／OAuth discovery 200；未寫入使用者教材或測正式長任務 CPU。
 

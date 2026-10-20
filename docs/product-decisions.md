@@ -1,63 +1,32 @@
 # 後端實作決策與驗收狀態
 
-## 管理一致性檢查（2026-10-02）
-
-帳號與管理設定修改必須提供 `expected` 閱讀狀態，過期請求回傳 409 的
-`stale_account`／`stale_settings`，不以新狀態代替舊狀態直接執行。帳號更新
-使用單一 `UPDATE ... RETURNING`，設定則在同一敘述中固定閱讀狀態並更新／回傳
-三個設定值，避免讀取後又被其他更新混入。SQLite 的
-[MATERIALIZED 說明](https://www.sqlite.org/lang_with.html#materialization_hints)
-是設定更新的查詢依據；本地 D1 測試驗證多欄及並行更新均不會部分套用。
-
-Migration 0012 為帳號與設定加入遞增版本。帳號預留、退款、結算、續期、
-email 及管理修改都更新版本；三個管理設定一起更新版本。即使資料變動後
-回到原值，舊的閱讀狀態也不能再次調整點數或覆寫設定。
-
-免費試用的開關與預設只作用於新帳號，既有餘額與月額度不變。備註更新保留
-生成中的預留，資金調整仍等待結算。彙總 credit 若有任何缺漏，整組保留 NULL；
-不能把歷史缺漏當成 0，再推算單位成本差異。管理回覆及前端快取使用實際儲存
-結果，共用契約 2.1.0；沒有舊修改格式的相容分支。
-
 ## 規格依據
 
 原始完整規格是 [backend-blueprint.html](backend-blueprint.html)，2026-09-12 從使用者指定的 [Claude artifact](https://claude.ai/code/artifact/b803b459-390b-4006-a077-a45d90d1dc20) 匯入，僅移除平台脚本與登入包裝。原稿不覆寫；優先順序為使用者最新指示 → 本檔補充 → 原始藍圖。
 
-前端 lexiro 與 private lexiro-worker 是同層獨立 repository，直接在 main 分段提交。原實作批次的推送與 Release 授權只適用於當次工作；後續是否推送依該次使用者要求。Main push 會觸發部署，本機開發不操作正式 D1 或手動部署 Worker。
+前端 lexiro 與 private lexiro-worker 是同層獨立 repository，直接在 main 分段提交。原實作批次的推送與 Release 授權只適用於當次工作；後續是否推送依該次使用者要求。Main push 會觸發 Agent 部署，本機開發不操作正式 D1 或手動部署 Worker。
 
 ## 目前決策
 
 | 項目 | 決策 |
 | --- | --- |
 | 免費 CPU | 盡量符合免費額度，不把本地 benchmark 當成 Cloudflare CPU 證明，也不自動升級付費方案 |
-| 模型、reasoning、tokens | 模型名稱只在使用者要求的設定選單呈現；生成頁維持細分檔位，不展示 reasoning 與 tokens。程式碼及網路回應可存在，不做模型 ID 混淆；管理員可查看用量 |
-| Prompt／API key | 留在 private 後端；保留 Responses 協定與原文字，移除 instructions/input/prompt 回顯並中和錯誤 |
-| 餘額下限 | 使用者原話「就只有那一批跑完，然後只扣到 0 點，不要讓他扣到變負數」。餘額大於 0 就能開始，預估超額仍執行；結算最低為 0，下一批才因不足被拒 |
-| 計費 | 固定點數只供預估與預留；完成後依 input、cache read、cache write、output usage 換算整數 credit，換算基準只在 private Worker |
-| 模式倍率 | 開始前依共用合約預估：Lite 1×、Thinking 2×、Pro 10×；實扣依模型及 token 成本，不再乘一次倍率 |
-| 實扣紀錄 | `credits` 是供應商成本，`assessed_points` 是餘額上限前應收，`points` 是實扣。管理員與已付費來源的重試實扣為 0，仍記錄供應商成本 |
-| 歷史紀錄 | 無法從舊 usage 還原實扣，migration 不猜測回填；`debit_verified=0` 的歷史扣款不納入已核實扣款合計，報表另列筆數。也不自動調整既有帳戶餘額 |
-| 額度調整 | 備註更新不改動預留中的負餘額。生成或待核對時，真正的點數／月額度調整回 409；無金融變動的儲存仍可更新備註 |
-| 來源完成 | 成功來源的冪等識別與 token 成本分開。閱讀回傳 3–5 題不會因舊的逐題退款刪除成功紀錄；補充多義回傳空詞義仍算完成 |
-| 重試限制 | 扣款識別含 session，成功後 30 分鐘內同 session 重試不重扣。嘗試上限識別不含 session，換 UUID 不能重置每來源 6 次／30 分鐘上限 |
-| 缺少 usage | 先補查 stored response。仍無有效 usage 時，成本為 NULL；有 response id 則持久化為 `pending`，有產出的帳戶保留預留並暫停新生成，取消／失敗立即退款。帳戶下次請求及 Cron 有界重查，成功後原子結算；不以預估成本冒充實際成本 |
-| 無法補查 | 沒有 response id 時標為 `unavailable` 並釋放預留。已有 id 卻持續查不到 usage 時保留待核對，不自動免單或解鎖；需營運者向供應商確認，不能刪除 pending 列假裝已結算 |
-| 報表 | 分組使用已回報用量；缺漏的成本／credit 保留未知，有待核對或無法回報用量時總成本／credit 也列為未知。帳戶與 usage 使用 `cursor`／`nextCursor`，不接受舊 `offset`；時間範圍與游標查詢有 D1 索引 |
-| 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；不預留、不鎖定、不累計重試次數，但記錄 cursor 與供應商成本 |
-| 共用套件 | public `packages/ai-contract` 保存無秘密的解析器、型別與牌價；private repo 使用版本化 tgz，可獨立安裝 |
-| 照片 | 前端縮圖／WebP；Worker 有界讀取、驗證、雜湊及串流 envelope，圖片不落地。真實圖片價格與 Workers CPU 仍需正式量測 |
-| 模型偏好 | 目前使用者全域選擇 GPT-5.6 Luna 或 GPT-6 Luna，由前端的 owner-only Firestore 偏好同步；JSON 請求必須帶 model，照片用 X-AI-Model。僅接受這兩個模型，沒有模型失敗後的替代路徑 |
-| 模型與檔位 | 兩者共用 low／medium／high 與既有 prompt；每輪固定模型。扣款及重試來源識別含模型，切換模型不會沿用另一模型的已付費來源 |
-| 模型計費 | 5.6 的 Standard input／cached／cache write／output 每百萬 token 為 $0.20／$0.02／$0.25／$1.20；6 為 $0.10／$0.01／$0.125／$0.50。兩者超過 272K input 時，全請求 input 2×、output 1.5×；實扣仍按 usage，以整數算術向上取整。預估依最大 token 費率比例 2.4× 調整，不作為實扣 |
+| Agent 邊界 | Agent Worker 不持有模型 API key，也不呼叫模型；教材內容由 MCP client 產生，Worker 只驗證、儲存與回傳 |
+| Prompt／API key | MCP 出題 prompt 與所有 secret 留在 private 後端；回應移除上下文回顯 |
+| 資料 | 教材與偏好存於專用 D1，由 Firebase Auth 限定 uid；前端同步與 MCP 共用 repository。Firestore 已停用，不遷移舊資料、不做 fallback |
+| 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；沒有前端授權管理員的流程 |
+| 共用套件 | public `packages/agent-contract` 保存無秘密的教材／資料夾／雲端 DTO 與逐題驗證；private repo 使用版本化 tgz，可獨立安裝 |
+| MCP 寫入 | 5 個工具、action.type 分派；expectedRevision／operationId 選填，提供時保留版本衝突與重送檢查，省略仍受 D1 交易 CAS 保護 |
+| 題目 | 以 senseId 綁定來源，支援 partial／atomic 與逐題 Error／Warning；篇幅只是警告，解說選填。生成題格式錯誤時回條附 hint 指向 prompt 的 outputSchema |
+| 單集 URL | 預設兩小時，只管理固定 uid＋setId；bearer token 只存 hash，撤銷即失效 |
+| 房間 | 6 碼、最多 8 人，伺服器判分且答案不送給玩家；重連直接回到目前題目，WebSocket 以一次性 ticket 授權 |
 
-牌價依 [GPT-5.6 Luna 文件](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
-與 [Standard pricing](https://developers.openai.com/api/docs/pricing)，2026-10-02 核對。
-
-Firestore rules 是使用者資料權限邊界；Worker 是 AI 身分、管理員、額度及供應商憑證的邊界。帳號由第一次已驗證請求建立，沒有手動建立帳號或前端授權管理員的流程。
+Firestore rules 是使用者資料權限邊界；Agent Worker 是 Firebase 身分、教材 D1 與 OAuth 憑證的邊界。
 
 ## 部署與驗證界線
 
-正式 D1 已在部署設定中配置；Firebase project 由 GitHub `Production` Environment 注入，不是等待本地填寫的空專案。`.github/workflows/deploy.yml` 在 main push 後先跑四項驗證，再套用 migrations、同步 secrets、部署及檢查 CORS。**推送 main 會部署**，細節見 [deployment.md](deployment.md)。
+正式 D1 已在部署設定中配置；Firebase project 由 GitHub `Production` Environment 注入，不是等待本地填寫的空專案。`.github/workflows/deploy-agent.yml` 在 main push 後先跑四項驗證，再套用兩組 migrations、部署 Agent 及檢查 health／OAuth discovery。**推送 main 會部署**，細節見 [agent-deployment.md](agent-deployment.md)。
 
-本次驗證使用本地 Miniflare D1、合成 Responses provider 與前端 jsdom。覆蓋備註不改餘額、金融變動互斥、閱讀重試、實扣上限、延遲結算、待核對預留不被逾時／續期清除、游標翻頁及未知成本呈現。前後端都執行 typecheck、lint、test、build；本地通過不等於正式環境驗收。
+本次驗證使用本地 Miniflare D1 與合成 Firebase 身分。覆蓋 OAuth S256、限流、批次 CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通、單集 URL、分享連結與房間流程。前後端都執行 typecheck、lint、test、build；本地通過不等於正式環境驗收。
 
-未執行真實 Firebase→Worker→供應商的付費生成、正式照片計價、Cron 排程實際驗收或 Cloudflare CPU 量測。歷史 prompt 評測另見 [prompt-evaluation.md](prompt-evaluation.md)，不能當成本次發布的新評測結果。
+未執行真實 Firebase→Agent→D1 的正式批次寫入、Cron 排程實際驗收或 Cloudflare CPU 量測。歷史 Agent 發布回條另見 [agent-deployment.md](agent-deployment.md)，不能當成本次發布的新驗收結果。
