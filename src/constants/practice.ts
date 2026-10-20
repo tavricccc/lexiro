@@ -4,6 +4,7 @@ import { QUESTION_KINDS } from "@lexiro/ai-contract";
 /** Question formats, in 學測 paper order. */
 export const PRACTICE_QUESTION_TASKS: PracticeQuestionTask[] = [
   "meaning",
+  "reverse",
   ...QUESTION_KINDS,
 ];
 

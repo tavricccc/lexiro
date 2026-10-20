@@ -138,7 +138,7 @@ export function parsePracticeSession(
         !entryIds.includes(id) ||
         !isRecord(choices) ||
         !Array.isArray(choices.options) ||
-        (id.startsWith("meaning:")
+        (id.startsWith("meaning:") || id.startsWith("reverse:")
           ? choices.options.length !== 4
           : choices.options.length < 2 || choices.options.length > 10) ||
         !choices.options.every(

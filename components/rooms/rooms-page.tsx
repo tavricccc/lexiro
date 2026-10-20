@@ -32,6 +32,7 @@ import {
 } from "@/lib/room-client";
 import { useCloudStore } from "@/stores/cloud-store";
 import { useLibraryStore } from "@/stores/library-store";
+import { isWordTask } from "@/components/practice/meaning-questions";
 
 export function playerName(
   user: { displayName: string | null; email: string | null } | null,
@@ -223,7 +224,7 @@ function RoomSetup() {
       counts={counts}
       difficulty={difficulty}
       hasQuestionContent={questionGroups.some(
-        (group) => group[0]?.type !== "meaning" && group.length > 0,
+        (group) => !isWordTask(group[0]?.type) && group.length > 0,
       )}
       hasWords={Object.keys(state.words).length > 0}
       maxAmount={ROOM_MAX_QUESTIONS}

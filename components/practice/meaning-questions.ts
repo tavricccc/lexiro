@@ -80,6 +80,58 @@ export function buildMeaningQuestionGroups(
   });
 }
 
+/** 中選英: the Chinese meaning asks for one of four English words. */
+export function buildReverseQuestionGroups(
+  words: readonly StudyWord[],
+): QuestionItem[][] {
+  return words.flatMap((word) => {
+    const answer = word.word.trim();
+    const spelling = normalizeWordKey(word.word);
+    const parts = new Set(meaningParts(word.meaning));
+    if (!answer || !parts.size) return [];
+    const seen = new Set<string>([spelling]);
+    const distractors = seededShuffle(
+      [...words],
+      `reverse:${word.id}:distractors`,
+    )
+      .filter((other) => {
+        const key = normalizeWordKey(other.word);
+        if (!key || seen.has(key)) return false;
+        // A synonym would be a second right answer.
+        if (meaningParts(other.meaning).some((part) => parts.has(part)))
+          return false;
+        seen.add(key);
+        return true;
+      })
+      .slice(0, 3)
+      .map((other) => other.word.trim());
+    if (distractors.length !== 3) return [];
+    const id = `reverse:${word.id}`;
+    const options = seededShuffle([answer, ...distractors], id);
+    return [
+      [
+        {
+          id,
+          question: null,
+          prompt: word.meaning.trim(),
+          options,
+          answerIndex: options.indexOf(answer),
+          wordKey: word.wordKey,
+          senseId: word.id,
+          type: "reverse" as const,
+          difficulty: 1 as const,
+          meaning: word.meaning.trim(),
+        },
+      ],
+    ];
+  });
+}
+
+/** Local word tasks built from the library, not saved questions. */
+export function isWordTask(task: string | undefined): boolean {
+  return task === "meaning" || task === "reverse";
+}
+
 export function isCorrectChoice(item: QuestionItem, choice: number): boolean {
   if (item.type !== "meaning") return choice === item.answerIndex;
   const option = item.options[choice];

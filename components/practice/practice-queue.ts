@@ -12,7 +12,11 @@ import {
   type QuestionItem,
 } from "@/components/practice/practice-content";
 import { PRACTICE_QUESTION_TASKS } from "@/constants";
-import { buildMeaningQuestionGroups } from "./meaning-questions";
+import {
+  buildMeaningQuestionGroups,
+  buildReverseQuestionGroups,
+  isWordTask,
+} from "./meaning-questions";
 
 /**
  * One thing on screen at a time. A session is a list of these, mixed from every
@@ -68,6 +72,20 @@ export function entriesFromIds(
         difficulty: 1,
         meaning: acceptedMeanings.join("；"),
         acceptedMeanings,
+        ...choices,
+      };
+    } else if (id.startsWith("reverse:")) {
+      const word = studyById.get(id.slice("reverse:".length));
+      if (!word || !choices) return null;
+      item = {
+        id,
+        question: null,
+        prompt: word.meaning.trim(),
+        wordKey: word.wordKey,
+        senseId: word.id,
+        type: "reverse",
+        difficulty: 1,
+        meaning: word.meaning.trim(),
         ...choices,
       };
     }
@@ -169,7 +187,7 @@ function questionPool(
       (group) =>
         group.length > 0 &&
         group[0]?.type === task &&
-        (task === "meaning" ||
+        (isWordTask(task) ||
           difficulty === "all" ||
           group[0]?.difficulty === Number(difficulty)),
     );
@@ -197,7 +215,7 @@ export function countTaskAvailability(
   const groups = withMeaningQuestions(input);
   for (const task of PRACTICE_QUESTION_TASKS)
     counts[task] =
-      task === "meaning"
+      isWordTask(task)
         ? new Set(
             questionPool(task, groups)
               .flat()
@@ -221,11 +239,11 @@ export function countQuestionAvailability(
   if (input.oneSensePerWord)
     return new Set(items.map((item) => item.wordKey)).size;
   return (
-    items.filter((item) => item.type !== "meaning").length +
+    items.filter((item) => !isWordTask(item.type)).length +
     new Set(
       items
-        .filter((item) => item.type === "meaning")
-        .map((item) => item.wordKey),
+        .filter((item) => isWordTask(item.type))
+        .map((item) => `${item.type}:${item.wordKey}`),
     ).size
   );
 }
@@ -239,6 +257,7 @@ function withMeaningQuestions<
         ...input,
         questionGroups: [
           ...buildMeaningQuestionGroups(input.studyItems),
+          ...buildReverseQuestionGroups(input.studyItems),
           ...input.questionGroups,
         ],
       };
@@ -277,7 +296,7 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
       cursor.at += 1;
       const withinGroup = new Set<WordKey>();
       const eligible =
-        oneSensePerWord || task === "meaning"
+        oneSensePerWord || isWordTask(task)
           ? group.filter((item) => {
               if (usedWords.has(item.wordKey) || withinGroup.has(item.wordKey))
                 return false;
@@ -286,7 +305,7 @@ export function buildPracticeQueue(input: QueueInput): PracticeEntry[] {
             })
           : group;
       if (!eligible.length) continue;
-      if (oneSensePerWord || task === "meaning")
+      if (oneSensePerWord || isWordTask(task))
         eligible.forEach((item) => usedWords.add(item.wordKey));
       return eligible.map((item): PracticeEntry => ({
         id: item.id,

@@ -74,7 +74,10 @@ export interface ResultRow {
  * Local meaning questions, spelling and saved exam formats share one queue.
  */
 export type PracticeTrack = "words" | "questions";
-export type PracticeQuestionTask = "meaning" | GeneratedQuestionKind;
+export type PracticeQuestionTask =
+  | "meaning"
+  | "reverse"
+  | GeneratedQuestionKind;
 export type PracticeTask = PracticeQuestionTask;
 
 export type WorkspaceQuestionDifficulty = "all" | "1" | "2" | "3";

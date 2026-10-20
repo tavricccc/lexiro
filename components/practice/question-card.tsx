@@ -11,6 +11,8 @@ import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";
+import { speak } from "@/lib/speech";
+import { isWordTask } from "./meaning-questions";
 import { QuestionOptions } from "./question-options";
 import { QuestionFeedback } from "./question-feedback";
 
@@ -137,7 +139,7 @@ export function QuestionCard({
           )}
           <h1
             className={
-              item.type === "meaning"
+              isWordTask(item.type)
                 ? "question-text type-page text-left"
                 : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground/90 [word-spacing:0.02em]"
             }
@@ -146,6 +148,17 @@ export function QuestionCard({
               ? t("questions.blankLabel", { index: item.blank })
               : item.prompt}
           </h1>
+          {item.type === "meaning" && (
+            <Button
+              className="mt-2"
+              size="icon"
+              variant="ghost"
+              aria-label={t("practice.speak")}
+              onClick={() => speak(item.prompt)}
+            >
+              <Icons.speak />
+            </Button>
+          )}
           {item.blank && (
             <Button
               className="mt-2 min-h-11 lg:min-h-9"

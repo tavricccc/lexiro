@@ -21,6 +21,7 @@ import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { practiceTaskHint, practiceTaskLabel } from "@/lib/practice-tasks";
 import { difficultyOptions } from "@/lib/question-options";
 import { isPassageKind } from "@/src/lib/question-formats";
+import { isWordTask } from "@/components/practice/meaning-questions";
 
 export function PracticeSetup({
   amount,
@@ -185,11 +186,11 @@ export function PracticeSetup({
           {[
             {
               title: t("practice.wordReview"),
-              formats: availableFormats.filter((task) => task === "meaning"),
+              formats: availableFormats.filter((task) => isWordTask(task)),
             },
             {
               title: t("practice.examFormats"),
-              formats: availableFormats.filter((task) => task !== "meaning"),
+              formats: availableFormats.filter((task) => !isWordTask(task)),
             },
           ]
             .filter((group) => group.formats.length > 0)
@@ -207,7 +208,9 @@ export function PracticeSetup({
                   options={group.formats.map((task) => ({
                     description: practiceTaskHint(task),
                     icon:
-                      task !== "meaning" && isPassageKind(task)
+                      task !== "meaning" &&
+                      task !== "reverse" &&
+                      isPassageKind(task)
                         ? Icons.reading
                         : Icons.question,
                     label: practiceTaskLabel(task),

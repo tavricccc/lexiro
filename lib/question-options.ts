@@ -52,6 +52,7 @@ export function difficultyLabel(level: number): string {
 export function questionFormatLabel(format: string): string {
   if (format === "grammar") return t("questions.retiredGrammar");
   if (format === "meaning") return t("practice.taskMeaning");
+  if (format === "reverse") return t("practice.taskReverse");
   const entry = FORMAT_KEYS[format as GeneratedQuestionKind];
   return entry ? t(entry[0]) : format;
 }

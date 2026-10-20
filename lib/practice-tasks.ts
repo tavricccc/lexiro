@@ -13,10 +13,12 @@ import {
  */
 export function practiceTaskLabel(task: PracticeTask): string {
   if (task === "meaning") return t("practice.taskMeaning");
+  if (task === "reverse") return t("practice.taskReverse");
   return questionFormatLabel(task);
 }
 
 export function practiceTaskHint(task: PracticeTask): string {
   if (task === "meaning") return t("practice.taskMeaningHint");
+  if (task === "reverse") return t("practice.taskReverseHint");
   return questionFormatHint(task);
 }

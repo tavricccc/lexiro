@@ -160,12 +160,17 @@ export function migratePracticeScope(
   // The legacy field name now carries every presented option order.
   const meaningChoices: PracticeSessionSnapshot["meaningChoices"] = {};
   for (const id of snapshot.entryIds) {
-    if (id.startsWith("meaning:")) {
-      const senseId = mapSense(id.slice("meaning:".length));
+    const wordTask = id.startsWith("meaning:")
+      ? "meaning"
+      : id.startsWith("reverse:")
+        ? "reverse"
+        : null;
+    if (wordTask) {
+      const senseId = mapSense(id.slice(wordTask.length + 1));
       const choices = snapshot.meaningChoices[id];
-      if (!senseId || !choices || !snapshot.tasks.includes("meaning"))
+      if (!senseId || !choices || !snapshot.tasks.includes(wordTask))
         return null;
-      const target = `meaning:${senseId}`;
+      const target = `${wordTask}:${senseId}`;
       entryIds.push(target);
       meaningChoices[target] = choices;
     } else {

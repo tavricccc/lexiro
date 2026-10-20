@@ -5,7 +5,10 @@ import { useMemo } from "react";
 
 import { buildQuestionGroups } from "@/components/practice/practice-content";
 import { senseToStudyWord } from "@/src/lib/library";
-import { buildMeaningQuestionGroups } from "./meaning-questions";
+import {
+  buildMeaningQuestionGroups,
+  buildReverseQuestionGroups,
+} from "./meaning-questions";
 
 /**
  * Everything a session can draw from, scoped to one set or the whole library.
@@ -41,6 +44,7 @@ export function usePracticePool(state: LibraryState, setId: string) {
   const questionGroups = useMemo(
     () => [
       ...buildMeaningQuestionGroups(allStudyItems),
+      ...buildReverseQuestionGroups(allStudyItems),
       ...buildQuestionGroups(state.questions, state.words),
     ],
     [allStudyItems, state.questions, state.words],

@@ -185,7 +185,7 @@ export function QuestionStage({
         <section className="min-w-0">
           <h1
             className={
-              question.type === "meaning"
+              question.type === "meaning" || question.type === "reverse"
                 ? "question-text type-page text-left"
                 : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground/90 [word-spacing:0.02em]"
             }

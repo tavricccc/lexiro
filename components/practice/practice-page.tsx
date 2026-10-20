@@ -33,6 +33,7 @@ import { PRACTICE_DRAFT_REMOTE_EVENT } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
+import { isWordTask } from "@/components/practice/meaning-questions";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen
@@ -111,7 +112,7 @@ export function PracticePage({
     [allowedSenseIds, difficulty, questionGroups, studyItems],
   );
   const hasQuestionContent = questionGroups.some(
-    (group) => group[0]?.type !== "meaning" && group.length > 0,
+    (group) => !isWordTask(group[0]?.type) && group.length > 0,
   );
   const availableQuestionCount = useMemo(
     () =>
