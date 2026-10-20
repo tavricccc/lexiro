@@ -4,7 +4,19 @@ import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 
 const { agentJson } = vi.hoisted(() => ({ agentJson: vi.fn() }));
 vi.mock("@/lib/agent-client", () => ({ agentJson }));
-const { readSharedSet } = await import("@/lib/share-client");
+const cloud = vi.hoisted(() => ({
+  state: {
+    user: { uid: "uid" } as { uid: string } | null,
+    status: "synced",
+    pending: 0,
+    sync: vi.fn(),
+  },
+}));
+vi.mock("@/stores/cloud-store", () => ({
+  useCloudStore: { getState: () => cloud.state },
+}));
+const { createSetShareLink, readSharedSet } =
+  await import("@/lib/share-client");
 
 const timestamp = "2026-10-11T00:00:00.000Z";
 const wordKey = buildSetWordKey("their-set", "harbor");
@@ -66,5 +78,29 @@ describe("readSharedSet", () => {
       },
     });
     await expect(readSharedSet("abc")).rejects.toThrow();
+  });
+});
+
+describe("createSetShareLink", () => {
+  it("skips the sync when the set is already in the cloud", async () => {
+    cloud.state.sync.mockReset();
+    agentJson.mockResolvedValue({ id: "abc", setId: "set" });
+    await createSetShareLink("set");
+    expect(cloud.state.sync).not.toHaveBeenCalled();
+    expect(agentJson).toHaveBeenLastCalledWith("/shares", {
+      method: "POST",
+      body: JSON.stringify({ setId: "set" }),
+    });
+  });
+
+  it("syncs first while edits are still waiting to go up", async () => {
+    cloud.state.sync.mockReset();
+    cloud.state.pending = 2;
+    cloud.state.sync.mockImplementation(async () => {
+      cloud.state.pending = 0;
+    });
+    agentJson.mockResolvedValue({ id: "abc", setId: "set" });
+    await createSetShareLink("set");
+    expect(cloud.state.sync).toHaveBeenCalledOnce();
   });
 });
