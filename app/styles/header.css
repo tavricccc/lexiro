@@ -2,11 +2,8 @@
 .app-shell .workspace-body {
   container-type: inline-size;
 }
-.app-shell {
-  --header-top: var(--safe-top);
-}
 .app-shell .page-header {
-  position: sticky;
+  --header-top: var(--safe-top);
   top: var(--header-top);
   background: transparent;
 }
@@ -46,17 +43,5 @@
 }
 .app-shell .workspace-tabs,
 .library-toolbar {
-  top: calc(var(--header-top) + var(--workspace-title-height));
-}
-/* iOS 26+ blurs whatever passes under the status bar of an installed app,
-   unless a solid full-width bar meets the top edge: WebKit then extends that
-   colour instead. Installed, the title band is solid canvas, not a veil. */
-@media (display-mode: standalone) {
-  .page-header > .header-backdrop {
-    bottom: 0;
-    background: var(--surface-stage);
-  }
-  .page-header > .header-backdrop > span {
-    display: none;
-  }
+  top: calc(var(--safe-top) + var(--workspace-title-height));
 }
