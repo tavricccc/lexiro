@@ -67,7 +67,8 @@ vi.mock("@/src/lib/cloud-account", async (original) => ({
   readCloudBlobs: mocks.blobs,
   writeCloudBlob: mocks.write,
 }));
-const { useCloudStore } = await import("@/stores/cloud-store");
+const { resetCloudChangeHints, useCloudStore } =
+  await import("@/stores/cloud-store");
 const { useLibraryStore } = await import("@/stores/library-store");
 const noChange: LibraryCommitStats = {
   writtenBlobs: 0,
@@ -79,6 +80,7 @@ const noChange: LibraryCommitStats = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  resetCloudChangeHints();
   setStorageNamespace("d1-v1:account-a");
   mocks.journal = {
     schemaVersion: 5,
@@ -251,5 +253,49 @@ describe("practice session across devices", () => {
     await useCloudStore.getState().sync({ reconcileAccount: true });
     expect(localStorage.getItem(key)).toBeNull();
     expect(practiceWrites()).toEqual([]);
+  });
+});
+
+describe("requests a sync can leave out", () => {
+  const key = "d1-v1:account-a:lexiro-practice-session-v3";
+  const LATER = "2026-10-02T00:00:00.000Z";
+
+  it("does not pull records when only the practice session is waiting", async () => {
+    await useCloudStore.getState().sync();
+    expect(mocks.pull).toHaveBeenCalledOnce();
+    localStorage.setItem(key, JSON.stringify({ index: 3 }));
+    localStorage.setItem(`${key}:updated-at`, LATER);
+    mocks.journal!.blobs.practice = 1;
+    await useCloudStore.getState().sync();
+    expect(mocks.pull).toHaveBeenCalledOnce();
+  });
+
+  it("writes a known account's session without reading it first", async () => {
+    await useCloudStore.getState().sync();
+    expect(mocks.blobs).toHaveBeenCalledOnce();
+    localStorage.setItem(key, JSON.stringify({ index: 3 }));
+    localStorage.setItem(`${key}:updated-at`, LATER);
+    mocks.journal!.blobs.practice = 1;
+    await useCloudStore.getState().sync();
+    expect(mocks.blobs).toHaveBeenCalledOnce();
+    expect(mocks.write).toHaveBeenLastCalledWith(
+      expect.anything(),
+      "account-a",
+      "practice",
+      { updatedAt: LATER, snapshot: { index: 3 } },
+    );
+  });
+
+  it("reads the cloud copy when another device wrote it first", async () => {
+    await useCloudStore.getState().sync();
+    localStorage.setItem(key, JSON.stringify({ index: 3 }));
+    localStorage.setItem(`${key}:updated-at`, LATER);
+    mocks.journal!.blobs.practice = 1;
+    mocks.write.mockRejectedValueOnce(
+      Object.assign(new Error("conflict"), { code: "aborted" }),
+    );
+    await useCloudStore.getState().sync();
+    expect(mocks.blobs).toHaveBeenCalledTimes(2);
+    expect(mocks.write).toHaveBeenCalledTimes(2);
   });
 });

@@ -1,6 +1,7 @@
 import type { LibraryRecordRef } from "./library-repository";
 import { cloneJson } from "./clone";
 import {
+  CLOUD_BLOB_PENDING_EVENT,
   CLOUD_SYNC_PENDING_EVENT,
   SYNC_JOURNAL_STORAGE_KEY,
 } from "@/constants";
@@ -198,9 +199,9 @@ export async function loadSyncJournal(): Promise<SyncJournal> {
 }
 
 /** Announces local work so the cloud store can debounce a sync around it. */
-function notifySyncPending(): void {
+function notifySyncPending(event = CLOUD_SYNC_PENDING_EVENT): void {
   if (typeof window === "undefined") return;
-  window.dispatchEvent(new Event(CLOUD_SYNC_PENDING_EVENT));
+  window.dispatchEvent(new Event(event));
 }
 
 export async function recordLocalChanges(
@@ -329,7 +330,7 @@ export async function markBlobDirty(...kinds: SyncBlobKind[]): Promise<void> {
     for (const kind of kinds) journal.blobs[kind] = journal.version;
     return true;
   });
-  notifySyncPending();
+  notifySyncPending(CLOUD_BLOB_PENDING_EVENT);
 }
 
 /** Clears a blob only if nothing has touched it since the version that was sent. */
