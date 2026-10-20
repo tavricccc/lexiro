@@ -24,7 +24,7 @@ export function ActiveRoomCard({ className }: { className?: string }) {
     let cancelled = false;
     const check = () => {
       if (document.visibilityState === "hidden") return;
-      fetchActiveRoom()
+      fetchActiveRoom(uid)
         .then(({ room }) => !cancelled && setRoom(room))
         .catch(() => {});
     };
