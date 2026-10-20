@@ -202,7 +202,7 @@ export function SetView({
 
       <LiquidTabs
         ariaLabel={current.setName}
-        className="workspace-tabs mb-4"
+        className="workspace-tabs workspace-tabs-scroll mb-4"
         onValueChange={(value) => setTab(value as SetTab)}
         options={[
           {

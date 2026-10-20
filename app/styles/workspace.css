@@ -96,6 +96,9 @@
   background: transparent;
   padding-block: 0.25rem 0.75rem;
 }
+.app-shell .workspace-tabs.workspace-tabs-scroll {
+  position: static;
+}
 .workspace-tabs .t-tabs {
   display: flex;
   width: 100%;
