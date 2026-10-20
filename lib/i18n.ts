@@ -530,7 +530,6 @@ export const zhTW = {
     taskReverse: "中選英",
     taskReverseHint:
       "看中文，從四個英文單字選出正解。直接使用你的單字，不需 AI。",
-    speak: "播放讀音",
     meaningPoolHint:
       "英選中需要至少四個可區分的中文意思；其他選項會從你的單字庫挑選。",
     wordReview: "單字複習",
