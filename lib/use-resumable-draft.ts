@@ -5,6 +5,9 @@ import type { DraftPersistence } from "@/lib/draft-persistence";
 
 type DraftStatus = "checking" | "offer" | "invalid" | "active";
 
+/** Typing writes the draft once it pauses rather than on every key. */
+export const DRAFT_WRITE_DELAY_MS = 500;
+
 /** A new, versioned local draft. Older flows did not persist drafts. */
 export function useResumableDraft<T extends object>(key: string, initial: T) {
   const initialRef = useRef(initial);
@@ -14,6 +17,42 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
   const [pending, setPending] = useState<T | null>(null);
   const [status, setStatus] = useState<DraftStatus>("checking");
   const [persistence, setPersistence] = useState<DraftPersistence>("idle");
+  const unwritten = useRef<{ key: string; value: T } | null>(null);
+  const writeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelWrite = useCallback(() => {
+    if (writeTimer.current) clearTimeout(writeTimer.current);
+    writeTimer.current = null;
+    unwritten.current = null;
+  }, []);
+
+  const flush = useCallback(() => {
+    const next = unwritten.current;
+    cancelWrite();
+    if (!next) return;
+    try {
+      localStorage.setItem(
+        next.key,
+        JSON.stringify({ schemaVersion: 1, value: next.value }),
+      );
+    } catch {
+      setPersistence("error");
+    }
+  }, [cancelWrite]);
+
+  // Leaving the page or the flow writes whatever is still waiting.
+  useEffect(() => {
+    const hidden = () => {
+      if (document.visibilityState === "hidden") flush();
+    };
+    window.addEventListener("pagehide", flush);
+    document.addEventListener("visibilitychange", hidden);
+    return () => {
+      window.removeEventListener("pagehide", flush);
+      document.removeEventListener("visibilitychange", hidden);
+      flush();
+    };
+  }, [key, flush]);
 
   useEffect(() => {
     setStatus("checking");
@@ -59,17 +98,12 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
       const next = { ...draftRef.current, ...patch };
       draftRef.current = next;
       setDraft(next);
-      try {
-        localStorage.setItem(
-          key,
-          JSON.stringify({ schemaVersion: 1, value: next }),
-        );
-        setPersistence("saved");
-      } catch {
-        setPersistence("error");
-      }
+      unwritten.current = { key, value: next };
+      setPersistence("saved");
+      if (writeTimer.current) clearTimeout(writeTimer.current);
+      writeTimer.current = setTimeout(flush, DRAFT_WRITE_DELAY_MS);
     },
-    [key],
+    [key, flush],
   );
 
   const resume = useCallback(() => {
@@ -82,6 +116,7 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
   }, [pending]);
 
   const restart = useCallback(() => {
+    cancelWrite();
     try {
       localStorage.removeItem(key);
       setPersistence("idle");
@@ -92,16 +127,17 @@ export function useResumableDraft<T extends object>(key: string, initial: T) {
     setDraft(initialRef.current);
     setPending(null);
     setStatus("active");
-  }, [key]);
+  }, [key, cancelWrite]);
 
   const clear = useCallback(() => {
+    cancelWrite();
     try {
       localStorage.removeItem(key);
       setPersistence("idle");
     } catch {
       setPersistence("error");
     }
-  }, [key]);
+  }, [key, cancelWrite]);
 
   return {
     draft,

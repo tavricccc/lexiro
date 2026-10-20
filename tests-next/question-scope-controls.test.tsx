@@ -254,10 +254,15 @@ describe("independent set question controls", () => {
     expect(screen.getByRole("textbox", { name: "文章內容" })).toHaveValue(
       reading.passage,
     );
-    const stored = JSON.parse(
-      localStorage.getItem("lexiro:flow-draft:v1:local:edit-reading:new:new")!,
-    ).value;
-    expect(stored.selectedSetId).toBe("b");
+    const readStored = () =>
+      JSON.parse(
+        localStorage.getItem(
+          "lexiro:flow-draft:v1:local:edit-reading:new:new",
+        )!,
+      ).value;
+    // Drafts are written once typing pauses.
+    await waitFor(() => expect(readStored().selectedSetId).toBe("b"));
+    const stored = readStored();
     expect(
       stored.children.map((child: { source: string }) => child.source),
     ).toEqual(["", ""]);
