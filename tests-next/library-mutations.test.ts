@@ -23,6 +23,53 @@ beforeEach(() => {
 });
 
 describe("library mutations", () => {
+  it("keeps untouched words' updatedAt when a set is saved again", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    try {
+      vi.setSystemTime(new Date("2026-10-01T00:00:00.000Z"));
+      const store = useLibraryStore.getState();
+      const draft = (word: string, meaningZh: string) => ({
+        word,
+        pos: "adj.",
+        meaningZh,
+        examples: [],
+        supplementary: false,
+      });
+      const drafts = [
+        draft("calm", "平靜的"),
+        draft("brave", "勇敢的"),
+        draft("quiet", "安靜的"),
+      ];
+      const saved = await store.saveSet({ setName: "A", words: drafts });
+      const before = useLibraryStore.getState().state.words;
+
+      vi.setSystemTime(new Date("2026-10-02T00:00:00.000Z"));
+      await store.saveSet({
+        id: saved.id,
+        setName: "A",
+        words: [
+          drafts[0],
+          { ...drafts[1], examples: ["She was brave."] },
+          drafts[2],
+        ],
+      });
+      const after = useLibraryStore.getState().state.words;
+      const stamps = Object.values(after).map((word) => [
+        word.word,
+        word.updatedAt,
+      ]);
+      expect(Object.fromEntries(stamps)).toEqual({
+        calm: "2026-10-01T00:00:00.000Z",
+        brave: "2026-10-02T00:00:00.000Z",
+        quiet: "2026-10-01T00:00:00.000Z",
+      });
+      const calm = Object.values(after).find((word) => word.word === "calm")!;
+      expect(calm).toBe(before[calm.wordKey]);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("stores new and edited examples without creating questions or replacing saved ones", async () => {
     const store = useLibraryStore.getState();
     const draft = {
