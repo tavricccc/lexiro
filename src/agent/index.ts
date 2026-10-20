@@ -20,6 +20,11 @@ import {
   finishAuthorization,
 } from "./oauth";
 import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
+import {
+  APP_AUTH_PURGE_SQL,
+  issueAppAuthCode,
+  redeemAppAuthCode,
+} from "./app-auth";
 
 interface Dependencies {
   verify?: typeof verifyFirebaseToken;
@@ -46,6 +51,12 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       }
       if (path === "/health")
         return Response.json({ service: "lexiro-agent", version: 1 });
+      // The native app has no Firebase session yet when it redeems, so this
+      // sits before the token check; the PKCE verifier is its credential.
+      if (path === "/app-auth/token" && request.method === "POST") {
+        await checkRateLimit(env.AGENT_DB, "app_auth_token", request, Date.now());
+        return redeemAppAuthCode(request, env.AGENT_DB, Date.now());
+      }
       const access = /^\/access\/([0-9a-f-]{36})(\/.*)?$/.exec(path);
       if (access) {
         const identity = await linkIdentity(request, env, access[1]);
@@ -62,6 +73,8 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       // link tokens and OAuth provider endpoints never reach this call.
       await checkAppCheck(request, env);
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
+      if (path === "/app-auth/codes" && request.method === "POST")
+        return issueAppAuthCode(request, env.AGENT_DB, identity.uid, Date.now());
       if (path.startsWith("/sync/"))
         return handleCloudApi(request, identity.uid, env.CLOUD_DB);
       if (path === "/shares" || path.startsWith("/shares/"))
@@ -183,6 +196,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
           "DELETE FROM agent_links WHERE expires_at<? OR revoked_at<?",
         ).bind(cutoff, cutoff),
         env.AGENT_DB.prepare(RATE_LIMIT_PURGE_SQL).bind(cutoff),
+        env.AGENT_DB.prepare(APP_AUTH_PURGE_SQL).bind(Date.now()),
       ]);
       const cursor = await env.OAUTH_KV.get("agent:purge-cursor");
       const result = await provider(env).purgeExpiredData(env, {

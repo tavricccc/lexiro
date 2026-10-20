@@ -11,17 +11,24 @@ export const RATE_LIMIT_AUTHORIZE_MAX = 60;
 // A client only registers once, so a small per-minute allowance still stops
 // bulk dynamic client registration without hurting real users.
 export const RATE_LIMIT_OAUTH_REGISTER_MAX = 10;
+// The native app redeems one code per sign-in, so a handful a minute covers
+// retries while making code guessing pointless on top of the 256-bit codes.
+export const RATE_LIMIT_APP_AUTH_TOKEN_MAX = 20;
 // How long stale counters are kept before the Agent Cron removes them. Only
 // needs to exceed the window length; it reuses the existing 7 day cutoff.
 export const RATE_LIMIT_RETENTION_MS = 7 * 86400000;
 export const RATE_LIMIT_PURGE_SQL =
   "DELETE FROM agent_rate_limits WHERE window_start<?";
 
-export type RateLimitEndpoint = "authorize" | "oauth_register";
+export type RateLimitEndpoint =
+  | "authorize"
+  | "oauth_register"
+  | "app_auth_token";
 
 const LIMITS: Record<RateLimitEndpoint, number> = {
   authorize: RATE_LIMIT_AUTHORIZE_MAX,
   oauth_register: RATE_LIMIT_OAUTH_REGISTER_MAX,
+  app_auth_token: RATE_LIMIT_APP_AUTH_TOKEN_MAX,
 };
 
 // Split per endpoint so quotas do not collide, and never include the uid so
