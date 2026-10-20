@@ -18,6 +18,12 @@ export type RoomConnection =
 
 const PING_MS = 25_000;
 const MAX_BACKOFF_MS = 8_000;
+/**
+ * Each attempt asks the Worker for a ticket. After about 40 seconds of failures
+ * the hook stops and waits for the page to come back, regain focus or go
+ * online, instead of retrying every 8 seconds for as long as the tab is open.
+ */
+export const MAX_RECONNECT_ATTEMPTS = 8;
 
 /**
  * Keeps one socket to a room. The server is the source of truth, so a dropped
@@ -45,6 +51,7 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     const schedule = () => {
       if (disposed || retry) return;
       setConnection("reconnecting");
+      if (attempt >= MAX_RECONNECT_ATTEMPTS) return;
       const delay = Math.min(MAX_BACKOFF_MS, 500 * 2 ** attempt);
       attempt += 1;
       retry = setTimeout(() => {
@@ -130,12 +137,14 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     };
     void connect();
     window.addEventListener("online", resume);
+    window.addEventListener("focus", resume);
     document.addEventListener("visibilitychange", resume);
     return () => {
       disposed = true;
       if (retry) clearTimeout(retry);
       if (ping) clearInterval(ping);
       window.removeEventListener("online", resume);
+      window.removeEventListener("focus", resume);
       document.removeEventListener("visibilitychange", resume);
       socketRef.current?.close();
       socketRef.current = null;
