@@ -4,20 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
+import { speak } from "@/lib/speech";
 
 export interface ViewWord {
   wordKey: WordKey;
   word: string;
   senses: WordSense[];
-}
-
-/** Reads a word aloud with the system voice. */
-function speak(word: string) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-US";
-  window.speechSynthesis.speak(utterance);
 }
 
 export function SetWordRow({
