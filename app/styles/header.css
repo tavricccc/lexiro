@@ -5,13 +5,6 @@
 .app-shell {
   --header-top: var(--safe-top);
 }
-/* iOS 26+ lays a Liquid Glass blur under the status bar of an installed app
-   that the page cannot turn off, so titles stop below it. */
-@media (display-mode: standalone) {
-  .app-shell {
-    --header-top: calc(var(--safe-top) + 1rem);
-  }
-}
 .app-shell .page-header {
   position: sticky;
   top: var(--header-top);
