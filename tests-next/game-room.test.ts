@@ -8,6 +8,7 @@ import {
   IDLE_TTL_MS,
   MAX_PLAYERS,
   REVEAL_MS,
+  TICKET_TTL_MS,
   createRoomInput,
   scoreFor,
 } from "../src/rooms/protocol";
@@ -47,6 +48,13 @@ function fixture() {
       delete: async (key) => storage.delete(key),
       deleteAll: async () => storage.clear(),
       setAlarm: async (at) => void (alarm = at),
+      list: async <T>(options?: { prefix?: string }) => {
+        const entries = new Map<string, T>();
+        for (const [key, value] of storage)
+          if (!options?.prefix || key.startsWith(options.prefix))
+            entries.set(key, structuredClone(value) as T);
+        return entries;
+      },
     },
     acceptWebSocket: (socket) => void sockets.push(socket as FakeSocket),
     getWebSockets: () => sockets,
@@ -66,6 +74,7 @@ function fixture() {
       if (alarm && alarm <= clock) await room.alarm();
     },
     sockets,
+    storage,
     get alarm() {
       return alarm;
     },
@@ -199,6 +208,17 @@ describe("live game room", () => {
     for (let i = 1; i < MAX_PLAYERS; i++) await f.join(`p${i}`);
     await expect(f.room.issueTicket("late", "Late")).rejects.toMatchObject({ code: "room_full" });
     await expect(f.room.issueTicket("p3", "Again")).resolves.toEqual(expect.any(String));
+  });
+
+  it("drops expired tickets when another ticket is issued", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", input);
+    const stale = await f.room.issueTicket("guest", "Guest");
+    expect(f.storage.has(`ticket:${stale}`)).toBe(true);
+    await f.advance(TICKET_TTL_MS + 1);
+    const fresh = await f.room.issueTicket("guest2", "Guest 2");
+    expect(f.storage.has(`ticket:${stale}`)).toBe(false);
+    expect(f.storage.has(`ticket:${fresh}`)).toBe(true);
   });
 
   it("spends a ticket once and only accepts answers to the open question", async () => {

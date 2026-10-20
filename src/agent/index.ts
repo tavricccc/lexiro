@@ -80,7 +80,13 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       if (path === "/shares" || path.startsWith("/shares/"))
         return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
       if (path === "/rooms" || path.startsWith("/rooms/"))
-        return handleRoomApi(request, identity.uid, env.ROOMS);
+        return handleRoomApi(
+          request,
+          identity.uid,
+          env.ROOMS,
+          env.AGENT_DB,
+          Date.now(),
+        );
       if (path === "/links" && request.method === "POST") {
         const input = linkOptions.parse(
           JSON.parse(await readBody(request, 2000)),

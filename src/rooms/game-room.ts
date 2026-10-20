@@ -29,6 +29,7 @@ export interface GameRoomState {
     delete(key: string): Promise<boolean>;
     deleteAll(): Promise<void>;
     setAlarm(at: number): Promise<void>;
+    list?<T>(options?: { prefix?: string }): Promise<Map<string, T>>;
   };
   acceptWebSocket(socket: RoomSocket, tags?: string[]): void;
   getWebSockets(tag?: string): RoomSocket[];
@@ -77,6 +78,8 @@ const OPEN = 1;
  */
 export class GameRoom {
   private room: Room | null | undefined;
+  /** Throttles the ticket sweep to at most once per ticket lifetime. */
+  private lastTicketPurge = 0;
   constructor(
     private ctx: GameRoomState,
     _env?: unknown,
@@ -202,13 +205,35 @@ export class GameRoom {
       throw new HttpError(409, "room_ended");
     if (!member && room.players.length >= MAX_PLAYERS)
       throw new HttpError(409, "room_full");
+    const now = this.now();
+    if (now - this.lastTicketPurge >= TICKET_TTL_MS) {
+      await this.purgeExpiredTickets();
+      this.lastTicketPurge = now;
+    }
     const ticket = crypto.randomUUID();
     await this.ctx.storage.put(`ticket:${ticket}`, {
       uid,
       name: name.trim().slice(0, 40) || "Player",
-      expiresAt: this.now() + TICKET_TTL_MS,
+      expiresAt: now + TICKET_TTL_MS,
     } satisfies Ticket);
     return ticket;
+  }
+
+  /**
+   * A ticket is a separate storage entry, deleted when spent. Someone who
+   * asks for one and never connects would otherwise leave it behind, so the
+   * sweep drops entries whose lifetime has passed.
+   */
+  private async purgeExpiredTickets() {
+    const storage = this.ctx.storage;
+    if (!storage.list) return;
+    const now = this.now();
+    const tickets = await storage.list<Ticket>({ prefix: "ticket:" });
+    await Promise.all(
+      [...tickets]
+        .filter(([, ticket]) => ticket.expiresAt <= now)
+        .map(([key]) => storage.delete(key)),
+    );
   }
 
   /** Spends a ticket and seats its holder; returns who they are. */
@@ -298,6 +323,7 @@ export class GameRoom {
   async alarm() {
     const room = await this.load();
     if (!room) return;
+    await this.purgeExpiredTickets();
     if (room.endsAt !== null && room.endsAt <= this.now()) {
       if (room.phase === "question") return this.reveal(room);
       if (room.phase === "reveal")

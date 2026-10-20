@@ -3,10 +3,14 @@ import { Miniflare } from "miniflare";
 import { describe, expect, it } from "vitest";
 import {
   checkRateLimit,
+  checkRateLimitForUid,
   rateLimitKey,
+  rateLimitUidKey,
   RATE_LIMIT_AUTHORIZE_MAX,
   RATE_LIMIT_PURGE_SQL,
   RATE_LIMIT_RETENTION_MS,
+  RATE_LIMIT_ROOM_CREATE_MAX,
+  RATE_LIMIT_ROOM_TICKET_MAX,
   RATE_LIMIT_WINDOW_MS,
 } from "../src/agent/rate-limit";
 import { HttpError } from "../src/http";
@@ -188,6 +192,80 @@ describe("agent rate limiting", () => {
       await expect(
         checkRateLimit(f.db, "authorize", request("203.0.113.5"), WINDOW),
       ).resolves.toBeUndefined();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("counts signed-in endpoints by uid instead of the shared client IP", async () => {
+    const f = await fixture();
+    try {
+      expect(rateLimitUidKey("room_create", "uid-1")).toBe(
+        "room_create:uid:uid-1",
+      );
+      await checkRateLimitForUid(f.db, "room_create", "uid-1", WINDOW);
+      await checkRateLimitForUid(f.db, "room_create", "uid-1", WINDOW);
+      await checkRateLimitForUid(f.db, "room_create", "uid-2", WINDOW);
+      await checkRateLimitForUid(f.db, "room_ticket", "uid-1", WINDOW);
+      const rows = await f.db
+        .prepare("SELECT key,count FROM agent_rate_limits ORDER BY key")
+        .all();
+      expect(rows.results).toEqual([
+        { key: "room_create:uid:uid-1", count: 2 },
+        { key: "room_create:uid:uid-2", count: 1 },
+        { key: "room_ticket:uid:uid-1", count: 1 },
+      ]);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("limits room creation to five per uid per minute", async () => {
+    const f = await fixture();
+    try {
+      for (let call = 0; call < RATE_LIMIT_ROOM_CREATE_MAX; call++)
+        await checkRateLimitForUid(f.db, "room_create", "uid-3", WINDOW);
+      const error = await checkRateLimitForUid(
+        f.db,
+        "room_create",
+        "uid-3",
+        WINDOW,
+      ).then(
+        () => null,
+        (reason: unknown) => reason,
+      );
+      expect(error).toBeInstanceOf(HttpError);
+      const httpError = error as HttpError;
+      expect(httpError.status).toBe(429);
+      expect(httpError.code).toBe("rate_limited");
+      const retryAfter = Number(httpError.retryAfter);
+      expect(Number.isInteger(retryAfter)).toBe(true);
+      expect(retryAfter).toBeGreaterThan(0);
+      expect(retryAfter).toBeLessThanOrEqual(RATE_LIMIT_WINDOW_MS / 1000);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("allows thirty room tickets per uid per minute for reconnects", async () => {
+    const f = await fixture();
+    try {
+      for (let call = 0; call < RATE_LIMIT_ROOM_TICKET_MAX; call++)
+        await checkRateLimitForUid(f.db, "room_ticket", "uid-4", WINDOW);
+      const error = await checkRateLimitForUid(
+        f.db,
+        "room_ticket",
+        "uid-4",
+        WINDOW,
+      ).then(
+        () => null,
+        (reason: unknown) => reason,
+      );
+      expect(error).toBeInstanceOf(HttpError);
+      const httpError = error as HttpError;
+      expect(httpError.status).toBe(429);
+      expect(httpError.code).toBe("rate_limited");
+      expect(Number(httpError.retryAfter)).toBeGreaterThan(0);
     } finally {
       await f.runtime.dispose();
     }

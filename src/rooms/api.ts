@@ -1,4 +1,6 @@
+import type { D1Database } from "@cloudflare/workers-types";
 import { HttpError, readBody } from "../http";
+import { checkRateLimitForUid } from "../agent/rate-limit";
 import {
   createRoomInput,
   newRoomCode,
@@ -32,9 +34,12 @@ export async function handleRoomApi(
   request: Request,
   uid: string,
   rooms: RoomNamespace,
+  limits: D1Database,
+  now: number,
 ) {
   const path = new URL(request.url).pathname;
   if (path === "/rooms" && request.method === "POST") {
+    await checkRateLimitForUid(limits, "room_create", uid, now);
     const input = createRoomInput.parse(
       JSON.parse(await readBody(request, 2_000_000)),
     );
@@ -83,6 +88,7 @@ export async function handleRoomApi(
   if (ticket && request.method === "POST") {
     const code = ticket[1].toUpperCase();
     if (!ROOM_CODE.test(code)) throw new HttpError(404, "room_not_found");
+    await checkRateLimitForUid(limits, "room_ticket", uid, now);
     const { name } = ticketInput.parse(
       JSON.parse(await readBody(request, 2000)),
     );
