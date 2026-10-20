@@ -29,7 +29,7 @@ export interface GameRoomState {
     delete(key: string): Promise<boolean>;
     deleteAll(): Promise<void>;
     setAlarm(at: number): Promise<void>;
-    list?<T>(options?: { prefix?: string }): Promise<Map<string, T>>;
+    list<T>(options?: { prefix?: string }): Promise<Map<string, T>>;
   };
   acceptWebSocket(socket: RoomSocket, tags?: string[]): void;
   getWebSockets(tag?: string): RoomSocket[];
@@ -66,6 +66,17 @@ interface Room {
   answers: Record<number, Record<string, Answer>>;
   expiresAt: number;
 }
+/**
+ * What the "room" key holds. Questions never change after the room opens, so
+ * each sits under its own key and an answer rewrites only this small record;
+ * one value holding every passage could also pass the 2 MB value limit.
+ * Rooms saved before the split still carry `questions` inline.
+ */
+type StoredRoom = Omit<Room, "questions"> & {
+  questionCount?: number;
+  questions?: Room["questions"];
+};
+const QUESTION_PREFIX = "question:";
 interface Ticket {
   uid: string;
   name: string;
@@ -84,6 +95,10 @@ export class GameRoom {
   private room: Room | null | undefined;
   /** Throttles the ticket sweep to at most once per ticket lifetime. */
   private lastTicketPurge = 0;
+  /** Whether the questions sit under their own keys yet. */
+  private questionsStored = false;
+  /** The alarm already set, so a save that keeps it does not set it again. */
+  private alarmAt: number | undefined;
   constructor(
     private ctx: GameRoomState,
     _env?: unknown,
@@ -107,22 +122,54 @@ export class GameRoom {
   }
 
   private async load() {
-    if (this.room === undefined)
-      this.room = (await this.ctx.storage.get<Room>("room")) ?? null;
+    if (this.room === undefined) {
+      const stored = await this.ctx.storage.get<StoredRoom>("room");
+      this.questionsStored = Boolean(stored && !stored.questions);
+      this.room = stored
+        ? {
+            ...stored,
+            questions:
+              stored.questions ??
+              (await this.loadQuestions(stored.questionCount ?? 0)),
+          }
+        : null;
+    }
     if (this.room && this.room.expiresAt <= this.now()) await this.destroy();
     return this.room;
   }
+  private async loadQuestions(count: number) {
+    const stored = await this.ctx.storage.list<Room["questions"][number]>({
+      prefix: QUESTION_PREFIX,
+    });
+    return Array.from(
+      { length: count },
+      (_, index) => stored.get(`${QUESTION_PREFIX}${index}`)!,
+    );
+  }
   private async save(room: Room) {
     this.room = room;
-    await this.ctx.storage.put("room", room);
-    await this.ctx.storage.setAlarm(
-      Math.min(room.endsAt ?? Infinity, room.expiresAt),
-    );
+    const { questions, ...rest } = room;
+    if (!this.questionsStored) {
+      for (const [index, question] of questions.entries())
+        await this.ctx.storage.put(`${QUESTION_PREFIX}${index}`, question);
+      this.questionsStored = true;
+    }
+    await this.ctx.storage.put("room", {
+      ...rest,
+      questionCount: questions.length,
+    } satisfies StoredRoom);
+    const alarmAt = Math.min(room.endsAt ?? Infinity, room.expiresAt);
+    if (alarmAt !== this.alarmAt) {
+      await this.ctx.storage.setAlarm(alarmAt);
+      this.alarmAt = alarmAt;
+    }
   }
   private async destroy() {
     for (const socket of this.ctx.getWebSockets())
       socket.close(4404, "room_closed");
     this.room = null;
+    this.questionsStored = false;
+    this.alarmAt = undefined;
     await this.ctx.storage.deleteAll();
   }
 
@@ -246,7 +293,6 @@ export class GameRoom {
    */
   private async purgeExpiredTickets() {
     const storage = this.ctx.storage;
-    if (!storage.list) return;
     const now = this.now();
     const tickets = await storage.list<Ticket>({ prefix: "ticket:" });
     await Promise.all(
@@ -394,7 +440,9 @@ export class GameRoom {
     );
     if (everyone) return this.reveal(room);
     await this.save(room);
-    this.broadcast();
+    // Only the answering player's own view changed; everyone else just learns
+    // that they answered, without the question and passage sent again.
+    this.broadcast(uid);
   }
 
   private async reveal(room: Room) {
@@ -436,15 +484,44 @@ export class GameRoom {
       .map((socket) => (socket.deserializeAttachment() as { uid: string }).uid);
   }
 
-  private broadcast() {
+  /**
+   * Sends each player their view. With `changedFor`, only that player gets the
+   * full view and the rest receive the player list alone.
+   */
+  private broadcast(changedFor?: string) {
     const room = this.room;
     if (!room) return;
     const connected = new Set(this.connectedUids());
+    const players = changedFor
+      ? JSON.stringify({
+          type: "players",
+          serverNow: this.now(),
+          players: this.players(room, connected),
+        })
+      : null;
     for (const socket of this.ctx.getWebSockets()) {
       if (socket.readyState !== OPEN) continue;
       const { uid } = socket.deserializeAttachment() as { uid: string };
-      socket.send(JSON.stringify(this.view(room, uid, connected)));
+      socket.send(
+        players && uid !== changedFor
+          ? players
+          : JSON.stringify(this.view(room, uid, connected)),
+      );
     }
+  }
+
+  private players(room: Room, connected: ReadonlySet<string>) {
+    const answers = room.answers[room.index] ?? {};
+    const showing = room.phase === "question" || room.phase === "reveal";
+    return room.players
+      .map((player) => ({
+        uid: player.uid,
+        name: player.name,
+        score: player.score,
+        connected: connected.has(player.uid),
+        answered: showing && Boolean(answers[player.uid]),
+      }))
+      .sort((a, b) => b.score - a.score);
   }
 
   /**
@@ -507,15 +584,7 @@ export class GameRoom {
         : showing
           ? questionDuration(current.display, room.seconds)
           : null,
-      players: room.players
-        .map((player) => ({
-          uid: player.uid,
-          name: player.name,
-          score: player.score,
-          connected: connected.has(player.uid),
-          answered: showing && Boolean(answers[player.uid]),
-        }))
-        .sort((a, b) => b.score - a.score),
+      players: this.players(room, connected),
       question: showing ? current.display : null,
       yourChoice: showing ? (answers[uid]?.choice ?? null) : null,
       revealedBlanks,

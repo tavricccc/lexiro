@@ -137,11 +137,16 @@ describe("live game room", () => {
 
     await f.advance(5_000);
     await f.room.webSocketMessage(guest, JSON.stringify({ type: "answer", index: 0, choice: 2 }));
-    // The host can see that the guest answered, not what or whether it was right.
-    expect(host.last().players).toEqual(
-      expect.arrayContaining([expect.objectContaining({ uid: "guest", answered: true, score: 0 })]),
-    );
-    expect(host.last().reveal).toBeNull();
+    // The host can see that the guest answered, not what or whether it was right,
+    // and gets the player list alone rather than the question again.
+    expect(host.last()).toEqual({
+      type: "players",
+      serverNow: expect.any(Number),
+      players: expect.arrayContaining([
+        expect.objectContaining({ uid: "guest", answered: true, score: 0 }),
+      ]),
+    });
+    expect(guest.last()).toMatchObject({ type: "state", yourChoice: 2, reveal: null });
 
     await f.room.webSocketMessage(host, JSON.stringify({ type: "answer", index: 0, choice: 1 }));
     const revealed = guest.last();
@@ -258,6 +263,41 @@ describe("live game room", () => {
         questions: [{ ...input.questions[0], answerIndex: 4 }],
       }),
     ).toThrow();
+  });
+});
+
+describe("room storage", () => {
+  it("keeps questions under their own keys and rebuilds the room from them", async () => {
+    const f = fixture();
+    await f.room.init("ABCDEF", "host", input);
+    const host = await f.join("host");
+    await f.room.webSocketMessage(host, JSON.stringify({ type: "start" }));
+    expect(f.storage.get("room")).not.toHaveProperty("questions");
+    expect(f.storage.get("question:1")).toEqual(input.questions[1]);
+
+    const writes: string[] = [];
+    const ctx = {
+      storage: {
+        get: async <T>(key: string) => structuredClone(f.storage.get(key)) as T,
+        put: async (key: string, value: unknown) => {
+          writes.push(key);
+          f.storage.set(key, structuredClone(value));
+        },
+        delete: async (key: string) => f.storage.delete(key),
+        deleteAll: async () => f.storage.clear(),
+        setAlarm: async () => {},
+        list: async <T>(options?: { prefix?: string }) =>
+          new Map(
+            [...f.storage].filter(([key]) => key.startsWith(options?.prefix ?? "")),
+          ) as Map<string, T>,
+      },
+      acceptWebSocket: () => {},
+      getWebSockets: () => [host],
+    } satisfies GameRoomState;
+    const woken = new GameRoom(ctx, undefined, () => 1_005_000);
+    await woken.webSocketMessage(host, JSON.stringify({ type: "answer", index: 0, choice: 2 }));
+    expect(host.last()).toMatchObject({ phase: "reveal", total: 2 });
+    expect(writes).toEqual(["room"]);
   });
 });
 
