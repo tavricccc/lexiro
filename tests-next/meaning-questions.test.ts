@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { SenseId, StudyWord, WordKey } from "@/types";
 import {
   buildMeaningQuestionGroups,
+  buildReverseQuestionGroups,
   isCorrectChoice,
 } from "@/components/practice/meaning-questions";
 import {
@@ -131,5 +132,26 @@ describe("local English-to-Chinese questions", () => {
         entry.kind === "question" ? [...entry.item.options].reverse() : [],
       ),
     );
+  });
+});
+
+describe("large libraries", () => {
+  it("builds valid questions for thousands of senses without scanning the pool per word", () => {
+    const pool = Array.from({ length: 3000 }, (_, index) =>
+      word(`word${index}`, `意思${index}；解釋${index % 500}`),
+    );
+    const started = performance.now();
+    const items = [
+      ...buildMeaningQuestionGroups(pool),
+      ...buildReverseQuestionGroups(pool),
+    ].flat();
+    expect(performance.now() - started).toBeLessThan(2000);
+    expect(items).toHaveLength(6000);
+    for (const item of items) {
+      expect(new Set(item.options).size).toBe(4);
+      expect(
+        item.options.filter((_, index) => isCorrectChoice(item, index)),
+      ).toHaveLength(1);
+    }
   });
 });
