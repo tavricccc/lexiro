@@ -1,6 +1,7 @@
 import type { Icon } from "@phosphor-icons/react";
 import {
   Archive,
+  SpeakerHigh,
   ArrowLeft,
   ArrowCounterClockwise,
   ArrowsClockwise,
@@ -79,6 +80,7 @@ export const Icons = {
   data: Database,
   delete: Trash,
   edit: PencilSimple,
+  speak: SpeakerHigh,
   error: WarningCircle,
   export: DownloadSimple,
   folder: Folder,

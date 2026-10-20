@@ -11,6 +11,15 @@ export interface ViewWord {
   senses: WordSense[];
 }
 
+/** Reads a word aloud with the system voice. */
+function speak(word: string) {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-US";
+  window.speechSynthesis.speak(utterance);
+}
+
 export function SetWordRow({
   entry,
   setId,
@@ -24,7 +33,18 @@ export function SetWordRow({
   return (
     <div>
       <div className="flex items-center justify-between gap-3">
-        <p className="text-left text-base font-medium">{entry.word}</p>
+        <div className="flex min-w-0 items-center gap-1">
+          <p className="text-left text-base font-medium">{entry.word}</p>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            aria-label={t("setDetail.speak")}
+            onClick={() => speak(entry.word)}
+          >
+            <Icons.speak />
+          </Button>
+        </div>
         <Button
           asChild
           variant="ghost"

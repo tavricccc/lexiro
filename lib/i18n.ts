@@ -742,6 +742,7 @@ export const zhTW = {
     discard: "捨棄並離開",
   },
   setDetail: {
+    speak: "播放讀音",
     searchWords: "搜尋本集單字、中文或例句",
     searchQuestions: "搜尋本集題目、文章或選項",
     wordSearchCount: "{count} / {total} 個單字",
