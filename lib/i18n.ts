@@ -29,6 +29,14 @@ export const zhTW = {
     disconnect: "解除連線",
     refresh: "重新整理",
   },
+  appAuth: {
+    title: "登入 Lexiro App",
+    description:
+      "用 Google 登入後會回到 Lexiro App。只有剛剛開啟這個頁面的 App 能完成登入。",
+    invalid: "這個登入連結無效，請回到 Lexiro App 重新登入。",
+    signIn: "用 Google 登入",
+    failed: "登入失敗，請回到 App 再試一次。",
+  },
   share: {
     title: "分享連結",
     description:
