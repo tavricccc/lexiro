@@ -10,7 +10,7 @@ export const ROOM_TTL_MS = 2 * 60 * 60_000;
 export const IDLE_TTL_MS = 30 * 60_000;
 
 const text = (max: number) => z.string().max(max);
-const task = z.enum(["meaning", "vocabulary", "cloze", "wordBank", "discourse", "reading"]);
+const task = z.enum(["meaning", "reverse", "vocabulary", "cloze", "wordBank", "discourse", "reading"]);
 
 /** What players see. It never carries the answer. */
 export const liveQuestion = z.strictObject({
@@ -73,6 +73,7 @@ export function questionDuration(question: LiveQuestion, seconds?: number): numb
   if (seconds) return seconds * 1000;
   switch (question.type) {
     case "meaning":
+    case "reverse":
       return 15_000;
     case "vocabulary":
     case "cloze":
