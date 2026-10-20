@@ -1,0 +1,25 @@
+name: Retire generation Worker
+
+# One-off: deletes the retired AI generation Worker and its billing D1.
+# Remove this workflow after it has run.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 3a6b9f53daa83fc24242d05bc590a2ee
+    steps:
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Delete lexiro-worker
+        run: npx --yes wrangler@4 delete --name lexiro-worker --force
+      - name: Delete lexiro-billing D1
+        run: npx --yes wrangler@4 d1 delete lexiro-billing --skip-confirmation
