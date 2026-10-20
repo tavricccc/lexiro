@@ -33,7 +33,11 @@ export interface GameRoomState {
   };
   acceptWebSocket(socket: RoomSocket, tags?: string[]): void;
   getWebSockets(tag?: string): RoomSocket[];
+  setWebSocketAutoResponse?(pair: unknown): void;
 }
+
+/** Exactly what clients send to keep the socket open. */
+export const ROOM_PING = JSON.stringify({ type: "ping" });
 
 type Phase = "lobby" | "question" | "reveal" | "ended";
 interface Player {
@@ -84,7 +88,23 @@ export class GameRoom {
     private ctx: GameRoomState,
     _env?: unknown,
     private now: () => number = Date.now,
-  ) {}
+  ) {
+    // The runtime answers keep-alive pings itself, so a hibernating room is not
+    // woken every few seconds by each connected player. The handler below
+    // still answers pings where no auto-response exists.
+    const Pair = (
+      globalThis as {
+        WebSocketRequestResponsePair?: new (
+          request: string,
+          response: string,
+        ) => unknown;
+      }
+    ).WebSocketRequestResponsePair;
+    if (Pair)
+      ctx.setWebSocketAutoResponse?.(
+        new Pair(ROOM_PING, JSON.stringify({ type: "pong" })),
+      );
+  }
 
   private async load() {
     if (this.room === undefined)

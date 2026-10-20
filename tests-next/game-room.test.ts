@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   GameRoom,
+  ROOM_PING,
   type GameRoomState,
   type RoomSocket,
 } from "../src/rooms/game-room";
@@ -257,5 +258,30 @@ describe("live game room", () => {
         questions: [{ ...input.questions[0], answerIndex: 4 }],
       }),
     ).toThrow();
+  });
+});
+
+describe("keep-alive pings", () => {
+  it("lets the runtime answer pings without waking the room", () => {
+    const pairs: [string, string][] = [];
+    const global = globalThis as { WebSocketRequestResponsePair?: unknown };
+    global.WebSocketRequestResponsePair = class {
+      constructor(request: string, response: string) {
+        pairs.push([request, response]);
+      }
+    };
+    const registered: unknown[] = [];
+    try {
+      new GameRoom({
+        storage: {} as GameRoomState["storage"],
+        acceptWebSocket: () => {},
+        getWebSockets: () => [],
+        setWebSocketAutoResponse: (pair) => void registered.push(pair),
+      });
+    } finally {
+      delete global.WebSocketRequestResponsePair;
+    }
+    expect(pairs).toEqual([[ROOM_PING, JSON.stringify({ type: "pong" })]]);
+    expect(registered).toHaveLength(1);
   });
 });
