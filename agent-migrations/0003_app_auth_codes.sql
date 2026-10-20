@@ -7,4 +7,4 @@ CREATE TABLE app_auth_codes (
   uid TEXT NOT NULL,
   google_id_token TEXT NOT NULL,
   expires_at INTEGER NOT NULL
-)
+);
