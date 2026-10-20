@@ -395,7 +395,7 @@ export function agentGenerationBrief(
   );
   const sources = words.flatMap((w) =>
     w.senses.map((s) => ({
-      ref: `s${words.slice(0, words.indexOf(w)).reduce((n, v) => n + v.senses.length, 0) + w.senses.indexOf(s) + 1}`,
+      ref: s.id,
       word: w.word,
       pos: s.pos,
       meaningZh: s.meaningZh,
@@ -407,7 +407,7 @@ export function agentGenerationBrief(
     kind,
     difficulty,
     sources,
-    instructions: `由你自己生成並提交，服務不呼叫模型 API。依使用者要求決定指定單字、題數、篇幅、難度、順序與解說；sources 是可用來源，不必全部使用，也不必每個來源各出一題。每題用 senseId 綁定穩定來源，不以陣列位置綁定；同一來源可以出多題。只有一個來源時可省略 senseId，也可使用本 brief 的 ref。正文保留答案，answer 指定要挖空的原文片段；只有一處時可省略 usage，重複時用 usage 指定位置。explanation、whyWrong、閱讀 skill／evidence 均非寫入必需。格式見 outputSchema，JSON 欄位順序不限。一般選擇題需要三個錯項，共用選項庫依網站格式為文意選填十項、篇章結構五項。篇幅偏離只回傳 warning，不阻擋儲存；來源錯誤、答案無法定位、選項錯誤才是 error。mode 預設 partial，可先儲存有效獨立題目並取得逐題錯誤；atomic 則有任何 error 就不儲存。文章題組保持完整，以整組為一單位。validate_generated_questions 可先唯讀驗證。也可直接用 put_questions 新增或編輯完整題目，無須先取得本 brief。題目難度、風格、語意相似度由你自行判斷，依使用者要求決定是否合併屈折／衍生詞的出題；原始詞條全部保留。`,
+    instructions: `由你自己生成並提交，服務不呼叫模型 API。依使用者要求決定指定單字、題數、篇幅、難度、順序與解說；sources 是可用來源，不必全部使用，也不必每個來源各出一題。每題用 senseId 綁定穩定來源，不以陣列位置綁定；同一來源可以出多題。只有一個來源時可省略 senseId；ref 等同 senseId，兩者擇一。正文保留答案，answer 指定要挖空的原文片段；只有一處時可省略 usage，重複時用 usage 指定位置。explanation、whyWrong、閱讀 skill／evidence 均非寫入必需。格式見 outputSchema，JSON 欄位順序不限。一般選擇題需要三個錯項，共用選項庫依網站格式為文意選填十項、篇章結構五項。篇幅偏離只回傳 warning，不阻擋儲存；來源錯誤、答案無法定位、選項錯誤才是 error。mode 預設 partial，可先儲存有效獨立題目並取得逐題錯誤；atomic 則有任何 error 就不儲存。文章題組保持完整，以整組為一單位。validate_generated_questions 可先唯讀驗證。也可直接用 put_questions 新增或編輯完整題目，無須先取得本 brief。題目難度、風格、語意相似度由你自行判斷，依使用者要求決定是否合併屈折／衍生詞的出題；原始詞條全部保留。`,
     outputSchema: agentQuestionOutputSchema(kind),
   };
 }

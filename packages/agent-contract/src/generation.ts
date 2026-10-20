@@ -22,7 +22,7 @@ const teaching = {
 };
 const source = {
   senseId: text.optional().describe("本題來源的穩定 senseId，複製詞義 ID；來源順序不限，可同字多題。"),
-  ref: text.optional().describe("複製 sources.ref；可任選、重複或調整順序。只有一個來源時可省略。"),
+  ref: text.optional().describe("等同 senseId，照抄 brief 來源的 ref；兩者擇一即可。只有一個來源時可省略。"),
 };
 const blank = {
   ...source,
@@ -78,20 +78,24 @@ export function collectAgentGeneratedQuestions(
   const words = snapshot.words.map(word => ({ ...word, senses: word.senses.filter(s => !requested || requested.has(s.id)) })).filter(w => w.senses.length);
   const slots = words.flatMap(word => word.senses.map(sense => ({ word, sense })));
   const byId = new Map(slots.map(slot => [slot.sense.id as string, slot]));
-  const byRef = new Map(slots.map((slot, index) => [`s${index + 1}`, slot]));
   const resolve = (raw: Record<string, unknown>) => {
-    const referenced = typeof raw.ref === "string" ? byRef.get(raw.ref) : undefined;
-    const senseId = typeof raw.senseId === "string" ? raw.senseId : raw.ref !== undefined ? referenced?.sense.id : slots.length === 1 ? slots[0].sense.id : undefined;
-    if (!senseId) throw new AgentQuestionError("missing_source", "senseId", "請提供本題的 senseId；只有單一來源時可省略。");
-    const slot = byId.get(senseId);
-    if (!slot) throw new AgentQuestionError("unknown_source", "senseId", `來源 ${senseId} 不存在於本集或本次指定來源。`, senseId);
+    const senseId = typeof raw.senseId === "string" ? raw.senseId : undefined;
+    const ref = typeof raw.ref === "string" ? raw.ref : undefined;
+    if (senseId && ref && senseId !== ref)
+      throw new AgentQuestionError("source_ref_conflict", "ref", "ref 與 senseId 指向不同來源；ref 就是 senseId，只填其一即可。", senseId);
+    if (!senseId && ref && !byId.has(ref))
+      throw new AgentQuestionError("unknown_source", "ref", `來源 ${ref} 不存在於本集或本次指定來源。ref 須照抄 brief 來源的 ref（即 senseId），不是位置編號。`, ref);
+    const id = senseId ?? ref ?? (slots.length === 1 ? slots[0].sense.id : undefined);
+    if (!id) throw new AgentQuestionError("missing_source", "senseId", "請提供本題的 senseId；只有單一來源時可省略。");
+    const slot = byId.get(id);
+    if (!slot) throw new AgentQuestionError("unknown_source", "senseId", `來源 ${id} 不存在於本集或本次指定來源。`, id);
     return slot;
   };
   const rawItems = kind === "vocabulary" && isRecord(output) && Array.isArray(output.items) ? output.items : [output];
   const items = rawItems.map(item => {
     if (!isRecord(item) || item.senseId !== undefined) return item;
-    const ref = typeof item.ref === "string" ? byRef.get(item.ref) : slots.length === 1 ? slots[0] : undefined;
-    return ref ? { ...item, senseId: ref.sense.id } : item;
+    const slot = typeof item.ref === "string" ? byId.get(item.ref) : slots.length === 1 ? slots[0] : undefined;
+    return slot ? { ...item, senseId: slot.sense.id } : item;
   });
   const parse = (value: unknown) => {
     const candidate = kind === "vocabulary" ? { items: [value] } : value;
@@ -109,7 +113,11 @@ export function collectAgentGeneratedQuestions(
         if ("issue" in location) throw new AgentQuestionError("answer_not_locatable", "usage", location.issue, slot.sense.id);
         if (kind !== "cloze") {
           const issue = sourceWordFormIssue(slot.word.word, slot.sense.pos, answer, usage);
-          if (issue) throw new AgentQuestionError("source_answer_mismatch", "answer", issue, slot.sense.id);
+          if (issue) {
+            const other = slots.find(o => o.word !== slot.word && !sourceWordFormIssue(o.word.word, o.sense.pos, answer, usage));
+            throw new AgentQuestionError("source_answer_mismatch", "answer",
+              other ? `${issue} 答案是本集「${other.word.word}」的詞形，可能填錯來源；請確認 senseId（${other.sense.id}）。` : issue, slot.sense.id);
+          }
         }
       }
       if (Array.isArray(raw.distractors)) {

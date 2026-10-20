@@ -144,7 +144,7 @@ describe("Agent question writes", () => {
         items: [
           {
             senseId: adjust,
-            ref: "s1",
+            ref: adjust,
             sentence: "Please adjust the seat before driving.",
             answer: "adjust",
             distractors: ["ignore", "delay", "watch"],
@@ -176,7 +176,39 @@ describe("Agent question writes", () => {
       sourceId: adjust,
       code: "source_answer_mismatch",
     });
+    expect(wrong.validation?.errors[0]?.message).toContain("「rescue」");
     expect(wrong.snapshot?.questions).toHaveLength(0);
+  });
+  it("resolves ref as the senseId regardless of source order and rejects positional refs", () => {
+    const snapshot = library(),
+      rescue = snapshot.words[0].senses[0].id,
+      adjust = snapshot.words[1].senses[0].id;
+    const item = {
+      sentence: "Please adjust the seat before driving.",
+      answer: "adjust",
+      distractors: ["ignore", "delay", "watch"],
+    };
+    const write = (fields: Record<string, string>) =>
+      mutateAgentSet(snapshot, {
+        type: "generated_questions",
+        kind: "vocabulary",
+        difficulty: 1,
+        senseIds: [adjust, rescue],
+        output: { items: [{ ...fields, ...item }] },
+      });
+    const byRef = write({ ref: adjust });
+    expect(byRef.validation?.errors).toEqual([]);
+    expect(
+      byRef.snapshot?.questions.map(
+        (q) => q.kind === "multipleChoice" && q.senseId,
+      ),
+    ).toEqual([adjust]);
+    expect(write({ ref: "s1" }).validation?.errors[0]).toMatchObject({
+      code: "unknown_source",
+    });
+    expect(
+      write({ senseId: adjust, ref: rescue }).validation?.errors[0],
+    ).toMatchObject({ code: "source_ref_conflict" });
   });
   it("keeps passage groups complete while allowing partial sources and optional reading audits", () => {
     const snapshot = library(),
