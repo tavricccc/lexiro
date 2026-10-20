@@ -12,7 +12,11 @@ import {
   countTaskAvailability,
 } from "@/components/practice/practice-queue";
 import { PracticeSetup } from "@/components/practice/practice-setup";
-import { usePracticePool } from "@/components/practice/use-practice-pool";
+import {
+  liveSetIds,
+  practiceScopeLabel,
+  usePracticePool,
+} from "@/components/practice/use-practice-pool";
 import { ActiveRoomCard } from "@/components/rooms/active-room-card";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
@@ -145,7 +149,11 @@ function RoomSetup() {
   const router = useRouter();
   const user = useCloudStore((store) => store.user);
   const state = useLibraryStore((store) => store.state);
-  const [setId, setSetId] = useState("");
+  const [chosenSetIds, setSetIds] = useState<string[]>([]);
+  const setIds = useMemo(
+    () => liveSetIds(state.sets, chosenSetIds),
+    [chosenSetIds, state.sets],
+  );
   const [tasks, setTasks] = useState<PracticeTask[]>([
     ...DEFAULT_QUESTION_TASKS,
   ]);
@@ -157,7 +165,7 @@ function RoomSetup() {
   const [busy, setBusy] = useState(false);
   const { allowedSenseIds, studyItems, questionGroups } = usePracticePool(
     state,
-    setId,
+    setIds,
   );
   const pool = { allowedSenseIds, difficulty, questionGroups, studyItems };
   const counts = useMemo(
@@ -199,9 +207,7 @@ function RoomSetup() {
     try {
       const { code } = await createRoom({
         name: playerName(user),
-        title:
-          state.sets.find((entry) => entry.id === setId)?.setName ??
-          t("practice.allSets"),
+        title: practiceScopeLabel(state.sets, setIds),
         seconds,
         questions: toRoomQuestions(queue),
       });
@@ -233,10 +239,10 @@ function RoomSetup() {
       onBegin={() => void open()}
       onDifficultyChange={setDifficulty}
       onOneSenseChange={setOneSensePerWord}
-      onSetChange={setSetId}
+      onSetsChange={setSetIds}
       onTasksChange={setTasks}
       queueLength={queue.length}
-      setId={setId}
+      setIds={setIds}
       sets={state.sets}
       showDraftStatus={false}
       extraScope={

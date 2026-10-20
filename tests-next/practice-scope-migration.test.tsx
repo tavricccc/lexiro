@@ -106,7 +106,7 @@ function fixture(kind: "vocabulary" | "reading" | "cloze" = "vocabulary") {
   const original = buildQuestionGroups([question], legacy.words).flat()[0];
   const snapshot: PracticeSessionSnapshot = {
     schemaVersion: 5,
-    setId: "set-z",
+    setIds: ["set-z"],
     tasks: ["meaning", kind],
     amount: 2,
     index: 1,
@@ -188,7 +188,10 @@ describe("scoping interrupted practice", () => {
 
   it("chooses the first set ID once for an all-library legacy alias without duplicating the queue", () => {
     const { library, snapshot } = fixture();
-    const migrated = migratePracticeScope({ ...snapshot, setId: "" }, library)!;
+    const migrated = migratePracticeScope(
+      { ...snapshot, setIds: [] },
+      library,
+    )!;
     expect(migrated.snapshot.entryIds).toHaveLength(snapshot.entryIds.length);
     expect(migrated.snapshot.entryIds[0]).toBe(
       `meaning:${library.memberships["set-a"][0].senseIds[0]}`,

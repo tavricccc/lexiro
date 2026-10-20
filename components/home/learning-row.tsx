@@ -10,6 +10,7 @@ import { readPracticeDraft } from "@/src/lib/practice-storage";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { parsePracticeSession } from "@/src/lib/practice-session";
+import { practiceScopeLabel } from "@/components/practice/use-practice-pool";
 import type { PracticeSessionSnapshot } from "@/types";
 
 export function LearningRows() {
@@ -84,10 +85,7 @@ export function LearningRows() {
             }
             href="/app/practice"
             icon={Icons.start}
-            label={
-              state.sets.find((entry) => entry.id === session.setId)?.setName ??
-              t("practice.allSets")
-            }
+            label={practiceScopeLabel(state.sets, session.setIds)}
           />
         </ListSection>
       )}

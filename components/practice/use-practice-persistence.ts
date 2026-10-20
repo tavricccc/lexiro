@@ -19,6 +19,7 @@ import type { QuestionItem } from "@/components/practice/practice-content";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import type { DraftPersistence } from "@/lib/draft-persistence";
 import { entriesFromIds } from "@/components/practice/practice-queue";
+import { scopeSenseIds } from "@/components/practice/use-practice-pool";
 import {
   canRestorePracticeSession,
   parsePracticeSession,
@@ -85,12 +86,7 @@ export function useRestorePracticeSession({
       return;
     }
     const restored = migrated.snapshot;
-    const allowed = new Set(
-      (restored.setId
-        ? (library.memberships[restored.setId] ?? [])
-        : Object.values(library.memberships).flat()
-      ).flatMap((entry) => entry.senseIds),
-    );
+    const allowed = scopeSenseIds(library.memberships, restored.setIds);
     if (migrated.changed) {
       try {
         writePracticeDraft(restored);
@@ -144,7 +140,7 @@ export function usePersistPracticeSession({
   retrying,
   revealed,
   selected,
-  setId,
+  setIds,
   skipped,
   started,
   tasks,
@@ -162,7 +158,7 @@ export function usePersistPracticeSession({
   retrying: boolean;
   revealed: boolean;
   selected: number | null;
-  setId: string;
+  setIds: string[];
   skipped: number[];
   started: boolean;
   tasks: PracticeTask[];
@@ -185,7 +181,7 @@ export function usePersistPracticeSession({
       entries,
       answerChoices,
       tasks,
-      setId,
+      setIds,
       amount,
       index,
       correct,
@@ -217,7 +213,7 @@ export function usePersistPracticeSession({
     retrying,
     revealed,
     selected,
-    setId,
+    setIds,
     skipped,
     started,
     tasks,

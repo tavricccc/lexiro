@@ -9,7 +9,7 @@ const validSession = {
   schemaVersion: 5,
   meaningChoices: {},
   tasks: ["vocabulary", "reading"],
-  setId: "set-1",
+  setIds: ["set-1"],
   amount: 10,
   index: 1,
   correct: 1,
@@ -175,6 +175,29 @@ describe("practice session persistence", () => {
     ).toBeNull();
   });
 
+  it("reads a session saved with one set ID as that set, or empty as all sets", () => {
+    const { setIds: _setIds, ...legacy } = validSession;
+    expect(
+      parsePracticeSession(JSON.stringify({ ...legacy, setId: "set-1" }))
+        ?.setIds,
+    ).toEqual(["set-1"]);
+    expect(
+      parsePracticeSession(JSON.stringify({ ...legacy, setId: "" }))?.setIds,
+    ).toEqual([]);
+    expect(parsePracticeSession(JSON.stringify(legacy))).toBeNull();
+  });
+
+  it("rejects set IDs that are empty or repeated", () => {
+    expect(
+      parsePracticeSession(JSON.stringify({ ...validSession, setIds: [""] })),
+    ).toBeNull();
+    expect(
+      parsePracticeSession(
+        JSON.stringify({ ...validSession, setIds: ["set-1", "set-1"] }),
+      ),
+    ).toBeNull();
+  });
+
   it("rejects corrupt JSON instead of throwing during hydration", () => {
     expect(parsePracticeSession("{not-json")).toBeNull();
   });
@@ -190,5 +213,13 @@ describe("practice session persistence", () => {
     expect(session).not.toBeNull();
     expect(canRestorePracticeSession(session!, "set-2")).toBe(false);
     expect(canRestorePracticeSession(session!, "set-1")).toBe(true);
+  });
+
+  it("offers a session over several sets only on the all-sets route", () => {
+    const session = parsePracticeSession(
+      JSON.stringify({ ...validSession, setIds: ["set-1", "set-2"] }),
+    );
+    expect(canRestorePracticeSession(session!, "")).toBe(true);
+    expect(canRestorePracticeSession(session!, "set-1")).toBe(false);
   });
 });

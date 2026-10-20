@@ -88,7 +88,7 @@ export function parsePracticeSession(
     ) ||
     typeof difficulty !== "string" ||
     !DIFFICULTIES.has(difficulty as WorkspaceQuestionDifficulty) ||
-    typeof value.setId !== "string" ||
+    !readSetIds(value) ||
     !Number.isInteger(value.amount) ||
     Number(value.amount) < 1 ||
     !Number.isInteger(value.index) ||
@@ -154,7 +154,7 @@ export function parsePracticeSession(
     schemaVersion: 5,
     meaningChoices: meaningChoices as PracticeSessionSnapshot["meaningChoices"],
     tasks: orderPracticeTasks(rawTasks.filter(isPracticeTask)),
-    setId: value.setId,
+    setIds: readSetIds(value)!,
     amount: Number(value.amount),
     index: Number(value.index),
     correct: Number(value.correct),
@@ -214,6 +214,21 @@ function removeRetiredEntries(
   };
 }
 
+/** Sessions saved before multi-set scopes stored one `setId`, empty for all. */
+function readSetIds(value: Record<string, unknown>): string[] | null {
+  if (value.setIds === undefined)
+    return typeof value.setId === "string"
+      ? value.setId
+        ? [value.setId]
+        : []
+      : null;
+  return Array.isArray(value.setIds) &&
+    value.setIds.every((id) => typeof id === "string" && id) &&
+    new Set(value.setIds).size === value.setIds.length
+    ? [...value.setIds]
+    : null;
+}
+
 /**
  * A session started inside one set is only offered back on that set's route,
  * so opening a different set does not resume somebody else's queue.
@@ -222,5 +237,7 @@ export function canRestorePracticeSession(
   snapshot: PracticeSessionSnapshot,
   initialSet: string,
 ): boolean {
-  return initialSet ? snapshot.setId === initialSet : true;
+  return initialSet
+    ? snapshot.setIds.length === 1 && snapshot.setIds[0] === initialSet
+    : true;
 }

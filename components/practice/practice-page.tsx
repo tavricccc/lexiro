@@ -5,7 +5,10 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 
 import { usedBlankForOption } from "@/components/practice/practice-content";
-import { usePracticePool } from "@/components/practice/use-practice-pool";
+import {
+  liveSetIds,
+  usePracticePool,
+} from "@/components/practice/use-practice-pool";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import {
   buildPracticeQueue,
@@ -51,7 +54,11 @@ export function PracticePage({
   const libraryStatus = useLibraryStore((store) => store.status);
   const setPracticeActive = useUIStore((store) => store.setPracticeActive);
   const setup = usePracticeSetupChoices(initialSet, initialTrack);
-  const { amount, difficulty, oneSensePerWord, setId, tasks } = setup;
+  const { amount, difficulty, oneSensePerWord, tasks } = setup;
+  const setIds = useMemo(
+    () => liveSetIds(state.sets, setup.setIds),
+    [setup.setIds, state.sets],
+  );
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -87,7 +94,7 @@ export function PracticePage({
     allStudyItems,
     questionGroups,
     allQuestionItems,
-  } = usePracticePool(state, setId);
+  } = usePracticePool(state, setIds);
   const retiredEntryIds = useMemo(
     () =>
       new Set(
@@ -248,7 +255,7 @@ export function PracticePage({
     retrying,
     revealed,
     selected,
-    setId,
+    setIds,
     skipped,
     started,
     tasks,
@@ -409,10 +416,10 @@ export function PracticePage({
         }}
         onDifficultyChange={setup.changeDifficulty}
         onOneSenseChange={setup.changeOneSense}
-        onSetChange={setup.changeSet}
+        onSetsChange={setup.changeSets}
         onTasksChange={setup.changeTasks}
         queueLength={queue.length}
-        setId={setId}
+        setIds={setIds}
         sets={state.sets}
         tasks={tasks}
         draftPersistence={setup.saved.persistence}

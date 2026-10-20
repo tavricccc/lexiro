@@ -34,10 +34,10 @@ describe("practice setup", () => {
         onDifficultyChange={vi.fn()}
         onLeechOnlyChange={vi.fn()}
         onOneSenseChange={vi.fn()}
-        onSetChange={vi.fn()}
+        onSetsChange={vi.fn()}
         onTasksChange={vi.fn()}
         queueLength={4}
-        setId=""
+        setIds={[]}
         sets={[]}
         tasks={["meaning"]}
       />,
@@ -66,11 +66,11 @@ describe("practice setup", () => {
       onDifficultyChange: vi.fn(),
       onLeechOnlyChange: vi.fn(),
       onOneSenseChange: vi.fn(),
-      onSetChange: vi.fn(),
+      onSetsChange: vi.fn(),
       onTasksChange: vi.fn(),
       onTrackChange: vi.fn(),
       queueLength: 10,
-      setId: "",
+      setIds: [],
       sets: [],
       tasks: ["vocabulary" as const],
       track: "questions" as const,

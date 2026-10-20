@@ -16,7 +16,9 @@ interface PracticeSetupDraft {
   amount: number;
   difficulty: WorkspaceQuestionDifficulty;
   oneSensePerWord: boolean;
-  setId: string;
+  /** Empty means the whole library. Drafts saved before held one `setId`. */
+  setIds: string[];
+  setId?: string;
   tasks: PracticeTask[];
 }
 
@@ -25,6 +27,7 @@ export function usePracticeSetupChoices(
   initialTrack?: PracticeTrack,
 ) {
   const uid = useCloudStore((store) => store.user?.uid);
+  const initialSets = () => (initialSet ? [initialSet] : []);
   const initialTasks = () =>
     initialTrack === "words"
       ? [...DEFAULT_CARD_TASKS]
@@ -35,12 +38,12 @@ export function usePracticeSetupChoices(
       amount: 10,
       difficulty: "all",
       oneSensePerWord: true,
-      setId: initialSet,
+      setIds: initialSets(),
       tasks: initialTasks(),
     },
   );
   const [tasks, setTasks] = useState<PracticeTask[]>(initialTasks);
-  const [setId, setSetId] = useState(initialSet);
+  const [setIds, setSetIds] = useState<string[]>(initialSets);
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] =
     useState<WorkspaceQuestionDifficulty>("all");
@@ -48,7 +51,7 @@ export function usePracticeSetupChoices(
 
   const reset = () => {
     setTasks(initialTasks());
-    setSetId(initialSet);
+    setSetIds(initialSets());
     setAmount(10);
     setDifficulty("all");
     setOneSensePerWord(true);
@@ -67,7 +70,7 @@ export function usePracticeSetupChoices(
           .filter(isPracticeTask),
       ),
     ]);
-    setSetId(draft.setId);
+    setSetIds(draft.setIds ?? (draft.setId ? [draft.setId] : []));
     setAmount(draft.amount);
     setDifficulty(draft.difficulty);
     setOneSensePerWord(draft.oneSensePerWord);
@@ -77,7 +80,7 @@ export function usePracticeSetupChoices(
     amount,
     difficulty,
     oneSensePerWord,
-    setId,
+    setIds,
     tasks,
     saved,
     reset,
@@ -95,9 +98,9 @@ export function usePracticeSetupChoices(
       setOneSensePerWord(value);
       saved.update({ oneSensePerWord: value });
     },
-    changeSet: (value: string) => {
-      setSetId(value);
-      saved.update({ setId: value });
+    changeSets: (value: string[]) => {
+      setSetIds(value);
+      saved.update({ setIds: value });
     },
     changeTasks: (value: PracticeTask[]) => {
       setTasks(value);
@@ -106,12 +109,12 @@ export function usePracticeSetupChoices(
     clear: saved.clear,
     restoreSessionChoices: (value: {
       tasks: PracticeTask[];
-      setId: string;
+      setIds: string[];
       amount: number;
       difficulty: WorkspaceQuestionDifficulty;
     }) => {
       setTasks(value.tasks);
-      setSetId(value.setId);
+      setSetIds(value.setIds);
       setAmount(value.amount);
       setDifficulty(value.difficulty);
     },

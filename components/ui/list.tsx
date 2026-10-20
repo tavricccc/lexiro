@@ -3,7 +3,8 @@
 import Link from "@/components/ui/app-link";
 import type { AppIcon } from "@/components/ui/icons";
 import { type ReactNode } from "react";
-import { RadioGroup } from "radix-ui";
+import { CaretDown } from "@phosphor-icons/react";
+import { DropdownMenu, RadioGroup } from "radix-ui";
 
 import { Icons } from "@/components/ui/icons";
 import {
@@ -337,6 +338,95 @@ export function ListPicker({
         ))}
       </SelectContent>
     </Select>
+  );
+}
+
+/**
+ * Several values chosen from one menu, with an "all" row that clears them.
+ *
+ * It opens from the row like `ListPicker`, but stays open while rows are
+ * ticked, the way an iOS menu of toggles does; nothing chosen means all.
+ */
+export function ListMultiPicker({
+  allLabel,
+  disabled,
+  label,
+  onChange,
+  options,
+  summary,
+  value,
+}: {
+  allLabel: string;
+  disabled?: boolean;
+  label: string;
+  onChange: (value: string[]) => void;
+  options: { label: string; value: string }[];
+  /** What the row shows for the current choice. */
+  summary: string;
+  value: readonly string[];
+}) {
+  const item =
+    "relative flex min-h-9 w-full cursor-default items-center gap-2 rounded-lg py-1.5 pr-8 pl-2.5 outline-hidden select-none focus:bg-accent focus:text-accent-foreground";
+  const check = (checked: boolean) => (
+    <span className="absolute right-2 flex size-3.5 items-center justify-center">
+      {checked && <Icons.success aria-hidden className="size-4" />}
+    </span>
+  );
+  return (
+    <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Trigger
+        aria-label={label}
+        className={cn(rowClass, "outline-none", disabled && "opacity-45")}
+        data-focus-surface="row"
+        disabled={disabled}
+      >
+        <span className="type-row min-w-0 flex-1 text-left">{label}</span>
+        <span className="type-row-value min-w-0 truncate">{summary}</span>
+        <CaretDown aria-hidden className="size-4 shrink-0 opacity-50" />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="end"
+          className="t-dropdown z-50 max-h-(--radix-dropdown-menu-content-available-height) max-w-[calc(100vw-2rem)] min-w-52 origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto rounded-xl border bg-popover p-1.5 text-popover-foreground shadow-[var(--shadow-floating)]"
+          collisionPadding={16}
+          sideOffset={6}
+        >
+          <DropdownMenu.CheckboxItem
+            checked={!value.length}
+            className={item}
+            onCheckedChange={() => onChange([])}
+            onSelect={(event) => event.preventDefault()}
+          >
+            {check(!value.length)}
+            {allLabel}
+          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.Separator className="-mx-1.5 my-1.5 h-px bg-border" />
+          {options.map((option) => {
+            const checked = value.includes(option.value);
+            return (
+              <DropdownMenu.CheckboxItem
+                checked={checked}
+                className={item}
+                key={option.value}
+                onCheckedChange={(on) =>
+                  onChange(
+                    options
+                      .map((entry) => entry.value)
+                      .filter((entry) =>
+                        entry === option.value ? on : value.includes(entry),
+                      ),
+                  )
+                }
+                onSelect={(event) => event.preventDefault()}
+              >
+                {check(checked)}
+                <span className="min-w-0 truncate">{option.label}</span>
+              </DropdownMenu.CheckboxItem>
+            );
+          })}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 }
 

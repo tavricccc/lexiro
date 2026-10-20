@@ -12,7 +12,13 @@ import { ChoiceChecklist } from "@/components/ui/choice-checklist";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { Icons } from "@/components/ui/icons";
 import { EmptyState } from "@/components/ui/page-state";
-import { ListPicker, ListSection, ListSwitchRow } from "@/components/ui/list";
+import {
+  ListMultiPicker,
+  ListPicker,
+  ListSection,
+  ListSwitchRow,
+} from "@/components/ui/list";
+import { practiceScopeLabel } from "@/components/practice/use-practice-pool";
 import { StepFrame, StepRecap } from "@/components/ui/step-frame";
 import { PRACTICE_TASKS } from "@/constants";
 import { t } from "@/lib/i18n";
@@ -37,10 +43,10 @@ export function PracticeSetup({
   onBegin,
   onDifficultyChange,
   onOneSenseChange,
-  onSetChange,
+  onSetsChange,
   onTasksChange,
   queueLength,
-  setId,
+  setIds,
   sets,
   tasks,
   title = t("practice.scopeTitle"),
@@ -63,10 +69,10 @@ export function PracticeSetup({
   onBegin: () => void;
   onDifficultyChange: (difficulty: WorkspaceQuestionDifficulty) => void;
   onOneSenseChange: (oneSensePerWord: boolean) => void;
-  onSetChange: (setId: string) => void;
+  onSetsChange: (setIds: string[]) => void;
   onTasksChange: (tasks: PracticeTask[]) => void;
   queueLength: number;
-  setId: string;
+  setIds: string[];
   sets: LibrarySet[];
   tasks: PracticeTask[];
   /** A live room reuses this screen to pick its questions. */
@@ -142,17 +148,16 @@ export function PracticeSetup({
       ) : (
         <div className="space-y-7">
           <ListSection header={t("practice.scopeHeader")}>
-            <ListPicker
+            <ListMultiPicker
+              allLabel={t("practice.allSets")}
               label={t("practice.set")}
-              onChange={(value) => onSetChange(value === "all" ? "" : value)}
-              options={[
-                { label: t("practice.allSets"), value: "all" },
-                ...sets.map((entry) => ({
-                  label: entry.setName,
-                  value: entry.id,
-                })),
-              ]}
-              value={setId || "all"}
+              onChange={onSetsChange}
+              options={sets.map((entry) => ({
+                label: entry.setName,
+                value: entry.id,
+              }))}
+              summary={practiceScopeLabel(sets, setIds)}
+              value={setIds}
             />
             {availableQuestionCount > 0 && (
               <div className="py-4">
