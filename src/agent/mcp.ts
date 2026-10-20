@@ -63,7 +63,9 @@ export const readRequest = z.strictObject({
   q: z
     .string()
     .optional()
-    .describe("子字串搜尋：單字英文/中文義，題目題幹/文章/選項/解說"),
+    .describe(
+      "子字串搜尋：單字英文/中文義，題目題幹（含填回答案的完整句）/文章/選項/解說",
+    ),
   questionType: querySchema.shape.questionType,
   kind: kind.optional(),
   difficulty: level.optional(),
@@ -94,9 +96,9 @@ const WRITE = `新增或修改，回精簡回條與新 revision。action 依 typ
 put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} 新增；帶 wordKey 則覆寫該字且 senses 整組替換
 edit_word{wordKey,patch:{word}} 只改拼字
 edit_sense{wordKey,senseId?,action:"add"|"update"|"delete",patch?:{pos?,meaningZh?,examples?,appendExamples?}}
-generated_questions{kind,difficulty,output,senseIds?} output 依 read prompt 的 outputSchema，每題用 senseId 綁來源
+generated_questions{kind,difficulty,output,senseIds?} output 依 read prompt 的 outputSchema，每題用 senseId 綁來源（brief 的 ref 就是 senseId）
 put_questions{questions} 已存題完整物件（read 回來的格式），帶 id 為覆寫
-edit_question{questionId,childId?,patch} 只傳要改的欄位
+edit_question{questionId,childId?,patch} 只傳要改的欄位，用已存題格式（prompt/options/answerIndex/explanation/whyWrong）
 rename_set{setName}、move_set{folderId}、create_folder{name,parentId?}、update_folder{folderId,name?,parentId?}
 題目類可加 mode:"partial"(預設，只存有效題)|"atomic"(有錯全不存)；每批≤200筆。`;
 const DELETE = `刪除，不可復原，先確認使用者意思。action 依 type：delete_words{wordKeys}、delete_questions{questionIds}、delete_set（整集）、delete_folder{folderId}（只限空資料夾）。`;
@@ -133,13 +135,15 @@ export async function handleAgentMcp(
       async (args) => {
         try {
           const raw = await run(args);
+          const actionType = (args.action as { type?: string } | undefined)
+            ?.type;
           let result = raw;
           if (!readOnly && raw && typeof raw === "object") {
             const record = raw as Record<string, unknown>;
             if ("savedCount" in record || "operationId" in record)
               result = args.responseFields
                 ? project(record, args.responseFields as string[])
-                : compactReceipt(record);
+                : compactReceipt(record, actionType);
             else if ("folders" in record) {
               const { folders: _folders, ...small } = record;
               result = small;
@@ -148,14 +152,17 @@ export async function handleAgentMcp(
           if (readOnly && raw && typeof raw === "object" && "savedCount" in raw)
             result = args.responseFields
               ? project(raw, args.responseFields as string[])
-              : compactReceipt(raw as Record<string, unknown>);
+              : compactReceipt(raw as Record<string, unknown>, actionType);
           if (
             JSON.stringify(result).length > Number(args.maxCharacters ?? 32000)
           )
             result =
               raw && typeof raw === "object" && "operationId" in raw
                 ? {
-                    ...compactReceipt(raw as Record<string, unknown>),
+                    ...compactReceipt(
+                      raw as Record<string, unknown>,
+                      actionType,
+                    ),
                     responseLimited: true,
                   }
                 : {

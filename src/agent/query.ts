@@ -124,7 +124,16 @@ export function project(value: unknown, fields?: string[]): unknown {
     ]),
   );
 }
-export function compactReceipt(value: Record<string, unknown>) {
+const structureHints: Record<string, string> = {
+  edit_question:
+    "edit_question 的 patch 直接用已存題格式欄位（prompt/options/answerIndex/explanation/whyWrong），不需換工具；distractors、sentence、answer 是生成題欄位，不適用。",
+  put_questions:
+    "put_questions 用已存題格式（prompt/options/answerIndex，即 read 回來的格式）；生成題格式（sentence/answer/distractors）請用 generated_questions。",
+};
+export function compactReceipt(
+  value: Record<string, unknown>,
+  actionType?: string,
+) {
   const {
     items: _items,
     requestedSenseIds: _requested,
@@ -160,7 +169,9 @@ export function compactReceipt(value: Record<string, unknown>) {
         "invalid_question_structure",
     )
       ? {
-          hint: '生成題 output 須符合 read {resource:"prompt",kind} 的 outputSchema；已存題格式（prompt/options/answerIndex）請用 put_questions。',
+          hint:
+            (actionType && structureHints[actionType]) ??
+            '生成題 output 須符合 read {resource:"prompt",kind} 的 outputSchema；已存題格式（prompt/options/answerIndex）請用 put_questions，修改既有題用 edit_question。',
         }
       : {}),
   };
@@ -426,10 +437,10 @@ export async function queryLibrary(
         (row) =>
           `${row.word_key}|${(JSON.parse(row.sense) as { id: string }).id}`,
       );
-      const items = result.items.map((row, i) => {
+      const items = result.items.map((row) => {
         const sense = JSON.parse(row.sense) as WordEntry["senses"][number];
         return {
-          ref: `s${i + 1}`,
+          ref: sense.id,
           wordKey: row.word_key,
           word: row.word,
           senseId: sense.id,
@@ -529,8 +540,8 @@ export async function queryLibrary(
     }
     if (q.q) {
       where +=
-        " AND (lower(json_extract(r.payload,'$.prompt')) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.title')) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.passage')) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.explanation')) LIKE ? ESCAPE '\\' OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.options') o WHERE lower(o.value) LIKE ? ESCAPE '\\') OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.optionBank') o WHERE lower(o.value) LIKE ? ESCAPE '\\') OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.questions') c WHERE lower(json_extract(c.value,'$.prompt')) LIKE ? ESCAPE '\\' OR lower(json_extract(c.value,'$.explanation')) LIKE ? ESCAPE '\\' OR EXISTS(SELECT 1 FROM json_each(c.value,'$.options') o WHERE lower(o.value) LIKE ? ESCAPE '\\')))";
-      args.push(...Array<string>(9).fill(pattern(q.q)));
+        " AND (lower(json_extract(r.payload,'$.prompt')) LIKE ? ESCAPE '\\' OR lower(replace(json_extract(r.payload,'$.prompt'),'_____',coalesce(json_extract(r.payload,'$.options['||json_extract(r.payload,'$.answerIndex')||']'),'_____'))) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.title')) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.passage')) LIKE ? ESCAPE '\\' OR lower(json_extract(r.payload,'$.explanation')) LIKE ? ESCAPE '\\' OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.options') o WHERE lower(o.value) LIKE ? ESCAPE '\\') OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.optionBank') o WHERE lower(o.value) LIKE ? ESCAPE '\\') OR EXISTS(SELECT 1 FROM json_each(r.payload,'$.questions') c WHERE lower(json_extract(c.value,'$.prompt')) LIKE ? ESCAPE '\\' OR lower(replace(json_extract(c.value,'$.prompt'),'_____',coalesce(json_extract(c.value,'$.options['||json_extract(c.value,'$.answerIndex')||']'),'_____'))) LIKE ? ESCAPE '\\' OR lower(json_extract(c.value,'$.explanation')) LIKE ? ESCAPE '\\' OR EXISTS(SELECT 1 FROM json_each(c.value,'$.options') o WHERE lower(o.value) LIKE ? ESCAPE '\\')))";
+      args.push(...Array<string>(11).fill(pattern(q.q)));
     }
     if (q.resource === "question" || q.questionId) {
       if (!q.questionId) missing("questionId");

@@ -42,8 +42,9 @@ function parameters(url: URL): Record<string, unknown> {
 export function presentMutation(
   result: Record<string, unknown>,
   fields?: string[],
+  actionType?: string,
 ) {
-  const compact = compactReceipt(result),
+  const compact = compactReceipt(result, actionType),
     selected = fields ? project(result, fields) : compact;
   return JSON.stringify(selected).length <= 32000
     ? selected
@@ -204,6 +205,10 @@ export async function handleAgentAccess(
     "mcp",
   );
   return Response.json(
-    presentMutation(result as unknown as Record<string, unknown>, fields),
+    presentMutation(
+      result as unknown as Record<string, unknown>,
+      fields,
+      (action as { type: string }).type,
+    ),
   );
 }

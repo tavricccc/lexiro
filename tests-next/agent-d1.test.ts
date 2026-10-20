@@ -1021,6 +1021,106 @@ describe("native D1 agent library with synthetic users", () => {
       await runtime.dispose();
     }
   });
+  it("binds brief refs from any page, points edit_question hints at its own patch format and searches restored sentences", async () => {
+    const { runtime, repo } = await fixture();
+    try {
+      const call = async (name: string, args: unknown) => {
+        const response = await handleAgentMcp(
+          new Request("http://local/mcp", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              accept: "application/json, text/event-stream",
+            },
+            body: JSON.stringify({
+              jsonrpc: "2.0",
+              id: 1,
+              method: "tools/call",
+              params: { name, arguments: args },
+            }),
+          }),
+          { uid: "a", email: "a@example.test" },
+          repo,
+        );
+        const { result } = (await response.json()) as {
+          result: { isError?: boolean; content: { text: string }[] };
+        };
+        return {
+          isError: result.isError ?? false,
+          data: JSON.parse(result.content[0].text) as Record<string, unknown>,
+        };
+      };
+      await call("write", {
+        setId: A,
+        action: {
+          type: "put_words",
+          words: ["tense", "campaign", "situation", "pigment", "disclose"].map(
+            (word) => ({ word, senses: [{ pos: "v.", meaningZh: word }] }),
+          ),
+        },
+      });
+      const first = await readAgentResource(
+        repo,
+        { uid: "a", email: "a@example.test" },
+        { resource: "sources", setId: A, kind: "vocabulary", limit: 2 },
+      );
+      const second = await readAgentResource(
+        repo,
+        { uid: "a", email: "a@example.test" },
+        {
+          resource: "sources",
+          setId: A,
+          kind: "vocabulary",
+          limit: 2,
+          cursor: first.nextCursor,
+        },
+      );
+      const source = (second.items as { ref: string; word: string; senseId: string }[])[0];
+      expect(source.ref).toBe(source.senseId);
+      const written = await call("write", {
+        setId: A,
+        action: {
+          type: "generated_questions",
+          kind: "vocabulary",
+          difficulty: 1,
+          output: {
+            items: [
+              {
+                ref: source.ref,
+                sentence: `They will ${source.word} the plan to Lily tomorrow.`,
+                answer: source.word,
+                distractors: ["ignore", "delay", "watch"],
+              },
+            ],
+          },
+        },
+      });
+      expect(written.data).toMatchObject({ savedCount: 1 });
+      const stored = (await repo.read("a", A))!.questions;
+      expect(stored).toEqual([
+        expect.objectContaining({ senseId: source.senseId }),
+      ]);
+      const edited = await call("write", {
+        setId: A,
+        action: {
+          type: "edit_question",
+          questionId: stored[0].id,
+          patch: { distractors: ["forbid", "remind", "pay"] },
+        },
+      });
+      expect(String(edited.data.hint)).toContain("edit_question 的 patch");
+      const found = await call("read", {
+        requests: [
+          { resource: "questions", setId: A, q: `${source.word} the plan` },
+        ],
+      });
+      expect(found.data).toMatchObject({
+        results: [{ data: { items: [{ id: stored[0].id }] } }],
+      });
+    } finally {
+      await runtime.dispose();
+    }
+  });
 });
 
 describe("cloud operation receipt retention", () => {
