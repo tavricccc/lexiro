@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { agentWorkerUrl } from "@/lib/agent-client";
 import { t } from "@/lib/i18n";
 import { appCheckHeaders } from "@/src/lib/app-check";
-import { configureFirebaseAuth } from "@/src/lib/firebase";
+import { getSameOriginAuth } from "@/src/lib/firebase";
 
 /**
  * The native app cannot show the Google popup, so it opens this page with a
@@ -28,9 +28,14 @@ export function isAppRedirect(value: string): boolean {
   }
 }
 
-async function handOff(result: UserCredential, challenge: string, redirect: string) {
+async function handOff(
+  result: UserCredential,
+  challenge: string,
+  redirect: string,
+) {
   const { GoogleAuthProvider } = await import("firebase/auth");
-  const googleIdToken = GoogleAuthProvider.credentialFromResult(result)?.idToken;
+  const googleIdToken =
+    GoogleAuthProvider.credentialFromResult(result)?.idToken;
   if (!googleIdToken) throw new Error(t("appAuth.failed"));
   const response = await fetch(`${agentWorkerUrl()}/app-auth/codes`, {
     method: "POST",
@@ -70,14 +75,13 @@ export function NativeAppSignIn({
       pending = null;
     }
     if (!pending) return;
+    setBusy(true);
     void (async () => {
-      const auth = await configureFirebaseAuth();
+      const auth = getSameOriginAuth();
       const { getRedirectResult } = await import("firebase/auth");
       const result = auth ? await getRedirectResult(auth) : null;
-      if (result && pending) {
-        setBusy(true);
-        await handOff(result, pending.challenge, pending.redirect);
-      }
+      if (!result || !pending) throw new Error(t("appAuth.failed"));
+      await handOff(result, pending.challenge, pending.redirect);
     })().catch(() => {
       setError(t("appAuth.failed"));
       setBusy(false);
@@ -88,7 +92,7 @@ export function NativeAppSignIn({
     setBusy(true);
     setError("");
     try {
-      const auth = await configureFirebaseAuth();
+      const auth = getSameOriginAuth();
       if (!auth) throw new Error(t("appAuth.failed"));
       const runtime = await import("firebase/auth");
       const provider = new runtime.GoogleAuthProvider();
@@ -107,7 +111,10 @@ export function NativeAppSignIn({
         )
           throw reason;
         // Some in-app browser sheets refuse popups; a full redirect works there.
-        sessionStorage.setItem(PENDING_KEY, JSON.stringify({ challenge, redirect }));
+        sessionStorage.setItem(
+          PENDING_KEY,
+          JSON.stringify({ challenge, redirect }),
+        );
         await runtime.signInWithRedirect(auth, provider);
       }
     } catch {
