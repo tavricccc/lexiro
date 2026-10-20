@@ -102,6 +102,7 @@ export const zhTW = {
     dismissConfirm: "仍然稍後",
   },
   rooms: {
+    emptyBank: "題庫還沒有能出的題目，先加入單字或透過 MCP 寫入題目。",
     title: "對戰",
     signInRequired: "連線對戰需要登入。",
     joinHeader: "加入房間",
@@ -257,6 +258,7 @@ export const zhTW = {
     importFailed: "無法匯入分享檔：{message}",
   },
   questions: {
+    cleared: "已清空 {count} 題。",
     title: "題庫",
     clearSet: "清空本集全部題目",
     clearAll: "清空全部題目",
@@ -497,6 +499,8 @@ export const zhTW = {
     actionFailed: "操作失敗：{message}",
   },
   setEditor: {
+    unsavedTitle: "尚未儲存變更",
+    discard: "捨棄並離開",
     createTitle: "建立單字集",
     backToSet: "回到單字集",
     saveFailed: "儲存失敗：{message}",
@@ -526,6 +530,7 @@ export const zhTW = {
     finish: "完成",
   },
   setDetail: {
+    questions: "題目",
     speak: "播放讀音",
     searchWords: "搜尋本集單字、中文或例句",
     searchQuestions: "搜尋本集題目、文章或選項",
