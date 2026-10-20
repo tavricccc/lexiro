@@ -16,10 +16,15 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: 3a6b9f53daa83fc24242d05bc590a2ee
     steps:
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
+      # Plain API calls: `wrangler delete` also lists KV namespaces, which this
+      # token is not allowed to read.
       - name: Delete lexiro-worker
-        run: npx --yes wrangler@4 delete --name lexiro-worker --force
+        run: |
+          curl --fail-with-body -sS -X DELETE \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/lexiro-worker?force=true"
       - name: Delete lexiro-billing D1
-        run: npx --yes wrangler@4 d1 delete lexiro-billing --skip-confirmation
+        run: |
+          curl --fail-with-body -sS -X DELETE \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/d1/database/3f72fc33-ea88-45eb-8354-d6dc8b26b2ac"
