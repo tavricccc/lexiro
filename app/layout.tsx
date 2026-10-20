@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     icon: "/icons/lexiro.png",
     apple: "/icons/apple-touch-icon.png",
   },
-  // The installed app draws its own canvas under the status bar.
+  // An opaque bar tinted by theme-color; the page starts below it.
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "Lexiro",
   },
 };
