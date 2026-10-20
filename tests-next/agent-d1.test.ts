@@ -14,6 +14,10 @@ import { D1AgentLibrary } from "../src/agent/library-repository";
 import { handleCloudApi } from "../src/cloud/api";
 import { DEFAULT_AI_MODEL } from "@lexiro/ai-contract";
 import { snapshotRecords } from "../src/cloud/records";
+import {
+  CLOUD_OPERATION_RETENTION_MS,
+  purgeCloudOperations,
+} from "../src/cloud/repository";
 import type { AgentEnv } from "../src/agent/types";
 import {
   applyAgentMutation,
@@ -1015,6 +1019,39 @@ describe("native D1 agent library with synthetic users", () => {
       expect((await repo.read("a", A))?.words).toHaveLength(2);
     } finally {
       await runtime.dispose();
+    }
+  });
+});
+
+describe("cloud operation receipt retention", () => {
+  it("deletes receipts older than thirty days and keeps recent ones", async () => {
+    const f = await fixture();
+    try {
+      const now = Date.parse("2026-10-20T00:00:00.000Z");
+      const stale = new Date(now - CLOUD_OPERATION_RETENTION_MS - 1).toISOString();
+      const recent = new Date(now - 1_000).toISOString();
+      const receipt = JSON.stringify({ revision: 1 });
+      // The fixture's own set creation also leaves receipts behind.
+      await f.db.prepare("DELETE FROM cloud_operations").run();
+      await f.db.batch([
+        f.db
+          .prepare(
+            "INSERT INTO cloud_operations(uid,operation_id,input_hash,result,created_at) VALUES(?,?,?,?,?)",
+          )
+          .bind("a", "stale-operation", "hash", receipt, stale),
+        f.db
+          .prepare(
+            "INSERT INTO cloud_operations(uid,operation_id,input_hash,result,created_at) VALUES(?,?,?,?,?)",
+          )
+          .bind("a", "recent-operation", "hash", receipt, recent),
+      ]);
+      await purgeCloudOperations(f.db, now);
+      const rows = await f.db
+        .prepare("SELECT operation_id FROM cloud_operations ORDER BY operation_id")
+        .all();
+      expect(rows.results).toEqual([{ operation_id: "recent-operation" }]);
+    } finally {
+      await f.runtime.dispose();
     }
   });
 });

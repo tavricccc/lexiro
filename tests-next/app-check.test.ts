@@ -201,5 +201,6 @@ describe("App Check CORS preflight", () => {
     expect(response.headers.get("access-control-allow-headers")).toContain(
       "X-Firebase-AppCheck",
     );
+    expect(response.headers.get("access-control-max-age")).toBe("86400");
   });
 });

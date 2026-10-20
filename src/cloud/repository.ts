@@ -5,6 +5,21 @@ import { recordValue, type RecordRow } from "./records";
 export interface AccountHead { revision: number; blob_revision: number; changed_by: string; blob_changed_by: string }
 export type BlobKind = "preferences" | "practice";
 export interface BlobWrite { kind: BlobKind; data: Record<string, unknown> }
+// cloud_operations holds idempotency receipts for sync and Agent writes. A
+// retry after 30 days is far beyond any normal client backoff; by then the
+// client's expected revision is also stale, so replaying it would not be
+// accepted as a fresh write. Bounding the window keeps the receipt table from
+// growing forever. created_at is an ISO string written by commit(), so a
+// lexicographic comparison with the cutoff is correct.
+export const CLOUD_OPERATION_RETENTION_MS = 30 * 86400000;
+export const CLOUD_OPERATION_PURGE_SQL =
+  "DELETE FROM cloud_operations WHERE created_at<?";
+export async function purgeCloudOperations(db: D1Database, now: number) {
+  await db
+    .prepare(CLOUD_OPERATION_PURGE_SQL)
+    .bind(new Date(now - CLOUD_OPERATION_RETENTION_MS).toISOString())
+    .run();
+}
 export class CloudD1Repository {
   constructor(readonly db: D1Database) {}
   async head(uid: string): Promise<AccountHead> {

@@ -8,7 +8,7 @@
 | `src/app-check.ts` | 選用的 Firebase App Check 閘，`APP_CHECK_MODE` 預設 off 時跳過；驗 App Check JWKS 的 RS256 簽章與 iss／aud／exp／非空 sub，金鑰快取比照 `src/auth.ts`（含 5 分鐘下限）；monitor 只 warn 一行結構化訊息（不含 token）後放行，enforce 缺 `X-Firebase-AppCheck` 或驗證失敗回 401，缺 `FIREBASE_PROJECT_NUMBER` 時 enforce 回 500、monitor 放行並 warn |
 | `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、未認證端點限流、CORS 與過期資料 Cron；部署與教材 D1 分開。選用 App Check 只套用在瀏覽器 Firebase ID token 路徑，MCP bearer／link token／OAuth provider 端點不套用 |
 | `src/agent/app-auth.ts`、`agent-migrations/0003_app_auth_codes.sql` | Web 登入後以一次性 PKCE code 把 Google ID token 交給原生 App；只存 code hash 與 challenge，60 秒到期、兌換即刪，Cron 清除未兌換列 |
-| `src/agent/rate-limit.ts` | 未認證端點的 D1 固定視窗限流：`/authorize` 每 IP 每 60 秒 60 次、`/oauth/register` 10 次；key 為端點＋`CF-Connecting-IP`（缺標頭以 `unknown` 計），單一 upsert 原子遞增並以 `Retry-After` 回 429 `rate_limited`，D1 故障時 fail-open，`now` 由呼叫端注入 |
+| `src/agent/rate-limit.ts` | D1 固定視窗限流：未認證端點 `/authorize` 每 IP 每 60 秒 60 次、`/oauth/register` 10 次（key 為端點＋`CF-Connecting-IP`，缺標頭以 `unknown` 計）；已登入房間端點以 uid 計數（`room_create` 5 次、`room_ticket` 30 次），單一 upsert 原子遞增並以 `Retry-After` 回 429 `rate_limited`，D1 故障時 fail-open，`now` 由呼叫端注入 |
 | `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、5 個精簡工具（read／create_set／write／validate／delete），action.type 分派寫入；read 一次按需讀多種資料，完整 questionPrompt 獨立取得，寫入保留 senseId、partial／atomic 與寬鬆品質門檻 |
 | `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
 | `src/agent/edits.ts`、`resource-api.ts` | 單字／詞義／題目／子題 patch；單集 REST 路由及多資料 POST query，首次讀取只回摘要與操作指引 |
@@ -17,6 +17,7 @@
 | `src/cloud/{api,repository,records}.ts` | Firebase Auth owner 同步 API、D1 change feed／blob CAS、JSON 批次交易與原生教材序列化；Agent 和瀏覽器使用同一資料庫 |
 | `library-migrations/0001_library.sql` | 專用 CLOUD_DB schema v1：帳號版本、教材、來源索引、學習／偏好 blobs、操作回條；不遷移 Firestore |
 | `library-migrations/0002_drop_learning_blobs.sql`、`0003_set_shares.sql` | 刪除學習進度／統計 blobs，blob 只留 preferences 與跨裝置 practice；單字集分享連結表（每集一條，撤銷即刪） |
+| `library-migrations/0004_cloud_operations_created_index.sql` | `cloud_operations.created_at` 索引，供 Cron 清除 30 天前操作回條 |
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
 | `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |
 | `agent-migrations/0001_agent_access.sql`、`0002_rate_limits.sql` | Agent D1 schema：URL scope／到期／撤銷與一次性 OAuth 授權請求，以及未認證端點（`/authorize`、`/oauth/register`、`/app-auth/token`）以端點＋IP 固定 60 秒視窗的計數表 `agent_rate_limits`，過期列沿用 7 天 cutoff 由 Cron 清除；與教材 migrations 分開 |
@@ -45,5 +46,5 @@ Agent Worker 只驗證 Firebase 身分並讀寫 D1，不呼叫模型 API。前�
 | 資料 | 版本 | Migration |
 | --- | --- | --- |
 | Agent 存取 | 3 | `0001_agent_access.sql` 建立 URL scope／到期／撤銷與 OAuth 授權請求；`0002_rate_limits.sql` 新增未認證端點固定視窗計數；`0003_app_auth_codes.sql` 新增一次性 App 登入 code，只存 hash／challenge 並於兌換時刪除 |
-| 教材 D1 | 3 | `0001_library.sql` 建立帳號版本、教材、來源索引、blobs 與操作回條；`0002_drop_learning_blobs.sql` 移除學習進度／統計 blobs；`0003_set_shares.sql` 新增單字集分享連結 |
+| 教材 D1 | 4 | `0001_library.sql` 建立帳號版本、教材、來源索引、blobs 與操作回條；`0002_drop_learning_blobs.sql` 移除學習進度／統計 blobs；`0003_set_shares.sql` 新增單字集分享連結；`0004_cloud_operations_created_index.sql` 為操作回條建立時間加索引，Cron 保留 30 天 |
 | Durable Object | 1 | `game-room-v1` SQLite migration；房間狀態與目前題目由 alarm 推進，重連直接回到目前題目 |

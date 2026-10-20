@@ -6,6 +6,7 @@ import { checkAppCheck } from "../app-check";
 import { readBody, HttpError, issueText } from "../http";
 import { D1AgentLibrary } from "./library-repository";
 import { handleCloudApi } from "../cloud/api";
+import { purgeCloudOperations } from "../cloud/repository";
 import { handleShareApi } from "../cloud/shares";
 import { connectRoom, handleRoomApi, isRoomSocketPath } from "../rooms/api";
 import type { AgentEnv, AgentIdentity, AgentLibraryRepository } from "./types";
@@ -204,6 +205,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         env.AGENT_DB.prepare(RATE_LIMIT_PURGE_SQL).bind(cutoff),
         env.AGENT_DB.prepare(APP_AUTH_PURGE_SQL).bind(Date.now()),
       ]);
+      await purgeCloudOperations(env.CLOUD_DB, Date.now());
       const cursor = await env.OAUTH_KV.get("agent:purge-cursor");
       const result = await provider(env).purgeExpiredData(env, {
         batchSize: 50,
@@ -229,6 +231,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         "Access-Control-Allow-Headers":
           "Authorization, Content-Type, Accept, MCP-Protocol-Version, X-Firebase-AppCheck",
         "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
+        "Access-Control-Max-Age": "86400",
         Vary: "Origin",
       };
       const decorate = (response: Response) => {
