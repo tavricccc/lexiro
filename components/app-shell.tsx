@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       <div className="workspace-body min-w-0">
         <main
-          className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-6 md:pt-4 ${
+          className={`app-viewport pt-[max(0.75rem,var(--header-top))] md:pb-6 md:pt-4 ${
             showMobileNavigation
               ? "pb-[calc(var(--mobile-nav-height)+var(--mobile-nav-bottom-gap)+1.5rem)]"
               : "pb-[max(2rem,var(--safe-bottom))]"
