@@ -15,9 +15,9 @@ npm run dev
 Copy-Item .env.example .env.local
 ```
 
-填真實 Firebase／Google client 值，再重啟 dev。若使用本機 emulator，設 `NEXT_PUBLIC_FIREBASE_EMULATOR_ENABLED=true`，自行啟動 Auth 9099 與 Firestore 8080；`npm run dev` 不會啟動它們。專案目前沒有一鍵 emulator stack，勿把 Novae 的 `test:env` 用在這裡。
+填真實 Firebase／Google client 值，再重啟 dev。若使用本機 emulator，設 `NEXT_PUBLIC_FIREBASE_EMULATOR_ENABLED=true`，自行啟動 Auth 9099；`npm run dev` 不會啟動它。專案目前沒有一鍵 emulator stack，勿把 Novae 的 `test:env` 用在這裡。
 
-## AI Worker
+## Agent Worker
 
 在同層的 private `lexiro-worker` 使用自己的 lockfile、`.dev.vars` 和本機 D1：
 
@@ -28,7 +28,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Frontend Worker URL 與 Wrangler port 一致，ALLOWED_ORIGIN 包含實際開啟的前端 origin。真人生成會使用該 Worker 配置的供應商與額度；自動測試使用合成 provider，不需要正式 key。
+前端 `NEXT_PUBLIC_AGENT_WORKER_URL` 與 Wrangler port 一致，ALLOWED_ORIGIN 包含實際開啟的前端 origin。Agent 自行產生教材，Worker 不安裝模型供應商 key。
 
 ## Production PWA
 

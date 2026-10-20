@@ -1,6 +1,6 @@
 # 設定參考
 
-本機用 `.env.local`，欄位見 `.env.example`。`NEXT_PUBLIC_*` 會進 browser bundle，不能放 provider key 或 service-account JSON。
+本機用 `.env.local`，欄位見 `.env.example`。`NEXT_PUBLIC_*` 會進 browser bundle，不能放 service-account JSON 或任何私密憑證。
 
 | 名稱 | 用途 |
 | --- | --- |
@@ -14,7 +14,6 @@
 | `NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY` | 選用 App Check（reCAPTCHA Enterprise）site key；留空即關閉 |
 | `NEXT_PUBLIC_FIREBASE_EMULATOR_ENABLED` | Development 連本機 emulator |
 | `NEXT_PUBLIC_FIREBASE_EMULATOR_HOST` | 預設 127.0.0.1 |
-| `NEXT_PUBLIC_AI_WORKER_URL` | Worker origin；本機例子 localhost:8787 |
 | `NEXT_PUBLIC_AGENT_WORKER_URL` | D1 同步與 MCP／URL Worker origin；本機 127.0.0.1:8791 |
 
 `isFirebaseConfigured` 要求 API key、auth domain、project ID、app ID 與 Google client ID 都存在。純本機模式不填這組值；example 中的 `your-*` 是欄位示例，不能當成可使用的設定。
@@ -23,6 +22,6 @@ Firebase 只初始化 Auth。App Check 為選用且預設關閉：未設 `NEXT_P
 
 GitHub Production 保留 VITE_* secret 名稱並注入 NEXT_PUBLIC_*。Worker URLs 為 Environment variables；Vercel credentials 見[部署](deployment.md)，D1 bindings 見 [D1 雲端](d1-cloud.md)。
 
-Private Worker 的 `.dev.vars` 保存 FIREBASE_PROJECT_ID、ALLOWED_ORIGIN、OPENAI_BASE_URL、OPENAI_API_KEY、ADMIN_EMAILS。前端與 Worker 的 Firebase project 必須相同，允許 origin 要包含實際前端的 scheme／host／port。未登入、錯 project 或不允許 origin 都會被拒絕。
+Private Agent Worker 的 `.dev.vars` 保存 FIREBASE_PROJECT_ID、ALLOWED_ORIGIN、APP_ORIGIN、AGENT_PUBLIC_URL；D1／KV bindings 見 [D1 雲端](d1-cloud.md)。前端與 Worker 的 Firebase project 必須相同，允許 origin 要包含實際前端的 scheme／host／port。未登入、錯 project 或不允許 origin 都會被拒絕。
 
-學習目標、AI 模型保存在 IndexedDB／D1；試用與額度仍在獨立計費 D1。版號見[資料與同步](data-and-sync.md)及[AI API](ai-api.md)。
+教材、偏好與練習草稿保存在 IndexedDB／D1。版號見[資料與同步](data-and-sync.md)。

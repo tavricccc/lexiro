@@ -4,9 +4,9 @@ ChatGPT 或 Codex 透過遠端 MCP 連線到 Lexiro，登入授權後即可完�
 
 「我的 → Agent 連線」提供 MCP 網址與已授權應用程式，也可解除連線。在 ChatGPT 或 Codex 新增遠端 MCP 時貼上該網址，再登入 Lexiro 授權。一般 ChatGPT 對話單純打開網址不會自動取得寫入工具，請使用 MCP。
 
-此路徑使用獨立 Agent Worker，不呼叫原本 Worker 的模型 API、不扣 Lexiro 生成點數。Agent 本身的訂閱用量仍由你使用的平台決定。教材使用正式資料格式，Agent 題目寫入只擋結構與來源錯誤；篇幅警告仍可儲存，雲端修改會同步回 Lexiro。
+此路徑使用獨立 Agent Worker，Lexiro 不呼叫模型，也不管理點數或方案。Agent 本身的訂閱用量仍由你使用的平台決定。教材使用正式資料格式，Agent 題目寫入只擋結構與來源錯誤；篇幅警告仍可儲存，雲端修改會同步回 Lexiro。
 
-正式 Agent 服務為 `https://lexiro-agent.tavric.workers.dev`，MCP 網址為該原點加 `/mcp`。Firebase 只保留登入；教材、偏好均走 D1，前端與 Agent 共用資料。舊資料不遷移，維護見 [D1 雲端](d1-cloud.md)。
+正式 Agent 服務為 `https://lexiro-agent.tavric.workers.dev`，MCP 網址為該原點加 `/mcp`。Firebase 只保留登入；教材走 D1，前端與 Agent 共用資料，外觀偏好留在本機。舊資料不遷移，維護見 [D1 雲端](d1-cloud.md)。
 
 本次變更、下一次部署順序與免費 `vercel.app` 網域設定見 [Agent 變更與發布](agent-release-2026-10-10.md)。
 

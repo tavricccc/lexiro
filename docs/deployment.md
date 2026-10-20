@@ -33,7 +33,7 @@ Vercel build 與 deploy 必須留在同一個 job。Next.js 的 prebuilt deploym
 
 ## 平台設定
 
-Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEXT_PUBLIC_AI_WORKER_URL`，值為已部署 Worker 的 HTTPS origin。這是公開網址，不是 API key；沒有設定時 AI 功能不可用，正式部署檢查也會停止發布。Worker 的 D1、Firebase project、允許 origin、管理員 email 與供應商 secret 由 private `lexiro-worker` 專案管理，不能放進前端環境變數。
+Agent 連線與 D1 同步需要在 GitHub `Production` Environment variables 設定 `NEXT_PUBLIC_AGENT_WORKER_URL`，值為已部署 Agent Worker 的 HTTPS origin。這是公開網址，不是 API key；沒有設定時同步與 Agent 功能不可用。Worker 的 D1、Firebase project、KV 與允許 origin 由 private `lexiro-worker` 專案管理，不能放進前端環境變數。
 
 1. Firebase Console 啟用 Google Authentication，並加入 Vercel production domain。
 2. Google Cloud Console 的 OAuth Web client 包含 Vercel domain 的 Authorized JavaScript origin。
@@ -44,12 +44,12 @@ Managed AI 另外需要在 GitHub `Production` Environment variables 設定 `NEX
 
 根路徑 `/` 轉址到 `/app`。完整 D1 設定、200 筆與資料夾操作及發布順序見 [D1 雲端](d1-cloud.md)。Agent URL 為 GitHub Production variable `NEXT_PUBLIC_AGENT_WORKER_URL`，先發布 private Agent Worker，再發布前端。
 
-## 前後端契約與發布確認
+## 共用契約與發布確認
 
-AI contract 目前為 5.0.0，private Worker 使用相同版本 tgz。修改模型、必要請求欄位或管理 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
+Agent contract 目前為 4.1.0，private Worker 使用相同版本 tgz。修改共用題型、必要請求欄位或 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
 
-教材 D1 使用 `library-migrations/0001_library.sql`；生成／計費 DB 維持 `0014_generation_leases.sql`。Worker 先發布五種學測題型的 contract 5.0.0／`single-pass-v3`，單次產生題目與解說，綜合測驗／文意選填 raw 必填完整 `usage` 定位空格，文意選填另必填本批來源 ref，原始錯項理由帶選項文字，共用題組先提供完整選項。詞彙每批四個來源，暖首批後最多四批並行，Worker actor 與預留使用同一共用上限。停用的 grammar 在預留前回 400，舊題目生成契約回 426；單字／詞義仍使用各自契約。前端部署後由使用者明確啟用 PWA 更新；不要為切換契約自動刷新或丟棄未完成寫入。既有已保存的題庫資料與練習 v5 不需遷移。
+教材 D1 使用 `library-migrations/0001_library.sql`；Agent 授權 DB 使用 `agent-migrations`。Agent workflow 先套 migration、部署並檢查 discovery，再發布前端。前端部署後由使用者明確啟用 PWA 更新；既有已保存的題庫資料與練習 v5 不需遷移。
 
-生成草稿可保留已完成成果與尚在期限內的 operation ID，重新開頁後接回原任務。契約、帳號或任務不一致及結果過期時，保留已完成成果並說明無法接續原因，由使用者明確選擇重生，不能自動另外發起付費生成。
+教材、題目編輯草稿保留在本機，重新開頁後可接續；契約、帳號或版本不一致時保留原稿並說明原因，由使用者明確選擇重新開始。
 
-發布完成以 Actions 的結果為準，並驗證登入、D1 同步／Agent、AI 串流與結算及 PWA 更新。文件-only commit 可用 `[skip ci]` 避免重複正式發布。
+發布完成以 Actions 的結果為準，並驗證登入、D1 同步、Agent 授權與寫入及 PWA 更新。文件-only commit 可用 `[skip ci]` 避免重複正式發布。

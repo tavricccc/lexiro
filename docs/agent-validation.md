@@ -1,10 +1,10 @@
 # Agent 題目批次寫入
 
-2026-10-11。共用契約 3.0.1；MCP 有 27 個工具。Agent 和內建 AI 的所有題型共用同一套命題提示詞，Agent 的寫入驗證另採寬鬆規則。查詢與細部編輯見 [按需操作](agent-query.md)。
+2026-10-11。共用契約 3.0.1；MCP 有 27 個工具。Agent 的五種題型共用同一套命題提示詞，寫入驗證另採寬鬆規則。查詢與細部編輯見 [按需操作](agent-query.md)。
 
 ## 使用者要求優先
 
-Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`get_generation_prompt` 的 rules 與 `get_generation_brief` 的 specification 直接來自內建 questionPrompt：五型都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。完整提示取得一次後沿用，brief 預設只回小批來源；可在同一次 read_batch 取得兩者。API 不強制先取 brief 才允許寫入。
+Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`get_generation_prompt` 的 rules 與 `get_generation_brief` 的 specification 直接來自 Agent Worker 的 questionPrompt：五型都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。完整提示取得一次後沿用，brief 預設只回小批來源；可在同一次 read_batch 取得兩者。API 不強制先取 brief 才允許寫入。
 
 提示詞指導 Agent 如何生成；寫入端仍允許解說、逐錯項理由、閱讀 skill／evidence 選填及任意 JSON 欄位順序。篇幅仍是 Warning，partial／atomic、穩定 senseId 及唯讀驗證維持原行為。綜合測驗允許依共用提示考文法：來源 continual 的句子可以挖空 been；來源 ID 必須有效，答案仍須唯一定位。
 
@@ -41,7 +41,7 @@ MCP 寫入同樣接受 `expectedRevision`／`operationId`；題目內容與 part
 
 ## 工程驗證
 
-合成 100 題案例確認 97 題保存、3 題具穩定識別的錯誤；atomic 零寫入、唯讀驗證不改 revision、來源亂序／子集、拆批重送及原有內建生成篇幅限制皆有驗證。D1 題目 ID 衝突使用 JSON 批次查詢，避免每題各查一次耗盡 Worker 子請求額度。跨集 ID 衝突在 partial 模式只拒絕該題。
+合成 100 題案例確認 97 題保存、3 題具穩定識別的錯誤；atomic 零寫入、唯讀驗證不改 revision、來源亂序／子集、拆批重送及篇幅限制皆有驗證。D1 題目 ID 衝突使用 JSON 批次查詢，避免每題各查一次耗盡 Worker 子請求額度。跨集 ID 衝突在 partial 模式只拒絕該題。
 
 D1 schema 不變，不需要資料 migration。此次按需查詢只改 Agent runtime，執行 Agent workflow 即可；前端 runtime 改動時再發布前端。維護見 [D1 雲端](d1-cloud.md)。
 
@@ -51,4 +51,4 @@ D1 schema 不變，不需要資料 migration。此次按需查詢只改 Agent ru
 
 正式 health、OAuth discovery 與前端授權／連線管理頁皆 HTTP 200，未授權 MCP 仍為 401。本次新增的 97／100 批次證據來自本機原生 D1，未做正式帳號的批次寫入或長任務 CPU 測量；沒有修改使用者的教材或呼叫模型 API。
 
-2026-10-11 提示詞恢復：後端 `54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。所有五型 rules／specification 已直接使用內建 questionPrompt；完整共用及題型指引都恢復，寫入仍保留 partial／atomic、Warning 與穩定來源。共用契約 3.0.1 修正綜合測驗文法空格被誤擋；前後端 599 個本機測試、typecheck、lint、build 通過，五型提示逐一與內建輸出完全相同。沒有改動內建提示原稿或其快取版本，沒有呼叫模型。公開前端只更新共用套件與文件，網站執行程式沒有變動，本次僅發布 Agent Worker。
+2026-10-11 提示詞恢復：後端 `54fc8a3` 的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38068141765) 成功。所有五型 rules／specification 已直接使用 Agent Worker 的 questionPrompt；完整共用及題型指引都恢復，寫入仍保留 partial／atomic、Warning 與穩定來源。共用契約 3.0.1 修正綜合測驗文法空格被誤擋；前後端 599 個本機測試、typecheck、lint、build 通過，五型提示逐一與 Worker 輸出完全相同。沒有改動提示原稿或其快取版本，沒有呼叫模型。公開前端只更新共用套件與文件，網站執行程式沒有變動，本次僅發布 Agent Worker。

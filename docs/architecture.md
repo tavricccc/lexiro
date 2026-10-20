@@ -4,12 +4,12 @@
 | --- | --- |
 | `app/` | `/app` routes、layout、offline page、Service Worker |
 | `components/` | 教材、練習、設定與共用視覺元件 |
-| `stores/` | Zustand Library／cloud／AI preference state |
+| `stores/` | Zustand Library／cloud／UI／update state |
 | `src/lib/` | Domain 操作、保存、同步、備份、解析與 migration |
-| `lib/` | 路由、managed API、更新與跨 store 操作協調 |
-| `packages/ai-contract/` | 無秘密的 AI 型別、來源解析、價格算術 |
+| `lib/` | 路由、更新與跨 store 操作協調 |
+| `packages/ai-contract/` | 無秘密的共用題型、字數與詞性格式 |
 
-`src/` 是仍在使用的 browser domain。AI server 在獨立 private `lexiro-worker`；Next.js 工作區不持有 provider key、private prompt 或 D1 credential。
+`src/` 是仍在使用的 browser domain。Agent Worker 在獨立 private `lexiro-worker`；Next.js 工作區不持有 D1 credential 或 private prompt。
 
 ## 一次教材保存
 
@@ -30,17 +30,17 @@ sequenceDiagram
     Store->>Sync: journal 有待同步變更
 ```
 
-Commit 的原子可見性來自 head pointer。記錄／manifest 寫到一半時，上一代仍可讀；保存成功才更新 UI。AI preferences 有自己的保存佇列；帳號切換與備份由 account-data queue 協調。
+Commit 的原子可見性來自 head pointer。記錄／manifest 寫到一半時，上一代仍可讀；保存成功才更新 UI。帳號切換與備份由 account-data queue 協調。
 
-## AI 工作
+## Agent 寫入
 
-Public task builder 拆批，`runner.ts` 依序呼叫 managed client。Worker 驗 token、Origin、模型與輸入，D1 預留額度後送 Responses request。串流保留文字並移除上下文回顯；終止前完成結算或保存 pending usage，再把結果送給 client。
+Agent 透過 MCP 連線讀寫教材；公開前端只提供授權、連線管理與資料畫面。Worker 驗 Firebase ID token、Origin 與輸入，資料寫入自己的 D1。Agent 自行產生內容，Lexiro 不呼叫模型，也不管理點數或方案。
 
-前端解析與組裝題目，保留有效部分；生成頁和校對頁分開，按加入才寫 Library。Response cursor 與來源計費身份由 Worker 核對，另一帳號的 cursor 不能接入。
+前端依 server `(seq, recordId)` 拉回增量並保留 dirty；Agent 修改與本機編輯最後合併為同一份 canonical 教材，通過結構與來源驗證的題目才保存。
 
 ## 登入與同步
 
-Cloud store 等待 Firebase Auth，先切到 `d1-v1:<uid>` namespace，再 reconcile D1。Library 以 server `(seq,recordId)` 拉增量，保留未送 dirty records，push 後只清本次 journal version。學習與偏好使用 blob revision。前端與 Agent 共用 Worker repository，Firebase 不再儲存教材。
+Cloud store 等待 Firebase Auth，先切到 `d1-v1:<uid>` namespace，再 reconcile D1。Library 以 server `(seq,recordId)` 拉增量，保留未送 dirty records，push 後只清本次 journal version。偏好與練習草稿使用 blob revision。前端與 Agent 共用 Worker repository，Firebase 不再儲存教材。
 
 離線保存本機並保留 journal。visible／online 每 30 秒查一筆狀態，有外部變更才拉增量；重新連線／手動同步亦可 reconcile，帳號改變拒絕舊回覆。舊 Firestore 與快取不遷移，見 [D1 雲端](d1-cloud.md)。
 

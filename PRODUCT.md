@@ -8,11 +8,11 @@ web
 
 ## Users
 
-Lexiro serves Taiwanese senior high school students as a personal English vocabulary and practice workspace. Study material and AI questions should support high school English and GSAT-style contextual reading. It must work naturally on both mobile and desktop; existing navigation habits are not commitments and may be replaced when a clearer workflow exists.
+Lexiro serves Taiwanese senior high school students as a personal English vocabulary and practice workspace. Study material and practice questions should support high school English and GSAT-style contextual reading. It must work naturally on both mobile and desktop; existing navigation habits are not commitments and may be replaced when a clearer workflow exists.
 
 ## Product Purpose
 
-Lexiro turns personally collected vocabulary senses and examples into an offline-capable study system. Its three core jobs are studying vocabulary, reviewing saved words, and answering practice questions. It also supports AI-assisted capture and question generation, scheduled review, progress statistics, backup, and optional cloud sync. Success means the owner can capture material quickly and move into useful practice without maintaining duplicate or ambiguous data.
+Lexiro turns personally collected vocabulary senses and examples into an offline-capable study system. Its three core jobs are studying vocabulary, reviewing saved words, and answering practice questions. It also supports scheduled review, progress statistics, backup, and optional cloud sync. Success means the owner can capture material quickly and move into useful practice without maintaining duplicate or ambiguous data.
 
 ## Positioning
 
@@ -22,20 +22,19 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 
 - Vocabulary is collected and organized into folders and sets.
 - A word may contain multiple Chinese meanings, parts of speech, and examples within its own set.
-- New vocabulary is entered manually or organized by AI; validated generated results are reviewed and added explicitly, with completed output retained for recovery.
-- Questions may be authored manually or generated with AI; generated questions are reviewed with their target senses before they are added to the Library.
-- Saving examples never creates saved questions. A saved set can clear its own questions, and the question bank can clear all questions; both preserve vocabulary and examples and offer generation after successful deletion.
+- New vocabulary is entered manually in the app or written in batches through the private MCP Agent; imported results are reviewed and added explicitly, with completed output retained for recovery.
+- Questions may be authored manually in the app or written through the private MCP Agent; questions are reviewed with their target senses before they are added to the Library.
+- Saving examples never creates saved questions. A saved set can clear its own questions, and the question bank can clear all questions; both preserve vocabulary and examples.
 - Study includes multiple-choice, fill-in-the-blank multiple-choice, reading comprehension, and review of frequently missed words.
-- 英選中保留為單字複習；AI 與題庫練習只提供學測的詞彙、綜合測驗、文意選填、篇章結構與閱讀。拼字及獨立文法題停用，舊資料保留供備份。
+- 英選中保留為單字複習；題庫練習只提供學測的詞彙、綜合測驗、文意選填、篇章結構與閱讀。拼字及獨立文法題停用，舊資料保留供備份。
 - The application is expected to remain useful offline and synchronize later when signed in.
-- AI model changes save locally with inline progress and retry. Unfinished changes survive leaving the screen; returning offers applying them or keeping the current settings, within the original account.
 
 ## Capabilities and Constraints
 
 - Preserve the Lexiro name and current application icon.
 - The frontend uses Next.js 16, React 19, TypeScript, Tailwind CSS 4, and shared Radix-based UI primitives; the Vue/Vite migration is complete.
 - Zustand, TanStack Query, React Hook Form with Zod, Motion, Lucide React, and Serwist PWA may be used where they improve the product rather than as mandatory decoration.
-- Firebase authentication and Firestore may be retained as the remote backend.
+- Firebase authentication and D1 cloud sync are the remote backend.
 - Existing local and cloud user data must be migrated once into the new canonical schema. Do not keep a permanent legacy compatibility path or two competing data models.
 - Preserve valuable existing capabilities, but remove redundant controls, legacy concepts, and awkward workflows when the same user goal is covered more clearly.
 - Product decisions recorded in `docs/product-decisions.md` remain product truth unless superseded explicitly.
@@ -60,7 +59,7 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 - Forest-green selection and action controls, mist-white content, compact title bars, and generous shared corners keep the workspace personal and directly operable. Buttons, tabs, forms, lists, and overlays share the larger radius scale. Ink-green and spring-green surfaces remain in completion feedback.
 - Back controls show only an arrow; their accessible labels retain the return destination.
 - Progress pairs counts and bars with text; reaching a goal changes the play mark to a check. Completion feedback must follow successful storage rather than an optimistic visual result.
-- Question review and passage practice use an article/question workspace: two columns from 1024px, tabs on narrower screens, one focused item at a time. Generation can exclude individual questions or packs before saving. Shared banks are edited once; explanations stay aligned when options change. Same-passage practice preserves reading position and reveals only the current item's explanation after storage succeeds.
+- Question review and passage practice use an article/question workspace: two columns from 1024px, tabs on narrower screens, one focused item at a time. Shared banks are edited once; explanations stay aligned when options change. Same-passage practice preserves reading position and reveals only the current item's explanation after storage succeeds.
 - 手機校對收合標題與難度，錯誤展開後聚焦；練習文章可一鍵回題目。十選項在手機單欄，已用正解標示格號並停用。768–1023px、高度不超過 500px 的專注練習收起側欄，桌機配置保持既有比例。
 - Open Doodles may accompany empty, loading, and completion states without competing with learning content. Highlights uses the same forest-green family for semantic emphasis. This revision retains the committed SVG assets and adds no raster artwork.
 
@@ -69,10 +68,10 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 - Confirmed product and data decisions: `docs/product-decisions.md`.
 - Visual tokens and reusable visual rules: `DESIGN.md`; component and icon implementation rules: `docs/design-system.md`.
 - Current implementation and tests document the working capability set.
-- Historical workspace verification recorded 266 tests plus lint, typecheck, and build. That count belongs to that revision; current verification is reported per change. Real Firebase synchronization and paid AI execution require separate live evidence.
+- Historical workspace verification recorded 266 tests plus lint, typecheck, and build. That count belongs to that revision; current verification is reported per change. Live D1 cloud synchronization still requires separate live evidence.
 - Current compact desktop and mobile Today screenshots are `.impeccable/review/compact-desktop.png` and `compact-mobile.png`; earlier Library, saved set, and dark Today captures remain as supporting evidence for those states.
 - Current icon assets: `public/icons/lexiro.png` and `public/icons/apple-touch-icon.png`.
-- Existing generated vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.
+- Existing vocabulary and question fixtures under `output/` may inform content style, but not legacy schema compatibility.
 - No testimonials, public customer claims, pricing, or benchmark evidence is available and none may be fabricated.
 
 ## Product Principles

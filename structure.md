@@ -1,23 +1,23 @@
 # Lexiro 程式責任索引
 
-Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 repository。Firebase 只保留 Auth；同層 private `lexiro-worker` 提供 Agent／同步及獨立生成服務，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
+Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 repository。Firebase 只保留 Auth；同層 private `lexiro-worker` 提供 Agent 寫入與同步服務，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
 
 ## 目錄
 
 | 路徑 | 責任 |
 | --- | --- |
 | `app/` | App Router、/app 工作區、manifest、Service Worker |
-| `components/` | Domain 畫面、React UI、AI 流程與動態 |
-| `lib/` | Client orchestration、managed API、路由、更新、備份 |
-| `stores/` | Library、cloud、AI preference、UI、update state |
+| `components/` | Domain 畫面、React UI 與動態 |
+| `lib/` | Client orchestration、Agent API、路由、更新、備份 |
+| `stores/` | Library、cloud、UI、update state |
 | `src/lib/` | 詞義、題目、儲存、同步、備份與 migration |
 | `src/types/`、`src/constants/` | Canonical domain 型別、版本與上限 |
-| `packages/ai-contract/` | 公開來源 parser、API 型別、模型與價格算術 |
+| `packages/agent-contract/`、`packages/ai-contract/` | MCP 寫入契約與共用題型／字數格式 |
 | `config/`、`src/generated/` | 動態 token 的來源／生成輸出 |
-| `scripts/` | Motion generator 與 client prompt boundary |
+| `scripts/` | Motion generator 與 client boundary 檢查 |
 | `tests-next/` | Vitest domain／元件行為檢查 |
 | `public/` | Icons、HarmonyOS Sans TC、Open Doodles 等公開資產 |
-| `docs/` | 操作、架構、資料、AI、配置、部署、驗證與決策 |
+| `docs/` | 操作、架構、資料、配置、部署、驗證與決策 |
 | `tools/project-map/` | 離線 HTML 程式地圖的資料、驗證、樣式與互動 |
 
 ## 畫面與導覽
@@ -32,15 +32,15 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 
 Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer，內容 hash records → manifest → head；詳細模型、世代與版號見[資料與同步](docs/data-and-sync.md)。
 
-`components/library/` 管 folder、set、word／example 編輯、metadata、移動、加字與補充。`components/questions/` 管題庫、單句／文章編輯和生成。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share 和 full-backup 處理。
+`components/library/` 管 folder、set、word／example 編輯、metadata、移動與加字。`components/questions/` 管題庫、單句／文章編輯與校對。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share 和 full-backup 處理。
 
-`library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認、保存回饋及重新生成入口。保存例句不建立題目。
+`library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認與保存回饋。保存例句不建立題目。
 
-Question formats 重用 AI contract 的學測題型表；question-quality 檢查新生成情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-word-forms 檢查來源合法詞形，question-discourse 檢查完整非相鄰刪句，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依模型輸出順序配對。詞彙題的情境和干擾項統一由 Worker 生成。Generated results 呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
+Question formats 共用 ai-contract 的學測題型表；question-quality 檢查題目情境／完整文章的字數與共用 options，question-teaching 核對中文解說、錯項 option／reason 的唯一對應，question-word-forms 檢查來源合法詞形，question-discourse 檢查完整非相鄰刪句，question-assembly 檢查確切 usage／answer span 與空格重疊，question-builders 負責選項排序與正解位置。共用選項先寫定，理由依選項文字保存，不依寫入順序配對。詞彙題的情境和干擾項由 Agent 或人工撰寫。題目呈現目標字／義、字數與共用選項答案配對供校對；準則見[高中題目品質](docs/question-quality.md)。
 
-QuestionWorkspace 管桌機雙欄／手機分頁，QuestionPager 一次切換一題或空格。ReadingForm 保留 canonical 題型與共用 bank，並遷移舊編輯草稿；OptionReasons 同步選項文字與理由，DistractorReasonsEditor 供單題及子題校對。生成結果保留可選取／排除名單，加入時只保存選取項目。
+QuestionWorkspace 管桌機雙欄／手機分頁，QuestionPager 一次切換一題或空格。ReadingForm 保留 canonical 題型與共用 bank，並遷移舊編輯草稿；OptionReasons 同步選項文字與理由，DistractorReasonsEditor 供單題及子題校對。
 
-QuestionMetadata 在手機收合標題與難度；錯誤展開後聚焦，桌機直接顯示。生成型別與格式表只保留學測五種選擇題；question-ownership 的 isExamQuestion 統一題庫與計數範圍。舊 grammar record 只作歷史資料／備份。
+QuestionMetadata 在手機收合標題與難度；錯誤展開後聚焦，桌機直接顯示。題型與格式表只保留學測五種選擇題；question-ownership 的 isExamQuestion 統一題庫與計數範圍。舊 grammar record 只作歷史資料／備份。
 
 ## 練習與學習
 
@@ -60,29 +60,7 @@ App 不保存學習進度；詳見[練習](docs/practice.md)。
 
 新 D1 雲端從空白資料開始，不遷移 Firestore 或舊帳號快取。Firestore SDK／rules／indexes／service-account 部署流程已移除；本機仍以 IndexedDB 保存離線編輯及 journal。
 
-Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/use-autosave.ts` 與 preference-drafts 管實際修改欄位及待存設定，preference-recovery 提供恢復選擇。同步文案由 sync-status 統一，pending 不顯示已同步。
-
-## AI 和管理
-
-AI task builders、runner、session 只組來源資料、拆批、解析及接續。Managed client 管 token refresh、帳號邊界、串流、usage；generation controls 與 resumable drafts 分開生成及校對畫面。Photo organizer 先確認選圖，WebP 編碼後每十張單次上傳並依序處理。
-
-`src/lib/ai/run-checkpoint.ts` 保存 session、pending operation ID、lanes、已接收回覆與修復來源。重新整理後先核對帳號、任務、契約及期限，再接回原生成；過期與契約錯誤保留完成成果並顯示原因，不自動發起新付費任務。生成結果及練習的儲存失敗保留草稿、答案與部分成功數量，重試走原保存流程。
-
-`components/questions/question-generation-draft.ts` 一次重綁已完成題目與各層 checkpoint 成果，保留付費 metadata；`question-draft-recovery.tsx` 在來源無法確認時保留原稿，提供純本機選集重綁，不掛載會清空成果的生成流程。
-
-`components/library/supplement-source-scope.ts` 一次重綁舊補充詞義草稿的選字來源，僅使用本集別名；來源無法確認時保留已完成詞義與原操作，先在本集重選再掛載流程。
-
-AI preference store 在開始 session 時固定模型，整理頁可另選兩個 Luna 模型及 Lite／Thinking／Pro；Pro 固定 Sol/low。contract 5.0.0 與 Worker tgz 共同規範請求、single-pass-v3 單次生成與單題重生、估算、題型／篇幅和管理 expected 版本。新 raw 共用 options 與帶 option 的錯項理由不接受舊格式。Prompt、schemas、prefix tests 與付費 evaluator 只存在 private Worker。
-
-`components/ai/ai-diagnostic.tsx` 共用管理員錯誤診斷；AiUsage 在生成與整理流程呈現實際用量。`components/ai/use-token-rate.ts` 每 100ms 更新該批次平均輸出 TPS，所有使用者都能在 TaskProgress 看見；本機 tokenizer 的估計不包含推理 token，供應商回報負責最終結算。
-
-`src/lib/ai/stream-progress.ts` 逐字掃描串流 JSON，只計數完整題目／詞義物件。`passage-repair.ts` 保留文章與有效子題，為錯誤子題建立獨立重生工作；runner 逐項保存通過驗證的結果，詞彙題及單字批次也只補缺少的個別來源。
-
-`lib/generation-connection.ts` 為每次生成固定 operation ID，網路中斷用 authenticated GET 接回同一次生成；同頁面的手動續跑保留該 ID。生成不帶前一批 cursor，每批上下文獨立；固定 prompt／schema／cache key 保持不變。管理員可看 transport／job ID／response ID／耗時與中斷原因。批次 TPS 以後端原任務開始時間計算，回放不重複累計用量。
-
-`src/lib/ai/parallel-runner.ts` 先用實際第一批產出暖快取，再最多四個 lanes 並行；每個 lane 保存自己的 session 用量／pending job 與局部修復工作，父流程按來源順序合併成果。暫停期間編輯已接受成果會重設合併基準，保留未完成任務 ID。詞彙題每批四個詞義、文章題維持完整題組，單字最多 30 個來源／5,000 字元；進度聚合計數、TPS 逐批顯示。
-
-Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。ConfirmDialog 統一鎖定、失敗與重試；backup-actions 協調兩段匯入，admin-account-adjustment 只送變更並確認餘額，admin pagination 用 cursor history。
+Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/` 管帳號、資料備份與外觀設定；ConfirmDialog 統一鎖定、失敗與重試，backup-actions 協調兩段匯入。同步文案由 sync-status 統一，pending 不顯示已同步。
 
 ## 更新、驗證和交付
 
@@ -90,7 +68,7 @@ Me 的 plan／data／preferences 與 admin nested routes 各自管理任務。Co
 
 `.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt 並發布 Vercel；不再部署 Firestore。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。D1 後端先以獨立 Agent workflow 套 migration／發布，維護見 [D1 雲端](docs/d1-cloud.md)。
 
-`packages/agent-contract/src/generation.ts` 提供 Agent 專用生成格式與穩定 senseId 綁定；`validation.ts` 負責逐題 Error／Warning、partial／atomic 與可重送的題目識別。共用挖空器 `src/lib/question-assembly.ts` 保留內建生成模式，Agent 模式不套篇幅／教學品質門檻。MCP 使用說明見 [批次寫入](docs/agent-validation.md)。
+`packages/agent-contract/src/generation.ts` 提供 Agent 專用生成格式與穩定 senseId 綁定；`validation.ts` 負責逐題 Error／Warning、partial／atomic 與可重送的題目識別。共用挖空器 `src/lib/question-assembly.ts` 供 Agent 寫入組題，不套篇幅／教學品質門檻。MCP 使用說明見 [批次寫入](docs/agent-validation.md)。
 
 `docs/agent-query.md` 記錄 Agent Worker 的按需查詢與細部編輯：MCP read_batch、搜尋、題型／範圍／欄位與小批來源。這些執行程式位於同層 private Worker，公開前端保存操作文件。
 

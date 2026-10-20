@@ -7,8 +7,8 @@ README 是入口，docs 說明目前行為，structure 對應模組。產品／�
 | 路由／導覽 | app、browse-routes、navigation-memory → routes-and-permissions |
 | 詞義／題目／保存 | types、repository、store → data-and-sync、structure |
 | 練習 | practice components → practice |
-| Firebase／同步 | cloud files、Rules／indexes → configuration、data-and-sync |
-| AI 請求／模型 | ai-contract、managed client、private Worker → ai-api |
+| Firebase／同步 | cloud files、D1 schema → configuration、data-and-sync |
+| Agent 寫入 | agent-contract、cloud-client、private Worker → agent-access、agent-validation、agent-query |
 | 環境／workflow | .env.example、package.json、deploy.yml → local-development、deployment、testing |
 | 畫面／元件 | globals.css、DESIGN、design-system |
 
@@ -24,6 +24,6 @@ Frontend 快照只取已追蹤原碼與契約。Private Worker 的行為以獨�
 
 ## 維護完成條件
 
-新 action／route／模型或設定要補解說，重建地圖並檢查參照。文件相對連結與命令對照 checkout，再跑 `git diff --check`。地圖搜尋、逐步、原碼、盤點、縮放與亮暗色都應可用。
+新 action／route 或設定要補解說，重建地圖並檢查參照。文件相對連結與命令對照 checkout，再跑 `git diff --check`。地圖搜尋、逐步、原碼、盤點、縮放與亮暗色都應可用。
 
-新驗證記錄命令、版本、環境和未測範圍。歷史 product-decisions 或評測不因文件刷新而變成新的正式驗收。
+新驗證記錄命令、版本、環境和未測範圍。歷史 product-decisions 或已封存的 managed AI 評測不因文件刷新而變成新的正式驗收。

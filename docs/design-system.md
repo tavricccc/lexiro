@@ -188,27 +188,15 @@ one task. From tablet width, those values grow to 0.75rem, 1.5rem, 2rem and
 `.block-gap` cover the others. Keep the safe-area inset in the app shell so
 phone content starts below the status bar without an extra page-level offset.
 
-### Practice results and AI explanations
+### Practice results
 
-`ResultPanel` keeps the saved result, AI explanation and `StepActions` spacer in
-that reading order. The spacer is the last child, including after an explanation
-arrives. On mobile it reserves the measured height of the fixed action panel;
-placing it before the explanation creates a blank gap and leaves the last lines
-behind the buttons. Desktop actions stay in the sticky header and need no spacer.
+`ResultPanel` keeps the saved result summary and `StepActions` in normal document
+flow. The action area is last, and mobile section spacing stays at 1.5rem without
+an extra page-level offset. Desktop actions stay in the sticky header.
 
-The result uses normal document flow instead of a viewport-height centered
-column. Mobile section spacing is 1.5rem, with 1.5rem of padding above the
-explanation heading. The existing page and list gutters remain unchanged.
-
-Card results use 「單字介紹」 and 「再複習未記熟單字」. Their AI content introduces
-the supplied meaning, example, usage and memory cues. Question results retain
-「錯題解析」 and 「重做錯題」; mixed results use 「學習解析」 and
-「再練習待加強內容」. Memory self-ratings do not establish an answer mistake.
-
-Local verification on 2026-10-01 used synthetic introduction text at 393×852 and
+Local verification on 2026-10-01 used synthetic result copy at 393×852 and
 1366×900. The mobile final line remained above the fixed footer after scrolling
 to the end, and desktop actions stayed in the header without horizontal overflow.
-This verifies layout, not live paid AI output or cache hit rates.
 
 ## Motion
 
@@ -344,7 +332,7 @@ SearchField 的清除按鈕與 Escape 保留焦點；中文組字時不攔截 Es
 2026-10-01 的本機驗證範圍涵蓋新增與儲存教材、分頁切換、進入練習，以及手機／桌機／手機深色
 畫面。266 tests、lint、typecheck、build 通過；當前精簡殼層圖為
 `.impeccable/review/compact-desktop.png` 與 `compact-mobile.png`。
-真實 Firebase 同步與付費 AI 執行不在本機驗證範圍。
+真實 Firebase 登入與 D1 同步不在本機驗證範圍。
 
 ## 題目與文章工作區
 
@@ -374,8 +362,8 @@ SearchField 的清除按鈕與 Escape 保留焦點；中文組字時不攔截 Es
 
 這次真正 App 的合成教材檢查範圍為 1366×900、390×844 的編輯、閱讀、作答及
 長理由排版；修改選項與理由後，實際保存並重新開啟確認。獨立複核發現的長理由
-排版及選項／理由關聯兩項均修正後判為 resolved。未用模型產出的圖片或臨時 mock 路由
-當驗收畫面。深色、200% zoom、真實雲端與登入生成不在這批畫面證據中。
+排版及選項／理由關聯兩項均修正後判為 resolved。未用臨時生成的圖片或 mock 路由
+當驗收畫面。深色、200% zoom、真實雲端與登入狀態不在這批畫面證據中。
 
 前一輪靜態 detector 僅回報既有鍵盤提示 11px 的字級 advisory；不將它擴成新的正文尺度。
 
@@ -385,24 +373,22 @@ SearchField 的清除按鈕與 Escape 保留焦點；中文組字時不攔截 Es
 收起側欄並保留閱讀區至少 12rem。
 
 確認範圍包含 320×740、390×844、844×390 與 1366×900，使用真正 App 的合成教材，
-涵蓋英選中、出題配置、題庫、校對保存、必填錯誤、空格定位、作答、草稿接續及深色長解析。
+涵蓋英選中、練習設定、題庫、校對保存、必填錯誤、空格定位、作答、草稿接續及深色長解析。
 窄手機最後解析仍位於固定儲存列上方；正文與作答列未溢出。列表分隔線向列外框延伸是既有樣式。
 這是受控瀏覽器的手機尺寸驗證，尚未使用實體 iPhone／Android 驗證虛擬鍵盤或系統安全區；
-生成配置未呼叫正式 AI，雲端生成、帳單及 cache hit 不在本輪驗收範圍。
+雲端同步、跨裝置衝突與 PWA 更新不在本輪驗收範圍。
 
 ## Components
 
 ### 接續與保存回饋（2026-10-09）
 
-生成進度在恢復時保留原本分母與完成數。部分成果可進校對；無法續接時，以同區域文字說明契約／來源變更、過期或舊草稿原因，主要操作改為查看已完成結果。新的付費生成需要明確操作。
+編輯與練習草稿在離開後保留，重新開啟可接續；保存失敗時在原區域顯示原因與重試，不把未保存內容當成完成。長草稿或錯誤內容只在所屬區域捲動，不擠壓頁首主操作。
 
-獨立完成畫面保留桌機頁首的操作 host，讓完成／再生成按鈕能沿用固定位置；手機仍沿用底部操作列。完成狀態不需要先退回上一個步驟才能離開。
-
-2026-10-09 使用真正 App 與隔離的 canonical IndexedDB 合成教材，在 1366×900、390×844 與 320×740 深色模式確認：離線作答、全部三個錯項解析可捲至操作列上方、重新開啟與畫面內暫停接續、校對排除保留及文章分頁。桌機另實際注入學習紀錄寫入失敗及第二題保存失敗，確認未揭答／未計分、部分成果保留、重試成功及完成按鈕返回題庫。三種尺寸沒有橫向溢出或 JavaScript 錯誤；證據在 `.impeccable/review/20261009-ux/final/`。這些是 UI 與本機保存驗收；正式登入生成、模型品質、Firebase 同步及實體手機系統選字不在這批證據內。
+2026-10-09 使用真正 App 與隔離的 canonical IndexedDB 合成教材，在 1366×900、390×844 與 320×740 深色模式確認：離線作答、全部三個錯項解析可捲至操作列上方、重新開啟與畫面內暫停接續及文章分頁。桌機另實際注入第二題保存失敗，確認未揭答／未計分、部分成果保留、重試成功及完成按鈕返回題庫。三種尺寸沒有橫向溢出或 JavaScript 錯誤；證據在 `.impeccable/review/20261009-ux/final/`。這些是 UI 與本機保存驗收；正式登入、雲端同步及實體手機系統選字不在這批證據內。
 
 獨立複核後的保存錯誤畫面另在 `.impeccable/review/20261009-ux/error/`：桌機與手機標題完整、提醒取得焦點、詳細原因預設收合；短重試按鈕可完成保存並返回題庫。這兩張圖取代前一批將長錯誤放進頁首的保存失敗圖。
 
-練習返回直接退出至來源單字集或今天，保留 snapshot；接續選擇只在下次進入練習時顯示。學習紀錄保存失敗的 alert 位於題目上方，不只依賴短暫 toast；重新選答案或跳過即可重試。題庫保存中途失敗時，純中文提醒與這次已加入數量位於校對內容開頭，錯誤發生後聚焦提醒；詳細原因可展開查看。頁首／底部操作只顯示短「重試儲存」，不讓底層錯誤擠壓標題或主導畫面。沿用 StepActions 的實測高度預留，校對內容仍可完整捲到操作列上方。
+練習返回直接退出至來源單字集或今天，保留 snapshot；接續選擇只在下次進入練習時顯示。保存失敗的 alert 位於題目上方，不只依賴短暫 toast；重新選答案或跳過即可重試。題庫保存失敗時，純中文提醒與這次已加入數量位於內容開頭，錯誤發生後聚焦提醒；詳細原因可展開查看。頁首／底部操作只顯示短「重試儲存」，不讓底層錯誤擠壓標題或主導畫面。沿用 StepActions 的實測高度預留，內容仍可完整捲到操作列上方。
 
 Shared primitives live in `components/ui/` and are the only place a control's
 markup is defined:
@@ -421,9 +407,6 @@ markup is defined:
   `headword` / `pos`, so an empty screen shows the shape of what belongs there;
   the `filtered` variant is for a query that matched nothing, where the fix is to
   change the query rather than to create anything.
-- **`Markdown`** — model output is rendered through this, never through
-  `whitespace-pre-wrap`. The prompts ask for markdown, so users would otherwise
-  see raw `###`.
 - **`AnswerOptions`** — the four choices with the correct one marked in place,
   shared by the question editor and each sub-question of a reading pack.
 

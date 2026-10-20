@@ -21,7 +21,7 @@
 
 上述為本機／手動備份匯入的 domain 格式處理。這次 D1 切換不讀 Firestore 或舊帳號 namespace；從空白新雲端及新快取開始，不做雲端遷移或 fallback。
 
-Full backup v4／set share v1 匯入時一次升級，新匯出只有 v5／v2。分享複製到新集時重建全部來源與父／子題身份。舊生成草稿只依原所選集重綁完成成果，保留付費操作 ID、checkpoint 用量與原 task hash；不假造可續接狀態。舊全庫草稿若未記集，須明確選原集才能重綁；來源無法確認時保留原稿。
+Full backup v4／set share v1 匯入時一次升級，新匯出只有 v5／v2。分享複製到新集時重建全部來源與父／子題身份。舊格式草稿只在來源可確認時重綁；來源無法確認時保留原稿，不假造可續接狀態。
 
 `practice-scope-migration.ts` 從目前 Library 反算舊 ID，保留題序、計數、已選答案與原呈現選項。全庫舊題若原本共享，確定地承接一份，不複製已作答 entry。遷移成功先保存再提供接續；缺來源或保存失敗時保留原稿，只有明確重新開始才清除。
 
@@ -43,7 +43,7 @@ Firestore cloud migration、SDK、rules／indexes 與 service-account REST 已�
 
 Journal 是 sidecar，記未送 record、刪除與 preferences／practice blob。每筆有本機 version，push 只清自己送出的版本，送出期間的新編輯仍待同步。帳號切換隔離 cursor、journal、listener 與回應。
 
-模型偏好按 updatedAt 合併；blob revision 拒絕過期覆蓋。進行中的練習草稿同步為 `practice` blob（`{updatedAt, snapshot|null}`），較新的 updatedAt 勝出；完成或重新開始寫入 null，其他裝置才不再提供接續。套用遠端草稿不重新標記待送，停在設定或接續畫面的練習頁會重新檢查。學習進度與統計已移除：本機 `lexiro_learning_data` 在載入 namespace 時刪除，journal 的 progress／stats 標記丟棄。visible／online 每 30 秒查一筆狀態，有外部改動才拉增量；隱藏／離線停止請求。
+偏好 blob 按 updatedAt 合併；blob revision 拒絕過期覆蓋。進行中的練習草稿同步為 `practice` blob（`{updatedAt, snapshot|null}`），較新的 updatedAt 勝出；完成或重新開始寫入 null，其他裝置才不再提供接續。套用遠端草稿不重新標記待送，停在設定或接續畫面的練習頁會重新檢查。學習進度與統計已移除：本機 `lexiro_learning_data` 在載入 namespace 時刪除，journal 的 progress／stats 標記丟棄。visible／online 每 30 秒查一筆狀態，有外部改動才拉增量；隱藏／離線停止請求。
 
 同步單次 request 上限 10 秒，失敗保留 journal。這些是程式配置，不是已量測的雲端成本。
 
@@ -57,25 +57,24 @@ Journal 是 sidecar，記未送 record、刪除與 preferences／practice blob�
 | Cloud records DTO | 9 | 固定原生教材格式，由 D1 owner API 驗證 |
 | D1 library schema | 1 | library-migrations/0001_library.sql |
 | Practice snapshot | 5 | types/session.ts，v3 先轉詞義題，v4 移除退役模式並重排位置／答案 |
-| AI preferences | 1 | ai-preferences.ts、cloud_blobs |
+| Preferences blob | 1 | cloud_blobs；目前沒有前端寫入 |
 | Practice blob | 1 | practice-storage.ts、cloud_blobs |
 | Flow drafts | 1 | use-resumable-draft.ts |
-| Pending preference drafts | 1 | preference-drafts.ts，只存編輯欄位 |
 | Full backup ZIP | 5 | lexiro-backup.json；v4 一次匯入升級 |
 | Set share ZIP | 2 | lexiro-set.json；v1 一次匯入升級 |
 | Set share link | 1 | D1 `set_shares`；每集一條，讀取時取擁有者最新雲端版本，經同一套分享檔驗證 |
-| AI contract | 5.0.0 | packages/ai-contract/package.json，與 private Worker tgz 同步 |
+| Agent contract | 4.1.0 | packages/agent-contract/package.json，與 private Worker tgz 同步 |
 
-版號各自演進，修改一段 prompt 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
+版號各自演進，修改一段 schema 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
 
 題組子題新增可選 `explanation`／`whyWrong`，沿用原 canonical 題目與備份格式；舊題沒有解析仍可編輯。Reading editor 舊草稿一次補回原題型、共用選項與空格；single editor 草稿一次補上可編輯的理由。這些升級不清除原題、詞義或同步佇列。
 
-現行生成只接受五種學測選擇題型。既有文法題保留在儲存及備份，活躍題庫與題數不納入；沒有將它們改標為其他題型。退役題型的生成／編輯草稿要求重新開始；混合練習草稿可保留剩餘題目。Firestore schema 與 Library repository 版號不因這次篩選變動。
+現行題庫只接受五種學測選擇題型。既有文法題保留在儲存及備份，活躍題庫與題數不納入；沒有將它們改標為其他題型。退役題型的編輯草稿要求重新開始；混合練習草稿可保留剩餘題目。Firestore schema 與 Library repository 版號不因這次篩選變動。
 
-本次單字集隔離才升級 Library repository 與 Firestore 版號；清空題目包含已存的歷史文法題。練習 v5 的 meaningChoices 欄位保存所有題型的原呈現選項，重綁身份後不重抽順序。
+本次單字集隔離才升級 Library repository 版號；清空題目包含已存的歷史文法題。練習 v5 的 meaningChoices 欄位保存所有題型的原呈現選項，重綁身份後不重抽順序。
 
 ## D1 權限
 
-Worker 驗證 Firebase ID token，uid 永遠由驗證結果取得；每個 SQL 都限定 uid。Record ID 為 type＋32 hex。單字及題目透過本集 memberships／sources 索引定位，不掃全帳號題庫。模型 key 與 billing 仍在獨立生成 Worker。
+Worker 驗證 Firebase ID token，uid 永遠由驗證結果取得；每個 SQL 都限定 uid。Record ID 為 type＋32 hex。單字及題目透過本集 memberships／sources 索引定位，不掃全帳號題庫。Agent Worker 不安裝模型供應商 key。
 
 本機測試不代表正式 Firebase／D1／多裝置已驗收；先發布 Agent Worker／migration，再發布前端，見 [D1 維護](d1-cloud.md)。
