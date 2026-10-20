@@ -13,10 +13,11 @@ export const metadata: Metadata = {
     icon: "/icons/lexiro.png",
     apple: "/icons/apple-touch-icon.png",
   },
-  // The installed app draws its own canvas under the status bar.
+  // An opaque status bar tinted by theme-color: iOS 26+ lays a Liquid Glass
+  // blur over a black-translucent bar that the page cannot turn off.
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "Lexiro",
   },
 };
