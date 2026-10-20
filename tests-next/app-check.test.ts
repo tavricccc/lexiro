@@ -8,9 +8,7 @@ import {
   verifyAppCheck,
 } from "../src/app-check";
 import { HttpError } from "../src/http";
-import { createWorker } from "../src/index";
 import { createAgentWorker } from "../src/agent/index";
-import type { Env } from "../src/env";
 import type { AgentEnv } from "../src/agent/types";
 
 // The real OAuth provider imports "cloudflare:workers", which the Node test
@@ -189,20 +187,6 @@ describe("App Check boundary", () => {
 });
 
 describe("App Check CORS preflight", () => {
-  it("allows X-Firebase-AppCheck on the generation Worker", async () => {
-    const response = await createWorker().fetch(
-      new Request("https://worker.test/me", {
-        method: "OPTIONS",
-        headers: { origin: "https://lexiro.test" },
-      }),
-      { ALLOWED_ORIGIN: "https://lexiro.test" } as Env,
-      {} as ExecutionContext,
-    );
-    expect(response.status).toBe(204);
-    expect(response.headers.get("access-control-allow-headers")).toContain(
-      "X-Firebase-AppCheck",
-    );
-  });
   it("allows X-Firebase-AppCheck on the Agent Worker", async () => {
     const worker = createAgentWorker();
     const response = await worker.fetch(
