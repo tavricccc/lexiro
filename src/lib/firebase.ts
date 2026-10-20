@@ -17,7 +17,9 @@ let app: FirebaseApp | null = null,
   emulatorConnected = false;
 export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured()) return null;
-  app ??= getApps().length ? getApp() : initializeApp(config);
+  app ??= getApps().some((existing) => existing.name === "[DEFAULT]")
+    ? getApp()
+    : initializeApp(config);
   return app;
 }
 export function getFirebaseAuth(): Auth | null {
@@ -37,6 +39,24 @@ export function getFirebaseAuth(): Auth | null {
     emulatorConnected = true;
   }
   return auth;
+}
+let sameOriginAuth: Auth | null = null;
+/**
+ * Auth whose sign-in handler is served from this site (next.config proxies
+ * /__/auth). Browsers that partition third-party storage, such as the iOS
+ * sign-in sheet, lose a redirect result kept on the firebaseapp.com domain.
+ */
+export function getSameOriginAuth(): Auth | null {
+  if (!isFirebaseConfigured()) return null;
+  if (window.location.protocol !== "https:") return getFirebaseAuth();
+  sameOriginAuth ??= getAuth(
+    getApps().find((existing) => existing.name === "same-origin") ??
+      initializeApp(
+        { ...config, authDomain: window.location.host },
+        "same-origin",
+      ),
+  );
+  return sameOriginAuth;
 }
 export async function configureFirebaseAuth(): Promise<Auth | null> {
   const firebase = getFirebaseAuth();

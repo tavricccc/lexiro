@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@phosphor-icons/react", "motion", "radix-ui"],
   },
+  // Serve Firebase's sign-in handler from this origin; see getSameOriginAuth.
+  rewrites: async () =>
+    ["auth", "firebase"].map((segment) => ({
+      source: `/__/${segment}/:path*`,
+      destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}/__/${segment}/:path*`,
+    })),
   // Keep old workspace deep links working now that / redirects to /app.
   redirects: async () => [
     { source: "/", destination: "/app", permanent: true },

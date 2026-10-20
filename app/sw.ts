@@ -27,7 +27,9 @@ const serwist = new Serwist({
   navigationPreload: true,
   runtimeCaching: [
     {
-      matcher: ({ request, sameOrigin }) =>
+      // /__/ is Firebase's proxied sign-in handler; never cache it.
+      matcher: ({ request, sameOrigin, url }) =>
+        url.pathname.startsWith("/__/") ||
         needsFreshNetwork(request, sameOrigin),
       handler: new NetworkOnly(),
     },
