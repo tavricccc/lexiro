@@ -20,9 +20,12 @@ jobs:
       # token is not allowed to read.
       - name: Delete lexiro-worker
         run: |
-          curl --fail-with-body -sS -X DELETE \
+          # 10007: already gone.
+          body=$(curl -sS -X DELETE \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/lexiro-worker?force=true"
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/lexiro-worker?force=true")
+          echo "$body"
+          echo "$body" | grep -qE '"success": ?true|"code": ?10007'
       - name: Delete lexiro-billing D1
         run: |
           curl --fail-with-body -sS -X DELETE \
