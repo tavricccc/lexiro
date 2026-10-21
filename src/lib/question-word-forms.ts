@@ -150,7 +150,9 @@ export function sourceWordFormIssue(
   answer: string,
   usage?: string,
 ): string | null {
-  const sourceWords = tokens(source);
+  // Parenthesized parts such as "(of...)" are optional extensions of the
+  // entry; the bare phrase is already a complete, correct usage.
+  const sourceWords = tokens(source.replace(/\([^)]*\)/gu, " ").trim() || source);
   const candidate = normalized(answer);
   const answerWords = tokens(candidate);
   const fixedSource = sourceWords.filter((word) => !placeholder(word));

@@ -25,6 +25,7 @@ import {
   questionBelongsToMemberships,
 } from "@/src/lib/question-ownership";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { SUPPORTED_PARTS_OF_SPEECH } from "@lexiro/ai-contract";
 
 export const AGENT_CONTRACT_VERSION = 1 as const;
 const text = z.string().trim().min(1).max(10000);
@@ -245,23 +246,28 @@ export function mutateAgentSet(
   if (action.type === "rename_set") next.set.setName = action.setName;
   if (action.type === "move_set") next.set.folderId = action.folderId;
   if (action.type === "put_words") {
-    for (const draft of action.words) {
+    action.words.forEach((draft, index) => {
+      const at = `words[${index}]「${draft.word}」`;
       const previous = draft.wordKey
         ? next.words.find((w) => w.wordKey === draft.wordKey)
         : next.words.find(
             (w) => normalizeWordKey(w.word) === normalizeWordKey(draft.word),
           );
-      if (draft.wordKey && !previous) throw new Error("找不到本集要修改的單字");
+      if (draft.wordKey && !previous)
+        throw new Error(`${at}：wordKey ${draft.wordKey} 不在本集；新增單字請省略 wordKey`);
       const wordKey = buildSetWordKey(next.set.id, draft.word);
       if (next.words.some((w) => w.wordKey === wordKey && w !== previous))
-        throw new Error("改名後的單字已存在");
-      const senses = draft.senses.map((s) => {
+        throw new Error(`${at}：改名後的單字已存在於本集`);
+      const senses = draft.senses.map((s, senseIndex) => {
         const pos = normalizePartOfSpeech(s.pos);
-        if (!pos) throw new Error("詞性格式錯誤");
+        if (!pos)
+          throw new Error(
+            `${at}.senses[${senseIndex}].pos「${s.pos}」不是支援的詞性；可用：${SUPPORTED_PARTS_OF_SPEECH.join(" ")}（及 noun、verb 等全名）。及物／不及物動詞 vt.、vi. 請寫 v.`,
+          );
         const id = buildSenseId(wordKey, pos, s.meaningZh);
         if (s.id) {
           if (!previous?.senses.some((old) => old.id === s.id))
-            throw new Error("只能修改本字既有詞義");
+            throw new Error(`${at}.senses[${senseIndex}].id ${s.id} 不是此字既有詞義；新增詞義請省略 id`);
           if (s.id !== id) remaps.push({ from: s.id, to: id });
         }
         return {
@@ -272,8 +278,12 @@ export function mutateAgentSet(
           supplementary: s.supplementary ?? false,
         };
       });
-      if (new Set(senses.map((s) => s.id)).size !== senses.length)
-        throw new Error("詞義不可重複");
+      const seen = new Set<string>();
+      senses.forEach((sense, senseIndex) => {
+        if (seen.has(sense.id))
+          throw new Error(`${at}.senses[${senseIndex}] 與前面詞義重複（詞性 ${sense.pos} 與中文義「${sense.meaningZh}」相同）`);
+        seen.add(sense.id);
+      });
       const word: WordEntry = {
         wordKey,
         word: draft.word,
@@ -305,7 +315,7 @@ export function mutateAgentSet(
               : { ...q, ...change(q), updatedAt: now },
           );
         });
-    }
+    });
   }
   if (action.type === "delete_words") {
     if (

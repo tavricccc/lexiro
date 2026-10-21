@@ -17,6 +17,24 @@ function library() {
   }).snapshot!;
 }
 describe("Agent question writes", () => {
+  it("names the word, sense index and supported values when a part of speech is rejected", () => {
+    const write = () =>
+      mutateAgentSet(createAgentSet(setId, "詞性"), {
+        type: "put_words",
+        words: [
+          { word: "rescue", senses: [{ pos: "v.", meaningZh: "救援" }] },
+          {
+            word: "supply",
+            senses: [
+              { pos: "n.", meaningZh: "供應" },
+              { pos: "vt.", meaningZh: "供給" },
+            ],
+          },
+        ],
+      });
+    expect(write).toThrow(/words\[1\]「supply」\.senses\[1\]\.pos「vt\.」/);
+    expect(write).toThrow(/n\. v\. adj\./);
+  });
   it("accepts cloze grammar blanks from the shared prompt even when the answer differs from the source word", () => {
     const snapshot = mutateAgentSet(createAgentSet(setId, "綜合測驗"), {
       type: "put_words",

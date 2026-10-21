@@ -82,4 +82,22 @@ describe("source word forms", () => {
     // A word-bank head has no named usage: it validates the source form only.
     expect(sourceWordFormIssue("take off", "phr.", "took")).toBeNull();
   });
+  it("treats parenthesized phrase parts as optional", () => {
+    expect(
+      sourceWordFormIssue(
+        "in advance (of...)",
+        "phr.",
+        "in advance",
+        "two weeks in advance",
+      ),
+    ).toBeNull();
+    expect(
+      sourceWordFormIssue(
+        "in advance (of...)",
+        "phr.",
+        "in advance of",
+        "in advance of the trip",
+      ),
+    ).toBeNull();
+  });
 });
