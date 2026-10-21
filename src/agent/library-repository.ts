@@ -158,13 +158,52 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       hash,
     );
     if (previous) return previous;
+    // The account head guards every commit, so an unrelated write (app sync,
+    // another Agent) can land between load and commit. Reapply on a fresh
+    // load; an explicit expectedRevision is rechecked against that load.
+    for (let attempt = 1; ; attempt++) {
+      try {
+        return await this.attempt(
+          uid,
+          setId,
+          revision,
+          operationId,
+          action,
+          hash,
+          apply,
+        );
+      } catch (reason) {
+        if (!(reason instanceof HttpError) || reason.code !== "account_busy")
+          throw reason;
+        if (attempt === 3) {
+          const error = new HttpError(409, "stale_set");
+          error.message =
+            "同帳號同時有其他寫入（App 同步或其他代理），重試 3 次仍衝突；本次未寫入，請稍後用同一個 operationId 重送。";
+          throw error;
+        }
+      }
+    }
+  }
+  private async attempt(
+    uid: string,
+    setId: string,
+    revision: string | undefined,
+    operationId: string,
+    action: unknown,
+    hash: string,
+    apply: (
+      snapshot: AgentSetSnapshot,
+      blockedQuestionIds: string[],
+    ) => AgentMutationResult,
+  ) {
     const before = await this.load(uid, setId);
     if (!before.snapshot) throw new HttpError(404, "set_not_found");
-    if (
-      revision !== undefined &&
-      agentSetRevision(before.snapshot) !== revision
-    )
-      throw new HttpError(409, "stale_set");
+    const current = agentSetRevision(before.snapshot);
+    if (revision !== undefined && current !== revision) {
+      const error = new HttpError(409, "stale_set");
+      error.message = `expectedRevision ${revision} 已過期，本集目前 revision 為 ${current}；本次未寫入。省略 expectedRevision 會套用到最新內容，或重讀後帶新 revision 重送。`;
+      throw error;
+    }
     const oldQuestions = new Set(before.snapshot.questions.map((q) => q.id));
     const requested =
       action &&
@@ -217,16 +256,22 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       deleted: !after,
       ...validation,
     };
-    return this.cloud.commit(
-      uid,
-      before.head,
-      records,
-      [],
-      `agent:${operationId}`,
-      operationId,
-      hash,
-      receipt,
-    );
+    try {
+      return await this.cloud.commit(
+        uid,
+        before.head,
+        records,
+        [],
+        `agent:${operationId}`,
+        operationId,
+        hash,
+        receipt,
+      );
+    } catch (reason) {
+      if (reason instanceof HttpError && reason.code === "stale_set")
+        throw new HttpError(409, "account_busy");
+      throw reason;
+    }
   }
   async folders(uid: string) {
     const folders = (await this.cloud.rows(uid, "folder")).map(

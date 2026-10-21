@@ -738,6 +738,39 @@ describe("native D1 agent library with synthetic users", () => {
     }
   });
 
+  it("applies concurrent writes without a revision and reports the current revision when one is stale", async () => {
+    const f = await fixture();
+    try {
+      const stale = agentSetRevision((await f.repo.read("a", A))!);
+      const results = await Promise.allSettled(
+        [words(1), words(2).slice(1)].map((batch) =>
+          f.repo.mutate(
+            "a",
+            A,
+            undefined,
+            randomUUID(),
+            { type: "put_words", words: batch },
+            (s) => mutateAgentSet(s, { type: "put_words", words: batch }),
+          ),
+        ),
+      );
+      expect(results.map((r) => r.status)).toEqual(["fulfilled", "fulfilled"]);
+      const current = agentSetRevision((await f.repo.read("a", A))!);
+      expect((await f.repo.read("a", A))!.words).toHaveLength(2);
+      const action = { type: "rename_set", setName: "過期" };
+      await expect(
+        f.repo.mutate("a", A, stale, randomUUID(), action, (s) =>
+          mutateAgentSet(s, action),
+        ),
+      ).rejects.toMatchObject({
+        code: "stale_set",
+        message: expect.stringContaining(current),
+      });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
   it("handles folder CRUD, cycles, duplicate names, null root, movement and uid isolation", async () => {
     const f = await fixture();
     try {
@@ -1058,6 +1091,39 @@ describe("native D1 agent library with synthetic users", () => {
             (word) => ({ word, senses: [{ pos: "v.", meaningZh: word }] }),
           ),
         },
+      });
+      const fielded = await call("write", {
+        setId: A,
+        responseFields: ["words"],
+        action: {
+          type: "put_words",
+          words: [{ word: "gather", senses: [{ pos: "v.", meaningZh: "聚集" }] }],
+        },
+      });
+      expect(fielded.data).toMatchObject({
+        operationId: expect.any(String),
+        revision: expect.any(String),
+        unknownResponseFields: ["words"],
+        availableResponseFields: expect.arrayContaining(["wordCount"]),
+      });
+      const badPos = await call("write", {
+        setId: A,
+        action: {
+          type: "put_words",
+          words: [
+            { word: "supply", senses: [{ pos: "vt.", meaningZh: "供給" }] },
+          ],
+        },
+      });
+      expect(badPos.isError).toBe(true);
+      expect(badPos.data.error).toMatchObject({
+        message: expect.stringContaining("words[0]「supply」.senses[0].pos"),
+      });
+      const prompt = await call("read", {
+        requests: [{ resource: "prompt", kind: "vocabulary" }],
+      });
+      expect(prompt.data).toMatchObject({
+        results: [{ data: { brief: { defaultLimit: 16, maxLimit: 50 } } }],
       });
       const first = await readAgentResource(
         repo,

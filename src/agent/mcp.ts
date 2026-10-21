@@ -8,7 +8,7 @@ import {
   validateGeneratedQuestions,
   readAgentBatch,
 } from "./operations";
-import { compactReceipt, project, querySchema } from "./query";
+import { compactReceipt, projectReceipt, querySchema } from "./query";
 import type { AgentIdentity, AgentLibraryRepository } from "./types";
 import { HttpError, issueText } from "../http";
 import type { AgentFolderMutation } from "@lexiro/agent-contract";
@@ -43,9 +43,16 @@ const folderTypes = ["create_folder", "update_folder", "delete_folder"];
 const writeFields = (types: readonly [string, ...string[]]) => ({
   setId: z.string().optional().describe("資料夾操作以外必填"),
   action: z.object({ type: z.enum(types) }).passthrough(),
-  expectedRevision: z.string().optional(),
+  expectedRevision: z
+    .string()
+    .optional()
+    .describe("可省略；帶上時須等於本集目前 revision，否則 stale_set 不寫入"),
   operationId: z.string().optional().describe("重送時沿用同一 UUID"),
-  responseFields: z.array(z.string()).max(20).optional(),
+  responseFields: z
+    .array(z.string())
+    .max(20)
+    .optional()
+    .describe("只回這些回條欄位；operationId、revision、status 一律附上"),
 });
 // MCP-facing shapes stay lean so tools/list is small; lengths and formats are
 // enforced by querySchema and the contract. Strict read requests make a
@@ -142,7 +149,11 @@ export async function handleAgentMcp(
             const record = raw as Record<string, unknown>;
             if ("savedCount" in record || "operationId" in record)
               result = args.responseFields
-                ? project(record, args.responseFields as string[])
+                ? projectReceipt(
+                    record,
+                    args.responseFields as string[],
+                    actionType,
+                  )
                 : compactReceipt(record, actionType);
             else if ("folders" in record) {
               const { folders: _folders, ...small } = record;
@@ -151,7 +162,11 @@ export async function handleAgentMcp(
           }
           if (readOnly && raw && typeof raw === "object" && "savedCount" in raw)
             result = args.responseFields
-              ? project(raw, args.responseFields as string[])
+              ? projectReceipt(
+                  raw as Record<string, unknown>,
+                  args.responseFields as string[],
+                  actionType,
+                )
               : compactReceipt(raw as Record<string, unknown>, actionType);
           if (
             JSON.stringify(result).length > Number(args.maxCharacters ?? 32000)

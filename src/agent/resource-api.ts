@@ -6,7 +6,7 @@ import {
   readAgentResource,
   readAgentBatch,
 } from "./operations";
-import { compactReceipt, project } from "./query";
+import { compactReceipt, projectReceipt } from "./query";
 import { urlInstructions } from "./instructions";
 
 function parameters(url: URL): Record<string, unknown> {
@@ -45,7 +45,7 @@ export function presentMutation(
   actionType?: string,
 ) {
   const compact = compactReceipt(result, actionType),
-    selected = fields ? project(result, fields) : compact;
+    selected = fields ? projectReceipt(result, fields, actionType) : compact;
   return JSON.stringify(selected).length <= 32000
     ? selected
     : { ...compact, responseLimited: true };

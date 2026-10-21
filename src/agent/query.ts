@@ -124,6 +124,31 @@ export function project(value: unknown, fields?: string[]): unknown {
     ]),
   );
 }
+/** Requested receipt fields, always with the identity of the write itself. */
+export function projectReceipt(
+  value: Record<string, unknown>,
+  fields: string[],
+  actionType?: string,
+) {
+  const missing = fields.filter(
+    (field) => !Object.hasOwn(value, field.split(".")[0]),
+  );
+  const compact = compactReceipt(value, actionType);
+  return {
+    ...Object.fromEntries(
+      ["operationId", "revision", "status", "savedCount", "errorCount", "hint"]
+        .filter((key) => Object.hasOwn(compact, key))
+        .map((key) => [key, (compact as Record<string, unknown>)[key]]),
+    ),
+    ...(project(value, fields) as Record<string, unknown>),
+    ...(missing.length
+      ? {
+          unknownResponseFields: missing,
+          availableResponseFields: Object.keys(value),
+        }
+      : {}),
+  };
+}
 const structureHints: Record<string, string> = {
   edit_question:
     "edit_question 的 patch 直接用已存題格式欄位（prompt/options/answerIndex/explanation/whyWrong），不需換工具；distractors、sentence、answer 是生成題欄位，不適用。",
@@ -319,7 +344,11 @@ export async function queryLibrary(
         kind,
         difficulty,
       ).outputSchema,
-      recommendedMaxSources: sourceLimits[kind],
+      brief: {
+        defaultLimit: sourceLimits[kind],
+        maxLimit: 50,
+        note: "brief 預設每批取 defaultLimit 個來源，可用 limit 調整；題數以該次 brief 的 specification 為準。",
+      },
     };
   }
   if (q.resource === "sets" || q.resource === "folders") {
