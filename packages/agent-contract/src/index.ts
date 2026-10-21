@@ -76,6 +76,7 @@ const snapshotSchema = z.strictObject({
     id: text,
     setName: text.max(200),
     folderId: text,
+    order: z.number().finite().optional(),
     createdAt: z.iso.datetime(),
     updatedAt: z.iso.datetime(),
   }),
