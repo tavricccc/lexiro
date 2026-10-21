@@ -40,6 +40,9 @@ export interface MutationReceipt extends Partial<AgentQuestionReport> {
   wordCount: number;
   questionCount: number;
   deleted: boolean;
+  /** Questions removed as a side effect, e.g. their word or sense was deleted. */
+  removedQuestionIds?: string[];
+  removedQuestionCount?: number;
 }
 export interface AgentLibraryRepository {
   query(uid: string, query: AgentQuery): Promise<Record<string, unknown>>;

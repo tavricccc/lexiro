@@ -9,7 +9,7 @@ import {
 } from "@lexiro/agent-contract";
 import { questionLengthRange } from "@lexiro/ai-contract";
 import { questionPrompt, QUESTION_CACHE_KEY } from "../question-prompts";
-import { fingerprint, HttpError, issueText } from "../http";
+import { fingerprint, HttpError, httpError, issueText } from "../http";
 
 const text = z.string().trim().min(1).max(300);
 const ids = z.array(text).min(1).max(50).optional();
@@ -78,7 +78,7 @@ const sourceLimits = {
 };
 
 function missing(field: string): never {
-  throw new HttpError(400, `missing_${field}`);
+  throw httpError(400, `missing_${field}`, `此 resource 需要 ${field}`);
 }
 function encode(value: unknown) {
   return btoa(
@@ -99,7 +99,11 @@ function decode(value: string): unknown {
       ),
     );
   } catch {
-    throw new HttpError(400, "invalid_cursor");
+    throw httpError(
+      400,
+      "invalid_cursor",
+      "cursor 無法解析；請原樣使用上一頁回傳的 nextCursor",
+    );
   }
 }
 export function project(value: unknown, fields?: string[]): unknown {
@@ -111,7 +115,7 @@ export function project(value: unknown, fields?: string[]): unknown {
   for (const field of fields) {
     const [key, ...rest] = field.split(".");
     if (["constructor", "prototype", "__proto__"].includes(key))
-      throw new HttpError(400, "unknown_field");
+      throw httpError(400, "unknown_field", `fields 不可包含 ${key}`);
     if (!Object.hasOwn(source, key)) continue;
     const paths = groups.get(key) ?? [];
     paths.push(rest.join("."));
@@ -136,7 +140,15 @@ export function projectReceipt(
   const compact = compactReceipt(value, actionType);
   return {
     ...Object.fromEntries(
-      ["operationId", "revision", "status", "savedCount", "errorCount", "hint"]
+      [
+        "operationId",
+        "revision",
+        "status",
+        "savedCount",
+        "errorCount",
+        "removedQuestionCount",
+        "hint",
+      ]
         .filter((key) => Object.hasOwn(compact, key))
         .map((key) => [key, (compact as Record<string, unknown>)[key]]),
     ),
@@ -204,7 +216,11 @@ export function compactReceipt(
 
 async function window(uid: string, q: AgentQuery) {
   if (q.cursor && (q.from !== undefined || q.to !== undefined))
-    throw new HttpError(400, "cursor_and_range_are_exclusive");
+    throw httpError(
+      400,
+      "cursor_and_range_are_exclusive",
+      "cursor 不可與 from/to 併用；接續頁面只帶 cursor（可加 limit）",
+    );
   const scope = await fingerprint(
     JSON.stringify({
       uid,
@@ -230,7 +246,11 @@ async function window(uid: string, q: AgentQuery) {
         .parse(decode(q.cursor))
     : undefined;
   if (cursor && cursor.scope !== scope)
-    throw new HttpError(400, "cursor_outside_query");
+    throw httpError(
+      400,
+      "cursor_outside_query",
+      "cursor 屬於另一組查詢條件；接續頁面時 resource、setId、q、kind 等條件須與取得該 cursor 時相同，只能改 limit/fields/view",
+    );
   const offset = q.from === undefined ? 0 : q.from - 1;
   const limit =
     q.to !== undefined
@@ -240,7 +260,11 @@ async function window(uid: string, q: AgentQuery) {
           ? sourceLimits[q.kind]
           : 20));
   if (limit < 1 || limit > 50)
-    throw new HttpError(400, "range_must_contain_1_to_50_items");
+    throw httpError(
+      400,
+      "range_must_contain_1_to_50_items",
+      `from ${q.from ?? 1} 到 to ${q.to} 共 ${limit} 筆；每次須為 1–50 筆`,
+    );
   return {
     scope,
     after: cursor?.after ?? "",
@@ -310,6 +334,38 @@ function questionSummary(question: LibraryQuestion) {
 }
 
 export async function queryLibrary(
+  db: D1Database,
+  uid: string,
+  q: AgentQuery,
+): Promise<Record<string, unknown>> {
+  const result = await queryRecords(db, uid, q);
+  if (!q.fields) return result;
+  const value = result as Record<string, unknown>;
+  const returned = Array.isArray(value.items)
+    ? value.items
+    : [value.word, value.question, value.child, value.operation].filter(
+        (item) => item !== undefined,
+      );
+  if (!returned.length) return result;
+  const missing = q.fields.filter(
+    (field) =>
+      !returned.some(
+        (item) =>
+          item !== null &&
+          typeof item === "object" &&
+          Object.hasOwn(item, field.split(".")[0]),
+      ),
+  );
+  return missing.length
+    ? {
+        ...result,
+        fieldsNotFound: missing,
+        fieldsHint:
+          "這些 fields 在回傳的資料裡都不存在：可能拼錯，或不是已存格式欄位（單字 wordKey/word/senses.*；詞彙題 id/prompt/options/answerIndex/explanation/whyWrong；文章 title/passage/questions.*）。",
+      }
+    : result;
+}
+async function queryRecords(
   db: D1Database,
   uid: string,
   q: AgentQuery,
@@ -394,10 +450,19 @@ export async function queryLibrary(
       )
       .bind(uid, q.operationId ?? missing("operationId"))
       .first<{ result: string }>();
-    if (!row) throw new HttpError(404, "operation_not_found");
+    if (!row)
+      throw httpError(
+        404,
+        "operation_not_found",
+        `operationId ${q.operationId} 沒有回條（不存在或已超過 30 天）`,
+      );
     const result = JSON.parse(row.result) as Record<string, unknown>;
     if (typeof result.setId !== "string" || (setId && result.setId !== setId))
-      throw new HttpError(404, "operation_not_found");
+      throw httpError(
+        404,
+        "operation_not_found",
+        `operationId ${q.operationId} 不屬於${setId ? `單字集 ${setId}` : "可存取的單字集"}`,
+      );
     if (q.resource === "operation")
       return q.fields
         ? { operation: project(result, q.fields) }
@@ -524,7 +589,12 @@ export async function queryLibrary(
         .all<{ payload: string }>()
     ).results.map((row) => JSON.parse(row.payload) as WordEntry);
     if (detail) {
-      if (!rows[0]) throw new HttpError(404, "word_not_found");
+      if (!rows[0])
+        throw httpError(
+          404,
+          "word_not_found",
+          `wordKey ${q.wordKey} 不在本集；用 read words 取得 wordKey`,
+        );
       return { word: project(rows[0], q.fields) };
     }
     const result = page(rows, w, (word) => word.wordKey);
@@ -580,7 +650,12 @@ export async function queryLibrary(
         )
         .bind(...args)
         .first<{ payload: string }>();
-      if (!row) throw new HttpError(404, "question_not_found");
+      if (!row)
+        throw httpError(
+          404,
+          "question_not_found",
+          `questionId ${q.questionId} 不在本集；用 read questions 取得 id`,
+        );
       const question = JSON.parse(row.payload) as LibraryQuestion;
       if (q.resource === "questions" && question.kind === "reading") {
         const children = [...question.questions]
@@ -609,11 +684,20 @@ export async function queryLibrary(
       }
       if (q.childId) {
         if (question.kind !== "reading")
-          throw new HttpError(404, "child_not_found");
+          throw httpError(
+            404,
+            "child_not_found",
+            `題目 ${question.id} 不是文章題，沒有子題；請省略 childId`,
+          );
         const child = question.questions.find(
           (child) => child.id === q.childId,
         );
-        if (!child) throw new HttpError(404, "child_not_found");
+        if (!child)
+          throw httpError(
+            404,
+            "child_not_found",
+            `childId ${q.childId} 不在題目 ${question.id}；可用：${question.questions.map((item) => item.id).join("、")}`,
+          );
         return {
           parent: questionSummary(question),
           child: project(child, q.fields),

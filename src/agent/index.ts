@@ -288,7 +288,10 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
                       : status === 400
                         ? "invalid_input"
                         : "agent_unavailable",
-                ...(status === 400
+                ...(status === 400 ||
+                (reason instanceof HttpError &&
+                  status < 500 &&
+                  reason.message !== reason.code)
                   ? {
                       message: issueText(reason),
                     }

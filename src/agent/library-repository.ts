@@ -247,6 +247,20 @@ export class D1AgentLibrary implements AgentLibraryRepository {
         .length
     )
       throw new HttpError(403, "question_outside_scope");
+    const explicit = new Set(
+      action &&
+        typeof action === "object" &&
+        "questionIds" in action &&
+        Array.isArray(action.questionIds)
+        ? action.questionIds
+        : [],
+    );
+    const kept = new Set(after?.questions.map((q) => q.id));
+    const removed = after
+      ? before.snapshot.questions
+          .map((q) => q.id)
+          .filter((id) => !kept.has(id) && !explicit.has(id))
+      : [];
     const receipt: MutationReceipt = {
       operationId,
       setId,
@@ -254,6 +268,12 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       wordCount: after?.words.length ?? 0,
       questionCount: after?.questions.length ?? 0,
       deleted: !after,
+      ...(removed.length
+        ? {
+            removedQuestionCount: removed.length,
+            removedQuestionIds: removed.slice(0, 20),
+          }
+        : {}),
       ...validation,
     };
     try {

@@ -1127,6 +1127,46 @@ describe("native D1 agent library with synthetic users", () => {
       expect(prompt.data).toMatchObject({
         results: [{ data: { brief: { defaultLimit: 16, maxLimit: 50 } } }],
       });
+      const twoSenses = await call("write", {
+        setId: A,
+        action: {
+          type: "put_words",
+          words: [
+            {
+              word: "credit",
+              senses: [
+                { pos: "n.", meaningZh: "信用" },
+                { pos: "v.", meaningZh: "歸功於" },
+              ],
+            },
+          ],
+        },
+      });
+      expect(twoSenses.isError).toBe(false);
+      const credit = (await repo.read("a", A))!.words.find(
+        (word) => word.word === "credit",
+      )!;
+      const missingSense = await call("write", {
+        setId: A,
+        action: {
+          type: "edit_sense",
+          wordKey: credit.wordKey,
+          senseId: "sense-missing",
+          patch: { meaningZh: "x" },
+        },
+      });
+      expect(missingSense.data.error).toMatchObject({
+        code: "sense_not_found",
+        message: expect.stringContaining(credit.senses[0].id),
+      });
+      const unknownField = await call("read", {
+        requests: [
+          { resource: "words", setId: A, fields: ["word", "spelling"] },
+        ],
+      });
+      expect(unknownField.data).toMatchObject({
+        results: [{ data: { fieldsNotFound: ["spelling"] } }],
+      });
       const first = await readAgentResource(
         repo,
         { uid: "a", email: "a@example.test" },
@@ -1143,7 +1183,7 @@ describe("native D1 agent library with synthetic users", () => {
           cursor: first.nextCursor,
         },
       );
-      const source = (second.items as { ref: string; word: string; senseId: string }[])[0];
+      const source = (second.items as { ref: string; word: string; wordKey: string; senseId: string }[])[0];
       expect(source.ref).toBe(source.senseId);
       const written = await call("write", {
         setId: A,
@@ -1184,6 +1224,14 @@ describe("native D1 agent library with synthetic users", () => {
       });
       expect(found.data).toMatchObject({
         results: [{ data: { items: [{ id: stored[0].id }] } }],
+      });
+      const cascade = await call("delete", {
+        setId: A,
+        action: { type: "delete_words", wordKeys: [source.wordKey] },
+      });
+      expect(cascade.data).toMatchObject({
+        removedQuestionCount: 1,
+        removedQuestionIds: [stored[0].id],
       });
     } finally {
       await runtime.dispose();

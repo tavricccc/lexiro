@@ -8,6 +8,12 @@ export class HttpError extends Error {
     super(code);
   }
 }
+/** An HttpError whose message tells the caller the exact cause and location. */
+export function httpError(status: number, code: string, message: string) {
+  const error = new HttpError(status, code);
+  error.message = message;
+  return error;
+}
 export async function readBody(
   request: Request,
   limit: number,

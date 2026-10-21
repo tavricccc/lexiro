@@ -108,7 +108,7 @@ export const readRequest = z.strictObject({
 });
 const READ = `Read data: up to 10 requests per call, each succeeds or fails on its own. Lists return 20 summaries by default in fixed ID order with nextCursor; use view:"detail" only for full content, or fields to pick what you need. Example: {requests:[{resource:"words",setId,q:"rescue",fields:["wordKey","word","senses.id"]},{resource:"prompt",kind:"vocabulary"},{resource:"brief",setId,kind:"vocabulary",difficulty:2,limit:16}]}`;
 const WRITE = `Create or modify; returns a compact receipt with the new revision. action by type:
-put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} adds words; with wordKey it overwrites that word and replaces all its senses
+put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} adds words; with wordKey it overwrites that word and replaces all its senses (questions on dropped senses are removed and listed in the receipt)
 edit_word{wordKey,patch:{word}} changes spelling only
 edit_sense{wordKey,senseId?,action:"add"|"update"|"delete",patch?:{pos?,meaningZh?,examples?,appendExamples?}}
 pos must be one of: ${SUPPORTED_PARTS_OF_SPEECH.join(" ")} (write v. for vt./vi.)
@@ -117,7 +117,7 @@ put_questions{questions} complete stored questions (the format read returns); wi
 edit_question{questionId,childId?,patch} only the fields to change, in stored format (prompt/options/answerIndex/explanation/whyWrong)
 rename_set{setName}, move_set{folderId}, create_folder{name,parentId?}, update_folder{folderId,name?,parentId?}
 Question actions accept mode:"partial" (default, saves valid items)|"atomic" (saves nothing on any error); at most 200 per batch.`;
-const DELETE = `Delete, irreversible; confirm with the user first. action by type: delete_words{wordKeys}, delete_questions{questionIds}, delete_set (whole set), delete_folder{folderId} (empty folders only).`;
+const DELETE = `Delete, irreversible; confirm with the user first. action by type: delete_words{wordKeys} (also removes questions that use those words; the receipt lists them), delete_questions{questionIds}, delete_set (whole set), delete_folder{folderId} (empty folders only).`;
 const VALIDATE = `Check generated questions without writing; same receipt as write generated_questions. output follows read {resource:"prompt",kind} outputSchema, which differs from the stored format.`;
 export async function handleAgentMcp(
   request: Request,
