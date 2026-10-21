@@ -21,12 +21,12 @@ const teaching = {
   ]).optional(),
 };
 const source = {
-  senseId: text.optional().describe("本題來源的穩定 senseId，複製詞義 ID；來源順序不限，可同字多題。"),
-  ref: text.optional().describe("等同 senseId，照抄 brief 來源的 ref；兩者擇一即可。只有一個來源時可省略。"),
+  senseId: text.optional().describe("Stable senseId of this item's source, copied exactly. Sources may be used in any order and more than once."),
+  ref: text.optional().describe("Same value as senseId (brief sources set ref = senseId); give either one. Optional when there is only one source."),
 };
 const blank = {
   ...source,
-  usage: text.optional().describe("答案在正文重複時，用原文片段定位；只有一處時可省略。"),
+  usage: text.optional().describe("A passage snippet locating the answer when it occurs more than once; optional when it occurs once."),
   answer: text,
   ...teaching,
 };
@@ -40,9 +40,9 @@ function outputShape(kind: GeneratedQuestionKind) {
     : kind === "reading"
       ? z.object({ ...article, items: z.array(z.object({ ...source, question: text, answer: text, ...choices, ...teaching })).min(1) })
       : kind === "discourse"
-        ? z.object({ ...article, options: z.array(text).length(5), unusedReason: z.string().optional().describe("未使用句子為何放在任何空格都不合；每格只寫 explanation，不必逐一寫錯項。"), removals: z.array(z.object({ ...source, sentence: text, ...teaching })).min(1) })
+        ? z.object({ ...article, options: z.array(text).length(5), unusedReason: z.string().optional().describe("Why the unused sentence fits no gap. Each removal needs only its explanation, not per-option reasons."), removals: z.array(z.object({ ...source, sentence: text, ...teaching })).min(1) })
         : kind === "wordBank"
-          ? z.object({ ...article, options: z.array(text).length(10), optionMeanings: z.array(z.object({ option: text, meaning: text })).optional().describe("共用選項各自的簡短中文詞義，整組只寫一次；每格只寫 explanation，不必逐一寫錯項。"), blanks: z.array(z.object(blank)).min(1) })
+          ? z.object({ ...article, options: z.array(text).length(10), optionMeanings: z.array(z.object({ option: text, meaning: text })).optional().describe("Short Traditional Chinese meaning of every shared option, written once per set. Each blank needs only its explanation, not per-option reasons."), blanks: z.array(z.object(blank)).min(1) })
           : z.object({ ...article, blanks: z.array(z.object({ ...blank, ...choices })).min(1) });
   return schema;
 }

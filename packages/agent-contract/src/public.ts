@@ -115,6 +115,8 @@ export interface AgentFolderMutationResult {
   revision: string;
 }
 export declare const UNCATEGORIZED_FOLDER_ID: string;
+/** Canonical part-of-speech values accepted by put_words and edit_sense. */
+export declare const SUPPORTED_PARTS_OF_SPEECH: readonly string[];
 export interface AgentCloudRecord {
   type: "folder" | "set" | "membership" | "word" | "question";
   recordKey: string;
