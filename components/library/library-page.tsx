@@ -30,6 +30,7 @@ import {
 } from "@/src/lib/folders";
 import { buildLibrarySetMetrics } from "@/src/lib/library-metrics";
 import { createUniqueSetName } from "@/src/lib/set-name";
+import { sortSets } from "@/src/lib/set-order";
 import { copySharedSet, readSetShare } from "@/src/lib/set-share";
 import { setMatchesQuery } from "@/src/lib/library-search";
 import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
@@ -95,20 +96,22 @@ export function LibraryPage({
     const scope = currentFolder
       ? collectFolderIds(state.folders, currentFolder.id)
       : null;
-    return state.sets.filter((entry) => {
-      // Searching looks through the whole subtree; browsing shows one level.
-      const inLocation = needle
-        ? !scope || scope.has(entry.folderId)
-        : currentFolder
-          ? entry.folderId === currentFolder.id
-          : !entry.folderId ||
-            entry.folderId === ALL_FOLDER_ID ||
-            entry.folderId === UNCATEGORIZED_FOLDER_ID;
-      if (!inLocation) return false;
-      if (!needle) return true;
-      if (entry.setName.toLocaleLowerCase().includes(needle)) return true;
-      return setMatchesQuery(state, entry.id, needle);
-    });
+    return sortSets(
+      state.sets.filter((entry) => {
+        // Searching looks through the whole subtree; browsing shows one level.
+        const inLocation = needle
+          ? !scope || scope.has(entry.folderId)
+          : currentFolder
+            ? entry.folderId === currentFolder.id
+            : !entry.folderId ||
+              entry.folderId === ALL_FOLDER_ID ||
+              entry.folderId === UNCATEGORIZED_FOLDER_ID;
+        if (!inLocation) return false;
+        if (!needle) return true;
+        if (entry.setName.toLocaleLowerCase().includes(needle)) return true;
+        return setMatchesQuery(state, entry.id, needle);
+      }),
+    );
   }, [currentFolder, query, state]);
 
   const importSet = async (file: File) => {
