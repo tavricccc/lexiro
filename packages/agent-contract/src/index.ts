@@ -133,7 +133,7 @@ function checkedQuestions(
     questions: values,
   }, { requireEnglish: false });
   if (!parsed.valid) throw new Error(parsed.error);
-  if (parsed.data.kind !== "questions") throw new Error("題目資料格式錯誤");
+  if (parsed.data.kind !== "questions") throw new Error("Invalid question data");
   const byKey = Object.fromEntries(words.map((word) => [word.wordKey, word]));
   for (const question of parsed.data.questions) {
     if (
@@ -141,12 +141,12 @@ function checkedQuestions(
       question.kind === "multipleChoice" &&
       question.questionStyle !== "vocabulary"
     )
-      throw new Error(`題目 ${question.id} 的 questionStyle「${question.questionStyle}」不支援；單選題只能是 vocabulary，其他請用文章題型`);
+      throw new Error(`Question ${question.id}: questionStyle "${question.questionStyle}" is not supported; multiple-choice questions must be vocabulary, use a passage type for others`);
     if (!questionUsesWords(question, byKey))
       throw new Error(
         question.kind === "reading"
-          ? `題目 ${question.id} 的 wordKeys 含不在本集的單字：${question.wordKeys.filter((key) => !byKey[key]).join("、") || "（wordKeys 與子題不一致）"}`
-          : `題目 ${question.id} 的 wordKey ${question.wordKey}／senseId ${question.senseId} 不在本集；請用 read words 取得的 wordKey 與 senses.id`,
+          ? `Question ${question.id}: wordKeys not in this set: ${question.wordKeys.filter((key) => !byKey[key]).join(", ") || "(wordKeys do not match the children)"}`
+          : `Question ${question.id}: wordKey ${question.wordKey} / senseId ${question.senseId} is not in this set; use wordKey and senses.id from read words`,
       );
     if (
       question.kind === "reading" &&
@@ -156,16 +156,16 @@ function checkedQuestions(
       )
     )
       throw new Error(
-        `題目 ${question.id} 的子題 ${question.questions
+        `Question ${question.id}: children ${question.questions
           .filter((child) => !byKey[child.wordKey]?.senses.some((s) => s.id === child.senseId))
-          .map((child) => `${child.id}（wordKey ${child.wordKey}／senseId ${child.senseId}）`)
-          .join("、")} 引用的詞義不在本集`,
+          .map((child) => `${child.id} (wordKey ${child.wordKey} / senseId ${child.senseId})`)
+          .join(", ")} use senses not in this set`,
       );
   }
   const ids = parsed.data.questions.map((q) => q.id);
   const repeated = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (repeated.length || ids.length !== values.length)
-    throw new Error(`題目 ID 重複：${[...new Set(repeated)].join("、") || "（同批有重複題目）"}`);
+    throw new Error(`Duplicate question IDs: ${[...new Set(repeated)].join(", ") || "(the batch repeats a question)"}`);
   return parsed.data.questions;
 }
 export function validateAgentSnapshot(
@@ -173,19 +173,19 @@ export function validateAgentSnapshot(
   setId: string,
 ): AgentSetSnapshot {
   const parsed = snapshotSchema.parse(value);
-  if (parsed.set.id !== setId) throw new Error("單字集不在授權範圍");
+  if (parsed.set.id !== setId) throw new Error("Set is outside the authorized scope");
   const words = parsed.words.map((word) => {
     if (word.wordKey !== buildSetWordKey(setId, word.word))
-      throw new Error("單字身份不屬於這個單字集");
+      throw new Error("Word identity does not belong to this set");
     for (const s of word.senses)
       if (s.id !== buildSenseId(word.wordKey as WordKey, s.pos, s.meaningZh))
-        throw new Error("詞義身份與內容不符");
+        throw new Error("Sense ID does not match its content");
     if (new Set(word.senses.map((s) => s.id)).size !== word.senses.length)
-      throw new Error("詞義 ID 不可重複");
+      throw new Error("Duplicate sense ID");
     return word as WordEntry;
   });
   if (new Set(words.map((w) => w.wordKey)).size !== words.length)
-    throw new Error("單字 ID 不可重複");
+    throw new Error("Duplicate word ID");
   const byKey = new Map(words.map((w) => [w.wordKey, w]));
   const memberships = parsed.memberships.map((member) => {
     const word = byKey.get(member.wordKey as WordKey);
@@ -195,7 +195,7 @@ export function validateAgentSnapshot(
       new Set(member.senseIds).size !== member.senseIds.length ||
       member.senseIds.some((id) => !word.senses.some((s) => s.id === id))
     )
-      throw new Error("單字集來源不完整");
+      throw new Error("Set sources are incomplete");
     return {
       wordKey: member.wordKey as WordKey,
       senseIds: member.senseIds as SenseId[],
@@ -205,7 +205,7 @@ export function validateAgentSnapshot(
     memberships.length !== words.length ||
     new Set(memberships.map((m) => m.wordKey)).size !== words.length
   )
-    throw new Error("單字集成員不完整");
+    throw new Error("Set memberships are incomplete");
   return {
     set: parsed.set,
     words,
@@ -241,7 +241,7 @@ function selectedWords(snapshot: AgentSetSnapshot, ids: string[]) {
     }))
     .filter((w) => w.senses.length);
   if (words.reduce((n, w) => n + w.senses.length, 0) !== wanted.size)
-    throw new Error("來源詞義必須屬於本集");
+    throw new Error("Source senses must belong to this set");
   return words;
 }
 export function mutateAgentSet(
@@ -258,27 +258,27 @@ export function mutateAgentSet(
   if (action.type === "move_set") next.set.folderId = action.folderId;
   if (action.type === "put_words") {
     action.words.forEach((draft, index) => {
-      const at = `words[${index}]「${draft.word}」`;
+      const at = `words[${index}] "${draft.word}"`;
       const previous = draft.wordKey
         ? next.words.find((w) => w.wordKey === draft.wordKey)
         : next.words.find(
             (w) => normalizeWordKey(w.word) === normalizeWordKey(draft.word),
           );
       if (draft.wordKey && !previous)
-        throw new Error(`${at}：wordKey ${draft.wordKey} 不在本集；新增單字請省略 wordKey`);
+        throw new Error(`${at}: wordKey ${draft.wordKey} is not in this set; omit wordKey to add a new word`);
       const wordKey = buildSetWordKey(next.set.id, draft.word);
       if (next.words.some((w) => w.wordKey === wordKey && w !== previous))
-        throw new Error(`${at}：改名後的單字已存在於本集`);
+        throw new Error(`${at}: the renamed word already exists in this set`);
       const senses = draft.senses.map((s, senseIndex) => {
         const pos = normalizePartOfSpeech(s.pos);
         if (!pos)
           throw new Error(
-            `${at}.senses[${senseIndex}].pos「${s.pos}」不是支援的詞性；可用：${SUPPORTED_PARTS_OF_SPEECH.join(" ")}（及 noun、verb 等全名）。及物／不及物動詞 vt.、vi. 請寫 v.`,
+            `${at}.senses[${senseIndex}].pos "${s.pos}" is not supported; use one of ${SUPPORTED_PARTS_OF_SPEECH.join(" ")} (full names such as noun or verb also work). Write v. for vt./vi.`,
           );
         const id = buildSenseId(wordKey, pos, s.meaningZh);
         if (s.id) {
           if (!previous?.senses.some((old) => old.id === s.id))
-            throw new Error(`${at}.senses[${senseIndex}].id ${s.id} 不是此字既有詞義；新增詞義請省略 id`);
+            throw new Error(`${at}.senses[${senseIndex}].id ${s.id} is not an existing sense of this word; omit id to add a sense`);
           if (s.id !== id) remaps.push({ from: s.id, to: id });
         }
         return {
@@ -292,7 +292,7 @@ export function mutateAgentSet(
       const seen = new Set<string>();
       senses.forEach((sense, senseIndex) => {
         if (seen.has(sense.id))
-          throw new Error(`${at}.senses[${senseIndex}] 與前面詞義重複（詞性 ${sense.pos} 與中文義「${sense.meaningZh}」相同）`);
+          throw new Error(`${at}.senses[${senseIndex}] duplicates an earlier sense (same pos ${sense.pos} and meaningZh "${sense.meaningZh}")`);
         seen.add(sense.id);
       });
       const word: WordEntry = {
@@ -333,7 +333,7 @@ export function mutateAgentSet(
       (key) => !next.words.some((w) => w.wordKey === key),
     );
     if (unknown.length)
-      throw new Error(`wordKeys 不在本集：${unknown.join("、")}；本次未刪除任何單字`);
+      throw new Error(`wordKeys not in this set: ${unknown.join(", ")}; nothing was deleted`);
     next.words = next.words.filter((w) => !action.wordKeys.includes(w.wordKey));
   }
   next.memberships = next.words.map((w) => ({
@@ -352,7 +352,7 @@ export function mutateAgentSet(
       (id) => !next.questions.some((q) => q.id === id),
     );
     if (unknown.length)
-      throw new Error(`questionIds 不在本集：${unknown.join("、")}；本次未刪除任何題目`);
+      throw new Error(`questionIds not in this set: ${unknown.join(", ")}; nothing was deleted`);
     next.questions = next.questions.filter(
       (q) => !action.questionIds.includes(q.id),
     );
@@ -366,7 +366,7 @@ export function mutateAgentSet(
         typeof source.id === "string"
           ? source.id
           : `question-${crypto.randomUUID()}`;
-      if (blockedQuestionIds.includes(id)) throw new AgentQuestionError("question_outside_scope", "id", "題目 ID 已屬於其他單字集。", typeof source.senseId === "string" ? source.senseId : undefined);
+      if (blockedQuestionIds.includes(id)) throw new AgentQuestionError("question_outside_scope", "id", "This question ID already belongs to another set.", typeof source.senseId === "string" ? source.senseId : undefined);
       const old = next.questions.find((q) => q.id === id);
       return checkedQuestions([{
         ...source,

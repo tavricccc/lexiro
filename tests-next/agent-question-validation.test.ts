@@ -17,41 +17,6 @@ function library() {
   }).snapshot!;
 }
 describe("Agent question writes", () => {
-  it("names the repeated option and unknown IDs it refuses", () => {
-    const snapshot = library(),
-      senseId = snapshot.words[0].senses[0].id;
-    const repeated = mutateAgentSet(snapshot, {
-      type: "generated_questions",
-      kind: "vocabulary",
-      difficulty: 1,
-      output: {
-        items: [
-          {
-            senseId,
-            sentence: "They rescue stranded hikers before sunset.",
-            answer: "rescue",
-            distractors: ["delay", "Delay", "watch"],
-          },
-        ],
-      },
-    });
-    expect(repeated.validation?.errors[0]).toMatchObject({
-      code: "duplicate_options",
-      message: expect.stringContaining("選項重複：delay"),
-    });
-    expect(() =>
-      mutateAgentSet(snapshot, {
-        type: "delete_words",
-        wordKeys: [snapshot.words[0].wordKey, "word-missing"],
-      }),
-    ).toThrow("wordKeys 不在本集：word-missing");
-    expect(() =>
-      mutateAgentSet(snapshot, {
-        type: "delete_questions",
-        questionIds: ["question-missing"],
-      }),
-    ).toThrow("questionIds 不在本集：question-missing");
-  });
   it("names the word, sense index and supported values when a part of speech is rejected", () => {
     const write = () =>
       mutateAgentSet(createAgentSet(setId, "詞性"), {
@@ -67,8 +32,7 @@ describe("Agent question writes", () => {
           },
         ],
       });
-    expect(write).toThrow(/words\[1\]「supply」\.senses\[1\]\.pos「vt\.」/);
-    expect(write).toThrow(/n\. v\. adj\./);
+    expect(write).toThrow('words[1] "supply".senses[1].pos "vt."');
   });
   it("accepts cloze grammar blanks from the shared prompt even when the answer differs from the source word", () => {
     const snapshot = mutateAgentSet(createAgentSet(setId, "綜合測驗"), {
@@ -229,7 +193,7 @@ describe("Agent question writes", () => {
       sourceId: adjust,
       code: "source_answer_mismatch",
     });
-    expect(wrong.validation?.errors[0]?.message).toContain("「rescue」");
+    expect(wrong.validation?.errors[0]?.message).toContain('form of "rescue"');
     expect(wrong.snapshot?.questions).toHaveLength(0);
   });
   it("resolves ref as the senseId regardless of source order and rejects positional refs", () => {

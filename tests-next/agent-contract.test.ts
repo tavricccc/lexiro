@@ -57,7 +57,7 @@ describe("agent set contract", () => {
         type: "put_words",
         words: [{ ...words.words[0], wordKey: "word-foreign" }],
       }),
-    ).toThrow("本集");
+    ).toThrow("is not in this set");
   });
   it("rejects question sources outside the delegated set", () => {
     const snapshot = mutateAgentSet(
@@ -82,7 +82,7 @@ describe("agent set contract", () => {
     expect(result.validation?.status).toBe("rejected");
     expect(result.validation?.savedCount).toBe(0);
     expect(result.validation?.errors[0].message).toContain(
-      "wordKey word-foreign／senseId sense-foreign 不在本集",
+      "wordKey word-foreign / senseId sense-foreign is not in this set",
     );
     expect(result.snapshot?.questions).toEqual([]);
   });

@@ -60,7 +60,7 @@ export function parseAgentGeneratedQuestions(
     requireEnglish: false,
   });
   if (!parsed.valid) throw new Error(parsed.error);
-  if (parsed.data.kind !== "questions") throw new Error("題目資料格式錯誤");
+  if (parsed.data.kind !== "questions") throw new Error("Invalid question data");
   return parsed.data.questions.map(question => {
     const normalized = canonicalizeQuestion(question.kind === "reading"
       ? { ...question, wordKeys: [...new Set(question.questions.map(q => q.wordKey))] } : question);
@@ -82,13 +82,13 @@ export function collectAgentGeneratedQuestions(
     const senseId = typeof raw.senseId === "string" ? raw.senseId : undefined;
     const ref = typeof raw.ref === "string" ? raw.ref : undefined;
     if (senseId && ref && senseId !== ref)
-      throw new AgentQuestionError("source_ref_conflict", "ref", "ref 與 senseId 指向不同來源；ref 就是 senseId，只填其一即可。", senseId);
+      throw new AgentQuestionError("source_ref_conflict", "ref", "ref and senseId point to different sources; ref is the senseId, so give only one.", senseId);
     if (!senseId && ref && !byId.has(ref))
-      throw new AgentQuestionError("unknown_source", "ref", `來源 ${ref} 不存在於本集或本次指定來源。ref 須照抄 brief 來源的 ref（即 senseId），不是位置編號。`, ref);
+      throw new AgentQuestionError("unknown_source", "ref", `Source ${ref} is not in this set or the requested senseIds. Copy ref exactly from the brief (it equals the senseId); it is not a position number.`, ref);
     const id = senseId ?? ref ?? (slots.length === 1 ? slots[0].sense.id : undefined);
-    if (!id) throw new AgentQuestionError("missing_source", "senseId", "請提供本題的 senseId；只有單一來源時可省略。");
+    if (!id) throw new AgentQuestionError("missing_source", "senseId", "Give this item a senseId; it may be omitted only when there is a single source.");
     const slot = byId.get(id);
-    if (!slot) throw new AgentQuestionError("unknown_source", "senseId", `來源 ${id} 不存在於本集或本次指定來源。`, id);
+    if (!slot) throw new AgentQuestionError("unknown_source", "senseId", `Source ${id} is not in this set or the requested senseIds.`, id);
     return slot;
   };
   const rawItems = kind === "vocabulary" && isRecord(output) && Array.isArray(output.items) ? output.items : [output];
@@ -109,21 +109,21 @@ export function collectAgentGeneratedQuestions(
       if (kind === "vocabulary" || kind === "cloze" || kind === "wordBank") {
         const prose = kind === "vocabulary" ? String(raw.sentence) : String(data.passage);
         const usage = typeof raw.usage === "string" ? raw.usage : answer;
-        const location = locateUsageAnswer(prose, usage, answer);
+        const location = locateUsageAnswer(prose, usage, answer, "en");
         if ("issue" in location) throw new AgentQuestionError("answer_not_locatable", "usage", location.issue, slot.sense.id);
         if (kind !== "cloze") {
-          const issue = sourceWordFormIssue(slot.word.word, slot.sense.pos, answer, usage);
+          const issue = sourceWordFormIssue(slot.word.word, slot.sense.pos, answer, usage, "en");
           if (issue) {
             const other = slots.find(o => o.word !== slot.word && !sourceWordFormIssue(o.word.word, o.sense.pos, answer, usage));
             throw new AgentQuestionError("source_answer_mismatch", "answer",
-              other ? `${issue} 答案是本集「${other.word.word}」的詞形，可能填錯來源；請確認 senseId（${other.sense.id}）。` : issue, slot.sense.id);
+              other ? `${issue} The answer is a form of "${other.word.word}" in this set; check whether senseId should be ${other.sense.id}.` : issue, slot.sense.id);
           }
         }
       }
       if (Array.isArray(raw.distractors)) {
         const options = [answer, ...raw.distractors as string[]].map(option => option.trim().toLocaleLowerCase());
         const repeated = [...new Set(options.filter((option, index) => options.indexOf(option) !== index))];
-        if (repeated.length) throw new AgentQuestionError("duplicate_options", "distractors", `選項重複：${repeated.join("、")}（正解「${answer}」也算一個選項）；請換成不同的錯項。`, slot.sense.id);
+        if (repeated.length) throw new AgentQuestionError("duplicate_options", "distractors", `Repeated options: ${repeated.join(", ")} (the answer "${answer}" counts as an option); use different distractors.`, slot.sense.id);
       }
       return { ...raw, ref: `s${slots.indexOf(slot) + 1}` };
     });
@@ -135,7 +135,7 @@ export function collectAgentGeneratedQuestions(
     if (typeof prose !== "string") return [];
     const actual = countEnglishWords(prose);
     return actual < range.min || actual > range.max ? [{ severity: "warning", code: actual < range.min ? "prose_too_short" : "prose_too_long",
-      field: kind === "vocabulary" ? "sentence" : "passage", message: `篇幅 ${actual} 字；一般建議 ${range.min}–${range.max} 字，仍可依使用者要求儲存。`,
+      field: kind === "vocabulary" ? "sentence" : "passage", message: `Length is ${actual} words; ${range.min}–${range.max} is recommended. Saved anyway; follow the user's request.`,
       actual, recommendedMin: range.min, recommendedMax: range.max }] : [];
   });
 }

@@ -25,9 +25,9 @@ export function mutateAgentFolders(
     next.push(folder);
   } else {
     const current = next.find(f => f.id === action.folderId);
-    if (!current || current.id === UNCATEGORIZED_FOLDER_ID) throw new Error("找不到可編輯的資料夾");
+    if (!current || current.id === UNCATEGORIZED_FOLDER_ID) throw new Error(`Folder ${action.folderId} not found or not editable (the uncategorized folder cannot be changed)`);
     if (action.type === "delete_folder") {
-      if (occupiedFolderIds.includes(current.id) || next.some(f => f.parentId === current.id)) throw new Error("資料夾仍有內容，請先移出或明確刪除單字集及子資料夾");
+      if (occupiedFolderIds.includes(current.id) || next.some(f => f.parentId === current.id)) throw new Error("Folder is not empty; move or delete its sets and subfolders first");
       next.splice(next.indexOf(current), 1); folder = null;
     } else {
       if (action.name !== undefined) current.name = action.name;
@@ -39,9 +39,9 @@ export function mutateAgentFolders(
     }
   }
   if (folder) {
-    if (folder.parentId && (!next.some(f => f.id === folder!.parentId) || folder.parentId === UNCATEGORIZED_FOLDER_ID)) throw new Error("父資料夾不存在或不能作為父層");
-    if (folder.parentId && collectFolderIds(folders, folder.id).has(folder.parentId)) throw new Error("資料夾不能移入自己或子資料夾");
-    if (next.some(f => f.id !== folder!.id && f.parentId === folder!.parentId && f.name.trim().toLocaleLowerCase() === folder!.name.trim().toLocaleLowerCase())) throw new Error("同一層已有同名資料夾");
+    if (folder.parentId && (!next.some(f => f.id === folder!.parentId) || folder.parentId === UNCATEGORIZED_FOLDER_ID)) throw new Error(`parentId ${folder.parentId} does not exist or cannot be a parent`);
+    if (folder.parentId && collectFolderIds(folders, folder.id).has(folder.parentId)) throw new Error("A folder cannot be moved into itself or its own subfolder");
+    if (next.some(f => f.id !== folder!.id && f.parentId === folder!.parentId && f.name.trim().toLocaleLowerCase() === folder!.name.trim().toLocaleLowerCase())) throw new Error(`A folder named "${folder.name}" already exists at this level`);
   }
   return { folders: next, folder, revision: agentFoldersRevision(next) };
 }

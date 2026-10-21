@@ -173,15 +173,17 @@ function entryReadings(source: string): string[] {
   return readings.map((reading) => reading.trim());
 }
 
+/** Messages are Chinese for the app; the Agent contract asks for English. */
 export function sourceWordFormIssue(
   source: string,
   pos: string,
   answer: string,
   usage?: string,
+  language: "zh" | "en" = "zh",
 ): string | null {
   let first: string | null = null;
   for (const reading of entryReadings(source)) {
-    const issue = readingIssue(source, reading, pos, answer, usage);
+    const issue = readingIssue(source, reading, pos, answer, usage, language);
     if (!issue) return null;
     first ??= issue;
   }
@@ -193,7 +195,8 @@ function readingIssue(
   reading: string,
   pos: string,
   answer: string,
-  usage?: string,
+  usage: string | undefined,
+  language: "zh" | "en",
 ): string | null {
   const sourceWords = tokens(reading);
   const candidate = normalized(answer);
@@ -220,7 +223,9 @@ function readingIssue(
               fixedSource.some((word) => hasWordForm(word, part)),
             ));
   if (!related)
-    return `「${answer}」不是指定單字「${source}」的合法詞形；請保留來源單字，不要換成同義詞或衍生詞`;
+    return language === "en"
+      ? `"${answer}" is not a form of the source "${source}"; use an inflection of the source itself, not a synonym or derived word`
+      : `「${answer}」不是指定單字「${source}」的合法詞形；請保留來源單字，不要換成同義詞或衍生詞`;
   // Vocabulary and word-bank replies anchor a phrase with its complete
   // actual usage, even when the answer removes only a contiguous part.
   if (
@@ -228,6 +233,8 @@ function readingIssue(
     sourceWords.length > 1 &&
     !hasPhraseUsage(sourceWords, tokens(usage))
   )
-    return `「${usage}」沒有保留來源片語「${source}」的組成；請使用實際詞形並保留片語中的字詞`;
+    return language === "en"
+      ? `usage "${usage}" does not contain the words of the source phrase "${source}"; keep every fixed word of the phrase (inflected forms are fine)`
+      : `「${usage}」沒有保留來源片語「${source}」的組成；請使用實際詞形並保留片語中的字詞`;
   return null;
 }

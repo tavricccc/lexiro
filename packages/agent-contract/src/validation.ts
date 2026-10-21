@@ -28,7 +28,7 @@ export function validateQuestionItems(
   const sources = new Map(snapshot.words.flatMap(w => w.senses.map(s => [s.id as string, w.word] as const)));
   if (!items.length || items.length > 200) {
     report.status = "rejected";
-    report.errors.push({ itemId: "batch", sourceIndex: 0, severity: "error", code: "invalid_batch_size", field: "items", message: "每次請提交 1–200 個獨立題目或題組。" });
+    report.errors.push({ itemId: "batch", sourceIndex: 0, severity: "error", code: "invalid_batch_size", field: "items", message: "Submit 1–200 independent items or passage groups per batch." });
     return { questions, report };
   }
   items.forEach((value, sourceIndex) => {
@@ -41,7 +41,7 @@ export function validateQuestionItems(
       const context = { itemId, sourceIndex, ...(sourceId ? { sourceId, sourceWord: sources.get(sourceId) } : {}) };
       report.warnings.push(...warnings(value).map(warning => ({ ...context, ...warning })));
       for (const question of parsed) if (snapshot.questions.some(old => old.fingerprint === question.fingerprint)) {
-        report.warnings.push({ ...context, severity: "warning", code: "matching_question", field: "content", message: "本集已有完全相同內容的題目，可依使用者要求保留或調整。" });
+        report.warnings.push({ ...context, severity: "warning", code: "matching_question", field: "content", message: "This set already has a question with identical content; keep or change it as the user prefers." });
       }
       questions.push(...parsed);
       report.validCount++;
@@ -52,7 +52,7 @@ export function validateQuestionItems(
       const field = reason instanceof AgentQuestionError ? reason.field
         : reason instanceof z.ZodError ? reason.issues[0]?.path.join(".") || "output" : "output";
       report.errors.push({ itemId, sourceIndex, ...(sourceId ? { sourceId, sourceWord: sources.get(sourceId) } : {}), severity: "error", code, field,
-        message: reason instanceof Error ? reason.message : "題目格式錯誤" });
+        message: reason instanceof Error ? reason.message : "Invalid question format" });
       report.failedCount++;
       report.items.push({ itemId, sourceIds: sourceId ? [sourceId] : [], questionIds: [], valid: false });
     }
