@@ -51,7 +51,7 @@ export function mutateAgentResource(
       throw httpError(
         404,
         "question_not_found",
-        `questionId ${action.questionId} 不在本集；用 read questions 取得 id`,
+        `questionId ${action.questionId} is not in this set; get ids from read questions`,
       );
     const immutable = ["id", "fingerprint", "createdAt", "updatedAt"].filter(
       (key) => key in action.patch,
@@ -60,7 +60,7 @@ export function mutateAgentResource(
       throw httpError(
         400,
         "identity_fields_are_immutable",
-        `patch 不可包含 ${immutable.join("、")}；這些欄位由系統維護`,
+        `patch cannot contain ${immutable.join(", ")}; the system maintains these fields`,
       );
     if (!action.childId)
       return mutateAgentSet(
@@ -80,8 +80,8 @@ export function mutateAgentResource(
         404,
         "child_not_found",
         question.kind === "reading"
-          ? `childId ${action.childId} 不在題目 ${question.id}；可用：${question.questions.map((child) => child.id).join("、")}`
-          : `題目 ${question.id} 不是文章題，沒有子題；請省略 childId`,
+          ? `childId ${action.childId} is not in question ${question.id}; available: ${question.questions.map((child) => child.id).join(", ")}`
+          : `Question ${question.id} is not a passage and has no children; omit childId`,
       );
     return mutateAgentSet(
       snapshot,
@@ -107,7 +107,7 @@ export function mutateAgentResource(
     throw httpError(
       404,
       "word_not_found",
-      `wordKey ${action.wordKey} 不在本集；用 read words 取得 wordKey`,
+      `wordKey ${action.wordKey} is not in this set; get wordKey from read words`,
     );
   if (action.type === "edit_word")
     return mutateAgentSet(
@@ -121,15 +121,15 @@ export function mutateAgentResource(
       404,
       "sense_not_found",
       action.senseId
-        ? `senseId ${action.senseId} 不在單字「${word.word}」；可用：${word.senses.map((sense) => `${sense.id}（${sense.pos} ${sense.meaningZh}）`).join("、")}`
-        : `action "${action.action}" 需要 senseId；可用：${word.senses.map((sense) => `${sense.id}（${sense.pos} ${sense.meaningZh}）`).join("、")}`,
+        ? `senseId ${action.senseId} is not a sense of "${word.word}"; available: ${word.senses.map((sense) => `${sense.id} (${sense.pos} ${sense.meaningZh})`).join(", ")}`
+        : `action "${action.action}" needs senseId; available: ${word.senses.map((sense) => `${sense.id} (${sense.pos} ${sense.meaningZh})`).join(", ")}`,
     );
   if (action.action === "delete") {
     if (word.senses.length === 1)
       throw httpError(
         400,
         "delete_word_to_remove_last_sense",
-        `「${word.word}」只剩這一個詞義；要移除請改用 delete_words 刪除整個單字`,
+        `"${word.word}" has only this sense; use delete_words to remove the whole word`,
       );
     return mutateAgentSet(
       snapshot,
@@ -147,10 +147,10 @@ export function mutateAgentResource(
     throw httpError(
       400,
       "new_sense_requires_pos_and_meaningZh",
-      `新增詞義的 patch 缺少 ${["pos", "meaningZh"].filter((key) => !patch[key as "pos" | "meaningZh"]).join("、")}`,
+      `A new sense needs ${["pos", "meaningZh"].filter((key) => !patch[key as "pos" | "meaningZh"]).join(" and ")} in patch`,
     );
   if (!Object.keys(patch).length)
-    throw httpError(400, "empty_patch", "patch 沒有任何要修改的欄位");
+    throw httpError(400, "empty_patch", "patch has no fields to change");
   const { appendExamples, ...changes } = patch;
   const examples = [
     ...new Set([

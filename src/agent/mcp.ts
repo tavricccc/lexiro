@@ -220,7 +220,7 @@ export async function handleAgentMcp(
                         : reason instanceof z.ZodError
                           ? "invalid_input"
                           : "invalid_content",
-                    message: issueText(reason, "操作失敗"),
+                    message: issueText(reason, "Operation failed"),
                   },
                 }),
               },
@@ -244,11 +244,15 @@ export async function handleAgentMcp(
       throw fail(
         400,
         "unsupported_action",
-        `action.type 可用：${allowed.join("|")}`,
+        `action.type must be one of ${allowed.join("|")}`,
       );
     if (folderTypes.includes(act.type)) {
       if (identity.setId)
-        throw fail(403, "folder_outside_scope", "此授權只限單一單字集");
+        throw fail(
+          403,
+          "folder_outside_scope",
+          "This authorization is limited to one vocabulary set",
+        );
       return repo.mutateFolders(
         identity.uid,
         args.expectedRevision as string | undefined,
@@ -257,7 +261,7 @@ export async function handleAgentMcp(
       );
     }
     const setId = (args.setId as string | undefined) ?? identity.setId;
-    if (!setId) throw fail(400, "set_id_required", "此操作需要 setId");
+    if (!setId) throw fail(400, "set_id_required", "This action needs setId");
     return applyAgentMutation(
       repo,
       identity,

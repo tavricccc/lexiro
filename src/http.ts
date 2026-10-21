@@ -55,7 +55,7 @@ export const fingerprint = async (value: string) =>
     .join("");
 type Issue = { path?: PropertyKey[]; message?: string };
 // Flatten zod issues (or a zod-style JSON message) into "path: reason; ..." for LLM clients.
-export function issueText(reason: unknown, fallback = "輸入格式錯誤"): string {
+export function issueText(reason: unknown, fallback = "Invalid input"): string {
   let issues: Issue[] | undefined;
   if (
     reason &&
@@ -81,8 +81,8 @@ export function issueText(reason: unknown, fallback = "輸入格式錯誤"): str
     .slice(0, 5)
     .map(
       (issue) =>
-        `${issue.path?.length ? `${issue.path.map(String).join(".")}: ` : ""}${issue.message ?? "格式錯誤"}`,
+        `${issue.path?.length ? `${issue.path.map(String).join(".")}: ` : ""}${issue.message ?? "invalid format"}`,
     )
     .join("; ");
-  return issues.length > 5 ? `${text}；另有 ${issues.length - 5} 項` : text;
+  return issues.length > 5 ? `${text}; ${issues.length - 5} more` : text;
 }

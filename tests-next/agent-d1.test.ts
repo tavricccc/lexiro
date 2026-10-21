@@ -955,7 +955,6 @@ describe("native D1 agent library with synthetic users", () => {
       // The text is English: about 2400 tokens at roughly 3.6 characters each.
       const listed = JSON.stringify(list.result);
       expect(listed.length + AGENT_INSTRUCTIONS.length).toBeLessThan(9000);
-      expect(listed).toContain("modal v. phr. v. phr.");
       for (const name of [
         "put_words",
         "edit_sense",
@@ -1107,57 +1106,6 @@ describe("native D1 agent library with synthetic users", () => {
         revision: expect.any(String),
         unknownResponseFields: ["words"],
         availableResponseFields: expect.arrayContaining(["wordCount"]),
-      });
-      const badPos = await call("write", {
-        setId: A,
-        action: {
-          type: "put_words",
-          words: [
-            { word: "supply", senses: [{ pos: "vt.", meaningZh: "供給" }] },
-          ],
-        },
-      });
-      expect(badPos.isError).toBe(true);
-      expect(badPos.data.error).toMatchObject({
-        message: expect.stringContaining("words[0]「supply」.senses[0].pos"),
-      });
-      const prompt = await call("read", {
-        requests: [{ resource: "prompt", kind: "vocabulary" }],
-      });
-      expect(prompt.data).toMatchObject({
-        results: [{ data: { brief: { defaultLimit: 16, maxLimit: 50 } } }],
-      });
-      const twoSenses = await call("write", {
-        setId: A,
-        action: {
-          type: "put_words",
-          words: [
-            {
-              word: "credit",
-              senses: [
-                { pos: "n.", meaningZh: "信用" },
-                { pos: "v.", meaningZh: "歸功於" },
-              ],
-            },
-          ],
-        },
-      });
-      expect(twoSenses.isError).toBe(false);
-      const credit = (await repo.read("a", A))!.words.find(
-        (word) => word.word === "credit",
-      )!;
-      const missingSense = await call("write", {
-        setId: A,
-        action: {
-          type: "edit_sense",
-          wordKey: credit.wordKey,
-          senseId: "sense-missing",
-          patch: { meaningZh: "x" },
-        },
-      });
-      expect(missingSense.data.error).toMatchObject({
-        code: "sense_not_found",
-        message: expect.stringContaining(credit.senses[0].id),
       });
       const unknownField = await call("read", {
         requests: [

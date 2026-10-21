@@ -78,7 +78,7 @@ const sourceLimits = {
 };
 
 function missing(field: string): never {
-  throw httpError(400, `missing_${field}`, `此 resource 需要 ${field}`);
+  throw httpError(400, `missing_${field}`, `This resource needs ${field}`);
 }
 function encode(value: unknown) {
   return btoa(
@@ -102,7 +102,7 @@ function decode(value: string): unknown {
     throw httpError(
       400,
       "invalid_cursor",
-      "cursor 無法解析；請原樣使用上一頁回傳的 nextCursor",
+      "cursor cannot be decoded; pass the previous page's nextCursor unchanged",
     );
   }
 }
@@ -115,7 +115,7 @@ export function project(value: unknown, fields?: string[]): unknown {
   for (const field of fields) {
     const [key, ...rest] = field.split(".");
     if (["constructor", "prototype", "__proto__"].includes(key))
-      throw httpError(400, "unknown_field", `fields 不可包含 ${key}`);
+      throw httpError(400, "unknown_field", `fields cannot contain ${key}`);
     if (!Object.hasOwn(source, key)) continue;
     const paths = groups.get(key) ?? [];
     paths.push(rest.join("."));
@@ -219,7 +219,7 @@ async function window(uid: string, q: AgentQuery) {
     throw httpError(
       400,
       "cursor_and_range_are_exclusive",
-      "cursor 不可與 from/to 併用；接續頁面只帶 cursor（可加 limit）",
+      "cursor cannot be combined with from/to; continue with cursor only (limit is allowed)",
     );
   const scope = await fingerprint(
     JSON.stringify({
@@ -249,7 +249,7 @@ async function window(uid: string, q: AgentQuery) {
     throw httpError(
       400,
       "cursor_outside_query",
-      "cursor 屬於另一組查詢條件；接續頁面時 resource、setId、q、kind 等條件須與取得該 cursor 時相同，只能改 limit/fields/view",
+      "cursor belongs to a different query; keep resource, setId, q, kind and the other filters unchanged when paging, changing only limit/fields/view",
     );
   const offset = q.from === undefined ? 0 : q.from - 1;
   const limit =
@@ -263,7 +263,7 @@ async function window(uid: string, q: AgentQuery) {
     throw httpError(
       400,
       "range_must_contain_1_to_50_items",
-      `from ${q.from ?? 1} 到 to ${q.to} 共 ${limit} 筆；每次須為 1–50 筆`,
+      `from ${q.from ?? 1} to ${q.to} is ${limit} items; each request must cover 1–50`,
     );
   return {
     scope,
@@ -361,7 +361,7 @@ export async function queryLibrary(
         ...result,
         fieldsNotFound: missing,
         fieldsHint:
-          "這些 fields 在回傳的資料裡都不存在：可能拼錯，或不是已存格式欄位（單字 wordKey/word/senses.*；詞彙題 id/prompt/options/answerIndex/explanation/whyWrong；文章 title/passage/questions.*）。",
+          "None of the returned items has these fields: they may be misspelled or not stored-format fields (words: wordKey/word/senses.*; vocabulary questions: id/prompt/options/answerIndex/explanation/whyWrong; passages: title/passage/questions.*).",
       }
     : result;
 }
@@ -454,14 +454,14 @@ async function queryRecords(
       throw httpError(
         404,
         "operation_not_found",
-        `operationId ${q.operationId} 沒有回條（不存在或已超過 30 天）`,
+        `operationId ${q.operationId} has no receipt (unknown or older than 30 days)`,
       );
     const result = JSON.parse(row.result) as Record<string, unknown>;
     if (typeof result.setId !== "string" || (setId && result.setId !== setId))
       throw httpError(
         404,
         "operation_not_found",
-        `operationId ${q.operationId} 不屬於${setId ? `單字集 ${setId}` : "可存取的單字集"}`,
+        `operationId ${q.operationId} does not belong to ${setId ? `set ${setId}` : "an accessible set"}`,
       );
     if (q.resource === "operation")
       return q.fields
@@ -593,7 +593,7 @@ async function queryRecords(
         throw httpError(
           404,
           "word_not_found",
-          `wordKey ${q.wordKey} 不在本集；用 read words 取得 wordKey`,
+          `wordKey ${q.wordKey} is not in this set; get wordKey from read words`,
         );
       return { word: project(rows[0], q.fields) };
     }
@@ -654,7 +654,7 @@ async function queryRecords(
         throw httpError(
           404,
           "question_not_found",
-          `questionId ${q.questionId} 不在本集；用 read questions 取得 id`,
+          `questionId ${q.questionId} is not in this set; get ids from read questions`,
         );
       const question = JSON.parse(row.payload) as LibraryQuestion;
       if (q.resource === "questions" && question.kind === "reading") {
@@ -687,7 +687,7 @@ async function queryRecords(
           throw httpError(
             404,
             "child_not_found",
-            `題目 ${question.id} 不是文章題，沒有子題；請省略 childId`,
+            `Question ${question.id} is not a passage and has no children; omit childId`,
           );
         const child = question.questions.find(
           (child) => child.id === q.childId,
@@ -696,7 +696,7 @@ async function queryRecords(
           throw httpError(
             404,
             "child_not_found",
-            `childId ${q.childId} 不在題目 ${question.id}；可用：${question.questions.map((item) => item.id).join("、")}`,
+            `childId ${q.childId} is not in question ${question.id}; available: ${question.questions.map((item) => item.id).join(", ")}`,
           );
         return {
           parent: questionSummary(question),

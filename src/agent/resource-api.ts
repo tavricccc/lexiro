@@ -87,7 +87,7 @@ export async function handleAgentAccess(
     if (request.headers.get("accept")?.includes("application/json"))
       return Response.json({ ...summary, instructions });
     return new Response(
-      `# Lexiro 單字集授權\n\n${JSON.stringify(summary)}\n\n${instructions}`,
+      `# Lexiro vocabulary set access\n\n${JSON.stringify(summary)}\n\n${instructions}`,
       { headers: { "Content-Type": "text/plain; charset=utf-8" } },
     );
   }

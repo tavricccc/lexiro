@@ -178,7 +178,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
         if (attempt === 3) {
           const error = new HttpError(409, "stale_set");
           error.message =
-            "同帳號同時有其他寫入（App 同步或其他代理），重試 3 次仍衝突；本次未寫入，請稍後用同一個 operationId 重送。";
+            "Other writes to this account (app sync or another agent) kept conflicting after 3 retries; nothing was written. Resend later with the same operationId.";
           throw error;
         }
       }
@@ -201,7 +201,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
     const current = agentSetRevision(before.snapshot);
     if (revision !== undefined && current !== revision) {
       const error = new HttpError(409, "stale_set");
-      error.message = `expectedRevision ${revision} 已過期，本集目前 revision 為 ${current}；本次未寫入。省略 expectedRevision 會套用到最新內容，或重讀後帶新 revision 重送。`;
+      error.message = `expectedRevision ${revision} is stale; the set is now at revision ${current} and nothing was written. Omit expectedRevision to apply to the latest content, or re-read and resend with the new revision.`;
       throw error;
     }
     const oldQuestions = new Set(before.snapshot.questions.map((q) => q.id));

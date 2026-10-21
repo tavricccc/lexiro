@@ -88,7 +88,7 @@ export async function readAgentBatch(
             code: "response_budget_exceeded",
             requiredCharacters: size,
             message:
-              "縮小範圍、改 summary 或只指定需要的 fields；完整提示詞不會被截斷。",
+              "Narrow the range, use summary, or request only the fields you need; full prompts are never truncated.",
           },
         });
       } else {
@@ -101,7 +101,7 @@ export async function readAgentBatch(
         index,
         error: {
           code: reason instanceof HttpError ? reason.code : "invalid_query",
-          message: issueText(reason, "查詢失敗").slice(0, 600),
+          message: issueText(reason, "Query failed").slice(0, 600),
         },
       });
     }
@@ -152,7 +152,7 @@ export async function applyAgentMutation(
       } catch (reason) {
         if (reason instanceof HttpError) throw reason;
         const error = new HttpError(400, "invalid_content");
-        error.message = issueText(reason, "內容格式錯誤");
+        error.message = issueText(reason, "Invalid content");
         throw error;
       }
     },

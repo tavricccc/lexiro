@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@cloudflare/workers-oauth-provider": "^1.2.3",
-    "@lexiro/agent-contract": "file:vendor/lexiro-agent-contract-4.5.0.tgz",
+    "@lexiro/agent-contract": "file:vendor/lexiro-agent-contract-4.6.0.tgz",
     "@lexiro/ai-contract": "file:vendor/lexiro-ai-contract-5.0.0.tgz",
     "@modelcontextprotocol/sdk": "^1.32.1",
     "jose": "^6.2.12",
