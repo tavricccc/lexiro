@@ -65,15 +65,27 @@ const normalized = (text: string): string =>
   text.trim().toLocaleLowerCase().replaceAll("’", "'");
 const tokens = (text: string): string[] =>
   normalized(text).match(/\p{L}+(?:['-]\p{L}+)*/gu) ?? [];
+// Dictionary slot markers: sb/sth, one's, and grammar slots such as V-ing.
 const placeholder = (word: string): boolean =>
   /^(?:sb|sth|somebody|someone|something)(?:'s)?$/.test(word) ||
-  word === "one's";
+  /^(?:one's|v|v-ing|ving|v-ed|ved|n|adj|adv)$/.test(word);
+const REFLEXIVES = new Set([
+  "myself",
+  "yourself",
+  "himself",
+  "herself",
+  "itself",
+  "ourselves",
+  "yourselves",
+  "themselves",
+]);
 
 /** A source POS describes the taught sense, not every legal use of its lemma. */
 function hasWordForm(source: string, surface: string, posHint = ""): boolean {
   const word = spelling(normalized(source));
   const candidate = spelling(normalized(surface));
   if (candidate === word) return true;
+  if (word === "oneself") return REFLEXIVES.has(candidate);
 
   if (!/\s/.test(candidate)) {
     if (VERB_VARIANTS[candidate]?.includes(word)) return true;
@@ -144,15 +156,46 @@ function hasPhraseUsage(source: string[], usage: string[]): boolean {
   return true;
 }
 
+/**
+ * Readings of a dictionary entry: parenthesized parts such as "(of...)" are
+ * optional, and slash alternatives such as "get/be used to" or "a/an" each
+ * form a complete entry on their own.
+ */
+function entryReadings(source: string): string[] {
+  const bare = source.replace(/\([^)]*\)/gu, " ").trim() || source;
+  let readings = [""];
+  for (const part of bare.split(/\s+/u)) {
+    const choices = part.includes("/") ? part.split("/").filter(Boolean) : [part];
+    readings = readings
+      .flatMap((reading) => choices.map((choice) => `${reading} ${choice}`))
+      .slice(0, 16);
+  }
+  return readings.map((reading) => reading.trim());
+}
+
 export function sourceWordFormIssue(
   source: string,
   pos: string,
   answer: string,
   usage?: string,
 ): string | null {
-  // Parenthesized parts such as "(of...)" are optional extensions of the
-  // entry; the bare phrase is already a complete, correct usage.
-  const sourceWords = tokens(source.replace(/\([^)]*\)/gu, " ").trim() || source);
+  let first: string | null = null;
+  for (const reading of entryReadings(source)) {
+    const issue = readingIssue(source, reading, pos, answer, usage);
+    if (!issue) return null;
+    first ??= issue;
+  }
+  return first;
+}
+
+function readingIssue(
+  source: string,
+  reading: string,
+  pos: string,
+  answer: string,
+  usage?: string,
+): string | null {
+  const sourceWords = tokens(reading);
   const candidate = normalized(answer);
   const answerWords = tokens(candidate);
   const fixedSource = sourceWords.filter((word) => !placeholder(word));

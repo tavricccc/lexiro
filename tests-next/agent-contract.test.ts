@@ -81,7 +81,9 @@ describe("agent set contract", () => {
     });
     expect(result.validation?.status).toBe("rejected");
     expect(result.validation?.savedCount).toBe(0);
-    expect(result.validation?.errors[0].message).toContain("單字集");
+    expect(result.validation?.errors[0].message).toContain(
+      "wordKey word-foreign／senseId sense-foreign 不在本集",
+    );
     expect(result.snapshot?.questions).toEqual([]);
   });
   it("deletes owned words and the whole set", () => {

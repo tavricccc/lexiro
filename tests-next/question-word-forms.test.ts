@@ -100,4 +100,21 @@ describe("source word forms", () => {
       ),
     ).toBeNull();
   });
+  it("reads dictionary-style entries: slots, reflexives, alternatives and optional parts", () => {
+    for (const [source, pos, answer, usage] of [
+      ["in return (for)", "phr.", "in return", "help in return"],
+      ["in return (for)", "phr.", "in return for", "in return for help"],
+      ["be used to V-ing", "phr.", "is used to", "is used to working"],
+      ["get/be used to", "phr.", "got used to", "got used to it"],
+      ["a/an", "det.", "an", "an apple"],
+      ["by oneself", "phr.", "by herself", "by herself"],
+      ["take part (in)", "phr.", "took part", "took part in"],
+    ] as const)
+      expect(sourceWordFormIssue(source, pos, answer, usage)).toBeNull();
+    expect(
+      sourceWordFormIssue("get/be used to", "phr.", "got accustomed to", "got accustomed to it"),
+    ).not.toBeNull();
+    expect(sourceWordFormIssue("by oneself", "phr.", "by chance", "by chance")).not.toBeNull();
+    expect(sourceWordFormIssue("mysterious", "adj.", "mysteriously")).not.toBeNull();
+  });
 });

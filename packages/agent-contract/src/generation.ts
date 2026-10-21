@@ -122,7 +122,8 @@ export function collectAgentGeneratedQuestions(
       }
       if (Array.isArray(raw.distractors)) {
         const options = [answer, ...raw.distractors as string[]].map(option => option.trim().toLocaleLowerCase());
-        if (new Set(options).size !== options.length) throw new AgentQuestionError("duplicate_options", "distractors", "選項與正解不可重複。", slot.sense.id);
+        const repeated = [...new Set(options.filter((option, index) => options.indexOf(option) !== index))];
+        if (repeated.length) throw new AgentQuestionError("duplicate_options", "distractors", `選項重複：${repeated.join("、")}（正解「${answer}」也算一個選項）；請換成不同的錯項。`, slot.sense.id);
       }
       return { ...raw, ref: `s${slots.indexOf(slot) + 1}` };
     });

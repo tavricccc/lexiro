@@ -141,9 +141,13 @@ function checkedQuestions(
       question.kind === "multipleChoice" &&
       question.questionStyle !== "vocabulary"
     )
-      throw new Error("只支援學測詞彙及文章題型");
+      throw new Error(`題目 ${question.id} 的 questionStyle「${question.questionStyle}」不支援；單選題只能是 vocabulary，其他請用文章題型`);
     if (!questionUsesWords(question, byKey))
-      throw new Error("題目只能引用這個單字集內的詞義");
+      throw new Error(
+        question.kind === "reading"
+          ? `題目 ${question.id} 的 wordKeys 含不在本集的單字：${question.wordKeys.filter((key) => !byKey[key]).join("、") || "（wordKeys 與子題不一致）"}`
+          : `題目 ${question.id} 的 wordKey ${question.wordKey}／senseId ${question.senseId} 不在本集；請用 read words 取得的 wordKey 與 senses.id`,
+      );
     if (
       question.kind === "reading" &&
       question.questions.some(
@@ -151,10 +155,17 @@ function checkedQuestions(
           !byKey[child.wordKey]?.senses.some((s) => s.id === child.senseId),
       )
     )
-      throw new Error("文章子題只能引用這個單字集內的詞義");
+      throw new Error(
+        `題目 ${question.id} 的子題 ${question.questions
+          .filter((child) => !byKey[child.wordKey]?.senses.some((s) => s.id === child.senseId))
+          .map((child) => `${child.id}（wordKey ${child.wordKey}／senseId ${child.senseId}）`)
+          .join("、")} 引用的詞義不在本集`,
+      );
   }
-  if (new Set(parsed.data.questions.map((q) => q.id)).size !== values.length)
-    throw new Error("題目 ID 不可重複");
+  const ids = parsed.data.questions.map((q) => q.id);
+  const repeated = ids.filter((id, index) => ids.indexOf(id) !== index);
+  if (repeated.length || ids.length !== values.length)
+    throw new Error(`題目 ID 重複：${[...new Set(repeated)].join("、") || "（同批有重複題目）"}`);
   return parsed.data.questions;
 }
 export function validateAgentSnapshot(
@@ -318,10 +329,11 @@ export function mutateAgentSet(
     });
   }
   if (action.type === "delete_words") {
-    if (
-      action.wordKeys.some((key) => !next.words.some((w) => w.wordKey === key))
-    )
-      throw new Error("只能刪除本集內的單字");
+    const unknown = action.wordKeys.filter(
+      (key) => !next.words.some((w) => w.wordKey === key),
+    );
+    if (unknown.length)
+      throw new Error(`wordKeys 不在本集：${unknown.join("、")}；本次未刪除任何單字`);
     next.words = next.words.filter((w) => !action.wordKeys.includes(w.wordKey));
   }
   next.memberships = next.words.map((w) => ({
@@ -336,10 +348,11 @@ export function mutateAgentSet(
       ) && questionBelongsToMemberships(q, next.memberships),
   );
   if (action.type === "delete_questions") {
-    if (
-      action.questionIds.some((id) => !next.questions.some((q) => q.id === id))
-    )
-      throw new Error("只能刪除本集內的題目");
+    const unknown = action.questionIds.filter(
+      (id) => !next.questions.some((q) => q.id === id),
+    );
+    if (unknown.length)
+      throw new Error(`questionIds 不在本集：${unknown.join("、")}；本次未刪除任何題目`);
     next.questions = next.questions.filter(
       (q) => !action.questionIds.includes(q.id),
     );

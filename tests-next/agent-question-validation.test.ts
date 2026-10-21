@@ -17,6 +17,41 @@ function library() {
   }).snapshot!;
 }
 describe("Agent question writes", () => {
+  it("names the repeated option and unknown IDs it refuses", () => {
+    const snapshot = library(),
+      senseId = snapshot.words[0].senses[0].id;
+    const repeated = mutateAgentSet(snapshot, {
+      type: "generated_questions",
+      kind: "vocabulary",
+      difficulty: 1,
+      output: {
+        items: [
+          {
+            senseId,
+            sentence: "They rescue stranded hikers before sunset.",
+            answer: "rescue",
+            distractors: ["delay", "Delay", "watch"],
+          },
+        ],
+      },
+    });
+    expect(repeated.validation?.errors[0]).toMatchObject({
+      code: "duplicate_options",
+      message: expect.stringContaining("選項重複：delay"),
+    });
+    expect(() =>
+      mutateAgentSet(snapshot, {
+        type: "delete_words",
+        wordKeys: [snapshot.words[0].wordKey, "word-missing"],
+      }),
+    ).toThrow("wordKeys 不在本集：word-missing");
+    expect(() =>
+      mutateAgentSet(snapshot, {
+        type: "delete_questions",
+        questionIds: ["question-missing"],
+      }),
+    ).toThrow("questionIds 不在本集：question-missing");
+  });
   it("names the word, sense index and supported values when a part of speech is rejected", () => {
     const write = () =>
       mutateAgentSet(createAgentSet(setId, "詞性"), {
