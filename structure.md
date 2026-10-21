@@ -21,7 +21,7 @@
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
 | `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |
 | `agent-migrations/0001_agent_access.sql`、`0002_rate_limits.sql` | Agent D1 schema：URL scope／到期／撤銷與一次性 OAuth 授權請求，以及未認證端點（`/authorize`、`/oauth/register`、`/app-auth/token`）以端點＋IP 固定 60 秒視窗的計數表 `agent_rate_limits`，過期列沿用 7 天 cutoff 由 Cron 清除；與教材 migrations 分開 |
-| `vendor/lexiro-agent-contract-4.3.0.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功，支援綜合測驗文法空格；每批 200 筆，不含模型金鑰或 private prompt |
+| `vendor/lexiro-agent-contract-4.4.0.tgz` | 公開共用教材／資料夾／雲端 DTO、Agent 逐題驗證與部分成功，支援綜合測驗文法空格；每批 200 筆，不含模型金鑰或 private prompt |
 | `wrangler.agent-local.toml`、`tests-next/agent-local-entry.ts`、`agent-migrations/fixtures/local-agent.sql` | 僅本機 D1、合成帳號及資料 repository；不出現在正式入口 |
 | `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |
 | `tests-next/agent-rate-limit.test.ts`、`tests-next/app-auth.test.ts` | 未認證端點限流邊界與 429 回條；App auth code 的 PKCE、單次兌換、到期與清除行為 |

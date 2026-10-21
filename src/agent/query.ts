@@ -151,9 +151,9 @@ export function projectReceipt(
 }
 const structureHints: Record<string, string> = {
   edit_question:
-    "edit_question 的 patch 直接用已存題格式欄位（prompt/options/answerIndex/explanation/whyWrong），不需換工具；distractors、sentence、answer 是生成題欄位，不適用。",
+    "edit_question patches use stored-question fields (prompt/options/answerIndex/explanation/whyWrong); no need to switch tools. distractors, sentence and answer are generation fields and do not apply.",
   put_questions:
-    "put_questions 用已存題格式（prompt/options/answerIndex，即 read 回來的格式）；生成題格式（sentence/answer/distractors）請用 generated_questions。",
+    "put_questions takes stored questions (prompt/options/answerIndex, the format read returns); use generated_questions for the generation format (sentence/answer/distractors).",
 };
 export function compactReceipt(
   value: Record<string, unknown>,
@@ -196,7 +196,7 @@ export function compactReceipt(
       ? {
           hint:
             (actionType && structureHints[actionType]) ??
-            '生成題 output 須符合 read {resource:"prompt",kind} 的 outputSchema；已存題格式（prompt/options/answerIndex）請用 put_questions，修改既有題用 edit_question。',
+            'Generated output must follow the outputSchema from read {resource:"prompt",kind}; use put_questions for stored questions (prompt/options/answerIndex) and edit_question to change an existing one.',
         }
       : {}),
   };
@@ -347,7 +347,7 @@ export async function queryLibrary(
       brief: {
         defaultLimit: sourceLimits[kind],
         maxLimit: 50,
-        note: "brief 預設每批取 defaultLimit 個來源，可用 limit 調整；題數以該次 brief 的 specification 為準。",
+        note: "Each brief returns defaultLimit sources unless you pass limit; the item count follows that brief's specification.",
       },
     };
   }

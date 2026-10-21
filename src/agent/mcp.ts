@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { z } from "zod";
+import { SUPPORTED_PARTS_OF_SPEECH } from "@lexiro/agent-contract";
 import { AGENT_INSTRUCTIONS } from "./instructions";
 import {
   applyAgentMutation,
@@ -41,25 +42,32 @@ const deleteTypes = [
 ] as const;
 const folderTypes = ["create_folder", "update_folder", "delete_folder"];
 const writeFields = (types: readonly [string, ...string[]]) => ({
-  setId: z.string().optional().describe("資料夾操作以外必填"),
+  setId: z.string().optional().describe("Required except for folder actions"),
   action: z.object({ type: z.enum(types) }).passthrough(),
   expectedRevision: z
     .string()
     .optional()
-    .describe("可省略；帶上時須等於本集目前 revision，否則 stale_set 不寫入"),
-  operationId: z.string().optional().describe("重送時沿用同一 UUID"),
+    .describe(
+      "Optional. If given it must equal the set's current revision, otherwise stale_set and nothing is written",
+    ),
+  operationId: z
+    .string()
+    .optional()
+    .describe("Reuse the same UUID when resending"),
   responseFields: z
     .array(z.string())
     .max(20)
     .optional()
-    .describe("只回這些回條欄位；operationId、revision、status 一律附上"),
+    .describe(
+      "Return only these receipt fields; operationId, revision and status are always included",
+    ),
 });
 // MCP-facing shapes stay lean so tools/list is small; lengths and formats are
 // enforced by querySchema and the contract. Strict read requests make a
 // misspelled key fail with its name.
 export const readRequest = z.strictObject({
   resource: querySchema.shape.resource.describe(
-    "sets/folders 列表；set 摘要；words、questions 列表；word(wordKey)、question(questionId,childId?) 單筆；prompt(kind) 出題規則與 outputSchema；brief(setId,kind,difficulty) 出題來源；sources；operation、diagnostics(operationId)",
+    "sets/folders lists; set summary; words, questions lists; word(wordKey), question(questionId,childId?) single items; prompt(kind) generation rules and outputSchema; brief(setId,kind,difficulty) generation sources; sources; operation, diagnostics(operationId)",
   ),
   setId: z.string().optional(),
   wordKey: z.string().optional(),
@@ -71,7 +79,7 @@ export const readRequest = z.strictObject({
     .string()
     .optional()
     .describe(
-      "子字串搜尋：單字英文/中文義，題目題幹（含填回答案的完整句）/文章/選項/解說",
+      "Substring search: word spelling or Chinese meaning; question prompt (also with the answer filled in), passage, options, explanation",
     ),
   questionType: querySchema.shape.questionType,
   kind: kind.optional(),
@@ -83,33 +91,34 @@ export const readRequest = z.strictObject({
     .int()
     .min(1)
     .optional()
-    .describe("1 起算含兩端，不可與 cursor 併用"),
+    .describe("1-based, inclusive; not with cursor"),
   to: z.number().int().min(1).optional(),
-  limit: z.number().int().min(1).max(50).optional().describe("預設 20"),
-  cursor: z.string().optional().describe("上一頁的 nextCursor"),
+  limit: z.number().int().min(1).max(50).optional().describe("Default 20"),
+  cursor: z.string().optional().describe("nextCursor of the previous page"),
   view: z.enum(["summary", "detail"]).optional(),
   fields: z
     .array(z.string())
     .max(20)
     .optional()
-    .describe("已存格式欄位，可巢狀，如 senses.id"),
+    .describe("Stored-format fields, may be nested, e.g. senses.id"),
   includeExamples: z.boolean().optional(),
   includePassage: z.boolean().optional(),
   includePrompt: z.boolean().optional(),
   severity: z.enum(["error", "warning"]).optional(),
 });
-const READ = `讀資料，一次最多10個 request，各自成功或失敗。列表預設20筆摘要、依固定ID排序，回 nextCursor；需要完整內容才 view:"detail"，或用 fields 只取需要的欄位。例：{requests:[{resource:"words",setId,q:"rescue",fields:["wordKey","word","senses.id"]},{resource:"prompt",kind:"vocabulary"},{resource:"brief",setId,kind:"vocabulary",difficulty:2,limit:16}]}`;
-const WRITE = `新增或修改，回精簡回條與新 revision。action 依 type：
-put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} 新增；帶 wordKey 則覆寫該字且 senses 整組替換
-edit_word{wordKey,patch:{word}} 只改拼字
+const READ = `Read data: up to 10 requests per call, each succeeds or fails on its own. Lists return 20 summaries by default in fixed ID order with nextCursor; use view:"detail" only for full content, or fields to pick what you need. Example: {requests:[{resource:"words",setId,q:"rescue",fields:["wordKey","word","senses.id"]},{resource:"prompt",kind:"vocabulary"},{resource:"brief",setId,kind:"vocabulary",difficulty:2,limit:16}]}`;
+const WRITE = `Create or modify; returns a compact receipt with the new revision. action by type:
+put_words{words:[{word,senses:[{pos,meaningZh,examples?}]}]} adds words; with wordKey it overwrites that word and replaces all its senses
+edit_word{wordKey,patch:{word}} changes spelling only
 edit_sense{wordKey,senseId?,action:"add"|"update"|"delete",patch?:{pos?,meaningZh?,examples?,appendExamples?}}
-generated_questions{kind,difficulty,output,senseIds?} output 依 read prompt 的 outputSchema，每題用 senseId 綁來源（brief 的 ref 就是 senseId）
-put_questions{questions} 已存題完整物件（read 回來的格式），帶 id 為覆寫
-edit_question{questionId,childId?,patch} 只傳要改的欄位，用已存題格式（prompt/options/answerIndex/explanation/whyWrong）
-rename_set{setName}、move_set{folderId}、create_folder{name,parentId?}、update_folder{folderId,name?,parentId?}
-題目類可加 mode:"partial"(預設，只存有效題)|"atomic"(有錯全不存)；每批≤200筆。`;
-const DELETE = `刪除，不可復原，先確認使用者意思。action 依 type：delete_words{wordKeys}、delete_questions{questionIds}、delete_set（整集）、delete_folder{folderId}（只限空資料夾）。`;
-const VALIDATE = `只檢查生成題、不寫入，回條同 write generated_questions。output 依 read {resource:"prompt",kind} 的 outputSchema，與已存題格式不同。`;
+pos must be one of: ${SUPPORTED_PARTS_OF_SPEECH.join(" ")} (write v. for vt./vi.)
+generated_questions{kind,difficulty,output,senseIds?} output follows read prompt's outputSchema; bind each item with senseId (a brief ref equals its senseId)
+put_questions{questions} complete stored questions (the format read returns); with id it overwrites
+edit_question{questionId,childId?,patch} only the fields to change, in stored format (prompt/options/answerIndex/explanation/whyWrong)
+rename_set{setName}, move_set{folderId}, create_folder{name,parentId?}, update_folder{folderId,name?,parentId?}
+Question actions accept mode:"partial" (default, saves valid items)|"atomic" (saves nothing on any error); at most 200 per batch.`;
+const DELETE = `Delete, irreversible; confirm with the user first. action by type: delete_words{wordKeys}, delete_questions{questionIds}, delete_set (whole set), delete_folder{folderId} (empty folders only).`;
+const VALIDATE = `Check generated questions without writing; same receipt as write generated_questions. output follows read {resource:"prompt",kind} outputSchema, which differs from the stored format.`;
 export async function handleAgentMcp(
   request: Request,
   identity: AgentIdentity,
@@ -184,7 +193,8 @@ export async function handleAgentMcp(
                     status: "rejected",
                     error: {
                       code: "response_too_large",
-                      message: "縮小範圍、使用 summary 或只指定需要的 fields。",
+                      message:
+                        "Narrow the range, use summary, or request only the fields you need.",
                     },
                   };
           return {
@@ -271,14 +281,14 @@ export async function handleAgentMcp(
         .min(2000)
         .max(128000)
         .optional()
-        .describe("預設 32000"),
+        .describe("Default 32000"),
     },
     (args) => readAgentBatch(repo, identity, args),
     true,
   );
   tool(
     "create_set",
-    "建立空白單字集，回 set.id 與 revision；之後用 write 加入內容。",
+    "Create an empty vocabulary set; returns set.id and revision. Add content with write.",
     { name: z.string(), folderId: z.string().optional() },
     (args) =>
       createScopedSet(

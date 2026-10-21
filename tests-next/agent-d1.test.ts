@@ -952,8 +952,10 @@ describe("native D1 agent library with synthetic users", () => {
       ]);
       // Clients often drop server instructions, so tool schemas carry the
       // action and request vocabulary; keep the whole per-conversation cost small.
+      // The text is English: about 2400 tokens at roughly 3.6 characters each.
       const listed = JSON.stringify(list.result);
-      expect(listed.length + AGENT_INSTRUCTIONS.length).toBeLessThan(7000);
+      expect(listed.length + AGENT_INSTRUCTIONS.length).toBeLessThan(9000);
+      expect(listed).toContain("modal v. phr. v. phr.");
       for (const name of [
         "put_words",
         "edit_sense",
@@ -1174,7 +1176,7 @@ describe("native D1 agent library with synthetic users", () => {
           patch: { distractors: ["forbid", "remind", "pay"] },
         },
       });
-      expect(String(edited.data.hint)).toContain("edit_question 的 patch");
+      expect(String(edited.data.hint)).toContain("edit_question patches");
       const found = await call("read", {
         requests: [
           { resource: "questions", setId: A, q: `${source.word} the plan` },
