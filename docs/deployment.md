@@ -1,6 +1,6 @@
 # GitHub Actions 部署
 
-推送 `main` 後，Lexiro 會執行 typecheck、lint、unit tests 與 Next.js production build。驗證完成後：
+推送 `main` 後，Lexiro 會執行 typecheck、lint、unit tests 與 Vite production build。驗證完成後：
 
 1. 在同一個 runner 產生 Vercel prebuilt output。
 2. 將 Agent origin 同步至 Vercel Production 環境。
@@ -25,11 +25,11 @@ Workflow 位於 `.github/workflows/deploy.yml`，所有 job 使用 GitHub 的 `P
 | `VERCEL_ORG_ID` | 是 | Vercel org/team ID |
 | `VERCEL_PROJECT_ID` | 是 | Vercel Project ID，通常以 `prj_` 開頭 |
 
-GitHub Secret 名稱保留既有 `VITE_*`，workflow 注入成 Next.js 的 `NEXT_PUBLIC_*`；本機使用後者。Firebase Web 設定只供 Auth，D1 資料權限由 Worker 驗 ID token、限定 uid。前端及 Agent 不再需要 Firebase service-account JSON。
+GitHub Secret 名稱保留既有 `VITE_*`，workflow 注入成 `NEXT_PUBLIC_*`，由 `vite.config.ts` 寫進 bundle；本機使用後者。Firebase Web 設定只供 Auth，D1 資料權限由 Worker 驗 ID token、限定 uid。前端及 Agent 不再需要 Firebase service-account JSON。
 
-`vercel.json` 會把 Framework Preset 固定為 Next.js，並將 Output Directory 恢復為 framework 預設值。即使 Vercel Project Settings 還留著舊 Vite 專案的 `dist` override，repository 設定也會在 deployment 時覆蓋它。
+`vercel.json` 把 Framework Preset 固定為 Vite、Output Directory 為 `dist`，會覆蓋 Vercel Project Settings 裡殘留的 Next.js 設定。
 
-Vercel build 與 deploy 必須留在同一個 job。Next.js 的 prebuilt deployment 仍會讀取同一工作區的 framework metadata；不要只把 `.vercel/output` 搬到另一個乾淨 job。
+Vercel build 與 deploy 必須留在同一個 job。prebuilt deployment 會讀取同一工作區的 framework metadata；不要只把 `.vercel/output` 搬到另一個乾淨 job。
 
 ## 平台設定
 
@@ -40,7 +40,7 @@ Agent 連線與 D1 同步需要在 GitHub `Production` Environment variables 設
 3. 從 `.vercel/project.json` 取得 orgId／projectId，設定 Vercel secrets。
 4. 以 GitHub Actions 作為正式發布流程，避免重複 Git Integration 部署。
 
-本機與 Vercel 都使用根路徑 `/`。Next.js App Router 會處理路由，不需要 SPA fallback rewrite。
+`vercel.json` 依序處理：舊網址 308 轉址（與 `lib/legacy-redirects.ts` 同一張表，測試會比對）、`/__/auth`、`/__/firebase` 轉發到 Firebase Auth domain（Firebase 同源登入靠它）、其餘路徑回 `index.html`（`/assets/` 除外，缺檔回 404）。rewrite 不能讀環境變數，所以 Firebase domain 直接寫在 `vercel.json`；改 Firebase 專案時要同步改這裡和 `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`。
 
 根路徑 `/` 轉址到 `/app`。完整 D1 設定、200 筆與資料夾操作及發布順序見 [D1 雲端](d1-cloud.md)。Agent URL 為 GitHub Production variable `NEXT_PUBLIC_AGENT_WORKER_URL`，先發布 private Agent Worker，再發布前端。
 

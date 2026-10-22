@@ -21,7 +21,7 @@ AI 直接生成功能已封存於分支 `archive/managed-ai`，教材內容目�
 
 ```mermaid
 flowchart LR
-    U[學習者] --> PWA[Next.js PWA]
+    U[學習者] --> PWA[React SPA PWA]
     PWA --> IDB[(IndexedDB<br/>教材與學習結果)]
     PWA --> Draft[(localStorage<br/>流程草稿)]
     PWA --> Auth[Firebase Auth<br/>App Check（選用）]
@@ -38,7 +38,7 @@ flowchart LR
 
 | 層級 | 技術 | 用途 |
 | --- | --- | --- |
-| Web | Next.js 16.3.5、React 19.2、TypeScript 7 | App Router 與 PWA 介面 |
+| Web | Vite 8、React 19.2、React Router 8、TypeScript 7 | 純前端 SPA，各畫面 lazy route 分開載入 |
 | UI | Tailwind CSS 4、Radix UI、Motion、HarmonyOS Sans TC | 元件、字型、亮暗色與動態 |
 | State / forms | Zustand、TanStack Query、React Hook Form、Zod | Domain state、查詢與輸入 |
 | 保存 | idb-keyval | IndexedDB |
@@ -58,7 +58,7 @@ npm ci
 npm run dev
 ```
 
-開啟 `http://localhost:3000/app`。根路徑 `/` 會直接轉址到 `/app`。純本機模式不設定 Firebase；要開啟登入同步才複製 `.env.example` 到 `.env.local` 並填真實值。登入同步與 MCP 需要運作中的 Agent Worker 和已登入帳號。離線功能用 production build 與 Service Worker 驗證，`next dev` 不註冊它。
+開啟 `http://localhost:3000/app`。根路徑 `/` 會直接轉址到 `/app`。純本機模式不設定 Firebase；要開啟登入同步才複製 `.env.example` 到 `.env.local` 並填真實值。登入同步與 MCP 需要運作中的 Agent Worker 和已登入帳號。離線功能用 production build（`npm run build && npm run start`）與 Service Worker 驗證，`npm run dev` 不註冊它。
 
 ```powershell
 npm run typecheck

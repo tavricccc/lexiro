@@ -37,6 +37,6 @@ npm run build
 npm run start
 ```
 
-Production 才註冊 Service Worker。檢查安裝、離線重開、網路恢復不刷新、等待更新與保存後重啟。登入請求／跨來源資料不進 runtime cache。Development 使用 webpack，不以它證明離線或 production cache 行為。
+Production 才註冊 Service Worker。檢查安裝、離線重開、網路恢復不刷新、等待更新與保存後重啟。登入請求／跨來源資料不進 runtime cache。`npm run dev`（Vite dev server，port 3000）不建 Service Worker，不以它證明離線或 production cache 行為。
 
 動態 token 來自 `config/motion.config.json`，改後跑 `npm run generate:motion` 並提交生成檔。Domain／schema 修改按[資料文件](data-and-sync.md)更新版號；UI 依 DESIGN 和[設計系統](design-system.md)維護。

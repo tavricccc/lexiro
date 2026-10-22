@@ -32,7 +32,7 @@ Each vocabulary set owns its words, senses, examples, questions, review scheduli
 ## Capabilities and Constraints
 
 - Preserve the Lexiro name and current application icon.
-- The frontend uses Next.js 16, React 19, TypeScript, Tailwind CSS 4, and shared Radix-based UI primitives; the Vue/Vite migration is complete.
+- The frontend is a Vite 8 + React Router 8 single-page app using React 19, TypeScript, Tailwind CSS 4, and shared Radix-based UI primitives; the Vue/Vite migration is complete.
 - Zustand, TanStack Query, React Hook Form with Zod, Motion, Lucide React, and Serwist PWA may be used where they improve the product rather than as mandatory decoration.
 - Firebase authentication and D1 cloud sync are the remote backend.
 - Existing local and cloud user data must be migrated once into the new canonical schema. Do not keep a permanent legacy compatibility path or two competing data models.

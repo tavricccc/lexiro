@@ -2,14 +2,14 @@
 
 | 位置 | 責任 |
 | --- | --- |
-| `app/` | `/app` routes、layout、offline page、Service Worker |
+| `app/` | 入口、路由表、layout、offline page、Service Worker |
 | `components/` | 教材、練習、設定與共用視覺元件 |
 | `stores/` | Zustand Library／cloud／UI／update state |
 | `src/lib/` | Domain 操作、保存、同步、備份、解析與 migration |
 | `lib/` | 路由、更新與跨 store 操作協調 |
 | `packages/ai-contract/` | 無秘密的共用題型、字數與詞性格式 |
 
-`src/` 是仍在使用的 browser domain。Agent Worker 在獨立 private `lexiro-worker`；Next.js 工作區不持有 D1 credential 或 private prompt。
+`src/` 是仍在使用的 browser domain。Agent Worker 在獨立 private `lexiro-worker`；前端工作區不持有 D1 credential 或 private prompt。
 
 ## 一次教材保存
 
@@ -46,6 +46,6 @@ Cloud store 等待 Firebase Auth，先切到 `d1-v1:<uid>` namespace，再 recon
 
 ## PWA 更新
 
-Serwist 只在 production 啟用。App 公開資產與頁面可快取，登入請求和跨來源資料使用 NetworkOnly；新版接管時清舊私人／跨來源快取，保留 App 資產。
+Serwist（`@serwist/vite`）只在 production 啟用。build 時 precache App shell 與每個畫面的 JS／CSS，沒開過的畫面離線也能開；離線開任何網址都回 precache 的 `index.html`，由 router 依網址畫出畫面。其他公開資產與頁面在 runtime 快取，登入請求和跨來源資料使用 NetworkOnly；新版接管時清舊私人／跨來源快取，保留 App 資產。
 
 `app-update-monitor` 觀察等待新版，使用者在「我的」檢查／重新啟動。`lib/app-update.ts` 先保存、送 `SKIP_WAITING`，等待 controller 接管才重載；重新連線不自動刷新練習或編輯。忙碌、失敗和可重試狀態由獨立 store 管理。
