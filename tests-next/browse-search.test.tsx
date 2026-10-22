@@ -1,11 +1,6 @@
 import { useState } from "react";
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchField } from "@/components/ui/search-field";
 import { QuestionList } from "@/components/questions/question-list";
@@ -21,7 +16,10 @@ import {
 } from "@/lib/browse-routes";
 import { useLibraryStore } from "@/stores/library-store";
 
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
+vi.mock("react-router", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("react-router")>()),
+  useNavigate: () => vi.fn(),
+}));
 
 function library() {
   const state = emptyLibraryState();

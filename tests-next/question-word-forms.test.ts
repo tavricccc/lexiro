@@ -94,9 +94,18 @@ describe("source word forms", () => {
     ] as const)
       expect(sourceWordFormIssue(source, pos, answer, usage)).toBeNull();
     expect(
-      sourceWordFormIssue("get/be used to", "phr.", "got accustomed to", "got accustomed to it"),
+      sourceWordFormIssue(
+        "get/be used to",
+        "phr.",
+        "got accustomed to",
+        "got accustomed to it",
+      ),
     ).not.toBeNull();
-    expect(sourceWordFormIssue("by oneself", "phr.", "by chance", "by chance")).not.toBeNull();
-    expect(sourceWordFormIssue("mysterious", "adj.", "mysteriously")).not.toBeNull();
+    expect(
+      sourceWordFormIssue("by oneself", "phr.", "by chance", "by chance"),
+    ).not.toBeNull();
+    expect(
+      sourceWordFormIssue("mysterious", "adj.", "mysteriously"),
+    ).not.toBeNull();
   });
 });

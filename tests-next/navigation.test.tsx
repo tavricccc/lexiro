@@ -1,5 +1,5 @@
-import * as React from "react";
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { cleanup, fireEvent } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { LiquidNav } from "@/components/liquid-nav";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
@@ -10,18 +10,6 @@ import {
   rememberRoutePath,
 } from "@/lib/navigation-memory";
 
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ prefetch: vi.fn() }),
-}));
-vi.mock("next/link", () => ({
-  default: ({
-    transitionTypes: _types,
-    ...props
-  }: React.ComponentProps<"a"> & { transitionTypes?: string[] }) => (
-    <a {...props} onClick={(event) => event.preventDefault()} />
-  ),
-  useLinkStatus: () => ({ pending: false }),
-}));
 afterEach(cleanup);
 
 describe("navigation selection", () => {

@@ -1,5 +1,6 @@
 import type { User } from "firebase/auth";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { SharedSetPage } from "@/components/library/shared-set-page";
@@ -13,7 +14,10 @@ const mocks = vi.hoisted(() => ({
   copy: vi.fn(),
   push: vi.fn(),
 }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push: mocks.push }) }));
+vi.mock("react-router", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("react-router")>()),
+  useNavigate: () => mocks.push,
+}));
 vi.mock("@/lib/share-client", () => ({ readSharedSet: mocks.read }));
 vi.mock("@/src/lib/set-share", () => ({ copySharedSet: mocks.copy }));
 

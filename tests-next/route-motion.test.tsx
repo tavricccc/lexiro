@@ -5,7 +5,9 @@ import { RouteSurface } from "@/components/motion/route-surface";
 import { markViewDirection, rememberRoutePath } from "@/lib/navigation-memory";
 
 const route = vi.hoisted(() => ({ pathname: "/app" }));
-vi.mock("next/navigation", () => ({ usePathname: () => route.pathname }));
+vi.mock("react-router", () => ({
+  useLocation: () => ({ pathname: route.pathname }),
+}));
 const animate = vi.fn(
   (_frames: Keyframe[], _options: KeyframeAnimationOptions) => ({
     cancel: vi.fn(),

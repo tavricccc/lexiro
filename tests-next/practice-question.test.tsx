@@ -1,10 +1,5 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { QuestionCard } from "@/components/practice/question-card";
 import { QuestionFeedback } from "@/components/practice/question-feedback";

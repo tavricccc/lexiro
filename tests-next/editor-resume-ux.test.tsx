@@ -2,10 +2,10 @@ import {
   act,
   cleanup,
   fireEvent,
-  render,
   screen,
   waitFor,
 } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { WordEditPage } from "@/components/library/word-edit-page";
@@ -20,7 +20,10 @@ import { useLibraryStore } from "@/stores/library-store";
 import type { ReadingPack } from "@/types";
 
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+vi.mock("react-router", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("react-router")>()),
+  useNavigate: () => push,
+}));
 
 const scrollDescriptor = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,

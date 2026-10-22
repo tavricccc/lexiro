@@ -1,6 +1,6 @@
-import type { ComponentProps } from "react";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
+import { render } from "./render";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { PracticePage } from "@/components/practice/practice-page";
 import { emptyLibraryState } from "@/src/lib/library-repository";
@@ -8,28 +8,8 @@ import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
 import { practiceStorageKey } from "@/src/lib/practice-storage";
 import { useLibraryStore } from "@/stores/library-store";
 
-const { navigate } = vi.hoisted(() => ({ navigate: vi.fn() }));
-vi.mock("next/link", () => ({
-  default: ({
-    href,
-    onNavigate,
-    ...props
-  }: ComponentProps<"a"> & { href: string; onNavigate?: () => void }) => (
-    <a
-      {...props}
-      href={href}
-      onClick={(event) => {
-        event.preventDefault();
-        onNavigate?.();
-        navigate(href);
-      }}
-    />
-  ),
-}));
-
 beforeEach(() => {
   localStorage.clear();
-  navigate.mockClear();
   const library = emptyLibraryState();
   const wordKey = buildSetWordKey("set", "bank");
   const senseId = buildSenseId(wordKey, "n.", "銀行");
@@ -90,6 +70,7 @@ describe("leaving practice", () => {
     async (initialSet, destination) => {
       const view = render(
         <PracticePage initialSet={initialSet} initialTrack="questions" />,
+        { path: "/app/practice" },
       );
       fireEvent.click(
         await screen.findByRole("button", { name: "開始這 1 題" }),
@@ -107,7 +88,7 @@ describe("leaving practice", () => {
       const exit = screen.getByRole("link", { name: "退出練習" });
       expect(exit).toHaveAttribute("href", destination);
       fireEvent.click(exit);
-      expect(navigate).toHaveBeenCalledWith(destination);
+      expect(view.router.state.location.pathname).toBe(destination);
       expect(
         screen.queryByRole("button", { name: "接續上次" }),
       ).not.toBeInTheDocument();

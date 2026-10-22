@@ -1,4 +1,5 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { CloudGate } from "@/components/cloud-gate";

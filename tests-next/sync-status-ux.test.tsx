@@ -1,12 +1,7 @@
 import type { User } from "firebase/auth";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { render } from "./render";
 import { AccountSection } from "@/components/me/account-section";
 import { AccountRow } from "@/components/me/account-row";
 import { SyncIndicator } from "@/components/sync-indicator";

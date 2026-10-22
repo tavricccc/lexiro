@@ -1,17 +1,13 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { SetEditor } from "@/components/library/set-editor";
 import { useLibraryStore } from "@/stores/library-store";
 
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: vi.fn() }),
+vi.mock("react-router", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("react-router")>()),
+  useNavigate: () => vi.fn(),
 }));
 
 beforeEach(() => {
