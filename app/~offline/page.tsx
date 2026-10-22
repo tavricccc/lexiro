@@ -1,5 +1,4 @@
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "react-router";
 
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/i18n";
@@ -9,7 +8,7 @@ export default function OfflinePage() {
   return (
     <main className="grid min-h-screen place-items-center px-6">
       <section className="max-w-md text-center">
-        <Image
+        <img
           className="mx-auto mb-8 size-20 rounded-3xl"
           src="/icons/lexiro.png"
           width={80}
@@ -21,7 +20,7 @@ export default function OfflinePage() {
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <OfflineRetryButton />
           <Button asChild variant="outline">
-            <Link href="/app">{t("offline.action")}</Link>
+            <Link to="/app">{t("offline.action")}</Link>
           </Button>
         </div>
       </section>

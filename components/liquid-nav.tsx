@@ -1,9 +1,7 @@
-"use client";
-
-import { useLinkStatus } from "next/link";
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import * as React from "react";
+import { useNavigation } from "react-router";
 import { LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { timing } from "@/lib/motion-timing";
 import { cn } from "@/lib/cn";
@@ -26,7 +24,11 @@ function NavigationContents({
   active: boolean;
   vertical: boolean;
 }) {
-  const { pending } = useLinkStatus();
+  const navigation = useNavigation();
+  // This destination is the one whose screen is still being fetched.
+  const pending =
+    navigation.state === "loading" &&
+    navigation.location.pathname === item.href;
   const reduceMotion = useReducedMotion();
   return (
     <>

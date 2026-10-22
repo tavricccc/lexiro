@@ -1,8 +1,6 @@
-"use client";
-
 import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router";
 import {
   motionEasing,
   motionLoopSeconds,
@@ -57,7 +55,7 @@ function internalAnchor(target: HTMLElement) {
  * report one for a scroll.
  */
 export function NavigationFeedback() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const reduceMotion = useReducedMotion();
   const [pending, setPending] = React.useState(false);
   const marked = React.useRef<HTMLElement | null>(null);

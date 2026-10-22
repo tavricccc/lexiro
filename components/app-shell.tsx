@@ -1,7 +1,5 @@
-"use client";
-
 import * as React from "react";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router";
 import { t, type TranslationKey } from "@/lib/i18n";
 import {
   commitRouteHistory,
@@ -30,7 +28,7 @@ const presentation: Record<
 };
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const practiceActive = useUIStore((store) => store.practiceActive);
   const showMobileNavigation = !practiceActive && isRootRoute(pathname);
   const navigationPathname = adoptedParent(pathname) ?? pathname;
