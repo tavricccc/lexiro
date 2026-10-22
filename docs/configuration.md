@@ -1,6 +1,6 @@
 # 設定參考
 
-本機用 `.env.local`，欄位見 `.env.example`。`NEXT_PUBLIC_*` 會進 browser bundle，不能放 service-account JSON 或任何私密憑證。
+本機用 `.env.local`，欄位見 `.env.example`。`NEXT_PUBLIC_*` 由 `vite.config.ts` 在 build 時寫進 browser bundle（程式仍以 `process.env.NEXT_PUBLIC_*` 讀取），不能放 service-account JSON 或任何私密憑證。
 
 | 名稱 | 用途 |
 | --- | --- |

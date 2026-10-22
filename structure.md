@@ -1,12 +1,12 @@
 # Lexiro 程式責任索引
 
-Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 repository。Firebase 只保留 Auth；同層 private `lexiro-worker` 提供 Agent 寫入與同步服務，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
+Lexiro 的 Vite + React Router 介面、browser domain 與本機／D1 雲端同步都在此 repository。Firebase 只保留 Auth；同層 private `lexiro-worker` 提供 Agent 寫入與同步服務，不能移入公開前端。完整閱讀入口見 [docs/README.md](docs/README.md)。
 
 ## 目錄
 
 | 路徑 | 責任 |
 | --- | --- |
-| `app/` | App Router、/app 工作區、manifest、Service Worker |
+| `app/` | 入口 `main.tsx`、路由表 `routes.tsx`、/app 工作區、manifest、Service Worker |
 | `components/` | Domain 畫面、React UI 與動態 |
 | `lib/` | Client orchestration、Agent API、路由、更新、備份 |
 | `stores/` | Library、cloud、UI、update state |
@@ -22,7 +22,7 @@ Lexiro 的 Next.js 介面、browser domain 與本機／D1 雲端同步都在此 
 
 ## 畫面與導覽
 
-`app/app/` 為工作區，根路徑 `/` 轉址到 `/app`。`next.config.ts` 處理舊 deep links；實際 page 清單見[路由](docs/routes-and-permissions.md)。
+`app/app/` 為工作區，根路徑 `/` 轉址到 `/app`。舊 deep links 由 `lib/legacy-redirects.ts` 定義，`vercel.json` 以同一張表回 308；實際 page 清單見[路由](docs/routes-and-permissions.md)。
 
 `components/ui/` 是 Field、SelectField、PageHeader、Loading／Empty／ErrorState、Markdown、Icons、List、LiquidTabs、StepActions 的共用定義。Feature 使用 Icons 語意表，不各自 import 圖示。`app/globals.css` 與 `app/styles/workspace.css` 承載 tokens／工作區；規則見 DESIGN 和 design-system。
 
@@ -66,7 +66,7 @@ Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回
 
 `app/sw.ts`、service-worker-cache 管 App cache 與私人資料 NetworkOnly；app-update-monitor、app-update、app-update-store 管保存／SKIP_WAITING／controller 接管／重啟。Offline retry 重試原 URL，重新連線不自動刷新。
 
-`.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt 並發布 Vercel；不再部署 Firestore。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。D1 後端先以獨立 Agent workflow 套 migration／發布，維護見 [D1 雲端](docs/d1-cloud.md)。
+`.github/workflows/deploy.yml` 先 typecheck／lint／test／build，再同 runner build Vercel prebuilt 並發布 Vercel（`vercel.json` 負責 Firebase `/__/` 轉發、舊網址轉址與 SPA fallback）；不再部署 Firestore。`scripts/check-client-boundary.mjs` 掃 hashed private prompt 指紋，沒有 prompt 本文。D1 後端先以獨立 Agent workflow 套 migration／發布，維護見 [D1 雲端](docs/d1-cloud.md)。
 
 `packages/agent-contract/src/generation.ts` 提供 Agent 專用生成格式與穩定 senseId 綁定；`validation.ts` 負責逐題 Error／Warning、partial／atomic 與可重送的題目識別。共用挖空器 `src/lib/question-assembly.ts` 供 Agent 寫入組題，不套篇幅／教學品質門檻。MCP 使用說明見 [批次寫入](docs/agent-validation.md)。
 

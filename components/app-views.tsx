@@ -1,255 +1,360 @@
-"use client";
+import { useEffect, type ComponentType, type ReactNode } from "react";
+import {
+  matchRoutes,
+  Outlet,
+  useLocation,
+  useParams,
+  useSearchParams,
+  type RouteObject,
+} from "react-router";
 
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, type ReactNode } from "react";
-
-import { AgentConnectionsPage } from "@/components/agent/connections-page";
-import { FocusCanvas } from "@/components/home/focus-canvas";
-import { LibraryPage } from "@/components/library/library-page";
-import { SetEditor } from "@/components/library/set-editor";
-import { SetMetadata } from "@/components/library/set-metadata";
-import { SetToolPage } from "@/components/library/set-tool-page";
-import { SetView } from "@/components/library/set-view";
-import { SetWordAddition } from "@/components/library/set-word-addition";
-import { SharedSetPage } from "@/components/library/shared-set-page";
-import { WordEditPage } from "@/components/library/word-edit-page";
-import { DataSection } from "@/components/me/data-section";
-import { MePage } from "@/components/me/me-page";
-import { MeSubpage } from "@/components/me/me-subpage";
-import { PreferencesSection } from "@/components/me/preferences-section";
-import { PracticePage } from "@/components/practice/practice-page";
-import { QuestionBankPage } from "@/components/questions/question-bank-page";
-import { QuestionEditor } from "@/components/questions/question-editor";
-import { ReadingEditor } from "@/components/questions/reading-editor";
-import { RootPageHeader } from "@/components/root-page-header";
-import { RoomPage } from "@/components/rooms/room-page";
-import { RoomSetupPage, RoomsPage } from "@/components/rooms/rooms-page";
-import { SyncPage } from "@/components/sync/sync-page";
 import { EmptyState } from "@/components/ui/page-state";
-import { setViewHostMounted } from "@/lib/app-navigation";
 import { readBrowseReturn } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
 
 type Query = URLSearchParams;
-type Screen = (params: string[], query: Query) => ReactNode;
+type Params = Readonly<Record<string, string>>;
 
 const param = (query: Query, name: string) => query.get(name) ?? undefined;
 
+/** Loads both modules a screen is drawn from, in parallel. */
+const both = async <A, B>(a: Promise<A>, b: Promise<B>) => {
+  const [first, second] = await Promise.all([a, b]);
+  return { ...first, ...second };
+};
+
 /**
- * Every screen under /app, by the shape of its address. A segment written as
- * `*` is a parameter, handed to the screen in order.
+ * A screen whose code is fetched the first time it is visited (or hovered in
+ * the navigation). `draw` turns the loaded module, the address parameters and
+ * the query into the screen.
  */
-const SCREENS: ReadonlyArray<readonly [pattern: string, screen: Screen]> = [
+function screen<M>(
+  load: () => Promise<M>,
+  draw: (module: M, params: Params, query: Query) => ReactNode,
+): () => Promise<{ Component: ComponentType }> {
+  let pending: Promise<{ Component: ComponentType }> | null = null;
+  return () =>
+    (pending ??= load().then(
+      (module) => ({
+        Component: function Screen() {
+          const params = useParams() as Params;
+          const [query] = useSearchParams();
+          return draw(module, params, query);
+        },
+      }),
+      // A fetch that failed, say offline, is tried again on the next visit.
+      (error: unknown) => {
+        pending = null;
+        throw error;
+      },
+    ));
+}
+
+/**
+ * Every screen under /app, by the shape of its address. A literal segment
+ * wins over a parameter, so `sets/new` is never read as a set called "new".
+ */
+const SCREENS: ReadonlyArray<
+  readonly [path: string, lazy: ReturnType<typeof screen>]
+> = [
   [
     "",
-    () => (
-      <>
-        <RootPageHeader title={t("nav.study")} />
-        <FocusCanvas />
-      </>
+    screen(
+      () =>
+        both(
+          import("@/components/root-page-header"),
+          import("@/components/home/focus-canvas"),
+        ),
+      ({ RootPageHeader, FocusCanvas }) => (
+        <>
+          <RootPageHeader title={t("nav.study")} />
+          <FocusCanvas />
+        </>
+      ),
     ),
   ],
   [
     "practice",
-    (_, query) => {
-      const track = query.get("track");
-      return (
-        <PracticePage
-          initialSet={query.get("set") ?? ""}
-          initialTrack={
-            track === "words" || track === "questions" ? track : undefined
-          }
-        />
-      );
-    },
+    screen(
+      () => import("@/components/practice/practice-page"),
+      ({ PracticePage }, _, query) => {
+        const track = query.get("track");
+        return (
+          <PracticePage
+            initialSet={query.get("set") ?? ""}
+            initialTrack={
+              track === "words" || track === "questions" ? track : undefined
+            }
+          />
+        );
+      },
+    ),
   ],
   [
     "library",
-    (_, query) => (
-      <LibraryPage
-        key={`${query.get("folderId") ?? ""}:${query.get("q") ?? ""}`}
-        initialFolderId={param(query, "folderId")}
-        initialQuery={param(query, "q")}
-      />
+    screen(
+      () => import("@/components/library/library-page"),
+      ({ LibraryPage }, _, query) => (
+        <LibraryPage
+          key={`${query.get("folderId") ?? ""}:${query.get("q") ?? ""}`}
+          initialFolderId={param(query, "folderId")}
+          initialQuery={param(query, "q")}
+        />
+      ),
     ),
   ],
   [
     "sets/new",
-    (_, query) => <SetEditor initialFolderId={param(query, "folderId")} />,
-  ],
-  [
-    "sets/*",
-    ([setId], query) => (
-      <SetView
-        key={`${setId}:${query.get("tab") ?? "words"}:${query.get("q") ?? ""}`}
-        setId={setId}
-        returnTo={readBrowseReturn(param(query, "returnTo"))}
-        initialTab={param(query, "tab")}
-        initialQuery={param(query, "q")}
-      />
+    screen(
+      () => import("@/components/library/set-editor"),
+      ({ SetEditor }, _, query) => (
+        <SetEditor initialFolderId={param(query, "folderId")} />
+      ),
     ),
   ],
   [
-    "sets/*/add",
-    ([setId]) => (
-      <SetToolPage setId={setId} title={t("setEditor.addWord")}>
-        <SetWordAddition setId={setId} />
-      </SetToolPage>
-    ),
-  ],
-  [
-    "sets/*/settings",
-    ([setId]) => (
-      <SetToolPage setId={setId} title={t("wordEdit.metadata")}>
-        <SetMetadata setId={setId} />
-      </SetToolPage>
-    ),
-  ],
-  [
-    "sets/*/words/*/edit",
-    ([setId, wordKey], query) => {
-      const returnHref = readBrowseReturn(param(query, "returnTo"));
-      return (
-        <SetToolPage
+    "sets/:setId",
+    screen(
+      () => import("@/components/library/set-view"),
+      ({ SetView }, { setId }, query) => (
+        <SetView
+          key={`${setId}:${query.get("tab") ?? "words"}:${query.get("q") ?? ""}`}
           setId={setId}
-          title={t("setDetail.editWord")}
-          returnHref={returnHref}
-        >
-          <WordEditPage
-            setId={setId}
-            wordKey={wordKey}
-            returnHref={returnHref}
-          />
-        </SetToolPage>
-      );
-    },
+          returnTo={readBrowseReturn(param(query, "returnTo"))}
+          initialTab={param(query, "tab")}
+          initialQuery={param(query, "q")}
+        />
+      ),
+    ),
   ],
   [
-    "shared/*",
-    ([shareId]) => <SharedSetPage key={shareId} shareId={shareId} />,
+    "sets/:setId/add",
+    screen(
+      () =>
+        both(
+          import("@/components/library/set-tool-page"),
+          import("@/components/library/set-word-addition"),
+        ),
+      ({ SetToolPage, SetWordAddition }, { setId }) => (
+        <SetToolPage setId={setId} title={t("setEditor.addWord")}>
+          <SetWordAddition setId={setId} />
+        </SetToolPage>
+      ),
+    ),
+  ],
+  [
+    "sets/:setId/settings",
+    screen(
+      () =>
+        both(
+          import("@/components/library/set-tool-page"),
+          import("@/components/library/set-metadata"),
+        ),
+      ({ SetToolPage, SetMetadata }, { setId }) => (
+        <SetToolPage setId={setId} title={t("wordEdit.metadata")}>
+          <SetMetadata setId={setId} />
+        </SetToolPage>
+      ),
+    ),
+  ],
+  [
+    "sets/:setId/words/:wordKey/edit",
+    screen(
+      () =>
+        both(
+          import("@/components/library/set-tool-page"),
+          import("@/components/library/word-edit-page"),
+        ),
+      ({ SetToolPage, WordEditPage }, { setId, wordKey }, query) => {
+        const returnHref = readBrowseReturn(param(query, "returnTo"));
+        return (
+          <SetToolPage
+            setId={setId}
+            title={t("setDetail.editWord")}
+            returnHref={returnHref}
+          >
+            <WordEditPage
+              setId={setId}
+              wordKey={wordKey}
+              returnHref={returnHref}
+            />
+          </SetToolPage>
+        );
+      },
+    ),
+  ],
+  [
+    "shared/:shareId",
+    screen(
+      () => import("@/components/library/shared-set-page"),
+      ({ SharedSetPage }, { shareId }) => (
+        <SharedSetPage key={shareId} shareId={shareId} />
+      ),
+    ),
   ],
   [
     "questions",
-    (_, query) => {
-      const filters = {
-        q: param(query, "q"),
-        kind: param(query, "kind"),
-        difficulty: param(query, "difficulty"),
-      };
-      return (
-        <QuestionBankPage
-          key={`${filters.q ?? ""}:${filters.kind ?? ""}:${filters.difficulty ?? ""}`}
-          initialFilters={filters}
+    screen(
+      () => import("@/components/questions/question-bank-page"),
+      ({ QuestionBankPage }, _, query) => {
+        const filters = {
+          q: param(query, "q"),
+          kind: param(query, "kind"),
+          difficulty: param(query, "difficulty"),
+        };
+        return (
+          <QuestionBankPage
+            key={`${filters.q ?? ""}:${filters.kind ?? ""}:${filters.difficulty ?? ""}`}
+            initialFilters={filters}
+          />
+        );
+      },
+    ),
+  ],
+  [
+    "questions/:questionId/edit",
+    screen(
+      () => import("@/components/questions/question-editor"),
+      ({ QuestionEditor }, { questionId }, query) => (
+        <QuestionEditor
+          key={questionId}
+          questionId={questionId}
+          returnHref={readBrowseReturn(param(query, "returnTo"))}
         />
-      );
-    },
-  ],
-  [
-    "questions/*/edit",
-    ([questionId], query) => (
-      <QuestionEditor
-        key={questionId}
-        questionId={questionId}
-        returnHref={readBrowseReturn(param(query, "returnTo"))}
-      />
+      ),
     ),
   ],
   [
-    "questions/reading/*/edit",
-    ([readingId], query) => (
-      <ReadingEditor
-        key={readingId}
-        readingId={readingId}
-        returnHref={readBrowseReturn(param(query, "returnTo"))}
-      />
+    "questions/reading/:readingId/edit",
+    screen(
+      () => import("@/components/questions/reading-editor"),
+      ({ ReadingEditor }, { readingId }, query) => (
+        <ReadingEditor
+          key={readingId}
+          readingId={readingId}
+          returnHref={readBrowseReturn(param(query, "returnTo"))}
+        />
+      ),
     ),
   ],
-  ["rooms", () => <RoomsPage />],
-  ["rooms/new", () => <RoomSetupPage />],
-  ["rooms/*", ([code]) => <RoomPage key={code} code={code.toUpperCase()} />],
-  ["sync", () => <SyncPage />],
-  ["me", () => <MePage />],
-  ["me/agents", () => <AgentConnectionsPage />],
+  [
+    "rooms",
+    screen(
+      () => import("@/components/rooms/rooms-page"),
+      ({ RoomsPage }) => <RoomsPage />,
+    ),
+  ],
+  [
+    "rooms/new",
+    screen(
+      () => import("@/components/rooms/rooms-page"),
+      ({ RoomSetupPage }) => <RoomSetupPage />,
+    ),
+  ],
+  [
+    "rooms/:code",
+    screen(
+      () => import("@/components/rooms/room-page"),
+      ({ RoomPage }, { code }) => (
+        <RoomPage key={code} code={code.toUpperCase()} />
+      ),
+    ),
+  ],
+  [
+    "sync",
+    screen(
+      () => import("@/components/sync/sync-page"),
+      ({ SyncPage }) => <SyncPage />,
+    ),
+  ],
+  [
+    "me",
+    screen(
+      () => import("@/components/me/me-page"),
+      ({ MePage }) => <MePage />,
+    ),
+  ],
+  [
+    "me/agents",
+    screen(
+      () => import("@/components/agent/connections-page"),
+      ({ AgentConnectionsPage }) => <AgentConnectionsPage />,
+    ),
+  ],
   [
     "me/preferences",
-    () => (
-      <MeSubpage title={t("me.preferences")}>
-        <PreferencesSection />
-      </MeSubpage>
+    screen(
+      () =>
+        both(
+          import("@/components/me/me-subpage"),
+          import("@/components/me/preferences-section"),
+        ),
+      ({ MeSubpage, PreferencesSection }) => (
+        <MeSubpage title={t("me.preferences")}>
+          <PreferencesSection />
+        </MeSubpage>
+      ),
     ),
   ],
   [
     "me/data",
-    () => (
-      <MeSubpage title={t("settings.data")}>
-        <DataSection />
-      </MeSubpage>
+    screen(
+      () =>
+        both(
+          import("@/components/me/me-subpage"),
+          import("@/components/me/data-section"),
+        ),
+      ({ MeSubpage, DataSection }) => (
+        <MeSubpage title={t("settings.data")}>
+          <DataSection />
+        </MeSubpage>
+      ),
     ),
   ],
 ];
 
-/** Finds the screen for a pathname; literal segments win over parameters. */
-export function matchScreen(pathname: string) {
-  const segments = pathname
-    .replace(/^\/app\/?/u, "")
-    .split("/")
-    .filter(Boolean)
-    .map((segment) => {
-      try {
-        return decodeURIComponent(segment);
-      } catch {
-        return segment;
-      }
-    });
-  let best: { screen: Screen; params: string[]; score: number } | null = null;
-  for (const [pattern, screen] of SCREENS) {
-    const parts = pattern ? pattern.split("/") : [];
-    if (parts.length !== segments.length) continue;
-    const params: string[] = [];
-    let score = 0;
-    const matches = parts.every((part, index) => {
-      if (part === "*") {
-        params.push(segments[index]);
-        return true;
-      }
-      score += 1;
-      return part === segments[index];
-    });
-    if (matches && (!best || score > best.score))
-      best = { screen, params, score };
-  }
-  return best && { screen: best.screen, params: best.params };
+export function ScreenNotFound() {
+  return (
+    <EmptyState
+      title={t("common.notFoundTitle")}
+      description={t("common.notFoundDescription")}
+    />
+  );
+}
+
+/** The screens under /app, as children of the workspace route. */
+export const screenRoutes: RouteObject[] = [
+  ...SCREENS.map(([path, lazy]): RouteObject =>
+    path ? { path, lazy } : { index: true, lazy },
+  ),
+  { path: "*", Component: ScreenNotFound },
+];
+
+const workspace: RouteObject[] = [{ path: "/app", children: screenRoutes }];
+
+/** Starts fetching the code of the screen at `href`, if it names one. */
+export function preloadScreen(href: string) {
+  const { pathname } = new URL(href, "http://lexiro.invalid");
+  const matches = matchRoutes(workspace, pathname);
+  const lazy = matches?.at(-1)?.route.lazy;
+  if (typeof lazy === "function") void lazy();
 }
 
 /**
- * Every screen under /app, drawn from the address bar. Links inside change
- * the address in place, so moving between screens never waits on the server.
+ * Hosts the screen at the address bar. Each address is a fresh screen, as a
+ * page load was: it starts at the top and keeps no state from the last one.
  */
 export function AppViews() {
-  const pathname = usePathname();
-  const search = useSearchParams();
-
-  useEffect(() => {
-    setViewHostMounted(true);
-    return () => setViewHostMounted(false);
-  }, []);
+  const { pathname } = useLocation();
 
   // Each new screen starts at the top, as a fresh page load did.
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const match = matchScreen(pathname);
-  if (!match)
-    return (
-      <EmptyState
-        title={t("common.notFoundTitle")}
-        description={t("common.notFoundDescription")}
-      />
-    );
   return (
     <div key={pathname} className="contents">
-      {match.screen(match.params, new URLSearchParams(search.toString()))}
+      <Outlet />
     </div>
   );
 }

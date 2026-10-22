@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef } from "react";
 import { Input } from "./input";
 import { Button } from "./button";

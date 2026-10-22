@@ -1,5 +1,3 @@
-"use client";
-
 import type { LibrarySet, LibraryState, SenseId } from "@/types";
 import { useMemo } from "react";
 

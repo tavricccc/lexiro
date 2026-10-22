@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "@/components/ui/app-link";
 import type { AppIcon } from "@/components/ui/icons";
 import { type ReactNode } from "react";

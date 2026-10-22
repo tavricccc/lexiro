@@ -1,7 +1,5 @@
-"use client";
-
 import { useLayoutEffect, useRef, type ReactNode } from "react";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router";
 
 import {
   consumeRouteDirection,
@@ -23,7 +21,7 @@ export function RouteSurface({
   children: ReactNode;
   className?: string;
 }) {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const previous = useRef("");
   const surface = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);

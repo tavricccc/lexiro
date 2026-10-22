@@ -1,5 +1,3 @@
-"use client";
-
 import { useCallback, useEffect, useRef, useState } from "react";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { getStorageNamespace } from "@/src/lib/persist";

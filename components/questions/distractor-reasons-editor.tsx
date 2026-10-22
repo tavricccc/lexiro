@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Field } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";

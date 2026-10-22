@@ -1,5 +1,3 @@
-"use client";
-
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 
 import { useResumableDraft } from "@/lib/use-resumable-draft";

@@ -1,5 +1,35 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
-  "outputDirectory": null
+  "framework": "vite",
+  "outputDirectory": "dist",
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/", "destination": "/app", "permanent": true },
+    { "source": "/about", "destination": "/app", "permanent": true },
+    { "source": "/settings", "destination": "/app/me", "permanent": true },
+    { "source": "/questions/new", "destination": "/app/questions/generate", "permanent": true },
+    { "source": "/questions/reading/new", "destination": "/app/questions/generate", "permanent": true },
+    { "source": "/library/:path*", "destination": "/app/library/:path*", "permanent": true },
+    { "source": "/progress/:path*", "destination": "/app/progress/:path*", "permanent": true },
+    { "source": "/me/:path*", "destination": "/app/me/:path*", "permanent": true },
+    { "source": "/practice/:path*", "destination": "/app/practice/:path*", "permanent": true },
+    { "source": "/sets/:path*", "destination": "/app/sets/:path*", "permanent": true },
+    { "source": "/questions/:path*", "destination": "/app/questions/:path*", "permanent": true },
+    { "source": "/sync/:path*", "destination": "/app/sync/:path*", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/__/auth/:path*", "destination": "https://wordmem-497209.firebaseapp.com/__/auth/:path*" },
+    { "source": "/__/firebase/:path*", "destination": "https://wordmem-497209.firebaseapp.com/__/firebase/:path*" },
+    { "source": "/((?!assets/|__/).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
+  ]
 }

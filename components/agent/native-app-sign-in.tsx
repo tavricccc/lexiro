@@ -1,5 +1,3 @@
-"use client";
-
 import type { UserCredential } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";

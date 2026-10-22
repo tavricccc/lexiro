@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, useState } from "react";
 import type { QuestionItem } from "@/components/practice/practice-content";
 import {

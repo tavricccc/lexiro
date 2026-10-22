@@ -1,5 +1,3 @@
-"use client";
-
 import type { VocabFolder } from "@/types";
 import { useState } from "react";
 

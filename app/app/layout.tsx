@@ -1,23 +1,18 @@
-import { Suspense } from "react";
-
 import { AppShell } from "@/components/app-shell";
 import { CloudGate } from "@/components/cloud-gate";
 import { AppViews } from "@/components/app-views";
 import { LibraryHydrator } from "@/components/library/library-hydrator";
 
 /**
- * Every screen under /app is drawn by the client view host, so the catch-all
- * page beneath this layout renders nothing and moving between screens never
- * asks the server for one.
+ * Every screen under /app sits in this shell. Moving between screens only
+ * fetches the next screen's code, the first time it is visited.
  */
-export default function WorkspaceLayout() {
+export function WorkspaceLayout() {
   return (
     <AppShell>
       <LibraryHydrator />
       <CloudGate>
-        <Suspense>
-          <AppViews />
-        </Suspense>
+        <AppViews />
       </CloudGate>
     </AppShell>
   );

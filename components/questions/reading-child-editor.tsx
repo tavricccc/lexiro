@@ -1,5 +1,3 @@
-"use client";
-
 import { AnswerOptions } from "@/components/questions/answer-options";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";

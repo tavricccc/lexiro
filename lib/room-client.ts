@@ -1,5 +1,3 @@
-"use client";
-
 import type { PracticeQuestionTask } from "@/types";
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { agentJson, agentWorkerUrl } from "@/lib/agent-client";

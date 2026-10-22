@@ -39,7 +39,7 @@ async function files(directory) {
   }
   return paths;
 }
-const paths = await files(resolve(import.meta.dirname, "../.next/static"));
+const paths = await files(resolve(import.meta.dirname, "../dist"));
 if (!paths.length) throw new Error("No built client assets to check");
 const found = [];
 for (const path of paths) if (leaks(await readFile(path, "utf8"), protectedSentences)) found.push(path);

@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import type { WordDraft } from "@/types";
 import { WordEditor } from "@/components/library/word-editor";

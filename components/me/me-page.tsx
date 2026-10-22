@@ -1,5 +1,3 @@
-"use client";
-
 import { AccountRow } from "@/components/me/account-row";
 import { AppUpdateSection } from "./app-update-section";
 import { Icons } from "@/components/ui/icons";

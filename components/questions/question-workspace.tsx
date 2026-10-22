@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, type ReactNode } from "react";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { t } from "@/lib/i18n";

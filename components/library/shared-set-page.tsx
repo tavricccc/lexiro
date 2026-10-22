@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useState } from "react";

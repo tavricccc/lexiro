@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import { createAppUpdateController } from "@/lib/app-update";
 import { useAppUpdateStore } from "@/stores/app-update-store";

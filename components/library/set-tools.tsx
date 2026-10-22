@@ -1,5 +1,3 @@
-"use client";
-
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
 import { t } from "@/lib/i18n";

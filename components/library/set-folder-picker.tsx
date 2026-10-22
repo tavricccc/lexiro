@@ -1,5 +1,3 @@
-"use client";
-
 import type { VocabFolder } from "@/types";
 
 import type { SelectOption } from "@/components/ui/select-field";

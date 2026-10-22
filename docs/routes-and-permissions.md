@@ -2,7 +2,7 @@
 
 ## Route map
 
-`/app` 底下只有一個 catch-all 頁面（`app/app/[[...view]]/page.tsx`，什麼都不渲染）。所有畫面由 client 的 view host（`components/app-views.tsx`）依網址繪製；App 內的連結與 `router.push` 走 `history.pushState`（`lib/app-navigation.ts`、`components/ui/app-link.tsx`、`lib/use-app-router.ts`），換畫面不向伺服器要頁面。直接開網址或重新整理仍可進入任何畫面。新增畫面時把網址樣式加進 view host 的表，並在 project map 的 `routeSpecs` 補說明。
+路由由 React Router 處理，總表在 `app/routes.tsx`；`/app` 底下的畫面表在 `components/app-views.tsx`，每個畫面是一個 lazy route，第一次造訪（或在導覽列 hover）時才下載該畫面的程式。App 內的連結與 `router.push` 經 `components/ui/app-link.tsx`、`lib/use-app-router.ts` 走 client 導覽。直接開網址或重新整理仍可進入任何畫面。新增畫面時把網址樣式加進畫面表，並在 project map 的 `routeSpecs` 補說明。
 
 開 App 時先顯示啟動畫面，直到帳號與本機教材讀完；已設定雲端但未登入時會請使用者登入，或選「先不登入，只用這台裝置」（記在 localStorage，之後不再詢問；需要連線的功能仍各自要求登入）。
 
@@ -27,10 +27,10 @@
 | `/app/sync` | 登入與同步操作 |
 | `/~offline` | 無法載入時的重試與回到 App |
 
-表中短名稱接在同列完整 parent route 後；是否真的有 page 以 `app/**/page.tsx` 為準。舊工作區 deep links 由 `next.config.ts` 導向 `/app`。列表搜尋與返回目的地由 `lib/browse-routes.ts` 維持，搜尋只替換當前 history。
+表中短名稱接在同列完整 parent route 後；是否真的有畫面以 `app/routes.tsx` 與 `components/app-views.tsx` 為準。舊工作區 deep links 由 `lib/legacy-redirects.ts` 導向 `/app`（伺服器端由 `vercel.json` 回 308）。列表搜尋與返回目的地由 `lib/browse-routes.ts` 維持，搜尋只替換當前 history。
 
 單字集的 `tab` 與 `q` 分別保存分頁和集內搜尋；編輯連結的 `returnTo` 包含這兩項及上層詞庫位置。
-替換搜尋網址會保留 Lexiro 的 history index 與其他自訂狀態，Next.js 自行補上路由狀態。
+替換搜尋網址會保留 Lexiro 的 history index 與其他自訂狀態。
 
 ## 存取邊界
 

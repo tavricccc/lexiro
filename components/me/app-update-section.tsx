@@ -1,5 +1,3 @@
-"use client";
-
 import { useAppUpdateStore } from "@/stores/app-update-store";
 import { Icons } from "@/components/ui/icons";
 import { ListActionRow, ListRow, ListSection } from "@/components/ui/list";

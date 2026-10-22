@@ -1,5 +1,3 @@
-"use client";
-
 import type { AppIcon } from "@/components/ui/icons";
 import { DropdownMenu as MenuPrimitive } from "radix-ui";
 import type { ReactNode } from "react";

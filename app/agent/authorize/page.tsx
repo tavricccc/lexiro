@@ -1,10 +1,10 @@
+import { useSearchParams } from "react-router";
+
 import { AgentOAuthConsent } from "@/components/agent/oauth-consent";
-export const metadata = { title: "連結 Lexiro" };
-export default async function AgentAuthorizationPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ request?: string }>;
-}) {
-  const { request = "" } = await searchParams;
-  return <AgentOAuthConsent requestId={request} />;
+import { useDocumentTitle } from "@/lib/use-document-title";
+
+export default function AgentAuthorizationPage() {
+  useDocumentTitle("連結 Lexiro");
+  const [query] = useSearchParams();
+  return <AgentOAuthConsent requestId={query.get("request") ?? ""} />;
 }

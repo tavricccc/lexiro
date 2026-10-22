@@ -1,5 +1,3 @@
-"use client";
-
 import type { SharedSet } from "@/types";
 import { APP_NAME, EXPORT_VERSION } from "@/constants";
 import { agentJson } from "@/lib/agent-client";
