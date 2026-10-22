@@ -15,13 +15,9 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
       "@/types": [
         "./src/types/index.ts"
@@ -44,12 +40,11 @@
       ]
     },
     "types": [
-      "@serwist/next/typings"
+      "vite/client",
+      "@serwist/vite/typings"
     ]
   },
   "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
     "components/**/*.ts",
@@ -59,9 +54,8 @@
     "stores/**/*.ts",
     "src/**/*.ts",
     "tests-next/**/*.ts",
-    "next.config.ts",
-    "vitest.next.config.ts",
-    ".next/dev/types/**/*.ts"
+    "vite.config.ts",
+    "vitest.next.config.ts"
   ],
   "exclude": [
     "node_modules",

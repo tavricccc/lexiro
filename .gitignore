@@ -8,10 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-.next
 *.tsbuildinfo
-public/sw.js
-public/swe-worker-*.js
 .impeccable
 dist
 dist-ssr
