@@ -62,6 +62,11 @@ export default defineConfig(({ mode }) => ({
   define: publicEnvironment(mode),
   resolve: { alias: aliases },
   server: { host: "0.0.0.0", port: 3000 },
+  // Screens load lazily, so name them all up front: otherwise the first visit
+  // to a screen with a new dependency re-bundles dependencies and reloads.
+  optimizeDeps: {
+    entries: ["index.html", "app/**/*.tsx", "components/**/*.tsx"],
+  },
   preview: { port: 3000 },
   plugins: [
     react(),
