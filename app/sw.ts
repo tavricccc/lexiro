@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
-import { defaultCache } from "@serwist/next/worker";
+import { defaultCache } from "@serwist/vite/worker";
 import {
   NetworkOnly,
   Serwist,
@@ -35,10 +35,12 @@ const serwist = new Serwist({
     },
     ...defaultCache,
   ],
+  // Every address is the same app shell, which draws the page for the
+  // address itself, so an address never visited before still opens offline.
   fallbacks: {
     entries: [
       {
-        url: "/~offline",
+        url: "/index.html",
         matcher: ({ request }) => request.destination === "document",
       },
     ],
