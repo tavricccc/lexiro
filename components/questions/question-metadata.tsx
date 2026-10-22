@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, useState, type Ref } from "react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";

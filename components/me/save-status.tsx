@@ -1,5 +1,3 @@
-"use client";
-
 import type { AutosaveStatus } from "@/components/me/use-autosave";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";

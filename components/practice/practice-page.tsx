@@ -1,5 +1,3 @@
-"use client";
-
 import type { PracticeSessionSnapshot, PracticeTrack, SenseId } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";

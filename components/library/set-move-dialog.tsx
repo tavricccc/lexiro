@@ -1,5 +1,3 @@
-"use client";
-
 import type { VocabFolder } from "@/types";
 import { Dialog } from "radix-ui";
 import { useEffect, useState } from "react";

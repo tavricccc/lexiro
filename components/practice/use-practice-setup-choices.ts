@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 import { useResumableDraft } from "@/lib/use-resumable-draft";

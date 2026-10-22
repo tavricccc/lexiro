@@ -1,5 +1,3 @@
-"use client";
-
 import { AccountSection } from "@/components/me/account-section";
 import { BackControl } from "@/components/ui/back-control";
 import { PageHeader } from "@/components/ui/page-header";

@@ -1,5 +1,3 @@
-"use client";
-
 import { BLANK_TOKEN_PATTERN } from "@/src/lib/question-formats";
 
 export interface AnsweredBlank {

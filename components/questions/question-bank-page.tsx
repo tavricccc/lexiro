@@ -1,5 +1,3 @@
-"use client";
-
 import {
   QuestionList,
   type QuestionFilters,

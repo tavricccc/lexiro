@@ -1,5 +1,3 @@
-"use client";
-
 import type { AppIcon } from "@/components/ui/icons";
 import Link from "@/components/ui/app-link";
 import { useLayoutEffect } from "react";

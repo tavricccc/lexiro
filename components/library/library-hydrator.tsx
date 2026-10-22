@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 
 import { useCloudStore } from "@/stores/cloud-store";

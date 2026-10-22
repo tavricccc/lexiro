@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";

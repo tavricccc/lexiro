@@ -1,5 +1,3 @@
-"use client";
-
 import { Dialog } from "radix-ui";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

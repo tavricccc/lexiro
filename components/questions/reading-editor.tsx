@@ -1,5 +1,3 @@
-"use client";
-
 import { QuestionMetadata } from "./question-metadata";
 
 import type { ReadingPack } from "@/types";

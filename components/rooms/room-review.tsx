@@ -1,5 +1,3 @@
-"use client";
-
 import { PassageView } from "@/components/practice/passage-view";
 import { cn } from "@/lib/cn";
 import { t } from "@/lib/i18n";

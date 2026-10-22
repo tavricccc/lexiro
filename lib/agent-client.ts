@@ -1,5 +1,3 @@
-"use client";
-
 import { getFirebaseAuth } from "@/src/lib/firebase";
 import { appCheckHeaders } from "@/src/lib/app-check";
 import { useCloudStore } from "@/stores/cloud-store";

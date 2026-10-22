@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, useState } from "react";
 import type { LibraryQuestion } from "@/types";
 import { countEnglishWords } from "@lexiro/ai-contract";

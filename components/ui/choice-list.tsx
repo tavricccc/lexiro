@@ -1,5 +1,3 @@
-"use client";
-
 import type { AppIcon } from "@/components/ui/icons";
 
 import { Icons } from "@/components/ui/icons";

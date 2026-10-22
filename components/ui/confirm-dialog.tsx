@@ -1,5 +1,3 @@
-"use client";
-
 import { Dialog } from "radix-ui";
 import { useEffect, useRef, useState } from "react";
 

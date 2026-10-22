@@ -1,5 +1,3 @@
-"use client";
-
 import type { SyncStatus } from "@/types";
 import type { User } from "firebase/auth";
 import {

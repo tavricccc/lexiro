@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Check as CheckIcon,
   CircleNotch as Loader2Icon,

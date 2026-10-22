@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useRef } from "react";
