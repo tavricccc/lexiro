@@ -455,6 +455,7 @@ export function PracticePage({
         mode="questions"
         onRetry={() => actions.retry(wrong)}
         onRetryMarked={marked.length ? () => actions.retry(marked) : undefined}
+        onNewRound={queue.length ? actions.begin : undefined}
       />
     );
   }
