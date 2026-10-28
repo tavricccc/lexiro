@@ -21,6 +21,8 @@ import {
   finishAuthorization,
 } from "./oauth";
 import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
+import { guardAccount } from "./guard";
+import { unlimitedAccounts } from "../cloud/repository";
 import {
   APP_AUTH_PURGE_SQL,
   issueAppAuthCode,
@@ -55,12 +57,18 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       // The native app has no Firebase session yet when it redeems, so this
       // sits before the token check; the PKCE verifier is its credential.
       if (path === "/app-auth/token" && request.method === "POST") {
-        await checkRateLimit(env.AGENT_DB, "app_auth_token", request, Date.now());
+        await checkRateLimit(
+          env.AGENT_DB,
+          "app_auth_token",
+          request,
+          Date.now(),
+        );
         return redeemAppAuthCode(request, env.AGENT_DB, Date.now());
       }
       const access = /^\/access\/([0-9a-f-]{36})(\/.*)?$/.exec(path);
       if (access) {
         const identity = await linkIdentity(request, env, access[1]);
+        await guardAccount(env, identity.uid);
         return handleAgentAccess(
           request,
           env,
@@ -74,10 +82,18 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       // link tokens and OAuth provider endpoints never reach this call.
       await checkAppCheck(request, env);
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
+      await guardAccount(env, identity.uid);
       if (path === "/app-auth/codes" && request.method === "POST")
-        return issueAppAuthCode(request, env.AGENT_DB, identity.uid, Date.now());
+        return issueAppAuthCode(
+          request,
+          env.AGENT_DB,
+          identity.uid,
+          Date.now(),
+        );
       if (path.startsWith("/sync/"))
-        return handleCloudApi(request, identity.uid, env.CLOUD_DB);
+        return handleCloudApi(request, identity.uid, env.CLOUD_DB, {
+          unlimited: unlimitedAccounts(env.UNLIMITED_UIDS),
+        });
       if (path === "/shares" || path.startsWith("/shares/"))
         return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
       if (path === "/rooms" || path.startsWith("/rooms/"))
@@ -176,7 +192,9 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
             !context.auth.scope.includes("sets:write")
           )
             throw new HttpError(403, "insufficient_scope");
-          return handleAgentMcp(request, identity, repository(env));
+          return guardAccount(env, identity.uid).then(() =>
+            handleAgentMcp(request, identity, repository(env)),
+          );
         },
       },
       defaultHandler: defaults,

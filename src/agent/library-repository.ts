@@ -16,7 +16,11 @@ import type {
   AgentLibraryRepository,
   MutationReceipt,
 } from "./types";
-import { CloudD1Repository, type AccountHead } from "../cloud/repository";
+import {
+  CloudD1Repository,
+  unlimitedAccounts,
+  type AccountHead,
+} from "../cloud/repository";
 import {
   changedSnapshotRecords,
   recordValue,
@@ -28,7 +32,9 @@ import { queryLibrary, type AgentQuery } from "./query";
 export class D1AgentLibrary implements AgentLibraryRepository {
   private cloud: CloudD1Repository;
   constructor(private env: AgentEnv) {
-    this.cloud = new CloudD1Repository(env.CLOUD_DB);
+    this.cloud = new CloudD1Repository(env.CLOUD_DB, {
+      unlimited: unlimitedAccounts(env.UNLIMITED_UIDS),
+    });
   }
   async list(uid: string) {
     return (await this.cloud.rows(uid, "set")).map((row) => {

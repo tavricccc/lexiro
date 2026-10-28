@@ -2,7 +2,7 @@ import type { D1Database } from "@cloudflare/workers-types";
 import { z } from "zod";
 import { agentCloudRecord, agentCloudBlob } from "@lexiro/agent-contract";
 import { fingerprint, HttpError, readBody } from "../http";
-import { CloudD1Repository } from "./repository";
+import { CloudD1Repository, type CloudLimits } from "./repository";
 const writeBase = { operationId: z.string().uuid(), origin: z.string().uuid() };
 function validate<T>(parse: () => T): T {
   try { return parse(); }
@@ -12,8 +12,8 @@ const blobsSchema = z.strictObject({
   ...writeBase, expectedRevision: z.number().int().nonnegative(),
   blobs: z.array(z.strictObject({ kind: z.enum(["preferences", "practice"]), data: z.record(z.string(), z.unknown()) })).min(1).max(2),
 });
-export async function handleCloudApi(request: Request, uid: string, db: D1Database) {
-  const path = new URL(request.url).pathname, cloud = new CloudD1Repository(db);
+export async function handleCloudApi(request: Request, uid: string, db: D1Database, limits?: CloudLimits) {
+  const path = new URL(request.url).pathname, cloud = new CloudD1Repository(db, limits);
   if (path === "/sync/status" && request.method === "GET") {
     const head = await cloud.head(uid);
     return Response.json({ revision: head.revision, blobRevision: head.blob_revision, changedBy: head.changed_by, blobChangedBy: head.blob_changed_by });

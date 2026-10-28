@@ -27,6 +27,14 @@ export interface AgentEnv {
   /** "off" | "monitor" | "enforce"; anything else (or absent) means off. */
   APP_CHECK_MODE?: string;
   ROOMS: RoomNamespace;
+  /** Workers Rate Limiting binding keyed by uid; absent in local tests. */
+  USER_LIMITER?: RateLimiter;
+  /** Comma-separated uids exempt from the per-account write and storage limits. */
+  UNLIMITED_UIDS?: string;
+}
+/** The Workers Rate Limiting binding's API. */
+export interface RateLimiter {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
 }
 export interface AgentIdentity {
   uid: string;

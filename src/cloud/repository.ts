@@ -20,8 +20,30 @@ export async function purgeCloudOperations(db: D1Database, now: number) {
     .bind(new Date(now - CLOUD_OPERATION_RETENTION_MS).toISOString())
     .run();
 }
+/**
+ * One account may write this many records and documents per UTC day. D1's
+ * free daily write quota is shared by every account, and each record costs
+ * several row writes with its indexes, so this keeps one account to a small
+ * slice of it. Importing a large library can take more than one day.
+ */
+export const DAILY_WRITE_LIMIT = 3000;
+/** Payload bytes one account may hold; deleting never needs room. */
+export const STORAGE_LIMIT_BYTES = 50 * 1024 * 1024;
+export interface CloudLimits {
+  /** Accounts the operator exempts from both limits, such as their own. */
+  unlimited?: ReadonlySet<string>;
+  dailyWrites?: number;
+  storageBytes?: number;
+}
+/** Reads the comma- or newline-separated UNLIMITED_UIDS variable. */
+export function unlimitedAccounts(value: string | undefined): Set<string> {
+  return new Set((value ?? "").split(/[,\n]/).map(uid => uid.trim()).filter(Boolean));
+}
+function secondsToNextUtcDay(now: number): string {
+  return String(Math.ceil((86400000 - (now % 86400000)) / 1000));
+}
 export class CloudD1Repository {
-  constructor(readonly db: D1Database) {}
+  constructor(readonly db: D1Database, readonly limits: CloudLimits = {}) {}
   async head(uid: string): Promise<AccountHead> {
     return await this.db.prepare("SELECT revision,blob_revision,changed_by,blob_changed_by FROM cloud_accounts WHERE uid=?").bind(uid).first<AccountHead>()
       ?? { revision: 0, blob_revision: 0, changed_by: "", blob_changed_by: "" };
@@ -54,10 +76,21 @@ export class CloudD1Repository {
     const ticket = crypto.randomUUID();
     const data = JSON.stringify(records.map(record => ({ ...record, id: agentRecordId(record.type, record.recordKey) })));
     const guard = "EXISTS(SELECT 1 FROM cloud_accounts WHERE uid=? AND write_token=?)";
+    const now = Date.now(), today = new Date(now).toISOString().slice(0, 10), cost = records.length + blobs.length;
+    const dailyWrites = this.limits.dailyWrites ?? DAILY_WRITE_LIMIT, storageBytes = this.limits.storageBytes ?? STORAGE_LIMIT_BYTES;
+    // The payload bytes this commit adds, less the bytes of the rows it
+    // replaces; it reads only the rows being written, never the whole account.
+    const delta = `((SELECT COALESCE(SUM(length(CASE WHEN json_extract(value,'$.deleted') THEN NULL ELSE json_extract(value,'$.payload') END)),0) FROM json_each(?13))
+      -(SELECT COALESCE(SUM(length(payload)),0) FROM cloud_records WHERE uid=?5 AND id IN(SELECT json_extract(value,'$.id') FROM json_each(?13))))`;
+    // The limits sit in the CAS update: when one is reached it changes no row,
+    // so every later statement fails its write-token guard and nothing lands.
     const statements: D1PreparedStatement[] = [
       this.db.prepare("INSERT OR IGNORE INTO cloud_accounts(uid) VALUES(?)").bind(uid),
-      this.db.prepare("UPDATE cloud_accounts SET revision=revision+?,blob_revision=blob_revision+?,changed_by=CASE WHEN ? THEN ? ELSE changed_by END,blob_changed_by=CASE WHEN ? THEN ? ELSE blob_changed_by END,write_token=? WHERE uid=? AND revision=? AND blob_revision=?")
-        .bind(records.length ? 1 : 0, blobs.length ? 1 : 0, records.length ? 1 : 0, origin, blobs.length ? 1 : 0, origin, ticket, uid, expected.revision, expected.blob_revision),
+      this.db.prepare(`UPDATE cloud_accounts SET revision=revision+?1,blob_revision=blob_revision+?2,changed_by=CASE WHEN ?1 THEN ?3 ELSE changed_by END,blob_changed_by=CASE WHEN ?2 THEN ?3 ELSE blob_changed_by END,write_token=?4,
+        quota_writes=CASE WHEN quota_day=?8 THEN quota_writes+?9 ELSE ?9 END,quota_day=?8,stored_bytes=stored_bytes+${delta}
+        WHERE uid=?5 AND revision=?6 AND blob_revision=?7
+        AND (?10 OR ((CASE WHEN quota_day=?8 THEN quota_writes ELSE 0 END)+?9<=?11 AND (${delta}<=0 OR stored_bytes+${delta}<=?12)))`)
+        .bind(records.length ? 1 : 0, blobs.length ? 1 : 0, origin, ticket, uid, expected.revision, expected.blob_revision, today, cost, this.limits.unlimited?.has(uid) ? 1 : 0, dailyWrites, storageBytes, data),
     ];
     if (records.length) {
       statements.push(this.db.prepare(`INSERT INTO cloud_records(uid,id,kind,record_key,payload,deleted,updated_at,seq)
@@ -83,6 +116,14 @@ export class CloudD1Repository {
     if (!applied[1].meta.changes) {
       const won = await this.operation<T>(uid, operationId, hash);
       if (won) return won;
+      const account = await this.db.prepare("SELECT revision,blob_revision,quota_day,quota_writes FROM cloud_accounts WHERE uid=?").bind(uid)
+        .first<{ revision: number; blob_revision: number; quota_day: string; quota_writes: number }>();
+      // Same revision, yet nothing changed: a limit held the update back.
+      if (account?.revision === expected.revision && account.blob_revision === expected.blob_revision) {
+        if (account.quota_day === today && account.quota_writes + cost > dailyWrites)
+          throw new HttpError(429, "daily_write_limit", undefined, secondsToNextUtcDay(now));
+        throw new HttpError(413, "storage_limit");
+      }
       throw new HttpError(409, "stale_set");
     }
     return result;

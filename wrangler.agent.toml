@@ -34,3 +34,13 @@ class_name = "GameRoom"
 [[migrations]]
 tag = "game-room-v1"
 new_sqlite_classes = ["GameRoom"]
+
+# Per-account burst throttle (src/agent/guard.ts). Approximate and counted
+# per Cloudflare location; the daily write limit lives in D1.
+[[ratelimits]]
+name = "USER_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60
