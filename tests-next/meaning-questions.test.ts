@@ -9,7 +9,11 @@ import {
   buildPracticeQueue,
   entriesFromIds,
 } from "@/components/practice/practice-queue";
-import { buildSenseId, buildSetWordKey } from "@/src/lib/library";
+import {
+  buildSenseId,
+  buildSetWordKey,
+  descriptionPoints,
+} from "@/src/lib/library";
 
 function word(name: string, meaning: string): StudyWord {
   return {
@@ -185,5 +189,28 @@ describe("large libraries", () => {
         item.options.filter((_, index) => isCorrectChoice(item, index)),
       ).toHaveLength(1);
     }
+  });
+});
+
+describe("a description with several points", () => {
+  it("reads one point per line and drops typed bullets", () => {
+    expect(
+      descriptionPoints(" • 常用被動\n\n2. be rescued from \n① 名詞同形"),
+    ).toEqual(["常用被動", "be rescued from", "名詞同形"]);
+    expect(descriptionPoints("-ed 形容詞\n1.5 倍")).toEqual(["-ed 形容詞", "1.5 倍"]);
+    expect(descriptionPoints(undefined)).toEqual([]);
+  });
+
+  it("reveals the points as bullets after answering", () => {
+    const words = [
+      { ...word("rescue", "救援"), pos: "v.", description: "常用被動\n名詞同形" },
+      word("apple", "蘋果"),
+      word("cloud", "雲"),
+      word("book", "書"),
+    ];
+    const item = buildMeaningQuestionGroups(words)
+      .flat()
+      .find((question) => question.wordKey === "rescue")!;
+    expect(item.explanation).toBe("• 常用被動\n• 名詞同形");
   });
 });
