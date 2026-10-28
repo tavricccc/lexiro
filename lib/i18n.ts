@@ -382,6 +382,7 @@ export const zhTW = {
     amount: "題數",
     amountValue: "{count} 題",
     amountMax: "最多 {count} 題",
+    customAmount: "自訂",
     oneSensePerWord: "每個單字只考一個詞義",
     oneSenseHint: "開啟後，每輪從同一個單字的題目中抽一題。",
     noContent: "目前沒有可練習的內容",

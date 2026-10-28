@@ -43,7 +43,7 @@ describe("practice setup", () => {
         tasks={["meaning"]}
       />,
     );
-    expect(screen.getByRole("checkbox", { name: /英選中/ })).toBeChecked();
+    expect(screen.getByRole("switch", { name: /英選中/ })).toBeChecked();
     expect(screen.getByRole("button", { name: "開始這 4 題" })).toBeVisible();
     expect(screen.queryByText("今天想做哪一種？")).toBeNull();
     expect(screen.queryByText("步驟 1 / 1")).toBeNull();
@@ -78,11 +78,18 @@ describe("practice setup", () => {
       trackPreset: "questions" as const,
     };
     const { rerender } = render(<PracticeSetup {...props} />);
+    expect(screen.getByRole("tab", { name: "10" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: "開始這 10 題" })).toBeVisible();
+    fireEvent.mouseDown(screen.getByRole("tab", { name: "20" }));
+    expect(onAmountChange).toHaveBeenCalledWith(20);
+
+    fireEvent.mouseDown(screen.getByRole("tab", { name: "自訂" }));
     const slider = screen.getByRole("slider", { name: "題數" });
     expect(slider).toHaveAttribute("min", "1");
     expect(slider).toHaveAttribute("max", "47");
-    expect(screen.getByRole("button", { name: "開始這 10 題" })).toBeVisible();
-
     fireEvent.change(slider, { target: { value: "46" } });
     expect(onAmountChange).toHaveBeenCalledWith(46);
 

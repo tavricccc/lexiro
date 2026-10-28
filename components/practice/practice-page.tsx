@@ -1,4 +1,9 @@
-import type { PracticeSessionSnapshot, PracticeTrack, SenseId } from "@/types";
+import type {
+  PracticeSessionSnapshot,
+  PracticeTask,
+  PracticeTrack,
+  SenseId,
+} from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
 
@@ -116,6 +121,12 @@ export function PracticePage({
     () => countTaskAvailability(poolInput),
     [allowedSenseIds, difficulty, questionGroups, studyItems],
   );
+  // Saved 學測 questions first; a bank without them starts on words, as in the app.
+  const activeTasks = useMemo<PracticeTask[]>(() => {
+    const chosen = tasks.filter((task) => counts[task] > 0);
+    if (chosen.length) return chosen;
+    return counts.meaning > 0 ? ["meaning"] : [];
+  }, [counts, tasks]);
   const hasQuestionContent = questionGroups.some(
     (group) => !isWordTask(group[0]?.type) && group.length > 0,
   );
@@ -123,7 +134,7 @@ export function PracticePage({
     () =>
       countQuestionAvailability({
         ...poolInput,
-        tasks,
+        tasks: activeTasks,
         oneSensePerWord,
       }),
     [
@@ -132,11 +143,17 @@ export function PracticePage({
       studyItems,
       oneSensePerWord,
       questionGroups,
-      tasks,
+      activeTasks,
     ],
   );
   const queue = useMemo(
-    () => buildPracticeQueue({ ...poolInput, amount, oneSensePerWord, tasks }),
+    () =>
+      buildPracticeQueue({
+        ...poolInput,
+        amount,
+        oneSensePerWord,
+        tasks: activeTasks,
+      }),
     [
       allowedSenseIds,
       amount,
@@ -144,7 +161,7 @@ export function PracticePage({
       oneSensePerWord,
       questionGroups,
       studyItems,
-      tasks,
+      activeTasks,
     ],
   );
 
@@ -256,7 +273,7 @@ export function PracticePage({
     setIds,
     skipped,
     started,
-    tasks,
+    tasks: activeTasks,
     wrong,
   });
 
@@ -419,7 +436,7 @@ export function PracticePage({
         queueLength={queue.length}
         setIds={setIds}
         sets={state.sets}
-        tasks={tasks}
+        tasks={activeTasks}
         draftPersistence={setup.saved.persistence}
       />
     );

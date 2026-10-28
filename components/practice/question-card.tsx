@@ -135,33 +135,34 @@ export function QuestionCard({
               })}
             </p>
           )}
-          <h1
-            className={
-              isWordTask(item.type) && !item.blank
-                ? cn(
-                    "question-text break-words text-left font-extrabold text-foreground",
-                    /^[\x20-\x7e]+$/.test(item.prompt)
-                      ? "text-[2.75rem] leading-[1.1] tracking-[-0.035em] sm:text-[3.375rem]"
-                      : "text-[1.875rem] leading-[1.3] tracking-[-0.01em]",
-                  )
-                : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground [word-spacing:0.02em]"
-            }
-          >
-            {item.blank
-              ? t("questions.blankLabel", { index: item.blank })
-              : item.prompt}
-          </h1>
-          {item.type === "meaning" && (
-            <Button
-              className="mt-2"
-              size="icon"
-              variant="ghost"
-              aria-label={t("practice.speak")}
-              onClick={() => speak(item.prompt)}
+          <div className="flex items-center gap-3.5">
+            <h1
+              className={
+                isWordTask(item.type) && !item.blank
+                  ? cn(
+                      "question-text min-w-0 break-words text-left font-extrabold text-foreground",
+                      /^[\x20-\x7e]+$/.test(item.prompt)
+                        ? "text-[2.75rem] leading-[1.1] tracking-[-0.035em] sm:text-[3.375rem]"
+                        : "text-[1.875rem] leading-[1.3] tracking-[-0.01em]",
+                    )
+                  : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground [word-spacing:0.02em]"
+              }
             >
-              <Icons.speak />
-            </Button>
-          )}
+              {item.blank
+                ? t("questions.blankLabel", { index: item.blank })
+                : item.prompt}
+            </h1>
+            {item.type === "meaning" && (
+              <button
+                type="button"
+                aria-label={t("practice.speak")}
+                onClick={() => speak(item.prompt)}
+                className="grid h-[2.375rem] w-14 shrink-0 place-items-center rounded-full bg-[#7cc49c] text-[#13201a] transition-transform active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Icons.speak className="size-[1.125rem]" />
+              </button>
+            )}
+          </div>
           {item.blank && (
             <Button
               className="mt-2 min-h-11 lg:min-h-9"
