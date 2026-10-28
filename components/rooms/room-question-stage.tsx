@@ -222,18 +222,18 @@ export function QuestionStage({
                   {...tapHandlers(index)}
                   className={cn(
                     "t-answer touch-manipulation select-none",
-                    "flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default",
+                    "t-press flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] px-4 py-3 text-left text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default",
                     reveal && accepted
-                      ? "border-success/40 bg-success/10"
+                      ? "bg-success/12"
                       : reveal && chosen
-                        ? "border-destructive/40 bg-destructive/10"
+                        ? "bg-destructive/12"
                         : chosen || isPending
-                          ? "border-primary bg-primary/10"
+                          ? "bg-[var(--surface-selected)]"
                           : pressed === index && !locked
-                            ? "border-primary/60 bg-primary/5"
+                            ? "bg-[color-mix(in_srgb,var(--card),var(--foreground)_8%)]"
                             : used !== undefined
-                              ? "border-border/70 bg-muted/30 text-muted-foreground"
-                              : "border-border/70 bg-card hover:border-primary/50",
+                              ? "bg-muted/30 text-muted-foreground"
+                              : "bg-card hover:bg-[color-mix(in_srgb,var(--card),var(--foreground)_4%)]",
                   )}
                 >
                   <span

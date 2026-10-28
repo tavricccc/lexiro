@@ -6,7 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 
 const DURATIONS = ['touch', 'control', 'nav', 'sheet', 'controlExit', 'sheetExit'];
 const EASINGS = ['arrive', 'depart', 'move', 'nav'];
-const TRAVEL = ['lift', 'rise', 'pressScale', 'cardPressScale', 'surfaceScale', 'routeTravel'];
+const TRAVEL = ['lift', 'rise', 'pressScale', 'glassPressScale', 'surfaceScale', 'routeTravel'];
 const LOOPS = ['spin', 'sweep', 'pulse'];
 
 function assertMilliseconds(value, name) {

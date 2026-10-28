@@ -47,8 +47,11 @@
 
 /* Press ------------------------------------------------------------------ */
 
-/* One press vocabulary. The surface sinks a pixel and gives up two percent:
-   enough to feel connected to the finger, not enough to look squashed. */
+/* One press vocabulary, taken from iOS. A list row or a card answers a press
+   with a grey tint and stays exactly where it is; only a button, a separate
+   object under the finger, gives way. Everything else (tabs, menu items,
+   switches) is answered by its own state change, so it neither moves nor
+   draws a line around itself. */
 [data-slot="button"],
 [data-slot="switch"],
 .t-tab,
@@ -81,34 +84,38 @@
     transform var(--motion-control) var(--ease-arrive);
 }
 
-:is(
-  a[href],
-  button,
-  [role="button"],
-  [role="menuitem"],
-  [role="menuitemcheckbox"],
-  [role="menuitemradio"],
-  [role="option"],
-  [role="radio"],
-  [role="checkbox"],
-  [role="tab"],
-  [role="switch"],
-  [data-slot="select-trigger"]
-):not(:disabled, [aria-disabled="true"], [data-disabled]):active {
-  transform: translateY(1px) scale(var(--motion-press-scale));
+/* A button sinks under the finger and eases back, the app's PressableScale:
+   the press is quick and the release is slower, so nothing snaps. */
+:is([data-slot="button"], .t-press):not(
+    :disabled,
+    [aria-disabled="true"],
+    [data-disabled]
+  ):active {
+  transform: scale(var(--motion-press-scale));
   transition-duration: var(--motion-touch);
 }
+/* A quiet button has no fill to change, so it also greys like a row does. */
+[data-slot="button"][data-variant="ghost"]:not(:disabled):active {
+  background-color: var(--surface-active);
+}
+/* A glass bubble does what iOS 26's does under the finger: it swells and
+   catches more light instead of sinking. */
+[data-slot="button"][data-variant="glass"]:not(:disabled):active {
+  transform: scale(var(--motion-glass-press-scale));
+  background-color: var(--glass-pressed);
+}
 
-/* A card is a large surface, so it takes an even smaller share of the press. */
+/* A card that leads somewhere greys over its own fill, whatever that fill is:
+   an inset shadow paints above the background and below the content, and it
+   follows the card's corners. */
 .t-card {
   transition:
     background-color var(--motion-control) var(--ease-move),
     border-color var(--motion-control) var(--ease-move),
-    box-shadow var(--motion-control) var(--ease-move),
-    transform var(--motion-control) var(--ease-arrive);
+    box-shadow var(--motion-control) var(--ease-move);
 }
 .t-card:is(a[href], button, [role="button"]):active {
-  transform: translateY(1px) scale(var(--motion-card-press-scale));
+  box-shadow: inset 0 0 0 100vmax var(--surface-active);
   transition-duration: var(--motion-touch);
 }
 
@@ -170,11 +177,19 @@
    already answered by the press state above, and echoing it as well doubles
    the feedback without adding any meaning. It is worn by the control that was
    tapped, so it travels with the control as the page scrolls. */
-[data-navigating="true"] {
-  background: color-mix(in srgb, var(--primary) 9%, transparent);
-  /* An inset line rather than a border: a control that grew a border while it
-     waited would move its own contents. */
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 24%, transparent);
+[data-navigating="true"]:not(.t-row, [data-slot="button"]) {
+  background: var(--surface-active);
+}
+/* A row keeps its tint on the layer that bleeds past it, like a press. */
+.t-row[data-navigating="true"]::before {
+  background: var(--surface-active);
+}
+/* A button that leads somewhere stays as pressed until the page arrives. */
+[data-slot="button"][data-navigating="true"] {
+  filter: brightness(0.94);
+}
+.dark [data-slot="button"][data-navigating="true"] {
+  filter: brightness(1.12);
 }
 .t-navigation-progress {
   background: var(--primary);
@@ -785,24 +800,11 @@
   }
 }
 
-/* Hover is a pointer affordance only. */
+/* Hover is a pointer affordance only, and like a press it tints in place:
+   nothing on iOS rises toward the pointer. */
 @media (hover: hover) and (pointer: fine) {
-  [data-slot="button"]:not(:disabled):not(:active):hover {
-    transform: translateY(-1px);
-  }
-  .t-card:not(:active):hover {
-    background-color: color-mix(in srgb, var(--card) 99%, var(--foreground) 1%);
-    border-color: color-mix(in srgb, var(--border) 60%, var(--foreground) 10%);
-    transform: translateY(-1px);
-  }
-  .dark .t-card:not(:active):hover {
-    background-color: color-mix(
-      in srgb,
-      var(--card) 99.5%,
-      var(--foreground) 0.5%
-    );
-    border-color: color-mix(in srgb, var(--border) 60%, var(--foreground) 12%);
-    transform: translateY(-1px);
+  .t-card:is(a[href], button, [role="button"]):not(:active):hover {
+    box-shadow: inset 0 0 0 100vmax var(--surface-hover);
   }
   .t-row:hover::before {
     background: var(--surface-hover);

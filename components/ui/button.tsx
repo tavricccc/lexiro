@@ -19,6 +19,7 @@ const buttonVariants = cva(
           "glass-control border text-secondary-foreground hover:bg-[var(--secondary-hover)]",
         ghost:
           "shadow-none hover:bg-[var(--surface-hover)] hover:text-foreground",
+        glass: "glass-bubble text-foreground hover:bg-[var(--glass-pressed)]",
         link: "shadow-none text-primary underline-offset-4 hover:underline",
       },
       size: {

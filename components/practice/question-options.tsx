@@ -37,16 +37,16 @@ export function QuestionOptions({
         const isPending = !answered && pendingChoice === optionIndex;
         const stateClass =
           answered && isCorrect
-            ? "border-transparent bg-success/12"
+            ? "bg-success/12"
             : answered && isSelected
-              ? "border-transparent bg-destructive/12"
+              ? "bg-destructive/12"
               : isPending
-                ? "border-primary bg-[var(--brand-50)]"
+                ? "bg-[var(--surface-selected)]"
                 : usedBlank !== undefined
-                  ? "border-transparent bg-muted/30 text-muted-foreground"
+                  ? "bg-muted/30 text-muted-foreground"
                   : answered
-                    ? "border-transparent bg-card opacity-60"
-                    : "border-transparent bg-card hover:border-primary/40";
+                    ? "bg-card opacity-60"
+                    : "bg-card hover:bg-[color-mix(in_srgb,var(--card),var(--foreground)_4%)]";
         const badgeClass =
           answered && isCorrect
             ? "bg-success text-success-foreground"
@@ -76,7 +76,7 @@ export function QuestionOptions({
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
-              "t-answer flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] border-2 px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
+              "t-answer t-press flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
               stateClass,
             )}
           >

@@ -54,7 +54,7 @@ export function WordDetailPage({
         back={<BackControl href={backHref} />}
         title=""
         actions={
-          <Button asChild size="icon" variant="ghost">
+          <Button asChild size="icon" variant="glass">
             <Link aria-label={t("setDetail.editWord")} href={editHref}>
               <Icons.edit />
             </Link>

@@ -35,7 +35,7 @@ export function PageHeader({
       <HeaderBackdrop />
       <div className="page-title-row flex items-center justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-center gap-2.5">
-          {back && <div className="-ml-2 shrink-0">{back}</div>}
+          {back && <div className="shrink-0">{back}</div>}
           {lead}
           <h1 className="type-page min-w-0 truncate">{title}</h1>
         </div>

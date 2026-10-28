@@ -14,7 +14,7 @@ export function wordDetailHref(setId: string, wordKey: WordKey): string {
   return `/app/sets/${setId}/words/${encodeURIComponent(wordKey)}`;
 }
 
-/** One word as in the app's list: its meanings, a first example, and a way to hear it. */
+/** One word as in the app's list: its meanings, their notes, a first example, and a way to hear it. */
 export function SetWordRow({
   entry,
   setId,
@@ -40,6 +40,11 @@ export function SetWordRow({
               <span className="font-semibold text-brand">{sense.pos} </span>
               {sense.meaningZh}
             </span>
+            {sense.description && (
+              <span className="mt-1 mb-0.5 justify-self-start rounded-[var(--radius-segment)] bg-[var(--brand-50)] px-3 py-1.5 type-hint line-clamp-2 text-foreground">
+                {sense.description}
+              </span>
+            )}
             {sense.examples[0] && (
               <span className="type-hint line-clamp-2 text-muted-foreground">
                 {sense.examples[0]}
@@ -62,7 +67,7 @@ export function WordSenseCard({ sense }: { sense: WordSense }) {
         {sense.meaningZh}
       </p>
       {sense.description && (
-        <div className="rounded-[0.75rem] bg-[var(--brand-50)] px-3 py-2">
+        <div className="rounded-[var(--radius-segment)] bg-[var(--brand-50)] px-4 py-3">
           <p className="text-[0.8125rem] font-semibold text-[#3f7c5a]">
             {t("setEditor.description")}
           </p>

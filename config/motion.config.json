@@ -2,7 +2,7 @@
   "durations": {
     "touch": 100,
     "control": 250,
-    "nav": 460,
+    "nav": 500,
     "sheet": 560,
     "controlExit": 190,
     "sheetExit": 380
@@ -16,10 +16,10 @@
   "travel": {
     "lift": "4px",
     "rise": "8px",
-    "pressScale": "0.985",
-    "cardPressScale": "0.995",
+    "pressScale": "0.96",
+    "glassPressScale": "1.08",
     "surfaceScale": "0.975",
-    "routeTravel": "24px"
+    "routeTravel": "min(30%, 14rem)"
   },
   "loops": {
     "spin": 800,

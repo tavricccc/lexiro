@@ -226,11 +226,14 @@ CSS cannot drift apart.
 **Route reveals.** Navigation retains the current page while the server prepares
 the destination; there is no route-wide instant skeleton boundary. `RouteSurface`
 starts its reveal when the destination commits, including any remaining local
-loading state. Ready content fades within the surface at 180ms instead of replaying
-the entire slide. Forward navigation travels 56px from the
-trailing edge; returning travels from the leading edge. Peer destinations fade
-and rise 12px. These reveals use the Web Animations API at 320ms with the arrival
-curve, and respect reduced motion. They animate only the incoming live surface;
+loading state. Ready content fades within the surface on `--motion-control`
+instead of replaying the entire slide. Forward navigation travels
+`--motion-route-travel` (30% of the page, at most 14rem) from the trailing edge
+on `--motion-nav` and the iOS navigation curve, turning opaque in its first half
+so the travel, not the fade, carries the move; returning travels from the
+leading edge. Peer destinations are a tab switch: they fade and rise 12px on the
+same rung with the arrival curve. These reveals use the Web Animations API and
+respect reduced motion. They animate only the incoming live surface;
 navigation and pinned actions remain usable.
 
 `lib/navigation-memory.ts` derives route direction from the hierarchy and browser
@@ -243,12 +246,18 @@ tabs crossfade their content through `ContentTransition`, retaining fixed action
 Grouped study tasks draw their separator on an independent straight pseudo-element,
 so large control corners cannot bend the divider into an arc.
 
-**Press.** One press vocabulary, applied by the stylesheet to every interactive
-role at once: the surface sinks a pixel and gives up two percent. Components do
-not add their own `active:` scale. A card takes a smaller share (`.t-card`), and
-a row in a divided list answers with a rounded tint that bleeds past the row
-rather than travelling (`.t-row`), because a row that moved would tear the
-hairlines it shares with its neighbours.
+**Press.** One press vocabulary, taken from iOS and the app. A list row or a
+card answers with a grey tint and never moves: `.t-row` paints a rounded tint
+that bleeds past the row (a standalone card sets `--row-bleed: 0` and its own
+`--row-radius`), and `.t-card` greys over its fill with an inset shadow. Only a
+button (`[data-slot="button"]`, or `.t-press` for an answer option) sinks to
+`--motion-press-scale` (0.96, the app's PressableScale); a ghost button also
+greys. The `glass` button variant is the iOS 26 bar button, a round glass
+bubble used for back and header icons: it swells to
+`--motion-glass-press-scale` and brightens instead of sinking. Nothing draws a
+line around itself when pressed or selected: a picked answer fills with
+`--surface-selected` and its letter bubble turns solid. Hover tints in place and
+never lifts. Components do not add their own `active:` scale.
 
 **Navigation feedback.** Primary navigation reads Next Link's pending state and
 keeps the current route selected until the new page commits. Segmented controls
@@ -256,7 +265,7 @@ likewise follow their controlled value; cancelled touches cannot move either
 selection. Both share a moving selection surface. `NavigationFeedback` answers
 other taps on a destination
 before the destination commits: the control that was tapped wears
-`data-navigating`, and a progress line crawls at the top of the window. It is
+`data-navigating` (the pressed tint, held, with no outline), and a progress line crawls at the top of the window. It is
 reserved for navigation — an ordinary button is already answered by the press
 state, and echoing it doubles the feedback without adding meaning.
 

@@ -74,7 +74,7 @@ export function QuestionTryPage({
         back={<BackControl href={backHref} />}
         title=""
         actions={
-          <Button asChild size="icon" variant="ghost">
+          <Button asChild size="icon" variant="glass">
             <Link
               aria-label={t("setDetail.edit")}
               href={questionEditHref(question, backHref)}

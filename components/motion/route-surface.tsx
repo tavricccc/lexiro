@@ -6,6 +6,11 @@ import {
   consumeViewDirection,
 } from "@/lib/navigation-memory";
 import { cn } from "@/lib/cn";
+import { motionEasing, motionSeconds } from "@/generated/motion-tokens";
+
+const bezier = (points: readonly number[]) => `cubic-bezier(${points.join(", ")})`;
+const NAV_MS = motionSeconds.nav * 1_000;
+const CONTROL_MS = motionSeconds.control * 1_000;
 
 const DIRECTIONS = {
   back: "pop",
@@ -42,16 +47,37 @@ export function RouteSurface({
       node.dataset.routeDirection = DIRECTIONS[direction];
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       animation?.cancel();
-      const transform =
-        direction === "root"
-          ? "translateY(12px)"
-          : `translateX(${direction === "back" ? -56 : 56}px)`;
+      if (direction === "root") {
+        // A peer destination is a tab switch: it settles in place rather than
+        // travelling, the way a tab bar swaps its pages.
+        animation = node.animate(
+          [
+            { opacity: 0, transform: "translateY(12px)" },
+            { opacity: 1, transform: "none" },
+          ],
+          { duration: NAV_MS, easing: bezier(motionEasing.arrive) },
+        );
+        return;
+      }
+      // A push travels a third of the page on the iOS navigation curve, so it
+      // reads as the next page sliding over rather than the same one nudging.
+      // It turns opaque early: the travel carries the move, not the fade.
+      // Keyframes take literal values, so the ladder's distance is read out.
+      const travel =
+        getComputedStyle(node)
+          .getPropertyValue("--motion-route-travel")
+          .trim() || "30%";
+      const from =
+        direction === "back"
+          ? `translateX(calc(-1 * ${travel}))`
+          : `translateX(${travel})`;
       animation = node.animate(
         [
-          { opacity: 0, transform },
+          { opacity: 0, transform: from },
+          { opacity: 1, offset: 0.45 },
           { opacity: 1, transform: "none" },
         ],
-        { duration: 320, easing: "cubic-bezier(0.16, 1, 0.3, 1)" },
+        { duration: NAV_MS, easing: bezier(motionEasing.nav) },
       );
     };
     if (navigation) slide(routeDirection);
@@ -70,7 +96,7 @@ export function RouteSurface({
           contentAnimation?.cancel();
           contentAnimation = content.current!.animate(
             [{ opacity: 0 }, { opacity: 1 }],
-            { duration: 180, easing: "ease-out" },
+            { duration: CONTROL_MS, easing: bezier(motionEasing.arrive) },
           );
         }
         return;

@@ -22,7 +22,7 @@ export function FolderRow({
   return (
     <button
       aria-label={t("library.openFolder", { name })}
-      className="t-row flex min-h-11 max-w-full items-center gap-2 rounded-full bg-card pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row flex min-h-11 max-w-full items-center gap-2 rounded-full bg-card [--row-bleed:0px] [--row-radius:9999px] pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       onClick={onOpen}
       type="button"
     >
@@ -50,7 +50,7 @@ export function SetRow({
   const latin = /^[\x20-\x7e]+$/.test(name);
   return (
     <Link
-      className="t-row flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card [--row-bleed:0px] [--row-radius:var(--radius-card)] py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       href={
         returnTo ? withReturnTo(`/app/sets/${id}`, returnTo) : `/app/sets/${id}`
       }

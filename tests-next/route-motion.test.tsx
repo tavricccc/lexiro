@@ -41,7 +41,7 @@ it("moves the loading phase with the route and fades ready content without a sec
     </RouteSurface>,
   );
   expect(animate).toHaveBeenCalledTimes(1);
-  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(56px)");
+  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(30%)");
   screen.rerender(
     <RouteSurface>
       <header data-motion-view="Practice setup" />
@@ -66,7 +66,7 @@ it("animates both an in-place return and a return to the parent route backwards"
     </RouteSurface>,
   );
   await waitFor(() => expect(animate).toHaveBeenCalledTimes(1));
-  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(-56px)");
+  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(calc(-1 * 30%))");
   route.pathname = "/app";
   screen.rerender(
     <RouteSurface>
@@ -74,7 +74,7 @@ it("animates both an in-place return and a return to the parent route backwards"
     </RouteSurface>,
   );
   expect(animate).toHaveBeenCalledTimes(2);
-  expect(animate.mock.calls[1][0][0].transform).toBe("translateX(-56px)");
+  expect(animate.mock.calls[1][0][0].transform).toBe("translateX(calc(-1 * 30%))");
 });
 
 it("respects reduced motion when navigating to a ready screen", () => {

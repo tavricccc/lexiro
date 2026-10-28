@@ -45,7 +45,7 @@ export function Menu({
             aria-label={label ?? t("common.more")}
             size="icon"
             type="button"
-            variant="ghost"
+            variant="glass"
           >
             <Icons.more />
           </Button>

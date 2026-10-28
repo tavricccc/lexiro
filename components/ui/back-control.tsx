@@ -32,7 +32,7 @@ export function BackControl({ label, ...props }: BackControlProps) {
   const accessibleLabel = label ?? t("common.back");
   if (props.href) {
     return (
-      <Button asChild size="icon" variant="ghost">
+      <Button asChild size="icon" variant="glass">
         <Link
           aria-label={accessibleLabel}
           data-allow-discard={props.allowDiscard ? "true" : undefined}
@@ -53,7 +53,7 @@ export function BackControl({ label, ...props }: BackControlProps) {
       }}
       size="icon"
       type="button"
-      variant="ghost"
+      variant="glass"
     >
       <Icons.back aria-hidden className="size-5" />
     </Button>

@@ -103,7 +103,8 @@ export function PracticeSessionView({
           </div>
           <Button
             size="icon"
-            variant={marked ? "secondary" : "ghost"}
+            variant="glass"
+            className={marked ? "text-brand" : undefined}
             aria-label={t("practice.mark")}
             aria-pressed={marked}
             title={t("practice.mark")}
@@ -114,7 +115,7 @@ export function PracticeSessionView({
           {!reviewing && !answered && (
             <Button
               size="icon"
-              variant="ghost"
+              variant="glass"
               aria-label={t("practice.skip")}
               title={t("practice.skip")}
               onClick={onSkip}
