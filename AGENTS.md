@@ -10,3 +10,7 @@
 - 新增、刪除或搬移檔案時更新 `structure.md`。持久化 schema 變動必須有 migration 與版號。
 - 使用 FastCtx 讀取與搜尋本地檔案。型別嚴格，不用 any。測試斷言回傳資料、串流及儲存狀態，不比對原始碼字串。
 - 每次實作後執行 `npm run typecheck`、`npm run lint`、`npm run test`、`npm run build`。
+- Node 24 只在互動式 bash 載入：用 `bash -ic '<cmd>'` 執行。`git pull` 後先 `npm ci`；`@lexiro/agent-contract` 是 `vendor/` 裡的 tgz，`node_modules` 沒更新時測試會出現假失敗。
+- MCP 工具說明有長度上限（`agent-d1.test.ts` 檢查總長 < 9000 字元，因為每次連線都會送給模型）。改 `src/agent/mcp.ts` 的說明時保持精簡，加字就要刪等量的字。
+- 給 agent 的資料格式寫在 `src/agent/mcp.ts` 與 `src/agent/instructions.ts`，兩處要一致：`meaningZh` 只放中文意思（會當成選項）；課本補充放 `description`，一點一行用 `\n` 分隔，行首不加符號或編號（App 與網頁會自己加 bullet）。
+- 測試一個 `it` 只測一個行為，標題寫出那個行為；需要共同資料時寫 seed helper，不要把多個行為串在同一個測試裡。
