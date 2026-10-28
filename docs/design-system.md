@@ -257,7 +257,10 @@ bubble used for back and header icons: it swells to
 `--motion-glass-press-scale` and brightens instead of sinking. Nothing draws a
 line around itself when pressed or selected: a picked answer fills with
 `--surface-selected` and its letter bubble turns solid. Hover tints in place and
-never lifts. Components do not add their own `active:` scale.
+never lifts. Components do not add their own `active:` scale. Back is a bold
+chevron (`Icons.back`, the app's `chevron.left`); a practice session closes with
+a cross instead. A button carries an icon only where the app's counterpart does,
+with the nearest glyph to its SF Symbol (see `components/ui/icons.ts`).
 
 **Navigation feedback.** Primary navigation reads Next Link's pending state and
 keeps the current route selected until the new page commits. Segmented controls

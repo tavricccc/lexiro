@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
@@ -33,7 +32,6 @@ export function ResumeChoice({
       <StepActions>
         {!invalid && (
           <Button className="w-full" onClick={onResume} size="lg">
-            <Icons.next />
             {t("draft.resume")}
           </Button>
         )}
@@ -43,7 +41,6 @@ export function ResumeChoice({
           size="lg"
           variant={invalid ? "default" : "outline"}
         >
-          <Icons.create />
           {t("draft.restart")}
         </Button>
       </StepActions>

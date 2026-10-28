@@ -111,7 +111,7 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
               size="sm"
               onClick={() => locate(index)}
             >
-              <Icons.search />
+              <Icons.locate />
               {t("questions.locateBlank", { index: child.blank })}
             </Button>
           ) : (

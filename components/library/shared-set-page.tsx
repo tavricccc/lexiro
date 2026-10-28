@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { EmptyState } from "@/components/ui/page-state";
 import { PageHeader } from "@/components/ui/page-header";
 import { SignInRequired } from "@/components/ui/sign-in-required";
@@ -141,7 +142,10 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
           <>
             <p className="text-sm text-muted-foreground">{t("share.own")}</p>
             <Button asChild size="lg">
-              <Link href={`/app/sets/${set.id}`}>{t("share.openOwn")}</Link>
+              <Link href={`/app/sets/${set.id}`}>
+                <Icons.ownSet />
+                {t("share.openOwn")}
+              </Link>
             </Button>
           </>
         ) : (
@@ -154,6 +158,7 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
               disabled={saving || libraryStatus !== "ready"}
               onClick={() => void save()}
             >
+              <Icons.saveCopy />
               {t(saving ? "share.saving" : "share.save")}
             </Button>
           </>

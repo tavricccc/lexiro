@@ -94,12 +94,13 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
         actions={
           isHost && state.phase !== "ended" ? (
             <Button
-              size="sm"
-              variant="ghost"
+              aria-label={t("rooms.endGame")}
+              size="icon"
+              title={t("rooms.endGame")}
+              variant="glass"
               onClick={() => setConfirmEnd(true)}
             >
-              <Icons.cancel />
-              {t("rooms.endGame")}
+              <Icons.cancel weight="bold" />
             </Button>
           ) : undefined
         }

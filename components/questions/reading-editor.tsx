@@ -414,7 +414,7 @@ export function ReadingEditor({
                       size="sm"
                       onClick={locate}
                     >
-                      <Icons.search />
+                      <Icons.locate />
                       {t("questions.locateBlank", { index: activeChild.blank })}
                     </Button>
                   )}

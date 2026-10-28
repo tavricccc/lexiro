@@ -82,7 +82,7 @@ export function PracticeSessionView({
       <div className="page-header" data-practice-header>
         <HeaderBackdrop contained />
         <div className="flex items-center gap-1 text-sm text-muted-foreground md:gap-2">
-          <BackControl href={backHref} label={t("practice.exit")} />
+          <BackControl href={backHref} icon="close" label={t("practice.exit")} />
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
               <span className="whitespace-nowrap tabular-nums">
@@ -104,13 +104,17 @@ export function PracticeSessionView({
           <Button
             size="icon"
             variant="glass"
-            className={marked ? "text-brand" : undefined}
+            className={
+              marked
+                ? "bg-[var(--brand-50)] text-brand hover:bg-[var(--brand-50)]"
+                : undefined
+            }
             aria-label={t("practice.mark")}
             aria-pressed={marked}
             title={t("practice.mark")}
             onClick={onToggleMark}
           >
-            <Icons.mark aria-hidden />
+            <Icons.mark aria-hidden weight={marked ? "fill" : "regular"} />
           </Button>
           {!reviewing && !answered && (
             <Button
@@ -189,6 +193,11 @@ export function PracticeSessionView({
           ) : answered ? (
             <Button className="flex-1" size="lg" onClick={onNext}>
               {t(index === total - 1 ? "practice.viewResult" : "practice.next")}
+              {index === total - 1 ? (
+                <Icons.finish aria-hidden />
+              ) : (
+                <Icons.advance aria-hidden />
+              )}
             </Button>
           ) : (
             <Button
@@ -197,6 +206,7 @@ export function PracticeSessionView({
               disabled={pendingChoice === null}
               onClick={onConfirm}
             >
+              <Icons.success aria-hidden />
               {t("practice.confirm")}
             </Button>
           )}

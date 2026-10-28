@@ -113,7 +113,7 @@ export function QuestionCard({
               className="mt-4 min-h-11 w-full lg:hidden"
               onClick={() => setMobileView("question")}
             >
-              <Icons.practice />
+              <Icons.prompt />
               {t("practice.backToQuestion")}
             </Button>
           </section>
@@ -163,7 +163,7 @@ export function QuestionCard({
               variant="ghost"
               onClick={locateBlank}
             >
-              <Icons.reading />
+              <Icons.locate />
               {t("practice.locateBlank", { index: item.blank })}
             </Button>
           )}

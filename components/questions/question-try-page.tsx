@@ -106,6 +106,7 @@ export function QuestionTryPage({
               setChoices((current) => ({ ...current, [item.id]: pendingChoice }));
             }}
           >
+            <Icons.success />
             {t("practice.confirm")}
           </Button>
         ) : last ? (

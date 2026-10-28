@@ -8,6 +8,11 @@ import { markRouteDirection, markViewDirection } from "@/lib/navigation-memory";
 type BackControlProps = {
   /** Accessible name for the icon-only return control. */
   label?: string;
+  /**
+   * A page beneath another goes back with a chevron; a full-screen flow such
+   * as a practice session is closed instead, with a cross, as in the app.
+   */
+  icon?: "back" | "close";
 } & (
   | {
       /**
@@ -28,8 +33,9 @@ type BackControlProps = {
  * than the same four lines written again at each one — a page that forgot it
  * left the reader with no way back but the browser.
  */
-export function BackControl({ label, ...props }: BackControlProps) {
+export function BackControl({ icon = "back", label, ...props }: BackControlProps) {
   const accessibleLabel = label ?? t("common.back");
+  const Glyph = icon === "close" ? Icons.cancel : Icons.back;
   if (props.href) {
     return (
       <Button asChild size="icon" variant="glass">
@@ -39,7 +45,7 @@ export function BackControl({ label, ...props }: BackControlProps) {
           href={props.href}
           onNavigate={() => markRouteDirection("back")}
         >
-          <Icons.back aria-hidden className="size-5" />
+          <Glyph aria-hidden className="size-5" weight="bold" />
         </Link>
       </Button>
     );
@@ -55,7 +61,7 @@ export function BackControl({ label, ...props }: BackControlProps) {
       type="button"
       variant="glass"
     >
-      <Icons.back aria-hidden className="size-5" />
+      <Glyph aria-hidden className="size-5" weight="bold" />
     </Button>
   );
 }

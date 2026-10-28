@@ -1,11 +1,11 @@
 import type { Icon } from "@phosphor-icons/react";
 import {
   Archive,
-  ArrowLeft,
   ArrowCounterClockwise,
-  ArrowsClockwise,
+  ArrowClockwise,
+  ArrowCircleRight,
+  ArrowRight,
   BookOpenText,
-  BookmarkSimple,
   Books,
   Brain,
   CaretLeft,
@@ -13,6 +13,7 @@ import {
   ChartBar,
   Check,
   CircleNotch,
+  ChatCenteredText,
   Cloud,
   CloudSlash,
   Coins,
@@ -23,7 +24,10 @@ import {
   Exam,
   Eye,
   EyeSlash,
+  FileMagnifyingGlass,
   Fire,
+  Flag,
+  FlagCheckered,
   Folder,
   GameController,
   FolderOpen,
@@ -35,12 +39,12 @@ import {
   Question,
   Robot,
   ShieldCheck,
-  SignIn,
   SignOut,
   SkipForward,
   SlidersHorizontal,
   Sparkle,
   SpeakerHigh,
+  Stack,
   SunHorizon,
   Trash,
   Trophy,
@@ -59,8 +63,10 @@ export type AppIcon = Icon;
  * Rules that go with this map:
  *  - A concept keeps the same glyph everywhere. Before reaching for a Phosphor
  *    import in a feature component, add the concept here instead.
- *  - Every action button carries its icon. Buttons that sit side by side must
- *    either all have icons or all have none — a mixed row reads as an accident.
+ *  - A button carries an icon exactly when its counterpart in the app does,
+ *    and the glyph is the nearest match to the app's SF Symbol. Quiet ways
+ *    out (離開, 返回今天, 完成) and the choice between resuming and
+ *    restarting stay text alone, as they are there.
  *  - Icon-only buttons are allowed for secondary and destructive actions inside
  *    list rows and toolbars only, and always need an `aria-label`.
  *  - Icons inherit their colour from the text beside them. Do not tint one
@@ -70,7 +76,8 @@ export const Icons = {
   account: User,
   admin: ShieldCheck,
   ai: Robot,
-  back: ArrowLeft,
+  // The app's chevron.left: iOS goes back with a chevron, never an arrow.
+  back: CaretLeft,
   backup: Archive,
   cancel: X,
   copy: Copy,
@@ -87,24 +94,36 @@ export const Icons = {
   hide: EyeSlash,
   import: UploadSimple,
   incorrect: X,
+  /** Finding where a blank sits in its passage. */
+  locate: FileMagnifyingGlass,
+  /** The library holding a set of your own. */
+  ownSet: Stack,
   levelUp: Trophy,
   library: Books,
   loading: CircleNotch,
-  mark: BookmarkSimple,
+  mark: Flag,
   more: DotsThree,
   next: CaretRight,
+  /** Moving on to the next question once this one is answered. */
+  advance: ArrowRight,
+  /** The last question's way on, to the result. */
+  finish: FlagCheckered,
   open: CaretRight,
   practice: Exam,
+  /** Back from the passage to the question being answered. */
+  prompt: ChatCenteredText,
   question: Question,
   reading: BookOpenText,
-  refresh: ArrowsClockwise,
+  refresh: ArrowClockwise,
   retry: ArrowCounterClockwise,
   reveal: Eye,
   review: Brain,
   rooms: GameController,
+  /** Keeping a copy of someone else's shared set. */
+  saveCopy: DownloadSimple,
   search: MagnifyingGlass,
   settings: SlidersHorizontal,
-  signIn: SignIn,
+  signIn: ArrowCircleRight,
   shareLink: LinkSimple,
   signOut: SignOut,
   skip: SkipForward,

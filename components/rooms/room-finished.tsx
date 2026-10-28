@@ -29,7 +29,6 @@ export function Finished({ state }: { state: RoomState }) {
       <div className="grid gap-2 sm:grid-cols-2">
         <Button asChild size="lg" variant="secondary">
           <Link href="/app/rooms">
-            <Icons.back />
             {t("rooms.leave")}
           </Link>
         </Button>

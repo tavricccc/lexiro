@@ -55,7 +55,6 @@ export function FinishPanel({
       <StepActions>
         <Button asChild className="w-full" size="lg">
           <Link href={finishHref}>
-            <Icons.success />
             {t("setEditor.finish")}
           </Link>
         </Button>

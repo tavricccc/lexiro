@@ -74,7 +74,7 @@ export function AgentConnectionsPage() {
         title={t("agent.connections")}
         actions={
           <Button
-            variant="ghost"
+            variant="glass"
             disabled={loading}
             onClick={() => setRefresh((value) => value + 1)}
           >

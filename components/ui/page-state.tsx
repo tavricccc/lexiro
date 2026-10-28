@@ -92,7 +92,7 @@ export function ErrorState({
       <p className="mx-auto mt-2 max-w-[52ch] type-lead">{error}</p>
       {onRetry && (
         <Button variant="outline" className="mt-6" onClick={onRetry}>
-          <Icons.retry />
+          <Icons.refresh />
           {t("common.reload")}
         </Button>
       )}
