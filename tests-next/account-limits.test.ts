@@ -378,3 +378,122 @@ describe("account deletion", () => {
     }
   });
 });
+
+describe("commit cost", () => {
+  /** Counts the rows D1 reads for every batch, as the daily quota does. */
+  function metered(f: Fixture) {
+    const meter = { rowsRead: 0 };
+    const db = new Proxy(f.cloud, {
+      get(target, key) {
+        if (key === "batch")
+          return async (
+            statements: Parameters<Fixture["cloud"]["batch"]>[0],
+          ) => {
+            const results = await target.batch(statements);
+            for (const result of results)
+              meter.rowsRead += result.meta.rows_read;
+            return results;
+          };
+        const value = Reflect.get(target, key);
+        return typeof value === "function" ? value.bind(target) : value;
+      },
+    });
+    return { meter, db };
+  }
+  const membership = (setId: string, words: number, offset = 0) => ({
+    type: "membership",
+    recordKey: setId,
+    deleted: false,
+    updatedAt: new Date().toISOString(),
+    payload: {
+      members: Array.from({ length: words }, (_, i) => ({
+        wordKey: `word-${i + offset}`,
+        senseIds: [`sense-${i + offset}`],
+      })),
+    },
+  });
+  const commit = (db: Fixture["cloud"], records: unknown[]) =>
+    handleCloudApi(
+      new Request("http://local.invalid/sync/records", {
+        method: "POST",
+        body: JSON.stringify({
+          origin: randomUUID(),
+          operationId: randomUUID(),
+          records,
+        }),
+      }),
+      "a",
+      db,
+    );
+
+  it("rewrites a large set's memberships in rows read linear to its size", async () => {
+    const f = await fixture();
+    try {
+      const { meter, db } = metered(f);
+      await commit(db, [membership("big", 1000)]);
+      meter.rowsRead = 0;
+      // One word leaves and one arrives: the set is rewritten in full.
+      await commit(db, [membership("big", 1000, 1)]);
+      expect(
+        (await f.cloud
+          .prepare("SELECT COUNT(*) AS n FROM cloud_memberships WHERE uid='a'")
+          .first<{ n: number }>())!.n,
+      ).toBe(1000);
+      const keys = (
+        await f.cloud
+          .prepare(
+            "SELECT word_key FROM cloud_memberships WHERE word_key IN ('word-0','word-1000')",
+          )
+          .all<{ word_key: string }>()
+      ).results.map((row) => row.word_key);
+      expect(keys).toEqual(["word-1000"]);
+      // Matching each stored row against the whole list read ~500k rows here.
+      expect(meter.rowsRead).toBeLessThan(20_000);
+      meter.rowsRead = 0;
+      // Every word replaced: each stored row misses the new list.
+      await commit(db, [membership("big", 1000, 5000)]);
+      expect(meter.rowsRead).toBeLessThan(20_000);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rewrites a batch of questions in rows read linear to the batch", async () => {
+    const f = await fixture();
+    try {
+      const { meter, db } = metered(f);
+      const questions = (word: (i: number) => string) =>
+        Array.from({ length: 400 }, (_, i) => ({
+          type: "question",
+          recordKey: `q-${i}`,
+          deleted: false,
+          updatedAt: new Date().toISOString(),
+          payload: { id: `q-${i}`, kind: "meaning", wordKey: word(i) },
+        }));
+      await commit(
+        db,
+        questions((i) => `word-${i}`),
+      );
+      meter.rowsRead = 0;
+      await commit(
+        db,
+        questions((i) => `other-${i}`),
+      );
+      expect(
+        (await f.cloud
+          .prepare(
+            "SELECT COUNT(*) AS n FROM cloud_question_sources WHERE word_key LIKE 'other-%'",
+          )
+          .first<{ n: number }>())!.n,
+      ).toBe(400);
+      expect(
+        (await f.cloud
+          .prepare("SELECT COUNT(*) AS n FROM cloud_question_sources")
+          .first<{ n: number }>())!.n,
+      ).toBe(400);
+      expect(meter.rowsRead).toBeLessThan(20_000);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+});

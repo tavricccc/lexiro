@@ -98,14 +98,19 @@ export class CloudD1Repository {
         FROM json_each(?) WHERE ${guard}
         ON CONFLICT(uid,id) DO UPDATE SET kind=excluded.kind,record_key=excluded.record_key,payload=excluded.payload,deleted=excluded.deleted,updated_at=excluded.updated_at,seq=excluded.seq
         WHERE cloud_records.payload IS NOT excluded.payload OR cloud_records.deleted<>excluded.deleted OR cloud_records.updated_at<>excluded.updated_at`).bind(uid, uid, data, uid, ticket));
-      statements.push(this.db.prepare(`DELETE FROM cloud_memberships AS old WHERE uid=? AND set_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='membership')
-        AND NOT EXISTS(SELECT 1 FROM json_each(?) r,json_each(r.value,'$.payload.members') m WHERE json_extract(r.value,'$.recordKey')=old.set_id AND json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND json_extract(m.value,'$.wordKey')=old.word_key) AND ${guard}`).bind(uid, data, data, uid, ticket));
+      // The kept pairs are one string each, from a subquery that does not refer
+      // to the outer row, so SQLite builds it once into an index. A correlated
+      // NOT EXISTS re-expanded every member for every stored row, and a
+      // row-value NOT IN rescans the list for each row it does not find: both
+      // read rows in the square of the set's size.
+      statements.push(this.db.prepare(`DELETE FROM cloud_memberships WHERE uid=? AND set_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='membership')
+        AND set_id||char(0)||word_key NOT IN(SELECT json_extract(r.value,'$.recordKey')||char(0)||json_extract(m.value,'$.wordKey') FROM json_each(?) r,json_each(r.value,'$.payload.members') m WHERE json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND json_extract(m.value,'$.wordKey') IS NOT NULL) AND ${guard}`).bind(uid, data, data, uid, ticket));
       statements.push(this.db.prepare(`INSERT INTO cloud_memberships(uid,set_id,word_key,sense_ids)
         SELECT ?,json_extract(r.value,'$.recordKey'),json_extract(m.value,'$.wordKey'),json_extract(m.value,'$.senseIds') FROM json_each(?) r,json_each(r.value,'$.payload.members') m
         WHERE json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND ${guard}
         ON CONFLICT(uid,set_id,word_key) DO UPDATE SET sense_ids=excluded.sense_ids WHERE cloud_memberships.sense_ids<>excluded.sense_ids`).bind(uid, data, uid, ticket));
-      statements.push(this.db.prepare(`DELETE FROM cloud_question_sources AS old WHERE uid=? AND question_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='question')
-        AND NOT EXISTS(SELECT 1 FROM json_each(?) r,json_each(CASE WHEN json_extract(r.value,'$.payload.kind')='reading' THEN json_extract(r.value,'$.payload.wordKeys') ELSE json_array(json_extract(r.value,'$.payload.wordKey')) END) s WHERE json_extract(r.value,'$.recordKey')=old.question_id AND json_extract(r.value,'$.type')='question' AND json_extract(r.value,'$.deleted')=0 AND s.value=old.word_key) AND ${guard}`).bind(uid, data, data, uid, ticket));
+      statements.push(this.db.prepare(`DELETE FROM cloud_question_sources WHERE uid=? AND question_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='question')
+        AND question_id||char(0)||word_key NOT IN(SELECT json_extract(r.value,'$.recordKey')||char(0)||s.value FROM json_each(?) r,json_each(CASE WHEN json_extract(r.value,'$.payload.kind')='reading' THEN json_extract(r.value,'$.payload.wordKeys') ELSE json_array(json_extract(r.value,'$.payload.wordKey')) END) s WHERE json_extract(r.value,'$.type')='question' AND json_extract(r.value,'$.deleted')=0 AND s.value IS NOT NULL) AND ${guard}`).bind(uid, data, data, uid, ticket));
       statements.push(this.db.prepare(`INSERT OR IGNORE INTO cloud_question_sources(uid,question_id,word_key)
         SELECT ?,json_extract(r.value,'$.recordKey'),s.value FROM json_each(?) r,json_each(CASE WHEN json_extract(r.value,'$.payload.kind')='reading' THEN json_extract(r.value,'$.payload.wordKeys') ELSE json_array(json_extract(r.value,'$.payload.wordKey')) END) s
         WHERE json_extract(r.value,'$.type')='question' AND json_extract(r.value,'$.deleted')=0 AND s.value IS NOT NULL AND ${guard}`).bind(uid, data, uid, ticket));
