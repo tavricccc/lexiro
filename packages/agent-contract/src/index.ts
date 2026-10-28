@@ -256,6 +256,14 @@ export function mutateAgentSet(
   const action = mutation.parse(value);
   if (action.type === "delete_set") return { snapshot: null, senseRemaps: [] };
   const next = structuredClone(snapshot);
+  // Memberships hold the set's word order; storage may hand the words back in
+  // any order, and every mutation rebuilds memberships from next.words.
+  const position = new Map(snapshot.memberships.map((m, i) => [m.wordKey, i]));
+  next.words.sort(
+    (a, b) =>
+      (position.get(a.wordKey) ?? Infinity) -
+      (position.get(b.wordKey) ?? Infinity),
+  );
   const now = new Date().toISOString();
   const remaps: { from: string; to: string }[] = [];
   if (action.type === "rename_set") next.set.setName = action.setName;
@@ -306,7 +314,10 @@ export function mutateAgentSet(
         senses,
         updatedAt: now,
       };
-      next.words = [...next.words.filter((w) => w !== previous), word];
+      // An edited word keeps its place; a new one goes to the end.
+      next.words = previous
+        ? next.words.map((w) => (w === previous ? word : w))
+        : [...next.words, word];
       if (previous)
         next.questions = next.questions.map((q) => {
           const change = (child: { wordKey: WordKey; senseId: SenseId }) =>

@@ -63,7 +63,7 @@ Journal 是 sidecar，記未送 record、刪除與 preferences／practice blob�
 | Full backup ZIP | 6 | lexiro-backup.json；v4、v5 一次匯入升級 |
 | Set share ZIP | 2 | lexiro-set.json；v1 一次匯入升級 |
 | Set share link | 1 | D1 `set_shares`；每集一條，讀取時取擁有者最新雲端版本，經同一套分享檔驗證 |
-| Agent contract | 4.8.0 | packages/agent-contract/package.json，與 private Worker tgz 同步 |
+| Agent contract | 4.9.0 | packages/agent-contract/package.json，與 private Worker tgz 同步 |
 
 版號各自演進，修改一段 schema 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
 

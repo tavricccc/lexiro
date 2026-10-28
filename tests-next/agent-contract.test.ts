@@ -70,6 +70,52 @@ describe("agent set contract", () => {
       mutateAgentSet(added, { type: "rename_set", setName: "Unit 2" }),
     ).not.toThrow();
   });
+  it("keeps the set's word order through edits, renames and words read in another order", () => {
+    const entry = (word: string) => ({
+      word,
+      senses: [{ pos: "n.", meaningZh: word, examples: ["An example."] }],
+    });
+    let snapshot = createAgentSet(setId, "順序");
+    for (const word of ["apple", "banana", "cherry", "date"])
+      snapshot = mutateAgentSet(snapshot, {
+        type: "put_words",
+        words: [entry(word)],
+      }).snapshot!;
+    const order = (s: typeof snapshot) => {
+      const names = new Map(s.words.map((w) => [w.wordKey, w.word]));
+      return s.memberships.map((m) => names.get(m.wordKey));
+    };
+    // Storage hands words back in key order; memberships carry the order.
+    const loaded = {
+      ...snapshot,
+      words: [...snapshot.words].sort((a, b) =>
+        a.wordKey.localeCompare(b.wordKey),
+      ),
+    };
+    const banana = snapshot.words.find((w) => w.word === "banana")!;
+    const edited = mutateAgentSet(loaded, {
+      type: "put_words",
+      words: [
+        {
+          wordKey: banana.wordKey,
+          word: "banana",
+          senses: [{ ...banana.senses[0], description: "a fruit" }],
+        },
+      ],
+    }).snapshot!;
+    expect(order(edited)).toEqual(["apple", "banana", "cherry", "date"]);
+    const renamed = mutateAgentSet(loaded, {
+      type: "rename_set",
+      setName: "新名字",
+    }).snapshot!;
+    expect(renamed.memberships).toEqual(snapshot.memberships);
+    const respelled = mutateAgentSet(loaded, {
+      type: "put_words",
+      words: [{ ...entry("blueberry"), wordKey: banana.wordKey }],
+    }).snapshot!;
+    expect(order(respelled)).toEqual(["apple", "blueberry", "cherry", "date"]);
+  });
+
   it("rejects a word identity from a different set", () => {
     const snapshot = mutateAgentSet(
       createAgentSet(setId, "測試"),
