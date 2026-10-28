@@ -19,7 +19,7 @@ export function QuestionFeedback({
     item.type === "vocabulary" || item.type === "wordBank" ? item.meaning : "";
   return (
     <motion.div
-      className="mt-6 rule-t pt-5"
+      className="mt-6 grid gap-3 rounded-[var(--radius-card)] bg-card p-5"
       initial={{ opacity: 0.8 }}
       animate={{ opacity: 1 }}
       transition={timing("control", "arrive")}
@@ -27,7 +27,7 @@ export function QuestionFeedback({
     >
       <p
         className={cn(
-          "t-result-in flex items-center gap-2 text-sm font-semibold",
+          "t-result-in flex items-center gap-2 text-[0.9375rem] font-bold",
           correct ? "text-success" : "text-destructive",
         )}
       >
@@ -38,26 +38,26 @@ export function QuestionFeedback({
         )}
         {correct ? t("practice.correct") : t("practice.incorrect")}
       </p>
-      <p className="mt-2 text-sm leading-6">
+      <p className="text-base font-semibold leading-6">
         {t("practice.answer", { answer: item.options[item.answerIndex] })}
         {answerMeaning && (
-          <span className="ml-2 text-muted-foreground">{answerMeaning}</span>
+          <span className="ml-2 font-normal text-muted-foreground">{answerMeaning}</span>
         )}
       </p>
       {item.explanation && (
-        <p className="mt-3 whitespace-pre-line text-sm leading-7">
+        <p className="whitespace-pre-line text-base leading-7">
           {item.explanation}
         </p>
       )}
       {optionReasons.length > 0 && (
-        <section className="mt-4" aria-label={t("practice.optionReasons")}>
-          <h2 className="text-sm font-semibold">
+        <section className="mt-1" aria-label={t("practice.optionReasons")}>
+          <h2 className="text-[0.8125rem] font-semibold text-muted-foreground">
             {t("practice.optionReasons")}
           </h2>
-          <dl className="mt-2 grid gap-2">
+          <dl className="mt-2 grid gap-2.5">
             {optionReasons.map(({ option, index, gloss, note }) => (
               <div key={option} className="min-w-0">
-                <dt className="break-words text-sm font-medium leading-6">
+                <dt className="break-words text-base leading-6">
                   <span className="mr-2 text-muted-foreground">
                     {String.fromCharCode(65 + index)}
                   </span>
@@ -69,7 +69,7 @@ export function QuestionFeedback({
                   )}
                 </dt>
                 {note && (
-                  <dd className="mt-1 whitespace-pre-line break-words text-sm leading-7 text-muted-foreground">
+                  <dd className="mt-0.5 whitespace-pre-line break-words text-[0.8125rem] leading-6 text-muted-foreground">
                     {note}
                   </dd>
                 )}
@@ -81,7 +81,7 @@ export function QuestionFeedback({
       {item.type === "meaning" &&
         item.meaning &&
         (item.acceptedMeanings?.length ?? 0) > 1 && (
-          <p className="mt-3 text-sm text-muted-foreground">{item.meaning}</p>
+          <p className="text-[0.8125rem] text-muted-foreground">{item.meaning}</p>
         )}
     </motion.div>
   );

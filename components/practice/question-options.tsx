@@ -37,14 +37,16 @@ export function QuestionOptions({
         const isPending = !answered && pendingChoice === optionIndex;
         const stateClass =
           answered && isCorrect
-            ? "border-success/40 bg-success/10"
+            ? "border-transparent bg-success/12"
             : answered && isSelected
-              ? "border-destructive/40 bg-destructive/10"
+              ? "border-transparent bg-destructive/12"
               : isPending
-                ? "border-primary bg-primary/10"
+                ? "border-primary bg-[var(--brand-50)]"
                 : usedBlank !== undefined
-                  ? "border-border/70 bg-muted/30 text-muted-foreground"
-                  : "border-border/70 bg-card hover:border-primary/50 hover:bg-primary/5";
+                  ? "border-transparent bg-muted/30 text-muted-foreground"
+                  : answered
+                    ? "border-transparent bg-card opacity-60"
+                    : "border-transparent bg-card hover:border-primary/40";
         const badgeClass =
           answered && isCorrect
             ? "bg-success text-success-foreground"
@@ -74,13 +76,13 @@ export function QuestionOptions({
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
-              "t-answer flex min-h-14 w-full items-center gap-3 rounded-[var(--radius-control)] border px-4 py-3 text-left text-base transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
+              "t-answer flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] border-2 px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
               stateClass,
             )}
           >
             <span
               className={cn(
-                "grid size-7 shrink-0 place-items-center rounded-full text-xs font-semibold",
+                "grid size-8 shrink-0 place-items-center rounded-full text-sm font-semibold",
                 badgeClass,
               )}
             >
