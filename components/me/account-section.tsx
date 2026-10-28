@@ -26,6 +26,7 @@ export function AccountSection() {
   const cloud = useCloudStore();
   const library = useLibraryStore((store) => store.state);
   const [confirmSignIn, setConfirmSignIn] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const [working, setWorking] = useState<"in" | "sync" | "out" | null>(null);
   const currentAction = useRef(0);
   const isWorking =
@@ -166,6 +167,19 @@ export function AccountSection() {
         )}
       </ListSection>
 
+      {cloud.user && (
+        <ListSection footer={t("me.deleteAccountDescription")}>
+          <ListActionRow
+            disabled={working !== null || !cloud.ready}
+            onClick={() => setConfirmDelete(true)}
+            tone="destructive"
+          >
+            <Icons.delete aria-hidden className="size-[1.125rem]" />
+            {t("me.deleteAccount")}
+          </ListActionRow>
+        </ListSection>
+      )}
+
       <ConfirmDialog
         confirmLabel={t("settings.continueSignIn")}
         description={t("settings.guestDataWarning")}
@@ -182,6 +196,19 @@ export function AccountSection() {
         open={confirmSignIn}
         title={t("settings.signIn")}
         tone="default"
+      />
+
+      {/* Errors stay in the dialog, which keeps it open to try again. */}
+      <ConfirmDialog
+        confirmLabel={t("me.deleteAccount")}
+        description={t("me.deleteAccountWarning")}
+        onConfirm={async () => {
+          await cloud.deleteAccount();
+          toast.success(t("me.accountDeleted"));
+        }}
+        onOpenChange={setConfirmDelete}
+        open={confirmDelete}
+        title={t("me.deleteAccount")}
       />
     </div>
   );
