@@ -24,7 +24,7 @@ describe("active room check", () => {
     expect(agentJson).toHaveBeenCalledTimes(2);
 
     agentJson.mockRejectedValueOnce(new Error("offline"));
-    await expect(fetchActiveRoom("d", 20_000_000)).rejects.toThrow();
+    await expect(fetchActiveRoom("d", 20_000_000)).rejects.toThrow("offline");
     await fetchActiveRoom("d", 20_000_000);
     expect(agentJson).toHaveBeenCalledTimes(4);
 

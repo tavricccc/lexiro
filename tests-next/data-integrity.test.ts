@@ -172,7 +172,7 @@ describe("data integrity", () => {
         ...createFullBackup(library("one", "adapt", "常用單字")),
         version: 2,
       }),
-    ).toThrow();
+    ).toThrow("不支援此完整備份版本");
   });
 
   it("previews backup additions", () => {

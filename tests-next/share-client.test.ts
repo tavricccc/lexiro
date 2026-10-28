@@ -70,14 +70,11 @@ describe("readSharedSet", () => {
     agentJson.mockResolvedValue({
       id: "abc",
       own: false,
-      snapshot: {
-        set: { ...set, extra: 1 },
-        words,
-        memberships: [],
-        questions: [],
-      },
+      snapshot: { set, words, memberships: [], questions: [] },
     });
-    await expect(readSharedSet("abc")).rejects.toThrow();
+    await expect(readSharedSet("abc")).rejects.toThrow(
+      "memberships 至少需要一筆 membership",
+    );
   });
 });
 

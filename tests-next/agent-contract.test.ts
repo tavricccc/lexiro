@@ -52,7 +52,11 @@ describe("agent set contract", () => {
         {
           word: "rescue",
           senses: [
-            { pos: "v.", meaningZh: "救援", description: " 常用被動 be rescued " },
+            {
+              pos: "v.",
+              meaningZh: "救援",
+              description: " 常用被動 be rescued ",
+            },
             { pos: "n.", meaningZh: "救援行動", description: "  " },
           ],
         },
@@ -62,7 +66,9 @@ describe("agent set contract", () => {
     expect(verb.meaningZh).toBe("救援");
     expect(verb.description).toBe("常用被動 be rescued");
     expect(noun).not.toHaveProperty("description");
-    expect(() => mutateAgentSet(added, { type: "rename_set", setName: "Unit 2" })).not.toThrow();
+    expect(() =>
+      mutateAgentSet(added, { type: "rename_set", setName: "Unit 2" }),
+    ).not.toThrow();
   });
   it("rejects a word identity from a different set", () => {
     const snapshot = mutateAgentSet(
@@ -71,7 +77,7 @@ describe("agent set contract", () => {
     ).snapshot!;
     expect(() =>
       validateAgentSnapshot(snapshot, "22222222-2222-4222-8222-222222222222"),
-    ).toThrow();
+    ).toThrow("Set is outside the authorized scope");
     expect(() =>
       mutateAgentSet(snapshot, {
         type: "put_words",
