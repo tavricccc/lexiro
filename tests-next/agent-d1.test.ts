@@ -1004,21 +1004,26 @@ describe("native D1 agent library with synthetic users", () => {
       await f.runtime.dispose();
     }
   });
-  it("stores 200 words, rejects 201 without writing, and reuses a receipt exactly", async () => {
+  async function store200Words(f: Fixture) {
+    const revision = agentSetRevision((await f.repo.read("a", A))!),
+      operationId = randomUUID();
+    const action = { type: "put_words", words: words(200) };
+    const receipt = await f.repo.mutate(
+      "a",
+      A,
+      revision,
+      operationId,
+      action,
+      (s) => mutateAgentSet(s, action),
+    );
+    return { revision, operationId, action, receipt };
+  }
+  const renameAction = { type: "rename_set", setName: "不應寫入" };
+
+  it("stores 200 words with unique keys, memberships and senses", async () => {
     const f = await fixture();
     try {
-      const before = (await f.repo.read("a", A))!;
-      const revision = agentSetRevision(before),
-        operationId = randomUUID();
-      const action = { type: "put_words", words: words(200) };
-      const receipt = await f.repo.mutate(
-        "a",
-        A,
-        revision,
-        operationId,
-        action,
-        (s) => mutateAgentSet(s, action),
-      );
+      const { receipt } = await store200Words(f);
       const after = (await f.repo.read("a", A))!;
       expect(receipt.wordCount).toBe(200);
       expect(after.words).toHaveLength(200);
@@ -1026,17 +1031,43 @@ describe("native D1 agent library with synthetic users", () => {
       expect(after.memberships).toHaveLength(200);
       expect(after.words.flatMap((w) => w.senses)).toHaveLength(200);
       expect(receipt.revision).toBe(agentSetRevision(after));
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("reuses a receipt exactly without executing the replay", async () => {
+    const f = await fixture();
+    try {
+      const { revision, operationId, action, receipt } = await store200Words(f);
       expect(
         await f.repo.mutate("a", A, revision, operationId, action, () => {
           throw new Error("must not execute a replay");
         }),
       ).toEqual(receipt);
-      const different = { type: "rename_set", setName: "不應寫入" };
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects an operation id reused for a different action", async () => {
+    const f = await fixture();
+    try {
+      const { revision, operationId } = await store200Words(f);
       await expect(
-        f.repo.mutate("a", A, revision, operationId, different, (s) =>
-          mutateAgentSet(s, different),
+        f.repo.mutate("a", A, revision, operationId, renameAction, (s) =>
+          mutateAgentSet(s, renameAction),
         ),
       ).rejects.toThrow("operation_conflict");
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects 201 words without writing", async () => {
+    const f = await fixture();
+    try {
+      const { receipt } = await store200Words(f);
       const oversized = { type: "put_words", words: words(201) };
       await expect(
         f.repo.mutate("a", A, receipt.revision, randomUUID(), oversized, (s) =>
@@ -1046,11 +1077,28 @@ describe("native D1 agent library with synthetic users", () => {
       expect(agentSetRevision((await f.repo.read("a", A))!)).toBe(
         receipt.revision,
       );
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects a mutation from a stale revision", async () => {
+    const f = await fixture();
+    try {
+      const { revision } = await store200Words(f);
       await expect(
-        f.repo.mutate("a", A, revision, randomUUID(), different, (s) =>
-          mutateAgentSet(s, different),
+        f.repo.mutate("a", A, revision, randomUUID(), renameAction, (s) =>
+          mutateAgentSet(s, renameAction),
         ),
       ).rejects.toThrow("is stale");
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("keeps each user's sets private in reads and lists", async () => {
+    const f = await fixture();
+    try {
       expect(await f.repo.read("b", A)).toBeNull();
       expect((await f.repo.list("a")).map((s) => s.id)).toEqual([A]);
       expect((await f.repo.list("b")).map((s) => s.id)).toEqual([B]);
@@ -2049,101 +2097,170 @@ describe("frontend synchronization API using the same native D1 records", () => 
     }
   });
 
-  it("round trips frontend and Agent writes, and applies blob revision and operation checks", async () => {
+  const cloudRequest = async (
+    f: Fixture,
+    path: string,
+    uid = "a",
+    init?: RequestInit,
+  ) =>
+    handleCloudApi(new Request(`http://local.invalid${path}`, init), uid, f.db);
+  async function pushFrontendSet(f: Fixture) {
+    const origin = randomUUID(),
+      snapshot = mutateAgentSet(createAgentSet(randomUUID(), "前端建立"), {
+        type: "put_words",
+        words: words(2),
+      }).snapshot!;
+    const response = await cloudRequest(f, "/sync/records", "a", {
+      method: "POST",
+      body: JSON.stringify({
+        origin,
+        operationId: randomUUID(),
+        records: [...snapshotRecords(snapshot).values()],
+      }),
+    });
+    return { origin, snapshot, response };
+  }
+  async function renameFromAgent(
+    f: Fixture,
+    snapshot: { set: { id: string } },
+  ) {
+    const read = (await f.repo.read("a", snapshot.set.id))!;
+    const action = { type: "rename_set", setName: "Agent 改名" };
+    const operationId = randomUUID();
+    await f.repo.mutate(
+      "a",
+      snapshot.set.id,
+      agentSetRevision(read),
+      operationId,
+      action,
+      (s) => mutateAgentSet(s, action),
+    );
+    return operationId;
+  }
+  const blobPost = async (f: Fixture, value: unknown, uid = "a") =>
+    (
+      await cloudRequest(f, "/sync/blobs", uid, {
+        method: "POST",
+        body: JSON.stringify(value),
+      })
+    ).json();
+  const blobGet = async (f: Fixture, uid = "a") =>
+    (await cloudRequest(f, "/sync/blobs", uid)).json();
+  const preferencesEnvelope = (origin: string) => ({
+    origin,
+    operationId: randomUUID(),
+    expectedRevision: 0,
+    blobs: [
+      {
+        kind: "preferences",
+        data: {
+          schemaVersion: 1,
+          model: DEFAULT_AI_MODEL,
+          updatedAt: new Date().toISOString(),
+        },
+      },
+    ],
+  });
+
+  it("reads frontend-pushed records through the Agent library", async () => {
     const f = await fixture();
     try {
-      const origin = randomUUID(),
-        snapshot = mutateAgentSet(createAgentSet(randomUUID(), "前端建立"), {
-          type: "put_words",
-          words: words(2),
-        }).snapshot!;
-      const response = await handleCloudApi(
-        new Request("http://local.invalid/sync/records", {
-          method: "POST",
-          body: JSON.stringify({
-            origin,
-            operationId: randomUUID(),
-            records: [...snapshotRecords(snapshot).values()],
-          }),
-        }),
-        "a",
-        f.db,
-      );
+      const { snapshot, response } = await pushFrontendSet(f);
       expect(response.status).toBe(200);
       const read = (await f.repo.read("a", snapshot.set.id))!;
       expect(read.words.map((w) => w.word).sort()).toEqual(
         snapshot.words.map((w) => w.word).sort(),
       );
-      const action = { type: "rename_set", setName: "Agent 改名" };
-      const operationId = randomUUID();
-      await f.repo.mutate(
-        "a",
-        snapshot.set.id,
-        agentSetRevision(read),
-        operationId,
-        action,
-        (s) => mutateAgentSet(s, action),
-      );
-      const pull = await handleCloudApi(
-        new Request("http://local.invalid/sync/records"),
-        "a",
-        f.db,
-      );
-      const feed = (await pull.json()) as { records: AgentCloudRecord[] };
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("shows an Agent rename in the frontend pull feed", async () => {
+    const f = await fixture();
+    try {
+      const { snapshot } = await pushFrontendSet(f);
+      await renameFromAgent(f, snapshot);
+      const feed = (await (await cloudRequest(f, "/sync/records")).json()) as {
+        records: AgentCloudRecord[];
+      };
       expect(
         feed.records.find(
           (r) => r.type === "set" && r.recordKey === snapshot.set.id,
         )?.payload?.setName,
       ).toBe("Agent 改名");
-      const status = await handleCloudApi(
-        new Request("http://local.invalid/sync/status"),
-        "a",
-        f.db,
-      );
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("reports an Agent write as the sync status change source", async () => {
+    const f = await fixture();
+    try {
+      const { snapshot } = await pushFrontendSet(f);
+      const operationId = await renameFromAgent(f, snapshot);
+      const status = await cloudRequest(f, "/sync/status");
       expect(((await status.json()) as { changedBy: string }).changedBy).toBe(
         `agent:${operationId}`,
       );
-      const blobOperation = randomUUID();
-      const envelope = {
-        origin,
-        operationId: blobOperation,
-        expectedRevision: 0,
-        blobs: [
-          {
-            kind: "preferences",
-            data: {
-              schemaVersion: 1,
-              model: DEFAULT_AI_MODEL,
-              updatedAt: new Date().toISOString(),
-            },
-          },
-        ],
-      };
-      const post = async (value: unknown, uid = "a") => {
-        const result = await handleCloudApi(
-          new Request("http://local.invalid/sync/blobs", {
-            method: "POST",
-            body: JSON.stringify(value),
-          }),
-          uid,
-          f.db,
-        );
-        return result.json();
-      };
-      expect(await post(envelope)).toEqual({ revision: 1 });
-      expect(await post(envelope)).toEqual({ revision: 1 });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("stores a preferences blob at revision 1", async () => {
+    const f = await fixture();
+    try {
+      expect(await blobPost(f, preferencesEnvelope(randomUUID()))).toEqual({
+        revision: 1,
+      });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("replays a blob push with the same operation id", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
+      expect(await blobPost(f, envelope)).toEqual({ revision: 1 });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects a blob operation id reused with a different expected revision", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
       await expect(
-        post({ ...envelope, expectedRevision: 1 }),
+        blobPost(f, { ...envelope, expectedRevision: 1 }),
       ).rejects.toMatchObject({ code: "operation_conflict" });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects a blob push from a stale revision", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
       await expect(
-        post({ ...envelope, operationId: randomUUID() }),
+        blobPost(f, { ...envelope, operationId: randomUUID() }),
       ).rejects.toMatchObject({ code: "cloud_conflict" });
-      const blobs = await handleCloudApi(
-        new Request("http://local.invalid/sync/blobs"),
-        "a",
-        f.db,
-      );
-      const persisted = (await blobs.json()) as {
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("persists a blob with its owner and schema version", async () => {
+    const f = await fixture();
+    try {
+      await blobPost(f, preferencesEnvelope(randomUUID()));
+      const persisted = (await blobGet(f)) as {
         revision: number;
         blobs: { preferences: { ownerId: string; schemaVersion: number } };
       };
@@ -2152,14 +2269,28 @@ describe("frontend synchronization API using the same native D1 records", () => 
         ownerId: "a",
         schemaVersion: 1,
       });
-      const other = await handleCloudApi(
-        new Request("http://local.invalid/sync/blobs"),
-        "b",
-        f.db,
-      );
-      expect(await other.json()).toEqual({ blobs: {}, revision: 0 });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("does not show one user's blobs to another user", async () => {
+    const f = await fixture();
+    try {
+      await blobPost(f, preferencesEnvelope(randomUUID()));
+      expect(await blobGet(f, "b")).toEqual({ blobs: {}, revision: 0 });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects duplicate blob kinds in one push", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
       await expect(
-        post({
+        blobPost(f, {
           ...envelope,
           operationId: randomUUID(),
           expectedRevision: 1,
@@ -2169,9 +2300,19 @@ describe("frontend synchronization API using the same native D1 records", () => 
           ],
         }),
       ).rejects.toMatchObject({ code: "duplicate_blob" });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("stores a practice blob and returns it with its owner", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
       const practiceAt = new Date().toISOString();
       expect(
-        await post({
+        await blobPost(f, {
           ...envelope,
           operationId: randomUUID(),
           expectedRevision: 1,
@@ -2183,27 +2324,33 @@ describe("frontend synchronization API using the same native D1 records", () => 
           ],
         }),
       ).toEqual({ revision: 2 });
-      const withPractice = (await (
-        await handleCloudApi(
-          new Request("http://local.invalid/sync/blobs"),
-          "a",
-          f.db,
-        )
-      ).json()) as { blobs: Record<string, unknown> };
+      const withPractice = (await blobGet(f)) as {
+        blobs: Record<string, unknown>;
+      };
       expect(withPractice.blobs.practice).toEqual({
         updatedAt: practiceAt,
         snapshot: { index: 3 },
         ownerId: "a",
         schemaVersion: 1,
       });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("rejects a practice blob without a timestamp", async () => {
+    const f = await fixture();
+    try {
+      const envelope = preferencesEnvelope(randomUUID());
+      await blobPost(f, envelope);
       await expect(
-        post({
+        blobPost(f, {
           ...envelope,
           operationId: randomUUID(),
-          expectedRevision: 2,
+          expectedRevision: 1,
           blobs: [{ kind: "practice", data: { snapshot: null } }],
         }),
-      ).rejects.toThrow();
+      ).rejects.toThrow("Invalid input: expected string, received undefined");
     } finally {
       await f.runtime.dispose();
     }
