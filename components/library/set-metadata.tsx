@@ -1,12 +1,11 @@
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { useResumableDraft } from "@/lib/use-resumable-draft";
-import { SetFolderPicker } from "@/components/library/set-folder-picker";
+import { buildSetFolderOptions } from "@/components/library/set-folder-picker";
+import { ListInputRow, ListPicker, ListSection } from "@/components/ui/list";
 import { Button } from "@/components/ui/button";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
-import { Field } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/ui/icons";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
@@ -53,14 +52,16 @@ function SetMetadataFlow({
   const { name, folder } = saved.draft;
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const nameRef = useRef<HTMLInputElement>(null);
 
   const save = async () => {
     const store = useLibraryStore.getState();
     if (!name.trim()) {
       setError(t("setEditor.required"));
-      nameRef.current?.focus({ preventScroll: true });
-      nameRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      const field = document.querySelector<HTMLInputElement>(
+        'input[name="setName"]',
+      );
+      field?.focus({ preventScroll: true });
+      field?.scrollIntoView({ block: "center", behavior: "smooth" });
       return;
     }
     if (
@@ -108,27 +109,30 @@ function SetMetadataFlow({
   return (
     <div className="space-y-6">
       <DraftSaveStatus status={saved.persistence} />
-      <Field label={t("setEditor.name")}>
-        <Input
-          aria-invalid={Boolean(error && !name.trim()) || undefined}
+      <ListSection>
+        <ListInputRow
           disabled={busy}
-          onChange={(event) => {
-            saved.update({ name: event.target.value });
+          invalid={Boolean(error && !name.trim())}
+          label={t("setEditor.name")}
+          name="setName"
+          onChange={(value) => {
+            saved.update({ name: value });
             setError("");
           }}
-          ref={nameRef}
+          placeholder={t("setEditor.namePlaceholder")}
           value={name}
         />
-      </Field>
-      <SetFolderPicker
-        disabled={busy}
-        folders={state.folders}
-        onChange={(folder) => {
-          saved.update({ folder });
-          setError("");
-        }}
-        value={folder}
-      />
+        <ListPicker
+          disabled={busy}
+          label={t("setEditor.folder")}
+          onChange={(value) => {
+            saved.update({ folder: value });
+            setError("");
+          }}
+          options={buildSetFolderOptions(state.folders)}
+          value={folder}
+        />
+      </ListSection>
       <StepActions>
         {error && (
           <p className="text-sm text-destructive" role="alert">

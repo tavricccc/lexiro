@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import {
@@ -15,7 +15,13 @@ import { Button } from "@/components/ui/button";
 import { DraftSaveStatus } from "@/components/ui/draft-save-status";
 import { LoadingState } from "@/components/ui/page-state";
 import { ResumeChoice } from "@/components/ui/resume-choice";
-import { ListInputRow, ListSection } from "@/components/ui/list";
+import {
+  ListActionRow,
+  ListInputRow,
+  ListPicker,
+  ListSection,
+} from "@/components/ui/list";
+import { buildSetFolderOptions } from "@/components/library/set-folder-picker";
 import { Icons } from "@/components/ui/icons";
 import { PageHeader } from "@/components/ui/page-header";
 import { StepActions } from "@/components/ui/step-actions";
@@ -95,13 +101,16 @@ function SetEditorFlow({
     return () => subscription.unsubscribe();
   }, [form, update]);
   const setName = form.watch("setName");
+  const [folderId, setFolderId] = useState(
+    initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+  );
   const errors = form.formState.errors;
 
   const submit = form.handleSubmit(
     async (values) => {
       try {
         const saved = await saveSet({
-          folderId: initialFolderId ?? UNCATEGORIZED_FOLDER_ID,
+          folderId,
           setName: createUniqueSetName(
             values.setName,
             state.sets.map((entry) => entry.setName),
@@ -170,6 +179,12 @@ function SetEditorFlow({
           invalid={Boolean(errors.setName)}
           value={setName}
         />
+        <ListPicker
+          label={t("setEditor.folder")}
+          onChange={setFolderId}
+          options={buildSetFolderOptions(state.folders)}
+          value={folderId}
+        />
       </ListSection>
     </div>
   );
@@ -194,20 +209,7 @@ function SetEditorFlow({
       <div>
         {metadataFields}
 
-        <div className="section-gap flex flex-wrap items-center justify-between gap-3">
-          <h2 className="type-section">{t("setEditor.words")}</h2>
-          <Button
-            onClick={() => fields.append(emptyWord)}
-            size="sm"
-            type="button"
-            variant="secondary"
-          >
-            <Icons.create />
-            {t("setEditor.addWord")}
-          </Button>
-        </div>
-
-        <div className="mt-4 space-y-7">
+        <div className="section-gap space-y-7">
           {fields.fields.map((field, index) => (
             <SetWordFields
               autoFocus={index === 0}
@@ -227,6 +229,11 @@ function SetEditorFlow({
               }
             />
           ))}
+          <ListSection>
+            <ListActionRow onClick={() => fields.append(emptyWord)}>
+              {t("setEditor.addWord")}
+            </ListActionRow>
+          </ListSection>
         </div>
 
         <StepActions width="wide">
@@ -249,7 +256,7 @@ function SetEditorFlow({
             <Icons.success />
             {form.formState.isSubmitting
               ? t("setEditor.saving")
-              : t("setEditor.saveWord")}
+              : t("setEditor.create")}
           </Button>
         </StepActions>
       </div>

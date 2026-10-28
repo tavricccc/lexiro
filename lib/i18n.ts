@@ -509,6 +509,7 @@ export const zhTW = {
     unsavedTitle: "尚未儲存變更",
     discard: "捨棄並離開",
     createTitle: "建立單字集",
+    create: "建立",
     backToSet: "回到單字集",
     saveFailed: "儲存失敗：{message}",
     defaultSetName: "我的單字",

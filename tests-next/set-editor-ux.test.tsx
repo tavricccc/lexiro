@@ -23,7 +23,7 @@ describe("manual set validation", () => {
     render(<SetEditor />);
 
     const word = screen.getByRole("textbox", { name: "英文單字" });
-    fireEvent.click(screen.getByRole("button", { name: "儲存單字" }));
+    fireEvent.click(screen.getByRole("button", { name: "建立" }));
 
     await waitFor(() => expect(word).toHaveFocus());
     expect(word).toHaveAttribute("aria-invalid", "true");
