@@ -9,6 +9,8 @@ const sensePatch = z.object({
   examples: z.array(text).max(20).optional(),
   appendExamples: z.array(text).max(20).optional(),
   supplementary: z.boolean().optional(),
+  /** An empty string clears it. */
+  description: z.string().trim().max(2000).optional(),
 });
 const fineMutation = z.discriminatedUnion("type", [
   z.object({

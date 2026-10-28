@@ -355,6 +355,32 @@ describe("native D1 agent library with synthetic users", () => {
         "An appended example.",
       ]);
       expect(updated.senses[1]).toEqual(word.senses[1]);
+      const setDescription = (description: string) =>
+        applyAgentMutation(
+          f.repo,
+          identity,
+          A,
+          {
+            action: {
+              type: "edit_sense",
+              wordKey: word.wordKey,
+              senseId: sense.id,
+              patch: { description },
+            },
+          },
+          "mcp",
+        );
+      await setDescription("常用被動 be rescued from");
+      const described = (await f.repo.read("a", A))!.words[0].senses[0];
+      expect(described).toMatchObject({
+        id: sense.id,
+        meaningZh: "救援",
+        description: "常用被動 be rescued from",
+      });
+      await setDescription("");
+      expect((await f.repo.read("a", A))!.words[0].senses[0]).not.toHaveProperty(
+        "description",
+      );
       const pack = {
         id: "reading-parent",
         kind: "reading",
