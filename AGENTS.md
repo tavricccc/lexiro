@@ -12,6 +12,7 @@ Lexiro is a client-only single-page app: Vite 8, React 19 and React Router 8 (da
 - After `git pull`, run `npm ci` before any check; a `node_modules` left from before a dependency change fails in ways unrelated to your edit.
 - `src/lib`, `src/types` and the platform-free parts of `lib` and `components/practice` are mirrored into `../lexiro-app/src/core` (`scripts/sync-core.mjs` there). A change to them goes into both repos.
 - A sense `description` holds one point per line with no typed bullets; read it with `descriptionPoints()` and render it with `components/library/description-points.tsx`. `meaningZh` is only the Chinese meaning, shown as an answer option.
+- A set lists its words A to Z with `compareWords()` from `src/lib/library.ts`; membership order carries no meaning, so never show words in it. Sets themselves keep the drag order in `src/lib/set-order.ts`.
 - Tests check behavior a user or caller can observe: rendered text and roles, stored state, returned data. One behavior per `it`, titled with that behavior. No wall-clock budgets, no assertions on framework internals (history markers, private router state) no tests that only check a render does not throw, and no bare `toThrow()`: a rejection names its error, or it also passes for an unrelated failure.
 
 Read `docs/architecture.md` for the system overview.

@@ -16,6 +16,7 @@ import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
+import { compareWords } from "@/src/lib/library";
 import {
   isExamQuestion,
   questionBelongsToMemberships,
@@ -75,17 +76,19 @@ export function SetView({
 
   const words = useMemo<ViewWord[]>(
     () =>
-      (state.memberships[setId] ?? []).flatMap((membership) => {
-        const word = state.words[membership.wordKey];
-        if (!word) return [];
-        const senses = membership.senseIds.flatMap((senseId) => {
-          const sense = word.senses.find((entry) => entry.id === senseId);
-          return sense ? [sense] : [];
-        });
-        return senses.length
-          ? [{ senses, word: word.word, wordKey: word.wordKey }]
-          : [];
-      }),
+      (state.memberships[setId] ?? [])
+        .flatMap((membership) => {
+          const word = state.words[membership.wordKey];
+          if (!word) return [];
+          const senses = membership.senseIds.flatMap((senseId) => {
+            const sense = word.senses.find((entry) => entry.id === senseId);
+            return sense ? [sense] : [];
+          });
+          return senses.length
+            ? [{ senses, word: word.word, wordKey: word.wordKey }]
+            : [];
+        })
+        .sort((a, b) => compareWords(a.word, b.word)),
     [setId, state.memberships, state.words],
   );
 

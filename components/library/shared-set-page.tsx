@@ -14,6 +14,7 @@ import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
 import { readSharedSet, type SharedSetView } from "@/lib/share-client";
 import { copySharedSet } from "@/src/lib/set-share";
+import { compareWords } from "@/src/lib/library";
 import { createUniqueSetName } from "@/src/lib/set-name";
 import { useCloudStore } from "@/stores/cloud-store";
 import { useLibraryStore } from "@/stores/library-store";
@@ -76,14 +77,16 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
 
   const { set } = view;
   const wordsByKey = new Map(set.words.map((word) => [word.wordKey, word]));
-  const rows = set.memberships.flatMap((membership) => {
-    const word = wordsByKey.get(membership.wordKey);
-    if (!word) return [];
-    const senses = word.senses.filter((sense) =>
-      membership.senseIds.includes(sense.id),
-    );
-    return [{ key: membership.wordKey, word: word.word, senses }];
-  });
+  const rows = set.memberships
+    .flatMap((membership) => {
+      const word = wordsByKey.get(membership.wordKey);
+      if (!word) return [];
+      const senses = word.senses.filter((sense) =>
+        membership.senseIds.includes(sense.id),
+      );
+      return [{ key: membership.wordKey, word: word.word, senses }];
+    })
+    .sort((a, b) => compareWords(a.word, b.word));
   const senseCount = rows.reduce((count, row) => count + row.senses.length, 0);
 
   const save = async () => {
