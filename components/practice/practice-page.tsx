@@ -6,6 +6,7 @@ import type {
 } from "@/types";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useEffect } from "react";
+import { rememberPracticedSet } from "@/lib/last-practiced";
 
 import { usedBlankForOption } from "@/components/practice/practice-content";
 import {
@@ -427,6 +428,7 @@ export function PracticePage({
         onAmountChange={setup.changeAmount}
         onBegin={() => {
           setup.clear();
+          if (setIds.length) rememberPracticedSet(setIds[0]);
           actions.begin();
         }}
         onDifficultyChange={setup.changeDifficulty}
