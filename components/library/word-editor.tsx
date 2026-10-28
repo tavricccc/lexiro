@@ -126,6 +126,15 @@ export function WordEditor({
             onChange={(meaning) => updateSense(index, { meaning })}
             value={sense.meaning}
           />
+          <ListInputRow
+            block
+            disabled={busy}
+            label={t("setEditor.description")}
+            name={`senses.${index}.description`}
+            onChange={(description) => updateSense(index, { description })}
+            placeholder={t("setEditor.descriptionPlaceholder")}
+            value={sense.description}
+          />
           <ExampleFields
             onChange={(examples) => updateSense(index, { examples })}
             values={sense.examples}
@@ -161,6 +170,7 @@ export function WordEditor({
                   meaning: "",
                   examples: [""],
                   supplementary: false,
+                  description: "",
                 },
               ],
             })

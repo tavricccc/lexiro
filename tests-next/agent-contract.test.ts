@@ -44,6 +44,26 @@ describe("agent set contract", () => {
     ]);
     expect(agentSetRevision(before)).not.toBe(agentSetRevision(added));
   });
+  it("keeps a sense description apart from its meaning", () => {
+    const before = createAgentSet(setId, "Unit 1");
+    const added = mutateAgentSet(before, {
+      type: "put_words",
+      words: [
+        {
+          word: "rescue",
+          senses: [
+            { pos: "v.", meaningZh: "救援", description: " 常用被動 be rescued " },
+            { pos: "n.", meaningZh: "救援行動", description: "  " },
+          ],
+        },
+      ],
+    }).snapshot!;
+    const [verb, noun] = added.words[0].senses;
+    expect(verb.meaningZh).toBe("救援");
+    expect(verb.description).toBe("常用被動 be rescued");
+    expect(noun).not.toHaveProperty("description");
+    expect(() => mutateAgentSet(added, { type: "rename_set", setName: "Unit 2" })).not.toThrow();
+  });
   it("rejects a word identity from a different set", () => {
     const snapshot = mutateAgentSet(
       createAgentSet(setId, "測試"),

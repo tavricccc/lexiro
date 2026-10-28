@@ -62,6 +62,11 @@ export function SetWordRow({
                 )}
               </dt>
               <dd className="mt-1.5 grid gap-1">
+                {sense.description && (
+                  <p className="whitespace-pre-line text-sm leading-6 text-muted-foreground">
+                    {sense.description}
+                  </p>
+                )}
                 {sense.examples.map((example, index) => (
                   <p className="type-lead" key={index}>
                     {example}

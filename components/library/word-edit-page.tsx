@@ -49,6 +49,7 @@ export function WordEditPage({
       meaning: sense.meaningZh,
       examples: sense.examples,
       supplementary: sense.supplementary,
+      description: sense.description ?? "",
     })),
   };
 

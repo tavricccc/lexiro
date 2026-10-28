@@ -21,6 +21,7 @@ function word(name: string, meaning: string): StudyWord {
     examples: [],
     example: "",
     supplementary: false,
+    description: "",
   };
 }
 const words = [
@@ -31,6 +32,37 @@ const words = [
   word("cloud", "雲"),
   word("book", "書"),
 ];
+
+describe("what a local word question reveals", () => {
+  const described = [
+    { ...word("rescue", "救援"), pos: "v.", description: "常用被動" },
+    word("apple", "蘋果"),
+    word("cloud", "雲"),
+    word("book", "書"),
+  ];
+  it("shows the description only after answering, and each wrong option's meaning", () => {
+    for (const item of [
+      ...buildMeaningQuestionGroups(described),
+      ...buildReverseQuestionGroups(described),
+    ].flat()) {
+      if (item.wordKey !== "rescue") continue;
+      expect(item.prompt).not.toContain("常用被動");
+      expect(item.options.join()).not.toContain("常用被動");
+      expect(item.explanation).toBe("常用被動");
+      const wrong = item.options.filter((_, index) => index !== item.answerIndex);
+      expect(Object.keys(item.whyWrong!).sort()).toEqual([...wrong].sort());
+    }
+    const reverse = buildReverseQuestionGroups(described)
+      .flat()
+      .find((item) => item.wordKey === "apple")!;
+    expect(reverse.whyWrong?.rescue).toBe("v. 救援");
+    expect(reverse).not.toHaveProperty("explanation");
+    const meaning = buildMeaningQuestionGroups(described)
+      .flat()
+      .find((item) => item.wordKey === "apple")!;
+    expect(meaning.whyWrong?.["救援"]).toBe("rescue");
+  });
+});
 
 describe("local English-to-Chinese questions", () => {
   it("keeps scoped accepted meanings independent while excluding all same-spelling senses and aliases from distractors", () => {

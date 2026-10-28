@@ -14,6 +14,7 @@ import {
   normalizePartOfSpeech,
   normalizeWordKey,
   canonicalizeQuestion,
+  senseDescription,
 } from "@/src/lib/library";
 import { canonicalHash, hashText } from "@/src/lib/hash";
 import { parseLibraryImportValue } from "@/src/lib/library-import";
@@ -35,6 +36,7 @@ const sense = z.object({
   meaningZh: text,
   examples: z.array(text).max(20).default([]),
   supplementary: z.boolean().optional(),
+  description: z.string().trim().max(2000).optional(),
 });
 const wordInput = z.object({
   wordKey: text.optional(),
@@ -93,6 +95,7 @@ const snapshotSchema = z.strictObject({
             meaningZh: text,
             examples: z.array(text),
             supplementary: z.boolean(),
+            description: text.optional(),
           }),
         )
         .min(1),
@@ -288,6 +291,7 @@ export function mutateAgentSet(
           meaningZh: s.meaningZh,
           examples: s.examples,
           supplementary: s.supplementary ?? false,
+          ...senseDescription(s.description),
         };
       });
       const seen = new Set<string>();

@@ -7,6 +7,7 @@ import type {
   VocabFolder,
   WordEntry,
   WordKey,
+  WordSense,
 } from "@/types";
 import { create } from "zustand";
 import { createMutationQueue } from "@/src/lib/mutation-queue";
@@ -19,6 +20,7 @@ import {
   canonicalizeQuestion,
   normalizePartOfSpeech,
   normalizeWordKey,
+  senseDescription,
 } from "@/src/lib/library";
 import { pruneWordsToMemberships } from "@/src/lib/library-repair";
 import {
@@ -47,6 +49,16 @@ export interface WordDraftInput {
   meaningZh: string;
   examples: string[];
   supplementary: boolean;
+  description?: string;
+}
+/** A draft that states a description replaces the sense's; one that omits it keeps it. */
+function withDescription(
+  sense: WordSense,
+  description: string | undefined,
+): WordSense {
+  if (description === undefined) return sense;
+  const { description: _previous, ...rest } = sense;
+  return { ...rest, ...senseDescription(description) };
 }
 /** A question whose content already exists is reported, never silently dropped. */
 export type SaveQuestionResult = "saved" | "duplicate";
@@ -418,7 +430,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
             ? entry.senses.map((item) =>
                 item.id === senseId
                   ? {
-                      ...item,
+                      ...withDescription(item, draft.description),
                       examples: [
                         ...new Set([
                           ...(writtenSenses.has(senseId) ? item.examples : []),
@@ -440,6 +452,7 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
                     .map((value) => value.trim())
                     .filter(Boolean),
                   supplementary: draft.supplementary,
+                  ...senseDescription(draft.description),
                 },
               ],
           updatedAt: timestamp,

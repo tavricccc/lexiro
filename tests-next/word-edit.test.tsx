@@ -75,6 +75,7 @@ describe("single-word editing", () => {
           meaning: "蘋果",
           examples: ["new example"],
           supplementary: false,
+          description: "",
         },
       ],
     });
@@ -105,6 +106,7 @@ describe("single-word editing", () => {
           meaning: old.meaningZh,
           examples: ["second"],
           supplementary: false,
+          description: "",
         },
       ],
     });
@@ -118,6 +120,34 @@ describe("single-word editing", () => {
         .senses[0].examples,
     ).toEqual(["first", "second"]);
   });
+  it("saves a description on the sense and removes it when cleared", async () => {
+    const state = fixture(),
+      key = buildSetWordKey("set", "apple"),
+      old = state.words[key].senses[0];
+    useLibraryStore.setState({ state, status: "ready" });
+    const edit = (description: string) =>
+      prepareWordEdit(useLibraryStore.getState().state, "set", key, {
+        word: "apple",
+        senses: [
+          {
+            id: old.id,
+            pos: old.pos,
+            meaning: old.meaningZh,
+            examples: old.examples,
+            supplementary: false,
+            description,
+          },
+        ],
+      });
+    await useLibraryStore.getState().saveSet(edit("  常與 pie 連用 "));
+    expect(
+      useLibraryStore.getState().state.words[key].senses[0].description,
+    ).toBe("常與 pie 連用");
+    await useLibraryStore.getState().saveSet(edit(""));
+    expect(
+      useLibraryStore.getState().state.words[key].senses[0],
+    ).not.toHaveProperty("description");
+  });
   it("saves separately editable examples and leaves the original preview untouched", async () => {
     const value = {
         word: "apple",
@@ -128,6 +158,7 @@ describe("single-word editing", () => {
             meaning: "蘋果",
             examples: ["first", "second"],
             supplementary: false,
+            description: "",
           },
         ],
       },

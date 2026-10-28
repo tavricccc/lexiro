@@ -178,6 +178,7 @@ describe("library mutations", () => {
             meaning: "鎮靜的",
             examples: ["She was calm during the fire."],
             supplementary: false,
+            description: "",
           },
         ],
       }),

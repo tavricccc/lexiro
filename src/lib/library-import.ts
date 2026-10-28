@@ -20,6 +20,7 @@ import {
   isSetWordKey,
   normalizePartOfSpeech,
   normalizeWordKey,
+  senseDescription,
 } from "./library";
 import {
   isValidAnswerIndex,
@@ -104,7 +105,7 @@ function normalizeSense(
   const source = value as Record<string, unknown>;
   assertKnownKeys(
     source,
-    ["id", "pos", "meaningZh", "examples", "supplementary"],
+    ["id", "pos", "meaningZh", "examples", "supplementary", "description"],
     `senses[${index}]`,
   );
   const rawPos = requiredText(source.pos, `senses[${index}].pos`);
@@ -121,6 +122,8 @@ function normalizeSense(
     throw new Error(`senses[${index}].examples 格式錯誤`);
   if (typeof source.supplementary !== "boolean")
     throw new Error(`senses[${index}].supplementary 格式錯誤`);
+  if (source.description !== undefined && typeof source.description !== "string")
+    throw new Error(`senses[${index}].description 格式錯誤`);
   const id = requiredText(source.id, `senses[${index}].id`);
   const expectedId = buildSenseId(wordKey, pos, meaningZh);
   if (id !== expectedId)
@@ -131,6 +134,7 @@ function normalizeSense(
     meaningZh,
     examples: examples.map((example) => example.trim()).filter(Boolean),
     supplementary: source.supplementary,
+    ...senseDescription(source.description),
   };
 }
 

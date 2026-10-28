@@ -31,6 +31,8 @@ export interface AgentWordInput {
     meaningZh: string;
     examples?: string[];
     supplementary?: boolean;
+    /** Textbook notes on usage; shown after a word task is answered, never in it. */
+    description?: string;
   }[];
 }
 export type AgentMutation =

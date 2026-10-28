@@ -26,6 +26,7 @@ const emptyDraft = (): AddWordsDraft => ({
         meaning: "",
         examples: [""],
         supplementary: false,
+        description: "",
       },
     ],
   },
@@ -109,6 +110,7 @@ function AddWordsFlow({
               meaningZh: sense.meaning,
               examples: sense.examples,
               supplementary: sense.supplementary,
+              description: sense.description,
             })),
           )
         }
@@ -121,6 +123,7 @@ function AddWordsFlow({
               meaning: "",
               examples: [""],
               supplementary: false,
+              description: "",
             },
           ],
         }}
