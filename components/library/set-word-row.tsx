@@ -1,5 +1,6 @@
 import Link from "@/components/ui/app-link";
 import type { WordKey, WordSense } from "@/types";
+import { DescriptionPoints } from "@/components/library/description-points";
 import { SpeakPill } from "@/components/ui/speak-pill";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
@@ -41,9 +42,12 @@ export function SetWordRow({
               {sense.meaningZh}
             </span>
             {sense.description && (
-              <span className="mt-1 mb-0.5 justify-self-start rounded-[var(--radius-segment)] bg-[var(--brand-50)] px-3 py-1.5 type-hint line-clamp-2 text-foreground">
-                {sense.description}
-              </span>
+              <DescriptionPoints
+                text={sense.description}
+                max={3}
+                className="mt-1 mb-0.5 justify-self-start rounded-[var(--radius-segment)] bg-[var(--brand-50)] px-3 py-1.5 type-hint text-foreground"
+                pointClassName="line-clamp-2"
+              />
             )}
             {sense.examples[0] && (
               <span className="type-hint line-clamp-2 text-muted-foreground">
@@ -71,9 +75,10 @@ export function WordSenseCard({ sense }: { sense: WordSense }) {
           <p className="text-[0.8125rem] font-semibold text-[#3f7c5a]">
             {t("setEditor.description")}
           </p>
-          <p className="mt-0.5 whitespace-pre-line text-base leading-6 text-foreground">
-            {sense.description}
-          </p>
+          <DescriptionPoints
+            text={sense.description}
+            className="mt-0.5 text-base leading-6 text-foreground"
+          />
         </div>
       )}
       {sense.examples
