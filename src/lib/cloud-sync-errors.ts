@@ -2,6 +2,7 @@ export type CloudSyncErrorCode =
   | "cloud/app-check-initialization"
   | "cloud/checksum-mismatch"
   | "cloud/data-invalid"
+  | "cloud/limit"
   | "cloud/not-configured"
   | "cloud/outbox-invalid"
   | "cloud/schema-unsupported";
@@ -13,6 +14,7 @@ export type SyncErrorKind =
   | "blocked-client"
   | "cloud-data"
   | "cloud-schema"
+  | "limit"
   | "network"
   | "not-configured"
   | "outbox"
@@ -80,6 +82,7 @@ export function syncErrorDetails(error: unknown): SyncErrorDetails {
   if (code === "cloud/data-invalid" || code === "cloud/checksum-mismatch")
     return details("cloud-data");
   if (code === "cloud/outbox-invalid") return details("outbox");
+  if (code === "cloud/limit") return details("limit");
   if (code === "cloud/not-configured") return details("not-configured");
   if (
     normalized.includes("invalid-argument") ||
