@@ -19,7 +19,6 @@ import { ActiveRoomCard } from "@/components/rooms/active-room-card";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
 import { SignInRequired } from "@/components/ui/sign-in-required";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
@@ -71,10 +70,17 @@ export function RoomsPage() {
     <div className="mx-auto max-w-xl">
       <PageHeader title={t("rooms.title")} />
       <ActiveRoomCard className="mb-4" />
-      <section className="rounded-[var(--radius-card)] bg-card p-5">
-        <h2 className="type-section">{t("rooms.joinHeader")}</h2>
+      {/* Joining is the common case: the green poster, with the code at its size. */}
+      <section className="relative grid gap-3.5 overflow-hidden rounded-[var(--radius-stage)] bg-[#7cc49c] p-[1.375rem] pt-5 text-[#13201a]">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-[4.375rem] -top-16 h-[8.375rem] w-[12.5rem] rounded-full bg-[#13201a]"
+        />
+        <h2 className="relative text-2xl font-extrabold tracking-[-0.02em]">
+          {t("rooms.joinHeader")}
+        </h2>
         <form
-          className="mt-4 flex gap-2"
+          className="relative mt-7 grid gap-2.5"
           onSubmit={(event) => {
             event.preventDefault();
             join();
@@ -83,11 +89,11 @@ export function RoomsPage() {
           <label className="sr-only" htmlFor="room-code">
             {t("rooms.codeLabel")}
           </label>
-          <Input
+          <input
             id="room-code"
             autoCapitalize="characters"
             autoComplete="off"
-            className="flex-1 text-center font-mono text-lg tracking-[0.3em] uppercase"
+            className="h-[4.5rem] w-full rounded-full bg-white/35 text-center text-4xl font-extrabold uppercase tracking-[0.22em] text-[#13201a] outline-none placeholder:text-[#13201a]/35 focus-visible:ring-2 focus-visible:ring-[#13201a]/40"
             maxLength={6}
             placeholder={t("rooms.codePlaceholder")}
             value={normalized}
@@ -96,22 +102,22 @@ export function RoomsPage() {
           <Button
             type="submit"
             size="lg"
+            className="bg-[#13201a] text-[#f4f8f5] hover:bg-[#13201a]/90"
             disabled={!ROOM_CODE_PATTERN.test(normalized)}
           >
             {t("rooms.join")}
           </Button>
         </form>
       </section>
-      <section className="mt-4 rounded-[var(--radius-card)] bg-card p-5">
+      <section className="mt-5 rounded-[var(--radius-card)] bg-card p-5">
         <h2 className="type-section">{t("rooms.createHeader")}</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="type-hint mt-3 text-muted-foreground">
           {t("rooms.createHint")}
         </p>
         <Button
           asChild
-          className="mt-4"
+          className="mt-3 w-full"
           size="lg"
-          variant="secondary"
           disabled={libraryStatus !== "ready"}
         >
           <Link href="/app/rooms/new">

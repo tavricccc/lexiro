@@ -1,6 +1,5 @@
 import Link from "@/components/ui/app-link";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 import { syncStatusLabel } from "@/lib/sync-status";
@@ -19,31 +18,37 @@ export function AccountRow() {
   const email = cloud.user?.email || t("settings.offlineReady");
   const initials = displayName.trim().slice(0, 1).toLocaleUpperCase() || "L";
   return (
-    <section className="rule-card rule-list">
-      <Link
-        className="t-row flex min-h-20 items-center gap-4 py-4"
-        href="/app/sync"
-      >
-        <Avatar className="size-12 shrink-0 ring-1 ring-border">
-          {cloud.user?.photoURL && (
-            <AvatarImage alt="" src={cloud.user.photoURL} />
+    // The account on the green poster, as in the app; the photo is cut to the bubble.
+    <Link
+      className="grid gap-4 rounded-[var(--radius-stage)] bg-[#7cc49c] p-[1.375rem] text-[#13201a] transition-[filter] hover:brightness-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      href="/app/sync"
+    >
+      <span className="flex items-start justify-between gap-3">
+        <span className="grid h-[4.5rem] w-[6.75rem] place-items-center overflow-hidden rounded-full bg-[#13201a]">
+          {cloud.user?.photoURL ? (
+            <img
+              alt=""
+              className="size-full object-cover"
+              referrerPolicy="no-referrer"
+              src={cloud.user.photoURL}
+            />
+          ) : (
+            <span className="text-[2.125rem] font-extrabold text-[#7cc49c]">
+              {initials}
+            </span>
           )}
-          <AvatarFallback className="text-base font-semibold">
-            {initials}
-          </AvatarFallback>
-        </Avatar>
-        <span className="min-w-0 flex-1">
-          <span className="type-section block truncate">{displayName}</span>
-          <span className="type-row-detail mt-0.5 block truncate">{email}</span>
         </span>
-        <span className="type-row-value shrink-0 text-sm">
+        <span className="flex items-center gap-1 text-sm font-semibold">
           {syncStatusLabel(cloud.status, cloud.pending)}
+          <Icons.open aria-hidden className="size-4" />
         </span>
-        <Icons.open
-          aria-hidden
-          className="size-4 shrink-0 text-muted-foreground/70"
-        />
-      </Link>
-    </section>
+      </span>
+      <span className="grid gap-0.5">
+        <span className="truncate text-[1.875rem] font-extrabold leading-tight tracking-[-0.03em]">
+          {displayName}
+        </span>
+        <span className="truncate text-base">{email}</span>
+      </span>
+    </Link>
   );
 }
