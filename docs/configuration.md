@@ -22,6 +22,6 @@ Firebase 只初始化 Auth。App Check 為選用且預設關閉：未設 `NEXT_P
 
 GitHub Production 保留 VITE_* secret 名稱並注入 NEXT_PUBLIC_*。Worker URLs 為 Environment variables；Vercel credentials 見[部署](deployment.md)，D1 bindings 見 [D1 雲端](d1-cloud.md)。
 
-Private Agent Worker 的 `.dev.vars` 保存 FIREBASE_PROJECT_ID、ALLOWED_ORIGIN、APP_ORIGIN、AGENT_PUBLIC_URL；D1／KV bindings 見 [D1 雲端](d1-cloud.md)。前端與 Worker 的 Firebase project 必須相同，允許 origin 要包含實際前端的 scheme／host／port。未登入、錯 project 或不允許 origin 都會被拒絕。
+Private Agent Worker 的 `.dev.vars` 保存 FIREBASE_PROJECT_ID、APP_ORIGIN（唯一取得 CORS 允許的前端 origin）、AGENT_PUBLIC_URL；D1／KV bindings 見 [D1 雲端](d1-cloud.md)。前端與 Worker 的 Firebase project 必須相同，允許 origin 要包含實際前端的 scheme／host／port。未登入、錯 project 或不允許 origin 都會被拒絕。
 
 教材、偏好與練習草稿保存在 IndexedDB／D1。版號見[資料與同步](data-and-sync.md)。

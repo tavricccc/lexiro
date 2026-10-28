@@ -1,10 +1,10 @@
 # Agent 題目批次寫入
 
-2026-10-11。共用契約 3.0.1；MCP 有 27 個工具。Agent 的五種題型共用同一套命題提示詞，寫入驗證另採寬鬆規則。查詢與細部編輯見 [按需操作](agent-query.md)。
+2026-10-11。共用契約 4.8.0；MCP 有 5 個工具。Agent 的五種題型共用同一套命題提示詞，寫入驗證另採寬鬆規則。查詢與細部編輯見 [按需操作](agent-query.md)。
 
 ## 使用者要求優先
 
-Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`get_generation_prompt` 的 rules 與 `get_generation_brief` 的 specification 直接來自 Agent Worker 的 questionPrompt：五型都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。完整提示取得一次後沿用，brief 預設只回小批來源；可在同一次 read_batch 取得兩者。API 不強制先取 brief 才允許寫入。
+Agent 可以只替指定單字出題、調整順序、同字出多題，不必覆蓋整個來源清單。`read` 的 `prompt` resource（rules）與 `brief` resource（specification） 直接來自 Agent Worker 的 questionPrompt：五型都保留完整共用與題型指引，包括語境、唯一解、干擾選項、解說與原文依據。完整提示取得一次後沿用，brief 預設只回小批來源；可在同一次 read 取得兩者。API 不強制先取 brief 才允許寫入。
 
 提示詞指導 Agent 如何生成；寫入端仍允許解說、逐錯項理由、閱讀 skill／evidence 選填及任意 JSON 欄位順序。篇幅仍是 Warning，partial／atomic、穩定 senseId 及唯讀驗證維持原行為。綜合測驗允許依共用提示考文法：來源 continual 的句子可以挖空 been；來源 ID 必須有效，答案仍須唯一定位。
 
@@ -20,9 +20,9 @@ Error 拒絕該題；篇幅偏短／偏長與完全相同內容是 Warning，允
 
 ## 先驗證或直接儲存
 
-`validate_generated_questions` 接受 `setId`、`kind`、`difficulty`（預設 2）、選填 `senseIds`、`output`、`mode`。它只讀資料，回 `dryRun:true`、逐題診斷及 revision，`savedCount` 為 0，不改 D1 狀態。
+MCP `validate` 接受 `setId`、`kind`、`difficulty`（預設 2）、選填 `senseIds`，以及 `output`。它只讀資料，回 `dryRun:true`、逐題診斷及 revision，`savedCount` 為 0，不改 D1 狀態。
 
-`save_generated_questions` 使用相同內容，另可提供 `expectedRevision`、`operationId`。`put_questions` 新增／修改完整正式題目也支援相同批次模式。
+`write` 的 `generated_questions` action 使用相同內容，另可提供 `mode`、`expectedRevision`、`operationId`。`put_questions` 新增／修改完整正式題目也支援相同批次模式。
 
 - `partial`：預設，只儲存有效獨立題目／完整題組。100 題有 3 題錯誤時，97 題儲存成功，只需修正失敗的 3 題。
 - `atomic`：有任何 Error 時整批不寫入；Warning 不阻擋交易。

@@ -14,6 +14,7 @@
 | `/app/sets/new` | 手動建立 |
 | `/app/sets/[setId]` | 單字、題目與工具 |
 | `/app/sets/[setId]/add`、`settings` | 加字、集合資訊 |
+| `/app/sets/[setId]/words/[wordKey]`、`/app/sets/[setId]/questions/[questionId]` | 單字詳情、單題檢視 |
 | `/app/sets/[setId]/words/[wordKey]/edit` | 詞義與例句編輯 |
 | `/app/shared/[shareId]` | 分享連結預覽，存入自己的題庫（需登入） |
 | `/app/rooms` | 對戰：輸入房號加入、或開新房（需登入） |

@@ -7,7 +7,7 @@
 | `VocabFolder` | id／parentId 組成資料夾樹 |
 | `LibrarySet` | id／folderId 保存集合資訊 |
 | `WordEntry` | buildSetWordKey(setId, word) 建立本集身份，內含本集 WordSense |
-| `WordSense` | 由本集 wordKey、詞性與中文建立 SenseId；例句與 supplementary 旗標只屬於此詞義 |
+| `WordSense` | 由本集 wordKey、詞性與中文建立 SenseId；例句與 supplementary 旗標只屬於此詞義。`meaningZh` 只放中文意思（會當成答案選項）；`description` 放課本補充，一點一行以 `\n` 分隔、不打項目符號，用 `descriptionPoints()` 讀取、`components/library/description-points.tsx` 顯示 |
 | `SetMembership` | 本集 wordKey + senseIds，不可指向其他集的內容 |
 | `LibraryQuestion` | 題目／文章包，全部 wordKey／senseId 來源必須在同一集 |
 
@@ -21,7 +21,7 @@
 
 上述為本機／手動備份匯入的 domain 格式處理。這次 D1 切換不讀 Firestore 或舊帳號 namespace；從空白新雲端及新快取開始，不做雲端遷移或 fallback。
 
-Full backup v4／set share v1 匯入時一次升級，新匯出只有 v5／v2。分享複製到新集時重建全部來源與父／子題身份。舊格式草稿只在來源可確認時重綁；來源無法確認時保留原稿，不假造可續接狀態。
+Full backup v4／v5、set share v1 匯入時一次升級，新匯出只有 v6／v2。分享複製到新集時重建全部來源與父／子題身份。舊格式草稿只在來源可確認時重綁；來源無法確認時保留原稿，不假造可續接狀態。
 
 `practice-scope-migration.ts` 從目前 Library 反算舊 ID，保留題序、計數、已選答案與原呈現選項。全庫舊題若原本共享，確定地承接一份，不複製已作答 entry。遷移成功先保存再提供接續；缺來源或保存失敗時保留原稿，只有明確重新開始才清除。
 
@@ -55,15 +55,15 @@ Journal 是 sidecar，記未送 record、刪除與 preferences／practice blob�
 | Library repository | 3 | head／manifest；schema 2 載入後完成 migration intent |
 | Sync journal | 5 | 保留 v2／v3／v4 待送 records、blobs，新增舊來源標記 |
 | Cloud records DTO | 9 | 固定原生教材格式，由 D1 owner API 驗證 |
-| D1 library schema | 1 | library-migrations/0001_library.sql |
+| D1 library schema | 4 | lexiro-worker/library-migrations/0001–0004 |
 | Practice snapshot | 5 | types/session.ts，v3 先轉詞義題，v4 移除退役模式並重排位置／答案 |
 | Preferences blob | 1 | cloud_blobs；目前沒有前端寫入 |
 | Practice blob | 1 | practice-storage.ts、cloud_blobs |
 | Flow drafts | 1 | use-resumable-draft.ts |
-| Full backup ZIP | 5 | lexiro-backup.json；v4 一次匯入升級 |
+| Full backup ZIP | 6 | lexiro-backup.json；v4、v5 一次匯入升級 |
 | Set share ZIP | 2 | lexiro-set.json；v1 一次匯入升級 |
 | Set share link | 1 | D1 `set_shares`；每集一條，讀取時取擁有者最新雲端版本，經同一套分享檔驗證 |
-| Agent contract | 4.1.0 | packages/agent-contract/package.json，與 private Worker tgz 同步 |
+| Agent contract | 4.8.0 | packages/agent-contract/package.json，與 private Worker tgz 同步 |
 
 版號各自演進，修改一段 schema 不會重設全部資料。備份匯出等待保存；匯入預覽只回數量，確認後在 queue 合併最新 state，不拿預覽快照覆蓋後續編輯。
 

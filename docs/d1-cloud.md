@@ -5,7 +5,7 @@
 ## 資料與同步
 
 - 前端和 MCP 共用同一套 D1 repository；網站看到的就是 Agent 寫入的原生教材。
-- Library records 保留目前教材格式 v9；D1 schema 為 v1，共用 `@lexiro/agent-contract`（目前 4.1.0）。
+- Library records 保留目前教材格式 v9；D1 schema 為 v4（`lexiro-worker/library-migrations/`），共用 `@lexiro/agent-contract`（目前 4.8.0）。
 - `/sync/records` 按 `(seq,recordId)` 分頁拉取及批次寫入；刪除使用 tombstone。偏好走 `/sync/blobs`（`0002_drop_learning_blobs.sql` 刪除舊的進度／統計列，kind 只剩 preferences 與 practice），以 blob revision 拒絕過期覆蓋。
 - 寫入以 D1 batch transaction、帳號 CAS ticket 與 operationId 回條保護；斷線重送沿用同一操作，journal 只清已成功提交的本機版本。
 - 讀字、題目都以本集 memberships/source 索引限定來源；不查整個帳號題庫。未變動的成員／題目來源不重建；相同 records 不反覆改寫。
@@ -13,7 +13,7 @@
 
 ## 資料夾與 200 筆
 
-MCP 現有 18 個工具，包含資料夾 CRUD、`move_set` 與唯讀 `validate_generated_questions`。建立集可帶 `folderId`。資料夾名稱同層不可重複、不可移進自己或子資料夾；刪除只接受空資料夾，教材的刪除仍須依使用者要求逐一操作。
+MCP 有 5 個工具（read、create_set、write、validate、delete），write／delete 的 action 包含資料夾 CRUD 與 `move_set`，`validate` 唯讀。建立集可帶 `folderId`。資料夾名稱同層不可重複、不可移進自己或子資料夾；刪除只接受空資料夾，教材的刪除仍須依使用者要求逐一操作。
 
 `put_words`／`delete_words` 每次最多 200 筆；201 筆直接拒絕，不留下部分寫入。題目每批最多 200 個獨立題目／題組，支援 partial／atomic 與逐題 Error／Warning，見 [Agent 批次寫入](agent-validation.md)。
 

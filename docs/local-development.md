@@ -7,7 +7,7 @@ npm ci
 npm run dev
 ```
 
-`http://localhost:3000` 是介紹頁，`/app` 是學習工作區。純本機模式先不建立 Firebase 環境設定；可建立教材、練習、編輯及備份。
+開啟 `http://localhost:3000/app`（學習工作區）；根路徑 `/` 會轉址到 `/app`。純本機模式先不建立 Firebase 環境設定；可建立教材、練習、編輯及備份。
 
 ## 開啟登入與同步
 
@@ -24,11 +24,12 @@ Copy-Item .env.example .env.local
 ```powershell
 Set-Location ../lexiro-worker
 npm ci
-npm run db:migrate
-npm run dev
+npm run db:migrate:agent
+npm run db:migrate:cloud
+npm run dev:agent
 ```
 
-前端 `NEXT_PUBLIC_AGENT_WORKER_URL` 與 Wrangler port 一致，ALLOWED_ORIGIN 包含實際開啟的前端 origin。Agent 自行產生教材，Worker 不安裝模型供應商 key。
+前端 `NEXT_PUBLIC_AGENT_WORKER_URL` 與 Wrangler port 一致（`dev:agent` 用 8791）；Worker 的 `APP_ORIGIN`（`wrangler.agent-local.toml` 預設 `http://localhost:3601`）要改成實際開啟的前端 origin（如 `http://localhost:3000`），可在 `.dev.vars` 覆寫。Agent 自行產生教材，Worker 不安裝模型供應商 key。
 
 ## Production PWA
 

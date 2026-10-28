@@ -6,7 +6,7 @@
 | `npm run lint` | app／components／lib／stores／src／tests-next 的 Oxlint |
 | `npm run test` | vitest.next.config.ts 的單元與元件測試；需要 router 的元件測試用 `tests-next/render.tsx` |
 | `npm run build` | Vite production build 與 Service Worker，再跑 client boundary 檢查（掃 `dist/`） |
-| `npm run format:check` | stores 和 src/lib 的格式 |
+| `npm run format:check` | app／components／lib／stores／src/lib／tests-next 的 Prettier 格式 |
 
 ## 依改動驗證
 

@@ -10,7 +10,7 @@ Lexiro 的 Vite + React Router 介面、browser domain 與本機／D1 雲端同�
 | `components/` | Domain 畫面、React UI 與動態 |
 | `lib/` | Client orchestration、Agent API、路由、更新、備份 |
 | `stores/` | Library、cloud、UI、update state |
-| `src/lib/` | 詞義、題目、儲存、同步、備份與 migration |
+| `src/lib/` | 詞義、題目、儲存、同步、備份與 migration；與 `src/types/`、`src/constants/` 及 `lib/`、`components/practice` 的平台無關部分由 `../lexiro-app/scripts/sync-core.mjs` 鏡像到原生 App 的 `src/core`，改動要兩邊同步 |
 | `src/types/`、`src/constants/` | Canonical domain 型別、版本與上限 |
 | `packages/agent-contract/`、`packages/ai-contract/` | MCP 寫入契約與共用題型／字數格式 |
 | `config/`、`src/generated/` | 動態 token 的來源／生成輸出 |
@@ -70,7 +70,7 @@ Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回
 
 `packages/agent-contract/src/generation.ts` 提供 Agent 專用生成格式與穩定 senseId 綁定；`validation.ts` 負責逐題 Error／Warning、partial／atomic 與可重送的題目識別。共用挖空器 `src/lib/question-assembly.ts` 供 Agent 寫入組題，不套篇幅／教學品質門檻。MCP 使用說明見 [批次寫入](docs/agent-validation.md)。
 
-`docs/agent-query.md` 記錄 Agent Worker 的按需查詢與細部編輯：MCP read_batch、搜尋、題型／範圍／欄位與小批來源。這些執行程式位於同層 private Worker，公開前端保存操作文件。
+`docs/agent-query.md` 記錄 Agent Worker 的按需查詢與細部編輯：MCP read、搜尋、題型／範圍／欄位與小批來源。這些執行程式位於同層 private Worker，公開前端保存操作文件。
 
 
 新增／搬移責任時更新本檔，版號只在[資料與同步](docs/data-and-sync.md)維護，避免複製出互相矛盾的 schema 表。

@@ -1,10 +1,10 @@
 # Agent 按需讀取與細部編輯
 
-MCP 的 `read_batch` 查詢格式讓 Agent 一次取得不同資料、搜尋結果和範圍，每項各自指定欄位。`get_set` 和 `create_set` 只回集資訊、數量與 revision。
+MCP 的 `read` 查詢格式讓 Agent 一次取得不同資料、搜尋結果和範圍，每項各自指定欄位。`create_set` 只回集資訊、數量與 revision。
 
 ## 一次請求需要的資料
 
-以下是 `read_batch` 的 arguments；將 `setId` 換成實際集 ID。
+以下是 `read` 的 arguments；將 `setId` 換成實際集 ID。
 
 ```json
 {
@@ -72,9 +72,9 @@ MCP 的 `read_batch` 查詢格式讓 Agent 一次取得不同資料、搜尋結�
 
 fields 使用保存後的資料格式：詞彙題是 prompt／options／answerIndex，文章題組是 passage／questions。生成的 sentence／answer／distractors 用於 output，並不是保存格式的欄位；若需要取得新題 ID，可在保存時選 responseFields:items.questionIds。
 
-命題先在同一次 `read_batch` 取得 prompt 和 brief，之後沿用完整提示，只續取小批 brief。詞彙／綜合測驗／文意選填／篇章結構／閱讀五型的 rules 直接使用內建 `questionPrompt`，內容相同。brief 預設來源數分別為 16／5／10／30／30；也可選 `includePrompt:true` 一次附上完整提示與 schema。使用者已指定題型、來源及題數時直接照要求做；未指定題型才詢問。
+命題先在同一次 `read` 取得 prompt 和 brief，之後沿用完整提示，只續取小批 brief。詞彙／綜合測驗／文意選填／篇章結構／閱讀五型的 rules 直接使用內建 `questionPrompt`，內容相同。brief 預設來源數分別為 16／5／10／30／30；也可選 `includePrompt:true` 一次附上完整提示與 schema。使用者已指定題型、來源及題數時直接照要求做；未指定題型才詢問。
 
-MCP 對應 `list_words/get_word/list_questions/get_question/edit_word/edit_sense/edit_question`，完整新增與刪除仍可用原有工具，並提供 rename_set、move_set 及原有批次操作。revision／operationId 選填；斷線重送需要自行提供並沿用同一 UUID。沿用保存回條的 revision，不必為下一次寫入重讀教材。
+MCP 只有 5 個工具：`read` 讀 resource；`write` 以 action.type 新增與修改（put_words、put_questions、generated_questions、edit_word、edit_sense、edit_question、rename_set、move_set 與資料夾操作）；`validate` 唯讀檢查；`delete` 刪除；`create_set` 建集。revision／operationId 選填；斷線重送需要自行提供並沿用同一 UUID。沿用保存回條的 revision，不必為下一次寫入重讀教材。
 
 回條預設只回數量、版本、最多 10 筆 errors 和 3 筆 warnings。需要題目 ID 或其他回條欄位時使用 `responseFields:["revision","items.questionIds"]`；更多診斷用 operationId 分頁讀取。MCP 唯讀驗證也可用 responseFields 選取完整診斷所需欄位，例如 errors.itemId／errors.code。Error／Warning 與 partial／atomic 規則見 [批次寫入](agent-validation.md)。
 

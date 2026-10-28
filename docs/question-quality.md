@@ -37,7 +37,7 @@ Lexiro 據此訂定下表。各難度的細分區間和單題字數是產品規�
 ## 程式與驗證
 
 - `packages/ai-contract/src/question-quality.ts` 保存共同字數區間與計數器；前端與 Worker 共用同一份題型表。
-- Agent contract 4.1.0 定義五種題型的完整題目、解說與錯項理由格式；Agent 自行生成內容，Lexiro 不呼叫模型。寫入驗證回逐題 Error／Warning，結構錯誤拒絕，篇幅警告仍可保存。
+- Agent contract 4.8.0 定義五種題型的完整題目、解說與錯項理由格式；Agent 自行生成內容，Lexiro 不呼叫模型。寫入驗證回逐題 Error／Warning，結構錯誤拒絕，篇幅警告仍可保存。
 - 部分寫入只保留已通過的成果。詞彙題可重送個別來源；文章的子題理由或閱讀依據可保留原文修正。文章長度、共用選項、來源詞形或篇章刪句位置錯誤需要重送完整題組，不能只換答案卻保留不相容的文章。這些門檻不等於自動證明語意正確。
 - `src/lib/question-quality.ts` 再檢查寫入內容的篇幅及解說；句子、答案、usage span 與選項仍須通過 assembly 和 import。Agent 回傳完整英文句子，再由程式挖空，不自行填底線。
 - `question-word-forms.ts` 驗證詞彙／文意選填答案與來源的詞形關係，放行正常屈折、標準英美拼法與同 lemma 的合理轉品，不因來源 POS 是名詞或形容詞就拒收 `-ed/-ing`。來源詞性是教學標記，指定詞義仍須依語境校對。`decide→decision`、`rescue→rescuer` 等衍生詞要另列來源，不能以同義詞或猜測詞族冒充目標。

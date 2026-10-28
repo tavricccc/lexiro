@@ -46,9 +46,9 @@ Agent 連線與 D1 同步需要在 GitHub `Production` Environment variables 設
 
 ## 共用契約與發布確認
 
-Agent contract 目前為 4.1.0，private Worker 使用相同版本 tgz。修改共用題型、必要請求欄位或 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
+Agent contract 目前為 4.8.0，private Worker 使用相同版本 tgz。修改共用題型、必要請求欄位或 expected 版本時，先發布接受新契約的 Worker，再發布前端。兩個 repo 各自 push main 會觸發各自部署，不是跨 repo 的原子發布。
 
-教材 D1 使用 `library-migrations/0001_library.sql`；Agent 授權 DB 使用 `agent-migrations`。Agent workflow 先套 migration、部署並檢查 discovery，再發布前端。前端部署後由使用者明確啟用 PWA 更新；既有已保存的題庫資料與練習 v5 不需遷移。
+教材 D1 使用 `lexiro-worker/library-migrations/`（0001–0004）；Agent 授權 DB 使用 `agent-migrations`。Agent workflow 先套 migration、部署並檢查 discovery，再發布前端。前端部署後由使用者明確啟用 PWA 更新；既有已保存的題庫資料與練習 v5 不需遷移。
 
 教材、題目編輯草稿保留在本機，重新開頁後可接續；契約、帳號或版本不一致時保留原稿並說明原因，由使用者明確選擇重新開始。
 
