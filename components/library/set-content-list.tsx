@@ -5,7 +5,7 @@ import { StaggerItem, StaggerList } from "@/components/motion/stagger";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { EmptyState } from "@/components/ui/page-state";
-import { questionEditHref } from "@/components/questions/question-list";
+import { withReturnTo } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
 import { questionFormatLabel } from "@/lib/question-options";
 import type { LibraryQuestion } from "@/types";
@@ -66,10 +66,15 @@ export function SetWordList({
 
 export function SetQuestionList({
   questions,
+  setId,
   returnTo,
   filtering,
   onClear,
-}: SearchState & { questions: LibraryQuestion[]; returnTo: string }) {
+}: SearchState & {
+  questions: LibraryQuestion[];
+  setId: string;
+  returnTo: string;
+}) {
   if (!questions.length)
     return filtering ? (
       <SearchEmpty onClear={onClear} />
@@ -87,7 +92,10 @@ export function SetQuestionList({
         <StaggerItem as="li" key={question.id}>
           <Link
             className="t-row flex items-center gap-3 py-[0.8125rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            href={questionEditHref(question, returnTo)}
+            href={withReturnTo(
+              `/app/sets/${setId}/questions/${encodeURIComponent(question.id)}`,
+              returnTo,
+            )}
           >
             <span className="grid min-w-0 flex-1 gap-1">
               <span className="type-hint text-muted-foreground">

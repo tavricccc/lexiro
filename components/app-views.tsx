@@ -158,6 +158,19 @@ const SCREENS: ReadonlyArray<
     ),
   ],
   [
+    "sets/:setId/questions/:questionId",
+    screen(
+      () => import("@/components/questions/question-try-page"),
+      ({ QuestionTryPage }, { setId, questionId }, query) => (
+        <QuestionTryPage
+          setId={setId}
+          questionId={questionId}
+          returnHref={readBrowseReturn(param(query, "returnTo"))}
+        />
+      ),
+    ),
+  ],
+  [
     "sets/:setId/words/:wordKey",
     screen(
       () => import("@/components/library/word-detail-page"),

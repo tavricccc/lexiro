@@ -318,6 +318,7 @@ export function SetView({
             />
             <SetQuestionList
               questions={visibleQuestions}
+              setId={setId}
               returnTo={browseHref}
               filtering={filtering && questions.length > 0}
               onClear={() => setQuery("")}
