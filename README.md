@@ -34,4 +34,4 @@ npm run build
 - [D1 Agent 部署](docs/agent-deployment.md)
 - [決策與驗收紀錄](docs/product-decisions.md)
 
-共用契約 4.8.0 來自 frontend packages/agent-contract，以 vendor tgz 固定。Agent D1 migration 至 0004，教材 D1 至 0005；正式是否套齊以部署紀錄為準。Main push 會部署 Agent，普通本機檢查不會；本地通過不等於真實 Firebase／D1、Cron 或 Cloudflare CPU 已驗收。
+共用契約 4.9.0 來自 frontend packages/agent-contract，以 vendor tgz 固定。Agent D1 migration 至 0004，教材 D1 至 0005；正式是否套齊以部署紀錄為準。Main push 會部署 Agent，普通本機檢查不會；本地通過不等於真實 Firebase／D1、Cron 或 Cloudflare CPU 已驗收。
