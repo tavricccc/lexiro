@@ -58,15 +58,15 @@ function queryHref(pathname: string, params: URLSearchParams) {
   return query ? `${pathname}?${query}` : pathname;
 }
 
-/** Native replaceState keeps filtering immediate without adding Back entries. */
+/**
+ * Native replaceState keeps filtering immediate without adding Back entries.
+ * The entry's state is kept as is, so React Router still finds its key and
+ * index there.
+ */
 export function replaceBrowseHref(href: string) {
   if (
     window.location.pathname === href.split("?")[0] &&
     `${window.location.pathname}${window.location.search}` !== href
-  ) {
-    // Next.js reattaches its router state for external history updates. Passing
-    // its markers ourselves would bypass that update; retain custom state only.
-    const { __NA, _N, ...state } = window.history.state ?? {};
-    window.history.replaceState(state, "", href);
-  }
+  )
+    window.history.replaceState(window.history.state, "", href);
 }

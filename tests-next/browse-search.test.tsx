@@ -86,29 +86,16 @@ afterEach(() => {
 });
 
 describe("collection search and return paths", () => {
-  it("preserves custom history state while letting Next.js process filtering", () => {
-    const routerTree = { tree: ["app", "library"] };
-    window.history.replaceState(
-      {
-        __NA: true,
-        __PRIVATE_NEXTJS_INTERNALS_TREE: routerTree,
-        __lexiroHistoryIndex: 7,
-        scrollPosition: 120,
-      },
-      "",
-      "/app/library",
-    );
+  it("filters in place without a Back entry and keeps the router's history state", () => {
+    const routerState = { usr: null, key: "abc", idx: 7 };
+    window.history.replaceState(routerState, "", "/app/library");
     const historyLength = window.history.length;
-    const replace = vi.spyOn(window.history, "replaceState");
     replaceBrowseHref("/app/library?q=bank");
-    expect(replace.mock.calls[0][0]).not.toHaveProperty("__NA");
-    expect(window.history.state).toMatchObject({
-      __lexiroHistoryIndex: 7,
-      scrollPosition: 120,
-      __PRIVATE_NEXTJS_INTERNALS_TREE: routerTree,
-    });
+    expect(window.location.search).toBe("?q=bank");
+    expect(window.history.state).toEqual(routerState);
     expect(window.history.length).toBe(historyLength);
-    replace.mockRestore();
+    replaceBrowseHref("/app/sets/other?q=bank");
+    expect(window.location.pathname).toBe("/app/library");
   });
 
   it("clears with one tap or Escape, restores input focus, and respects IME composition", () => {
