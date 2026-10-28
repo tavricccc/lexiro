@@ -14,4 +14,4 @@ create_set 可帶 folderId；需要分類 ID 時讀 folders。parentId:null 代�
 
 MCP validate 只讀並回逐題診斷，不改 revision。generated_questions 與 put_questions 預設 mode:partial，只保存有效獨立題目／完整題組，mode:atomic 有任何 error 就零寫入。每批最多 200 個獨立題目／題組；回 savedCount、failedCount、errors、warnings 與 itemId／sourceId，sourceIndex 只是本次位置。可只修正錯誤項；生成題 ID 穩定，拆批不重複新增。沒有另用模型評難度、風格或語意相似度；出題去重由 Agent 判斷，原始詞條保留。
 
-回條預設只回數量／版本、10筆 errors、3筆 warnings；responseFields 可選欄位，更多診斷用 operationId 分頁讀。查詢範例、13種 resource 與 REST 路徑見公開 [按需操作指南](https://github.com/tavricccc/lexiro/blob/main/docs/agent-query.md)。本機 HTTP 回歸見 [測試回條](agent-local-results.md)。local config 才有合成 auth，正式入口驗證 Firebase token。
+回條預設只回數量／版本、10筆 errors、3筆 warnings；responseFields 可選欄位，更多診斷用 operationId 分頁讀。查詢範例、12種 resource 與 REST 路徑見公開 [按需操作指南](https://github.com/tavricccc/lexiro/blob/main/docs/agent-query.md)。本機 HTTP 回歸見 [測試回條](agent-local-results.md)。local config 才有合成 auth，正式入口驗證 Firebase token。

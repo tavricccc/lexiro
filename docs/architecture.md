@@ -31,8 +31,8 @@ MCP 提供 5 個工具：read、create_set、write、validate、delete；write�
 
 ## D1 與排程
 
-Agent D1 使用 `agent-migrations` 至版本 3：URL scope／到期／撤銷、OAuth 授權請求、未認證端點限流與一次性 App 登入 code。教材 D1 使用 `library-migrations` 至版本 3：帳號版本、教材、來源索引、偏好 blobs、操作回條與分享連結。Durable Object `ROOMS` 使用 `game-room-v1` SQLite migration。
+Agent D1 使用 `agent-migrations` 至版本 3：URL scope／到期／撤銷、OAuth 授權請求、未認證端點限流與一次性 App 登入 code。教材 D1 使用 `library-migrations` 至版本 4：帳號版本、教材、來源索引、偏好 blobs、操作回條（`created_at` 索引）與分享連結。Durable Object `ROOMS` 使用 `game-room-v1` SQLite migration。
 
-Wrangler Cron 每小時執行一次，清除過期授權請求、已到期／撤銷的 link、7 天前的限流列與未兌換的 App auth code，並分批清除過期 OAuth 資料。這是存取資料維護，不是教材同步或 FSRS 排程。
+Wrangler Cron 每小時執行一次，清除過期授權請求、已到期／撤銷的 link、7 天前的限流列與未兌換的 App auth code，30 天前的教材操作回條，並分批清除過期 OAuth 資料。這是存取資料維護，不是教材同步或 FSRS 排程。
 
 完整責任見[structure](../structure.md)，部署與維護見[Agent 部署](agent-deployment.md)。

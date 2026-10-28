@@ -1,6 +1,6 @@
 # 目的、示範與逐題檢查的出題提示
 
-這輪已實作並分別凍結 v20–v25 候選，效能與題目語意由主代理控制 A/B。離線契約檢查及本地測試不能當作 Luna 已穩定出題的證據。v19 的五型首次／一次回收結果保留於 [前輪校準](luna-question-quality-20261009.md)。
+這輪已實作並分別凍結 v20–v25 候選，效能與題目語意由主代理控制 A/B。離線契約檢查及本地測試不能當作 Luna 已穩定出題的證據。v19 的五型首次／一次回收結果保留於 前輪校準（原紀錄檔已不在 repo）。
 
 ## 命題出發點
 
@@ -77,7 +77,7 @@ v22 共用前綴 1,760 tokens；v23 為 2,154，v24 精煉為 2,083，v25 維持
 
 v25 bundle 是 `candidate-v25-backend.mjs`，SHA-256 `be4ff203828e48d7027967ca9c6d44143a50a0dc8004005f742767d2f10a7e37`；同目錄 manifest 保存每個來源檔、schema、版本、raw index／targetRef 的實例及 tokenizer 數值。原 v24 與更早 bundle、所有實驗原稿均不變，凍結候選不能在模型輪次中途覆寫。
 
-批次 1／4／8／16 與有界並行的對照由主代理控制，固定來源排序、難度、model／effort 及同一前端 parser，再分開量測整輪時間、首次／native partial recovery 與語意品質。正式批次和並行的比較及決策見 [工作量評測](luna-workload-evaluation.md)，tier 沒有升級。v20–v23 freeze 使用 local vendor 4；v24 已使用 vendor 5，HTTP v3 與並行配置的最終全面 gate 由主代理統一整合。
+批次 1／4／8／16 與有界並行的對照由主代理控制，固定來源排序、難度、model／effort 及同一前端 parser，再分開量測整輪時間、首次／native partial recovery 與語意品質。正式批次和並行的比較及決策見工作量評測（原紀錄檔已不在 repo），tier 沒有升級。v20–v23 freeze 使用 local vendor 4；v24 已使用 vendor 5，HTTP v3 與並行配置的最終全面 gate 由主代理統一整合。
 
 v23 在 vendor 4 工作區完成 typecheck、lint、build 與 15 個測試檔／174 個測試；v24 在 vendor 5 通過 typecheck、lint 與三個目標測試檔／43 個測試；v25 通過 typecheck、lint 與四個目標測試檔／48 個測試。這些不是模型品質驗收；最終全面 gate 保留給主代理的 runtime／並行整合。提示代理在這輪沒有發新模型請求，對照請求由主代理統一派送。
 
