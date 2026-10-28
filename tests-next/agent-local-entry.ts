@@ -7,7 +7,7 @@ const worker = createAgentWorker({
   verify: async request => {
     const token = request.headers.get("authorization")?.replace(/^Bearer /, "");
     if (!["local-user-a", "local-user-b"].includes(token ?? "")) throw new AuthenticationError();
-    return { uid: token!, email: `${token}@example.invalid`, emailVerified: true };
+    return { uid: token!, email: `${token}@example.invalid`, emailVerified: true, authTime: Math.floor(Date.now() / 1000) };
   },
 });
 export default {

@@ -7,6 +7,7 @@ import { handleCloudApi } from "../src/cloud/api";
 import { snapshotRecords } from "../src/cloud/records";
 import type { CloudLimits } from "../src/cloud/repository";
 import { guardAccount } from "../src/agent/guard";
+import { deleteAccount } from "../src/agent/account";
 import type { AgentEnv, RateLimiter } from "../src/agent/types";
 
 async function migrate(
@@ -246,6 +247,132 @@ describe("account guard", () => {
         code: "account_disabled",
       });
       await expect(guardAccount(env(f), "b")).resolves.toBeUndefined();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+});
+
+describe("account deletion", () => {
+  const now = Date.UTC(2026, 9, 28, 12);
+  const justSignedIn = now / 1000 - 60;
+  function grants() {
+    const held = new Map([
+      ["a", ["g1", "g2", "g3"]],
+      ["b", ["g4"]],
+    ]);
+    return {
+      held,
+      provider: {
+        async listUserGrants(user: string, options?: { cursor?: string }) {
+          const ids = held.get(decodeURIComponent(user)) ?? [];
+          const start = Number(options?.cursor ?? 0);
+          const page = ids.slice(start, start + 2);
+          return {
+            items: page.map((id) => ({ id })),
+            cursor: start + 2 < ids.length ? String(start + 2) : undefined,
+          };
+        },
+        async revokeGrant(id: string, user: string) {
+          const uid = decodeURIComponent(user);
+          held.set(
+            uid,
+            (held.get(uid) ?? []).filter((g) => g !== id),
+          );
+        },
+      },
+    };
+  }
+  async function seed(f: Fixture, uid: string) {
+    await push(f, [setRecord(), setRecord()], undefined, uid);
+    await f.cloud
+      .prepare(
+        "INSERT INTO set_shares(id,owner_uid,set_id,created_at) VALUES(?,?,?,'now')",
+      )
+      .bind(`share-${uid}`, uid, `set-${uid}`)
+      .run();
+    await f.agent.batch([
+      f.agent
+        .prepare(
+          "INSERT INTO agent_links(id,token_hash,uid,set_id,created_at,expires_at) VALUES(?,?,?,'s',0,0)",
+        )
+        .bind(`link-${uid}`, `hash-${uid}`, uid),
+      f.agent
+        .prepare(
+          "INSERT INTO app_auth_codes(code_hash,challenge,uid,google_id_token,expires_at) VALUES(?,'c',?,'t',0)",
+        )
+        .bind(`code-${uid}`, uid),
+    ]);
+  }
+  async function held(f: Fixture, uid: string) {
+    const count = async (db: Fixture["cloud"], table: string, column = "uid") =>
+      (await db
+        .prepare(`SELECT COUNT(*) AS n FROM ${table} WHERE ${column}=?`)
+        .bind(uid)
+        .first<{ n: number }>())!.n;
+    return {
+      records: await count(f.cloud, "cloud_records"),
+      operations: await count(f.cloud, "cloud_operations"),
+      accounts: await count(f.cloud, "cloud_accounts"),
+      shares: await count(f.cloud, "set_shares", "owner_uid"),
+      links: await count(f.agent, "agent_links"),
+      codes: await count(f.agent, "app_auth_codes"),
+    };
+  }
+  const env = (f: Fixture, provider: unknown) =>
+    ({
+      CLOUD_DB: f.cloud,
+      AGENT_DB: f.agent,
+      OAUTH_PROVIDER: provider,
+    }) as unknown as AgentEnv;
+
+  it("erases the account's data and every MCP grant, and leaves other accounts alone", async () => {
+    const f = await fixture();
+    try {
+      await seed(f, "a");
+      await seed(f, "b");
+      const before = await held(f, "b");
+      const oauth = grants();
+      await deleteAccount(env(f, oauth.provider), "a", justSignedIn, now);
+      expect(await held(f, "a")).toEqual({
+        records: 0,
+        operations: 0,
+        accounts: 0,
+        shares: 0,
+        links: 0,
+        codes: 0,
+      });
+      expect(oauth.held.get("a")).toEqual([]);
+      expect(await held(f, "b")).toEqual(before);
+      expect(oauth.held.get("b")).toEqual(["g4"]);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("succeeds again on an account that is already gone", async () => {
+    const f = await fixture();
+    try {
+      await seed(f, "a");
+      const oauth = grants();
+      await deleteAccount(env(f, oauth.provider), "a", justSignedIn, now);
+      await expect(
+        deleteAccount(env(f, oauth.provider), "a", justSignedIn, now),
+      ).resolves.toBeUndefined();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("asks for a recent sign-in and deletes nothing without one", async () => {
+    const f = await fixture();
+    try {
+      await seed(f, "a");
+      const before = await held(f, "a");
+      await expect(
+        deleteAccount(env(f, grants().provider), "a", now / 1000 - 3600, now),
+      ).rejects.toMatchObject({ status: 403, code: "recent_sign_in_required" });
+      expect(await held(f, "a")).toEqual(before);
     } finally {
       await f.runtime.dispose();
     }

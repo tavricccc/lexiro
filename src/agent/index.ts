@@ -22,6 +22,7 @@ import {
 } from "./oauth";
 import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
 import { guardAccount } from "./guard";
+import { deleteAccount } from "./account";
 import { unlimitedAccounts } from "../cloud/repository";
 import {
   APP_AUTH_PURGE_SQL,
@@ -83,6 +84,10 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       await checkAppCheck(request, env);
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
       await guardAccount(env, identity.uid);
+      if (path === "/account" && request.method === "DELETE") {
+        await deleteAccount(env, identity.uid, identity.authTime);
+        return Response.json({ deleted: true });
+      }
       if (path === "/app-auth/codes" && request.method === "POST")
         return issueAppAuthCode(
           request,

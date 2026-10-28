@@ -28,7 +28,7 @@ function setup(cacheControl = "public, max-age=3600, must-revalidate", age = "0"
 describe("Firebase identity boundary", () => {
   it("verifies the Google signature and the project before returning identity", async () => {
     const { verify, fetcher } = setup();
-    expect(await verify(await request(), project)).toEqual({ uid: "uid-123", email: "owner@example.com", emailVerified: true });
+    expect(await verify(await request(), project)).toEqual({ uid: "uid-123", email: "owner@example.com", emailVerified: true, authTime: expect.any(Number) });
     expect(fetcher).toHaveBeenCalledWith(FIREBASE_JWKS_URL, expect.objectContaining({ signal: expect.any(AbortSignal) }));
   });
   it.each([
@@ -88,7 +88,7 @@ describe("Firebase identity boundary", () => {
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
   it("grants admin only to a verified email in the Worker secret", () => {
-    const identity = { uid: "uid", email: "Owner@Example.com", emailVerified: true };
+    const identity = { uid: "uid", email: "Owner@Example.com", emailVerified: true, authTime: 0 };
     expect(isAdministrator(identity, "other@example.com, owner@example.com\n")).toBe(true);
     expect(isAdministrator({ ...identity, emailVerified: false }, "owner@example.com")).toBe(false);
     expect(isAdministrator(identity, "")).toBe(false);
