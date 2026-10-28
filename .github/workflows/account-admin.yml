@@ -1,0 +1,65 @@
+name: Account admin
+
+# Operator actions on accounts, run by hand. `usage` lists the accounts that
+# wrote the most today and the disabled ones; `disable` and `enable` change
+# disabled_accounts, which every signed-in request checks.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        options: [usage, disable, enable]
+        default: usage
+      uid:
+        description: Firebase uid (for disable and enable)
+        required: false
+      reason:
+        description: Why the account is disabled
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lexiro-agent-production
+  cancel-in-progress: false
+
+jobs:
+  admin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: Production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      ACTION: ${{ inputs.action }}
+      TARGET_UID: ${{ inputs.uid }}
+      REASON: ${{ inputs.reason }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run the action
+        run: |
+          set -euo pipefail
+          d1() { npx wrangler d1 execute "$1" --remote --config wrangler.agent.toml --command "$2"; }
+          if [ "$ACTION" != usage ]; then
+            # Inputs never reach SQL unchecked: a uid is letters and digits only.
+            [[ "$TARGET_UID" =~ ^[A-Za-z0-9]{1,128}$ ]] || { echo "uid must be letters and digits"; exit 1; }
+          fi
+          case "$ACTION" in
+            usage)
+              d1 CLOUD_DB "SELECT uid,quota_day,quota_writes,stored_bytes FROM cloud_accounts ORDER BY quota_day DESC,quota_writes DESC LIMIT 20"
+              d1 AGENT_DB "SELECT uid,reason,datetime(disabled_at/1000,'unixepoch') AS disabled_at FROM disabled_accounts ORDER BY disabled_at DESC"
+              ;;
+            disable)
+              reason=${REASON:0:200}
+              reason=${reason//\'/\'\'}
+              d1 AGENT_DB "INSERT INTO disabled_accounts(uid,reason,disabled_at) VALUES('$TARGET_UID','$reason',$(date +%s%3N)) ON CONFLICT(uid) DO UPDATE SET reason=excluded.reason,disabled_at=excluded.disabled_at"
+              ;;
+            enable)
+              d1 AGENT_DB "DELETE FROM disabled_accounts WHERE uid='$TARGET_UID'"
+              ;;
+          esac
