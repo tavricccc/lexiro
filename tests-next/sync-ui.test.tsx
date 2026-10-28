@@ -23,19 +23,19 @@ describe("cloud sync UI", () => {
     useCloudStore.setState(initialCloudState, true);
   });
 
-  it("renders the sync indicator without an unstable external-store snapshot loop", () => {
-    expect(() => renderSyncIndicator()).not.toThrow();
+  it("links the sync indicator to the sync page", () => {
+    renderSyncIndicator();
     expect(screen.getByRole("link")).toHaveAttribute("href", "/app/sync");
   });
 
-  it("renders the cloud gate without an unstable external-store snapshot loop", () => {
-    expect(() =>
-      render(
-        <CloudGate>
-          <div>workspace</div>
-        </CloudGate>,
-      ),
-    ).not.toThrow();
+  it("holds the workspace behind the startup screen until the library is read", () => {
+    render(
+      <CloudGate>
+        <div>workspace</div>
+      </CloudGate>,
+    );
+    expect(screen.queryByText("workspace")).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toBeInTheDocument();
   });
 
   it("keeps the active workspace mounted during a routine background sync", () => {

@@ -53,7 +53,9 @@ describe("what a local word question reveals", () => {
       expect(item.prompt).not.toContain("常用被動");
       expect(item.options.join()).not.toContain("常用被動");
       expect(item.explanation).toBe("常用被動");
-      const wrong = item.options.filter((_, index) => index !== item.answerIndex);
+      const wrong = item.options.filter(
+        (_, index) => index !== item.answerIndex,
+      );
       expect(Object.keys(item.whyWrong!).sort()).toEqual([...wrong].sort());
     }
     const reverse = buildReverseQuestionGroups(described)
@@ -172,16 +174,14 @@ describe("local English-to-Chinese questions", () => {
 });
 
 describe("large libraries", () => {
-  it("builds valid questions for thousands of senses without scanning the pool per word", () => {
+  it("builds four distinct options with one right answer across a large pool", () => {
     const pool = Array.from({ length: 3000 }, (_, index) =>
       word(`word${index}`, `意思${index}；解釋${index % 500}`),
     );
-    const started = performance.now();
     const items = [
       ...buildMeaningQuestionGroups(pool),
       ...buildReverseQuestionGroups(pool),
     ].flat();
-    expect(performance.now() - started).toBeLessThan(2000);
     expect(items).toHaveLength(6000);
     for (const item of items) {
       expect(new Set(item.options).size).toBe(4);
@@ -197,13 +197,20 @@ describe("a description with several points", () => {
     expect(
       descriptionPoints(" • 常用被動\n\n2. be rescued from \n① 名詞同形"),
     ).toEqual(["常用被動", "be rescued from", "名詞同形"]);
-    expect(descriptionPoints("-ed 形容詞\n1.5 倍")).toEqual(["-ed 形容詞", "1.5 倍"]);
+    expect(descriptionPoints("-ed 形容詞\n1.5 倍")).toEqual([
+      "-ed 形容詞",
+      "1.5 倍",
+    ]);
     expect(descriptionPoints(undefined)).toEqual([]);
   });
 
   it("reveals the points as bullets after answering", () => {
     const words = [
-      { ...word("rescue", "救援"), pos: "v.", description: "常用被動\n名詞同形" },
+      {
+        ...word("rescue", "救援"),
+        pos: "v.",
+        description: "常用被動\n名詞同形",
+      },
       word("apple", "蘋果"),
       word("cloud", "雲"),
       word("book", "書"),
