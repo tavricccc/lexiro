@@ -108,7 +108,7 @@ export const readRequest = z.strictObject({
 });
 const READ = `Read data: up to 10 requests per call, each succeeds or fails on its own. Lists return 20 summaries by default in fixed ID order with nextCursor; use view:"detail" only for full content, or fields to pick what you need. Example: {requests:[{resource:"words",setId,q:"rescue",fields:["wordKey","word","senses.id"]},{resource:"prompt",kind:"vocabulary"},{resource:"brief",setId,kind:"vocabulary",difficulty:2,limit:16}]}`;
 const WRITE = `Create or modify; returns a compact receipt with the new revision. action by type:
-put_words{words:[{word,senses:[{pos,meaningZh,description?,examples?}]}]} adds words; meaningZh is only the Chinese meaning, shown as an answer option; put textbook notes (usage, collocations, register, related forms) in description, shown only after answering; with wordKey it overwrites that word and replaces all its senses (questions on dropped senses are removed and listed in the receipt)
+put_words{words:[{word,senses:[{pos,meaningZh,description?,examples?}]}]} adds words; meaningZh is only the Chinese meaning, shown as an answer option; put textbook notes (usage, collocations, register, related forms) in description, shown only after answering, one point per line joined by \\n, no bullets or numbers (apps add them); with wordKey it overwrites that word and replaces all its senses (questions on dropped senses are removed and listed in the receipt)
 edit_word{wordKey,patch:{word}} changes spelling only
 edit_sense{wordKey,senseId?,action:"add"|"update"|"delete",patch?:{pos?,meaningZh?,description?,examples?,appendExamples?}} description:"" clears it
 pos must be one of: ${SUPPORTED_PARTS_OF_SPEECH.join(" ")} (write v. for vt./vi.)
