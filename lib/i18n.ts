@@ -221,6 +221,8 @@ export const zhTW = {
     wordCount: "{count} 個單字",
   },
   library: {
+    noQuestions: "還沒有題目",
+    senseUnit: "詞義",
     title: "我的單字",
     newSet: "新增單字",
     uncategorized: "未分類",

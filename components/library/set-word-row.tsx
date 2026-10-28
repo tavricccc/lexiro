@@ -1,10 +1,8 @@
 import Link from "@/components/ui/app-link";
 import type { WordKey, WordSense } from "@/types";
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
+import { SpeakPill } from "@/components/ui/speak-pill";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
-import { speak } from "@/lib/speech";
 
 export interface ViewWord {
   wordKey: WordKey;
@@ -12,6 +10,11 @@ export interface ViewWord {
   senses: WordSense[];
 }
 
+export function wordDetailHref(setId: string, wordKey: WordKey): string {
+  return `/app/sets/${setId}/words/${encodeURIComponent(wordKey)}`;
+}
+
+/** One word as in the app's list: its meanings, a first example, and a way to hear it. */
 export function SetWordRow({
   entry,
   setId,
@@ -21,67 +24,65 @@ export function SetWordRow({
   setId: string;
   returnTo?: string;
 }) {
-  const editHref = `/app/sets/${setId}/words/${encodeURIComponent(entry.wordKey)}/edit`;
+  const href = wordDetailHref(setId, entry.wordKey);
   return (
-    <div>
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-1">
-          <p className="text-left text-base font-medium">{entry.word}</p>
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            aria-label={t("setDetail.speak")}
-            onClick={() => speak(entry.word)}
-          >
-            <Icons.speak />
-          </Button>
+    <Link
+      className="t-row flex items-center gap-3 py-[0.8125rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      href={returnTo ? withReturnTo(href, returnTo) : href}
+    >
+      <span className="grid min-w-0 flex-1 gap-1">
+        <span className="text-[1.375rem] font-bold leading-7 tracking-[-0.02em]">
+          {entry.word}
+        </span>
+        {entry.senses.map((sense) => (
+          <span key={sense.id} className="grid gap-px">
+            <span className="text-base leading-6">
+              <span className="font-semibold text-brand">{sense.pos} </span>
+              {sense.meaningZh}
+            </span>
+            {sense.examples[0] && (
+              <span className="type-hint line-clamp-2 text-muted-foreground">
+                {sense.examples[0]}
+              </span>
+            )}
+          </span>
+        ))}
+      </span>
+      <SpeakPill text={entry.word} label={t("setDetail.speak")} size="sm" />
+    </Link>
+  );
+}
+
+/** Every meaning of a word in this set, read in full. */
+export function WordSenseCard({ sense }: { sense: WordSense }) {
+  return (
+    <section className="grid gap-2 rounded-[var(--radius-card)] bg-card p-5">
+      <p className="type-section">
+        <span className="font-semibold text-brand">{sense.pos} </span>
+        {sense.meaningZh}
+      </p>
+      {sense.description && (
+        <div className="rounded-[0.75rem] bg-[var(--brand-50)] px-3 py-2">
+          <p className="text-[0.8125rem] font-semibold text-[#3f7c5a]">
+            {t("setEditor.description")}
+          </p>
+          <p className="mt-0.5 whitespace-pre-line text-base leading-6 text-foreground">
+            {sense.description}
+          </p>
         </div>
-        <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          aria-label={t("setDetail.edit")}
-        >
-          <Link href={returnTo ? withReturnTo(editHref, returnTo) : editHref}>
-            <Icons.edit />
-          </Link>
-        </Button>
-      </div>
-      <dl className="mt-2 grid gap-3">
-        {entry.senses.map((sense) => {
-          return (
-            <div key={sense.id}>
-              <dt className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-sm">
-                <span className="text-muted-foreground">{sense.pos}</span>
-                <span className="font-medium">{sense.meaningZh}</span>
-                {sense.supplementary && (
-                  <span className="text-xs text-muted-foreground">
-                    {t("supplement.badge")}
-                  </span>
-                )}
-              </dt>
-              <dd className="mt-1.5 grid gap-1">
-                {sense.description && (
-                  <div className="mb-1 rounded-[var(--radius-xs)] bg-[var(--brand-50)] px-3 py-2">
-                    <p className="text-xs font-semibold text-brand">
-                      {t("setEditor.description")}
-                    </p>
-                    <p className="mt-0.5 whitespace-pre-line text-sm leading-6 text-foreground">
-                      {sense.description}
-                    </p>
-                  </div>
-                )}
-                {sense.examples.map((example, index) => (
-                  <p className="type-lead" key={index}>
-                    {example}
-                  </p>
-                ))}
-              </dd>
-            </div>
-          );
-        })}
-      </dl>
-    </div>
+      )}
+      {sense.examples
+        .filter((example) => example.trim())
+        .map((example, index) => (
+          <p key={index} className="text-base leading-6 text-muted-foreground">
+            {example}
+          </p>
+        ))}
+      {sense.supplementary && (
+        <p className="type-hint text-muted-foreground">
+          {t("wordEdit.supplementaryHint")}
+        </p>
+      )}
+    </section>
   );
 }

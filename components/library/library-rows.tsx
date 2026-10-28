@@ -9,11 +9,7 @@ interface SetRowMetrics {
   senseCount: number;
 }
 
-/**
- * Folders and sets share one row rhythm so a mixed listing reads as a single
- * column rather than as two stacked widgets: the same left glyph, the same
- * hairline divider, the same chevron on the right.
- */
+/** A folder as an oval, as in the app: its name and how much is in it. */
 export function FolderRow({
   itemCount,
   name,
@@ -26,36 +22,24 @@ export function FolderRow({
   return (
     <button
       aria-label={t("library.openFolder", { name })}
-      className="t-row group flex min-h-[3.25rem] w-full items-center gap-3.5 py-[var(--row-padding-block)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row flex min-h-11 max-w-full items-center gap-2 rounded-full bg-card pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       onClick={onOpen}
       type="button"
     >
       <Icons.folder
         aria-hidden
-        className="size-5 shrink-0 text-success"
-        weight="duotone"
+        className="size-[1.0625rem] shrink-0 text-brand"
+        weight="fill"
       />
-      <span className="min-w-0 flex-1">
-        <span className="block truncate font-medium group-hover:text-primary">
-          {name}
-        </span>
-        <span className="mt-0.5 block text-xs text-muted-foreground">
-          {t("library.itemCount", { count: itemCount })}
-        </span>
+      <span className="min-w-0 truncate text-base font-semibold">{name}</span>
+      <span className="text-base font-bold tabular-nums text-muted-foreground">
+        {itemCount}
       </span>
-      <Icons.open
-        aria-hidden
-        className="size-4 shrink-0 text-muted-foreground"
-      />
     </button>
   );
 }
 
-/**
- * The hairline under each set name is the same coverage bar the progress page
- * uses, so "how far through am I" is answered in the listing itself instead of
- * only after opening the set.
- */
+/** A set, led by its name, with its size set large on the right. */
 export function SetRow({
   id,
   name,
@@ -63,32 +47,38 @@ export function SetRow({
   senseCount,
   returnTo,
 }: SetRowMetrics & { id: string; name: string; returnTo?: string }) {
+  const latin = /^[\x20-\x7e]+$/.test(name);
   return (
     <Link
-      className="t-row group flex min-h-[3.25rem] items-center gap-3.5 py-[var(--row-padding-block)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       href={
         returnTo ? withReturnTo(`/app/sets/${id}`, returnTo) : `/app/sets/${id}`
       }
     >
-      <Icons.library
-        aria-hidden
-        className="size-5 shrink-0 text-muted-foreground"
-      />
-      <span className="min-w-0 flex-1">
-        <span className="block truncate font-medium group-hover:text-primary">
+      <span className="grid min-w-0 flex-1 gap-1">
+        <span
+          className={
+            latin
+              ? "line-clamp-2 text-[1.375rem] font-extrabold leading-[1.2] tracking-[-0.02em]"
+              : "line-clamp-2 text-xl font-extrabold leading-[1.3]"
+          }
+        >
           {name}
         </span>
-        <span className="mt-1.5 block truncate text-xs text-muted-foreground">
-          {t("library.senseCount", { count: senseCount })}
-          {questionCount > 0 && (
-            <> · {t("library.questionCount", { count: questionCount })}</>
-          )}
+        <span className="type-hint text-muted-foreground">
+          {questionCount
+            ? t("library.questionCount", { count: questionCount })
+            : t("library.noQuestions")}
         </span>
       </span>
-      <Icons.open
-        aria-hidden
-        className="size-4 shrink-0 text-muted-foreground"
-      />
+      <span className="grid justify-items-end">
+        <span className="text-[2.125rem] font-extrabold leading-9 tracking-[-0.03em] text-brand tabular-nums">
+          {senseCount}
+        </span>
+        <span className="type-hint text-muted-foreground">
+          {t("library.senseUnit")}
+        </span>
+      </span>
     </Link>
   );
 }

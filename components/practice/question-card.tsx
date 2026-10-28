@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
+import { SpeakPill } from "@/components/ui/speak-pill";
 import { t } from "@/lib/i18n";
-import { speak } from "@/lib/speech";
 import { isWordTask } from "./meaning-questions";
 import { QuestionOptions } from "./question-options";
 import { QuestionFeedback } from "./question-feedback";
@@ -153,14 +153,7 @@ export function QuestionCard({
                 : item.prompt}
             </h1>
             {item.type === "meaning" && (
-              <button
-                type="button"
-                aria-label={t("practice.speak")}
-                onClick={() => speak(item.prompt)}
-                className="grid h-[2.375rem] w-14 shrink-0 place-items-center rounded-full bg-[#7cc49c] text-[#13201a] transition-transform active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Icons.speak className="size-[1.125rem]" />
-              </button>
+              <SpeakPill text={item.prompt} label={t("practice.speak")} />
             )}
           </div>
           {item.blank && (

@@ -224,32 +224,39 @@ export function LibraryPage({
               />
             )}
             {status === "ready" && !listEmpty && (
-              <StaggerList className="rule-card rule-list">
-                {!searching &&
-                  childFolders.map((folder) => (
-                    <StaggerItem key={folder.id}>
-                      <FolderRow
-                        itemCount={countDirectItems(
-                          state.folders,
-                          state.sets,
-                          folder.id,
-                        )}
-                        name={folder.name}
-                        onOpen={() => openFolder(folder.id)}
-                      />
-                    </StaggerItem>
-                  ))}
-                {sets.map((entry) => (
-                  <StaggerItem key={entry.id}>
-                    <SetRow
-                      id={entry.id}
-                      name={entry.setName}
-                      returnTo={browseHref}
-                      {...(setMetrics.get(entry.id) ?? NO_METRICS)}
-                    />
-                  </StaggerItem>
-                ))}
-              </StaggerList>
+              <div className="grid gap-5">
+                {!searching && childFolders.length > 0 && (
+                  <StaggerList className="flex flex-wrap gap-2">
+                    {childFolders.map((folder) => (
+                      <StaggerItem key={folder.id} className="max-w-full">
+                        <FolderRow
+                          itemCount={countDirectItems(
+                            state.folders,
+                            state.sets,
+                            folder.id,
+                          )}
+                          name={folder.name}
+                          onOpen={() => openFolder(folder.id)}
+                        />
+                      </StaggerItem>
+                    ))}
+                  </StaggerList>
+                )}
+                {sets.length > 0 && (
+                  <StaggerList className="grid gap-2">
+                    {sets.map((entry) => (
+                      <StaggerItem key={entry.id}>
+                        <SetRow
+                          id={entry.id}
+                          name={entry.setName}
+                          returnTo={browseHref}
+                          {...(setMetrics.get(entry.id) ?? NO_METRICS)}
+                        />
+                      </StaggerItem>
+                    ))}
+                  </StaggerList>
+                )}
+              </div>
             )}
             {status === "ready" && listEmpty && searching && (
               <EmptyState

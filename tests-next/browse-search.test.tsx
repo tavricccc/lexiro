@@ -138,7 +138,7 @@ describe("collection search and return paths", () => {
       />,
     );
     const href = screen
-      .getByRole("link", { name: "Which bank is open?" })
+      .getByRole("link", { name: /Which bank is open\?/ })
       .getAttribute("href")!;
     const returnHref = new URL(href, window.location.origin).searchParams.get(
       "returnTo",
@@ -158,7 +158,7 @@ describe("collection search and return paths", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: "清除篩選" }));
     expect(
-      screen.getByRole("link", { name: "Which bank is open?" }),
+      screen.getByRole("link", { name: /Which bank is open\?/ }),
     ).toBeVisible();
     expect(window.location.search).toBe("");
   });
@@ -177,7 +177,7 @@ describe("collection search and return paths", () => {
     const parent = libraryBrowseHref("parent", "銀行 & bank");
     render(<SetView setId="set" initialTab="questions" returnTo={parent} />);
     const href = screen
-      .getByRole("link", { name: "Which bank is open?" })
+      .getByRole("link", { name: /Which bank is open\?/ })
       .getAttribute("href")!;
     const returnHref = new URL(href, window.location.origin).searchParams.get(
       "returnTo",
@@ -201,7 +201,7 @@ describe("collection search and return paths", () => {
     });
     expect(input).toHaveValue(" OPEN ");
     expect(screen.getByText("1 / 1 個單字")).toBeVisible();
-    const edit = screen.getByRole("link", { name: "編輯" });
+    const edit = screen.getByRole("link", { name: /^bank/ });
     const returnTo = new URL(
       edit.getAttribute("href")!,
       window.location.origin,
@@ -228,7 +228,7 @@ describe("collection search and return paths", () => {
     fireEvent.mouseDown(tab);
     fireEvent.click(tab);
     const link = await screen.findByRole("link", {
-      name: "Which bank is open?",
+      name: /Which bank is open\?/,
     });
     const returnTo = new URL(
       link.getAttribute("href")!,
@@ -278,16 +278,16 @@ describe("collection search and return paths", () => {
     const view = render(
       <SetView setId="set" initialTab="questions" initialQuery="HARBOUR" />,
     );
-    expect(screen.getByRole("link", { name: "A journey" })).toBeVisible();
+    expect(screen.getByRole("link", { name: /A journey/ })).toBeVisible();
     view.unmount();
     window.history.replaceState(null, "", "/app/questions");
     render(<QuestionList initialFilters={{ q: "visit" }} />);
-    expect(screen.getByRole("link", { name: "A journey" })).toBeVisible();
+    expect(screen.getByRole("link", { name: /A journey/ })).toBeVisible();
     fireEvent.change(screen.getByRole("searchbox"), {
       target: { value: "airplane" },
     });
     await waitFor(() =>
-      expect(screen.getByRole("link", { name: "A journey" })).toBeVisible(),
+      expect(screen.getByRole("link", { name: /A journey/ })).toBeVisible(),
     );
   });
 });

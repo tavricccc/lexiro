@@ -33,7 +33,6 @@ import {
   wordMatchesQuery,
 } from "@/src/lib/library-search";
 import { SetTools } from "@/components/library/set-tools";
-import { StepActions } from "@/components/ui/step-actions";
 import { ContentTransition } from "@/components/motion/state-transition";
 import { replaceBrowseHref, setBrowseHref } from "@/lib/browse-routes";
 
@@ -160,6 +159,11 @@ export function SetView({
             <Menu
               actions={[
                 {
+                  icon: Icons.edit,
+                  label: t("setDetail.edit"),
+                  onSelect: () => router.push(`/app/sets/${setId}/settings`),
+                },
+                {
                   icon: Icons.folder,
                   label: t("library.moveSet"),
                   onSelect: () => setMoveOpen(true),
@@ -189,14 +193,59 @@ export function SetView({
         title={current.setName}
       />
 
-      {/* Four big numbers were a dashboard on top of a word list. They are the
-          page's subtitle, so they read as one line of it. */}
-      <p className="-mt-2 mb-6 text-sm tabular-nums text-muted-foreground">
-        {t("setDetail.summary", {
-          senses: senseIds.length,
-          questions: questions.length,
-        })}
-      </p>
+      {/* The set's size on the answer card's green, with the way in, as in the app. */}
+      <section className="relative mb-5 grid gap-[1.125rem] overflow-hidden rounded-[var(--radius-stage)] bg-[#7cc49c] p-[1.375rem] text-[#13201a]">
+        <span
+          aria-hidden
+          className="absolute -right-[5.25rem] -top-14 h-[7.5rem] w-[11.25rem] rounded-full bg-[#13201a]"
+        />
+        <div className="relative flex gap-8">
+          {[
+            [senseIds.length, t("library.senseUnit")],
+            [questions.length, t("library.questionsTab")],
+          ].map(([value, label]) => (
+            <p key={label} className="grid">
+              <span className="text-[3.5rem] font-extrabold leading-[3.625rem] tracking-[-0.045em] tabular-nums">
+                {value}
+              </span>
+              <span className="type-section">{label}</span>
+            </p>
+          ))}
+        </div>
+        <div className="relative flex gap-2.5">
+          <Button
+            asChild
+            size="lg"
+            className="flex-1 bg-[#13201a]/10 text-[#13201a] hover:bg-[#13201a]/15"
+          >
+            <Link href={`/app/sets/${setId}/add`}>
+              <Icons.create />
+              {t("setEditor.addWord")}
+            </Link>
+          </Button>
+          {senseIds.length > 0 ? (
+            <Button
+              asChild
+              size="lg"
+              className="flex-1 bg-[#13201a] text-[#f4f8f5] hover:bg-[#13201a]/90"
+            >
+              <Link href={`/app/practice?set=${setId}`}>
+                <Icons.start />
+                {t("setDetail.start")}
+              </Link>
+            </Button>
+          ) : (
+            <Button
+              size="lg"
+              disabled
+              className="flex-1 bg-[#13201a] text-[#f4f8f5]"
+            >
+              <Icons.start />
+              {t("setDetail.start")}
+            </Button>
+          )}
+        </div>
+      </section>
 
       <LiquidTabs
         ariaLabel={current.setName}
@@ -204,15 +253,11 @@ export function SetView({
         onValueChange={(value) => setTab(value as SetTab)}
         options={[
           {
-            label: senseIds.length
-              ? `${t("setDetail.wordsTab")} ${senseIds.length}`
-              : t("setDetail.wordsTab"),
+            label: `${t("setDetail.wordsTab")} ${words.length}`,
             value: "words",
           },
           {
-            label: questions.length
-              ? `${t("library.questionsTab")} ${questions.length}`
-              : t("library.questionsTab"),
+            label: `${t("library.questionsTab")} ${questions.length}`,
             value: "questions",
           },
           { label: t("workspace.toolsTab"), value: "tools" },
@@ -280,33 +325,6 @@ export function SetView({
           </>
         )}
       </ContentTransition>
-      <StepActions width="wide">
-        <div className="workspace-actions">
-          {tab !== "questions" && (
-            <Button asChild size="lg" variant="outline">
-              <Link href={`/app/sets/${setId}/add`}>
-                <Icons.create />
-                {t("setEditor.addWord")}
-              </Link>
-            </Button>
-          )}
-          {(
-            tab === "questions" ? questions.length > 0 : senseIds.length > 0
-          ) ? (
-            <Button asChild size="lg">
-              <Link href={`/app/practice?set=${setId}`}>
-                <Icons.start />
-                {t("setDetail.start")}
-              </Link>
-            </Button>
-          ) : (
-            <Button size="lg" disabled>
-              <Icons.start />
-              {t("setDetail.start")}
-            </Button>
-          )}
-        </div>
-      </StepActions>
 
       <SetMoveDialog
         currentFolderId={current.folderId}

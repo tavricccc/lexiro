@@ -56,11 +56,7 @@ export function SetWordList({
   return (
     <StaggerList as="ul" className="rule-card rule-list">
       {words.map((entry) => (
-        <StaggerItem
-          as="li"
-          className="py-[var(--row-padding-block)]"
-          key={entry.wordKey}
-        >
+        <StaggerItem as="li" key={entry.wordKey}>
           <SetWordRow entry={entry} setId={setId} returnTo={returnTo} />
         </StaggerItem>
       ))}
@@ -88,28 +84,38 @@ export function SetQuestionList({
   return (
     <StaggerList as="ul" className="rule-card rule-list">
       {questions.map((question) => (
-        <StaggerItem
-          as="li"
-          className="py-[var(--row-padding-block)]"
-          key={question.id}
-        >
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            <span className="font-medium text-foreground">
-              {questionFormatLabel(
-                question.kind === "reading"
-                  ? question.format
-                  : question.questionStyle,
-              )}
-            </span>
-            <span>
-              {t("questions.difficulty", { level: question.difficulty })}
-            </span>
-          </p>
+        <StaggerItem as="li" key={question.id}>
           <Link
-            className="mt-1.5 block font-medium leading-6 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="t-row flex items-center gap-3 py-[0.8125rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
             href={questionEditHref(question, returnTo)}
           >
-            {question.kind === "reading" ? question.title : question.prompt}
+            <span className="grid min-w-0 flex-1 gap-1">
+              <span className="type-hint text-muted-foreground">
+                <span className="font-semibold text-brand">
+                  {questionFormatLabel(
+                    question.kind === "reading"
+                      ? question.format
+                      : question.questionStyle,
+                  )}
+                </span>
+                {" · "}
+                {t("questions.difficulty", { level: question.difficulty })}
+                {question.kind === "reading" &&
+                  ` · ${t("library.questionCount", { count: question.questions.length })}`}
+              </span>
+              <span className="line-clamp-3 text-[1.0625rem] font-semibold leading-6">
+                {question.kind === "reading" ? question.title : question.prompt}
+              </span>
+              {question.kind === "reading" && question.title && (
+                <span className="type-hint line-clamp-2 text-muted-foreground">
+                  {question.passage}
+                </span>
+              )}
+            </span>
+            <Icons.open
+              aria-hidden
+              className="size-3.5 shrink-0 text-muted-foreground/60"
+            />
           </Link>
         </StaggerItem>
       ))}

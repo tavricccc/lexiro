@@ -158,6 +158,19 @@ const SCREENS: ReadonlyArray<
     ),
   ],
   [
+    "sets/:setId/words/:wordKey",
+    screen(
+      () => import("@/components/library/word-detail-page"),
+      ({ WordDetailPage }, { setId, wordKey }, query) => (
+        <WordDetailPage
+          setId={setId}
+          wordKey={wordKey}
+          returnHref={readBrowseReturn(param(query, "returnTo"))}
+        />
+      ),
+    ),
+  ],
+  [
     "sets/:setId/words/:wordKey/edit",
     screen(
       () =>
