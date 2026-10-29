@@ -1,6 +1,8 @@
 import Link from "@/components/ui/app-link";
 
+import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { ContextMenu, Menu, type MenuAction } from "@/components/ui/menu";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
 
@@ -39,18 +41,28 @@ export function FolderRow({
   );
 }
 
-/** A set, led by its name, with its size set large on the right. */
+/**
+ * A set, led by its name, with its size set large on the right. Its actions
+ * open on a right click or a long press, as in the app, and from a ⋯ button
+ * that shows on hover.
+ */
 export function SetRow({
   id,
   name,
   questionCount,
   senseCount,
   returnTo,
-}: SetRowMetrics & { id: string; name: string; returnTo?: string }) {
+  actions,
+}: SetRowMetrics & {
+  id: string;
+  name: string;
+  returnTo?: string;
+  actions?: MenuAction[];
+}) {
   const latin = /^[\x20-\x7e]+$/.test(name);
-  return (
+  const row = (
     <Link
-      className="t-row flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card [--row-bleed:0px] [--row-radius:var(--radius-card)] py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className="t-row [-webkit-touch-callout:none] flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card [--row-bleed:0px] [--row-radius:var(--radius-card)] py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
       href={
         returnTo ? withReturnTo(`/app/sets/${id}`, returnTo) : `/app/sets/${id}`
       }
@@ -80,5 +92,28 @@ export function SetRow({
         </span>
       </span>
     </Link>
+  );
+  if (!actions) return row;
+  return (
+    <div className="group relative">
+      <ContextMenu actions={actions}>{row}</ContextMenu>
+      <div className="absolute right-2 top-2 opacity-0 transition-opacity focus-within:opacity-100 group-hover:opacity-100 [@media(hover:none)]:hidden">
+        <Menu
+          actions={actions}
+          label={t("library.setActions", { name })}
+          trigger={
+            <Button
+              aria-label={t("library.setActions", { name })}
+              className="size-8"
+              size="icon"
+              type="button"
+              variant="ghost"
+            >
+              <Icons.more />
+            </Button>
+          }
+        />
+      </div>
+    </div>
   );
 }

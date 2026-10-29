@@ -5,10 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
-import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Menu } from "@/components/ui/menu";
+import { useSetActions } from "@/components/library/set-actions";
 import { PageHeader } from "@/components/ui/page-header";
 import { SearchField } from "@/components/ui/search-field";
 import { EmptyState } from "@/components/ui/page-state";
@@ -21,9 +21,6 @@ import {
   isExamQuestion,
   questionBelongsToMemberships,
 } from "@/src/lib/question-ownership";
-import { createSetSharePayload, downloadSetShare } from "@/src/lib/set-share";
-import { SetMoveDialog } from "@/components/library/set-move-dialog";
-import { ShareLinkDialog } from "@/components/library/share-link-dialog";
 import type { ViewWord } from "@/components/library/set-word-row";
 import {
   SetQuestionList,
@@ -63,14 +60,15 @@ export function SetView({
   initialQuery?: string;
 }) {
   const router = useRouter();
-  const { state, status, deleteSet, moveSet } = useLibraryStore();
+  // Called once the set is gone, so the page it leaves is already known.
+  const { actionsFor, dialogs } = useSetActions(() =>
+    router.push(libraryHref),
+  );
+  const { state, status } = useLibraryStore();
   const [tab, setTab] = useState<SetTab>(
     initialTab === "questions" || initialTab === "tools" ? initialTab : "words",
   );
-  const [confirmDelete, setConfirmDelete] = useState(false);
   const [query, setQuery] = useState(initialQuery);
-  const [moveOpen, setMoveOpen] = useState(false);
-  const [shareOpen, setShareOpen] = useState(false);
 
   const current = state.sets.find((entry) => entry.id === setId);
 
@@ -149,47 +147,12 @@ export function SetView({
     );
   }
 
-  const removeSet = async () => {
-    await deleteSet(setId);
-    router.push(libraryHref);
-  };
-
   return (
     <div className="set-workspace mx-auto max-w-3xl">
       <PageHeader
         actions={
           <>
-            <Menu
-              actions={[
-                {
-                  icon: Icons.edit,
-                  label: t("setDetail.edit"),
-                  onSelect: () => router.push(`/app/sets/${setId}/settings`),
-                },
-                {
-                  icon: Icons.folder,
-                  label: t("library.moveSet"),
-                  onSelect: () => setMoveOpen(true),
-                },
-                {
-                  icon: Icons.shareLink,
-                  label: t("setDetail.shareLink"),
-                  onSelect: () => setShareOpen(true),
-                },
-                {
-                  icon: Icons.export,
-                  label: t("setDetail.share"),
-                  onSelect: () =>
-                    downloadSetShare(createSetSharePayload(state, setId)),
-                },
-                {
-                  icon: Icons.delete,
-                  label: t("setDetail.delete"),
-                  onSelect: () => setConfirmDelete(true),
-                  tone: "destructive",
-                },
-              ]}
-            />
+            <Menu actions={actionsFor(setId)} />
           </>
         }
         back={<BackControl href={libraryHref} label={t("setDetail.back")} />}
@@ -330,28 +293,7 @@ export function SetView({
         )}
       </ContentTransition>
 
-      <SetMoveDialog
-        currentFolderId={current.folderId}
-        folders={state.folders}
-        onMove={(folderId) => moveSet(setId, folderId)}
-        onOpenChange={setMoveOpen}
-        open={moveOpen}
-        setName={current.setName}
-      />
-      <ShareLinkDialog
-        open={shareOpen}
-        onOpenChange={setShareOpen}
-        setId={setId}
-      />
-
-      <ConfirmDialog
-        confirmLabel={t("setDetail.delete")}
-        description={t("setDetail.deleteConfirm", { name: current.setName })}
-        onConfirm={removeSet}
-        onOpenChange={setConfirmDelete}
-        open={confirmDelete}
-        title={t("setDetail.delete")}
-      />
+      {dialogs}
     </div>
   );
 }

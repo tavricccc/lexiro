@@ -9,6 +9,7 @@ import {
   StateTransition,
 } from "@/components/motion/state-transition";
 import { FolderRow, SetRow } from "@/components/library/library-rows";
+import { useSetActions } from "@/components/library/set-actions";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
@@ -51,6 +52,7 @@ export function LibraryPage({
   const saveSet = useLibraryStore((store) => store.saveSet);
   const saveQuestion = useLibraryStore((store) => store.saveQuestion);
 
+  const { actionsFor, dialogs: setDialogs } = useSetActions();
   const [query, setQuery] = useState(initialQuery);
   const [currentFolderId, setCurrentFolderId] = useState(
     initialFolderId ?? ALL_FOLDER_ID,
@@ -247,6 +249,7 @@ export function LibraryPage({
                     {sets.map((entry) => (
                       <StaggerItem key={entry.id}>
                         <SetRow
+                          actions={actionsFor(entry.id, { practice: true })}
                           id={entry.id}
                           name={entry.setName}
                           returnTo={browseHref}
@@ -333,6 +336,7 @@ export function LibraryPage({
         open={Boolean(deleteFolderId)}
         title={t("library.deleteFolder")}
       />
+      {setDialogs}
     </div>
   );
 }
