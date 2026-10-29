@@ -1,4 +1,4 @@
-import { cleanup, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
 import { render } from "./render";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SetView } from "@/components/library/set-view";
@@ -89,5 +89,24 @@ describe("word order", () => {
         (draft) => draft.word,
       ),
     ).toEqual(["Apple", "banana", "cherry"]);
+  });
+
+  it("draws a long set 60 words at a time", () => {
+    const words = Array.from(
+      { length: 130 },
+      (_, index) => `word${String(index).padStart(3, "0")}`,
+    );
+    useLibraryStore.setState({ state: library(words), status: "ready" });
+    render(<SetView setId="set" returnTo="/library" />);
+    expect(screen.getAllByRole("listitem")).toHaveLength(60);
+    fireEvent.click(
+      screen.getByRole("button", { name: "再顯示（還有 70 個）" }),
+    );
+    expect(screen.getAllByRole("listitem")).toHaveLength(120);
+    fireEvent.click(
+      screen.getByRole("button", { name: "再顯示（還有 10 個）" }),
+    );
+    expect(screen.getAllByRole("listitem")).toHaveLength(130);
+    expect(screen.queryByRole("button", { name: /再顯示/ })).toBeNull();
   });
 });
