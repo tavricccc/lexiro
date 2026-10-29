@@ -24,6 +24,7 @@
 | `/app/practice` | 設定、作答、重練與結果 |
 | `/app/me`、`preferences`、`data` | 帳號入口、外觀偏好、備份 |
 | `/app/me/agents` | Agent 連線與授權管理 |
+| `/app/admin`、`/app/admin/accounts/[uid]` | 管理員：服務用量與警示、Agent 暫停、帳號列表／搜尋、停用、豁免、撤銷連線與操作紀錄（只有管理員） |
 | `/app/sync` | 登入與同步操作 |
 | `/~offline` | 無法載入時的重試與回到 App |
 
@@ -34,6 +35,6 @@
 
 ## 存取邊界
 
-本機教材與練習不要求登入；所有連網功能（雲端同步、分享連結、Agent 授權與寫入、連線對戰）都要登入，前端先擋，Worker 再驗 Firebase ID token。分享連結只要登入即可讀取擁有者最新同步的單字集，擁有者可隨時停止分享。Agent 授權只能存取授權帳號自己的教材。App Check 為選用、預設關閉：設定 `NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY` 後前端才初始化，並在 Worker 請求帶上 `X-Firebase-AppCheck`；未設定時請求與過去完全相同。Worker 目前驗 ID token 與 Origin，是否驗 App Check token 由後端 enforce 決定；建議先在 Firebase console 以 monitor 觀察，確認正常再切為 enforce。
+本機教材與練習不要求登入；所有連網功能（雲端同步、分享連結、Agent 授權與寫入、連線對戰）都要登入，前端先擋，Worker 再驗 Firebase ID token。分享連結只要登入即可讀取擁有者最新同步的單字集，擁有者可隨時停止分享。Agent 授權只能存取授權帳號自己的教材。管理員由 Worker 的 `ADMIN_EMAILS` 與已驗證 email 判定，前端不保存名單：`stores/admin-store.ts` 問 Worker 一次（非管理員每個帳號每次開啟只問一次），管理員才看到「我的 → 管理員」入口與工作區上方的用量警示橫幅。App Check 為選用、預設關閉：設定 `NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY` 後前端才初始化，並在 Worker 請求帶上 `X-Firebase-AppCheck`；未設定時請求與過去完全相同。Worker 目前驗 ID token 與 Origin，是否驗 App Check token 由後端 enforce 決定；建議先在 Firebase console 以 monitor 觀察，確認正常再切為 enforce。
 
 Agent Worker 驗證授權 token 與 Firebase ID token，uid 永遠由驗證結果取得；一般帳號只能操作自己的資料，不能跨帳號讀寫。

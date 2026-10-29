@@ -60,6 +60,8 @@ App 不保存學習進度；詳見[練習](docs/practice.md)。
 
 新 D1 雲端從空白資料開始，不遷移 Firestore 或舊帳號快取。Firestore SDK／rules／indexes／service-account 部署流程已移除；本機仍以 IndexedDB 保存離線編輯及 journal。
 
+`lib/admin-client.ts` 是 Worker `/admin/*` 的型別、呼叫與警示文案，`stores/admin-store.ts` 記住目前帳號是不是管理員和服務狀態（兩者都鏡像到原生 App）。`components/admin/` 是管理頁：`admin-page` 顯示用量、Agent 開關、帳號列表與操作紀錄，`admin-account-page` 顯示單一帳號並停用／啟用／豁免／撤銷連線，`admin-banner` 在工作區上方顯示第一則警示。Agent client 的 `AgentRequestError` 帶 Worker 錯誤代碼。
+
 Mutation queue 和 account-data queue 保護保存／備份／切換；延遲回應不能跨帳號套用。`components/me/` 管帳號、資料備份與外觀設定；ConfirmDialog 統一鎖定、失敗與重試，backup-actions 協調兩段匯入。同步文案由 sync-status 統一，pending 不顯示已同步。
 
 ## 更新、驗證和交付

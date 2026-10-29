@@ -282,6 +282,22 @@ const SCREENS: ReadonlyArray<
     ),
   ],
   [
+    "admin",
+    screen(
+      () => import("@/components/admin/admin-page"),
+      ({ AdminPage }) => <AdminPage />,
+    ),
+  ],
+  [
+    "admin/accounts/:uid",
+    screen(
+      () => import("@/components/admin/admin-account-page"),
+      ({ AdminAccountPage }, { uid }) => (
+        <AdminAccountPage key={uid} uid={uid} />
+      ),
+    ),
+  ],
+  [
     "me/agents",
     screen(
       () => import("@/components/agent/connections-page"),

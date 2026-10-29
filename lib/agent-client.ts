@@ -5,6 +5,15 @@ import { t } from "@/lib/i18n";
 
 export const agentWorkerUrl = () =>
   process.env.NEXT_PUBLIC_AGENT_WORKER_URL?.trim().replace(/\/$/, "") ?? "";
+/** A refused request; `code` is the Worker's error code when it sent one. */
+export class AgentRequestError extends Error {
+  constructor(
+    message: string,
+    readonly code?: string,
+  ) {
+    super(message);
+  }
+}
 export interface AgentConnection {
   id: string;
   clientId: string;
@@ -43,8 +52,8 @@ export async function agentJson<T>(
       throw new Error(t("agent.accountChanged"));
     const value = await response.json();
     if (!response.ok) {
-      const code = value.error?.code;
-      throw new Error(
+      const code: string | undefined = value.error?.code;
+      throw new AgentRequestError(
         code === "set_not_found" || code === "set_sync_incomplete"
           ? t("agent.syncFirst")
           : code === "authorization_expired"
@@ -58,6 +67,7 @@ export async function agentJson<T>(
                   : code === "room_ended"
                     ? t("rooms.ended")
                     : (value.error?.message ?? t("agent.requestFailed")),
+        code,
       );
     }
     return value as T;

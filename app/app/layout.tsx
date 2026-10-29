@@ -1,3 +1,4 @@
+import { AdminBanner } from "@/components/admin/admin-banner";
 import { AppShell } from "@/components/app-shell";
 import { CloudGate } from "@/components/cloud-gate";
 import { AppViews } from "@/components/app-views";
@@ -12,6 +13,7 @@ export function WorkspaceLayout() {
     <AppShell>
       <LibraryHydrator />
       <CloudGate>
+        <AdminBanner />
         <AppViews />
       </CloudGate>
     </AppShell>
