@@ -39,7 +39,7 @@ export interface CloudLimits {
 export function unlimitedAccounts(value: string | undefined): Set<string> {
   return new Set((value ?? "").split(/[,\n]/).map(uid => uid.trim()).filter(Boolean));
 }
-function secondsToNextUtcDay(now: number): string {
+export function secondsToNextUtcDay(now: number): string {
   return String(Math.ceil((86400000 - (now % 86400000)) / 1000));
 }
 export class CloudD1Repository {

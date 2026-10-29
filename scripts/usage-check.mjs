@@ -91,10 +91,15 @@ for (const [name, limit] of Object.entries(QUOTAS)) {
 }
 const report = lines.join("\n");
 console.log(report);
-if (process.env.GITHUB_STEP_SUMMARY) {
-  const { appendFileSync } = await import("node:fs");
+const { appendFileSync } = await import("node:fs");
+if (process.env.GITHUB_STEP_SUMMARY)
   appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${report}\n`);
-}
+// The workflow pauses Agent work on this share; see .github/workflows/usage-watch.yml.
+if (process.env.GITHUB_OUTPUT)
+  appendFileSync(
+    process.env.GITHUB_OUTPUT,
+    `d1_read_share=${(used.d1RowsRead / QUOTAS.d1RowsRead).toFixed(4)}\n`,
+  );
 if (alert) {
   console.error(`At least one daily quota passed ${ratio * 100}%.`);
   process.exit(1);

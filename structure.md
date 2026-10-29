@@ -9,7 +9,7 @@
 | `src/agent/index.ts`、`wrangler.agent.toml` | 獨立無模型金鑰的 Agent Worker，MCP OAuth discovery／DCR／CIMD、Firebase owner 端點、單集 URL、連線撤銷、未認證端點限流、CORS 與過期資料 Cron；部署與教材 D1 分開。選用 App Check 只套用在瀏覽器 Firebase ID token 路徑，MCP bearer／link token／OAuth provider 端點不套用 |
 | `src/agent/app-auth.ts`、`agent-migrations/0003_app_auth_codes.sql` | Web 登入後以一次性 PKCE code 把 Google ID token 交給原生 App；只存 code hash 與 challenge，60 秒到期、兌換即刪，Cron 清除未兌換列 |
 | `src/agent/rate-limit.ts` | D1 固定視窗限流：未認證端點 `/authorize` 每 IP 每 60 秒 60 次、`/oauth/register` 10 次（key 為端點＋`CF-Connecting-IP`，缺標頭以 `unknown` 計）；已登入房間端點以 uid 計數（`room_create` 5 次、`room_ticket` 30 次），單一 upsert 原子遞增並以 `Retry-After` 回 429 `rate_limited`，D1 故障時 fail-open，`now` 由呼叫端注入 |
-| `src/agent/guard.ts`、`agent-migrations/0004_disabled_accounts.sql` | 每個已登入請求（Firebase token、MCP grant、access link）先過 `guardAccount`：Workers Rate Limiting binding `USER_LIMITER` 以 uid 每 60 秒 60 次（近似、依機房計，不寫 D1），再查 `disabled_accounts`，停用帳號回 403 `account_disabled`；停用只由 admin workflow 手動寫入 |
+| `src/agent/guard.ts`、`src/agent/read-budget.ts`、`agent-migrations/0004_disabled_accounts.sql`、`0005_read_budget.sql` | 每個已登入請求（Firebase token、MCP grant、access link）經 `guarded`：先過 Workers Rate Limiting binding `USER_LIMITER`（uid 每 60 秒 60 次，近似、依機房計，不寫 D1），再一次查詢 `disabled_accounts`（403 `account_disabled`，只由 admin workflow 寫入）、`account_reads` 當日讀取列數（滿 20 萬回 429 `daily_read_limit`，`UNLIMITED_UIDS` 豁免）與 `service_flags` 的 `agent_paused`（只擋 MCP 與 access link，503）；請求以計量後的 D1 binding 執行，讀滿 10 列才記入 `account_reads`。`DELETE /account` 不計量 |
 | `src/agent/account.ts` | `DELETE /account`：要求 10 分鐘內登入過（Firebase `auth_time`），刪除該 uid 的教材、blobs、操作回條、分享連結、access link、App 登入 code，並撤銷所有 MCP grant；可重複執行；保留 `disabled_accounts` |
 | `src/agent/oauth.ts`、`mcp.ts`、`instructions.ts` | S256 PKCE 登入授權、5 個精簡工具（read／create_set／write／validate／delete），action.type 分派寫入；read 一次按需讀多種資料，完整 questionPrompt 獨立取得，寫入保留 senseId、partial／atomic 與寬鬆品質門檻 |
 | `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
@@ -29,7 +29,7 @@
 | `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |
 | `tests-next/agent-rate-limit.test.ts`、`tests-next/app-auth.test.ts` | 未認證端點限流邊界與 429 回條；App auth code 的 PKCE、單次兌換、到期與清除行為 |
 | `tests-next/account-limits.test.ts` | 每日寫入與容量上限（含跨 UTC 日、豁免、超限時完全不寫入、刪除仍可）、guard 的限流／停用，以及刪除帳號（只刪自己、可重試、需近期登入） |
-| `scripts/usage-check.mjs`、`.github/workflows/usage-watch.yml` | 每小時以 GraphQL Analytics 查當日（UTC）Workers、Durable Objects 請求與 D1 讀寫列數；任一超過免費日額度 70% 就讓排程失敗，由 GitHub 寄信；token 需 Account Analytics: Read |
+| `scripts/usage-check.mjs`、`.github/workflows/usage-watch.yml` | 每小時以 GraphQL Analytics 查當日（UTC）Workers、Durable Objects 請求與 D1 讀寫列數；任一超過免費日額度 70% 就讓排程失敗，由 GitHub 寄信；D1 讀取達 80% 時寫入 `agent_paused`，低於 80% 時清除；token 需 Account Analytics: Read |
 | `.github/workflows/account-admin.yml` | 手動執行：`usage` 列出當日寫入最多的帳號與已停用帳號，`disable`／`enable` 增刪 `disabled_accounts`；uid 只接受英數字 |
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
 | `docs/agent-deployment.md` | 2026-10-10 Agent 變更、正式資源與 secrets、獨立部署 workflow、Vercel 免費網域及首次發布驗收回條 |

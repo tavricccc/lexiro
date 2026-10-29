@@ -21,7 +21,7 @@ import {
   finishAuthorization,
 } from "./oauth";
 import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
-import { guardAccount } from "./guard";
+import { guardAccount, guarded } from "./guard";
 import { deleteAccount } from "./account";
 import { unlimitedAccounts } from "../cloud/repository";
 import {
@@ -47,8 +47,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
   const verify = dependencies.verify ?? verifyFirebaseToken;
   const defaults = {
     async fetch(request: Request, env: AgentEnv): Promise<Response> {
-      const path = new URL(request.url).pathname,
-        repo = repository(env);
+      const path = new URL(request.url).pathname;
       if (path === "/authorize" && request.method === "GET") {
         await checkRateLimit(env.AGENT_DB, "authorize", request, Date.now());
         return startAuthorization(request, env);
@@ -69,113 +68,122 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
       const access = /^\/access\/([0-9a-f-]{36})(\/.*)?$/.exec(path);
       if (access) {
         const identity = await linkIdentity(request, env, access[1]);
-        await guardAccount(env, identity.uid);
-        return handleAgentAccess(
-          request,
-          env,
-          repo,
-          identity,
-          access[1],
-          access[2] ?? "",
+        return guarded(env, identity.uid, { agent: true }, (env) =>
+          handleAgentAccess(
+            request,
+            env,
+            repository(env),
+            identity,
+            access[1],
+            access[2] ?? "",
+          ),
         );
       }
       // App Check only guards the browser Firebase ID token paths. MCP bearer,
       // link tokens and OAuth provider endpoints never reach this call.
       await checkAppCheck(request, env);
       const identity = await verify(request, env.FIREBASE_PROJECT_ID);
-      await guardAccount(env, identity.uid);
+      // Deleting is not metered: recording its reads would recreate a row.
       if (path === "/account" && request.method === "DELETE") {
+        await guardAccount(env, identity.uid);
         await deleteAccount(env, identity.uid, identity.authTime);
         return Response.json({ deleted: true });
       }
-      if (path === "/app-auth/codes" && request.method === "POST")
-        return issueAppAuthCode(
-          request,
-          env.AGENT_DB,
-          identity.uid,
-          Date.now(),
-        );
-      if (path.startsWith("/sync/"))
-        return handleCloudApi(request, identity.uid, env.CLOUD_DB, {
-          unlimited: unlimitedAccounts(env.UNLIMITED_UIDS),
-        });
-      if (path === "/shares" || path.startsWith("/shares/"))
-        return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
-      if (path === "/rooms" || path.startsWith("/rooms/"))
-        return handleRoomApi(
-          request,
-          identity.uid,
-          env.ROOMS,
-          env.AGENT_DB,
-          Date.now(),
-        );
-      if (path === "/links" && request.method === "POST") {
-        const input = linkOptions.parse(
-          JSON.parse(await readBody(request, 2000)),
-        );
-        await readAgentSet(repo, identity, input.setId);
-        return Response.json(await createAgentLink(env, identity.uid, input), {
-          status: 201,
-        });
-      }
-      if (path === "/links" && request.method === "GET") {
-        const links = await env.AGENT_DB.prepare(
-          "SELECT id,set_id AS setId,expires_at AS expiresAt,revoked_at AS revokedAt FROM agent_links WHERE uid=? ORDER BY created_at DESC LIMIT 100",
-        )
-          .bind(identity.uid)
-          .all();
-        return Response.json({ links: links.results });
-      }
-      const revoke = /^\/links\/([0-9a-f-]{36})$/.exec(path);
-      if (revoke && request.method === "DELETE") {
-        const updated = await env.AGENT_DB.prepare(
-          "UPDATE agent_links SET revoked_at=? WHERE id=? AND uid=? RETURNING id",
-        )
-          .bind(Date.now(), revoke[1], identity.uid)
-          .first();
-        if (!updated) throw new HttpError(404, "link_not_found");
-        return Response.json({ revoked: true });
-      }
-      const oauth = /^\/oauth\/(request|approve)\/([0-9a-f-]{36})$/.exec(path);
-      if (oauth?.[1] === "request" && request.method === "GET")
-        return Response.json(await authorizationInfo(env, oauth[2]));
-      if (oauth?.[1] === "approve" && request.method === "POST") {
-        const { allow } = z
-          .strictObject({ allow: z.boolean() })
-          .parse(JSON.parse(await readBody(request, 2000)));
-        return Response.json(
-          await finishAuthorization(env, oauth[2], identity, allow),
-        );
-      }
-      if (path === "/connections" && request.method === "GET") {
-        const url = new URL(request.url);
-        const grants = await env.OAUTH_PROVIDER.listUserGrants(
-          encodeURIComponent(identity.uid),
-          { limit: 100, cursor: url.searchParams.get("cursor") ?? undefined },
-        );
-        const connections = await Promise.all(
-          grants.items.map(async (grant) => ({
-            id: grant.id,
-            clientId: grant.clientId,
-            clientName:
-              (await env.OAUTH_PROVIDER.lookupClient(grant.clientId))
-                ?.clientName ?? grant.clientId,
-            createdAt: grant.createdAt,
-          })),
-        );
-        return Response.json({ connections, cursor: grants.cursor });
-      }
-      const connection = /^\/connections\/([^/]+)$/.exec(path);
-      if (connection && request.method === "DELETE") {
-        await env.OAUTH_PROVIDER.revokeGrant(
-          decodeURIComponent(connection[1]),
-          encodeURIComponent(identity.uid),
-        );
-        return Response.json({ revoked: true });
-      }
-      throw new HttpError(404, "not_found");
+      return guarded(env, identity.uid, {}, (env) =>
+        signedIn(request, env, identity),
+      );
     },
   };
+  /** Routes for a request that carried a verified Firebase ID token. */
+  async function signedIn(
+    request: Request,
+    env: AgentEnv,
+    identity: Awaited<ReturnType<typeof verify>>,
+  ): Promise<Response> {
+    const path = new URL(request.url).pathname,
+      repo = repository(env);
+    if (path === "/app-auth/codes" && request.method === "POST")
+      return issueAppAuthCode(request, env.AGENT_DB, identity.uid, Date.now());
+    if (path.startsWith("/sync/"))
+      return handleCloudApi(request, identity.uid, env.CLOUD_DB, {
+        unlimited: unlimitedAccounts(env.UNLIMITED_UIDS),
+      });
+    if (path === "/shares" || path.startsWith("/shares/"))
+      return handleShareApi(request, identity.uid, env.CLOUD_DB, repo);
+    if (path === "/rooms" || path.startsWith("/rooms/"))
+      return handleRoomApi(
+        request,
+        identity.uid,
+        env.ROOMS,
+        env.AGENT_DB,
+        Date.now(),
+      );
+    if (path === "/links" && request.method === "POST") {
+      const input = linkOptions.parse(
+        JSON.parse(await readBody(request, 2000)),
+      );
+      await readAgentSet(repo, identity, input.setId);
+      return Response.json(await createAgentLink(env, identity.uid, input), {
+        status: 201,
+      });
+    }
+    if (path === "/links" && request.method === "GET") {
+      const links = await env.AGENT_DB.prepare(
+        "SELECT id,set_id AS setId,expires_at AS expiresAt,revoked_at AS revokedAt FROM agent_links WHERE uid=? ORDER BY created_at DESC LIMIT 100",
+      )
+        .bind(identity.uid)
+        .all();
+      return Response.json({ links: links.results });
+    }
+    const revoke = /^\/links\/([0-9a-f-]{36})$/.exec(path);
+    if (revoke && request.method === "DELETE") {
+      const updated = await env.AGENT_DB.prepare(
+        "UPDATE agent_links SET revoked_at=? WHERE id=? AND uid=? RETURNING id",
+      )
+        .bind(Date.now(), revoke[1], identity.uid)
+        .first();
+      if (!updated) throw new HttpError(404, "link_not_found");
+      return Response.json({ revoked: true });
+    }
+    const oauth = /^\/oauth\/(request|approve)\/([0-9a-f-]{36})$/.exec(path);
+    if (oauth?.[1] === "request" && request.method === "GET")
+      return Response.json(await authorizationInfo(env, oauth[2]));
+    if (oauth?.[1] === "approve" && request.method === "POST") {
+      const { allow } = z
+        .strictObject({ allow: z.boolean() })
+        .parse(JSON.parse(await readBody(request, 2000)));
+      return Response.json(
+        await finishAuthorization(env, oauth[2], identity, allow),
+      );
+    }
+    if (path === "/connections" && request.method === "GET") {
+      const url = new URL(request.url);
+      const grants = await env.OAUTH_PROVIDER.listUserGrants(
+        encodeURIComponent(identity.uid),
+        { limit: 100, cursor: url.searchParams.get("cursor") ?? undefined },
+      );
+      const connections = await Promise.all(
+        grants.items.map(async (grant) => ({
+          id: grant.id,
+          clientId: grant.clientId,
+          clientName:
+            (await env.OAUTH_PROVIDER.lookupClient(grant.clientId))
+              ?.clientName ?? grant.clientId,
+          createdAt: grant.createdAt,
+        })),
+      );
+      return Response.json({ connections, cursor: grants.cursor });
+    }
+    const connection = /^\/connections\/([^/]+)$/.exec(path);
+    if (connection && request.method === "DELETE") {
+      await env.OAUTH_PROVIDER.revokeGrant(
+        decodeURIComponent(connection[1]),
+        encodeURIComponent(identity.uid),
+      );
+      return Response.json({ revoked: true });
+    }
+    throw new HttpError(404, "not_found");
+  }
   const provider = (settings: AgentEnv) =>
     new OAuthProvider<AgentEnv>({
       apiRoute: "/mcp",
@@ -197,7 +205,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
             !context.auth.scope.includes("sets:write")
           )
             throw new HttpError(403, "insufficient_scope");
-          return guardAccount(env, identity.uid).then(() =>
+          return guarded(env, identity.uid, { agent: true }, (env) =>
             handleAgentMcp(request, identity, repository(env)),
           );
         },

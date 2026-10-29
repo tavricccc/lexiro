@@ -41,6 +41,7 @@ export async function deleteAccount(
   await env.AGENT_DB.batch([
     env.AGENT_DB.prepare("DELETE FROM agent_links WHERE uid=?").bind(uid),
     env.AGENT_DB.prepare("DELETE FROM app_auth_codes WHERE uid=?").bind(uid),
+    env.AGENT_DB.prepare("DELETE FROM account_reads WHERE uid=?").bind(uid),
   ]);
   // List every grant before revoking any, so a cursor never skips a grant
   // that moved up when an earlier one was removed.

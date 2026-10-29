@@ -6,7 +6,8 @@ import { createAgentSet, type AgentCloudRecord } from "@lexiro/agent-contract";
 import { handleCloudApi } from "../src/cloud/api";
 import { snapshotRecords } from "../src/cloud/records";
 import type { CloudLimits } from "../src/cloud/repository";
-import { guardAccount } from "../src/agent/guard";
+import { AGENT_PAUSED_FLAG, guardAccount, guarded } from "../src/agent/guard";
+import { DAILY_READ_LIMIT } from "../src/agent/read-budget";
 import { deleteAccount } from "../src/agent/account";
 import type { AgentEnv, RateLimiter } from "../src/agent/types";
 
@@ -253,6 +254,92 @@ describe("account guard", () => {
   });
 });
 
+describe("daily read budget", () => {
+  const now = Date.UTC(2026, 9, 29, 18);
+  const env = (f: Fixture, extra: Partial<AgentEnv> = {}) =>
+    ({ AGENT_DB: f.agent, CLOUD_DB: f.cloud, ...extra }) as unknown as AgentEnv;
+  const reads = async (f: Fixture, uid = "a") =>
+    (await f.agent
+      .prepare("SELECT day,rows FROM account_reads WHERE uid=?")
+      .bind(uid)
+      .first<{ day: string; rows: number }>()) ?? null;
+  /** A request that reads every record the account holds. */
+  const readAll = (e: AgentEnv) =>
+    e.CLOUD_DB.prepare("SELECT * FROM cloud_records WHERE uid='a'").all();
+
+  it("adds what a request read to the account's day", async () => {
+    const f = await fixture();
+    try {
+      await push(
+        f,
+        Array.from({ length: 30 }, () => setRecord()),
+      );
+      await guarded(env(f), "a", { now }, readAll);
+      await guarded(env(f), "a", { now }, readAll);
+      const day = await reads(f);
+      expect(day?.day).toBe("2026-10-29");
+      expect(day?.rows).toBeGreaterThanOrEqual(60);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("records nothing for a request that reads a few rows", async () => {
+    const f = await fixture();
+    try {
+      await guarded(env(f), "a", { now }, (e) =>
+        e.CLOUD_DB.prepare("SELECT 1").first(),
+      );
+      expect(await reads(f)).toBeNull();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("refuses an account whose day is spent until the next UTC day", async () => {
+    const f = await fixture();
+    try {
+      await f.agent
+        .prepare(
+          "INSERT INTO account_reads(uid,day,rows) VALUES('a','2026-10-29',?)",
+        )
+        .bind(DAILY_READ_LIMIT)
+        .run();
+      const run = vi.fn(async () => {});
+      await expect(guarded(env(f), "a", { now }, run)).rejects.toMatchObject({
+        status: 429,
+        code: "daily_read_limit",
+        retryAfter: String(6 * 3600),
+      });
+      expect(run).not.toHaveBeenCalled();
+      await expect(
+        guardAccount(env(f), "a", { now: now + 6 * 3600_000 }),
+      ).resolves.toBeUndefined();
+      await expect(
+        guardAccount(env(f, { UNLIMITED_UIDS: "a" }), "a", { now }),
+      ).resolves.toBeUndefined();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("pauses Agent work, and only Agent work, while the quota runs low", async () => {
+    const f = await fixture();
+    try {
+      await f.agent
+        .prepare("INSERT INTO service_flags(name,updated_at) VALUES(?,0)")
+        .bind(AGENT_PAUSED_FLAG)
+        .run();
+      await expect(
+        guardAccount(env(f), "a", { agent: true }),
+      ).rejects.toMatchObject({ status: 503, code: "agent_paused" });
+      await expect(guardAccount(env(f), "a")).resolves.toBeUndefined();
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+});
+
 describe("account deletion", () => {
   const now = Date.UTC(2026, 9, 28, 12);
   const justSignedIn = now / 1000 - 60;
@@ -302,6 +389,9 @@ describe("account deletion", () => {
           "INSERT INTO app_auth_codes(code_hash,challenge,uid,google_id_token,expires_at) VALUES(?,'c',?,'t',0)",
         )
         .bind(`code-${uid}`, uid),
+      f.agent
+        .prepare("INSERT INTO account_reads(uid,day,rows) VALUES(?,'d',1)")
+        .bind(uid),
     ]);
   }
   async function held(f: Fixture, uid: string) {
@@ -317,6 +407,7 @@ describe("account deletion", () => {
       shares: await count(f.cloud, "set_shares", "owner_uid"),
       links: await count(f.agent, "agent_links"),
       codes: await count(f.agent, "app_auth_codes"),
+      reads: await count(f.agent, "account_reads"),
     };
   }
   const env = (f: Fixture, provider: unknown) =>
@@ -341,6 +432,7 @@ describe("account deletion", () => {
         shares: 0,
         links: 0,
         codes: 0,
+        reads: 0,
       });
       expect(oauth.held.get("a")).toEqual([]);
       expect(await held(f, "b")).toEqual(before);
