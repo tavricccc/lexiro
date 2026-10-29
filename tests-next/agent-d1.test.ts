@@ -11,6 +11,7 @@ import {
   type AgentCloudRecord,
 } from "@lexiro/agent-contract";
 import { D1AgentLibrary } from "../src/agent/library-repository";
+import { meterDatabase } from "../src/agent/read-budget";
 import { handleCloudApi } from "../src/cloud/api";
 import { DEFAULT_AI_MODEL } from "@lexiro/ai-contract";
 import { snapshotRecords } from "../src/cloud/records";
@@ -2351,6 +2352,156 @@ describe("frontend synchronization API using the same native D1 records", () => 
           blobs: [{ kind: "practice", data: { snapshot: null } }],
         }),
       ).rejects.toThrow("Invalid input: expected string, received undefined");
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+});
+
+describe("Agent writes on a large set", () => {
+  /** A library over a metered binding, and a 1000-word set A in it. */
+  async function largeSet(f: Fixture) {
+    const meter = { rows: 0 };
+    const repo = new D1AgentLibrary({
+      CLOUD_DB: meterDatabase(f.db, meter),
+    } as unknown as AgentEnv);
+    for (let i = 0; i < 5; i++) {
+      const action = {
+        type: "put_words",
+        words: words(200).map((w) => ({ ...w, word: `${w.word}-${i}` })),
+      };
+      await repo.mutate("a", A, undefined, randomUUID(), action, (s) =>
+        mutateAgentSet(s, action),
+      );
+    }
+    return { meter, repo };
+  }
+  const editSense = (repo: D1AgentLibrary, wordKey: string, senseId: string) =>
+    applyAgentMutation(
+      repo,
+      identityA,
+      A,
+      {
+        action: {
+          type: "edit_sense",
+          action: "update",
+          wordKey,
+          senseId,
+          patch: { description: "一\n二" },
+        },
+      },
+      "mcp",
+    );
+  /** The member rows D1 holds for set A, as wordKey → senseIds. */
+  const memberRows = async (f: Fixture) =>
+    Object.fromEntries(
+      (
+        await f.db
+          .prepare(
+            "SELECT word_key,sense_ids FROM cloud_memberships WHERE uid='a' AND set_id=?",
+          )
+          .bind(A)
+          .all<{ word_key: string; sense_ids: string }>()
+      ).results.map((row) => [row.word_key, JSON.parse(row.sense_ids)]),
+    );
+
+  it("edits one sense of a 1000-word set reading tens of rows, not thousands", async () => {
+    const f = await fixture();
+    try {
+      const { meter, repo } = await largeSet(f);
+      const word = (await repo.read("a", A))!.words[500];
+      meter.rows = 0;
+      await editSense(repo, word.wordKey, word.senses[0].id);
+      expect(meter.rows).toBeLessThan(200);
+      const after = (await repo.read("a", A))!;
+      expect(
+        after.words.find((w) => w.wordKey === word.wordKey)!.senses[0]
+          .description,
+      ).toBe("一\n二");
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("adds and removes words updating only the member rows that changed", async () => {
+    const f = await fixture();
+    try {
+      const { meter, repo } = await largeSet(f);
+      const before = (await repo.read("a", A))!;
+      meter.rows = 0;
+      const add = {
+        type: "put_words",
+        words: words(1).map((w) => ({ ...w, word: "fresh" })),
+      };
+      await repo.mutate("a", A, undefined, randomUUID(), add, (s) =>
+        mutateAgentSet(s, add),
+      );
+      const drop = {
+        type: "delete_words",
+        wordKeys: [before.words[3].wordKey],
+      };
+      await repo.mutate("a", A, undefined, randomUUID(), drop, (s) =>
+        mutateAgentSet(s, drop),
+      );
+      expect(meter.rows).toBeLessThan(400);
+      const after = (await repo.read("a", A))!;
+      expect(after.memberships).toHaveLength(1000);
+      expect(await memberRows(f)).toEqual(
+        Object.fromEntries(
+          after.memberships.map((m) => [m.wordKey, m.senseIds]),
+        ),
+      );
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("never serves the cached set after an app sync changed it", async () => {
+    const f = await fixture();
+    try {
+      const { repo } = await largeSet(f);
+      const snapshot = (await repo.read("a", A))!;
+      const word = snapshot.words[0];
+      const renamed = {
+        ...word,
+        senses: [{ ...word.senses[0], examples: ["Changed in the app."] }],
+      };
+      // The app pushes the word record itself; the cache row stays behind.
+      await handleCloudApi(
+        new Request("http://local.invalid/sync/records", {
+          method: "POST",
+          body: JSON.stringify({
+            origin: randomUUID(),
+            operationId: randomUUID(),
+            records: [
+              {
+                type: "word",
+                recordKey: word.wordKey,
+                deleted: false,
+                payload: renamed,
+                updatedAt: new Date().toISOString(),
+              },
+            ],
+          }),
+        }),
+        "a",
+        f.db,
+      );
+      const read = (await repo.read("a", A))!;
+      expect(read.words[0].senses[0].examples).toEqual(["Changed in the app."]);
+      expect(agentSetRevision(read)).not.toBe(agentSetRevision(snapshot));
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("reads the same snapshot from the cache as from the records", async () => {
+    const f = await fixture();
+    try {
+      const { repo } = await largeSet(f);
+      const cached = (await repo.read("a", A))!;
+      await f.db.prepare("DELETE FROM cloud_set_cache").run();
+      expect(await repo.read("a", A)).toEqual(cached);
     } finally {
       await f.runtime.dispose();
     }

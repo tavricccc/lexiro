@@ -15,11 +15,12 @@
 | `src/agent/query.ts` | D1 索引查詢、單字／題目搜尋、題型／難度篩選、範圍與游標分頁、巢狀欄位投影及精簡回條 |
 | `src/agent/edits.ts`、`resource-api.ts` | 單字／詞義／題目／子題 patch；單集 REST 路由及多資料 POST query，首次讀取只回摘要與操作指引 |
 | `src/agent/access.ts`、`operations.ts`、`types.ts` | per-user／per-set bearer URL、兩小時預設期限、hashed token、版本與 operation ID envelope、資料 scope |
-| `src/agent/library-repository.ts` | D1 教材 repository；本集 memberships/source 索引讀取、資料夾 CRUD、版本衝突與冪等回條 |
+| `src/agent/library-repository.ts` | D1 教材 repository；本集 memberships/source 索引讀取、資料夾 CRUD、版本衝突與冪等回條。讀單字集先查 `cloud_set_cache`，帳號 revision 相同才採用（再過一次 `validateAgentSnapshot`），否則從 records 讀並回填；Agent commit 在同一批寫入新快照，成員變動只送有改的 member 列 |
 | `src/cloud/{api,repository,records}.ts` | Firebase Auth owner 同步 API、D1 change feed／blob CAS、JSON 批次交易與原生教材序列化；Agent 和瀏覽器使用同一資料庫 |
 | `library-migrations/0001_library.sql` | 專用 CLOUD_DB schema v1：帳號版本、教材、來源索引、學習／偏好 blobs、操作回條；不遷移 Firestore |
 | `library-migrations/0002_drop_learning_blobs.sql`、`0003_set_shares.sql` | 刪除學習進度／統計 blobs，blob 只留 preferences 與跨裝置 practice；單字集分享連結表（每集一條，撤銷即刪） |
 | `library-migrations/0004_cloud_operations_created_index.sql` | `cloud_operations.created_at` 索引，供 Cron 清除 30 天前操作回條 |
+| `library-migrations/0006_set_cache.sql` | `cloud_set_cache`：每個單字集一列完整快照（上限 1.5 MB，超過不快取），1000 字的單字集 Agent 改一個詞義讀約 50 列而非上萬；Cron 清除 30 天未更新的快取 |
 | `library-migrations/0005_account_quotas.sql` | `cloud_accounts` 加每日寫入計數（`quota_day`、`quota_writes`）與 `stored_bytes`；`CloudD1Repository.commit` 在同一個 CAS update 內檢查每帳號每日 3000 筆與 50 MB 上限（刪除不受容量限制），超過回 429 `daily_write_limit`（含 `Retry-After`）或 413 `storage_limit`；`UNLIMITED_UIDS` 豁免 |
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
 | `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |

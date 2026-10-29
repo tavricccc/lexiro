@@ -18,8 +18,10 @@ import type {
 } from "./types";
 import {
   CloudD1Repository,
+  SET_CACHE_MAX_BYTES,
   unlimitedAccounts,
   type AccountHead,
+  type CommitOptions,
 } from "../cloud/repository";
 import {
   changedSnapshotRecords,
@@ -28,6 +30,64 @@ import {
 } from "../cloud/records";
 import { fingerprint, HttpError } from "../http";
 import { queryLibrary, type AgentQuery } from "./query";
+
+const EMPTY_HEAD: AccountHead = {
+  revision: 0,
+  blob_revision: 0,
+  changed_by: "",
+  blob_changed_by: "",
+};
+
+/**
+ * Words in membership order and questions by id, so a snapshot reads the same
+ * from the cache as from the records, whose rows come back in key order.
+ */
+function ordered(snapshot: AgentSetSnapshot): AgentSetSnapshot {
+  const position = new Map(snapshot.memberships.map((m, i) => [m.wordKey, i]));
+  return {
+    ...snapshot,
+    words: [...snapshot.words].sort(
+      (a, b) => position.get(a.wordKey)! - position.get(b.wordKey)!,
+    ),
+    questions: [...snapshot.questions].sort((a, b) =>
+      a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
+    ),
+  };
+}
+
+/** What a commit writes for this set besides its records. */
+function commitOptions(
+  setId: string,
+  before: AgentSetSnapshot | null,
+  after: AgentSetSnapshot | null,
+  records: AgentCloudRecord[],
+): CommitOptions {
+  const setCache = {
+    setId,
+    snapshot: after ? JSON.stringify(ordered(after)) : null,
+  };
+  if (
+    !before ||
+    !after ||
+    !records.some((record) => record.type === "membership" && !record.deleted)
+  )
+    return { setCache };
+  // The member rows already match before, so only the changed ones are sent.
+  const old = new Map(
+    before.memberships.map((m) => [m.wordKey, JSON.stringify(m.senseIds)]),
+  );
+  const kept = new Set(after.memberships.map((m) => m.wordKey));
+  return {
+    setCache,
+    membership: {
+      setId,
+      removed: [...old.keys()].filter((key) => !kept.has(key)),
+      upserted: after.memberships.filter(
+        (m) => old.get(m.wordKey) !== JSON.stringify(m.senseIds),
+      ),
+    },
+  };
+}
 
 export class D1AgentLibrary implements AgentLibraryRepository {
   private cloud: CloudD1Repository;
@@ -42,7 +102,51 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       return { id: set.id, setName: set.setName, folderId: set.folderId };
     });
   }
+  /**
+   * The set as of the account's current revision: from its cached row when
+   * that row was written at this revision, else from the records, which then
+   * refill the cache.
+   */
   private async load(uid: string, setId: string) {
+    const db = this.env.CLOUD_DB;
+    const [heads, caches] = await db.batch([
+      db
+        .prepare(
+          "SELECT revision,blob_revision,changed_by,blob_changed_by FROM cloud_accounts WHERE uid=?",
+        )
+        .bind(uid),
+      db
+        .prepare(
+          "SELECT revision,snapshot FROM cloud_set_cache WHERE uid=? AND set_id=?",
+        )
+        .bind(uid, setId),
+    ]);
+    const head =
+      (heads.results[0] as unknown as AccountHead | undefined) ?? EMPTY_HEAD;
+    const cached = caches.results[0] as
+      { revision: number; snapshot: string } | undefined;
+    if (cached?.revision === head.revision)
+      try {
+        // A cache written before a contract change fails here and is rebuilt.
+        return {
+          snapshot: validateAgentSnapshot(JSON.parse(cached.snapshot), setId),
+          head,
+        };
+      } catch {}
+    const loaded = await this.loadRecords(uid, setId);
+    if (loaded.snapshot) {
+      const json = JSON.stringify(loaded.snapshot);
+      if (json.length <= SET_CACHE_MAX_BYTES)
+        await db
+          .prepare(
+            "INSERT INTO cloud_set_cache(uid,set_id,revision,snapshot,updated_at) VALUES(?,?,?,?,?) ON CONFLICT(uid,set_id) DO UPDATE SET revision=excluded.revision,snapshot=excluded.snapshot,updated_at=excluded.updated_at WHERE excluded.revision>=cloud_set_cache.revision",
+          )
+          .bind(uid, setId, loaded.head.revision, json, Date.now())
+          .run();
+    }
+    return loaded;
+  }
+  private async loadRecords(uid: string, setId: string) {
     const db = this.env.CLOUD_DB;
     const result = await db.batch([
       db
@@ -70,13 +174,9 @@ export class D1AgentLibrary implements AgentLibraryRepository {
         )
         .bind(uid, uid, setId),
     ]);
-    const head = (result[0].results[0] as unknown as
-      AccountHead | undefined) ?? {
-      revision: 0,
-      blob_revision: 0,
-      changed_by: "",
-      blob_changed_by: "",
-    };
+    const head =
+      (result[0].results[0] as unknown as AccountHead | undefined) ??
+      EMPTY_HEAD;
     const rows = result[1].results as unknown as RecordRow[];
     const set = rows.find((row) => row.kind === "set");
     if (!set) return { snapshot: null, head };
@@ -95,7 +195,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       },
       setId,
     );
-    return { snapshot, head };
+    return { snapshot: ordered(snapshot), head };
   }
   async read(uid: string, setId: string) {
     return (await this.load(uid, setId)).snapshot;
@@ -144,6 +244,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
       id,
       await fingerprint(JSON.stringify(valid)),
       { created: valid.set.id },
+      commitOptions(valid.set.id, null, valid, []),
     );
   }
   async mutate(
@@ -292,6 +393,7 @@ export class D1AgentLibrary implements AgentLibraryRepository {
         operationId,
         hash,
         receipt,
+        commitOptions(setId, before.snapshot, after, records),
       );
     } catch (reason) {
       if (reason instanceof HttpError && reason.code === "stale_set")

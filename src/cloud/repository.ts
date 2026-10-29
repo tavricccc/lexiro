@@ -15,10 +15,11 @@ export const CLOUD_OPERATION_RETENTION_MS = 30 * 86400000;
 export const CLOUD_OPERATION_PURGE_SQL =
   "DELETE FROM cloud_operations WHERE created_at<?";
 export async function purgeCloudOperations(db: D1Database, now: number) {
-  await db
-    .prepare(CLOUD_OPERATION_PURGE_SQL)
-    .bind(new Date(now - CLOUD_OPERATION_RETENTION_MS).toISOString())
-    .run();
+  await db.batch([
+    db.prepare(CLOUD_OPERATION_PURGE_SQL).bind(new Date(now - CLOUD_OPERATION_RETENTION_MS).toISOString()),
+    // Caches of sets an Agent has not touched for as long; deleted sets leave these behind.
+    db.prepare("DELETE FROM cloud_set_cache WHERE updated_at<?").bind(now - CLOUD_OPERATION_RETENTION_MS),
+  ]);
 }
 /**
  * One account may write this many records and documents per UTC day. D1's
@@ -39,6 +40,14 @@ export interface CloudLimits {
 export function unlimitedAccounts(value: string | undefined): Set<string> {
   return new Set((value ?? "").split(/[,\n]/).map(uid => uid.trim()).filter(Boolean));
 }
+/** A set snapshot cached for the account revision a commit produces; null drops it. */
+export interface SetCacheWrite { setId: string; snapshot: string | null }
+/** The member rows of one set that changed, when the caller knows the previous list. */
+export interface MembershipDiff { setId: string; removed: string[]; upserted: { wordKey: string; senseIds: string[] }[] }
+export interface CommitOptions { setCache?: SetCacheWrite; membership?: MembershipDiff }
+/** Snapshots larger than this are not cached: D1 rows top out at 2 MB. */
+export const SET_CACHE_MAX_BYTES = 1_500_000;
+
 export function secondsToNextUtcDay(now: number): string {
   return String(Math.ceil((86400000 - (now % 86400000)) / 1000));
 }
@@ -70,7 +79,7 @@ export class CloudD1Repository {
     return { records: page.map(recordValue), cursor: last ? `${last.seq}|${last.id}` : cursor, hasMore: rows.length > limit };
   }
   /** All statements share one CAS ticket and one D1 batch transaction. */
-  async commit<T>(uid: string, expected: Pick<AccountHead, "revision" | "blob_revision">, records: AgentCloudRecord[], blobs: BlobWrite[], origin: string, operationId: string, hash: string, result: T) {
+  async commit<T>(uid: string, expected: Pick<AccountHead, "revision" | "blob_revision">, records: AgentCloudRecord[], blobs: BlobWrite[], origin: string, operationId: string, hash: string, result: T, options: CommitOptions = {}) {
     const replay = await this.operation<T>(uid, operationId, hash);
     if (replay) return replay;
     const ticket = crypto.randomUUID();
@@ -98,23 +107,37 @@ export class CloudD1Repository {
         FROM json_each(?) WHERE ${guard}
         ON CONFLICT(uid,id) DO UPDATE SET kind=excluded.kind,record_key=excluded.record_key,payload=excluded.payload,deleted=excluded.deleted,updated_at=excluded.updated_at,seq=excluded.seq
         WHERE cloud_records.payload IS NOT excluded.payload OR cloud_records.deleted<>excluded.deleted OR cloud_records.updated_at<>excluded.updated_at`).bind(uid, uid, data, uid, ticket));
+      // A set whose member diff the caller sent skips the full-list matching.
+      const listed = records.filter(record => record.type === "membership" && record.recordKey !== options.membership?.setId);
+      const members = JSON.stringify(listed);
       // The kept pairs are one string each, from a subquery that does not refer
       // to the outer row, so SQLite builds it once into an index. A correlated
       // NOT EXISTS re-expanded every member for every stored row, and a
       // row-value NOT IN rescans the list for each row it does not find: both
       // read rows in the square of the set's size.
-      statements.push(this.db.prepare(`DELETE FROM cloud_memberships WHERE uid=? AND set_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='membership')
-        AND set_id||char(0)||word_key NOT IN(SELECT json_extract(r.value,'$.recordKey')||char(0)||json_extract(m.value,'$.wordKey') FROM json_each(?) r,json_each(r.value,'$.payload.members') m WHERE json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND json_extract(m.value,'$.wordKey') IS NOT NULL) AND ${guard}`).bind(uid, data, data, uid, ticket));
-      statements.push(this.db.prepare(`INSERT INTO cloud_memberships(uid,set_id,word_key,sense_ids)
+      if (listed.length) statements.push(this.db.prepare(`DELETE FROM cloud_memberships WHERE uid=? AND set_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='membership')
+        AND set_id||char(0)||word_key NOT IN(SELECT json_extract(r.value,'$.recordKey')||char(0)||json_extract(m.value,'$.wordKey') FROM json_each(?) r,json_each(r.value,'$.payload.members') m WHERE json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND json_extract(m.value,'$.wordKey') IS NOT NULL) AND ${guard}`).bind(uid, members, members, uid, ticket));
+      if (listed.length) statements.push(this.db.prepare(`INSERT INTO cloud_memberships(uid,set_id,word_key,sense_ids)
         SELECT ?,json_extract(r.value,'$.recordKey'),json_extract(m.value,'$.wordKey'),json_extract(m.value,'$.senseIds') FROM json_each(?) r,json_each(r.value,'$.payload.members') m
         WHERE json_extract(r.value,'$.type')='membership' AND json_extract(r.value,'$.deleted')=0 AND ${guard}
-        ON CONFLICT(uid,set_id,word_key) DO UPDATE SET sense_ids=excluded.sense_ids WHERE cloud_memberships.sense_ids<>excluded.sense_ids`).bind(uid, data, uid, ticket));
+        ON CONFLICT(uid,set_id,word_key) DO UPDATE SET sense_ids=excluded.sense_ids WHERE cloud_memberships.sense_ids<>excluded.sense_ids`).bind(uid, members, uid, ticket));
+      const diff = options.membership;
+      if (diff?.removed.length) statements.push(this.db.prepare(`DELETE FROM cloud_memberships WHERE uid=? AND set_id=? AND word_key IN(SELECT value FROM json_each(?)) AND ${guard}`)
+        .bind(uid, diff.setId, JSON.stringify(diff.removed), uid, ticket));
+      if (diff?.upserted.length) statements.push(this.db.prepare(`INSERT INTO cloud_memberships(uid,set_id,word_key,sense_ids)
+        SELECT ?,?,json_extract(value,'$.wordKey'),json_extract(value,'$.senseIds') FROM json_each(?) WHERE ${guard}
+        ON CONFLICT(uid,set_id,word_key) DO UPDATE SET sense_ids=excluded.sense_ids WHERE cloud_memberships.sense_ids<>excluded.sense_ids`).bind(uid, diff.setId, JSON.stringify(diff.upserted), uid, ticket));
       statements.push(this.db.prepare(`DELETE FROM cloud_question_sources WHERE uid=? AND question_id IN(SELECT json_extract(value,'$.recordKey') FROM json_each(?) WHERE json_extract(value,'$.type')='question')
         AND question_id||char(0)||word_key NOT IN(SELECT json_extract(r.value,'$.recordKey')||char(0)||s.value FROM json_each(?) r,json_each(CASE WHEN json_extract(r.value,'$.payload.kind')='reading' THEN json_extract(r.value,'$.payload.wordKeys') ELSE json_array(json_extract(r.value,'$.payload.wordKey')) END) s WHERE json_extract(r.value,'$.type')='question' AND json_extract(r.value,'$.deleted')=0 AND s.value IS NOT NULL) AND ${guard}`).bind(uid, data, data, uid, ticket));
       statements.push(this.db.prepare(`INSERT OR IGNORE INTO cloud_question_sources(uid,question_id,word_key)
         SELECT ?,json_extract(r.value,'$.recordKey'),s.value FROM json_each(?) r,json_each(CASE WHEN json_extract(r.value,'$.payload.kind')='reading' THEN json_extract(r.value,'$.payload.wordKeys') ELSE json_array(json_extract(r.value,'$.payload.wordKey')) END) s
         WHERE json_extract(r.value,'$.type')='question' AND json_extract(r.value,'$.deleted')=0 AND s.value IS NOT NULL AND ${guard}`).bind(uid, data, uid, ticket));
     }
+    const cache = options.setCache;
+    if (cache) statements.push(cache.snapshot === null || cache.snapshot.length > SET_CACHE_MAX_BYTES
+      ? this.db.prepare(`DELETE FROM cloud_set_cache WHERE uid=? AND set_id=? AND ${guard}`).bind(uid, cache.setId, uid, ticket)
+      : this.db.prepare(`INSERT INTO cloud_set_cache(uid,set_id,revision,snapshot,updated_at) SELECT ?,?,(SELECT revision FROM cloud_accounts WHERE uid=?),?,? WHERE ${guard}
+        ON CONFLICT(uid,set_id) DO UPDATE SET revision=excluded.revision,snapshot=excluded.snapshot,updated_at=excluded.updated_at`).bind(uid, cache.setId, uid, cache.snapshot, now, uid, ticket));
     for (const blob of blobs) statements.push(this.db.prepare(`INSERT INTO cloud_blobs(uid,kind,data) SELECT ?,?,? WHERE ${guard} ON CONFLICT(uid,kind) DO UPDATE SET data=excluded.data`).bind(uid, blob.kind, JSON.stringify(blob.data), uid, ticket));
     statements.push(this.db.prepare(`INSERT INTO cloud_operations(uid,operation_id,input_hash,result,created_at) SELECT ?,?,?,?,? WHERE ${guard}`).bind(uid, operationId, hash, JSON.stringify(result), new Date().toISOString(), uid, ticket));
     const applied = await this.db.batch(statements);

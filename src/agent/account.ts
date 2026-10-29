@@ -15,6 +15,7 @@ const CLOUD_TABLES = [
   "cloud_question_sources",
   "cloud_blobs",
   "cloud_operations",
+  "cloud_set_cache",
 ] as const;
 
 /**
