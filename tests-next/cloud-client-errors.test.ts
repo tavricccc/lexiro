@@ -8,6 +8,7 @@ const refusal = (status: number, code: string) =>
 describe("Worker refusals in the sync client", () => {
   it.each([
     [429, "daily_write_limit", "明天會自動繼續"],
+    [429, "daily_read_limit", "讀取量已達上限"],
     [413, "storage_limit", "雲端空間已滿"],
     [403, "account_disabled", "已被停用"],
   ])(
