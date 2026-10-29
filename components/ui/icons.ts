@@ -5,6 +5,7 @@ import {
   ArrowClockwise,
   ArrowCircleRight,
   ArrowRight,
+  ArrowsDownUp,
   BookOpenText,
   Books,
   Brain,
@@ -19,6 +20,7 @@ import {
   Coins,
   Copy,
   Database,
+  DotsSixVertical,
   DotsThree,
   DownloadSimple,
   Exam,
@@ -103,6 +105,9 @@ export const Icons = {
   loading: CircleNotch,
   mark: Flag,
   more: DotsThree,
+  /** The handle a set is dragged by while the library is being reordered. */
+  drag: DotsSixVertical,
+  reorder: ArrowsDownUp,
   next: CaretRight,
   /** Moving on to the next question once this one is answered. */
   advance: ArrowRight,

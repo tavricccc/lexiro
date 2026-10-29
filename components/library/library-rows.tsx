@@ -13,10 +13,16 @@ interface SetRowMetrics {
 
 /** A folder as an oval, as in the app: its name and how much is in it. */
 export function FolderRow({
+  folderId,
+  highlighted = false,
   itemCount,
   name,
   onOpen,
 }: {
+  /** Lets a set dragged in reorder mode find the folder under the pointer. */
+  folderId?: string;
+  /** A dragged set is over this folder and would move into it. */
+  highlighted?: boolean;
   itemCount: number;
   name: string;
   onOpen: () => void;
@@ -24,7 +30,8 @@ export function FolderRow({
   return (
     <button
       aria-label={t("library.openFolder", { name })}
-      className="t-row flex min-h-11 max-w-full items-center gap-2 rounded-full bg-card [--row-bleed:0px] [--row-radius:9999px] pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      data-folder-id={folderId}
+      className={`t-row flex min-h-11 max-w-full items-center gap-2 rounded-full ${highlighted ? "bg-[var(--brand-50)] ring-2 ring-brand" : "bg-card"} [--row-bleed:0px] [--row-radius:9999px] pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40`}
       onClick={onOpen}
       type="button"
     >

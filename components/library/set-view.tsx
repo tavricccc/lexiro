@@ -61,9 +61,7 @@ export function SetView({
 }) {
   const router = useRouter();
   // Called once the set is gone, so the page it leaves is already known.
-  const { actionsFor, dialogs } = useSetActions(() =>
-    router.push(libraryHref),
-  );
+  const { actionsFor, dialogs } = useSetActions(() => router.push(libraryHref));
   const { state, status } = useLibraryStore();
   const [tab, setTab] = useState<SetTab>(
     initialTab === "questions" || initialTab === "tools" ? initialTab : "words",

@@ -10,6 +10,7 @@ import {
 } from "@/components/motion/state-transition";
 import { FolderRow, SetRow } from "@/components/library/library-rows";
 import { useSetActions } from "@/components/library/set-actions";
+import { SortableSetList } from "@/components/library/sortable-set-list";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
@@ -29,7 +30,7 @@ import {
 } from "@/src/lib/folders";
 import { buildLibrarySetMetrics } from "@/src/lib/library-metrics";
 import { createUniqueSetName } from "@/src/lib/set-name";
-import { sortSets } from "@/src/lib/set-order";
+import { planSetReorder, sortSets } from "@/src/lib/set-order";
 import { copySharedSet, readSetShare } from "@/src/lib/set-share";
 import { setMatchesQuery } from "@/src/lib/library-search";
 import { libraryBrowseHref, replaceBrowseHref } from "@/lib/browse-routes";
@@ -53,6 +54,10 @@ export function LibraryPage({
   const saveQuestion = useLibraryStore((store) => store.saveQuestion);
 
   const { actionsFor, dialogs: setDialogs } = useSetActions();
+  const moveSet = useLibraryStore((store) => store.moveSet);
+  const reorderSets = useLibraryStore((store) => store.reorderSets);
+  const [reorderRequested, setReordering] = useState(false);
+  const [hoverFolder, setHoverFolder] = useState<string | null>(null);
   const [query, setQuery] = useState(initialQuery);
   const [currentFolderId, setCurrentFolderId] = useState(
     initialFolderId ?? ALL_FOLDER_ID,
@@ -143,6 +148,7 @@ export function LibraryPage({
   const openFolder = (folderId?: string) => {
     setCurrentFolderId(folderId ?? ALL_FOLDER_ID);
     setQuery("");
+    setReordering(false);
   };
 
   // Drilling into a folder is a location, not a scroll position: it belongs in
@@ -156,6 +162,11 @@ export function LibraryPage({
     ? `/app/sets/new?folderId=${encodeURIComponent(currentFolder.id)}`
     : "/app/sets/new";
   const searching = Boolean(query.trim());
+  // Reordering works on one folder level, so a search leaves it.
+  const canReorder = !searching && sets.length > 1;
+  const reordering = reorderRequested && canReorder;
+  const folderName = (folderId: string) =>
+    state.folders.find((folder) => folder.id === folderId)?.name ?? "";
   const listEmpty =
     sets.length === 0 && (searching || childFolders.length === 0);
   // The identity the listing frame crossfades on. The listing itself is one
@@ -196,6 +207,17 @@ export function LibraryPage({
 
         <div className="library-toolbar">
           <FolderToolbar
+            actions={
+              canReorder && !reordering
+                ? [
+                    {
+                      icon: Icons.reorder,
+                      label: t("library.reorderSets"),
+                      onSelect: () => setReordering(true),
+                    },
+                  ]
+                : []
+            }
             breadcrumbs={breadcrumbs}
             currentFolder={currentFolder}
             folders={state.folders}
@@ -232,6 +254,8 @@ export function LibraryPage({
                     {childFolders.map((folder) => (
                       <StaggerItem key={folder.id} className="max-w-full">
                         <FolderRow
+                          folderId={folder.id}
+                          highlighted={hoverFolder === folder.id}
                           itemCount={countDirectItems(
                             state.folders,
                             state.sets,
@@ -244,21 +268,55 @@ export function LibraryPage({
                     ))}
                   </StaggerList>
                 )}
-                {sets.length > 0 && (
-                  <StaggerList className="grid gap-2">
-                    {sets.map((entry) => (
-                      <StaggerItem key={entry.id}>
-                        <SetRow
-                          actions={actionsFor(entry.id, { practice: true })}
-                          id={entry.id}
-                          name={entry.setName}
-                          returnTo={browseHref}
-                          {...(setMetrics.get(entry.id) ?? NO_METRICS)}
-                        />
-                      </StaggerItem>
-                    ))}
-                  </StaggerList>
-                )}
+                {sets.length > 0 &&
+                  (reordering ? (
+                    <div className="grid gap-3">
+                      <div className="flex items-center gap-3 rounded-[var(--radius-control)] bg-[var(--brand-50)] px-4 py-2.5">
+                        <p className="type-hint min-w-0 flex-1 text-muted-foreground">
+                          {t("library.reorderHint")}
+                        </p>
+                        <Button
+                          onClick={() => setReordering(false)}
+                          size="sm"
+                          type="button"
+                        >
+                          {t("library.reorderDone")}
+                        </Button>
+                      </div>
+                      <SortableSetList
+                        key={`${currentFolderId}:${sets.map((entry) => entry.id).join()}`}
+                        metrics={(id) => setMetrics.get(id) ?? NO_METRICS}
+                        onDropInFolder={(id, folderId) =>
+                          void moveSet(id, folderId).then(() =>
+                            toast.success(
+                              t("library.movedToFolder", {
+                                name: folderName(folderId),
+                              }),
+                            ),
+                          )
+                        }
+                        onHoverFolder={setHoverFolder}
+                        onReorder={(id, toIndex) =>
+                          void reorderSets(planSetReorder(sets, id, toIndex))
+                        }
+                        sets={sets}
+                      />
+                    </div>
+                  ) : (
+                    <StaggerList className="grid gap-2">
+                      {sets.map((entry) => (
+                        <StaggerItem key={entry.id}>
+                          <SetRow
+                            actions={actionsFor(entry.id, { practice: true })}
+                            id={entry.id}
+                            name={entry.setName}
+                            returnTo={browseHref}
+                            {...(setMetrics.get(entry.id) ?? NO_METRICS)}
+                          />
+                        </StaggerItem>
+                      ))}
+                    </StaggerList>
+                  ))}
               </div>
             )}
             {status === "ready" && listEmpty && searching && (
