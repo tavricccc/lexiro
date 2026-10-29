@@ -320,7 +320,22 @@ export const useCloudStore = create<CloudStore>((set, get) => ({
     const auth = await configureFirebaseAuth();
     if (!auth) return;
     // `onAuthStateChanged` does the rest: namespace, reload, watch, sync.
-    await runtime.signInWithPopup(auth, new runtime.GoogleAuthProvider());
+    const provider = new runtime.GoogleAuthProvider();
+    try {
+      await runtime.signInWithPopup(auth, provider);
+    } catch (reason) {
+      // A blocked popup (in-app browsers, strict settings) cannot sign in at
+      // all, so fall back to a full-page redirect. Closing the popup by hand
+      // is the user's choice and stays an error.
+      const code = (reason as { code?: string } | null)?.code;
+      if (
+        code !== "auth/popup-blocked" &&
+        code !== "auth/operation-not-supported-in-this-environment"
+      ) {
+        throw reason;
+      }
+      await runtime.signInWithRedirect(auth, provider);
+    }
   },
 
   signOut: async () => {
