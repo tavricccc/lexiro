@@ -62,7 +62,7 @@ export function WordDetailPage({
         }
       />
       <div className="mb-4 flex items-center gap-3.5">
-        <h1 className="min-w-0 break-words text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
+        <h1 className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
           {word.word}
         </h1>
         <SpeakPill text={word.word} label={t("setDetail.speak")} />

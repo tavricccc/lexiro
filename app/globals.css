@@ -8,6 +8,35 @@
 @import "./styles/motion.css";
 @import "./styles/study.css";
 @import "./styles/workspace.css";
+
+/*
+ * Albert Sans, the app's face for Latin display text: headwords, scores and
+ * counts, set through `font-latin`. Chinese falls through to the sans stack.
+ */
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-500.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-600.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-700.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Albert Sans";
+  src: url("/fonts/AlbertSans-800.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+}
 @import "./styles/header.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -51,6 +80,9 @@
   --font-sans:
     "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", ui-sans-serif,
     system-ui, sans-serif;
+  --font-latin:
+    "Albert Sans", "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei",
+    ui-sans-serif, system-ui, sans-serif;
 
   /* Generous continuous corners: controls, grouped content, then sheets. */
   --radius-control: 1.5rem;

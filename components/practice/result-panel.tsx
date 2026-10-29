@@ -48,7 +48,7 @@ export function ResultPanel({
         transition={{ type: "spring", stiffness: 380, damping: 26 }}
       >
         <h1 className="type-section">{t("practice.resultTitle")}</h1>
-        <p className="relative w-fit text-[8rem] font-extrabold leading-[8.25rem] tracking-[-0.05em] tabular-nums">
+        <p className="relative w-fit font-latin text-[8rem] font-extrabold leading-[8.25rem] tracking-[-0.05em] tabular-nums">
           <CountUp from={0} value={correct} />
           <span className="text-4xl font-bold tracking-[-0.03em]">
             {" "}
@@ -81,7 +81,7 @@ export function ResultPanel({
           ].map(([label, value]) => (
             <div key={label} className="flex flex-col-reverse">
               <dt className="type-hint text-[#13201a]">{label}</dt>
-              <dd className="text-[1.75rem] font-bold tabular-nums">{value}</dd>
+              <dd className="font-latin text-[1.75rem] font-bold tabular-nums">{value}</dd>
             </div>
           ))}
         </dl>

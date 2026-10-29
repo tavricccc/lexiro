@@ -169,7 +169,7 @@ export function SetView({
             [questions.length, t("library.questionsTab")],
           ].map(([value, label]) => (
             <p key={label} className="grid">
-              <span className="text-[3.5rem] font-extrabold leading-[3.625rem] tracking-[-0.045em] tabular-nums">
+              <span className="font-latin text-[3.5rem] font-extrabold leading-[3.625rem] tracking-[-0.045em] tabular-nums">
                 {value}
               </span>
               <span className="type-section">{label}</span>

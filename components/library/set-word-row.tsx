@@ -32,7 +32,7 @@ export function SetWordRow({
       href={returnTo ? withReturnTo(href, returnTo) : href}
     >
       <span className="grid min-w-0 flex-1 gap-1">
-        <span className="text-[1.375rem] font-bold leading-7 tracking-[-0.02em]">
+        <span className="font-latin text-[1.375rem] font-bold leading-7 tracking-[-0.02em]">
           {entry.word}
         </span>
         {entry.senses.map((sense) => (

@@ -85,7 +85,7 @@ export function PracticeSessionView({
           <BackControl href={backHref} icon="close" label={t("practice.exit")} />
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <span className="whitespace-nowrap tabular-nums">
+              <span className="whitespace-nowrap font-latin font-bold tabular-nums">
                 {t("practice.progress", { current: index + 1, total })}
               </span>
               {reviewing ? (

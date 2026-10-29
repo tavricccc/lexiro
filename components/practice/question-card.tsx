@@ -142,7 +142,7 @@ export function QuestionCard({
                   ? cn(
                       "question-text min-w-0 break-words text-left font-extrabold text-foreground",
                       /^[\x20-\x7e]+$/.test(item.prompt)
-                        ? "text-[2.75rem] leading-[1.1] tracking-[-0.035em] sm:text-[3.375rem]"
+                        ? "font-latin text-[2.75rem] leading-[1.1] tracking-[-0.035em] sm:text-[3.375rem]"
                         : "text-[1.875rem] leading-[1.3] tracking-[-0.01em]",
                     )
                   : "question-text text-[1.0625rem] font-semibold leading-[1.75] tracking-normal text-foreground [word-spacing:0.02em]"

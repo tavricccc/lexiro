@@ -41,7 +41,7 @@ export function FolderRow({
         weight="fill"
       />
       <span className="min-w-0 truncate text-base font-semibold">{name}</span>
-      <span className="text-base font-bold tabular-nums text-muted-foreground">
+      <span className="font-latin text-base font-bold tabular-nums text-muted-foreground">
         {itemCount}
       </span>
     </button>
@@ -78,7 +78,7 @@ export function SetRow({
         <span
           className={
             latin
-              ? "line-clamp-2 text-[1.375rem] font-extrabold leading-[1.2] tracking-[-0.02em]"
+              ? "line-clamp-2 font-latin text-[1.375rem] font-extrabold leading-[1.2] tracking-[-0.02em]"
               : "line-clamp-2 text-xl font-extrabold leading-[1.3]"
           }
         >
@@ -91,7 +91,7 @@ export function SetRow({
         </span>
       </span>
       <span className="grid justify-items-end">
-        <span className="text-[2.125rem] font-extrabold leading-9 tracking-[-0.03em] text-brand tabular-nums">
+        <span className="font-latin text-[2.125rem] font-extrabold leading-9 tracking-[-0.03em] text-brand tabular-nums">
           {senseCount}
         </span>
         <span className="type-hint text-muted-foreground">

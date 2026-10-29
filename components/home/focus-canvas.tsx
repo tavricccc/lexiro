@@ -61,14 +61,14 @@ export function FocusCanvas() {
           <h2
             className={
               latin
-                ? "relative mt-16 truncate text-5xl font-extrabold leading-[3.125rem] tracking-[-0.04em]"
+                ? "relative mt-16 truncate font-latin text-5xl font-extrabold leading-[3.125rem] tracking-[-0.04em]"
                 : "relative mt-16 truncate text-[2.5rem] font-extrabold leading-[2.875rem]"
             }
           >
             {latest.setName}
           </h2>
           <p className="relative flex items-baseline gap-2">
-            <span className="text-[5.5rem] font-extrabold leading-none tracking-[-0.045em] tabular-nums">
+            <span className="font-latin text-[5.5rem] font-extrabold leading-none tracking-[-0.045em] tabular-nums">
               {senseCount}
             </span>
             <span className="type-section">個詞義</span>

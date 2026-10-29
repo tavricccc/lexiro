@@ -31,7 +31,7 @@ export function Lobby({
       <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
         <p className="text-sm text-muted-foreground">{t("rooms.shareCode")}</p>
         <p
-          className="t-celebrate mt-2 font-mono text-4xl font-semibold tracking-[0.3em]"
+          className="t-celebrate mt-2 font-latin text-4xl font-extrabold tracking-[0.3em]"
           data-testid="room-code"
         >
           {state.code}
