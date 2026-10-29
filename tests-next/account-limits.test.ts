@@ -378,6 +378,12 @@ describe("account deletion", () => {
       )
       .bind(`share-${uid}`, uid, `set-${uid}`)
       .run();
+    await f.cloud
+      .prepare(
+        "INSERT INTO cloud_set_cache(uid,set_id,revision,snapshot,updated_at) VALUES(?,'s',1,'{}',0)",
+      )
+      .bind(uid)
+      .run();
     await f.agent.batch([
       f.agent
         .prepare(
@@ -405,6 +411,7 @@ describe("account deletion", () => {
       operations: await count(f.cloud, "cloud_operations"),
       accounts: await count(f.cloud, "cloud_accounts"),
       shares: await count(f.cloud, "set_shares", "owner_uid"),
+      caches: await count(f.cloud, "cloud_set_cache"),
       links: await count(f.agent, "agent_links"),
       codes: await count(f.agent, "app_auth_codes"),
       reads: await count(f.agent, "account_reads"),
@@ -430,6 +437,7 @@ describe("account deletion", () => {
         operations: 0,
         accounts: 0,
         shares: 0,
+        caches: 0,
         links: 0,
         codes: 0,
         reads: 0,
