@@ -18,23 +18,23 @@ function questionCounts(questions: LibraryQuestion[]) {
   );
 }
 
-/** The count covers every stored item in this scope, including retired types. */
+/** The count covers every stored item in the set, including retired types. */
 export function ClearQuestionsControl({
   questions,
   setId,
   setName,
 }: {
   questions: LibraryQuestion[];
-  setId?: string;
-  setName?: string;
+  setId: string;
+  setName: string;
 }) {
   const { status, clearQuestions } = useLibraryStore();
   const [open, setOpen] = useState(false);
   const count = questionCounts(questions);
-  const title = t(setId ? "questions.clearSet" : "questions.clearAll");
+  const title = t("questions.clearSet");
   const description = [
-    t(setId ? "questions.clearSetConfirm" : "questions.clearAllConfirm", {
-      name: setName ?? "",
+    t("questions.clearSetConfirm", {
+      name: setName,
       count: count.questions,
     }),
     count.packs ? t("questions.clearPacks", { count: count.packs }) : "",
