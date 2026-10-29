@@ -3,6 +3,7 @@ import { usedBlankForOption } from "./practice-content";
 import type { AnsweredBlank } from "./passage-view";
 import { t } from "@/lib/i18n";
 import { isCorrectChoice } from "./meaning-questions";
+import { ParticleBurst } from "@/components/motion/particle-burst";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/cn";
 
@@ -76,7 +77,7 @@ export function QuestionOptions({
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className={cn(
-              "t-answer t-press flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
+              "t-answer t-press relative flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
               stateClass,
             )}
           >
@@ -96,6 +97,8 @@ export function QuestionOptions({
                 </span>
               )}
             </span>
+            {/* The learner's own right pick is celebrated, as in the app. */}
+            {result === "correct" && <ParticleBurst />}
             {answered && isCorrect && (
               <Icons.success
                 aria-hidden

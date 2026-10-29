@@ -1,7 +1,10 @@
 import Link from "@/components/ui/app-link";
 import { useLayoutEffect } from "react";
 
+import { motion } from "motion/react";
+
 import { CountUp } from "@/components/motion/animated-number";
+import { ParticleBurst } from "@/components/motion/particle-burst";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
@@ -38,18 +41,30 @@ export function ResultPanel({
       className="mx-auto grid w-full max-w-xl gap-7 py-6 sm:py-8"
     >
       {/* The one green field of the session, ink on it as on the printed card. */}
-      <section className="grid gap-1.5 rounded-[var(--radius-stage)] bg-[#7cc49c] p-6 pt-[1.375rem] text-[#13201a]">
+      <motion.section
+        animate={{ opacity: 1, scale: 1 }}
+        className="grid gap-1.5 rounded-[var(--radius-stage)] bg-[#7cc49c] p-6 pt-[1.375rem] text-[#13201a]"
+        initial={{ opacity: 0, scale: 0.92 }}
+        transition={{ type: "spring", stiffness: 380, damping: 26 }}
+      >
         <h1 className="type-section">{t("practice.resultTitle")}</h1>
-        <p className="text-[8rem] font-extrabold leading-[8.25rem] tracking-[-0.05em] tabular-nums">
+        <p className="relative w-fit text-[8rem] font-extrabold leading-[8.25rem] tracking-[-0.05em] tabular-nums">
           <CountUp from={0} value={correct} />
           <span className="text-4xl font-bold tracking-[-0.03em]">
             {" "}
             / {total}
           </span>
+          {/* A good round is celebrated once, from the score, as in the app. */}
+          {total > 0 && correct / total >= 0.6 && (
+            <ParticleBurst count={28} reach={150} />
+          )}
         </p>
         <div aria-hidden className="mt-1 flex flex-wrap gap-1.5">
           {Array.from({ length: total }, (_, index) => (
-            <span
+            <motion.span
+              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.4 }}
+              transition={{ delay: 0.16 + Math.min(index, 30) * 0.024 }}
               key={index}
               className={
                 index < correct
@@ -70,7 +85,7 @@ export function ResultPanel({
             </div>
           ))}
         </dl>
-      </section>
+      </motion.section>
 
       <div className="grid gap-2.5">
         {wrongContent && (
