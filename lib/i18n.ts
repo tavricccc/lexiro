@@ -65,6 +65,7 @@ export const zhTW = {
     resumeDescription: "如果 D1 讀取仍超過 80%，下一次每小時檢查會再自動暫停。",
     accounts: "帳號",
     search: "搜尋 email 或 uid",
+    view: "列出",
     viewRecent: "最近",
     viewWrites: "今日寫入",
     viewStorage: "容量",
