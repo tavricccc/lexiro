@@ -32,7 +32,7 @@ Lexiro 的 Vite + React Router 介面、browser domain 與本機／D1 雲端同�
 
 Library store 透過 mutation queue 保存。LibraryRepository 是唯一 writer，內容 hash records → manifest → head；詳細模型、世代與版號見[資料與同步](docs/data-and-sync.md)。
 
-`components/library/` 管 folder、set、word／example 編輯、metadata、移動與加字。`components/questions/` 管題庫、單句／文章編輯與校對。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share 和 full-backup 處理。
+`components/library/` 管 folder、set、word／example 編輯、metadata、移動與加字。`components/questions/` 管題目試做、單句／文章編輯與校對。Revision-scoped drafts 保留中斷編輯，word-edit 用最新 Library 套變更與 sense remaps；備份／分享由 library-import、share 和 full-backup 處理。
 
 `library-set-migration.ts` 建立每集獨立內容、一次重綁舊來源。`set-share.ts` 為分享複製重建新集的父／子題來源。`source-scope.ts` 讓單句／文章編輯來源限制在一集；`clear-questions-control.tsx` 共用清空範圍、確認與保存回饋。保存例句不建立題目。
 

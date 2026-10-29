@@ -219,25 +219,6 @@ const SCREENS: ReadonlyArray<
     ),
   ],
   [
-    "questions",
-    screen(
-      () => import("@/components/questions/question-bank-page"),
-      ({ QuestionBankPage }, _, query) => {
-        const filters = {
-          q: param(query, "q"),
-          kind: param(query, "kind"),
-          difficulty: param(query, "difficulty"),
-        };
-        return (
-          <QuestionBankPage
-            key={`${filters.q ?? ""}:${filters.kind ?? ""}:${filters.difficulty ?? ""}`}
-            initialFilters={filters}
-          />
-        );
-      },
-    ),
-  ],
-  [
     "questions/:questionId/edit",
     screen(
       () => import("@/components/questions/question-editor"),

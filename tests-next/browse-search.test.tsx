@@ -3,7 +3,6 @@ import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
 import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchField } from "@/components/ui/search-field";
-import { QuestionList } from "@/components/questions/question-list";
 import { SetView } from "@/components/library/set-view";
 import { emptyLibraryState } from "@/src/lib/library-repository";
 import { buildSenseId, normalizeWordKey } from "@/src/lib/library";
@@ -117,39 +116,6 @@ describe("collection search and return paths", () => {
     expect(input).toHaveValue("");
   });
 
-  it("keeps bank filters in edit links and restores them on return, with a one-step empty-result reset", () => {
-    window.history.replaceState(null, "", "/app/questions");
-    const first = render(
-      <QuestionList
-        initialFilters={{ q: "bank", kind: "vocabulary", difficulty: "2" }}
-      />,
-    );
-    const href = screen
-      .getByRole("link", { name: /Which bank is open\?/ })
-      .getAttribute("href")!;
-    const returnHref = new URL(href, window.location.origin).searchParams.get(
-      "returnTo",
-    )!;
-    expect(returnHref).toBe(
-      "/app/questions?q=bank&kind=vocabulary&difficulty=2",
-    );
-    expect(window.location.pathname + window.location.search).toBe(returnHref);
-    first.unmount();
-    const params = new URL(returnHref, window.location.origin).searchParams;
-    render(<QuestionList initialFilters={Object.fromEntries(params)} />);
-    expect(screen.getByRole("searchbox", { name: "搜尋題目" })).toHaveValue(
-      "bank",
-    );
-    fireEvent.change(screen.getByRole("searchbox"), {
-      target: { value: "unmatched" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: "清除篩選" }));
-    expect(
-      screen.getByRole("link", { name: /Which bank is open\?/ }),
-    ).toBeVisible();
-    expect(window.location.search).toBe("");
-  });
-
   it("searches only meanings and examples that belong to the visible set", () => {
     const state = library();
     expect(setMatchesQuery(state, "set", "銀行")).toBe(true);
@@ -236,7 +202,7 @@ describe("collection search and return paths", () => {
     expect(screen.getByText("1 / 1 題／題組")).toBeVisible();
   });
 
-  it("finds reading child prompts, individual options and shared options in both set and bank search", async () => {
+  it("finds reading child prompts, individual options and shared options in set search", async () => {
     const state = library();
     const source = state.questions[0];
     if (source.kind !== "multipleChoice") throw new Error("Expected fixture");
@@ -262,13 +228,9 @@ describe("collection search and return paths", () => {
     ];
     useLibraryStore.setState({ state });
     window.history.replaceState(null, "", "/app/sets/set");
-    const view = render(
+    render(
       <SetView setId="set" initialTab="questions" initialQuery="HARBOUR" />,
     );
-    expect(screen.getByRole("link", { name: /A journey/ })).toBeVisible();
-    view.unmount();
-    window.history.replaceState(null, "", "/app/questions");
-    render(<QuestionList initialFilters={{ q: "visit" }} />);
     expect(screen.getByRole("link", { name: /A journey/ })).toBeVisible();
     fireEvent.change(screen.getByRole("searchbox"), {
       target: { value: "airplane" },

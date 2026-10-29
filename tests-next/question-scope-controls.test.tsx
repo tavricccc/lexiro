@@ -8,7 +8,6 @@ import {
 import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SetView } from "@/components/library/set-view";
-import { QuestionBankPage } from "@/components/questions/question-bank-page";
 import { QuestionEditor } from "@/components/questions/question-editor";
 import { ReadingEditor } from "@/components/questions/reading-editor";
 import { readingFormFromPack } from "@/components/questions/reading-form";
@@ -185,22 +184,6 @@ describe("independent set question controls", () => {
     expect(
       useLibraryStore.getState().state.questions.map((question) => question.id),
     ).toEqual(["other"]);
-  });
-
-  it("clears the entire bank regardless of a search filter and cancellation preserves it", async () => {
-    const { state } = libraryFixture();
-    const clearQuestions = vi.fn(async () => {
-      useLibraryStore.setState({ state: { ...state, questions: [] } });
-    });
-    useLibraryStore.setState({ state, clearQuestions });
-    render(<QuestionBankPage initialFilters={{ q: "missing" }} />);
-    fireEvent.click(screen.getByRole("button", { name: "清空全部題目" }));
-    expect(screen.getByRole("dialog")).toHaveTextContent("整個題庫的全部 5 題");
-    fireEvent.click(screen.getByRole("button", { name: "取消" }));
-    expect(clearQuestions).not.toHaveBeenCalled();
-    fireEvent.click(screen.getByRole("button", { name: "清空全部題目" }));
-    fireEvent.click(screen.getByRole("button", { name: "確認清空" }));
-    expect(clearQuestions).toHaveBeenCalledWith(undefined);
   });
 
   it("keeps a saved question in its original set and blocks a foreign source restored from a draft", async () => {

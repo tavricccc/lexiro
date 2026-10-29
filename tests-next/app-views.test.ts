@@ -61,10 +61,8 @@ describe("addresses from before /app", () => {
     expect(legacyDestination("/")).toBe("/app");
     expect(legacyDestination("/about")).toBe("/app");
     expect(legacyDestination("/settings")).toBe("/app/me");
-    expect(legacyDestination("/questions/new")).toBe("/app/questions/generate");
-    expect(legacyDestination("/questions/reading/new")).toBe(
-      "/app/questions/generate",
-    );
+    expect(legacyDestination("/questions/new")).toBe("/app/library");
+    expect(legacyDestination("/questions/reading/new")).toBe("/app/library");
     expect(legacyDestination("/library")).toBe("/app/library");
     expect(legacyDestination("/sets/abc/add")).toBe("/app/sets/abc/add");
     expect(legacyDestination("/questions/q1/edit")).toBe(

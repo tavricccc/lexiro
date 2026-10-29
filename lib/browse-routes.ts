@@ -1,5 +1,4 @@
 import { ALL_FOLDER_ID } from "@/src/lib/folders";
-import { LIBRARY_QUESTIONS_HREF } from "./routes";
 
 /** List state travels with its return destination, including nested folders. */
 export function libraryBrowseHref(folderId: string, query: string) {
@@ -7,18 +6,6 @@ export function libraryBrowseHref(folderId: string, query: string) {
   if (folderId !== ALL_FOLDER_ID) params.set("folderId", folderId);
   if (query) params.set("q", query);
   return queryHref("/app/library", params);
-}
-
-export function questionBrowseHref(
-  query: string,
-  kind: string,
-  difficulty: string,
-) {
-  const params = new URLSearchParams();
-  if (query) params.set("q", query);
-  if (kind !== "all") params.set("kind", kind);
-  if (difficulty !== "all") params.set("difficulty", difficulty);
-  return queryHref(LIBRARY_QUESTIONS_HREF, params);
 }
 
 export function withReturnTo(href: string, returnTo: string) {
@@ -34,7 +21,7 @@ export function readBrowseReturn(
   if (!value) return;
   // Return destinations are collection views, never external or editor URLs.
   if (
-    /^\/app\/(?:library|questions|sets\/[^/?#\\]+)(?:\?|$)/.test(value) &&
+    /^\/app\/(?:library|sets\/[^/?#\\]+)(?:\?|$)/.test(value) &&
     !value.includes("\\")
   )
     return value;

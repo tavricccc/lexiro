@@ -20,7 +20,6 @@
 | `/app/rooms` | 對戰：輸入房號加入、或開新房（需登入） |
 | `/app/rooms/new` | 房主從自己的題庫選題開房（需登入） |
 | `/app/rooms/[code]` | 即時對戰房間，伺服器計時，斷線重連直接回到目前題目（需登入） |
-| `/app/questions` | 題庫 |
 | `/app/questions/[questionId]/edit`、`/app/questions/reading/[questionId]/edit` | 題目／文章包編輯 |
 | `/app/practice` | 設定、作答、重練與結果 |
 | `/app/me`、`preferences`、`data` | 帳號入口、外觀偏好、備份 |

@@ -10,7 +10,7 @@ import { StepActions } from "@/components/ui/step-actions";
 import { QuestionCard } from "@/components/practice/question-card";
 import { buildQuestionGroups } from "@/components/practice/practice-content";
 import type { AnsweredBlank } from "@/components/practice/passage-view";
-import { questionEditHref } from "@/components/questions/question-list";
+import { questionEditHref } from "@/components/questions/question-links";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 

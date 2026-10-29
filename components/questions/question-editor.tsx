@@ -21,7 +21,6 @@ import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
-import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { randomUUID } from "@/src/lib/id";
 import { parseSenseKey, senseKey } from "@/src/lib/library";
 import { difficultyOptions } from "@/lib/question-options";
@@ -56,7 +55,7 @@ interface Values {
 
 export function QuestionEditor({
   questionId,
-  returnHref = LIBRARY_QUESTIONS_HREF,
+  returnHref = "/app/library",
 }: {
   questionId: string;
   returnHref?: string;

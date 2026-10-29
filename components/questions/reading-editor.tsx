@@ -38,7 +38,6 @@ import { SelectField } from "@/components/ui/select-field";
 import { Textarea } from "@/components/ui/textarea";
 import { StepActions } from "@/components/ui/step-actions";
 import { t } from "@/lib/i18n";
-import { LIBRARY_QUESTIONS_HREF } from "@/lib/routes";
 import { parseSenseKey } from "@/src/lib/library";
 import { questionFormatLabel } from "@/lib/question-options";
 import { useLibraryStore } from "@/stores/library-store";
@@ -54,7 +53,7 @@ type ReadingEditorDraft = ReadingFormDraft & { selectedSetId: string };
 
 export function ReadingEditor({
   readingId,
-  returnHref = LIBRARY_QUESTIONS_HREF,
+  returnHref = "/app/library",
 }: {
   readingId: string;
   returnHref?: string;

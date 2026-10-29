@@ -9,12 +9,12 @@ export const LEGACY_REDIRECTS = [
   { source: "/settings", destination: "/app/me", permanent: true },
   {
     source: "/questions/new",
-    destination: "/app/questions/generate",
+    destination: "/app/library",
     permanent: true,
   },
   {
     source: "/questions/reading/new",
-    destination: "/app/questions/generate",
+    destination: "/app/library",
     permanent: true,
   },
   ...["library", "progress", "me", "practice", "sets", "questions", "sync"].map(
