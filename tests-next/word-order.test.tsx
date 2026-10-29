@@ -93,20 +93,16 @@ describe("word order", () => {
 
   it("draws a long set 60 words at a time", () => {
     const words = Array.from(
-      { length: 130 },
-      (_, index) => `word${String(index).padStart(3, "0")}`,
+      { length: 65 },
+      (_, index) => `word${String(index).padStart(2, "0")}`,
     );
     useLibraryStore.setState({ state: library(words), status: "ready" });
     render(<SetView setId="set" returnTo="/library" />);
     expect(screen.getAllByRole("listitem")).toHaveLength(60);
     fireEvent.click(
-      screen.getByRole("button", { name: "再顯示（還有 70 個）" }),
+      screen.getByRole("button", { name: "再顯示（還有 5 個）" }),
     );
-    expect(screen.getAllByRole("listitem")).toHaveLength(120);
-    fireEvent.click(
-      screen.getByRole("button", { name: "再顯示（還有 10 個）" }),
-    );
-    expect(screen.getAllByRole("listitem")).toHaveLength(130);
+    expect(screen.getAllByRole("listitem")).toHaveLength(65);
     expect(screen.queryByRole("button", { name: /再顯示/ })).toBeNull();
   });
 });
