@@ -289,6 +289,13 @@ const SCREENS: ReadonlyArray<
     ),
   ],
   [
+    "me/admin",
+    screen(
+      () => import("@/components/me/admin-page"),
+      ({ AdminPage }) => <AdminPage />,
+    ),
+  ],
+  [
     "me/preferences",
     screen(
       () =>

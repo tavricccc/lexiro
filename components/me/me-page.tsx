@@ -1,5 +1,6 @@
 import { AccountRow } from "@/components/me/account-row";
 import { AppUpdateSection } from "./app-update-section";
+import { AdminEntry } from "./admin-entry";
 import { Icons } from "@/components/ui/icons";
 import { ListNavRow, ListSection } from "@/components/ui/list";
 import { RootPageHeader } from "@/components/root-page-header";
@@ -37,6 +38,7 @@ export function MePage() {
           detail={t("agent.connectionsHint")}
         />
       </ListSection>
+      <AdminEntry />
       <AppUpdateSection />
     </div>
   );

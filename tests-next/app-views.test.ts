@@ -26,6 +26,7 @@ describe("client routes", () => {
       "/app/rooms/new",
       "/app/rooms/ABCDEF",
       "/app/me/preferences",
+      "/app/me/admin",
     ])
       expect(leaf(pathname)?.route.lazy, pathname).toBeTypeOf("function");
     expect(leaf("/app/sets/new")?.params).toEqual({});

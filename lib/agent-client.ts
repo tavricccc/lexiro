@@ -51,13 +51,17 @@ export async function agentJson<T>(
             ? t("agent.authorizationExpired")
             : code === "share_unavailable"
               ? t("share.unavailable")
-              : code === "room_not_found"
-                ? t("rooms.notFound")
-                : code === "room_full"
-                  ? t("rooms.full")
-                  : code === "room_ended"
-                    ? t("rooms.ended")
-                    : (value.error?.message ?? t("agent.requestFailed")),
+              : code === "forbidden"
+                ? t("admin.forbidden")
+                : code === "cannot_disable_self"
+                  ? t("admin.cannotDisableSelf")
+                  : code === "room_not_found"
+                    ? t("rooms.notFound")
+                    : code === "room_full"
+                      ? t("rooms.full")
+                      : code === "room_ended"
+                        ? t("rooms.ended")
+                        : (value.error?.message ?? t("agent.requestFailed")),
       );
     }
     return value as T;
