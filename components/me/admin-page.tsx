@@ -21,14 +21,44 @@ export interface AdminOverview {
   readsToday: number;
   storedBytes: number;
   agentPaused: boolean;
-  disabled: { uid: string; reason: string; disabledAt: number }[];
-  top: {
+  disabled: {
     uid: string;
-    writesToday: number;
-    storedBytes: number;
-    readsToday: number;
-    disabled: boolean;
+    email: string;
+    name: string;
+    reason: string;
+    disabledAt: number;
   }[];
+  top: AdminAccount[];
+}
+export interface AdminAccount {
+  uid: string;
+  email: string;
+  name: string;
+  writesToday: number;
+  storedBytes: number;
+  readsToday: number;
+  disabled: boolean;
+}
+
+/** Name and email lead; the uid stays as the small print that disabling uses. */
+function Who({
+  account,
+}: {
+  account: { uid: string; email: string; name: string };
+}) {
+  return (
+    <>
+      <p className="type-row break-all">
+        {account.name || account.email || account.uid}
+      </p>
+      {(account.name ? account.email : "") && (
+        <p className="type-row-detail break-all">{account.email}</p>
+      )}
+      {(account.name || account.email) && (
+        <p className="type-row-detail break-all font-latin">{account.uid}</p>
+      )}
+    </>
+  );
 }
 
 const UID = /^[A-Za-z0-9]{1,128}$/;
@@ -38,6 +68,39 @@ export const formatBytes = (bytes: number) =>
     ? `${Math.ceil(bytes / 1024)} KB`
     : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 
+function AccountItem({
+  account,
+  busy,
+  onToggle,
+}: {
+  account: AdminAccount;
+  busy: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className="flex items-center gap-3 py-[var(--row-padding-block)]">
+      <div className="min-w-0 flex-1">
+        <Who account={account} />
+        {account.disabled && (
+          <p className="type-row-detail text-destructive">
+            {t("admin.disabledBadge")}
+          </p>
+        )}
+        <p className="type-row-detail">
+          {t("admin.accountDetail", {
+            writes: number(account.writesToday),
+            reads: number(account.readsToday),
+            size: formatBytes(account.storedBytes),
+          })}
+        </p>
+      </div>
+      <Button variant="outline" disabled={busy} onClick={onToggle}>
+        {t(account.disabled ? "admin.enable" : "admin.disable")}
+      </Button>
+    </div>
+  );
+}
+
 export function AdminPage() {
   const { user, ready } = useCloudStore();
   const [overview, setOverview] = useState<AdminOverview | null>(null);
@@ -46,6 +109,8 @@ export function AdminPage() {
   const [busy, setBusy] = useState<string | null>(null);
   const [uid, setUid] = useState("");
   const [reason, setReason] = useState("");
+  const [query, setQuery] = useState("");
+  const [found, setFound] = useState<AdminAccount[] | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -65,6 +130,22 @@ export function AdminPage() {
     else setLoading(!ready);
   }, [ready, user, load]);
 
+  const search = async () => {
+    const q = query.trim();
+    if (!q) return setFound(null);
+    setError("");
+    try {
+      const result = await agentJson<{ accounts: AdminAccount[] }>(
+        `/admin/search?q=${encodeURIComponent(q)}`,
+      );
+      setFound(result.accounts);
+    } catch (failure) {
+      setError(
+        failure instanceof Error ? failure.message : t("agent.requestFailed"),
+      );
+    }
+  };
+
   const change = async (target: string, disable: boolean) => {
     if (disable && !window.confirm(t("admin.disableConfirm", { uid: target })))
       return;
@@ -83,6 +164,7 @@ export function AdminPage() {
         setReason("");
       }
       await load();
+      if (query.trim()) await search();
     } catch (failure) {
       setError(
         failure instanceof Error ? failure.message : t("agent.requestFailed"),
@@ -146,42 +228,41 @@ export function AdminPage() {
                 />
               </ListSection>
               <ListSection
+                header={t("admin.search")}
+                footer={found && !found.length ? t("admin.noMatch") : undefined}
+              >
+                <ListInputRow
+                  label={t("admin.searchLabel")}
+                  onChange={setQuery}
+                  placeholder={t("admin.searchPlaceholder")}
+                  value={query}
+                />
+                <ListActionRow onClick={() => void search()}>
+                  {t("admin.searchAction")}
+                </ListActionRow>
+                {found?.map((account) => (
+                  <AccountItem
+                    key={account.uid}
+                    account={account}
+                    busy={busy !== null}
+                    onToggle={() => void change(account.uid, !account.disabled)}
+                  />
+                ))}
+              </ListSection>
+              <ListSection
                 header={t("admin.top")}
                 footer={t("admin.topFooter")}
               >
                 {overview.top.length ? (
                   overview.top.map((account) => (
-                    <div
+                    <AccountItem
                       key={account.uid}
-                      className="flex items-center gap-3 py-[var(--row-padding-block)]"
-                    >
-                      <div className="min-w-0 flex-1">
-                        <p className="type-row break-all font-latin">
-                          {account.uid}
-                          {account.disabled && (
-                            <span className="ml-2 text-destructive">
-                              {t("admin.disabledBadge")}
-                            </span>
-                          )}
-                        </p>
-                        <p className="type-row-detail">
-                          {t("admin.accountDetail", {
-                            writes: number(account.writesToday),
-                            reads: number(account.readsToday),
-                            size: formatBytes(account.storedBytes),
-                          })}
-                        </p>
-                      </div>
-                      <Button
-                        variant="outline"
-                        disabled={busy !== null}
-                        onClick={() =>
-                          void change(account.uid, !account.disabled)
-                        }
-                      >
-                        {t(account.disabled ? "admin.enable" : "admin.disable")}
-                      </Button>
-                    </div>
+                      account={account}
+                      busy={busy !== null}
+                      onToggle={() =>
+                        void change(account.uid, !account.disabled)
+                      }
+                    />
                   ))
                 ) : (
                   <p className="py-4 text-sm text-muted-foreground">
@@ -197,9 +278,7 @@ export function AdminPage() {
                       className="flex items-center gap-3 py-[var(--row-padding-block)]"
                     >
                       <div className="min-w-0 flex-1">
-                        <p className="type-row break-all font-latin">
-                          {account.uid}
-                        </p>
+                        <Who account={account} />
                         <p className="type-row-detail">
                           {[
                             new Date(account.disabledAt).toLocaleString(
