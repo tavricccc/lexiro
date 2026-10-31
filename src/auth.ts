@@ -7,6 +7,8 @@ export interface FirebaseIdentity {
   uid: string;
   email: string;
   emailVerified: boolean;
+  /** The display name the sign-in provider gave, if any. */
+  name?: string;
   /** When the user last signed in, in seconds; refreshing a token keeps it. */
   authTime: number;
 }
@@ -88,6 +90,9 @@ export function createFirebaseVerifier(fetcher: typeof fetch) {
         uid: payload.sub,
         email: payload.email,
         emailVerified: payload.email_verified === true,
+        ...(typeof payload.name === "string" && payload.name.trim()
+          ? { name: payload.name.trim().slice(0, 100) }
+          : {}),
         authTime: payload.auth_time,
       };
     } catch {

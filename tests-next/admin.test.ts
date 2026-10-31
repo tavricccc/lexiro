@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import type { FirebaseIdentity } from "../src/auth";
 import { handleAdminApi } from "../src/agent/admin";
 import { guardAccount } from "../src/agent/guard";
+import { recordProfile } from "../src/agent/profile";
 import type { AgentEnv } from "../src/agent/types";
 
 const NOW = Date.UTC(2026, 9, 31, 12);
@@ -69,6 +70,9 @@ async function fixture() {
   ]);
   await agent.batch([
     agent.prepare(
+      "INSERT INTO account_profiles(uid,email,name,seen_at) VALUES('busy','busy@example.com','小忙',1),('quiet','quiet@example.com','',1)",
+    ),
+    agent.prepare(
       "INSERT INTO account_reads(uid,day,rows) VALUES('busy','2026-10-31',300),('quiet','2026-10-30',999)",
     ),
   ]);
@@ -130,6 +134,8 @@ describe("admin api", () => {
       });
       expect(overview.top[0]).toEqual({
         uid: "busy",
+        email: "busy@example.com",
+        name: "小忙",
         writesToday: 120,
         storedBytes: 5000,
         readsToday: 300,
@@ -152,7 +158,13 @@ describe("admin api", () => {
       );
       const overview = await (await call(f.env, "/admin/overview")).json();
       expect(overview.disabled).toEqual([
-        { uid: "busy", reason: "abuse", disabledAt: NOW },
+        {
+          uid: "busy",
+          email: "busy@example.com",
+          name: "小忙",
+          reason: "abuse",
+          disabledAt: NOW,
+        },
       ]);
       expect(overview.top[0].disabled).toBe(true);
       await call(f.env, "/admin/accounts/busy/disabled", admin, {
@@ -183,6 +195,42 @@ describe("admin api", () => {
       await expect(
         call(f.env, "/admin/accounts/a'b/disabled", admin, { method: "PUT" }),
       ).rejects.toMatchObject({ status: 400, code: "invalid_uid" });
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("finds an account by part of its email or name, and treats % literally", async () => {
+    const f = await fixture();
+    try {
+      const find = async (q: string) =>
+        (
+          (await (
+            await call(f.env, `/admin/search?q=${encodeURIComponent(q)}`)
+          ).json()) as { accounts: { uid: string; writesToday: number }[] }
+        ).accounts;
+      expect(await find("BUSY@")).toEqual([
+        expect.objectContaining({ uid: "busy", writesToday: 120 }),
+      ]);
+      expect(await find("小忙")).toHaveLength(1);
+      expect(await find("%")).toEqual([]);
+      expect(await find("   ")).toEqual([]);
+    } finally {
+      await f.runtime.dispose();
+    }
+  });
+
+  it("remembers the email and name from a token, and updates them when they change", async () => {
+    const f = await fixture();
+    try {
+      const who = { ...admin, uid: "new1", email: "new@example.com", name: "新人" };
+      await recordProfile(f.agent, who, NOW);
+      await recordProfile(f.agent, { ...who, name: "改名" }, NOW + 1);
+      expect(
+        await f.agent
+          .prepare("SELECT email,name FROM account_profiles WHERE uid='new1'")
+          .first(),
+      ).toEqual({ email: "new@example.com", name: "改名" });
     } finally {
       await f.runtime.dispose();
     }

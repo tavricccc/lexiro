@@ -396,6 +396,11 @@ describe("account deletion", () => {
         )
         .bind(`code-${uid}`, uid),
       f.agent
+        .prepare(
+          "INSERT INTO account_profiles(uid,email,seen_at) VALUES(?,'x@example.com',0)",
+        )
+        .bind(uid),
+      f.agent
         .prepare("INSERT INTO account_reads(uid,day,rows) VALUES(?,'d',1)")
         .bind(uid),
     ]);
@@ -415,6 +420,7 @@ describe("account deletion", () => {
       links: await count(f.agent, "agent_links"),
       codes: await count(f.agent, "app_auth_codes"),
       reads: await count(f.agent, "account_reads"),
+      profiles: await count(f.agent, "account_profiles"),
     };
   }
   const env = (f: Fixture, provider: unknown) =>
@@ -441,6 +447,7 @@ describe("account deletion", () => {
         links: 0,
         codes: 0,
         reads: 0,
+        profiles: 0,
       });
       expect(oauth.held.get("a")).toEqual([]);
       expect(await held(f, "b")).toEqual(before);

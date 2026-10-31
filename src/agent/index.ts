@@ -24,6 +24,7 @@ import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
 import { guardAccount, guarded } from "./guard";
 import { deleteAccount } from "./account";
 import { handleAdminApi } from "./admin";
+import { recordProfile } from "./profile";
 import { unlimitedAccounts } from "../cloud/repository";
 import {
   APP_AUTH_PURGE_SQL,
@@ -90,6 +91,7 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
         await deleteAccount(env, identity.uid, identity.authTime);
         return Response.json({ deleted: true });
       }
+      await recordProfile(env.AGENT_DB, identity);
       return guarded(env, identity.uid, {}, (env) =>
         signedIn(request, env, identity),
       );

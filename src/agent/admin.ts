@@ -11,6 +11,8 @@ const disableInput = z.strictObject({ reason: z.string().max(200).default("") })
 
 export interface AdminAccount {
   uid: string;
+  email: string;
+  name: string;
   writesToday: number;
   storedBytes: number;
   readsToday: number;
@@ -24,7 +26,13 @@ export interface AdminOverview {
   readsToday: number;
   storedBytes: number;
   agentPaused: boolean;
-  disabled: { uid: string; reason: string; disabledAt: number }[];
+  disabled: {
+    uid: string;
+    email: string;
+    name: string;
+    reason: string;
+    disabledAt: number;
+  }[];
   top: AdminAccount[];
 }
 
@@ -61,14 +69,18 @@ export async function adminOverview(
       .bind(day)
       .all<{ uid: string; rows: number }>(),
     env.AGENT_DB.prepare(
-      "SELECT uid,reason,disabled_at AS disabledAt FROM disabled_accounts ORDER BY disabled_at DESC LIMIT 200",
-    ).all<{ uid: string; reason: string; disabledAt: number }>(),
+      "SELECT d.uid,COALESCE(p.email,'') AS email,COALESCE(p.name,'') AS name,d.reason,d.disabled_at AS disabledAt FROM disabled_accounts d LEFT JOIN account_profiles p ON p.uid=d.uid ORDER BY d.disabled_at DESC LIMIT 200",
+    ).all<AdminOverview["disabled"][number]>(),
     env.AGENT_DB.prepare("SELECT 1 AS paused FROM service_flags WHERE name=?")
       .bind(AGENT_PAUSED_FLAG)
       .first(),
   ]);
   const readsByUid = new Map(reads.results.map((row) => [row.uid, row.rows]));
   const disabledUids = new Set(disabled.results.map((row) => row.uid));
+  const who = await profilesOf(
+    env,
+    top.results.map((row) => row.uid),
+  );
   return {
     day,
     accounts: totals?.accounts ?? 0,
@@ -80,12 +92,76 @@ export async function adminOverview(
     disabled: disabled.results,
     top: top.results.map((row) => ({
       uid: row.uid,
+      ...(who.get(row.uid) ?? { email: "", name: "" }),
       writesToday: row.writes,
       storedBytes: row.bytes,
       readsToday: readsByUid.get(row.uid) ?? 0,
       disabled: disabledUids.has(row.uid),
     })),
   };
+}
+
+/** Email and name for up to 90 uids (D1 allows 100 bound values per query). */
+async function profilesOf(env: AgentEnv, uids: string[]) {
+  const found = new Map<string, { email: string; name: string }>();
+  if (!uids.length) return found;
+  const rows = await env.AGENT_DB.prepare(
+    `SELECT uid,email,name FROM account_profiles WHERE uid IN (${uids.map(() => "?").join(",")})`,
+  )
+    .bind(...uids)
+    .all<{ uid: string; email: string; name: string }>();
+  for (const row of rows.results)
+    found.set(row.uid, { email: row.email, name: row.name });
+  return found;
+}
+
+/** Accounts whose email or name contains `query`, with today's usage. */
+export async function searchAccounts(
+  env: AgentEnv,
+  query: string,
+  now: number,
+): Promise<AdminAccount[]> {
+  const needle = query.trim().slice(0, 100);
+  if (!needle) return [];
+  const like = `%${needle.replace(/[\\%_]/g, "\\$&")}%`;
+  const day = dayOf(now);
+  const people = await env.AGENT_DB.prepare(
+    "SELECT uid,email,name FROM account_profiles WHERE email LIKE ?1 ESCAPE '\\' OR name LIKE ?1 ESCAPE '\\' ORDER BY seen_at DESC LIMIT 20",
+  )
+    .bind(like)
+    .all<{ uid: string; email: string; name: string }>();
+  const uids = people.results.map((row) => row.uid);
+  if (!uids.length) return [];
+  const marks = uids.map(() => "?").join(",");
+  const [usage, reads, disabled] = await Promise.all([
+    env.CLOUD_DB.prepare(
+      `SELECT uid,CASE WHEN quota_day=? THEN quota_writes ELSE 0 END AS writes,stored_bytes AS bytes FROM cloud_accounts WHERE uid IN (${marks})`,
+    )
+      .bind(day, ...uids)
+      .all<{ uid: string; writes: number; bytes: number }>(),
+    env.AGENT_DB.prepare(
+      `SELECT uid,rows FROM account_reads WHERE day=? AND uid IN (${marks})`,
+    )
+      .bind(day, ...uids)
+      .all<{ uid: string; rows: number }>(),
+    env.AGENT_DB.prepare(
+      `SELECT uid FROM disabled_accounts WHERE uid IN (${marks})`,
+    )
+      .bind(...uids)
+      .all<{ uid: string }>(),
+  ]);
+  const used = new Map(usage.results.map((row) => [row.uid, row]));
+  const read = new Map(reads.results.map((row) => [row.uid, row.rows]));
+  const off = new Set(disabled.results.map((row) => row.uid));
+  return people.results.map((row) => ({
+    uid: row.uid,
+    email: row.email,
+    name: row.name,
+    writesToday: used.get(row.uid)?.writes ?? 0,
+    storedBytes: used.get(row.uid)?.bytes ?? 0,
+    readsToday: read.get(row.uid) ?? 0,
+    disabled: off.has(row.uid),
+  }));
 }
 
 /**
@@ -107,6 +183,14 @@ export async function handleAdminApi(
   requireAdministrator(env, identity);
   if (path === "/admin/overview" && request.method === "GET")
     return Response.json(await adminOverview(env, now));
+  if (path === "/admin/search" && request.method === "GET")
+    return Response.json({
+      accounts: await searchAccounts(
+        env,
+        new URL(request.url).searchParams.get("q") ?? "",
+        now,
+      ),
+    });
   const target = /^\/admin\/accounts\/([^/]+)\/disabled$/.exec(path);
   if (target) {
     const uid = decodeURIComponent(target[1]);
