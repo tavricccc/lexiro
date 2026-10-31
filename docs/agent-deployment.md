@@ -73,3 +73,7 @@ Agent runtime 的 FIREBASE_SERVICE_ACCOUNT 與 private GitHub Production 對應�
 2026-10-11，後端 `b728392`（實作 `0e5011e`）的 [Agent workflow](https://github.com/tavricccc/lexiro-worker/actions/runs/38072862060) 成功，遠端197個測試、typecheck／lint／build、既有D1 migrations與發布檢查通過。正式 health、authorization-server metadata、`/.well-known/oauth-protected-resource/mcp` 均200，未授權 MCP POST 為401。
 
 本機195次HTTP與`gpt-6.1-sol low`子代理6次全200的完整流程見 [測試回條](agent-local-results.md)。公開前端 `5ffc3f0` 只有操作文件；本次未發布 Vercel，未使用正式帳號寫入新功能的教材或測量CPU。下一次只改Agent時仍執行 deploy-agent.yml，前端runtime變動才另發布前端。
+
+## 管理員 email（ADMIN_EMAILS）
+
+管理員清單存在 GitHub 的 Production environment secret `ADMIN_EMAILS`（逗號或換行分隔），`deploy-agent.yml` 每次部署在 `wrangler deploy` 後用 `wrangler secret put` 送到 Worker。GitHub secret 沒設時只發出警告，Worker 上既有的值不會被清掉。改清單：更新 GitHub secret 後重跑 workflow（`workflow_dispatch`）。
