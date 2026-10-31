@@ -14,7 +14,7 @@
 | Agent 邊界 | Agent Worker 不持有模型 API key，也不呼叫模型；教材內容由 MCP client 產生，Worker 只驗證、儲存與回傳 |
 | Prompt／API key | MCP 出題 prompt 與所有 secret 留在 private 後端；回應移除上下文回顯 |
 | 資料 | 教材與偏好存於專用 D1，由 Firebase Auth 限定 uid；前端同步與 MCP 共用 repository。Firestore 已停用，不遷移舊資料、不做 fallback |
-| 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；沒有前端授權管理員的流程 |
+| 管理員 | 只依 `ADMIN_EMAILS` secret 與 verified email 判定；沒有前端授權管理員的流程；前端「我的 → 管理員」只對 `GET /admin/status` 回 admin 的帳號顯示，所有權限仍由 Worker 判定 |
 | 共用套件 | public `packages/agent-contract` 保存無秘密的教材／資料夾／雲端 DTO 與逐題驗證；private repo 使用版本化 tgz，可獨立安裝 |
 | MCP 寫入 | 5 個工具、action.type 分派；expectedRevision／operationId 選填，提供時保留版本衝突與重送檢查，省略仍受 D1 交易 CAS 保護 |
 | 題目 | 以 senseId 綁定來源，支援 partial／atomic 與逐題 Error／Warning；篇幅只是警告，解說選填。生成題格式錯誤時回條附 hint 指向 prompt 的 outputSchema |

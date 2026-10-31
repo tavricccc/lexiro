@@ -31,6 +31,8 @@ export interface AgentEnv {
   USER_LIMITER?: RateLimiter;
   /** Comma-separated uids exempt from the per-account write and storage limits. */
   UNLIMITED_UIDS?: string;
+  /** Comma-separated emails of operators; a secret, never in the repo. */
+  ADMIN_EMAILS?: string;
 }
 /** The Workers Rate Limiting binding's API. */
 export interface RateLimiter {

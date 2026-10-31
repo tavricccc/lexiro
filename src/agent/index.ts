@@ -23,6 +23,7 @@ import {
 import { checkRateLimit, RATE_LIMIT_PURGE_SQL } from "./rate-limit";
 import { guardAccount, guarded } from "./guard";
 import { deleteAccount } from "./account";
+import { handleAdminApi } from "./admin";
 import { unlimitedAccounts } from "../cloud/repository";
 import {
   APP_AUTH_PURGE_SQL,
@@ -102,6 +103,8 @@ export function createAgentWorker(dependencies: Dependencies = {}) {
   ): Promise<Response> {
     const path = new URL(request.url).pathname,
       repo = repository(env);
+    if (path.startsWith("/admin/"))
+      return handleAdminApi(request, env, identity);
     if (path === "/app-auth/codes" && request.method === "POST")
       return issueAppAuthCode(request, env.AGENT_DB, identity.uid, Date.now());
     if (path.startsWith("/sync/"))
