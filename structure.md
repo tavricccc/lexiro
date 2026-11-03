@@ -32,7 +32,7 @@
 | `tests-next/agent-d1.test.ts`、`scripts/agent-smoke.mjs` | 真 D1 batch／CAS／分頁／帳號隔離、200 筆與資料夾、前端同步互通及 HTTP OAuth／URL 驗證 |
 | `tests-next/agent-rate-limit.test.ts`、`tests-next/app-auth.test.ts` | 未認證端點限流邊界與 429 回條；App auth code 的 PKCE、單次兌換、到期與清除行為 |
 | `tests-next/account-limits.test.ts` | 每日寫入與容量上限（含跨 UTC 日、豁免、超限時完全不寫入、刪除仍可）、guard 的限流／停用，以及刪除帳號（只刪自己、可重試、需近期登入） |
-| `scripts/usage-check.mjs`、`.github/workflows/usage-watch.yml` | 每小時以 GraphQL Analytics 查當日（UTC）Workers、Durable Objects 請求與 D1 讀寫列數；任一超過免費日額度 70% 就讓排程失敗，由 GitHub 寄信；D1 讀取達 80% 時寫入 `agent_paused`，低於 80% 時清除；token 需 Account Analytics: Read |
+| `scripts/usage-check.mjs` | 以 GraphQL Analytics 查當日（UTC）Workers、Durable Objects 請求與 D1 讀寫列數，手動執行印出報告；token 需 Account Analytics: Read。排程已移除，不再自動寫入 `agent_paused`。 |
 | `.github/workflows/account-admin.yml` | 手動執行：`usage` 列出當日寫入最多的帳號與已停用帳號，`disable`／`enable` 增刪 `disabled_accounts`；uid 只接受英數字 |
 | `docs/agent-access.md`、`docs/agent-local-results.md` | Agent 操作、正式配置維護與具體本機 Sub-agent 測試結果／未驗證界線 |
 | `docs/agent-deployment.md` | 2026-10-10 Agent 變更、正式資源與 secrets、獨立部署 workflow、Vercel 免費網域及首次發布驗收回條 |

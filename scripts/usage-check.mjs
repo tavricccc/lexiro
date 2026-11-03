@@ -94,7 +94,7 @@ console.log(report);
 const { appendFileSync } = await import("node:fs");
 if (process.env.GITHUB_STEP_SUMMARY)
   appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${report}\n`);
-// The workflow pauses Agent work on this share; see .github/workflows/usage-watch.yml.
+// No workflow runs this script now; it is run by hand for a report.
 if (process.env.GITHUB_OUTPUT)
   appendFileSync(
     process.env.GITHUB_OUTPUT,
