@@ -60,3 +60,11 @@ Serwist（`@serwist/vite`）只在 production 啟用。build 時 precache App sh
 開發用 `?demo=1` 啟用獨立的 `lexiro-product-demo` namespace，session 內持續啟用；`?demo=0` 關閉。`lib/dev/demo.ts` 僅由 `import.meta.env.DEV` 分支動態載入，提供本機教材、假帳號、學習歷史與 Agent／admin／room 回覆；production bundle 不包含該模組。`?reset=1` 重建假資料，`?empty=1` 顯示空資料，`?emptySet=1` 顯示空集合。開發對戰可用 `?state=game|finished`，練習可用 `?run=1&tasks=meaning&answer=right|wrong` 或 `&result=1` 直接取證。
 
 取證：先執行 `npm run dev -- --host 127.0.0.1 --port 5173` 與 `node design/preview/serve.mjs`，再執行 `node design/shots-app.mjs`。截圖、路由清單與 overflow audit 在 `design/shots/app/`；實際保存與讀回的瀏覽器驗證為 `node design/verify-app.mjs`。
+
+## 介面修訂：導覽、編輯與練習設定
+
+手機 dock 僅出現在四個主要目的地；編輯、分享、單字集與房間等子頁使用返回控制。導覽選取使用中性填色與重點色圖示，題目選項及分段選擇使用實心填色。
+
+`components/redesign/practice-launch.tsx` 的 `SetupBody` 是首頁入口、練習設定與房間建立共用的設定內容；模式、題型、範圍、題數、難度與每字單一詞義均使用卡片、chip 或分段按鈕。首頁入口將設定放入練習網址，直接開啟與頁面設定採用相同的讀取規則。房間另保留每題時間控制。
+
+編輯欄位的標籤置於輸入框上方，正解由選項左側的重點色勾選按鈕表示；儲存動作使用 sticky `savebar`。未完成草稿由小型 dialog 提供接續或重新開始，無法讀取時直接重新開始。作答回饋先顯示結果、正解與解釋，其他選項的說明由摺疊區開啟。

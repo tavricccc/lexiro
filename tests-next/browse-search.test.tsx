@@ -153,7 +153,7 @@ describe("collection search and return paths", () => {
       name: "搜尋本集單字、中文或例句",
     });
     expect(input).toHaveValue(" OPEN ");
-    expect(screen.getByText("1 / 1 個單字")).toBeVisible();
+    expect(screen.getByRole("link", { name: /^bank/ })).toBeVisible();
     const edit = screen.getByRole("link", { name: /^bank/ });
     const returnTo = new URL(
       edit.getAttribute("href")!,
@@ -177,7 +177,7 @@ describe("collection search and return paths", () => {
   it("carries the set query between words and questions and restores it after editing", async () => {
     window.history.replaceState(null, "", "/app/sets/set");
     const view = render(<SetView setId="set" initialQuery="bank" />);
-    const tab = screen.getByRole("tab", { name: "題目 1" });
+    const tab = screen.getByRole("tab", { name: "題目" });
     fireEvent.mouseDown(tab);
     fireEvent.click(tab);
     const link = await screen.findByRole("link", {
@@ -199,7 +199,7 @@ describe("collection search and return paths", () => {
       />,
     );
     expect(screen.getByRole("searchbox")).toHaveValue("bank");
-    expect(screen.getByText("1 / 1 題／題組")).toBeVisible();
+    expect(screen.getByRole("link", { name: /Which bank is open\?/ })).toBeVisible();
   });
 
   it("finds reading child prompts, individual options and shared options in set search", async () => {
