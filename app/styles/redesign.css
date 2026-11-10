@@ -618,8 +618,8 @@ label.entry-field :is(input,textarea,[data-slot="select-trigger"]) { width:100%;
 .question-list > li { min-width:0; }
 .question-list .t-row > .grow { min-width:0; }
 @media(min-width:960px) {
- .heat { grid-auto-columns:minmax(0,1fr);grid-template-rows:repeat(7,auto);justify-content:stretch;gap:4px; }
- .heat > * { width:auto;height:auto;aspect-ratio:1; }
+ .heat { width:100%;grid-auto-columns:minmax(0,1fr);grid-template-rows:repeat(7,auto);justify-content:stretch;gap:4px; }
+ .heat > i { width:auto;height:auto;aspect-ratio:1; }
 }
 /* Settings: one title style per group, one sub-label style inside it, one inset. */
 .settings .group > h3 { margin-inline:var(--sp-4);font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--ink); }
@@ -638,7 +638,9 @@ label.entry-field :is(input,textarea,[data-slot="select-trigger"]) { width:100%;
 }
 /* Single question on a desktop: prompt centred, footer as wide as the answers. */
 @media(min-width:960px) {
- .focus-body:not(:has(.passage-layout)) .prompt { justify-items:center;text-align:center; }
+ .focus-body:not(:has(.passage-layout)) > .rowx { justify-content:center; }
+ .focus-body:not(:has(.passage-layout)) .practice-card section > div:first-of-type { justify-content:center; }
+ .focus-body:not(:has(.passage-layout)) .question-text { text-align:center; }
  .focus-foot > div { max-width:calc(720px - 2 * var(--page-x)); }
 }
 .library-workspace .pill[aria-pressed="true"] { background:var(--solid);color:var(--on-solid); }
