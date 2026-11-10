@@ -114,25 +114,27 @@ export function FocusCanvas() {
               </p>
             </div>
             <div className="week hue-amber">
-              {["一", "二", "三", "四", "五", "六", "日"].map((label, i) => (
-                <span
-                  key={label}
-                  className={
-                    record.days[shiftDay(monday, i)]?.answered
-                      ? "on"
-                      : shiftDay(monday, i) === today
-                        ? "now"
-                        : ""
-                  }
-                >
-                  <b>
-                    {record.days[shiftDay(monday, i)]?.answered ? (
-                      <Check size={16} weight="bold" />
-                    ) : null}
-                  </b>
-                  {label}
-                </span>
-              ))}
+              {t("redesign.weekdays")
+                .split("")
+                .map((label, i) => (
+                  <span
+                    key={label}
+                    className={
+                      record.days[shiftDay(monday, i)]?.answered
+                        ? "on"
+                        : shiftDay(monday, i) === today
+                          ? "now"
+                          : ""
+                    }
+                  >
+                    <b>
+                      {record.days[shiftDay(monday, i)]?.answered ? (
+                        <Check size={16} weight="bold" />
+                      ) : null}
+                    </b>
+                    {label}
+                  </span>
+                ))}
             </div>
           </div>
         </Link>

@@ -1,3 +1,4 @@
+import { readRecentRooms } from "@/lib/room-history";
 import { RootPageHeader } from "@/components/root-page-header";
 import type { PracticeTask, WorkspaceQuestionDifficulty } from "@/types";
 import Link from "@/components/ui/app-link";
@@ -51,7 +52,8 @@ export function RoomsPage() {
   const ready = useCloudStore((store) => store.ready);
   const user = useCloudStore((store) => store.user);
   const libraryStatus = useLibraryStore((store) => store.status);
-  const [code, setCode] = useState("");
+  const [digits, setDigits] = useState<string[]>(Array(6).fill(""));
+  const [recent] = useState(readRecentRooms);
 
   if (!ready) return <LibraryListSkeleton />;
   if (!user)
@@ -62,7 +64,7 @@ export function RoomsPage() {
       </div>
     );
 
-  const normalized = normalizeRoomCode(code);
+  const normalized = normalizeRoomCode(digits.join(""));
   const join = () => {
     if (ROOM_CODE_PATTERN.test(normalized))
       router.push(`/app/rooms/${normalized}`);
@@ -87,15 +89,46 @@ export function RoomsPage() {
             }}
           >
             <div className="code">
-              <input
-                id="room-code"
-                aria-label={t("rooms.codeLabel")}
-                autoCapitalize="characters"
-                autoComplete="off"
-                maxLength={6}
-                value={normalized}
-                onChange={(e) => setCode(e.target.value)}
-              />
+              {digits.map((digit, i) => (
+                <input
+                  key={i}
+                  name={`room-code-${i}`}
+                  aria-label={`${t("rooms.codeLabel")} ${i + 1}`}
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                  maxLength={1}
+                  value={digit}
+                  onPaste={(e) => {
+                    e.preventDefault();
+                    const pasted = normalizeRoomCode(
+                      e.clipboardData.getData("text"),
+                    ).slice(0, 6);
+                    setDigits(
+                      Array.from({ length: 6 }, (_, n) => pasted[n] ?? ""),
+                    );
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Backspace" && !digit && i)
+                      (
+                        e.currentTarget.form?.elements.namedItem(
+                          `room-code-${i - 1}`,
+                        ) as HTMLInputElement
+                      )?.focus();
+                  }}
+                  onChange={(e) => {
+                    const value = normalizeRoomCode(e.target.value).slice(-1);
+                    setDigits((prev) =>
+                      prev.map((d, n) => (n === i ? value : d)),
+                    );
+                    if (value && i < 5)
+                      (
+                        e.currentTarget.form?.elements.namedItem(
+                          `room-code-${i + 1}`,
+                        ) as HTMLInputElement
+                      )?.focus();
+                  }}
+                />
+              ))}
             </div>
             <Button
               className="btn-ink"
@@ -123,6 +156,30 @@ export function RoomsPage() {
           </Link>
         </section>
       </div>
+      {recent.length > 0 && (
+        <>
+          <div className="sec">
+            <h2>{t("rooms.recent")}</h2>
+          </div>
+          <div className="sheet-list">
+            {recent.map((room) => (
+              <Link
+                className="qrow"
+                href={`/app/rooms/${room.code}`}
+                key={room.code}
+              >
+                <span className="glyph hue-amber">
+                  <Icons.levelUp />
+                </span>
+                <b className="grow">{room.title}</b>
+                <span className="latin">
+                  {room.rank} / {room.players}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }

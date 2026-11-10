@@ -75,7 +75,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   };
   return (
     <div className="app">
-      <nav className="side" aria-label={t("redesign.settings")}>
+      <nav className="side" aria-label={t("redesign.navigation")}>
         <div className="brand">
           <img src="/icons/lexiro.png" alt="" />
           Lexiro

@@ -276,14 +276,7 @@ textarea:focus-visible {
     overflow-wrap: anywhere;
     min-height: 2.6em;
   }
-  .w .head {
-    flex-wrap: wrap;
-    gap: 4px 8px;
-  }
-  .w .zh {
-    width: 100%;
-    font-size: 1rem;
-  }
+
   .cover {
     padding: 22px;
   }
@@ -471,4 +464,58 @@ textarea:focus-visible {
 }
 .focus-top .steps {
   min-width: 0;
+}
+
+.btn-danger,
+:root[data-scheme="dark"] .btn-danger {
+  background: var(--wrong);
+  color: #fff;
+  box-shadow: none;
+}
+.w .head {
+  flex-wrap: nowrap;
+}
+.w .hw,
+.w .pos {
+  flex: none;
+  white-space: nowrap;
+}
+.w .zh {
+  width: auto;
+}
+@media (max-width: 959px) {
+  .settings-body > .sheet-head {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--canvas);
+    padding-block: 8px;
+  }
+  .settings .group {
+    scroll-margin-top: 64px;
+  }
+  .settings-close {
+    position: sticky;
+  }
+}
+
+:root[data-theme="pine"][data-scheme="dark"] {
+  --solid: #25312b;
+  --solid-hover: #34443b;
+  --on-solid: #f4f2f0;
+  --on-solid-muted: rgb(255 255 255 / 62%);
+}
+.sync-dot {
+  box-shadow: none;
+}
+.focus .practice-card h1 {
+  font-size: clamp(1.25rem, 3.4vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.focus .practice-card h1.font-latin {
+  font-size: clamp(2.75rem, 10vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
 }

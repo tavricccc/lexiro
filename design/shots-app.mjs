@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { capture } from './preview/shot.mjs';
 const base=process.env.APP_URL??'http://127.0.0.1:5173';
 const frame=process.env.PREVIEW_URL??'http://localhost:4174/design/preview/frame.html';
@@ -21,7 +21,7 @@ add('room-lobby','/app/rooms/K7M2QX'); add('room-game','/app/rooms/K7M2QX?state=
 add('room-right','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:1},{name:'確認答案'}]);
 add('room-wrong','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:0},{name:'確認答案'}]);
 add('room-finished','/app/rooms/K7M2QX?state=finished');
-for(const group of ['account','study','look','agent','data','about','admin']) add(`settings-${group}`,`/app/me?nav=${group}`);
+for(const group of ['account','study','look','agent','data','about','admin']) add(`settings-${group}`,`/app/me?nav=${group}`,[{css:".group[data-on]",scroll:true}]);
 add('sync','/app/sync'); add('me-preferences','/app/me/preferences'); add('me-data','/app/me/data'); add('agents','/app/me/agents'); add('admin','/app/me/admin');
 add('agent-authorize','/agent/authorize?request=demo'); add('app-auth',`/app-auth?challenge=${'a'.repeat(43)}&redirect=lexiroapp%3A%2F%2Fauth`);
 add('offline','/~offline'); add('not-found','/does-not-exist'); add('app-not-found','/app/does-not-exist');
@@ -39,8 +39,8 @@ add('confirm-end-room','/app/rooms/K7M2QX',[{name:'結束對戰'}]);
 add('set-picker-colour','/app/sets/gsat/settings',[{name:'violet'},{name:'airplane-tilt'},{css:'.palette',index:0,scroll:true}]);
 add('resume-practice','/app/practice?run=1&tasks=meaning&set=gsat',[{css:'.opt',index:0},{name:'確認答案'},{goto:base+'/app/practice?demo=1'}]);
 add('home-continue','/app/practice?run=1&tasks=meaning&set=gsat',[{css:'.opt',index:0},{name:'確認答案'},{goto:base+'/app?demo=1'}]);
-add('reading-article','/app/practice?run=1&tasks=cloze&set=gsat',[{role:'tab',name:'文章'}]);
-add('reading-questions-editor','/app/questions/reading/reading-1/edit',[{role:'tab',name:'題目與答案'}]);
+add('reading-article','/app/practice?run=1&tasks=cloze&set=gsat',[{role:'tab',name:'文章',phoneOnly:true}]);
+add('reading-questions-editor','/app/questions/reading/reading-1/edit',[{role:'tab',name:'題目與答案',phoneOnly:true}]);
 add('confirm-clear-questions','/app/sets/gsat?tab=questions',[{name:'清空本集全部題目'}]);
 add('confirm-delete-folder','/app/library?folderId=gsat-folder',[{name:'更多動作'},{role:'menuitem',name:'刪除資料夾'}]);
 add('folder-rename','/app/library?folderId=gsat-folder',[{name:'更多動作'},{role:'menuitem',name:'重新命名資料夾'}]);
@@ -49,13 +49,19 @@ add('set-folder-picker','/app/sets/gsat/settings',[{role:'combobox',name:'資料
 add('practice-scope-picker','/app/practice',[{name:'單字集'}]);
 add('empty-set','/app/sets/gsat?emptySet=1');
 add('empty-practice','/app/practice?empty=1');
-add('question-preview','/app/questions/vocab-1/edit',[{role:'tab',name:'預覽'}]);
+add('question-preview','/app/questions/vocab-1/edit',[{role:'tab',name:'預覽',phoneOnly:true}]);
 add('reading-preview','/app/questions/reading/reading-1/edit',[{role:'tab',name:'文章預覽'}]);
 add('confirm-admin-disable','/app/me/admin',[{name:'停用',index:0}]);
 add('backup-import-confirm','/app/me/data',[{name:'匯出完整備份',download:'design/shots/app/backup.zip'},{css:'input[type=file]',file:'design/shots/app/backup.zip'}]);
 add('install-guide','/app?install=ios-install');
 add('install-confirm','/app?install=ios-install',[{name:'稍後再說'}]);
 add('confirm-sign-in','/app/me',[{name:'登出'},{name:'登入'}]);
+add('new-set-bottom','/app/sets/new',[{css:'.savebar',scroll:true}]);
+add('question-edit-bottom','/app/questions/vocab-1/edit',[{css:'.savebar',scroll:true}]);
+add('reading-edit-bottom','/app/questions/reading/reading-1/edit',[{css:'.savebar',scroll:true}]);
+add('word-edit-bottom',`/app/sets/gsat/words/${word}/edit`,[{css:'.savebar',scroll:true}]);
+add('progress-bottom','/app/progress',[{css:'.sheet-list',scroll:true}]);
+add('settings-admin-bottom','/app/me/admin',[{css:'.group[data-on] .rule-card',index:-1,scroll:true}]);
 add('dark-result','/app/practice?run=1&tasks=meaning&result=1&scheme=dark');
 add('dark-room','/app/rooms/K7M2QX?scheme=dark');
 add('dark-settings','/app/me?nav=look&scheme=dark');
@@ -63,7 +69,7 @@ for(const route of ['/app','/app/library','/app/sets/gsat',`/app/sets/gsat/words
 const wanted=process.argv.slice(2); const selected=wanted.length?cases.filter(c=>wanted.includes(c.name)):cases;
 mkdirSync('design/shots/app',{recursive:true});
 const browser=await chromium.launch({channel:'msedge',headless:true});
-const results=[];
+const results=wanted.length && existsSync("design/shots/app/audit.json") ? JSON.parse(readFileSync("design/shots/app/audit.json","utf8")).filter(r=>!wanted.includes(r.name)) : [];
 try{
  for(const item of selected){
   for(const [tag,width,height] of [['d',1440,1000],['m',500,844]]){

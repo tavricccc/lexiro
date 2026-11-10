@@ -88,6 +88,7 @@ export function AgentConnectionsPage() {
       >
         {endpoint && (
           <div className="flex items-center gap-2 py-3">
+            <Icons.shareLink aria-hidden className="size-5 shrink-0" />
             <Input
               aria-label={t("agent.endpoint")}
               readOnly
@@ -131,6 +132,7 @@ export function AgentConnectionsPage() {
                     key={connection.id}
                     className="flex items-center gap-3 py-[var(--row-padding-block)]"
                   >
+                    <Icons.ai aria-hidden className="size-5 shrink-0" />
                     <div className="min-w-0 flex-1">
                       <p className="type-row break-words">
                         {connection.clientName}

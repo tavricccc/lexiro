@@ -1,3 +1,4 @@
+import { rememberFinishedRoom } from "@/lib/room-history";
 import { useUIStore } from "@/stores/ui-store";
 import { useEffect, useState } from "react";
 
@@ -41,6 +42,9 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
     name,
     true,
   );
+  useEffect(() => {
+    if (state?.phase === "ended") rememberFinishedRoom(state);
+  }, [state]);
   const setActive = useUIStore((s) => s.setPracticeActive);
   useEffect(() => {
     setActive(state?.phase === "question" || state?.phase === "reveal");

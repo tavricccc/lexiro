@@ -1,3 +1,4 @@
+import { t } from "@/lib/i18n";
 import { create } from "zustand";
 import {
   calendarDay,
@@ -34,7 +35,7 @@ export const useLearningStore = create<LearningStore>((set, get) => {
       localStorage.setItem(key(), JSON.stringify(record));
       set({ record, error: "" });
     } catch {
-      set({ error: "儲存失敗" });
+      set({ error: t("redesign.storageFailed") });
     }
   };
   return {

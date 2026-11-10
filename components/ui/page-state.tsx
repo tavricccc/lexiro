@@ -18,8 +18,8 @@ export function LoadingState({ rows = 4 }: { rows?: number }) {
 export function EmptyState({
   action,
   description: _description,
-  headword,
-  pos,
+  headword: _headword,
+  pos: _pos,
   secondaryAction,
   title,
   variant = "empty",
@@ -49,17 +49,7 @@ export function EmptyState({
 
   return (
     <div className="rule-card py-14 text-center sm:py-16">
-      {headword && (
-        <div
-          aria-hidden
-          className="mx-auto mb-9 w-fit max-w-full select-none border-y border-dashed px-6 py-5 text-left text-muted-foreground"
-        >
-          <div className="flex items-baseline gap-3">
-            <span className="entry-headword">{headword}</span>
-            {pos && <span className="entry-pos">{pos}</span>}
-          </div>
-        </div>
-      )}
+      <Icons.library aria-hidden className="mx-auto mb-6 size-16" />
       <h2 className="type-section">{title}</h2>
 
       {(action || secondaryAction) && (

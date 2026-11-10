@@ -394,6 +394,19 @@ export async function initializeDemo(): Promise<boolean> {
     );
     useLearningStore.getState().hydrate();
   }
+  if (!localStorage.getItem("lexiro-product-demo:lexiro:room-history:v1"))
+    localStorage.setItem(
+      "lexiro-product-demo:lexiro:room-history:v1",
+      JSON.stringify(
+        ["學測核心 7000", "TOEIC Business", "閱讀測驗錯題"].map((title, i) => ({
+          code: ["ABCD23", "EFGH45", "JKLM67"][i],
+          title,
+          rank: i === 1 ? 2 : 1,
+          players: 4 - i,
+          finishedAt: new Date(Date.now() - (i + 1) * 86400000).toISOString(),
+        })),
+      ),
+    );
   return true;
 }
 let connections = [

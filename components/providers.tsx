@@ -1,14 +1,25 @@
+import { useLocation } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MotionConfig } from "motion/react";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AppUpdateMonitor } from "@/components/app-update-monitor";
 import { InstallPrompt } from "@/components/system/install-prompt";
 import { NavigationFeedback } from "@/components/motion/navigation-feedback";
 import { timing } from "@/lib/motion-timing";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
+function ProductTheme() {
+  const { resolvedTheme } = useTheme();
+  const { search } = useLocation();
+  useEffect(() => {
+    document.documentElement.dataset.theme = "pine";
+    document.documentElement.dataset.scheme =
+      new URLSearchParams(search).get("scheme") ?? resolvedTheme ?? "light";
+  }, [search, resolvedTheme]);
+  return null;
+}
 export function Providers({ children }: { children: ReactNode }) {
   const [queryClient] = useState(
     () =>
@@ -26,6 +37,7 @@ export function Providers({ children }: { children: ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
+      <ProductTheme />
       <MotionConfig reducedMotion="user" transition={timing("control")}>
         <TooltipProvider>
           <QueryClientProvider client={queryClient}>

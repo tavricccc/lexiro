@@ -101,11 +101,34 @@ export function PracticePage({
   const [restoreCheck, setRestoreCheck] = useState(0);
   const {
     allowedSenseIds,
-    studyItems,
+    studyItems: scopedStudyItems,
     allStudyItems,
-    questionGroups,
+    questionGroups: scopedQuestionGroups,
     allQuestionItems,
   } = usePracticePool(state, setIds);
+  const [reviewKeys] = useState(() =>
+    routeQuery.has("review")
+      ? new Set(mostMissed(learning, 100).map((w) => w.wordKey))
+      : null,
+  );
+  const studyItems = useMemo(
+    () =>
+      reviewKeys
+        ? scopedStudyItems.filter((item) => reviewKeys.has(item.wordKey))
+        : scopedStudyItems,
+    [reviewKeys, scopedStudyItems],
+  );
+  const questionGroups = useMemo(
+    () =>
+      reviewKeys
+        ? scopedQuestionGroups
+            .map((group) =>
+              group.filter((item) => reviewKeys.has(item.wordKey)),
+            )
+            .filter((group) => group.length)
+        : scopedQuestionGroups,
+    [reviewKeys, scopedQuestionGroups],
+  );
   const retiredEntryIds = useMemo(
     () =>
       new Set(
@@ -161,13 +184,7 @@ export function PracticePage({
         amount,
         oneSensePerWord,
         tasks: activeTasks,
-      }).filter(
-        (entry) =>
-          !routeQuery.has("review") ||
-          mostMissed(learning, 100).some(
-            (w) => w.wordKey === entry.item.wordKey,
-          ),
-      ),
+      }),
     [
       allowedSenseIds,
       amount,
@@ -176,7 +193,6 @@ export function PracticePage({
       questionGroups,
       studyItems,
       activeTasks,
-      learning,
     ],
   );
 
