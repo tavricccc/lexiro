@@ -1,7 +1,9 @@
+import { useLearningStore } from "@/stores/learning-store";
+import { familiarity } from "@/src/lib/learning-record";
+import { Dial, SpeakButton } from "@/components/redesign/primitives";
 import Link from "@/components/ui/app-link";
 import type { WordKey, WordSense } from "@/types";
 import { DescriptionPoints } from "@/components/library/description-points";
-import { SpeakPill } from "@/components/ui/speak-pill";
 import { t } from "@/lib/i18n";
 import { withReturnTo } from "@/lib/browse-routes";
 
@@ -25,47 +27,15 @@ export function SetWordRow({
   setId: string;
   returnTo?: string;
 }) {
+  const record = useLearningStore(s => s.record);
   const href = wordDetailHref(setId, entry.wordKey);
-  return (
-    <Link
-      className="t-row flex items-center gap-3 py-[0.8125rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-      href={returnTo ? withReturnTo(href, returnTo) : href}
-    >
-      <span className="grid min-w-0 flex-1 gap-1">
-        <span className="font-latin text-[1.375rem] font-bold leading-7 tracking-[-0.02em]">
-          {entry.word}
-        </span>
-        {entry.senses.map((sense) => (
-          <span key={sense.id} className="grid gap-px">
-            <span className="text-base leading-6">
-              <span className="font-semibold text-brand">{sense.pos} </span>
-              {sense.meaningZh}
-            </span>
-            {sense.description && (
-              <DescriptionPoints
-                text={sense.description}
-                max={3}
-                className="mt-1 mb-0.5 justify-self-start rounded-[var(--radius-segment)] bg-[var(--brand-50)] px-3 py-1.5 type-hint text-foreground"
-                pointClassName="line-clamp-2"
-              />
-            )}
-            {sense.examples[0] && (
-              <span className="type-hint line-clamp-2 text-muted-foreground">
-                {sense.examples[0]}
-              </span>
-            )}
-          </span>
-        ))}
-      </span>
-      <SpeakPill text={entry.word} label={t("setDetail.speak")} size="sm" />
-    </Link>
-  );
+  return <div className="w"><Link className="head" href={returnTo ? withReturnTo(href, returnTo) : href}><span className="hw font-latin">{entry.word}</span><span className="pos">{entry.senses[0]?.pos}</span><span className="zh">{entry.senses.map(s => s.meaningZh).join("；")}</span></Link><Dial value={familiarity(record, entry.senses.map(s => s.id))} /><SpeakButton text={entry.word} /></div>;
 }
 
 /** Every meaning of a word in this set, read in full. */
 export function WordSenseCard({ sense }: { sense: WordSense }) {
   return (
-    <section className="grid gap-2 rounded-[var(--radius-card)] bg-card p-5">
+    <section className="tile sense">
       <p className="type-section">
         <span className="font-semibold text-brand">{sense.pos} </span>
         {sense.meaningZh}
@@ -84,7 +54,7 @@ export function WordSenseCard({ sense }: { sense: WordSense }) {
       {sense.examples
         .filter((example) => example.trim())
         .map((example, index) => (
-          <p key={index} className="text-base leading-6 text-muted-foreground">
+          <p key={index} className="ex font-latin">
             {example}
           </p>
         ))}

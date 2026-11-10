@@ -78,3 +78,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .cover h1 { overflow-wrap: anywhere; }
   .trio .fig { font-size: 1.75rem; }
 }
+.ring { --ring: var(--mint); box-shadow: none; border: 0; outline: none; }
+.ring.ring-paper { --ring: var(--accent); }
+.t-tabs { background: var(--surface-inset); }
+.t-tab[aria-selected="true"] { background: var(--solid); color: var(--on-solid); }
+.t-tab[aria-selected="true"] .t-tabs-pill { background: var(--solid); box-shadow: none; }
+.surface-floating, .t-dialog { background: var(--surface); border-radius: var(--r-stage); border: 0; box-shadow: var(--lift-3); }
+.t-dropdown { border: 0; border-radius: var(--r-card); background: var(--surface); box-shadow: var(--lift-3); }
+.settings-content .page-header, .settings .group .page-header { display: none; }
+.settings-content .type-lead, .settings .group .type-hint { display: none; }
+.question-text { font-family: var(--font-latin); }

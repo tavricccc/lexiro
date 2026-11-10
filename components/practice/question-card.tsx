@@ -49,7 +49,7 @@ export function QuestionCard({
   };
 
   return (
-    <div>
+    <div className="practice-card">
       {passage && (
         <LiquidTabs
           className="mb-5 w-full lg:hidden [&_.t-tabs]:flex [&_.t-tabs]:w-full [&_.t-tab]:flex-1"
@@ -167,11 +167,7 @@ export function QuestionCard({
               {t("practice.locateBlank", { index: item.blank })}
             </Button>
           )}
-          {item.optionBank && (
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              {t("practice.sharedBankHint")}
-            </p>
-          )}
+
           <QuestionOptions
             item={item}
             selected={selected}

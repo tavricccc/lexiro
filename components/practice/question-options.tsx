@@ -27,7 +27,7 @@ export function QuestionOptions({
   return (
     <div
       className={cn(
-        "mt-5 grid gap-2.5",
+        "opts mt-5",
         item.options.length > 5 && "sm:grid-cols-2",
       )}
     >
@@ -36,26 +36,6 @@ export function QuestionOptions({
         const isCorrect = isCorrectChoice(item, optionIndex);
         const isSelected = selected === optionIndex;
         const isPending = !answered && pendingChoice === optionIndex;
-        const stateClass =
-          answered && isCorrect
-            ? "bg-success/12"
-            : answered && isSelected
-              ? "bg-destructive/12"
-              : isPending
-                ? "bg-[var(--surface-selected)]"
-                : usedBlank !== undefined
-                  ? "bg-muted/30 text-muted-foreground"
-                  : answered
-                    ? "bg-card opacity-60"
-                    : "bg-card hover:bg-[color-mix(in_srgb,var(--card),var(--foreground)_4%)]";
-        const badgeClass =
-          answered && isCorrect
-            ? "bg-success text-success-foreground"
-            : answered && isSelected
-              ? "bg-destructive text-destructive-foreground"
-              : isPending
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted text-muted-foreground";
         // Only an answer given just now animates; a revisited one is still.
         const result =
           !answered || readOnly
@@ -76,19 +56,11 @@ export function QuestionOptions({
             disabled={answered || readOnly || usedBlank !== undefined}
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
-            className={cn(
-              "t-answer t-press relative flex min-h-16 w-full items-center gap-3.5 rounded-[var(--radius-control)] px-4 py-3.5 text-left text-[1.0625rem] text-foreground transition-colors duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-default",
-              stateClass,
-            )}
+            className="opt relative"
+            data-state={answered ? isCorrect ? "right" : isSelected ? "wrong" : "dim" : undefined}
+            aria-checked={isPending || isSelected}
           >
-            <span
-              className={cn(
-                "grid size-8 shrink-0 place-items-center rounded-full text-sm font-semibold",
-                badgeClass,
-              )}
-            >
-              {String.fromCharCode(65 + optionIndex)}
-            </span>
+            <kbd>{String.fromCharCode(65 + optionIndex)}</kbd>
             <span className="min-w-0 flex-1 break-words leading-6">
               {option}
               {usedBlank !== undefined && (

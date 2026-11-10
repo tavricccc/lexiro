@@ -73,7 +73,7 @@ describe("navigation selection", () => {
     );
   });
   it("treats the primary destinations as peers and retains their child ownership", () => {
-    const destinations = ["/app", "/app/library", "/app/rooms", "/app/me"];
+    const destinations = ["/app", "/app/library", "/app/progress", "/app/rooms"];
     for (const from of destinations) {
       rememberRoutePath(from);
       for (const to of destinations) {
@@ -106,8 +106,8 @@ describe("navigation selection", () => {
     for (const destination of [
       "/app",
       "/app/library",
+      "/app/progress",
       "/app/rooms",
-      "/app/me",
     ]) {
       expect(isRootRoute(destination)).toBe(true);
     }

@@ -32,7 +32,7 @@ import { cn } from "@/lib/cn";
 export function ListSection({
   children,
   className,
-  footer,
+  footer: _footer,
   header,
   headerAction,
 }: {
@@ -53,7 +53,7 @@ export function ListSection({
         </div>
       )}
       <div className="rule-card rule-list">{children}</div>
-      {footer && <p className="type-list-footer mt-2 px-1">{footer}</p>}
+
     </section>
   );
 }
@@ -78,7 +78,7 @@ const toneClass = {
 function RowInner({
   icon: Icon,
   label,
-  detail,
+  detail: _detail,
   value,
   tone = "default",
   trailing,
@@ -100,9 +100,7 @@ function RowInner({
         >
           {label}
         </span>
-        {detail && (
-          <span className="type-row-detail mt-0.5 block">{detail}</span>
-        )}
+
       </span>
       {value !== undefined && value !== null && value !== "" && (
         <span className="type-row-value min-w-0 max-w-[55%] text-right [overflow-wrap:anywhere]">

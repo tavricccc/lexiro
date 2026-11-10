@@ -1,3 +1,6 @@
+import { Dial } from "@/components/redesign/primitives";
+import { useLearningStore } from "@/stores/learning-store";
+import { familiarity } from "@/src/lib/learning-record";
 import { Button } from "@/components/ui/button";
 import Link from "@/components/ui/app-link";
 import { BackControl } from "@/components/ui/back-control";
@@ -21,6 +24,7 @@ export function WordDetailPage({
   wordKey: string;
   returnHref?: string;
 }) {
+  const record = useLearningStore(s => s.record);
   const state = useLibraryStore((store) => store.state);
   const wordKey = rawKey as WordKey;
   const word = state.words[wordKey];
@@ -38,7 +42,7 @@ export function WordDetailPage({
 
   if (!word || !senses?.length)
     return (
-      <div className="mx-auto max-w-3xl">
+      <div className="word-detail">
         <PageHeader back={<BackControl href={backHref} />} title="" />
         <EmptyState
           variant="filtered"
@@ -49,7 +53,7 @@ export function WordDetailPage({
     );
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="word-detail">
       <PageHeader
         back={<BackControl href={backHref} />}
         title=""
@@ -61,17 +65,17 @@ export function WordDetailPage({
           </Button>
         }
       />
-      <div className="mb-4 flex items-center gap-3.5">
+      <div className="word-hero"><div className="rowx"><span className="chip">{state.sets.find(s => s.id === setId)?.setName}</span><Dial value={familiarity(record, senses.map(s => s.id))} /></div><div className="rowx">
         <h1 className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
           {word.word}
         </h1>
         <SpeakPill text={word.word} label={t("setDetail.speak")} />
-      </div>
-      <div className="grid gap-3">
+      </div></div>
+      <div className="split"><div className="stack">
         {senses.map((sense) => (
           <WordSenseCard key={sense.id} sense={sense} />
         ))}
-      </div>
+      </div><aside className="tile word-record"><b>{t("redesign.records")}</b><div className="trio"><div><p className="fig">{senses.reduce((n, s) => n + (record.senses[s.id]?.answered ?? 0), 0)}</p><p>{t("redesign.answers")}</p></div><div><p className="fig">{senses.reduce((n, s) => n + (record.senses[s.id]?.correct ?? 0), 0)}</p><p>{t("redesign.correct")}</p></div></div></aside></div>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export function SpeakPill({
         size === "md" ? "h-[2.375rem] w-14" : "h-[2.125rem] w-[3.125rem]",
       )}
     >
-      <Icons.speak className="size-[1.0625rem]" weight="fill" />
+      <Icons.speak className="size-[1.0625rem]" weight="regular" />
     </button>
   );
 }

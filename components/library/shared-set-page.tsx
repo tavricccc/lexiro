@@ -68,8 +68,8 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
         <PageHeader back={back} title={t("share.pageTitle")} />
         <EmptyState
           variant="filtered"
-          title={t("share.loadFailed")}
-          description={error}
+          title={error}
+          description=""
         />
       </div>
     );

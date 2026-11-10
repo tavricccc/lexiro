@@ -4,6 +4,7 @@ import { useCloudStore } from "@/stores/cloud-store";
 import { t } from "@/lib/i18n";
 
 export const agentWorkerUrl = () =>
+  import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1" ? location.origin + "/demo-worker" :
   process.env.NEXT_PUBLIC_AGENT_WORKER_URL?.trim().replace(/\/$/, "") ?? "";
 export interface AgentConnection {
   id: string;
@@ -16,6 +17,7 @@ export async function agentJson<T>(
   path: string,
   init: RequestInit = {},
 ): Promise<T> {
+  if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") return (await import("@/lib/dev/demo")).demoRequest<T>(path, init);
   const base = agentWorkerUrl();
   if (!base) throw new Error(t("agent.unavailable"));
   const auth = getFirebaseAuth();

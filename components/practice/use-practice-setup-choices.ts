@@ -26,33 +26,36 @@ export function usePracticeSetupChoices(
 ) {
   const uid = useCloudStore((store) => store.user?.uid);
   const initialSets = () => (initialSet ? [initialSet] : []);
-  const initialTasks = () =>
+  const query = new URLSearchParams(typeof location === "undefined" ? "" : location.search);
+  const initialAmount = [10, 20, 30, 50].includes(Number(query.get("amount"))) ? Number(query.get("amount")) : 20;
+  const initialOneSense = typeof localStorage === "undefined" || localStorage.getItem("lexiro:one-sense") !== "0";
+  const initialTasks = () => query.get("tasks")?.split(",").filter(isPracticeTask).length ? query.get("tasks")!.split(",").filter(isPracticeTask) :
     initialTrack === "words"
       ? [...DEFAULT_CARD_TASKS]
       : [...DEFAULT_QUESTION_TASKS];
   const saved = useResumableDraft<PracticeSetupDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:practice-setup:${initialSet || "all"}:${initialTrack ?? "choose"}`,
     {
-      amount: 10,
+      amount: initialAmount,
       difficulty: "all",
-      oneSensePerWord: true,
+      oneSensePerWord: initialOneSense,
       setIds: initialSets(),
       tasks: initialTasks(),
     },
   );
   const [tasks, setTasks] = useState<PracticeTask[]>(initialTasks);
   const [setIds, setSetIds] = useState<string[]>(initialSets);
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState(initialAmount);
   const [difficulty, setDifficulty] =
     useState<WorkspaceQuestionDifficulty>("all");
-  const [oneSensePerWord, setOneSensePerWord] = useState(true);
+  const [oneSensePerWord, setOneSensePerWord] = useState(initialOneSense);
 
   const reset = () => {
     setTasks(initialTasks());
     setSetIds(initialSets());
-    setAmount(10);
+    setAmount(initialAmount);
     setDifficulty("all");
-    setOneSensePerWord(true);
+    setOneSensePerWord(initialOneSense);
   };
   const restart = () => {
     saved.restart();

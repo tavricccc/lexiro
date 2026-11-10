@@ -17,7 +17,7 @@ export function LoadingState({ rows = 4 }: { rows?: number }) {
  */
 export function EmptyState({
   action,
-  description,
+  description: _description,
   headword,
   pos,
   secondaryAction,
@@ -36,7 +36,7 @@ export function EmptyState({
     return (
       <div className="rule-card py-12 text-center" role="status">
         <p className="font-medium">{title}</p>
-        <p className="mx-auto mt-1.5 max-w-[42ch] type-lead">{description}</p>
+
         {(action || secondaryAction) && (
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             {action}
@@ -61,7 +61,7 @@ export function EmptyState({
         </div>
       )}
       <h2 className="type-section">{title}</h2>
-      <p className="mx-auto mt-2 max-w-[46ch] type-lead">{description}</p>
+
       {(action || secondaryAction) && (
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
           {action}

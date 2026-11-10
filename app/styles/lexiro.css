@@ -1,10 +1,10 @@
 /* Lexiro's product layer. The kit (strata/) supplies tokens, type, paper, buttons, fields, chips
    and switches; this file is everything only Lexiro has: its shell, its tiles, its study screens. */
 
-@import "../../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Regular.css";
-@import "../../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Medium.css";
-@import "../../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Semibold.css";
-@import "../../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Regular.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Medium.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Semibold.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-500.ttf"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-600.ttf"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-700.ttf"); font-weight: 700; font-display: swap; }

@@ -77,7 +77,7 @@ describe("shared accessible states", () => {
     expect(first).toHaveAttribute("aria-checked", "false");
   });
 
-  it("keeps empty-state instructions outside the decorative entry", () => {
+  it("shows the empty-state title without helper text", () => {
     render(
       <EmptyState
         title="尚無單字"
@@ -85,8 +85,8 @@ describe("shared accessible states", () => {
         headword="hello"
       />,
     );
-    const description = screen.getByText("先建立單字集");
-    expect(description.closest('[aria-hidden="true"]')).toBeNull();
+    expect(screen.getByRole("heading", { name: "尚無單字" })).toBeVisible();
+    expect(screen.queryByText("先建立單字集")).toBeNull();
   });
 
   it("announces errors and offers a working retry", () => {

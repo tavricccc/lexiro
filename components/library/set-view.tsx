@@ -1,10 +1,13 @@
+import { useLearningStore } from "@/stores/learning-store";
+import { familiarity } from "@/src/lib/learning-record";
+import { Dial } from "@/components/redesign/primitives";
+import { PracticeLaunch } from "@/components/redesign/practice-launch";
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";
 import { BackControl } from "@/components/ui/back-control";
-import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { LiquidTabs } from "@/components/ui/liquid-tabs";
 import { Menu } from "@/components/ui/menu";
@@ -60,6 +63,8 @@ export function SetView({
   initialQuery?: string;
 }) {
   const router = useRouter();
+  const record = useLearningStore(s => s.record);
+  const [launch, setLaunch] = useState(false);
   // Called once the set is gone, so the page it leaves is already known.
   const { actionsFor, dialogs } = useSetActions(() => router.push(libraryHref));
   const { state, status } = useLibraryStore();
@@ -154,62 +159,15 @@ export function SetView({
           </>
         }
         back={<BackControl href={libraryHref} label={t("setDetail.back")} />}
-        title={current.setName}
+        title=""
       />
 
-      {/* The set's size on the answer card's green, with the way in, as in the app. */}
-      <section className="relative mb-5 grid gap-[1.125rem] overflow-hidden rounded-[var(--radius-stage)] bg-[#7cc49c] p-[1.375rem] text-[#13201a]">
-        <span
-          aria-hidden
-          className="absolute -right-[5.25rem] -top-14 h-[7.5rem] w-[11.25rem] rounded-full bg-[#13201a]"
-        />
-        <div className="relative flex gap-8">
-          {[
-            [senseIds.length, t("library.senseUnit")],
-            [questions.length, t("library.questionsTab")],
-          ].map(([value, label]) => (
-            <p key={label} className="grid">
-              <span className="font-latin text-[3.5rem] font-extrabold leading-[3.625rem] tracking-[-0.045em] tabular-nums">
-                {value}
-              </span>
-              <span className="type-section">{label}</span>
-            </p>
-          ))}
-        </div>
-        <div className="relative flex gap-2.5">
-          <Button
-            asChild
-            size="lg"
-            className="flex-1 bg-[#13201a]/10 text-[#13201a] hover:bg-[#13201a]/15"
-          >
-            <Link href={`/app/sets/${setId}/add`}>
-              <Icons.create />
-              {t("setEditor.addWord")}
-            </Link>
-          </Button>
-          {senseIds.length > 0 ? (
-            <Button
-              asChild
-              size="lg"
-              className="flex-1 bg-[#13201a] text-[#f4f8f5] hover:bg-[#13201a]/90"
-            >
-              <Link href={`/app/practice?set=${setId}`}>
-                <Icons.start />
-                {t("setDetail.start")}
-              </Link>
-            </Button>
-          ) : (
-            <Button
-              size="lg"
-              disabled
-              className="flex-1 bg-[#13201a] text-[#f4f8f5]"
-            >
-              <Icons.start />
-              {t("setDetail.start")}
-            </Button>
-          )}
-        </div>
+      <section className={`cover hue-${current.hue ?? "mint"}`}>
+        <div className="between"><h1>{current.setName}</h1><Dial value={familiarity(record, senseIds)} /></div>
+        <div className="facts">{[[words.length, t("redesign.words")], [questions.length, t("library.questionsTab")], [senseIds.filter(id => record.senses[id]?.level === 3).length, t("redesign.known")]].map(([n, label]) => <div key={label}><b>{n}</b><span>{label}</span></div>)}</div>
+        <div className="hero-acts"><Link className="btn btn-lg btn-ink" href={`/app/practice?set=${setId}`} onClick={e => { e.preventDefault(); setLaunch(true); }}><Icons.start />{t("setDetail.start")}</Link><Link className="btn btn-lg btn-veil" href={`/app/sets/${setId}/add`}><Icons.create />{t("setEditor.addWord")}</Link></div>
       </section>
+      <PracticeLaunch open={launch} onClose={() => setLaunch(false)} setId={setId} />
 
       <LiquidTabs
         ariaLabel={current.setName}

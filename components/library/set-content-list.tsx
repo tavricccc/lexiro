@@ -95,7 +95,7 @@ export function SetWordList({
 
   return (
     <>
-      <StaggerList as="ul" className="rule-card rule-list">
+      <StaggerList as="ul" className="sheet-list cols">
         {shown.map((entry) => (
           <StaggerItem as="li" key={entry.wordKey}>
             <SetWordRow entry={entry} setId={setId} returnTo={returnTo} />
@@ -132,7 +132,7 @@ export function SetQuestionList({
 
   return (
     <>
-      <StaggerList as="ul" className="rule-card rule-list">
+      <StaggerList as="ul" className="sheet-list cols">
         {shown.map((question) => (
           <StaggerItem as="li" key={question.id}>
             <Link

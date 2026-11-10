@@ -6,6 +6,10 @@ import { routes } from "./routes";
 import "./globals.css";
 import "./styles/redesign.css";
 
+if (import.meta.env.DEV) {
+  const { initializeDemo } = await import("@/lib/dev/demo");
+  await initializeDemo();
+}
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")!).render(
