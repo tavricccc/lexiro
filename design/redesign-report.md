@@ -1,5 +1,7 @@
 # Lexiro redesign implementation report
 
+Latest review fixes and final evidence: [21-item follow-up](review-followup.md), [current screenshot inventory](screenshot-index.md). The results below document the initial delivery.
+
 Branch: `feature/product-redesign`. No push, deployment or PR was performed. Worker/API implementation and endpoint contracts were not edited.
 
 Implemented the pine stylesheet vocabulary, four-destination shell, responsive settings, today/progress surfaces, familiarity rings, set appearance persistence, focus practice/results/rooms, editor adapters, isolated DEV fixtures and Edge capture tooling. Learning records are device-local and account-scoped; materials backups continue to contain materials, not learning history.
