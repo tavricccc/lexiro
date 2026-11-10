@@ -65,7 +65,7 @@ add('progress-bottom','/app/progress',[{css:'.sheet-list',scroll:true}]);
 add('settings-admin-bottom','/app/me/admin',[{css:'.group[data-on] .rule-card',index:-1,scroll:true}]);
 for(const kind of ['cloze','wordBank','discourse']) add(`${kind}-edit`,`/app/questions/reading/${kind}-1/edit`);
 for(const kind of ['wordBank','discourse']) add(`${kind}-options`,`/app/questions/reading/${kind}-1/edit`,[{role:'tab',name:'題目與答案',phoneOnly:true},{role:'tab',name:'共用選項'}]);
-add('reading-metadata','/app/questions/reading/reading-1/edit',[{css:'details > summary',index:0}]);
+add('reading-metadata','/app/questions/reading/reading-1/edit',[{role:'button',name:'編輯標題與難度 · 中等',phoneOnly:true}]);
 add('resume-invalid','/app/practice?brokenDraft=1');
 add('dark-result','/app/practice?run=1&tasks=meaning&result=1&scheme=dark');
 add('dark-room','/app/rooms/K7M2QX?scheme=dark');

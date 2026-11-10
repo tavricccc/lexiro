@@ -293,6 +293,10 @@ export function demoLibrary(): LibraryState {
   }
   for (const question of state.questions) {
     if (question.kind !== "reading") continue;
+    if (question.format === "discourse") {
+      question.passage = `Smartphones are everywhere. ${blankToken(0)} Constant notifications interrupt our thoughts. ${blankToken(1)} A quiet study space can help us stay focused.`;
+      question.questions.forEach((child, i) => { child.explanation = i === 0 ? "They 指智慧型手機，承接前句的普及。" : "interrupt our concentration 呼應通知打斷思緒。"; });
+    }
     question.questions.forEach((child, i) => {
       child.wordKey = buildSetWordKey(
         "gsat",

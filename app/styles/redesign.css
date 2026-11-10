@@ -523,3 +523,6 @@ textarea:focus-visible {
   .settings-body { padding-top: 0; }
   .settings-body > .sheet-head { margin: 0 calc(-1 * var(--sp-5)); padding: 12px var(--sp-5); top: 0; }
 }
+html { scroll-padding-bottom: calc(var(--h-dock) + var(--layout-dock-margin) * 2 + 24px); }
+.savebar { scroll-margin-bottom: 120px; }
+[role="option"][data-state="checked"], [role="menuitemcheckbox"][data-state="checked"] { background: var(--solid); color: var(--on-solid); box-shadow: none; }
