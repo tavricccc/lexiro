@@ -8,6 +8,7 @@ export async function capture({url,out,width=1440,height=1000,actions=[],browser
   const browser = shared ?? await chromium.launch({executablePath:edge,headless:true});
   const context = await browser.newContext({viewport:{width,height},deviceScaleFactor:1,reducedMotion:'reduce'});
   const page = await context.newPage();
+  page.setDefaultTimeout(8000);
   const errors=[]; page.on('pageerror',e=>errors.push(e.message));
   try {
     await page.goto(url,{waitUntil:'networkidle'});
@@ -17,9 +18,13 @@ export async function capture({url,out,width=1440,height=1000,actions=[],browser
     await root.waitForFunction(()=>document.body.innerText.trim().length>0,{},{timeout:20000});
     await root.evaluate(()=>document.fonts.ready);
     for(const action of actions) {
+      if(action.goto) { await root.goto(action.goto, {waitUntil:"networkidle"}); continue; }
+      if(action.reload) { await root.reload({waitUntil:"networkidle"}); continue; }
       const locator = action.css ? root.locator(action.css) : root.getByRole(action.role ?? 'button',{name:action.name,exact:action.exact ?? true});
       const target = action.index === undefined ? locator.first() : locator.nth(action.index);
-      if(action.fill !== undefined) await target.fill(action.fill);
+      if(action.download) { const [download] = await Promise.all([page.waitForEvent("download"), target.click()]); await download.saveAs(action.download); }
+      else if(action.file) await target.setInputFiles(action.file);
+      else if(action.fill !== undefined) await target.fill(action.fill);
       else if(action.select !== undefined) await target.selectOption(action.select);
       else if(action.scroll) await target.scrollIntoViewIfNeeded();
       else await target.click({button:action.button ?? 'left'});

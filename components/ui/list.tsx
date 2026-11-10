@@ -1,6 +1,6 @@
 import Link from "@/components/ui/app-link";
 import type { AppIcon } from "@/components/ui/icons";
-import { type ReactNode } from "react";
+import { isValidElement, type ReactNode } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import { DropdownMenu, RadioGroup } from "radix-ui";
 
@@ -32,7 +32,7 @@ import { cn } from "@/lib/cn";
 export function ListSection({
   children,
   className,
-  footer: _footer,
+  footer,
   header,
   headerAction,
 }: {
@@ -53,6 +53,7 @@ export function ListSection({
         </div>
       )}
       <div className="rule-card rule-list">{children}</div>
+      {isValidElement(footer) && (footer.props as { role?: string }).role === "alert" ? footer : null}
     </section>
   );
 }

@@ -45,10 +45,10 @@ export function ResultPanel({
   return (
     <div className="result pop-in" data-motion-view="practice-result">
       <section className="hero">
-        <h1 className="t-section">{t("practice.resultTitle")}</h1>
+        <h1 className="t-section">{t("redesign.result")}</h1>
         <Ring value={total ? (correct / total) * 100 : 0}>
           <div>
-            <p className="fig">{correct}</p>
+            <p>{t("redesign.correct")}</p><p className="fig">{correct}</p>
             <p>
               / {total} {t("redesign.countUnit")}
             </p>

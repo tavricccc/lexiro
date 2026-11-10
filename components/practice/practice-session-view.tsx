@@ -86,6 +86,7 @@ export function PracticeSessionView({
             />
           ))}
         </div>
+        <span className="latin practice-counter">{index + 1}/{total}</span>
         <Button
           size="icon"
           variant="glass"

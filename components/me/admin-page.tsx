@@ -1,3 +1,4 @@
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { useCallback, useEffect, useState } from "react";
 
 import { MeSubpage } from "@/components/me/me-subpage";
@@ -107,6 +108,7 @@ export function AdminPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null);
+  const [confirmTarget, setConfirmTarget] = useState<string | null>(null);
   const [uid, setUid] = useState("");
   const [reason, setReason] = useState("");
   const [query, setQuery] = useState("");
@@ -146,9 +148,8 @@ export function AdminPage() {
     }
   };
 
-  const change = async (target: string, disable: boolean) => {
-    if (disable && !window.confirm(t("admin.disableConfirm", { uid: target })))
-      return;
+  const change = async (target: string, disable: boolean, confirmed = false) => {
+    if (disable && !confirmed) { setConfirmTarget(target); return; }
     setBusy(target);
     setError("");
     try {
@@ -176,7 +177,7 @@ export function AdminPage() {
 
   const trimmed = uid.trim();
   return (
-    <MeSubpage title={t("admin.title")}>
+    <MeSubpage title={t("admin.title")}><ConfirmDialog open={confirmTarget !== null} onOpenChange={open => { if (!open) setConfirmTarget(null); }} title={t("admin.disable")} description={t("admin.disableConfirm", { uid: confirmTarget ?? "" })} onConfirm={() => confirmTarget ? change(confirmTarget, true, true) : undefined} />
       <div className="space-y-6">
         <div className="flex justify-end">
           <Button

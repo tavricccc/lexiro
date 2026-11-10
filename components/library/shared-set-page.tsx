@@ -153,9 +153,7 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
           </>
         ) : (
           <>
-            <p className="text-sm text-muted-foreground">
-              {t("share.copyHint")}
-            </p>
+
             <Button
               size="lg"
               disabled={saving || libraryStatus !== "ready"}

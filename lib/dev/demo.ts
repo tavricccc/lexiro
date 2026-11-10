@@ -39,6 +39,11 @@ const vocabulary = [
   ["resilient", "adj.", "有韌性的；能迅速恢復的"],
   ["ubiquitous", "adj.", "無所不在的"],
 ];
+const collectionWords: Record<string, string[][]> = {
+  toeic: [["acquisition", "n.", "收購"], ["agenda", "n.", "議程"], ["budget", "n.", "預算"], ["contract", "n.", "合約"], ["deadline", "n.", "截止期限"], ["invoice", "n.", "發票"], ["negotiate", "v.", "協商"], ["revenue", "n.", "營收"], ["stakeholder", "n.", "利害關係人"], ["warehouse", "n.", "倉庫"]],
+  travel: [["accommodation", "n.", "住宿"], ["arrival", "n.", "抵達"], ["customs", "n.", "海關"], ["departure", "n.", "出發"], ["destination", "n.", "目的地"], ["itinerary", "n.", "行程"], ["luggage", "n.", "行李"], ["reservation", "n.", "預約"], ["souvenir", "n.", "紀念品"], ["wander", "v.", "漫遊"]],
+  news: [["biodiversity", "n.", "生物多樣性"], ["diplomacy", "n.", "外交"], ["emission", "n.", "排放"], ["inflation", "n.", "通貨膨脹"], ["policy", "n.", "政策"], ["regulation", "n.", "法規"], ["renewable", "adj.", "可再生的"], ["sustainable", "adj.", "永續的"], ["transition", "n.", "轉型"], ["urban", "adj.", "都市的"]],
+};
 const timestamp = "2026-11-01T08:00:00.000Z";
 export function demoLibrary(): LibraryState {
   const state = emptyLibraryState();
@@ -108,7 +113,7 @@ export function demoLibrary(): LibraryState {
   ];
   for (const set of state.sets) {
     state.memberships[set.id] = [];
-    for (const [word, pos, meaningZh] of vocabulary) {
+    for (const [word, pos, meaningZh] of collectionWords[set.id] ?? vocabulary) {
       const wordKey = buildSetWordKey(set.id, word);
       const id = buildSenseId(wordKey, pos, meaningZh);
       state.words[wordKey] = {
@@ -240,7 +245,7 @@ export function demoLibrary(): LibraryState {
                     "meticulous",
                   ],
         answerIndex: format === "reading" ? 1 : i,
-        explanation: "依文章上下文選出最符合語意的答案。",
+        explanation: format === "reading" ? "把手機放在另一個房間的學生，在記憶作業中表現較好。" : i === 0 ? "ubiquitous 表示無所不在，呼應日常生活離不開手機。" : "hinder 表示阻礙，對應通知干擾專注力。",
       })),
       createdAt: timestamp,
       updatedAt: timestamp,
@@ -282,6 +287,7 @@ export async function initializeDemo(): Promise<boolean> {
     await repository.commit(state);
   }
   if (query.get("empty") === "1") state = emptyLibraryState();
+  if (query.get("emptySet") === "1") { state.memberships.gsat = []; state.questions = []; }
   useLibraryStore.setState({
     state,
     status: "ready",
@@ -368,6 +374,7 @@ export async function demoRequest<T>(
   else if (path.startsWith("/connections/") && init.method === "DELETE") {
     connections = connections.filter((c) => c.id !== path.split("/").at(-1));
   } else if (path === "/admin/status") result = { admin: true };
+  else if (path.startsWith("/admin/search")) result = { accounts: [{ uid: "demo-other", name: "佳穎", email: "jiaying@example.com", writesToday: 34, readsToday: 56, storedBytes: 320000, disabled: false }] };
   else if (path.startsWith("/admin"))
     result = {
       day: calendarDay(new Date()),

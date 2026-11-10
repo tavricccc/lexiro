@@ -1,0 +1,38 @@
+import { chromium, expect } from '@playwright/test';
+import { writeFileSync } from 'node:fs';
+const browser=await chromium.launch({channel:'msedge'});
+const context=await browser.newContext({viewport:{width:390,height:844}});
+const page=await context.newPage();page.setDefaultTimeout(10000);
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+const checks=[];
+try{
+ await page.goto('http://127.0.0.1:5173/app?demo=1');
+ await page.getByRole('link',{name:'設定',exact:true}).click();
+ await page.getByRole('button',{name:'30',exact:true}).click();
+ await page.getByRole('button',{name:'關閉',exact:true}).last().click();
+ await page.reload(); await expect(page.locator('.hero .fig')).toContainText('/ 30'); checks.push('Daily goal persists after reload');
+ await page.goto('http://127.0.0.1:5173/app/sets/new?demo=1');
+ await page.getByRole('textbox',{name:'單字集名稱',exact:true}).fill('旅行日記');
+ await page.getByRole('textbox',{name:'英文單字',exact:true}).fill('itinerary');
+ await page.getByRole('textbox',{name:'詞性',exact:true}).fill('n.');
+ await page.getByRole('textbox',{name:'中文意思',exact:true}).fill('行程');
+ await page.getByRole('button',{name:'violet',exact:true}).click();
+ await page.getByRole('button',{name:'airplane-tilt',exact:true}).click();
+ await page.getByRole('button',{name:'建立',exact:true}).click();
+ await expect(page.locator('.cover h1')).toHaveText('旅行日記');
+ const url=page.url(); await page.reload(); await expect(page.locator('.cover')).toHaveClass(/hue-violet/);await expect(page.getByText('itinerary',{exact:true})).toBeVisible();checks.push('Set creation, words and colour survive reload');
+ await page.goto(url+'/settings');
+ await expect(page.getByRole('button',{name:'airplane-tilt',exact:true})).toHaveAttribute('aria-pressed','true');checks.push('Set icon survives reload');
+ await page.goto('http://127.0.0.1:5173/app/practice?demo=1&run=1&tasks=meaning&set=gsat');
+ await page.locator('.opt').first().click();await page.getByRole('button',{name:'確認答案',exact:true}).click();
+ await expect(page.locator('.verdict')).toBeVisible();
+ await page.goto('http://127.0.0.1:5173/app?demo=1');await expect(page.locator('.hero .fig')).toContainText('13');
+ await page.reload();await expect(page.locator('.hero .fig')).toContainText('13');checks.push('Confirmed practice answer increments daily count exactly once and survives reload');
+ await page.getByRole('link',{name:'接續上次',exact:true}).click();await expect(page.getByRole('button',{name:'接續',exact:false}).first()).toBeVisible();checks.push('Saved practice offers resume');
+ await page.goto('http://127.0.0.1:5173/app/rooms/K7M2QX?demo=1');await page.getByRole('button',{name:'開始對戰',exact:true}).click();
+ await expect(page.locator('.focus .opt').first()).toBeVisible();await page.locator('.focus .opt').nth(1).click();await page.getByRole('button',{name:'確認答案',exact:true}).click();await expect(page.locator('.verdict')).toHaveClass(/is-right/);checks.push('Demo lobby starts and submits a correct room answer');
+ await page.goto('http://127.0.0.1:5173/app/shared/demo-share?demo=1');await page.getByRole('button',{name:'存一份副本到我的題庫',exact:true}).click();await expect(page.locator('.cover h1')).toContainText('學測核心');checks.push('Shared set copy creates a browsable local set');
+ if(errors.length)throw Error(errors.join('\n'));
+ console.log(checks.join('\n'));
+ writeFileSync('design/verification.json',JSON.stringify({checks,errors},null,2));
+}finally{await context.close();await browser.close();}

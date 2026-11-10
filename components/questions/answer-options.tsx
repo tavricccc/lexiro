@@ -26,16 +26,14 @@ export function AnswerOptions({
   return (
     <fieldset>
       <legend className="text-sm font-medium">{t("questions.options")}</legend>
-      <p className="mt-1 mb-3 text-xs text-muted-foreground">
-        {t("questions.correctHint")}
-      </p>
+
       <div className="grid gap-2">
         {options.map((option, index) => (
           <label
             className={
               answerIndex === index
-                ? "flex items-center gap-3 rounded-[var(--radius-card)] border border-brand-400 bg-brand-50 px-3 py-2"
-                : "flex items-center gap-3 rounded-[var(--radius-card)] border border-transparent px-3 py-2"
+                ? "answer-edit-row answer-edit-selected"
+                : "answer-edit-row"
             }
             key={index}
           >

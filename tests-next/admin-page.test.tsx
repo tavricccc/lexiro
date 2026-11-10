@@ -114,10 +114,10 @@ describe("administrator page", () => {
 
   it("disables an account after confirmation and reloads the overview", async () => {
     request.mockResolvedValue(overview);
-    vi.spyOn(window, "confirm").mockReturnValue(true);
     render(<AdminPage />);
     await screen.findByText("busy1");
     fireEvent.click(screen.getAllByRole("button", { name: "停用" })[0]);
+    fireEvent.click(await screen.findByRole("button", { name: "確認" }));
     await waitFor(() =>
       expect(request).toHaveBeenCalledWith("/admin/accounts/busy1/disabled", {
         method: "PUT",
@@ -128,10 +128,10 @@ describe("administrator page", () => {
 
   it("does not disable when the confirmation is declined", async () => {
     request.mockResolvedValue(overview);
-    vi.spyOn(window, "confirm").mockReturnValue(false);
     render(<AdminPage />);
     await screen.findByText("busy1");
     fireEvent.click(screen.getAllByRole("button", { name: "停用" })[0]);
+    fireEvent.click(await screen.findByRole("button", { name: "取消" }));
     expect(request).not.toHaveBeenCalledWith(
       "/admin/accounts/busy1/disabled",
       expect.anything(),

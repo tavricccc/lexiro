@@ -109,3 +109,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .library-workspace input[type="search"] { background: var(--surface); border-radius: 999px; box-shadow: var(--lift-1); }
 .library-workspace .pill { box-shadow: none; background: var(--surface); }
 @media(max-width:639px){ .library-workspace .library-set-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+.t-tab { min-height: 40px; padding: 0 16px; font-size: var(--t-sub-size); white-space: nowrap; }
+.savebar { position: relative; bottom: auto; margin-top: 24px; margin-bottom: 24px; padding: 8px; flex-wrap: wrap; width: fit-content; max-width: 100%; }
+.library-workspace > .dashed { min-height: 60px; }
+.answer-edit-row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: var(--r-control); }
+.answer-edit-selected { background: var(--solid); color: var(--on-solid); }
+.answer-edit-selected input[data-slot="input"] { background: rgb(255 255 255 / 15%); color: inherit; }
+.answer-edit-row input[type="radio"] { appearance: none; width: 20px; height: 20px; background: var(--fill-hover); border: 0; border-radius: 50%; }
+.answer-edit-row input[type="radio"]:checked { background: var(--on-solid); }
+.answer-edit-selected span { color: inherit; }
+.library-workspace .set .name { text-wrap: pretty; }
+.practice-counter { flex: none; font-weight: 600; font-size: 14px; }
+.focus-top .steps { min-width: 0; }
