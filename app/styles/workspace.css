@@ -7,7 +7,8 @@
      mostly white, with only a hint of the canvas showing through. */
   --float-glass: color-mix(in oklab, var(--card) 86%, transparent);
   --float-glass-blur: blur(24px) saturate(1.6);
-  --float-glass-border: 1px solid color-mix(in oklab, var(--foreground) 6%, transparent);
+  --float-glass-border: 1px solid
+    color-mix(in oklab, var(--foreground) 6%, transparent);
   /* The glass bubble once pressed: brighter, as if it caught more light. */
   --glass-pressed: color-mix(in oklab, var(--card) 96%, var(--foreground) 4%);
   --mobile-nav-height: 3.875rem;
@@ -363,7 +364,8 @@
     background: var(--float-glass);
     -webkit-backdrop-filter: var(--float-glass-blur);
     backdrop-filter: var(--float-glass-blur);
-    box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 7%, transparent);
+    box-shadow: 0 8px 30px
+      color-mix(in oklab, var(--foreground) 7%, transparent);
     z-index: 20;
   }
   /* Selection here is a quiet tint with accent text, not the contrast pill. */
@@ -514,7 +516,8 @@
     background: var(--float-glass);
     -webkit-backdrop-filter: var(--float-glass-blur);
     backdrop-filter: var(--float-glass-blur);
-    box-shadow: 0 8px 30px color-mix(in oklab, var(--foreground) 9%, transparent);
+    box-shadow: 0 8px 30px
+      color-mix(in oklab, var(--foreground) 9%, transparent);
   }
   .app-shell .study-home .action-space,
   .library-workspace .action-space {

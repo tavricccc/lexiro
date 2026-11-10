@@ -39,7 +39,7 @@ export function ResultPanel({
     window.scrollTo({ left: 0, top: 0 });
   }, []);
 
-  const library = useLibraryStore(s => s.state);
+  const library = useLibraryStore((s) => s.state);
   const record = useLearningStore((s) => s.record);
   const today = calendarDay(new Date());
   return (
@@ -48,7 +48,8 @@ export function ResultPanel({
         <h1 className="t-section">{t("redesign.result")}</h1>
         <Ring value={total ? (correct / total) * 100 : 0}>
           <div>
-            <p>{t("redesign.correct")}</p><p className="fig">{correct}</p>
+            <p>{t("redesign.correct")}</p>
+            <p className="fig">{correct}</p>
             <p>
               / {total} {t("redesign.countUnit")}
             </p>
@@ -84,7 +85,22 @@ export function ResultPanel({
           <p>{t("practice.markedLabel")}</p>
         </section>
       </div>
-      {wrongWordKeys.length > 0 && <><h2 className="t-section">{t("redesign.wrong")}</h2><div className="sheet-list">{[...new Set(wrongWordKeys)].map(key => { const word = library.words[key as keyof typeof library.words]; const set = library.sets.find(set => library.memberships[set.id]?.some(m => m.wordKey === key)); return word && set ? <WordRow key={key} word={word} setId={set.id} /> : null; })}</div></>}
+      {wrongWordKeys.length > 0 && (
+        <>
+          <h2 className="t-section">{t("redesign.wrong")}</h2>
+          <div className="sheet-list">
+            {[...new Set(wrongWordKeys)].map((key) => {
+              const word = library.words[key as keyof typeof library.words];
+              const set = library.sets.find((set) =>
+                library.memberships[set.id]?.some((m) => m.wordKey === key),
+              );
+              return word && set ? (
+                <WordRow key={key} word={word} setId={set.id} />
+              ) : null;
+            })}
+          </div>
+        </>
+      )}
       {wrongContent && (
         <Button size="lg" onClick={onRetry}>
           <Icons.retry />

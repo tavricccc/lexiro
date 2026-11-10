@@ -44,7 +44,12 @@ function SetMetadataFlow({
 }: {
   setId: string;
   revision: string;
-  initial: { name: string; folder: string; hue: LibrarySet["hue"]; icon: LibrarySet["icon"] };
+  initial: {
+    name: string;
+    folder: string;
+    hue: LibrarySet["hue"];
+    icon: LibrarySet["icon"];
+  };
 }) {
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
@@ -83,7 +88,8 @@ function SetMetadataFlow({
       await store.saveSet({
         id: setId,
         setName: name,
-        hue, icon,
+        hue,
+        icon,
         folderId: folder,
         words: setWordDrafts(store.state, setId),
       });
@@ -138,7 +144,11 @@ function SetMetadataFlow({
           value={folder}
         />
       </ListSection>
-      <SetAppearancePicker hue={hue} icon={icon} onChange={value => saved.update(value)} />
+      <SetAppearancePicker
+        hue={hue}
+        icon={icon}
+        onChange={(value) => saved.update(value)}
+      />
       <StepActions>
         {error && (
           <p className="text-sm text-destructive" role="alert">

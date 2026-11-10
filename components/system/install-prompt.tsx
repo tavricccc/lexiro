@@ -40,6 +40,22 @@ export function InstallPrompt() {
   const [confirming, setConfirming] = useState(false);
 
   useEffect(() => {
+    if (import.meta.env.DEV) {
+      const pick = new URLSearchParams(location.search).get("install");
+      if (
+        pick &&
+        [
+          "in-app-browser",
+          "ios-open-safari",
+          "ios-install",
+          "native-install",
+        ].includes(pick)
+      ) {
+        setMode(pick as Mode);
+        setBrowser("LINE");
+        return;
+      }
+    }
     const { userAgent, platform, maxTouchPoints } = navigator;
     const ios = isIosDevice(userAgent, platform, maxTouchPoints);
     const android = isAndroidDevice(userAgent);
@@ -146,15 +162,13 @@ export function InstallPrompt() {
         <Dialog.Overlay className="t-overlay fixed inset-0 z-50 bg-[var(--backdrop)] backdrop-blur-[3px]" />
         <div className="pointer-events-none fixed inset-0 z-50 grid place-items-center p-4">
           <Dialog.Content
+            aria-describedby={undefined}
             className="t-dialog surface-floating pointer-events-auto relative grid max-h-[calc(100dvh-2rem)] w-full max-w-md gap-5 overflow-y-auto p-6 outline-none sm:p-7"
             onEscapeKeyDown={(event) => event.preventDefault()}
             onInteractOutside={(event) => event.preventDefault()}
           >
             <div>
               <Dialog.Title className="type-section">{step.title}</Dialog.Title>
-              <Dialog.Description className="mt-2 type-lead">
-                {step.description}
-              </Dialog.Description>
             </div>
             {step.steps.length > 0 && (
               <ol className="grid gap-3">
@@ -170,11 +184,6 @@ export function InstallPrompt() {
                   </li>
                 ))}
               </ol>
-            )}
-            {!confirming && mode !== "in-app-browser" && (
-              <p className="rounded-[var(--radius-control)] bg-muted px-4 py-3 text-sm text-muted-foreground">
-                {t("install.alreadyInstalled")}
-              </p>
             )}
             <div className="flex flex-wrap justify-end gap-2">
               {confirming ? (

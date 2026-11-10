@@ -103,7 +103,10 @@ export function QuestionTryPage({
             onClick={() => {
               if (pendingChoice === null) return;
               setPending(null);
-              setChoices((current) => ({ ...current, [item.id]: pendingChoice }));
+              setChoices((current) => ({
+                ...current,
+                [item.id]: pendingChoice,
+              }));
             }}
           >
             <Icons.success />

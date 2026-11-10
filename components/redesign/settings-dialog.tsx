@@ -1,3 +1,4 @@
+import { useLibraryStore } from "@/stores/library-store";
 import { useIsAdministrator } from "@/components/me/use-is-administrator";
 import { useEffect, useState } from "react";
 import { Dialog } from "radix-ui";
@@ -48,6 +49,9 @@ export function SettingsDialog({
 }) {
   const admin = useIsAdministrator();
   const [group, setGroup] = useState(initialGroup);
+  const hasSets = useLibraryStore((s) => s.state.sets.length > 0);
+  const [signInConfirm, setSignInConfirm] = useState(false);
+  const [busy, setBusy] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [failure, setFailure] = useState("");
   const cloud = useCloudStore();
@@ -61,15 +65,20 @@ export function SettingsDialog({
   }, [open, initialGroup]);
   useEffect(() => {
     if (!open || !window.matchMedia("(max-width: 959px)").matches) return;
-    const frame = requestAnimationFrame(() => document.querySelector<HTMLElement>(".settings .group[data-on]")?.scrollIntoView({ block: "start" }));
+    const frame = requestAnimationFrame(() =>
+      document
+        .querySelector<HTMLElement>(".settings .group[data-on]")
+        ?.scrollIntoView({ block: "start" }),
+    );
     return () => cancelAnimationFrame(frame);
   }, [open, group]);
   const name = cloud.user?.displayName || t("me.guestName");
   const run = (action: () => Promise<void>) => {
     setFailure("");
-    void action().catch((e) =>
-      setFailure(e instanceof Error ? e.message : String(e)),
-    );
+    setBusy(true);
+    void action()
+      .catch((e) => setFailure(e instanceof Error ? e.message : String(e)))
+      .finally(() => setBusy(false));
   };
   return (
     <>
@@ -93,17 +102,19 @@ export function SettingsDialog({
                   <span className="avatar">{name[0]}</span>
                   <b>{name}</b>
                 </div>
-                {groups.filter(([id]) => id !== "admin" || admin).map(([id, label, Icon]) => (
-                  <button
-                    key={id}
-                    role="tab"
-                    aria-selected={group === id}
-                    onClick={() => setGroup(id)}
-                  >
-                    <Icon weight="regular" />
-                    {t(label)}
-                  </button>
-                ))}
+                {groups
+                  .filter(([id]) => id !== "admin" || admin)
+                  .map(([id, label, Icon]) => (
+                    <button
+                      key={id}
+                      role="tab"
+                      aria-selected={group === id}
+                      onClick={() => setGroup(id)}
+                    >
+                      <Icon weight="regular" />
+                      {t(label)}
+                    </button>
+                  ))}
               </div>
               <Dialog.Close
                 className="btn btn-icon btn-glass settings-close only-wide"
@@ -135,6 +146,7 @@ export function SettingsDialog({
                       <>
                         <button
                           className="srow"
+                          disabled={busy}
                           onClick={() => run(cloud.signOut)}
                         >
                           <span className="sicon">
@@ -156,7 +168,10 @@ export function SettingsDialog({
                     ) : (
                       <button
                         className="srow"
-                        onClick={() => run(cloud.signIn)}
+                        disabled={busy}
+                        onClick={() =>
+                          hasSets ? setSignInConfirm(true) : run(cloud.signIn)
+                        }
                       >
                         <span className="sicon">
                           <UserCircle />
@@ -299,17 +314,28 @@ export function SettingsDialog({
                   <h3>{t("redesign.admin")}</h3>
                   {admin && <AdminPage />}
                 </section>
-                {failure && <p role="alert">{failure}</p>}
+                {(failure || cloud.error) && (
+                  <p role="alert">{failure || cloud.error}</p>
+                )}
               </div>
             </Dialog.Content>
           </Dialog.Overlay>
         </Dialog.Portal>
       </Dialog.Root>
       <ConfirmDialog
+        open={signInConfirm}
+        onOpenChange={setSignInConfirm}
+        title={t("settings.signIn")}
+        description={t("settings.guestDataWarning")}
+        confirmLabel={t("settings.continueSignIn")}
+        tone="default"
+        onConfirm={cloud.signIn}
+      />
+      <ConfirmDialog
         open={confirm}
         onOpenChange={setConfirm}
         title={t("redesign.deleteAccount")}
-        description={t("redesign.deleteConfirm")}
+        description={t("me.deleteAccountWarning")}
         onConfirm={cloud.deleteAccount}
       />
     </>

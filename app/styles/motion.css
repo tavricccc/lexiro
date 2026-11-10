@@ -504,7 +504,8 @@
   animation: t-shake var(--motion-control) linear;
 }
 .t-answer[data-result="revealed"] {
-  animation: t-answer-glow var(--motion-nav) var(--ease-move) var(--motion-control) backwards;
+  animation: t-answer-glow var(--motion-nav) var(--ease-move)
+    var(--motion-control) backwards;
 }
 @keyframes t-answer-pop {
   0% {
@@ -605,8 +606,8 @@
   visibility: hidden;
   animation:
     t-skeleton-show 0s linear var(--skeleton-appear-delay) forwards,
-    t-skeleton-pulse var(--motion-pulse) ease-in-out var(--skeleton-appear-delay)
-      infinite;
+    t-skeleton-pulse var(--motion-pulse) ease-in-out
+      var(--skeleton-appear-delay) infinite;
 }
 .t-skeleton::after {
   content: "";

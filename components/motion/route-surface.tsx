@@ -8,7 +8,8 @@ import {
 import { cn } from "@/lib/cn";
 import { motionEasing, motionSeconds } from "@/generated/motion-tokens";
 
-const bezier = (points: readonly number[]) => `cubic-bezier(${points.join(", ")})`;
+const bezier = (points: readonly number[]) =>
+  `cubic-bezier(${points.join(", ")})`;
 const NAV_MS = motionSeconds.nav * 1_000;
 const CONTROL_MS = motionSeconds.control * 1_000;
 

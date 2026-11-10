@@ -131,7 +131,6 @@ export function ShareLinkDialog({
                       {t("share.revoke")}
                     </Button>
                   </div>
-
                 </div>
               ) : (
                 <Button

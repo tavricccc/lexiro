@@ -73,7 +73,13 @@ const SCREENS: ReadonlyArray<
       ),
     ),
   ],
-  ["progress", screen(() => import("@/components/redesign/progress-page"), ({ ProgressPage }) => <ProgressPage />)],
+  [
+    "progress",
+    screen(
+      () => import("@/components/redesign/progress-page"),
+      ({ ProgressPage }) => <ProgressPage />,
+    ),
+  ],
   [
     "practice",
     screen(

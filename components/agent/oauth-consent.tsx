@@ -69,10 +69,7 @@ export function AgentOAuthConsent({ requestId }: { requestId: string }) {
   };
   return (
     <main className="mx-auto max-w-xl px-5 py-10 sm:py-16">
-      <PageHeader
-        title={t("agent.connectTitle")}
-
-      />
+      <PageHeader title={t("agent.connectTitle")} />
       {!ready && !cloudError ? (
         <LoadingState />
       ) : !user ? (

@@ -32,7 +32,9 @@ import { PracticeLaunch } from "@/components/redesign/practice-launch";
 export function FocusCanvas() {
   const library = useLibraryStore((s) => s.state);
   const record = useLearningStore((s) => s.record);
-  const [launch, setLaunch] = useState(new URLSearchParams(location.search).get("sheet") === "setup");
+  const [launch, setLaunch] = useState(
+    new URLSearchParams(location.search).get("sheet") === "setup",
+  );
   const [review, setReview] = useState(false);
   const [flipped, setFlipped] = useState(false);
   const { actionsFor, dialogs } = useSetActions();

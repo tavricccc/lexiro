@@ -53,6 +53,9 @@ add('question-preview','/app/questions/vocab-1/edit',[{role:'tab',name:'預覽'}
 add('reading-preview','/app/questions/reading/reading-1/edit',[{role:'tab',name:'文章預覽'}]);
 add('confirm-admin-disable','/app/me/admin',[{name:'停用',index:0}]);
 add('backup-import-confirm','/app/me/data',[{name:'匯出完整備份',download:'design/shots/app/backup.zip'},{css:'input[type=file]',file:'design/shots/app/backup.zip'}]);
+add('install-guide','/app?install=ios-install');
+add('install-confirm','/app?install=ios-install',[{name:'稍後再說'}]);
+add('confirm-sign-in','/app/me',[{name:'登出'},{name:'登入'}]);
 add('dark-result','/app/practice?run=1&tasks=meaning&result=1&scheme=dark');
 add('dark-room','/app/rooms/K7M2QX?scheme=dark');
 add('dark-settings','/app/me?nav=look&scheme=dark');

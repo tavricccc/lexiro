@@ -186,7 +186,52 @@ export function LibraryPage({
 
   return (
     <div className="library-workspace">
-      <RootPageHeader title={t("redesign.library")} actions={<><Button size="icon" variant="glass" aria-label={t("redesign.sort")} onClick={() => setReordering(!reordering)}><Icons.reorder /></Button><Menu label={t("redesign.add")} trigger={<Button size="icon" aria-label={t("redesign.add")}><Icons.create /></Button>} actions={[{ icon: Icons.create, label: t("library.newSet"), onSelect: () => { router.push(createHref); } }, { icon: Icons.folder, label: t("redesign.newFolder"), onSelect: () => { document.querySelector<HTMLButtonElement>("[data-create-folder]")?.click(); } }, { icon: Icons.import, label: t("library.importSet"), onSelect: () => importInput.current?.click() }]} /></>} />
+      <RootPageHeader
+        title={t("redesign.library")}
+        actions={
+          <>
+            <Button
+              size="icon"
+              variant="glass"
+              aria-label={t("redesign.sort")}
+              onClick={() => setReordering(!reordering)}
+            >
+              <Icons.reorder />
+            </Button>
+            <Menu
+              label={t("redesign.add")}
+              trigger={
+                <Button size="icon" aria-label={t("redesign.add")}>
+                  <Icons.create />
+                </Button>
+              }
+              actions={[
+                {
+                  icon: Icons.create,
+                  label: t("library.newSet"),
+                  onSelect: () => {
+                    router.push(createHref);
+                  },
+                },
+                {
+                  icon: Icons.folder,
+                  label: t("redesign.newFolder"),
+                  onSelect: () => {
+                    document
+                      .querySelector<HTMLButtonElement>("[data-create-folder]")
+                      ?.click();
+                  },
+                },
+                {
+                  icon: Icons.import,
+                  label: t("library.importSet"),
+                  onSelect: () => importInput.current?.click(),
+                },
+              ]}
+            />
+          </>
+        }
+      />
 
       <>
         <input
@@ -352,7 +397,10 @@ export function LibraryPage({
         </StateTransition>
       </>
 
-      <Link className="dashed" href={createHref} style={{ marginTop: 20 }}><Icons.create />{t("library.newSet")}</Link>
+      <Link className="dashed" href={createHref} style={{ marginTop: 20 }}>
+        <Icons.create />
+        {t("library.newSet")}
+      </Link>
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

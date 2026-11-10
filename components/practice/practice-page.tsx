@@ -42,7 +42,10 @@ import { PRACTICE_DRAFT_REMOTE_EVENT } from "@/constants";
 import { t } from "@/lib/i18n";
 import { useLibraryStore } from "@/stores/library-store";
 import { useUIStore } from "@/stores/ui-store";
-import { isCorrectChoice, isWordTask } from "@/components/practice/meaning-questions";
+import {
+  isCorrectChoice,
+  isWordTask,
+} from "@/components/practice/meaning-questions";
 
 /**
  * The session is one queue of entries built from the tasks the setup screen
@@ -508,7 +511,9 @@ export function PracticePage({
   if (complete) {
     return (
       <ResultPanel
-        wrongWordKeys={wrong.flatMap(i => activeEntries[i] ? [activeEntries[i].item.wordKey] : [])}
+        wrongWordKeys={wrong.flatMap((i) =>
+          activeEntries[i] ? [activeEntries[i].item.wordKey] : [],
+        )}
         correct={correct}
         total={total}
         skipped={skipped.length}
@@ -526,7 +531,11 @@ export function PracticePage({
 
   return (
     <PracticeSessionView
-      outcomes={activeEntries.map((entry, i) => answerChoices[i] === null || answerChoices[i] === undefined ? null : isCorrectChoice(entry.item, answerChoices[i]!))}
+      outcomes={activeEntries.map((entry, i) =>
+        answerChoices[i] === null || answerChoices[i] === undefined
+          ? null
+          : isCorrectChoice(entry.item, answerChoices[i]!),
+      )}
       entry={viewed}
       index={viewPosition}
       total={total}

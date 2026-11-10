@@ -348,7 +348,6 @@ export function ReadingEditor({
               )}
               {questionMode === "bank" && optionBank ? (
                 <div className="space-y-4">
-
                   <div className="grid gap-3">
                     {optionBank.map((option, at) => (
                       <Field

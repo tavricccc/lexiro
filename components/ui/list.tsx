@@ -53,7 +53,10 @@ export function ListSection({
         </div>
       )}
       <div className="rule-card rule-list">{children}</div>
-      {isValidElement(footer) && (footer.props as { role?: string }).role === "alert" ? footer : null}
+      {isValidElement(footer) &&
+      (footer.props as { role?: string }).role === "alert"
+        ? footer
+        : null}
     </section>
   );
 }

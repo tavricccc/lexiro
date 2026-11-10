@@ -227,7 +227,8 @@
   --surface-selected: #18251e;
   --backdrop: rgb(4 10 7 / 62%);
   --shadow-control: none;
-  --shadow-card: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(2 8 5 / 28%);
+  --shadow-card:
+    0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(2 8 5 / 28%);
   --shadow-floating:
     0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(2 8 5 / 45%);
 }
@@ -309,7 +310,6 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-
 button,
 input,
 select,
@@ -347,13 +347,15 @@ textarea {
 [data-slot="select-trigger"]:not([data-focus-surface="row"]):focus-visible {
   outline: none;
   border-color: var(--brand-600);
-  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--brand-600) 16%, transparent);
+  box-shadow: 0 0 0 0.1875rem
+    color-mix(in srgb, var(--brand-600) 16%, transparent);
 }
 
 .t-input[aria-invalid="true"]:focus-visible,
 [data-slot="select-trigger"][aria-invalid="true"]:focus-visible {
   border-color: var(--destructive);
-  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--destructive) 16%, transparent);
+  box-shadow: 0 0 0 0.1875rem
+    color-mix(in srgb, var(--destructive) 16%, transparent);
 }
 
 /* In a grouped list, the row is the control's frame. Keep the keyboard cue on

@@ -103,7 +103,11 @@ export function FolderToolbar({
   ];
 
   return (
-    <div className="folder-toolbar" data-current={Boolean(currentFolder)} data-panel={panel}>
+    <div
+      className="folder-toolbar"
+      data-current={Boolean(currentFolder)}
+      data-panel={panel}
+    >
       <div className="flex items-center gap-2">
         <nav
           aria-label={t("library.folderPath")}
@@ -132,7 +136,7 @@ export function FolderToolbar({
         <Button
           className="shrink-0"
           data-create-folder
-            onClick={() => open("create")}
+          onClick={() => open("create")}
           size="sm"
           type="button"
           variant="secondary"

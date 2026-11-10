@@ -77,14 +77,12 @@ export function usePracticeSessionActions({
     const item = questionAt(index);
     if (!item) return;
     const isCorrect = isCorrectChoice(item, choice);
-    useLearningStore
-      .getState()
-      .answer({
-        senseId: item.senseId,
-        wordKey: item.wordKey,
-        kind: item.type,
-        correct: isCorrect,
-      });
+    useLearningStore.getState().answer({
+      senseId: item.senseId,
+      wordKey: item.wordKey,
+      kind: item.type,
+      correct: isCorrect,
+    });
     setters.setSelected(choice);
     setters.setPendingChoice(null);
     setters.setRevealed(true);

@@ -148,8 +148,15 @@ export function AdminPage() {
     }
   };
 
-  const change = async (target: string, disable: boolean, confirmed = false) => {
-    if (disable && !confirmed) { setConfirmTarget(target); return; }
+  const change = async (
+    target: string,
+    disable: boolean,
+    confirmed = false,
+  ) => {
+    if (disable && !confirmed) {
+      setConfirmTarget(target);
+      return;
+    }
     setBusy(target);
     setError("");
     try {
@@ -177,7 +184,18 @@ export function AdminPage() {
 
   const trimmed = uid.trim();
   return (
-    <MeSubpage title={t("admin.title")}><ConfirmDialog open={confirmTarget !== null} onOpenChange={open => { if (!open) setConfirmTarget(null); }} title={t("admin.disable")} description={t("admin.disableConfirm", { uid: confirmTarget ?? "" })} onConfirm={() => confirmTarget ? change(confirmTarget, true, true) : undefined} />
+    <MeSubpage title={t("admin.title")}>
+      <ConfirmDialog
+        open={confirmTarget !== null}
+        onOpenChange={(open) => {
+          if (!open) setConfirmTarget(null);
+        }}
+        title={t("admin.disable")}
+        description={t("admin.disableConfirm", { uid: confirmTarget ?? "" })}
+        onConfirm={() =>
+          confirmTarget ? change(confirmTarget, true, true) : undefined
+        }
+      />
       <div className="space-y-6">
         <div className="flex justify-end">
           <Button

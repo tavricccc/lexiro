@@ -82,11 +82,21 @@ export function PracticeSessionView({
           {Array.from({ length: total }, (_, n) => (
             <i
               key={n}
-              className={n < index ? outcomes?.[n] === false ? "no" : "ok" : n === index ? "now" : ""}
+              className={
+                n < index
+                  ? outcomes?.[n] === false
+                    ? "no"
+                    : "ok"
+                  : n === index
+                    ? "now"
+                    : ""
+              }
             />
           ))}
         </div>
-        <span className="latin practice-counter">{index + 1}/{total}</span>
+        <span className="latin practice-counter">
+          {index + 1}/{total}
+        </span>
         <Button
           size="icon"
           variant="glass"

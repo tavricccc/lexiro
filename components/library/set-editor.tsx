@@ -114,7 +114,8 @@ function SetEditorFlow({
     async (values) => {
       try {
         const saved = await saveSet({
-        hue: draft.hue, icon: draft.icon,
+          hue: draft.hue,
+          icon: draft.icon,
           folderId,
           setName: createUniqueSetName(
             values.setName,
@@ -213,7 +214,11 @@ function SetEditorFlow({
 
       <div>
         {metadataFields}
-        <SetAppearancePicker hue={draft.hue} icon={draft.icon} onChange={update} />
+        <SetAppearancePicker
+          hue={draft.hue}
+          icon={draft.icon}
+          onChange={update}
+        />
 
         <div className="section-gap space-y-7">
           {fields.fields.map((field, index) => (

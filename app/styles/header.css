@@ -28,15 +28,63 @@
   inset: 0;
   -webkit-backdrop-filter: blur(var(--b));
   backdrop-filter: blur(var(--b));
-  -webkit-mask-image: linear-gradient(to top, transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
-  mask-image: linear-gradient(to top, transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
+  -webkit-mask-image: linear-gradient(
+    to top,
+    transparent var(--s0),
+    black var(--s1),
+    black var(--s2),
+    transparent var(--s3)
+  );
+  mask-image: linear-gradient(
+    to top,
+    transparent var(--s0),
+    black var(--s1),
+    black var(--s2),
+    transparent var(--s3)
+  );
 }
-.page-header > .header-backdrop > span:nth-child(1) { --b: 0.15px; --s0: 0%; --s1: 0%; --s2: 16.7%; --s3: 33.3%; }
-.page-header > .header-backdrop > span:nth-child(2) { --b: 0.3px; --s0: 0%; --s1: 16.7%; --s2: 33.3%; --s3: 50%; }
-.page-header > .header-backdrop > span:nth-child(3) { --b: 0.6px; --s0: 16.7%; --s1: 33.3%; --s2: 50%; --s3: 66.7%; }
-.page-header > .header-backdrop > span:nth-child(4) { --b: 1.2px; --s0: 33.3%; --s1: 50%; --s2: 66.7%; --s3: 83.3%; }
-.page-header > .header-backdrop > span:nth-child(5) { --b: 2.4px; --s0: 50%; --s1: 66.7%; --s2: 83.3%; --s3: 100%; }
-.page-header > .header-backdrop > span:nth-child(6) { --b: 4.8px; --s0: 66.7%; --s1: 83.3%; --s2: 100%; --s3: 100%; }
+.page-header > .header-backdrop > span:nth-child(1) {
+  --b: 0.15px;
+  --s0: 0%;
+  --s1: 0%;
+  --s2: 16.7%;
+  --s3: 33.3%;
+}
+.page-header > .header-backdrop > span:nth-child(2) {
+  --b: 0.3px;
+  --s0: 0%;
+  --s1: 16.7%;
+  --s2: 33.3%;
+  --s3: 50%;
+}
+.page-header > .header-backdrop > span:nth-child(3) {
+  --b: 0.6px;
+  --s0: 16.7%;
+  --s1: 33.3%;
+  --s2: 50%;
+  --s3: 66.7%;
+}
+.page-header > .header-backdrop > span:nth-child(4) {
+  --b: 1.2px;
+  --s0: 33.3%;
+  --s1: 50%;
+  --s2: 66.7%;
+  --s3: 83.3%;
+}
+.page-header > .header-backdrop > span:nth-child(5) {
+  --b: 2.4px;
+  --s0: 50%;
+  --s1: 66.7%;
+  --s2: 83.3%;
+  --s3: 100%;
+}
+.page-header > .header-backdrop > span:nth-child(6) {
+  --b: 4.8px;
+  --s0: 66.7%;
+  --s1: 83.3%;
+  --s2: 100%;
+  --s3: 100%;
+}
 .page-header > :not(.header-backdrop) {
   position: relative;
   z-index: 1;

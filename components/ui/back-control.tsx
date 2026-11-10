@@ -33,7 +33,11 @@ type BackControlProps = {
  * than the same four lines written again at each one — a page that forgot it
  * left the reader with no way back but the browser.
  */
-export function BackControl({ icon = "back", label, ...props }: BackControlProps) {
+export function BackControl({
+  icon = "back",
+  label,
+  ...props
+}: BackControlProps) {
   const accessibleLabel = label ?? t("common.back");
   const Glyph = icon === "close" ? Icons.cancel : Icons.back;
   if (props.href) {

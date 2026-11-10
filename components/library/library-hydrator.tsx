@@ -13,9 +13,11 @@ import { useCloudStore } from "@/stores/cloud-store";
  * raced the account's own load to decide what the workspace showed.
  */
 export function LibraryHydrator() {
-  const uid = useCloudStore(s => s.user?.uid);
-  const ready = useCloudStore(s => s.ready);
-  useEffect(() => { if (ready) useLearningStore.getState().hydrate(); }, [uid, ready]);
+  const uid = useCloudStore((s) => s.user?.uid);
+  const ready = useCloudStore((s) => s.ready);
+  useEffect(() => {
+    if (ready) useLearningStore.getState().hydrate();
+  }, [uid, ready]);
   const initializeCloud = useCloudStore((store) => store.initialize);
   useEffect(() => {
     void initializeCloud().then(() => useLearningStore.getState().hydrate());

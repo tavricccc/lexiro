@@ -114,9 +114,6 @@ function SignInPrompt({ onSkip }: { onSkip: () => void }) {
       <Brand />
       <div className="space-y-2">
         <h1 className="type-section">{t("startup.signInTitle")}</h1>
-        <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
-          {t("startup.signInBody")}
-        </p>
       </div>
       <div className="grid w-full gap-2">
         <Button

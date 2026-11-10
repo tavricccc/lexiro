@@ -66,11 +66,7 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
     return (
       <div className="mx-auto max-w-3xl">
         <PageHeader back={back} title={t("share.pageTitle")} />
-        <EmptyState
-          variant="filtered"
-          title={error}
-          description=""
-        />
+        <EmptyState variant="filtered" title={error} description="" />
       </div>
     );
   if (!view) return <LibraryListSkeleton />;
@@ -153,7 +149,6 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
           </>
         ) : (
           <>
-
             <Button
               size="lg"
               disabled={saving || libraryStatus !== "ready"}

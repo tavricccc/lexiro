@@ -87,7 +87,10 @@ export function NativeAppSignIn({
   }, []);
 
   const signIn = async () => {
-    if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") { window.location.assign("/app?demo=1"); return; }
+    if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") {
+      window.location.assign("/app?demo=1");
+      return;
+    }
     setBusy(true);
     setError("");
     try {

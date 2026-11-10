@@ -53,7 +53,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     ? "/app/library"
     : pathname.startsWith("/app/rooms")
       ? "/app/rooms"
-      : (pathname === "/app/progress" || pathname === "/app/library")
+      : pathname === "/app/progress" || pathname === "/app/library"
         ? pathname
         : "/app";
   const displayName = user?.displayName || t("me.guestName");
