@@ -1,6 +1,7 @@
 import type { FullBackupPayload } from "@/types";
 import { useLibraryStore, flushLibraryMutations } from "@/stores/library-store";
 import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
+import { useLearningStore } from "@/stores/learning-store";
 import { createFullBackup } from "@/src/lib/full-backup";
 import { getStorageNamespace } from "@/src/lib/persist";
 import { t } from "./i18n";
@@ -20,6 +21,7 @@ export const importFullBackup = serializeAccountDataAction(
   async (backup: FullBackupPayload, namespace: string) => {
     checkAccount(namespace, "import");
     await useLibraryStore.getState().importState(backup.library);
+    if (backup.learning) useLearningStore.getState().restoreBackup(backup.learning);
   },
 );
 
@@ -27,6 +29,9 @@ export const prepareFullBackup = serializeAccountDataAction(
   async (namespace: string) => {
     checkAccount(namespace, "export");
     await flushLibraryMutations();
-    return createFullBackup(useLibraryStore.getState().state);
+    return createFullBackup(
+      useLibraryStore.getState().state,
+      useLearningStore.getState().record,
+    );
   },
 );

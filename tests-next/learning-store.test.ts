@@ -47,4 +47,47 @@ describe("device learning persistence", () => {
     expect(useLearningStore.getState().record.days).toEqual({});
     expect(useLearningStore.getState().error).toBe("儲存失敗");
   });
+  it("shows another device's answers next to this device's", () => {
+    useLearningStore.getState().answer(answer);
+    const other = {
+      version: 1 as const,
+      goal: 20 as const,
+      days: { [answer.day]: { answered: 2, correct: 1 } },
+      kinds: {},
+      senses: {},
+    };
+    useLearningStore.getState().applyCloud({ "other-device": other });
+    expect(useLearningStore.getState().record.days[answer.day]).toEqual({
+      answered: 3,
+      correct: 2,
+    });
+  });
+  it("keeps another device's answers out of this device's own record", () => {
+    const other = {
+      version: 1 as const,
+      goal: 20 as const,
+      days: { [answer.day]: { answered: 2, correct: 1 } },
+      kinds: {},
+      senses: {},
+    };
+    useLearningStore.getState().applyCloud({ "other-device": other });
+    useLearningStore.getState().answer(answer);
+    expect(useLearningStore.getState().own.days[answer.day]).toEqual({
+      answered: 1,
+      correct: 1,
+    });
+  });
+  it("still owes a push after an answer made while the last one was in flight", () => {
+    useLearningStore.getState().answer(answer);
+    const sent = useLearningStore.getState().own;
+    useLearningStore.getState().answer(answer);
+    useLearningStore.getState().markPushed(sent);
+    expect(useLearningStore.getState().cache.dirty).toBe(true);
+  });
+  it("owes no push once the record reached the cloud unchanged", () => {
+    useLearningStore.getState().answer(answer);
+    useLearningStore.getState().markPushed(useLearningStore.getState().own);
+    useLearningStore.getState().hydrate();
+    expect(useLearningStore.getState().cache.dirty).toBe(false);
+  });
 });

@@ -17,6 +17,11 @@ import { serializeAccountDataAction } from "@/src/lib/account-data-queue";
 import { isRetryableSyncError } from "@/src/lib/cloud-sync-errors";
 import { readCloudBlobs, writeCloudBlob } from "@/src/lib/cloud-account";
 import {
+  readCloudLearning,
+  writeCloudLearning,
+} from "@/src/lib/cloud-learning";
+import { learningDeviceId, useLearningStore } from "@/stores/learning-store";
+import {
   applyRemotePracticeDraft,
   localPracticeDraft,
 } from "@/src/lib/practice-storage";
@@ -489,6 +494,27 @@ async function reconcileAccountDocuments(
   await clearSent();
 }
 
+/**
+ * Pulls every device's learning record, then sends this device's own one if it
+ * changed. Each device writes only its own record, so there is nothing to
+ * conflict over; the merge happens on read.
+ */
+async function syncLearning(
+  db: CloudClient,
+  uid: string,
+  sameAccount: () => boolean,
+): Promise<void> {
+  const learning = useLearningStore.getState;
+  if (learning().namespace !== getStorageNamespace()) learning().hydrate();
+  const devices = await readCloudLearning(db, uid);
+  if (!sameAccount()) return;
+  learning().applyCloud(devices);
+  if (!learning().cache.dirty) return;
+  const sent = learning().own;
+  await writeCloudLearning(db, uid, learningDeviceId(), sent);
+  if (sameAccount()) learning().markPushed(sent);
+}
+
 async function runSync(
   set: SetState,
   get: () => CloudStore,
@@ -569,6 +595,8 @@ async function runSync(
         dirtyBlobs,
         reconcileAccount,
       );
+    if (!sameAccount()) return;
+    await syncLearning(db, user.uid, sameAccount);
     if (!sameAccount()) return;
 
     // Push after the merge, so what goes up is the reconciled value rather than

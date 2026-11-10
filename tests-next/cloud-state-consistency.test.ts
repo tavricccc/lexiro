@@ -62,6 +62,10 @@ vi.mock("@/src/lib/cloud-sync", async (original) => ({
   pullRecords: mocks.pull,
   pushRecords: mocks.push,
 }));
+vi.mock("@/src/lib/cloud-learning", () => ({
+  readCloudLearning: vi.fn(async () => ({})),
+  writeCloudLearning: vi.fn(async () => undefined),
+}));
 vi.mock("@/src/lib/cloud-account", async (original) => ({
   ...(await original<typeof import("@/src/lib/cloud-account")>()),
   readCloudBlobs: mocks.blobs,
