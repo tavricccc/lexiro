@@ -1,6 +1,7 @@
 import { strFromU8, strToU8, unzipSync, zipSync } from "fflate";
 
 import type { FullBackupPayload, LibraryState } from "@/types";
+import type { LearningRecord } from "@/src/lib/learning-record";
 import {
   APP_NAME,
   BACKUP_FILE_PREFIX,
@@ -16,13 +17,17 @@ export interface BackupImportPreview {
   sets: number;
 }
 
-export function createFullBackup(library: LibraryState): FullBackupPayload {
+export function createFullBackup(
+  library: LibraryState,
+  learning?: LearningRecord,
+): FullBackupPayload {
   return {
     version: FULL_BACKUP_VERSION,
     exportedAt: new Date().toISOString(),
     appName: APP_NAME,
     kind: "full-backup",
     library,
+    ...(learning ? { learning } : {}),
   };
 }
 

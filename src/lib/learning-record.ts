@@ -13,6 +13,8 @@ export interface SenseRecord extends AnswerCount {
 export interface LearningRecord {
   version: 1;
   goal: DailyGoal;
+  /** When the goal was last chosen; across devices the latest choice wins. */
+  goalUpdatedAt?: string;
   days: Record<string, AnswerCount>;
   senses: Record<string, SenseRecord>;
   kinds: Record<string, AnswerCount>;
@@ -166,6 +168,7 @@ export function parseLearningRecord(value: unknown): LearningRecord {
   if (
     r.version !== 1 ||
     ![10, 20, 30].includes(r.goal) ||
+    (r.goalUpdatedAt !== undefined && typeof r.goalUpdatedAt !== "string") ||
     !r.days ||
     !r.kinds ||
     !r.senses
@@ -189,4 +192,138 @@ export function parseLearningRecord(value: unknown): LearningRecord {
   )
     return empty;
   return r;
+}
+
+function addCounts(
+  target: Record<string, AnswerCount>,
+  source: Record<string, AnswerCount>,
+  combine: (a: number, b: number) => number,
+) {
+  for (const [key, value] of Object.entries(source)) {
+    const previous = target[key];
+    target[key] = previous
+      ? {
+          answered: combine(previous.answered, value.answered),
+          correct: combine(previous.correct, value.correct),
+        }
+      : { answered: value.answered, correct: value.correct };
+  }
+}
+
+function combineRecords(
+  records: readonly LearningRecord[],
+  combine: (a: number, b: number) => number,
+): LearningRecord {
+  const result = emptyLearningRecord();
+  let goalAt: string | undefined,
+    first = true;
+  for (const record of records) {
+    const at = record.goalUpdatedAt;
+    if (first || (at && (!goalAt || at > goalAt))) {
+      result.goal = record.goal;
+      goalAt = at;
+      first = false;
+    }
+    addCounts(result.days, record.days, combine);
+    addCounts(result.kinds, record.kinds, combine);
+    for (const [id, sense] of Object.entries(record.senses)) {
+      const previous = result.senses[id];
+      if (!previous) {
+        result.senses[id] = { ...sense };
+        continue;
+      }
+      const newer =
+        sense.lastDay > previous.lastDay ||
+        (sense.lastDay === previous.lastDay && sense.level > previous.level);
+      result.senses[id] = {
+        answered: combine(previous.answered, sense.answered),
+        correct: combine(previous.correct, sense.correct),
+        wordKey: newer ? sense.wordKey : previous.wordKey,
+        level: newer ? sense.level : previous.level,
+        lastDay: newer ? sense.lastDay : previous.lastDay,
+      };
+    }
+  }
+  if (goalAt) result.goalUpdatedAt = goalAt;
+  return result;
+}
+
+/**
+ * The account's history from every device's own record: counts add up, a
+ * sense's familiarity is the one answered most recently (the higher on the
+ * same day), and the goal is the one chosen last.
+ */
+export function mergeLearningRecords(
+  records: readonly LearningRecord[],
+): LearningRecord {
+  return combineRecords(records, (a, b) => a + b);
+}
+
+/**
+ * Folds in a copy that may already be counted (a restored backup): taking the
+ * larger count instead of the sum means restoring twice adds nothing.
+ */
+export function overlayLearningRecord(
+  record: LearningRecord,
+  copy: LearningRecord,
+): LearningRecord {
+  return combineRecords([record, copy], Math.max);
+}
+
+/**
+ * Records an answer in this device's own record. Familiarity moves from the
+ * merged level, so answering on a second device does not restart it at zero.
+ */
+export function recordOwnAnswer(
+  own: LearningRecord,
+  merged: LearningRecord,
+  answer: LearningAnswer,
+): LearningRecord {
+  return recordAnswer(
+    {
+      ...own,
+      senses: {
+        ...own.senses,
+        [answer.senseId]: {
+          answered: own.senses[answer.senseId]?.answered ?? 0,
+          correct: own.senses[answer.senseId]?.correct ?? 0,
+          wordKey: answer.wordKey,
+          level: merged.senses[answer.senseId]?.level ?? 0,
+          lastDay: answer.day,
+        },
+      },
+    },
+    answer,
+  );
+}
+
+/**
+ * Keeps a record under the cloud's size limit by dropping the oldest days, then
+ * the senses answered longest ago. Totals by question type are kept.
+ */
+export function trimLearningRecord(
+  record: LearningRecord,
+  maxBytes: number,
+): LearningRecord {
+  const size = (value: LearningRecord) => JSON.stringify(value).length;
+  if (size(record) <= maxBytes) return record;
+  const days = Object.keys(record.days).sort();
+  const senses = Object.entries(record.senses).sort((a, b) =>
+    a[1].lastDay.localeCompare(b[1].lastDay),
+  );
+  let result = record;
+  while (size(result) > maxBytes && (days.length > 400 || senses.length)) {
+    if (days.length > 400) {
+      const drop = days.splice(0, days.length - 400);
+      const kept = { ...result.days };
+      for (const day of drop) delete kept[day];
+      result = { ...result, days: kept };
+      continue;
+    }
+    const drop = senses.splice(0, Math.max(1, Math.ceil(senses.length / 10)));
+    const kept = { ...result.senses };
+    for (const [id] of drop) delete kept[id];
+    result = { ...result, senses: kept };
+  }
+  return result;
 }

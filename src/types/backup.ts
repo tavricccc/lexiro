@@ -1,3 +1,4 @@
+import type { LearningRecord } from '../lib/learning-record'
 import type { LibraryQuestion, LibrarySet, LibraryState, SetMembership, WordEntry } from './library'
 
 export interface SharedSet extends LibrarySet {
@@ -20,6 +21,8 @@ export interface FullBackupPayload {
   appName: string
   kind: 'full-backup'
   library: LibraryState
+  /** The learning history across devices; absent in backups made before it synced. */
+  learning?: LearningRecord
 }
 
 export type BackupPayload = SetSharePayload | FullBackupPayload

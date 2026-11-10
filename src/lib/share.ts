@@ -20,6 +20,7 @@ import {
   type LibraryScopeMigration,
 } from "./library-set-migration";
 import { keysOf } from "./record";
+import { parseLearningRecord } from "./learning-record";
 import { parseLibraryImportValue } from "./library-import";
 import {
   questionBelongsToMemberships,
@@ -476,5 +477,9 @@ export function normalizeFullBackupPayload(value: unknown): FullBackupPayload {
     appName: requiredText(source.appName, "appName"),
     kind: "full-backup",
     library: normalizeLibraryStateWithMigration(source.library).state,
+    // Only this version's learning record has the current shape.
+    ...(version === FULL_BACKUP_VERSION && source.learning !== undefined
+      ? { learning: parseLearningRecord(source.learning) }
+      : {}),
   };
 }
