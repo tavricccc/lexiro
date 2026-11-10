@@ -44,7 +44,7 @@ export function ResultPanel({
   const today = calendarDay(new Date());
   return (
     <div className="result pop-in" data-motion-view="practice-result">
-      <section className="hero">
+      <div className="result-summary"><section className="hero">
         <h1 className="t-section">{t("redesign.result")}</h1>
         <Ring value={total ? (correct / total) * 100 : 0}>
           <div>
@@ -84,6 +84,7 @@ export function ResultPanel({
           <p className="fig">{marked}</p>
           <p>{t("practice.markedLabel")}</p>
         </section>
+      </div>
       </div>
       {wrongWordKeys.length > 0 && (
         <>

@@ -324,7 +324,7 @@ export const zhTW = {
     noQuestions: "還沒有題目",
     senseUnit: "詞義",
     title: "我的單字",
-    newSet: "新增單字",
+    newSet: "新增單字集",
     uncategorized: "未分類",
     emptyTitle: "還沒有單字集",
     emptyDescription: "建立第一個單字集，開始收集真正想記住的內容。",

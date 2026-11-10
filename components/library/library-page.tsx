@@ -295,7 +295,7 @@ export function LibraryPage({
             {status === "ready" && !listEmpty && (
               <div className="grid gap-5">
                 {!searching && childFolders.length > 0 && (
-                  <StaggerList className="flex flex-wrap gap-2">
+                  <StaggerList className="flex flex-wrap gap-2"><StaggerItem><button className="chip" aria-pressed={!currentFolder} onClick={() => openFolder(ALL_FOLDER_ID)}>{t("redesign.all")}</button></StaggerItem>
                     {childFolders.map((folder) => (
                       <StaggerItem key={folder.id} className="max-w-full">
                         <FolderRow
@@ -360,6 +360,10 @@ export function LibraryPage({
                           />
                         </StaggerItem>
                       ))}
+      <Link className="dashed" href={createHref} style={{ marginTop: 20 }}>
+        <Icons.create />
+        {t("library.newSet")}
+      </Link>
                     </StaggerList>
                   ))}
               </div>
@@ -397,10 +401,7 @@ export function LibraryPage({
         </StateTransition>
       </>
 
-      <Link className="dashed" href={createHref} style={{ marginTop: 20 }}>
-        <Icons.create />
-        {t("library.newSet")}
-      </Link>
+
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

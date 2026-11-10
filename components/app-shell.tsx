@@ -113,7 +113,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           children
         )}
       </main>
-      <nav className="dock frost" aria-label={t("redesign.library")}>
+      {destinations.some(([href]) => pathname === href) && <nav className="dock frost" aria-label={t("redesign.library")}>
         {destinations.map(([href, label, Icon]) => (
           <Link
             key={href}
@@ -124,7 +124,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Icon weight="regular" />
           </Link>
         ))}
-      </nav>
+      </nav>}
       <SettingsDialog
         open={settings || legacySettings || query.get("sheet") === "me"}
         onClose={close}

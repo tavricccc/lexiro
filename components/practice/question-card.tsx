@@ -52,7 +52,7 @@ export function QuestionCard({
     <div className="practice-card">
       {passage && (
         <LiquidTabs
-          className="mb-5 w-full lg:hidden [&_.t-tabs]:flex [&_.t-tabs]:w-full [&_.t-tab]:flex-1"
+          className="passage-mobile-action mb-5 w-full lg:hidden [&_.t-tabs]:flex [&_.t-tabs]:w-full [&_.t-tab]:flex-1"
           ariaLabel={t("practice.passageTab")}
           value={mobileView}
           onValueChange={setMobileView}
@@ -74,7 +74,7 @@ export function QuestionCard({
       <div
         className={
           passage
-            ? "grid items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8"
+            ? "passage-layout grid items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8"
             : undefined
         }
       >
@@ -110,7 +110,7 @@ export function QuestionCard({
             <Button
               type="button"
               variant="secondary"
-              className="mt-4 min-h-11 w-full lg:hidden"
+              className="passage-mobile-action mt-4 min-h-11 w-full lg:hidden"
               onClick={() => setMobileView("question")}
             >
               <Icons.prompt />
@@ -158,7 +158,7 @@ export function QuestionCard({
           </div>
           {item.blank && (
             <Button
-              className="mt-2 min-h-11 lg:min-h-9"
+              className="passage-mobile-action mt-2 min-h-11 lg:min-h-9"
               size="sm"
               variant="ghost"
               onClick={locateBlank}

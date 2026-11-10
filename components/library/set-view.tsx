@@ -33,11 +33,11 @@ import {
   questionMatchesQuery,
   wordMatchesQuery,
 } from "@/src/lib/library-search";
-import { SetTools } from "@/components/library/set-tools";
+
 import { ContentTransition } from "@/components/motion/state-transition";
 import { replaceBrowseHref, setBrowseHref } from "@/lib/browse-routes";
 
-type SetTab = "words" | "questions" | "tools";
+type SetTab = "words" | "questions";
 
 /**
  * A saved set is something you read before it is something you change.
@@ -69,7 +69,7 @@ export function SetView({
   const { actionsFor, dialogs } = useSetActions(() => router.push(libraryHref));
   const { state, status } = useLibraryStore();
   const [tab, setTab] = useState<SetTab>(
-    initialTab === "questions" || initialTab === "tools" ? initialTab : "words",
+    initialTab === "questions" ? initialTab : "words",
   );
   const [query, setQuery] = useState(initialQuery);
 
@@ -165,7 +165,7 @@ export function SetView({
       <section className={`cover hue-${current.hue ?? "mint"}`}>
         <div className="between">
           <h1>{current.setName}</h1>
-          <Dial value={familiarity(record, senseIds)} />
+          <div className="cover-dial"><Dial value={familiarity(record, senseIds)} /><b className="latin">{familiarity(record, senseIds)}%</b></div>
         </div>
         <div className="facts">
           {[
@@ -219,13 +219,12 @@ export function SetView({
             label: `${t("library.questionsTab")} ${questions.length}`,
             value: "questions",
           },
-          { label: t("workspace.toolsTab"), value: "tools" },
         ]}
         value={tab}
       />
 
       <ContentTransition identity={tab}>
-        {tab !== "tools" && (
+        {(
           <div className="mb-4 space-y-2">
             <SearchField
               label={t(
@@ -265,8 +264,6 @@ export function SetView({
             filtering={filtering && words.length > 0}
             onClear={() => setQuery("")}
           />
-        ) : tab === "tools" ? (
-          <SetTools setId={setId} />
         ) : (
           <>
             <ClearQuestionsControl

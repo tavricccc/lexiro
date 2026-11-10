@@ -37,12 +37,12 @@ export function Lobby({
           {state.code}
         </p>
         <div className="hero-acts">
-          <Button variant="secondary" onClick={() => void copy()}>
+          <Button variant="ghost" className="btn-onforest" onClick={() => void copy()}>
             <Icons.copy />
             {t("redesign.copy")}
           </Button>
           <Button
-            variant="secondary"
+            variant="ghost" className="btn-onforest"
             onClick={() => {
               if (navigator.share)
                 void navigator

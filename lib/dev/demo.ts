@@ -395,6 +395,18 @@ export async function initializeDemo(): Promise<boolean> {
         });
       }
     }
+    state.sets.forEach((set, setIndex) => {
+      const ids = (state.memberships[set.id] ?? []).flatMap((m) => m.senseIds);
+      const remaining = Math.round(ids.length * 3 * [0.62, 0.18, 0.35, 0.8, 0.44][setIndex % 5]);
+      const levels = ids.map((_, i) => i % 4);
+      while (levels.reduce((a, b) => a + b, 0) !== remaining) {
+        const sum = levels.reduce((a, b) => a + b, 0);
+        const i = levels.findIndex((level) => sum < remaining ? level < 3 : level > 0);
+        if (i < 0) break;
+        levels[i] += sum < remaining ? 1 : -1;
+      }
+      ids.forEach((id, i) => { if (record.senses[id]) record.senses[id].level = levels[i] as 0 | 1 | 2 | 3; });
+    });
     localStorage.setItem(
       "lexiro-product-demo:lexiro:learning-record:v1",
       JSON.stringify(record),
