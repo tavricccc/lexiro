@@ -3,6 +3,7 @@ import { z } from "zod";
 import { agentCloudRecord, agentCloudBlob } from "@lexiro/agent-contract";
 import { fingerprint, HttpError, readBody } from "../http";
 import { CloudD1Repository, type CloudLimits } from "./repository";
+import { LEARNING_RECORD_MAX_BYTES, readLearning, writeLearning } from "./learning";
 const writeBase = { operationId: z.string().uuid(), origin: z.string().uuid() };
 function validate<T>(parse: () => T): T {
   try { return parse(); }
@@ -25,6 +26,8 @@ export async function handleCloudApi(request: Request, uid: string, db: D1Databa
     const result = await cloud.commit(uid, head, records, [], input.origin, input.operationId, await fingerprint(JSON.stringify(input)), { revision: head.revision + 1, count: records.length });
     return Response.json(result);
   }
+  if (path === "/sync/learning" && request.method === "GET") return Response.json(await readLearning(db, uid));
+  if (path === "/sync/learning" && request.method === "POST") return Response.json(await writeLearning(db, uid, await readBody(request, LEARNING_RECORD_MAX_BYTES + 200)));
   if (path === "/sync/blobs" && request.method === "GET") {
     const head = await cloud.head(uid);
     return Response.json({ blobs: await cloud.blobs(uid), revision: head.blob_revision });

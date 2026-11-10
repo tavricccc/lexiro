@@ -24,6 +24,7 @@
 | `library-migrations/0004_cloud_operations_created_index.sql` | `cloud_operations.created_at` 索引，供 Cron 清除 30 天前操作回條 |
 | `library-migrations/0006_set_cache.sql` | `cloud_set_cache`：每個單字集一列完整快照（上限 1.5 MB，超過不快取），1000 字的單字集 Agent 改一個詞義讀約 50 列而非上萬；Cron 清除 30 天未更新的快取 |
 | `library-migrations/0005_account_quotas.sql` | `cloud_accounts` 加每日寫入計數（`quota_day`、`quota_writes`）與 `stored_bytes`；`CloudD1Repository.commit` 在同一個 CAS update 內檢查每帳號每日 3000 筆與 50 MB 上限（刪除不受容量限制），超過回 429 `daily_write_limit`（含 `Retry-After`）或 413 `storage_limit`；`UNLIMITED_UIDS` 豁免 |
+| `src/cloud/learning.ts`、`tests-next/cloud-learning.test.ts`、`library-migrations/0007_learning_records.sql` | 跨裝置學習紀錄：`cloud_learning` 每裝置一列（`GET`／`POST /sync/learning`），只寫自己那份、由前端合併；zod 驗證、單筆 JSON 上限 256 KB、每帳號最多 20 台裝置（最舊的被刪）；獨立表格，舊版前端不會讀到 |
 | `src/cloud/shares.ts` | 登入後的分享連結：建立／列出／撤銷，任何登入者持連結讀取擁有者最新同步的單字集 |
 | `src/rooms/protocol.ts`、`game-room.ts`、`api.ts` | 連線對戰：登入者建立 6 碼房間（最多 8 人），房主送出自己題庫的題目；GameRoom Durable Object 以 alarm 推進題目、伺服器判分（答案不送給玩家）、不等斷線者、重連直接回到目前題目；WebSocket 用一次性 ticket 授權 |
 | `agent-migrations/0001_agent_access.sql`、`0002_rate_limits.sql` | Agent D1 schema：URL scope／到期／撤銷與一次性 OAuth 授權請求，以及未認證端點（`/authorize`、`/oauth/register`、`/app-auth/token`）以端點＋IP 固定 60 秒視窗的計數表 `agent_rate_limits`，過期列沿用 7 天 cutoff 由 Cron 清除；與教材 migrations 分開 |
