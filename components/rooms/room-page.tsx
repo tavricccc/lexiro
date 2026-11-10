@@ -145,6 +145,7 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
       {(state.phase === "question" || state.phase === "reveal") && (
         <QuestionStage
           key={state.index}
+          onLeave={isHost ? () => setConfirmEnd(true) : undefined}
           state={state}
           offset={offset}
           onAnswer={(choice) =>

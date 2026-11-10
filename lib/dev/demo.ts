@@ -510,6 +510,8 @@ export async function demoRequest<T>(
           id: set.id,
           setName: set.setName,
           folderId: set.folderId,
+          hue: set.hue,
+          icon: set.icon,
           createdAt: set.createdAt,
           updatedAt: set.updatedAt,
         },

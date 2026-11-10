@@ -115,10 +115,9 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
       <PageHeader back={back} title="" />
       <section className={`cover hue-${set.hue ?? "mint"}`}><div className="rowx"><SetGlyph set={set}/><h1>{set.setName}</h1></div><div className="hero-acts">{!view.own && <Button disabled={saving || libraryStatus !== "ready"} onClick={() => void save()}><Icons.saveCopy />{t("share.save")}</Button>}</div></section>
       <div className="sheet-list cols">{rows.map(row => <div className="w" key={row.key}><div className="head"><span className="hw font-latin">{row.word}</span><span className="pos">{row.senses[0]?.pos}</span><span className="zh">{row.senses[0]?.meaningZh}</span></div><Dial value={0}/><SpeakButton text={row.word}/></div>)}</div>
-      <StepActions>
-        {view.own ? (
+      {view.own && <StepActions>
+        {(
           <>
-            <p className="text-sm text-muted-foreground">{t("share.own")}</p>
             <Button asChild size="lg">
               <Link href={`/app/sets/${set.id}`}>
                 <Icons.ownSet />
@@ -126,8 +125,8 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
               </Link>
             </Button>
           </>
-        ) : null}
-      </StepActions>
+        )}
+      </StepActions>}
     </div>
   );
 }

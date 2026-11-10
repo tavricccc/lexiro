@@ -23,7 +23,9 @@ export function QuestionStage({
   state,
   offset,
   onAnswer,
+  onLeave,
 }: {
+  onLeave?: () => void;
   state: RoomState;
   offset: number;
   onAnswer: (choice: number) => boolean;
@@ -127,13 +129,7 @@ export function QuestionStage({
   return (
     <div ref={stage} className="focus">
       <div className="focus-top">
-        <Link
-          className="btn btn-icon btn-glass"
-          href="/app/rooms"
-          aria-label={t("rooms.leave")}
-        >
-          <Icons.cancel />
-        </Link>
+        {onLeave ? <button className="btn btn-icon btn-glass" aria-label={t("rooms.endGame")} onClick={onLeave}><Icons.cancel /></button> : <Link className="btn btn-icon btn-glass" href="/app/rooms" aria-label={t("rooms.leave")}><Icons.cancel /></Link>}
         <div className="steps">
           {Array.from({ length: state.total }, (_, i) => (
             <i

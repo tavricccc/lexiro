@@ -35,6 +35,7 @@ add('set-move','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'�
 add('set-share','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'分享連結'}]);
 add('confirm-delete-set','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'刪除'}]);
 add('confirm-delete-account','/app/me',[{name:'刪除帳號'}]);
+add('confirm-end-game','/app/rooms/K7M2QX?state=game',[{name:'結束對戰'}]);
 add('confirm-end-room','/app/rooms/K7M2QX',[{name:'結束對戰'}]);
 add('set-picker-colour','/app/sets/gsat/settings',[{name:'violet'},{name:'airplane-tilt'},{css:'.palette',index:0,scroll:true}]);
 add('resume-practice','/app/practice?run=1&tasks=meaning&set=gsat',[{css:'.opt',index:0},{name:'確認答案'},{goto:base+'/app/practice?demo=1'}]);
