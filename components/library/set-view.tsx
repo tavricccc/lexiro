@@ -9,7 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ClearQuestionsControl } from "@/components/questions/clear-questions-control";
 import { BackControl } from "@/components/ui/back-control";
 import { Icons } from "@/components/ui/icons";
-import { LiquidTabs } from "@/components/ui/liquid-tabs";
+
 import { Menu } from "@/components/ui/menu";
 import { useSetActions } from "@/components/library/set-actions";
 import { PageHeader } from "@/components/ui/page-header";
@@ -206,56 +206,11 @@ export function SetView({
         setId={setId}
       />
 
-      <LiquidTabs
-        ariaLabel={current.setName}
-        className="workspace-tabs workspace-tabs-scroll mb-4"
-        onValueChange={(value) => setTab(value as SetTab)}
-        options={[
-          {
-            label: `${t("setDetail.wordsTab")} ${words.length}`,
-            value: "words",
-          },
-          {
-            label: `${t("library.questionsTab")} ${questions.length}`,
-            value: "questions",
-          },
-        ]}
-        value={tab}
-      />
-
+      <div className="set-toolbar">
+        <div className="tabs" role="tablist" aria-label={current.setName}>{(["words","questions"] as const).map(value => <button key={value} role="tab" aria-selected={tab === value} onClick={() => setTab(value)}>{t(value === "words" ? "setDetail.wordsTab" : "library.questionsTab")}</button>)}</div>
+        <SearchField label={t(tab === "words" ? "setDetail.searchWords" : "setDetail.searchQuestions")} value={query} onValueChange={setQuery} />
+      </div>
       <ContentTransition identity={tab}>
-        {(
-          <div className="mb-4 space-y-2">
-            <SearchField
-              label={t(
-                tab === "words"
-                  ? "setDetail.searchWords"
-                  : "setDetail.searchQuestions",
-              )}
-              value={query}
-              onValueChange={setQuery}
-            />
-            {filtering && (
-              <p
-                className="text-sm tabular-nums text-muted-foreground"
-                role="status"
-              >
-                {t(
-                  tab === "words"
-                    ? "setDetail.wordSearchCount"
-                    : "setDetail.questionSearchCount",
-                  {
-                    count:
-                      tab === "words"
-                        ? visibleWords.length
-                        : visibleQuestions.length,
-                    total: tab === "words" ? words.length : questions.length,
-                  },
-                )}
-              </p>
-            )}
-          </div>
-        )}
         {tab === "words" ? (
           <SetWordList
             words={visibleWords}
