@@ -3,7 +3,6 @@ import { QuestionMetadata } from "./question-metadata";
 import type { ReadingPack } from "@/types";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { countEnglishWords } from "@lexiro/ai-contract";
 import { useResumableDraft } from "@/lib/use-resumable-draft";
 import { PassageView } from "@/components/practice/passage-view";
 import {
@@ -133,16 +132,6 @@ export function ReadingEditor({
       (errors) => !errors.options && !errors.prompt && !errors.source,
     );
   const activeChild = children[index];
-  const fullPassage = children.reduce(
-    (text, child) =>
-      child.blank === undefined
-        ? text
-        : text.replace(
-            `__${child.blank}__`,
-            (optionBank ?? child.options)[child.answerIndex],
-          ),
-    passage,
-  );
   const locate = () => {
     setArticleMode("preview");
     setPane("passage");
@@ -287,11 +276,7 @@ export function ReadingEditor({
                   ]}
                   onValueChange={setArticleMode}
                 />
-                <span className="text-sm text-muted-foreground">
-                  {t("questions.passageWordCount", {
-                    count: countEnglishWords(fullPassage),
-                  })}
-                </span>
+                
               </div>
               {articleMode === "edit" ? (
                 <Field

@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ActionFeedbackIcon } from "@/components/ui/action-feedback-icon";
-import { Icons } from "@/components/ui/icons";
 import { t } from "@/lib/i18n";
 
 interface ConfirmDialogProps {
@@ -67,7 +66,6 @@ export function ConfirmDialog({
   };
 
   const danger = tone === "danger";
-  const Glyph = danger ? Icons.error : Icons.question;
 
   return (
     <Dialog.Root
@@ -89,15 +87,6 @@ export function ConfirmDialog({
               if (running.current) event.preventDefault();
             }}
           >
-            <div
-              className={
-                danger
-                  ? "grid size-11 place-items-center rounded-md bg-destructive/10 text-destructive"
-                  : "grid size-11 place-items-center rounded-md bg-brand-50 text-brand-600"
-              }
-            >
-              <Glyph aria-hidden className="size-5" />
-            </div>
             <div>
               <Dialog.Title className="type-section">{title}</Dialog.Title>
               <Dialog.Description className="mt-2 whitespace-pre-line [overflow-wrap:anywhere] type-lead">

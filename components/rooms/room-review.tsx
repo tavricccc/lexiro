@@ -8,11 +8,6 @@ export function Review({ review }: { review: RoomReview }) {
   return (
     <section className="rounded-[var(--radius-card)] bg-card p-5">
       <h2 className="type-section">{t("rooms.review")}</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {review.items.length
-          ? t("rooms.reviewCount", { count: review.items.length })
-          : t("rooms.reviewEmpty")}
-      </p>
       <ol className="mt-4 space-y-6">
         {review.items.map((item, order) => {
           const passage = item.question.passageId

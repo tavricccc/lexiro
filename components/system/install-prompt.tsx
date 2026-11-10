@@ -198,7 +198,7 @@ export function InstallPrompt() {
               ) : (
                 <>
                   {mode !== "in-app-browser" && (
-                    <Button variant="ghost" onClick={() => setConfirming(true)}>
+                    <Button variant="ghost" onClick={close}>
                       {t("install.later")}
                     </Button>
                   )}

@@ -526,3 +526,19 @@ textarea:focus-visible {
 html { scroll-padding-bottom: calc(var(--h-dock) + var(--layout-dock-margin) * 2 + 24px); }
 .savebar { scroll-margin-bottom: 120px; }
 [role="option"][data-state="checked"], [role="menuitemcheckbox"][data-state="checked"] { background: var(--solid); color: var(--on-solid); box-shadow: none; }
+/* Review A: navigation is quiet; choice states remain solid. */
+.side a.nav[aria-current], .dock a[aria-current], .settings-nav button[aria-selected="true"] { background: var(--fill-hover); color: var(--ink); }
+.side a.nav[aria-current] svg, .dock a[aria-current] svg, .settings-nav button[aria-selected="true"] svg { color: var(--accent); }
+.savebar, .savebar.frost { width: 100%; max-width: none; position: sticky; bottom: 16px; justify-content: flex-end; margin: 24px 0 0; padding: 12px; border-radius: var(--r-control); border: 0; box-shadow: none; background: var(--frost); }
+.savebar::before, .savebar::after { display: none; }
+.palette button:has(.swatch), .palette button[aria-pressed="true"]:has(.swatch) { background: transparent; box-shadow: none; }
+.palette .swatch { display: grid; place-items: center; width: 32px; height: 32px; color: #fff; }
+[data-slot="select-trigger"], [data-slot="select-trigger"]:focus, [data-slot="select-content"], [data-slot="select-item"], [data-slot="select-item"]:focus { outline: 0; border: 0; box-shadow: none; }
+[data-slot="select-trigger"]:focus { background: var(--fill-hover); }
+[data-slot="select-item"][data-highlighted] { background: var(--fill-hover); color: var(--ink); }
+[data-slot="select-item"][data-state="checked"] { background: var(--solid); color: var(--on-solid); }
+.list-input-row input:focus { background: var(--fill-hover); border: 0; box-shadow: none; outline: 0; text-decoration: none; }
+.action-button { justify-content: flex-start; text-align: left; margin-block: 6px; color: var(--ink); }
+.empty { background: transparent; border: 0; box-shadow: none; max-width: 640px; margin-inline: auto; min-height: 440px; }
+.empty img { width: min(240px, 65%); }
+.empty .btn { background: var(--accent); color: var(--on-accent); }

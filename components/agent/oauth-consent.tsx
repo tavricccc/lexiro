@@ -1,3 +1,4 @@
+import { Icons } from "@/components/ui/icons";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ListRow, ListSection } from "@/components/ui/list";
@@ -83,9 +84,9 @@ export function AgentOAuthConsent({ requestId }: { requestId: string }) {
       ) : info ? (
         <div className="space-y-6">
           <ListSection>
-            <ListRow label={t("agent.client")} value={info.clientName} />
-            <ListRow label={t("agent.account")} value={user.email} />
-            <ListRow label={t("agent.returnTo")} value={info.redirectHost} />
+            <ListRow icon={Icons.ai} label={t("agent.client")} value={info.clientName} />
+            <ListRow icon={Icons.account} label={t("agent.account")} value={user.email} />
+            <ListRow icon={Icons.shareLink} label={t("agent.returnTo")} value={info.redirectHost} />
           </ListSection>
           <p className="text-sm leading-relaxed">
             {t("agent.oauthPermission")}

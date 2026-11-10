@@ -1,3 +1,4 @@
+import { OpenAiLogo, TerminalWindow } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { BackControl } from "@/components/ui/back-control";
 import { Button } from "@/components/ui/button";
@@ -132,7 +133,7 @@ export function AgentConnectionsPage() {
                     key={connection.id}
                     className="flex items-center gap-3 py-[var(--row-padding-block)]"
                   >
-                    <Icons.ai aria-hidden className="size-5 shrink-0" />
+                    {connection.clientName.toLowerCase().includes("codex") ? <TerminalWindow aria-hidden size={20} /> : <OpenAiLogo aria-hidden size={20} />}
                     <div className="min-w-0 flex-1">
                       <p className="type-row break-words">
                         {connection.clientName}

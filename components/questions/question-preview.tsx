@@ -164,28 +164,8 @@ export function QuestionPreview({ question }: { question: LibraryQuestion }) {
   );
 }
 
-function Header({
-  format,
-  passage = false,
-  wordCount,
-}: {
-  format: string;
-  passage?: boolean;
-  wordCount: number;
-}) {
-  return (
-    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-      <span className="font-medium text-primary">
-        {questionFormatLabel(format)}
-      </span>
-      <span className="text-muted-foreground">
-        {t(
-          passage ? "questions.passageWordCount" : "questions.promptWordCount",
-          { count: wordCount },
-        )}
-      </span>
-    </p>
-  );
+function Header({ format }: { format: string; passage?: boolean; wordCount: number }) {
+  return <p className="chip">{questionFormatLabel(format)}</p>;
 }
 
 function OptionList({

@@ -115,7 +115,7 @@ export const zhTW = {
     account: "Lexiro 帳號",
     returnTo: "授權後返回",
     oauthPermission:
-      "允許這個應用程式讀取、新增、編輯、刪除你的資料夾、單字集、單字、詞義、例句和題目，也能移動資料夾與單字集。它可以在連線有效期間繼續操作；你可以在「我的 → Agent 連線」解除授權。",
+      "允許此應用程式讀取與修改你的 Lexiro 教材。",
     allow: "允許連線",
     deny: "拒絕",
     connections: "Agent 連線",
@@ -253,7 +253,7 @@ export const zhTW = {
     yourAnswer: "你的答案",
     showPassage: "看文章",
     endGame: "結束對戰",
-    endConfirm: "現在結束，所有人直接看到最終排行。",
+    endConfirm: "這場對戰會立即結束。",
     leave: "離開房間",
     newRoom: "再開一局",
     points: "{points} 分",
@@ -353,7 +353,7 @@ export const zhTW = {
     renameFolder: "重新命名資料夾",
     deleteFolder: "刪除資料夾",
     deleteFolderConfirm:
-      "確定刪除「{name}」、所有子資料夾與其中 {sets} 個單字集嗎？這個動作無法復原。",
+      "資料夾與其中的單字集會永久刪除。",
     folderNameConflict: "同一層已有同名資料夾。",
     moveFolder: "移動資料夾",
     moveSet: "移動單字集",
@@ -369,9 +369,9 @@ export const zhTW = {
     cleared: "已清空 {count} 題。",
     clearSet: "清空本集全部題目",
     clearSetConfirm:
-      "確定清空「{name}」的全部 {count} 題嗎？其他單字集的題目會保留。",
-    clearPacks: "其中包含 {count} 組閱讀／文章題組，題數已計入各組小題。",
-    clearPreserves: "詞義、例句與學習進度會保留。原有題目無法還原。",
+      "這個單字集的 {count} 題會刪除。",
+    clearPacks: "",
+    clearPreserves: "",
     confirmClear: "確認清空",
     sourceSet: "來源單字集",
     selectSourceSet: "選擇單字集",
@@ -434,7 +434,7 @@ export const zhTW = {
     linkedSense: "關聯詞義",
     save: "儲存題目",
     delete: "刪除題目",
-    deleteConfirm: "確定刪除這題？此題所屬單字集的詞義、例句與學習進度會保留。",
+    deleteConfirm: "刪除後無法復原。",
     explanation: "解析",
     selectSense: "選擇詞義",
     optionLabel: "選項 {index}",
@@ -561,7 +561,7 @@ export const zhTW = {
     chooseBackupAgain: "重新選擇備份",
     importDone: "備份已匯入",
     importPreview:
-      "將新增 {sets} 個單字集與 {questions} 題。\n\n既有教材會保留。",
+      "將匯入 {sets} 個單字集與 {questions} 題。",
     importTitle: "匯入完整備份",
     invalidBackup: "備份檔無法讀取：{message}",
     signIn: "使用 Google 登入",
@@ -583,7 +583,7 @@ export const zhTW = {
     syncError: "同步失敗",
     syncPendingCount: "{count} 項待同步",
     guestDataWarning:
-      "目前訪客空間已有資料。登入後會先使用雲端資料；只有該帳號尚無雲端資料時，才會把這份本機資料作為首次內容上傳。建議先匯出完整備份。",
+      "登入後會合併這台裝置與帳號的教材。",
     continueSignIn: "繼續登入",
   },
   admin: {
@@ -592,7 +592,7 @@ export const zhTW = {
     refresh: "重新整理",
     forbidden: "這個帳號不是管理員。",
     cannotDisableSelf: "不能停用自己的帳號。",
-    overview: "今日概況（UTC {day}）",
+    overview: "今日",
     accounts: "已同步帳號",
     activeToday: "今日有寫入的帳號",
     writesToday: "今日寫入筆數",
@@ -620,7 +620,7 @@ export const zhTW = {
     uidPlaceholder: "Firebase uid",
     reasonLabel: "原因",
     reasonPlaceholder: "選填",
-    disableConfirm: "確定停用 {uid}？對方所有請求都會被拒絕，直到解除。",
+    disableConfirm: "這個帳號會停用。",
     invalidUid: "uid 只能是英數字。",
   },
   me: {
@@ -639,7 +639,7 @@ export const zhTW = {
     deleteAccount: "刪除帳號",
     deleteAccountDescription: "刪除雲端與這台裝置上這個帳號的所有資料。",
     deleteAccountWarning:
-      "雲端上的單字集、題目、練習紀錄、分享連結和 AI 連線會全部刪除，這台裝置上這個帳號的資料也會清掉，無法復原。按下刪除後會請你重新登入 Google。",
+      "帳號與所有資料會永久刪除。",
     accountDeleted: "帳號已刪除",
   },
   setEditor: {
@@ -699,9 +699,9 @@ export const zhTW = {
     delete: "刪除",
     start: "開始練這組字",
     summary: "{senses} 個詞義 · {questions} 題",
-    toolsHeader: "這組字的整理",
+    toolsHeader: "工具",
     deleteConfirm:
-      "確定刪除「{name}」嗎？此集的詞義、例句與題目也會刪除，其他單字集會保留。",
+      "刪除後無法復原。",
     share: "下載分享檔",
     shareLink: "分享連結",
     noQuestionsDescription: "題目可透過 Agent 寫入，或編輯題庫中已有的題目。",

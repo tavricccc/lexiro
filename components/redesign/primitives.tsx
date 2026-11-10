@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import {
   AirplaneTilt,
-  BookOpenText,
   Books,
   BookmarkSimple,
   Briefcase,
@@ -125,8 +124,8 @@ export function WordRow({ word, setId }: { word: WordEntry; setId: string }) {
 }
 export function EmptyLibrary() {
   return (
-    <section className="tile empty">
-      <BookOpenText size={96} weight="regular" />
+    <section className="empty">
+      <img src="/illustrations/open-doodles-reading.svg" alt="" />
       <h2 className="t-section">{t("redesign.empty")}</h2>
       <Link className="btn btn-lg btn-primary" href="/app/sets/new">
         {t("library.newSet")}

@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
-import { ListActionRow, ListSection } from "@/components/ui/list";
+import { ListNavRow, ListSection } from "@/components/ui/list";
+import { Icons } from "@/components/ui/icons";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { t } from "@/lib/i18n";
 import { importFullBackup, prepareFullBackup } from "@/lib/backup-actions";
@@ -97,28 +98,8 @@ export function DataSection() {
   return (
     <>
       <ListSection>
-        <ListActionRow
-          busy={operation === "exporting"}
-          disabled={operation !== null}
-          onClick={() => void exportBackup()}
-        >
-          {t(
-            operation === "exporting"
-              ? "settings.exportingBackup"
-              : "settings.export",
-          )}
-        </ListActionRow>
-        <ListActionRow
-          busy={operation === "reading"}
-          disabled={operation !== null}
-          onClick={() => importInput.current?.click()}
-        >
-          {t(
-            operation === "reading"
-              ? "settings.readingBackup"
-              : "settings.import",
-          )}
-        </ListActionRow>
+        <ListNavRow icon={Icons.export} label={t(operation === "exporting" ? "settings.exportingBackup" : "settings.export")} disabled={operation !== null} onClick={() => void exportBackup()} />
+        <ListNavRow icon={Icons.import} label={t(operation === "reading" ? "settings.readingBackup" : "settings.import")} disabled={operation !== null} onClick={() => importInput.current?.click()} />
         <input
           accept=".zip,application/zip"
           aria-label={t("settings.import")}

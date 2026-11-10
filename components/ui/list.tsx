@@ -79,7 +79,7 @@ const toneClass = {
 } as const;
 
 function RowInner({
-  icon: Icon = Icons.settings,
+  icon: Icon,
   label,
   detail: _detail,
   value,
@@ -468,9 +468,11 @@ export function ListActionRow({
   onClick,
   tone = "brand",
   type = "button",
+  icon: Icon = Icons.create,
 }: {
   /** The work this row started is still running, and it says so itself. */
   busy?: boolean;
+  icon?: AppIcon;
   children: ReactNode;
   disabled?: boolean;
   onClick?: () => void;
@@ -480,12 +482,7 @@ export function ListActionRow({
   return (
     <button
       aria-busy={busy}
-      className={cn(
-        "t-row flex min-h-[3.25rem] w-full items-center justify-center gap-2 py-[var(--row-padding-block)] text-center type-row",
-        tone === "destructive" ? "text-destructive" : "text-primary",
-        (disabled || busy) && "pointer-events-none",
-        disabled && !busy && "opacity-45",
-      )}
+      className={cn("btn btn-secondary action-button", tone === "destructive" && "text-destructive", disabled && "opacity-45")}
       disabled={disabled || busy}
       onClick={onClick}
       type={type}
@@ -493,7 +490,7 @@ export function ListActionRow({
       {busy && (
         <Icons.loading aria-hidden className="size-4 shrink-0 animate-spin" />
       )}
-      {!busy && <Icons.open aria-hidden className="size-5" />}
+      {!busy && <Icon aria-hidden className="size-5" />}
       {children}
     </button>
   );

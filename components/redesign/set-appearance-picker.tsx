@@ -23,8 +23,7 @@ export function SetAppearancePicker({
             aria-pressed={hue === c}
             onClick={() => onChange({ hue: c, icon })}
           >
-            <span className="swatch" />
-            <span className="sr-only">{hue === c && <Check />}</span>
+            <span className="swatch">{hue === c && <Check weight="bold" size={16} />}</span>
           </button>
         ))}
       </div>
