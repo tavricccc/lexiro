@@ -52,10 +52,8 @@ export function QuestionFeedback({
         </p>
       )}
       {optionReasons.length > 0 && (
-        <section className="mt-1" aria-label={t("practice.optionReasons")}>
-          <h2 className="text-[0.8125rem] font-semibold text-muted-foreground">
-            {t("practice.optionReasons")}
-          </h2>
+        <details className="mt-1"><summary>{t("practice.optionReasons")}</summary>
+
           <dl className="mt-2 grid gap-2.5">
             {optionReasons.map(({ option, index, gloss, note }) => (
               <div key={option} className="min-w-0">
@@ -78,7 +76,7 @@ export function QuestionFeedback({
               </div>
             ))}
           </dl>
-        </section>
+        </details>
       )}
       {item.type === "meaning" &&
         item.meaning &&

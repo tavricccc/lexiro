@@ -505,7 +505,7 @@ export function ListActionRow({
  */
 export function ListInputRow({
   autoFocus,
-  block,
+  block: _block,
   disabled,
   invalid,
   inputMode,
@@ -544,7 +544,7 @@ export function ListInputRow({
       aria-invalid={invalid || undefined}
       className={cn(
         "type-row min-w-0 flex-1 border-0 bg-transparent p-0 outline-none placeholder:text-muted-foreground/60 disabled:opacity-45",
-        block ? "w-full" : "text-right",
+        "input w-full",
       )}
       autoFocus={autoFocus}
       disabled={disabled}
@@ -560,23 +560,5 @@ export function ListInputRow({
       value={value}
     />
   );
-  if (block)
-    return (
-      <div className="list-input-row flex min-h-[3.25rem] items-end gap-3 py-[var(--row-padding-block)]">
-        <label className="min-w-0 flex-1">
-          <span className="field-label block">{label}</span>
-          <span className="mt-0.5 flex">{field}</span>
-        </label>
-        {trailing}
-      </div>
-    );
-  return (
-    <div className="list-input-row flex min-h-[3.25rem] items-center gap-4 py-[var(--row-padding-block)]">
-      <label className="flex min-w-0 flex-1 items-center gap-4">
-        <span className="type-row shrink-0">{label}</span>
-        {field}
-      </label>
-      {trailing}
-    </div>
-  );
+  return <div className="entry-field"><label><span className="field-label">{label}</span>{field}</label>{trailing}</div>;
 }

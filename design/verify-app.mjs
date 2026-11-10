@@ -31,7 +31,7 @@ try{
  await page.getByRole('link',{name:'接續上次',exact:true}).click();await expect(page.getByRole('button',{name:'接續',exact:false}).first()).toBeVisible();checks.push('Saved practice offers resume');
  await page.goto('http://127.0.0.1:5173/app/rooms/K7M2QX?demo=1');await page.getByRole('button',{name:'開始對戰',exact:true}).click();
  await expect(page.locator('.focus .opt').first()).toBeVisible();await page.locator('.focus .opt').nth(1).click();await page.getByRole('button',{name:'確認答案',exact:true}).click();await expect(page.locator('.verdict')).toHaveClass(/is-right/);checks.push('Demo lobby starts and submits a correct room answer');
- await page.goto('http://127.0.0.1:5173/app/shared/demo-share?demo=1');await page.getByRole('button',{name:'存一份副本到我的題庫',exact:true}).click();await expect(page.locator('.cover h1')).toContainText('學測核心');checks.push('Shared set copy creates a browsable local set');
+ await page.goto('http://127.0.0.1:5173/app/shared/demo-share?demo=1');await page.getByRole('button',{name:'加入我的單字',exact:true}).click();await expect(page.locator('.cover h1')).toContainText('學測核心');checks.push('Shared set copy creates a browsable local set');
  if(errors.length)throw Error(errors.join('\n'));
  console.log(checks.join('\n'));
  writeFileSync('design/verification.json',JSON.stringify({checks,errors},null,2));

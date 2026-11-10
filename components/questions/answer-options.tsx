@@ -1,3 +1,4 @@
+import { Check } from "@phosphor-icons/react";
 import { Input } from "@/components/ui/input";
 import { t } from "@/lib/i18n";
 
@@ -37,14 +38,7 @@ export function AnswerOptions({
             }
             key={index}
           >
-            <input
-              aria-label={t("questions.markCorrect", { index: index + 1 })}
-              checked={answerIndex === index}
-              className="size-4 shrink-0 accent-[var(--brand-600)]"
-              name={name}
-              onChange={() => onAnswerChange(index)}
-              type="radio"
-            />
+            <button type="button" role="radio" aria-label={t("questions.markCorrect", { index:index + 1 })} aria-checked={answerIndex === index} className="correct-option" onClick={() => onAnswerChange(index)}><Check weight="bold" size={18}/></button>
             <span
               aria-hidden
               className="w-4 shrink-0 text-sm text-muted-foreground"

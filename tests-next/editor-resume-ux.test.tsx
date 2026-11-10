@@ -129,7 +129,7 @@ describe("interrupted manual edits", () => {
     const first = render(<WordEditPage setId="set" wordKey={wordKey} />);
     const meaning = await screen.findByRole("textbox", { name: "中文意思" });
     fireEvent.change(meaning, { target: { value: "新的意思" } });
-    expect(await screen.findByText("進度已儲存，離開後可接續")).toBeVisible();
+    await waitFor(() => expect(Object.values(localStorage).some(value => value.includes("新的意思"))).toBe(true));
     first.unmount();
 
     render(<WordEditPage setId="set" wordKey={wordKey} />);
@@ -144,7 +144,7 @@ describe("interrupted manual edits", () => {
     const prompt = await screen.findByRole("textbox", { name: "題幹" });
     fireEvent.change(prompt, { target: { value: "Which word fits?" } });
     await waitFor(() =>
-      expect(screen.getByText("進度已儲存，離開後可接續")).toBeVisible(),
+      expect(Object.values(localStorage).some(value => value.includes("Which word fits?"))).toBe(true),
     );
     first.unmount();
 

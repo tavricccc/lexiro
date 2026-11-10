@@ -42,6 +42,7 @@ export function useSetActions(onDeleted?: (setId: string) => void) {
           },
         ]
       : []),
+    { icon: Icons.create, label: t("setEditor.addWord"), onSelect: () => router.push(`/app/sets/${setId}/add`) },
     {
       icon: Icons.edit,
       label: t("setDetail.edit"),

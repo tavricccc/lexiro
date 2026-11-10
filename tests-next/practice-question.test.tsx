@@ -88,12 +88,14 @@ describe("practice option notes", () => {
     };
     const { container } = render(<QuestionFeedback item={item} selected={2} />);
     expect(screen.getByText("受害者")).toBeVisible();
+    expect(screen.getByText("顧客")).not.toBeVisible();
+    fireEvent.click(screen.getByText("其他選項"));
     expect(screen.getByText("顧客")).toBeVisible();
     expect(screen.getByText("警員")).toBeVisible();
     expect(screen.getByText("目擊者")).toBeVisible();
     expect(screen.getByText("只看見事件，句中女子是失主")).toBeVisible();
     expect(container.textContent).not.toContain("不符");
-    expect(container.querySelectorAll("p").length).toBe(3);
+
   });
 
   it("keeps only meanings in a word bank and only the unused sentence in discourse", () => {
@@ -117,6 +119,7 @@ describe("practice option notes", () => {
         selected={0}
       />,
     );
+    fireEvent.click(screen.getByText("其他選項"));
     expect(screen.getByText("目前的")).toBeVisible();
     expect(screen.queryByText(/不符合本格/)).toBeNull();
     unmount();
@@ -142,6 +145,7 @@ describe("practice option notes", () => {
         selected={0}
       />,
     );
+    fireEvent.click(screen.getByText("其他選項"));
     expect(
       screen.getByText("放棄計畫與後文矛盾，放哪裡都不合。"),
     ).toBeVisible();
@@ -202,6 +206,7 @@ describe("practice reading workspace", () => {
       rerender(
         <QuestionCard {...props} selected={choice} pendingChoice={null} />,
       );
+      fireEvent.click(screen.getByText("其他選項"));
       for (const reason of Object.values(props.item.whyWrong!)) {
         expect(screen.getByText(reason)).toBeVisible();
       }

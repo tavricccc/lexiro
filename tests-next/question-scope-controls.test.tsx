@@ -151,11 +151,9 @@ describe("independent set question controls", () => {
     render(<SetView setId="a" initialTab="questions" />);
     fireEvent.click(screen.getByRole("button", { name: "清空本集全部題目" }));
     expect(screen.getByRole("dialog")).toHaveTextContent(
-      "「河流詞彙」的全部 4 題",
+      "這個單字集的 4 題會刪除。",
     );
-    expect(screen.getByRole("dialog")).toHaveTextContent(
-      "包含 1 組閱讀／文章題組",
-    );
+    expect(screen.getByRole("dialog")).not.toHaveTextContent("包含");
     fireEvent.click(screen.getByRole("button", { name: "確認清空" }));
     expect(await screen.findByRole("alert")).toHaveTextContent(
       "裝置暫時無法寫入",

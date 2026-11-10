@@ -78,9 +78,9 @@ describe("shared set page", () => {
     mocks.copy.mockResolvedValue({ id: "copied", setName: "Travel 2" });
     render(<SharedSetPage shareId="abc" />);
     expect(await screen.findByText("harbor")).toBeVisible();
-    expect(screen.getByText("n. 港口")).toBeVisible();
+    expect(screen.getByText("港口")).toBeVisible();
     fireEvent.click(
-      screen.getByRole("button", { name: "存一份副本到我的題庫" }),
+      screen.getByRole("button", { name: "加入我的單字" }),
     );
     await vi.waitFor(() =>
       expect(mocks.push).toHaveBeenCalledWith("/app/sets/copied"),
@@ -99,7 +99,7 @@ describe("shared set page", () => {
       await screen.findByRole("link", { name: "打開單字集" }),
     ).toHaveAttribute("href", "/app/sets/their-set");
     expect(
-      screen.queryByRole("button", { name: "存一份副本到我的題庫" }),
+      screen.queryByRole("button", { name: "加入我的單字" }),
     ).toBeNull();
   });
 

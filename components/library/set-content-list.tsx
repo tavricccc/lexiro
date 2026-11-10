@@ -132,7 +132,7 @@ export function SetQuestionList({
 
   return (
     <>
-      <StaggerList as="ul" className="sheet-list cols">
+      <StaggerList as="ul" className="sheet-list question-list">
         {shown.map((question) => (
           <StaggerItem as="li" key={question.id}>
             <Link
@@ -142,31 +142,8 @@ export function SetQuestionList({
                 returnTo,
               )}
             >
-              <span className="grid min-w-0 flex-1 gap-1">
-                <span className="type-hint text-muted-foreground">
-                  <span className="font-semibold text-brand">
-                    {questionFormatLabel(
-                      question.kind === "reading"
-                        ? question.format
-                        : question.questionStyle,
-                    )}
-                  </span>
-                  {" · "}
-                  {t("questions.difficulty", { level: question.difficulty })}
-                  {question.kind === "reading" &&
-                    ` · ${t("library.questionCount", { count: question.questions.length })}`}
-                </span>
-                <span className="line-clamp-3 text-[1.0625rem] font-semibold leading-6">
-                  {question.kind === "reading"
-                    ? question.title
-                    : question.prompt}
-                </span>
-                {question.kind === "reading" && question.title && (
-                  <span className="type-hint line-clamp-2 text-muted-foreground">
-                    {question.passage}
-                  </span>
-                )}
-              </span>
+              <span className="chip">{questionFormatLabel(question.kind === "reading" ? question.format : question.questionStyle)}</span>
+              <span className="grow cut">{(question.kind === "reading" ? question.title : question.prompt).split("\n")[0]}</span>
               <Icons.open
                 aria-hidden
                 className="size-3.5 shrink-0 text-muted-foreground/60"

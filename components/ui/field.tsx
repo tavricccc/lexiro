@@ -53,7 +53,7 @@ export function Field({
   }
 
   return (
-    <label className={cn("block", className)}>
+    <label className={cn("entry-field block", className)}>
       {label && (
         <span className="mb-1.5 flex items-baseline justify-between gap-3">
           {label && <span className="text-sm font-medium">{label}</span>}

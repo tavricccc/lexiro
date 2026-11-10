@@ -45,7 +45,7 @@ describe("set actions in the library", () => {
     fireEvent.contextMenu(screen.getByRole("link", { name: /Beta/ }));
     fireEvent.click(await screen.findByRole("menuitem", { name: "刪除" }));
     const dialog = await screen.findByRole("dialog");
-    expect(dialog).toHaveTextContent("Beta");
+    expect(dialog).toHaveTextContent("刪除後無法復原。");
     expect(deleteSet).not.toHaveBeenCalled();
     fireEvent.click(within(dialog).getByRole("button", { name: "刪除" }));
     await waitFor(() => expect(deleteSet).toHaveBeenCalledWith("beta"));

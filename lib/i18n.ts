@@ -153,7 +153,7 @@ export const zhTW = {
     unavailable: "這個分享連結已失效，或單字集已被刪除。",
     pageTitle: "分享的單字集",
     viewSignIn: "登入後才能查看別人分享的單字集。",
-    save: "存一份副本到我的題庫",
+    save: "加入我的單字",
     saving: "正在建立副本…",
     saved: "已建立副本「{name}」",
     saveFailed: "存入失敗：{message}",

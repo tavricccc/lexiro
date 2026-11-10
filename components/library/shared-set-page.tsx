@@ -1,3 +1,4 @@
+import { SpeakButton, SetGlyph, Dial } from "@/components/redesign/primitives";
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useState } from "react";
@@ -19,7 +20,7 @@ import { createUniqueSetName } from "@/src/lib/set-name";
 import { useCloudStore } from "@/stores/cloud-store";
 import { useLibraryStore } from "@/stores/library-store";
 
-const PREVIEW_WORDS = 60;
+
 
 /**
  * Someone else's set, read straight from their cloud copy. Nothing here is
@@ -83,7 +84,7 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
       return [{ key: membership.wordKey, word: word.word, senses }];
     })
     .sort((a, b) => compareWords(a.word, b.word));
-  const senseCount = rows.reduce((count, row) => count + row.senses.length, 0);
+
 
   const save = async () => {
     setSaving(true);
@@ -111,31 +112,9 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <PageHeader back={back} title={set.setName} />
-      <p className="-mt-2 mb-6 text-sm tabular-nums text-muted-foreground">
-        {t("share.summary", {
-          words: rows.length,
-          senses: senseCount,
-          questions: set.questions.length,
-        })}
-      </p>
-      <ul className="divide-y rounded-[var(--radius-card)] bg-card">
-        {rows.slice(0, PREVIEW_WORDS).map((row) => (
-          <li key={row.key} className="px-4 py-3">
-            <p className="font-medium">{row.word}</p>
-            <p className="mt-0.5 text-sm text-muted-foreground">
-              {row.senses
-                .map((sense) => `${sense.pos} ${sense.meaningZh}`)
-                .join("；")}
-            </p>
-          </li>
-        ))}
-      </ul>
-      {rows.length > PREVIEW_WORDS && (
-        <p className="mt-3 text-center text-sm text-muted-foreground">
-          {t("share.more", { count: rows.length - PREVIEW_WORDS })}
-        </p>
-      )}
+      <PageHeader back={back} title="" />
+      <section className={`cover hue-${set.hue ?? "mint"}`}><div className="rowx"><SetGlyph set={set}/><h1>{set.setName}</h1></div><div className="hero-acts">{!view.own && <Button disabled={saving || libraryStatus !== "ready"} onClick={() => void save()}><Icons.saveCopy />{t("share.save")}</Button>}</div></section>
+      <div className="sheet-list cols">{rows.map(row => <div className="w" key={row.key}><div className="head"><span className="hw font-latin">{row.word}</span><span className="pos">{row.senses[0]?.pos}</span><span className="zh">{row.senses[0]?.meaningZh}</span></div><Dial value={0}/><SpeakButton text={row.word}/></div>)}</div>
       <StepActions>
         {view.own ? (
           <>
@@ -147,18 +126,7 @@ export function SharedSetPage({ shareId }: { shareId: string }) {
               </Link>
             </Button>
           </>
-        ) : (
-          <>
-            <Button
-              size="lg"
-              disabled={saving || libraryStatus !== "ready"}
-              onClick={() => void save()}
-            >
-              <Icons.saveCopy />
-              {t(saving ? "share.saving" : "share.save")}
-            </Button>
-          </>
-        )}
+        ) : null}
       </StepActions>
     </div>
   );

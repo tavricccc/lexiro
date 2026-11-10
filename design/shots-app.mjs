@@ -46,7 +46,7 @@ add('confirm-delete-folder','/app/library?folderId=gsat-folder',[{name:'更多�
 add('folder-rename','/app/library?folderId=gsat-folder',[{name:'更多動作'},{role:'menuitem',name:'重新命名資料夾'}]);
 add('folder-move','/app/library?folderId=gsat-folder',[{name:'更多動作'},{role:'menuitem',name:'移動資料夾'}]);
 add('set-folder-picker','/app/sets/gsat/settings',[{role:'combobox',name:'資料夾'}]);
-add('practice-scope-picker','/app/practice',[{name:'單字集'}]);
+add('practice-scope-picker','/app/practice',[{role:'button',name:'學測核心 7000'}]);
 add('empty-set','/app/sets/gsat?emptySet=1');
 add('empty-practice','/app/practice?empty=1');
 add('question-preview','/app/questions/vocab-1/edit',[{role:'tab',name:'預覽',phoneOnly:true}]);
@@ -54,7 +54,7 @@ add('reading-preview','/app/questions/reading/reading-1/edit',[{role:'tab',name:
 add('confirm-admin-disable','/app/me/admin',[{name:'停用',index:0}]);
 add('backup-import-confirm','/app/me/data',[{name:'匯出完整備份',download:'design/shots/app/backup.zip'},{css:'input[type=file]',file:'design/shots/app/backup.zip'}]);
 add('install-guide','/app?install=ios-install');
-add('install-confirm','/app?install=ios-install',[{name:'稍後再說'}]);
+add('install-dismissed','/app?install=ios-install',[{name:'稍後再說'}]);
 add('confirm-sign-in','/app/me',[{name:'登出'},{name:'登入'}]);
 add('new-set-bottom','/app/sets/new',[{css:'.savebar',scroll:true}]);
 add('question-edit-bottom','/app/questions/vocab-1/edit',[{css:'.savebar',scroll:true}]);
@@ -65,8 +65,8 @@ add('progress-bottom','/app/progress',[{css:'.sheet-list',scroll:true}]);
 add('settings-admin-bottom','/app/me/admin',[{css:'.group[data-on] .rule-card',index:-1,scroll:true}]);
 for(const kind of ['cloze','wordBank','discourse']) add(`${kind}-edit`,`/app/questions/reading/${kind}-1/edit`);
 for(const kind of ['wordBank','discourse']) add(`${kind}-options`,`/app/questions/reading/${kind}-1/edit`,[{role:'tab',name:'題目與答案',phoneOnly:true},{role:'tab',name:'共用選項'}]);
-add('reading-metadata','/app/questions/reading/reading-1/edit',[{role:'button',name:'編輯標題與難度 · 中等',phoneOnly:true}]);
-add('resume-invalid','/app/practice?brokenDraft=1');
+add('reading-metadata','/app/questions/reading/reading-1/edit');
+add('unreadable-draft-fresh','/app/practice?brokenDraft=1');
 add('dark-result','/app/practice?run=1&tasks=meaning&result=1&scheme=dark');
 add('dark-room','/app/rooms/K7M2QX?scheme=dark');
 add('dark-settings','/app/me?nav=look&scheme=dark');

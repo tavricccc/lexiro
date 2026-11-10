@@ -65,6 +65,7 @@ describe("shared accessible states", () => {
   it("shows the empty-state title without helper text", () => {
     render(
       <EmptyState
+        action={<button>新增單字集</button>}
         title="尚無單字"
         description="先建立單字集"
         headword="hello"

@@ -43,13 +43,13 @@ describe("practice setup", () => {
         tasks={["meaning"]}
       />,
     );
-    expect(screen.getByRole("switch", { name: /英選中/ })).toBeChecked();
+    expect(screen.getByRole("button", { name: /英選中/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "開始這 4 題" })).toBeVisible();
     expect(screen.queryByText("今天想做哪一種？")).toBeNull();
     expect(screen.queryByText("步驟 1 / 1")).toBeNull();
   });
 
-  it("offers the whole available question range and starts from the same screen", () => {
+  it("changes the question count with presets and starts with the available count", () => {
     const onAmountChange = vi.fn();
     const props = {
       amount: 10,
@@ -78,20 +78,13 @@ describe("practice setup", () => {
       trackPreset: "questions" as const,
     };
     const { rerender } = render(<PracticeSetup {...props} />);
-    expect(screen.getByRole("tab", { name: "10" })).toHaveAttribute(
+    expect(screen.getByRole("button", { name: "10" })).toHaveAttribute(
       "aria-selected",
       "true",
     );
     expect(screen.getByRole("button", { name: "開始這 10 題" })).toBeVisible();
-    fireEvent.mouseDown(screen.getByRole("tab", { name: "20" }));
+    fireEvent.click(screen.getByRole("button", { name: "20" }));
     expect(onAmountChange).toHaveBeenCalledWith(20);
-
-    fireEvent.mouseDown(screen.getByRole("tab", { name: "自訂" }));
-    const slider = screen.getByRole("slider", { name: "題數" });
-    expect(slider).toHaveAttribute("min", "1");
-    expect(slider).toHaveAttribute("max", "47");
-    fireEvent.change(slider, { target: { value: "46" } });
-    expect(onAmountChange).toHaveBeenCalledWith(46);
 
     rerender(
       <PracticeSetup
@@ -102,11 +95,6 @@ describe("practice setup", () => {
         queueLength={3}
       />,
     );
-    expect(screen.getByRole("slider", { name: "題數" })).toHaveAttribute(
-      "max",
-      "3",
-    );
-    expect(screen.getByRole("slider", { name: "題數" })).toHaveValue("3");
     expect(screen.getByRole("button", { name: "開始這 3 題" })).toBeVisible();
   });
 });

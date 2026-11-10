@@ -16,7 +16,7 @@ export function LoadingState({ rows = 4 }: { rows?: number }) {
  * `filtered` variant is for a search or filter that matched nothing, where the
  * fix is to change the query, not to create anything.
  */
-export function EmptyState({ action, title, variant = "empty" }: { action?: ReactNode; description: string; headword?: string; pos?: string; secondaryAction?: ReactNode; title: string; variant?: "empty" | "filtered" }) {
+export function EmptyState({ action, title, variant = "empty" }: { action?: ReactNode; description?: string; headword?: string; pos?: string; secondaryAction?: ReactNode; title: string; variant?: "empty" | "filtered" }) {
   return <section className="empty" role="status"><img src="/illustrations/open-doodles-reading.svg" alt="" /><h2 className="t-section">{title}</h2>{action ?? <Link className="btn btn-primary" href={variant === "filtered" ? "/app/library" : "/app/sets/new"}>{t(variant === "filtered" ? "redesign.library" : "library.newSet")}</Link>}</section>;
 }
 
