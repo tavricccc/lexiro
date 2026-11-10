@@ -1,3 +1,7 @@
+import { useLibraryStore } from "@/stores/library-store";
+import { useLearningStore } from "@/stores/learning-store";
+import { familiarity } from "@/src/lib/learning-record";
+import { Dial, SetGlyph } from "@/components/redesign/primitives";
 import Link from "@/components/ui/app-link";
 
 import { Button } from "@/components/ui/button";
@@ -38,7 +42,7 @@ export function FolderRow({
       <Icons.folder
         aria-hidden
         className="size-[1.0625rem] shrink-0 text-brand"
-        weight="fill"
+        weight="regular"
       />
       <span className="min-w-0 truncate text-base font-semibold">{name}</span>
       <span className="font-latin text-base font-bold tabular-nums text-muted-foreground">
@@ -56,8 +60,6 @@ export function FolderRow({
 export function SetRow({
   id,
   name,
-  questionCount,
-  senseCount,
   returnTo,
   actions,
 }: SetRowMetrics & {
@@ -66,45 +68,35 @@ export function SetRow({
   returnTo?: string;
   actions?: MenuAction[];
 }) {
-  const latin = /^[\x20-\x7e]+$/.test(name);
+  const library = useLibraryStore((store) => store.state);
+  const record = useLearningStore((store) => store.record);
+  const entry = library.sets.find((set) => set.id === id);
+  const value = familiarity(
+    record,
+    (library.memberships[id] ?? []).flatMap((m) => m.senseIds),
+  );
   const row = (
     <Link
-      className="t-row [-webkit-touch-callout:none] flex min-h-[5.25rem] items-center gap-4 rounded-[var(--radius-card)] bg-card [--row-bleed:0px] [--row-radius:var(--radius-card)] py-4 pl-5 pr-[1.125rem] shadow-[0_6px_18px_rgb(0_0_0/4%)] transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+      className={`tile set hue-${entry?.hue ?? "mint"}`}
       href={
         returnTo ? withReturnTo(`/app/sets/${id}`, returnTo) : `/app/sets/${id}`
       }
     >
-      <span className="grid min-w-0 flex-1 gap-1">
-        <span
-          className={
-            latin
-              ? "line-clamp-2 font-latin text-[1.375rem] font-extrabold leading-[1.2] tracking-[-0.02em]"
-              : "line-clamp-2 text-xl font-extrabold leading-[1.3]"
-          }
-        >
-          {name}
+      <SetGlyph set={entry ?? {}} />
+      <div className="name">{name}</div>
+      <div className="meta">
+        <span className="latin muted">
+          {entry?.createdAt.slice(0, 10).replaceAll("-", "/")}
         </span>
-        <span className="type-hint text-muted-foreground">
-          {questionCount
-            ? t("library.questionCount", { count: questionCount })
-            : t("library.noQuestions")}
-        </span>
-      </span>
-      <span className="grid justify-items-end">
-        <span className="font-latin text-[2.125rem] font-extrabold leading-9 tracking-[-0.03em] text-brand tabular-nums">
-          {senseCount}
-        </span>
-        <span className="type-hint text-muted-foreground">
-          {t("library.senseUnit")}
-        </span>
-      </span>
+        <Dial value={value} />
+      </div>
     </Link>
   );
   if (!actions) return row;
   return (
-    <div className="group relative">
+    <div className="set-card-host">
       <ContextMenu actions={actions}>{row}</ContextMenu>
-      <div className="absolute right-2 top-2 opacity-0 transition-opacity focus-within:opacity-100 group-hover:opacity-100 [@media(hover:none)]:hidden">
+      <div className="set-menu">
         <Menu
           actions={actions}
           label={t("library.setActions", { name })}

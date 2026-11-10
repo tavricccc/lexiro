@@ -108,9 +108,7 @@ export function LibraryPage({
           ? !scope || scope.has(entry.folderId)
           : currentFolder
             ? entry.folderId === currentFolder.id
-            : !entry.folderId ||
-              entry.folderId === ALL_FOLDER_ID ||
-              entry.folderId === UNCATEGORIZED_FOLDER_ID;
+            : true;
         if (!inLocation) return false;
         if (!needle) return true;
         if (entry.setName.toLocaleLowerCase().includes(needle)) return true;
@@ -303,7 +301,7 @@ export function LibraryPage({
                       />
                     </div>
                   ) : (
-                    <StaggerList className="grid gap-2">
+                    <StaggerList className="library-set-grid">
                       {sets.map((entry) => (
                         <StaggerItem key={entry.id}>
                           <SetRow

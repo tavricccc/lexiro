@@ -1,4 +1,8 @@
 export const zhTW = {
+  redesign: {
+    today: "今天", library: "我的單字", progress: "進度", rooms: "對戰", settings: "設定",
+    dailyGoal: "今日目標", dayUnit: "天連續", reviewUnit: "個要再看", continue: "接續上次", recent: "接著練", all: "全部", ways: "換個方式", random: "隨機一個字", friends: "找朋友對戰", weekly: "本週正確率", practise: "開始練習", review: "練這些", heat: "每天的練習", kinds: "各題型正確率", distribution: "單字熟悉度", mostMissed: "最常答錯", known: "已熟悉", empty: "先加入一組單字", account: "帳號", sync: "同步", study: "學習", appearance: "外觀", agents: "AI 助理", data: "資料", about: "關於", goal: "每日目標", close: "關閉", colour: "顏色", icon: "圖示", records: "答題紀錄", correct: "答對", answers: "次", next: "下一題", wrong: "要再看", nearly: "快了", unpractised: "沒練過", questions: "用到這個字的題目", version: "版本", words: "單字", familiarity: "熟悉度", rename: "重新命名", add: "新增", newFolder: "新增資料夾", import: "匯入單字集", sort: "排序", name: "名稱", save: "儲存", cancel: "取消", theme: "主題", light: "淺色", dark: "深色", system: "系統", oneSense: "每個單字只考一個詞義", signOut: "登出", deleteAccount: "刪除帳號", syncNow: "立即同步", synced: "已同步", cloud: "雲端同步", signIn: "登入", deleteConfirm: "刪除後無法復原。", titleSetup: "練什麼", task: "題型", scope: "範圍", amount: "題數", countUnit: "題", noRecords: "尚無紀錄", result: "練習結果", accuracy: "正確率", home: "回到今天", retry: "重做錯題", share: "分享", leave: "離開", newRoom: "開新房間", joinRoom: "加入房間", join: "加入", roomCode: "房號", players: "玩家", host: "房主", waiting: "等待加入", startDuel: "開始對戰", finished: "對戰結果", admin: "管理", copy: "複製", authorized: "已授權應用程式", disconnect: "解除", authorise: "允許連線", appAuth: "登入 Lexiro App", offline: "離線", notFound: "找不到頁面",
+  },
   agent: {
     copy: "複製連結",
     copied: "已複製",

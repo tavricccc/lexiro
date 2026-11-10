@@ -1,3 +1,5 @@
+import { SetAppearancePicker } from "@/components/redesign/set-appearance-picker";
+import type { LibrarySet } from "@/types";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useState } from "react";
 
@@ -26,6 +28,8 @@ export function SetMetadata({ setId }: { setId: string }) {
       setId={setId}
       revision={current.updatedAt}
       initial={{
+        hue: current.hue ?? "mint",
+        icon: current.icon ?? "books",
         name: current.setName,
         folder: current.folderId || UNCATEGORIZED_FOLDER_ID,
       }}
@@ -40,7 +44,7 @@ function SetMetadataFlow({
 }: {
   setId: string;
   revision: string;
-  initial: { name: string; folder: string };
+  initial: { name: string; folder: string; hue: LibrarySet["hue"]; icon: LibrarySet["icon"] };
 }) {
   const router = useRouter();
   const uid = useCloudStore((store) => store.user?.uid);
@@ -49,7 +53,7 @@ function SetMetadataFlow({
     `lexiro:flow-draft:v1:${uid ?? "local"}:set-metadata:${setId}:${revision}`,
     initial,
   );
-  const { name, folder } = saved.draft;
+  const { name, folder, hue, icon } = saved.draft;
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -79,6 +83,7 @@ function SetMetadataFlow({
       await store.saveSet({
         id: setId,
         setName: name,
+        hue, icon,
         folderId: folder,
         words: setWordDrafts(store.state, setId),
       });
@@ -133,6 +138,7 @@ function SetMetadataFlow({
           value={folder}
         />
       </ListSection>
+      <SetAppearancePicker hue={hue} icon={icon} onChange={value => saved.update(value)} />
       <StepActions>
         {error && (
           <p className="text-sm text-destructive" role="alert">

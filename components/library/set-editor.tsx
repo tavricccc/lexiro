@@ -1,3 +1,5 @@
+import { SetAppearancePicker } from "@/components/redesign/set-appearance-picker";
+import type { LibrarySet } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
 import { useEffect, useRef, useState } from "react";
@@ -34,6 +36,8 @@ import { createUniqueSetName } from "@/src/lib/set-name";
 
 interface SetEditorDraft {
   form: SetFormValues;
+  hue?: LibrarySet["hue"];
+  icon?: LibrarySet["icon"];
 }
 
 /** Fill in a new set by hand. */
@@ -110,6 +114,7 @@ function SetEditorFlow({
     async (values) => {
       try {
         const saved = await saveSet({
+        hue: draft.hue, icon: draft.icon,
           folderId,
           setName: createUniqueSetName(
             values.setName,
@@ -208,6 +213,7 @@ function SetEditorFlow({
 
       <div>
         {metadataFields}
+        <SetAppearancePicker hue={draft.hue} icon={draft.icon} onChange={update} />
 
         <div className="section-gap space-y-7">
           {fields.fields.map((field, index) => (

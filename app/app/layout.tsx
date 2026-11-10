@@ -9,11 +9,13 @@ import { LibraryHydrator } from "@/components/library/library-hydrator";
  */
 export function WorkspaceLayout() {
   return (
-    <AppShell>
+    <>
       <LibraryHydrator />
-      <CloudGate>
-        <AppViews />
-      </CloudGate>
-    </AppShell>
+      <AppShell>
+        <CloudGate>
+          <AppViews />
+        </CloudGate>
+      </AppShell>
+    </>
   );
 }

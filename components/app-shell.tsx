@@ -1,99 +1,135 @@
-import * as React from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useLocation } from "react-router";
-import { t, type TranslationKey } from "@/lib/i18n";
 import {
-  commitRouteHistory,
-  markPopstateRouteDirection,
-  adoptedParent,
-  isRootRoute,
-  PRIMARY_DESTINATIONS,
-  type PrimaryDestination,
-} from "@/lib/navigation-memory";
-import { RouteSurface } from "@/components/motion/route-surface";
-import { LiquidNav, type LiquidNavItem } from "@/components/liquid-nav";
-import { Icons } from "@/components/ui/icons";
-import { SyncIndicator } from "@/components/sync-indicator";
+  Books,
+  ChartDonut,
+  Lightning,
+  SunHorizon,
+} from "@phosphor-icons/react";
+import { useTheme } from "next-themes";
+import Link from "@/components/ui/app-link";
+import { useAppRouter } from "@/lib/use-app-router";
+import { commitRouteHistory } from "@/lib/navigation-memory";
+import { t } from "@/lib/i18n";
+import { useCloudStore } from "@/stores/cloud-store";
 import { useUIStore } from "@/stores/ui-store";
-
-// The order and the routes belong to navigation-memory; this is only how each
-// destination is spelled and drawn.
-const presentation: Record<
-  PrimaryDestination,
-  { icon: typeof Icons.practice; label: TranslationKey }
-> = {
-  "/app": { icon: Icons.today, label: "nav.study" },
-  "/app/library": { icon: Icons.library, label: "nav.library" },
-  "/app/rooms": { icon: Icons.rooms, label: "nav.rooms" },
-  "/app/me": { icon: Icons.account, label: "nav.me" },
-};
-
-export function AppShell({ children }: { children: React.ReactNode }) {
-  const { pathname } = useLocation();
-  const practiceActive = useUIStore((store) => store.practiceActive);
-  const showMobileNavigation = !practiceActive && isRootRoute(pathname);
-  const navigationPathname = adoptedParent(pathname) ?? pathname;
-
-  React.useEffect(() => commitRouteHistory(pathname), [pathname]);
-
-  React.useEffect(() => {
-    const markHistoryTraversal = (event: PopStateEvent) =>
-      markPopstateRouteDirection(event.state, window.location.pathname);
-    window.addEventListener("popstate", markHistoryTraversal);
-    return () => window.removeEventListener("popstate", markHistoryTraversal);
-  }, []);
-
-  const navItems = React.useMemo<LiquidNavItem[]>(
-    () =>
-      PRIMARY_DESTINATIONS.map((destination) => {
-        const { icon: Icon, label } = presentation[destination.href];
-        return {
-          ...destination,
-          icon: <Icon className="size-[1.125rem]" />,
-          label: t(label),
-        };
-      }),
-    [],
-  );
-
+import { SettingsDialog } from "@/components/redesign/settings-dialog";
+import { FocusCanvas } from "@/components/home/focus-canvas";
+const destinations = [
+  ["/app", "redesign.today", SunHorizon],
+  ["/app/library", "redesign.library", Books],
+  ["/app/progress", "redesign.progress", ChartDonut],
+  ["/app/rooms", "redesign.rooms", Lightning],
+] as const;
+export function AppShell({ children }: { children: ReactNode }) {
+  const { pathname, search } = useLocation();
+  const router = useAppRouter();
+  const { resolvedTheme } = useTheme();
+  const active = useUIStore((s) => s.practiceActive);
+  const user = useCloudStore((s) => s.user);
+  const [settings, setSettings] = useState(false);
+  const legacySettings =
+    pathname === "/app/me" ||
+    pathname.startsWith("/app/me/") ||
+    pathname === "/app/sync";
+  const query = new URLSearchParams(search);
+  const group =
+    query.get("nav") ??
+    (pathname.endsWith("/agents")
+      ? "agent"
+      : pathname.endsWith("/data")
+        ? "data"
+        : pathname.endsWith("/preferences")
+          ? "study"
+          : pathname.endsWith("/admin")
+            ? "admin"
+            : "account");
+  const focus =
+    active ||
+    pathname === "/app/result" ||
+    (pathname === "/app/practice" && query.get("run") === "1") ||
+    (pathname.startsWith("/app/rooms/") && query.get("state") === "game");
+  const current = /^\/app\/(sets|questions|shared)/.test(pathname)
+    ? "/app/library"
+    : pathname.startsWith("/app/rooms")
+      ? "/app/rooms"
+      : pathname === "/app/progress"
+        ? pathname
+        : "/app";
+  const displayName = user?.displayName || t("me.guestName");
+  useEffect(() => {
+    commitRouteHistory(pathname);
+  }, [pathname]);
+  useEffect(() => {
+    document.documentElement.dataset.theme = "pine";
+    document.documentElement.dataset.scheme =
+      new URLSearchParams(search).get("scheme") ?? resolvedTheme ?? "light";
+  }, [resolvedTheme, search]);
+  useEffect(() => {
+    document.body.toggleAttribute("data-focus", focus);
+    return () => document.body.removeAttribute("data-focus");
+  }, [focus]);
+  const close = () => {
+    setSettings(false);
+    if (legacySettings || query.get("sheet") === "me") router.replace("/app");
+  };
   return (
-    <div className="app-shell min-h-[100dvh]" data-focus={practiceActive}>
-      <aside className="workspace-sidebar hidden md:flex">
-        <div className="workspace-brand">{t("app.name")}</div>
-        <LiquidNav
-          className="workspace-sidebar-links"
-          items={navItems}
-          pathname={navigationPathname}
-          vertical
-        />
-        <div className="workspace-sidebar-status">
-          <SyncIndicator />
+    <div className="app">
+      <nav className="side" aria-label={t("redesign.settings")}>
+        <div className="brand">
+          <img src="/icons/lexiro.png" alt="" />
+          Lexiro
         </div>
-      </aside>
-
-      <div className="workspace-body min-w-0">
-        <main
-          className={`app-viewport pt-[max(0.75rem,var(--safe-top))] md:pb-6 md:pt-4 ${
-            showMobileNavigation
-              ? "pb-[calc(var(--mobile-nav-height)+var(--mobile-nav-bottom-gap)+1.5rem)]"
-              : "pb-[max(2rem,var(--safe-bottom))]"
-          }`}
+        {destinations.map(([href, label, Icon]) => (
+          <Link
+            key={href}
+            className="nav"
+            href={href}
+            aria-current={current === href ? "page" : undefined}
+          >
+            <Icon weight="regular" />
+            {t(label)}
+          </Link>
+        ))}
+        <button
+          className="me-btn"
+          onClick={() => setSettings(true)}
+          aria-label={t("redesign.settings")}
         >
-          <RouteSurface>{children}</RouteSurface>
-        </main>
-
-        <div
-          aria-hidden={!showMobileNavigation}
-          className="app-mobile-nav fixed z-30 mx-auto max-w-md rounded-full px-3 py-1.5 md:hidden"
-          data-visible={showMobileNavigation}
-          inert={!showMobileNavigation}
-        >
-          <LiquidNav
-            className="mx-auto h-12"
-            items={navItems}
-            pathname={navigationPathname}
-          />
-        </div>
-      </div>
+          <span className="avatar">{displayName[0]}</span>
+          <b className="grow cut">{displayName}</b>
+          <span className="sync-dot" />
+        </button>
+      </nav>
+      <main className="main">
+        {legacySettings ? (
+          <>
+            <header className="bar-top">
+              <h1 className="t-page">{t("redesign.today")}</h1>
+            </header>
+            <FocusCanvas />
+          </>
+        ) : (
+          children
+        )}
+      </main>
+      <nav className="dock frost" aria-label={t("redesign.library")}>
+        {destinations.map(([href, label, Icon]) => (
+          <Link
+            key={href}
+            href={href}
+            aria-label={t(label)}
+            aria-current={current === href ? "page" : undefined}
+          >
+            <Icon weight="regular" />
+          </Link>
+        ))}
+      </nav>
+      <SettingsDialog
+        open={settings || legacySettings || query.get("sheet") === "me"}
+        onClose={close}
+        initialGroup={group}
+      />
     </div>
   );
 }
