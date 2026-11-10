@@ -372,3 +372,35 @@ a.qrow, a.w { color: inherit; text-decoration: none; }
 .input::placeholder { color: var(--ink-faint); }
 .settings { position: relative; } .settings-close { position: absolute; z-index: 2; top: var(--sp-4); right: var(--sp-4); }
 @media (min-width: 60rem) { .settings-body { padding-top: var(--sp-12); } }
+
+/* ---- House rules: flat fills, no glow, no drawn rings. A state is a fill, never an outline. ---- */
+:root { --wrong: #d6382c; --right: #1f9d63; }
+:root[data-scheme="dark"] { --wrong: #ff6b5e; --right: #4fd08c; }
+.btn-primary, .btn-mint { box-shadow: none; }
+.chip-lit, .chip[aria-pressed="true"] { background: var(--solid); color: var(--on-solid); box-shadow: none; }
+.dock a { width: 64px; height: 52px; place-items: center; padding: 0; }
+.dock a i { font-size: 26px; }
+.sicon { display: grid; place-items: center; width: 24px; color: var(--ink-muted); } .sicon i { font-size: 21px; }
+.opt[aria-checked="true"] { background: var(--solid); color: var(--on-solid); box-shadow: var(--lift-2); }
+.opt[aria-checked="true"] kbd { background: rgb(255 255 255 / 16%); color: inherit; }
+.opt[data-state="right"] { background: color-mix(in oklab, var(--right) 20%, var(--surface)); color: var(--ink); box-shadow: none; }
+.opt[data-state="right"] kbd { background: var(--right); color: #fff; }
+.opt[data-state="wrong"] { background: color-mix(in oklab, var(--wrong) 16%, var(--surface)); color: var(--ink); box-shadow: none; }
+.opt[data-state="wrong"] kbd { background: var(--wrong); color: #fff; }
+.verdict.is-wrong { background: color-mix(in oklab, var(--wrong) 12%, var(--surface)); color: color-mix(in oklab, var(--wrong) 55%, var(--ink)); }
+.verdict.is-right { background: color-mix(in oklab, var(--right) 14%, var(--surface)); color: color-mix(in oklab, var(--right) 50%, var(--ink)); }
+.steps i.ok { background: var(--right); } .steps i.no { background: var(--wrong); }
+.mode[aria-pressed="true"] { background: var(--solid); color: var(--on-solid); box-shadow: var(--lift-2); }
+.mode[aria-pressed="true"] span { color: var(--on-solid-muted); }
+.week .now b { box-shadow: none; background: color-mix(in oklab, var(--hue) 42%, transparent); }
+.code input:focus { box-shadow: var(--lift-1), 0 0 0 var(--layout-focus-ring) var(--accent-soft); }
+.player.open { box-shadow: none; background: var(--fill); }
+.dashed { box-shadow: none; background: var(--fill); }
+.dashed:hover { background: var(--fill-hover); }
+/* Phone: sets sit two to a row, like an album grid. */
+@media (max-width: 39.99rem) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+  .grid .set { padding: var(--sp-4); gap: var(--sp-3); }
+  .grid .set .name { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.6em; }
+  .grid > .dashed { min-height: 0 !important; }
+}

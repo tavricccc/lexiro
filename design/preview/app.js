@@ -366,32 +366,32 @@ const sheets = {
         <section class="group" data-group="account" data-on>
           <div class="paper account"><span class="avatar" style="--av:56px">T</span><div class="grow"><b style="font-size:1.125rem">Tavric</b><p class="muted t-sub cut">tavric@example.com</p></div></div>
           <div class="paper">
-            <div class="srow"><span class="badge badge-mint">${icon("cloud-check", "fill")}</span>雲端同步<span class="v"><span class="sync-dot"></span>已同步</span></div>
-            <button class="srow"><span class="badge badge-sky">${icon("arrows-clockwise", "bold")}</span>立即同步</button>
+            <div class="srow"><span class="sicon">${icon("cloud-check", "fill")}</span>雲端同步<span class="v"><span class="sync-dot"></span>已同步</span></div>
+            <button class="srow"><span class="sicon">${icon("arrows-clockwise", "bold")}</span>立即同步</button>
           </div>
-          <div class="paper"><button class="srow">登出</button><button class="srow" style="color:var(--danger)">刪除帳號</button></div>
+          <div class="paper"><button class="srow">登出</button><button class="srow" style="color:var(--wrong)">刪除帳號</button></div>
         </section>
         <section class="group" data-group="study"><h3>學習</h3>
           <div class="paper">
-            <div class="srow"><span class="badge badge-amber">${icon("target", "fill")}</span>每日目標<span class="v"><span class="tabs">${each([10, 20, 30], (n) => `<button class="latin" style="height:30px;padding-inline:12px" aria-selected="${n === 20}">${n}</button>`)}</span></span></div>
-            <div class="srow"><span class="badge badge-rose">${icon("bell-ringing", "fill")}</span>每日提醒<button class="switch" role="switch" aria-checked="true" aria-label="每日提醒" style="margin-inline-start:auto"></button></div>
-            <div class="srow"><span class="badge badge-violet">${icon("stack", "fill")}</span>每個單字只考一個詞義<button class="switch" role="switch" aria-checked="true" aria-label="每個單字只考一個詞義" style="margin-inline-start:auto"></button></div>
+            <div class="srow"><span class="sicon">${icon("target", "fill")}</span>每日目標<span class="v"><span class="tabs">${each([10, 20, 30], (n) => `<button class="latin" style="height:30px;padding-inline:12px" aria-selected="${n === 20}">${n}</button>`)}</span></span></div>
+            <div class="srow"><span class="sicon">${icon("bell-ringing", "fill")}</span>每日提醒<button class="switch" role="switch" aria-checked="true" aria-label="每日提醒" style="margin-inline-start:auto"></button></div>
+            <div class="srow"><span class="sicon">${icon("stack", "fill")}</span>每個單字只考一個詞義<button class="switch" role="switch" aria-checked="true" aria-label="每個單字只考一個詞義" style="margin-inline-start:auto"></button></div>
           </div>
         </section>
         <section class="group" data-group="look"><h3>外觀</h3>
-          <div class="paper"><div class="srow"><span class="badge badge-ink">${icon("moon", "fill")}</span>主題<span class="v"><span class="tabs" id="scheme">${each([["system", "系統"], ["light", "淺色"], ["dark", "深色"]], ([v, n]) => `<button style="height:30px;padding-inline:12px" data-scheme-pick="${v}" aria-selected="${v === "light"}">${n}</button>`)}</span></span></div></div>
+          <div class="paper"><div class="srow"><span class="sicon">${icon("moon", "fill")}</span>主題<span class="v"><span class="tabs" id="scheme">${each([["system", "系統"], ["light", "淺色"], ["dark", "深色"]], ([v, n]) => `<button style="height:30px;padding-inline:12px" data-scheme-pick="${v}" aria-selected="${v === "light"}">${n}</button>`)}</span></span></div></div>
         </section>
         <section class="group" data-group="agent"><h3>AI 助理</h3>
           <div class="paper">
-            <div class="srow"><span class="badge badge-violet">${icon("plugs-connected", "fill")}</span><span class="grow cut latin">mcp.lexiro.app/sse</span><button class="btn btn-compact btn-secondary">${icon("copy", "fill")}複製</button></div>
-            <div class="srow"><span class="badge badge-ink">${icon("open-ai-logo", "fill")}</span>ChatGPT<button class="btn btn-compact btn-ghost" style="margin-inline-start:auto;color:var(--danger)">解除</button></div>
+            <div class="srow"><span class="sicon">${icon("plugs-connected", "fill")}</span><span class="grow cut latin">mcp.lexiro.app/sse</span><button class="btn btn-compact btn-secondary">${icon("copy", "fill")}複製</button></div>
+            <div class="srow"><span class="sicon">${icon("open-ai-logo", "fill")}</span>ChatGPT<button class="btn btn-compact btn-ghost" style="margin-inline-start:auto;color:var(--danger)">解除</button></div>
           </div>
           <p>把網址貼到 ChatGPT 或 Codex，就能請它幫你整理單字和出題。</p>
         </section>
         <section class="group" data-group="data"><h3>資料</h3>
           <div class="paper">
-            <button class="srow"><span class="badge badge-sky">${icon("export", "fill")}</span>匯出完整備份<span class="v">${icon("caret-right", "bold")}</span></button>
-            <button class="srow"><span class="badge badge-mint">${icon("download-simple", "bold")}</span>匯入備份<span class="v">${icon("caret-right", "bold")}</span></button>
+            <button class="srow"><span class="sicon">${icon("export", "fill")}</span>匯出完整備份<span class="v">${icon("caret-right", "bold")}</span></button>
+            <button class="srow"><span class="sicon">${icon("download-simple", "bold")}</span>匯入備份<span class="v">${icon("caret-right", "bold")}</span></button>
           </div>
         </section>
         <section class="group" data-group="about"><h3>關於</h3>
@@ -484,7 +484,7 @@ document.addEventListener("click", (event) => {
     option.querySelector(".why")?.removeAttribute("hidden");
   });
   document.getElementById("verdict").innerHTML = `
-    <div class="verdict tile-hue hue-${right ? "mint" : "rose"}">
+    <div class="verdict ${right ? "is-right" : "is-wrong"}">
       <h2>${icon(right ? "check-circle" : "x-circle", "fill")}${right ? "答對了" : "正確答案是 無所不在的"}</h2>
       <p class="latin" style="font-weight:500;font-size:1.0625rem">Smartphones have become <b>ubiquitous</b> in modern life.</p>
       <p class="muted t-sub">智慧型手機在現代生活中已經無所不在。</p>
