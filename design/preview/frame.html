@@ -1,0 +1,12 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>phone frame</title>
+<style>html,body{margin:0;background:#888}iframe{display:block;border:0;width:390px;height:844px}</style>
+<iframe id="f"></iframe>
+<script>
+  // Headless browsers refuse windows narrower than about 500px, so a phone is shown in a frame of its width.
+  const q = new URLSearchParams(location.search);
+  const f = document.getElementById("f");
+  f.style.width = (q.get("w") ?? 390) + "px"; f.style.height = (q.get("h") ?? 844) + "px";
+  f.src = (q.get("src") ?? "index.html") + location.hash;
+</script>

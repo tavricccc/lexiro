@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="pine" data-scheme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lexiro 設計預覽</title>
+<link rel="stylesheet" href="strata/tokens.css">
+<link rel="stylesheet" href="strata/components.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="lexiro.css">
+</head>
+<body>
+<div class="app">
+  <nav class="side" aria-label="主要導覽">
+    <div class="brand"><img src="/public/icons/lexiro.png" alt="">Lexiro</div>
+    <a class="nav" href="#/home"><i class="ph-fill ph-sun-horizon"></i>今天</a>
+    <a class="nav" href="#/library"><i class="ph-fill ph-books"></i>我的單字</a>
+    <a class="nav" href="#/progress"><i class="ph-fill ph-chart-donut"></i>進度</a>
+    <a class="nav" href="#/rooms"><i class="ph-fill ph-lightning"></i>對戰</a>
+    <button class="me-btn" data-open="me">
+      <span class="avatar">T</span>
+      <span class="grow"><b class="cut" style="display:block;font-size:var(--t-row-size)">Tavric</b></span>
+      <span class="sync-dot" title="已同步"></span>
+    </button>
+  </nav>
+  <main class="main" id="view"></main>
+  <nav class="dock frost" aria-label="主要導覽">
+    <a href="#/home"><i class="ph-fill ph-sun-horizon"></i>今天</a>
+    <a href="#/library"><i class="ph-fill ph-books"></i>單字</a>
+    <a href="#/progress"><i class="ph-fill ph-chart-donut"></i>進度</a>
+    <a href="#/rooms"><i class="ph-fill ph-lightning"></i>對戰</a>
+  </nav>
+</div>
+<div id="layer"></div>
+<script src="app.js"></script>
+</body>
+</html>
