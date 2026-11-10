@@ -87,7 +87,7 @@ try{
   }
   writeFileSync('design/shots/app/audit.json',JSON.stringify(results,null,2));
  };
- for(let i=0;i<selected.length;i+=6) await Promise.all(selected.slice(i,i+6).map(runItem));
+ for(let i=0;i<selected.length;i+=3) await Promise.all(selected.slice(i,i+3).map(runItem));
 }finally{await browser.close();}
 writeFileSync('design/shots/app/manifest.json',JSON.stringify(cases.map(c=>({name:c.name,route:c.route,actions:c.actions,files:[`${c.name}-d.png`,`${c.name}-m.png`]})),null,2));
 console.log(`${results.filter(r=>r.status==='captured').length}/${results.length} captures`);

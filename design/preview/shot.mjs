@@ -16,7 +16,7 @@ export async function capture({url,out,width=1440,height=1000,actions=[],browser
     const root = framed ? page.frames().find(f=>f!==page.mainFrame()) : page;
     if(!root) throw Error('Phone frame did not load');
     await root.waitForFunction(()=>document.body.innerText.trim().length>0,{},{timeout:20000});
-    await root.evaluate(()=>document.fonts.ready);
+    await root.waitForFunction(()=>document.fonts.status === "loaded", {}, {timeout:15000});
     for(const action of actions) {
       if(action.phoneOnly && !framed) continue;
       if(action.goto) { await root.goto(action.goto, {waitUntil:"networkidle"}); continue; }
@@ -32,7 +32,7 @@ export async function capture({url,out,width=1440,height=1000,actions=[],browser
     }
     // Wait for the route's lazy chunks, IndexedDB and fonts, not a virtual clock.
     await page.waitForLoadState('networkidle');
-    await root.evaluate(()=>document.fonts.ready);
+    await root.waitForFunction(()=>document.fonts.status === "loaded", {}, {timeout:15000});
     await page.waitForTimeout(300);
     if(errors.length) throw Error(errors.join('\n'));
     mkdirSync(dirname(resolve(out)),{recursive:true});
