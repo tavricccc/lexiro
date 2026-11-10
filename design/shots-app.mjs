@@ -21,7 +21,7 @@ add('room-lobby','/app/rooms/K7M2QX'); add('room-game','/app/rooms/K7M2QX?state=
 add('room-right','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:1},{name:'確認答案'}]);
 add('room-wrong','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:0},{name:'確認答案'}]);
 add('room-finished','/app/rooms/K7M2QX?state=finished');
-for(const group of ['account','study','look','agent','data','about','admin']) add(`settings-${group}`,`/app/me?nav=${group}`,[{css:".group[data-on]",scroll:true}]);
+for(const group of ['account','study','look','agent','data','about','admin']) add(`settings-${group}`,`/app/me?nav=${group}`,[{css:".group[data-on]",scroll:true,phoneOnly:true}]);
 add('sync','/app/sync'); add('me-preferences','/app/me/preferences'); add('me-data','/app/me/data'); add('agents','/app/me/agents'); add('admin','/app/me/admin');
 add('agent-authorize','/agent/authorize?request=demo'); add('app-auth',`/app-auth?challenge=${'a'.repeat(43)}&redirect=lexiroapp%3A%2F%2Fauth`);
 add('offline','/~offline'); add('not-found','/does-not-exist'); add('app-not-found','/app/does-not-exist');
@@ -87,7 +87,7 @@ try{
   }
   writeFileSync('design/shots/app/audit.json',JSON.stringify(results,null,2));
  };
- for(let i=0;i<selected.length;i+=3) await Promise.all(selected.slice(i,i+3).map(runItem));
+ for(let i=0;i<selected.length;i+=6) await Promise.all(selected.slice(i,i+6).map(runItem));
 }finally{await browser.close();}
 writeFileSync('design/shots/app/manifest.json',JSON.stringify(cases.map(c=>({name:c.name,route:c.route,actions:c.actions,files:[`${c.name}-d.png`,`${c.name}-m.png`]})),null,2));
 console.log(`${results.filter(r=>r.status==='captured').length}/${results.length} captures`);
