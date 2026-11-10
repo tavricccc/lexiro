@@ -1,3 +1,5 @@
+import { useLibraryStore } from "@/stores/library-store";
+import { WordRow } from "@/components/redesign/primitives";
 import Link from "@/components/ui/app-link";
 import { useLearningStore } from "@/stores/learning-store";
 import { calendarDay, streak } from "@/src/lib/learning-record";
@@ -19,7 +21,9 @@ export function ResultPanel({
   onRetry,
   onRetryMarked,
   onNewRound,
+  wrongWordKeys = [],
 }: {
+  wrongWordKeys?: string[];
   correct: number;
   total: number;
   skipped: number;
@@ -35,6 +39,7 @@ export function ResultPanel({
     window.scrollTo({ left: 0, top: 0 });
   }, []);
 
+  const library = useLibraryStore(s => s.state);
   const record = useLearningStore((s) => s.record);
   const today = calendarDay(new Date());
   return (
@@ -79,6 +84,7 @@ export function ResultPanel({
           <p>{t("practice.markedLabel")}</p>
         </section>
       </div>
+      {wrongWordKeys.length > 0 && <><h2 className="t-section">{t("redesign.wrong")}</h2><div className="sheet-list">{[...new Set(wrongWordKeys)].map(key => { const word = library.words[key as keyof typeof library.words]; const set = library.sets.find(set => library.memberships[set.id]?.some(m => m.wordKey === key)); return word && set ? <WordRow key={key} word={word} setId={set.id} /> : null; })}</div></>}
       {wrongContent && (
         <Button size="lg" onClick={onRetry}>
           <Icons.retry />

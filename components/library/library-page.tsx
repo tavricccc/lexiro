@@ -65,7 +65,7 @@ export function LibraryPage({
     initialFolderId ?? ALL_FOLDER_ID,
   );
   const [deleteFolderId, setDeleteFolderId] = useState<string | null>(null);
-  const [importing, setImporting] = useState(false);
+  const [_importing, setImporting] = useState(false);
   const importInput = useRef<HTMLInputElement>(null);
 
   const setMetrics = useMemo(() => buildLibrarySetMetrics(state), [state]);

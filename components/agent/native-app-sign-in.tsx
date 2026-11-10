@@ -87,6 +87,7 @@ export function NativeAppSignIn({
   }, []);
 
   const signIn = async () => {
+    if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") { window.location.assign("/app?demo=1"); return; }
     setBusy(true);
     setError("");
     try {
@@ -125,11 +126,7 @@ export function NativeAppSignIn({
     <main className="mx-auto max-w-xl px-5 py-10 sm:py-16">
       <PageHeader
         title={t("appAuth.title")}
-        footer={
-          <p className="text-sm text-muted-foreground">
-            {t(valid ? "appAuth.description" : "appAuth.invalid")}
-          </p>
-        }
+        footer={!valid ? <p role="alert">{t("appAuth.invalid")}</p> : undefined}
       />
       {valid && (
         <Button disabled={busy} onClick={() => void signIn()}>

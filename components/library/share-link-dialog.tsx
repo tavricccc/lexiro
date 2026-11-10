@@ -80,9 +80,7 @@ export function ShareLinkDialog({
             <Dialog.Title className="type-section">
               {t("share.title")}
             </Dialog.Title>
-            <Dialog.Description className="mt-2 text-sm text-muted-foreground">
-              {t("share.description")}
-            </Dialog.Description>
+
             <div className="mt-5">
               {!user ? (
                 <SignInRequired message={t("share.signInRequired")} />
@@ -133,9 +131,7 @@ export function ShareLinkDialog({
                       {t("share.revoke")}
                     </Button>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t("share.revokeHint")}
-                  </p>
+
                 </div>
               ) : (
                 <Button

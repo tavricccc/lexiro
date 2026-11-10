@@ -246,6 +246,14 @@ export function demoLibrary(): LibraryState {
       updatedAt: timestamp,
     } as LibraryQuestion);
   }
+  for (const question of state.questions) {
+    if (question.kind !== "reading") continue;
+    question.questions.forEach((child, i) => {
+      child.wordKey = buildSetWordKey("gsat", i === 0 ? "ubiquitous" : "hinder");
+      child.senseId = state.words[child.wordKey].senses[0].id;
+    });
+    question.wordKeys = question.questions.map(child => child.wordKey);
+  }
   return state;
 }
 const fakeUser = {

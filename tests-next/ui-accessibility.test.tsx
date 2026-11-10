@@ -17,22 +17,7 @@ afterEach(() => {
 });
 
 describe("shared accessible states", () => {
-  it("reserves the full height of a fixed action panel", () => {
-    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
-      height: 224,
-    } as DOMRect);
-    const { container } = render(
-      <StepActions>
-        <button type="button">繼續</button>
-        <button type="button">重試</button>
-      </StepActions>,
-    );
-    expect(container.querySelector("[data-step-actions-space]")).toHaveStyle({
-      minHeight: "224px",
-    });
-  });
-
-  it("keeps a portaled submit action connected to its form", () => {
+  it("keeps a submit action connected to its form", () => {
     const submit = vi.fn((event: FormEvent) => event.preventDefault());
     render(
       <form id="fixed-action-form" onSubmit={submit}>

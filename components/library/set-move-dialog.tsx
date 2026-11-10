@@ -14,7 +14,7 @@ export function SetMoveDialog({
   onMove,
   onOpenChange,
   open,
-  setName,
+  setName: _setName,
 }: {
   currentFolderId: string;
   folders: VocabFolder[];
@@ -51,7 +51,7 @@ export function SetMoveDialog({
       <Dialog.Portal>
         <Dialog.Overlay className="t-overlay fixed inset-0 z-50 bg-[var(--backdrop)] backdrop-blur-[3px]" />
         <div className="pointer-events-none fixed inset-0 z-50 grid place-items-center p-4">
-          <Dialog.Content className="t-dialog surface-floating pointer-events-auto relative grid w-full max-w-md gap-5 p-6 outline-none sm:p-7">
+          <Dialog.Content aria-describedby={undefined} className="t-dialog surface-floating pointer-events-auto relative grid w-full max-w-md gap-5 p-6 outline-none sm:p-7">
             <div className="grid size-11 place-items-center rounded-md bg-brand-50 text-brand-600">
               <Icons.folder aria-hidden className="size-5" />
             </div>
@@ -59,9 +59,7 @@ export function SetMoveDialog({
               <Dialog.Title className="type-section">
                 {t("library.moveSet")}
               </Dialog.Title>
-              <Dialog.Description className="mt-2 type-lead">
-                {t("library.moveSetDescription", { name: setName })}
-              </Dialog.Description>
+
             </div>
             <SelectField
               disabled={busy}

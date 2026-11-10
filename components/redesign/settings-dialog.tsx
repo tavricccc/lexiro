@@ -59,6 +59,11 @@ export function SettingsDialog({
   useEffect(() => {
     if (open) setGroup(initialGroup);
   }, [open, initialGroup]);
+  useEffect(() => {
+    if (!open || !window.matchMedia("(max-width: 959px)").matches) return;
+    const frame = requestAnimationFrame(() => document.querySelector<HTMLElement>(".settings .group[data-on]")?.scrollIntoView({ block: "start" }));
+    return () => cancelAnimationFrame(frame);
+  }, [open, group]);
   const name = cloud.user?.displayName || t("me.guestName");
   const run = (action: () => Promise<void>) => {
     setFailure("");

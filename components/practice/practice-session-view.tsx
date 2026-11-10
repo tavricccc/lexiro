@@ -19,6 +19,7 @@ import { timing } from "@/lib/motion-timing";
  */
 export function PracticeSessionView({
   entry,
+  outcomes,
   index,
   total,
   progressRatio,
@@ -40,6 +41,7 @@ export function PracticeSessionView({
   onForward,
 }: {
   entry: PracticeEntry;
+  outcomes?: Array<boolean | null>;
   /** Position of the entry on screen; behind the frontier while reviewing. */
   index: number;
   total: number;
@@ -80,7 +82,7 @@ export function PracticeSessionView({
           {Array.from({ length: total }, (_, n) => (
             <i
               key={n}
-              className={n < index ? "ok" : n === index ? "now" : ""}
+              className={n < index ? outcomes?.[n] === false ? "no" : "ok" : n === index ? "now" : ""}
             />
           ))}
         </div>
