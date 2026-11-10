@@ -1,0 +1,59 @@
+import { chromium } from '@playwright/test';
+import { createHash } from 'node:crypto';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { capture } from './preview/shot.mjs';
+const base=process.env.APP_URL??'http://127.0.0.1:5173';
+const frame=process.env.PREVIEW_URL??'http://localhost:4174/design/preview/frame.html';
+const word='word-'+createHash('sha256').update(JSON.stringify({setId:'gsat',word:'resilient'})).digest('hex').slice(0,32);
+const cases=[];
+const add=(name,route,actions=[])=>cases.push({name,route,actions});
+add('home','/app'); add('library','/app/library'); add('set','/app/sets/gsat'); add('set-questions','/app/sets/gsat?tab=questions'); add('set-tools','/app/sets/gsat?tab=tools');
+add('word',`/app/sets/gsat/words/${word}`); add('word-edit',`/app/sets/gsat/words/${word}/edit`);
+add('new-set','/app/sets/new'); add('set-settings','/app/sets/gsat/settings'); add('set-add','/app/sets/gsat/add');
+add('shared','/app/shared/demo-share'); add('question-edit','/app/questions/vocab-1/edit'); add('reading-edit','/app/questions/reading/reading-1/edit');
+for(const kind of ['meaning','vocabulary','cloze','wordBank','discourse','reading']){
+ for(const answer of ['before','right','wrong']) add(`practice-${kind}-${answer}`,`/app/practice?run=1&tasks=${kind}&set=gsat&amount=10${answer==='before'?'':`&answer=${answer}`}`);
+}
+add('question-try','/app/sets/gsat/questions/vocab-1'); add('reading-try','/app/sets/gsat/questions/reading-1');
+add('practice-setup','/app?sheet=setup'); add('practice-setup-route','/app/practice');
+add('result','/app/practice?run=1&tasks=meaning&amount=10&result=1'); add('progress','/app/progress'); add('rooms','/app/rooms'); add('room-setup','/app/rooms/new');
+add('room-lobby','/app/rooms/K7M2QX'); add('room-game','/app/rooms/K7M2QX?state=game');
+add('room-right','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:1},{name:'確認答案'}]);
+add('room-wrong','/app/rooms/K7M2QX?state=game',[{css:'.opt',index:0},{name:'確認答案'}]);
+add('room-finished','/app/rooms/K7M2QX?state=finished');
+for(const group of ['account','study','look','agent','data','about','admin']) add(`settings-${group}`,`/app/me?nav=${group}`);
+add('sync','/app/sync'); add('me-preferences','/app/me/preferences'); add('me-data','/app/me/data'); add('agents','/app/me/agents'); add('admin','/app/me/admin');
+add('agent-authorize','/agent/authorize?request=demo'); add('app-auth',`/app-auth?challenge=${'a'.repeat(43)}&redirect=lexiroapp%3A%2F%2Fauth`);
+add('offline','/~offline'); add('not-found','/does-not-exist'); add('app-not-found','/app/does-not-exist');
+add('empty-home','/app?empty=1'); add('empty-library','/app/library?empty=1'); add('empty-progress','/app/progress?empty=1'); add('search-empty','/app/library?q=does-not-exist');
+add('menu-add','/app/library',[{name:'新增'}]);
+add('menu-set','/app/sets/gsat',[{name:'更多動作'}]);
+add('menu-set-context','/app/library',[{css:'.set-card-host .tile',button:'right'}]);
+add('folder-create','/app/library',[{css:'[data-create-folder]'}]);
+add('folder-menu','/app/library?folderId=gsat-folder',[{name:'更多動作'}]);
+add('set-move','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'移動單字集'}]);
+add('set-share','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'分享連結'}]);
+add('confirm-delete-set','/app/sets/gsat',[{name:'更多動作'},{role:'menuitem',name:'刪除單字集'}]);
+add('confirm-delete-account','/app/me',[{name:'刪除帳號'}]);
+add('confirm-end-room','/app/rooms/K7M2QX',[{name:'結束對戰'}]);
+add('set-picker-colour','/app/sets/gsat/settings',[{name:'violet'},{name:'airplane-tilt'},{css:'.palette',index:0,scroll:true}]);
+for(const route of ['/app','/app/library','/app/sets/gsat',`/app/sets/gsat/words/${word}`,'/app/progress','/app/rooms','/app/practice?run=1&tasks=meaning&answer=wrong']) add('dark-'+(route==='/app'?'home':route.includes('/words/')?'word':route.includes('/sets/')?'set':route.split('/').at(-1).split('?')[0]),route+(route.includes('?')?'&':'?')+'scheme=dark');
+const wanted=process.argv.slice(2); const selected=wanted.length?cases.filter(c=>wanted.includes(c.name)):cases;
+mkdirSync('design/shots/app',{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const results=[];
+try{
+ for(const item of selected){
+  for(const [tag,width,height] of [['d',1440,1000],['m',500,844]]){
+   const route=new URL(item.route,base);route.searchParams.set('demo','1');
+   const target=tag==='m'?`${frame}?w=390&h=844&src=${encodeURIComponent(route.href)}`:route.href;
+   const out=`design/shots/app/${item.name}-${tag}.png`;
+   try {const result=await capture({url:target,out,width,height,actions:item.actions,browser});results.push({...item,tag,file:out,status:'captured',...result});console.log('OK',out);}
+   catch(error){results.push({...item,tag,file:out,status:'failed',error:String(error)});console.error('FAIL',item.name,tag,String(error).slice(0,250));}
+  }
+  writeFileSync('design/shots/app/audit.json',JSON.stringify(results,null,2));
+ }
+}finally{await browser.close();}
+writeFileSync('design/shots/app/manifest.json',JSON.stringify(cases.map(c=>({name:c.name,route:c.route,actions:c.actions,files:[`${c.name}-d.png`,`${c.name}-m.png`]})),null,2));
+console.log(`${results.filter(r=>r.status==='captured').length}/${results.length} captures`);
+if(results.some(r=>r.status==='failed'))process.exitCode=1;

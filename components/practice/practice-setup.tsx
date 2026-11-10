@@ -89,9 +89,7 @@ export function PracticeSetup({
   const shownAmount = Math.min(amount, Math.max(1, sliderMax));
   // Practice picks a preset like the app; a room keeps its capped slider.
   const presets = Number.isFinite(maxAmount) ? null : AMOUNT_PRESETS;
-  const [custom, setCustom] = useState(
-    () => !AMOUNT_PRESETS.includes(amount),
-  );
+  const [custom, setCustom] = useState(() => !AMOUNT_PRESETS.includes(amount));
   const hasExam = tasks.some((task) => !isWordTask(task));
   const footer = needsContent ? (
     <Button asChild className="w-full" size="lg">
@@ -133,7 +131,9 @@ export function PracticeSetup({
       />
       <div className="flex justify-between text-xs tabular-nums text-muted-foreground">
         <span>1</span>
-        <span>{t("practice.amountMax", { count: Math.max(1, sliderMax) })}</span>
+        <span>
+          {t("practice.amountMax", { count: Math.max(1, sliderMax) })}
+        </span>
       </div>
     </div>
   );

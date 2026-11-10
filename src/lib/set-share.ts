@@ -26,6 +26,8 @@ interface SetShareWriter {
   saveSet: (input: {
     setName: string;
     folderId?: string;
+    hue?: LibrarySet["hue"];
+    icon?: LibrarySet["icon"];
     words: WordDraftInput[];
   }) => Promise<LibrarySet>;
   saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
@@ -54,7 +56,7 @@ export async function copySharedSet(
       };
     });
   });
-  const imported = await writer.saveSet({ ...input, words: drafts });
+  const imported = await writer.saveSet({ ...input, hue: sharedSet.hue, icon: sharedSet.icon, words: drafts });
   const copied = scopeSetContent(
     imported.id,
     sharedSet.words,

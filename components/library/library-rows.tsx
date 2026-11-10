@@ -35,7 +35,7 @@ export function FolderRow({
     <button
       aria-label={t("library.openFolder", { name })}
       data-folder-id={folderId}
-      className={`t-row flex min-h-11 max-w-full items-center gap-2 rounded-full ${highlighted ? "bg-[var(--brand-50)] ring-2 ring-brand" : "bg-card"} [--row-bleed:0px] [--row-radius:9999px] pl-4 pr-[1.125rem] text-left transition-colors hover:bg-[var(--brand-50)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40`}
+      className={`pill ${highlighted ? "selected" : ""}`}
       onClick={onOpen}
       type="button"
     >

@@ -1,3 +1,4 @@
+import { Menu } from "@/components/ui/menu";
 import Link from "@/components/ui/app-link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -16,7 +17,7 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Icons } from "@/components/ui/icons";
 import { SearchField } from "@/components/ui/search-field";
 import { RootPageHeader } from "@/components/root-page-header";
-import { StepActions } from "@/components/ui/step-actions";
+import { useAppRouter } from "@/lib/use-app-router";
 import { EmptyState, ErrorState } from "@/components/ui/page-state";
 import { LibraryListSkeleton } from "@/components/ui/workspace-skeleton";
 import { t } from "@/lib/i18n";
@@ -45,6 +46,7 @@ export function LibraryPage({
   initialFolderId?: string;
   initialQuery?: string;
 }) {
+  const router = useAppRouter();
   const { state, status, error } = useLibraryStore();
   const createFolder = useLibraryStore((store) => store.createFolder);
   const renameFolder = useLibraryStore((store) => store.renameFolder);
@@ -184,7 +186,7 @@ export function LibraryPage({
 
   return (
     <div className="library-workspace">
-      <RootPageHeader title={t("library.title")} />
+      <RootPageHeader title={t("redesign.library")} actions={<><Button size="icon" variant="glass" aria-label={t("redesign.sort")} onClick={() => setReordering(!reordering)}><Icons.reorder /></Button><Menu label={t("redesign.add")} trigger={<Button size="icon" aria-label={t("redesign.add")}><Icons.create /></Button>} actions={[{ icon: Icons.create, label: t("library.newSet"), onSelect: () => { router.push(createHref); } }, { icon: Icons.folder, label: t("redesign.newFolder"), onSelect: () => { document.querySelector<HTMLButtonElement>("[data-create-folder]")?.click(); } }, { icon: Icons.import, label: t("library.importSet"), onSelect: () => importInput.current?.click() }]} /></>} />
 
       <>
         <input
@@ -350,25 +352,7 @@ export function LibraryPage({
         </StateTransition>
       </>
 
-      <StepActions aboveNavigation width="wide">
-        <div className="workspace-actions">
-          <Button
-            size="lg"
-            variant="outline"
-            disabled={importing}
-            onClick={() => importInput.current?.click()}
-          >
-            <Icons.import />
-            {t(importing ? "library.importing" : "library.importSet")}
-          </Button>
-          <Button asChild size="lg">
-            <Link href={createHref}>
-              <Icons.create />
-              {t("library.newSet")}
-            </Link>
-          </Button>
-        </div>
-      </StepActions>
+      <Link className="dashed" href={createHref} style={{ marginTop: 20 }}><Icons.create />{t("library.newSet")}</Link>
 
       <ConfirmDialog
         confirmLabel={t("library.deleteFolder")}

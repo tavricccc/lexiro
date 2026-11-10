@@ -7,7 +7,7 @@ import { t } from "@/lib/i18n";
 
 export function ResumeChoice({
   back,
-  description,
+  description: _description,
   header = true,
   invalid = false,
   onRestart,
@@ -28,7 +28,7 @@ export function ResumeChoice({
           title={t(invalid ? "draft.invalidTitle" : "draft.title")}
         />
       )}
-      <p className="type-lead">{description}</p>
+
       <StepActions>
         {!invalid && (
           <Button className="w-full" onClick={onResume} size="lg">

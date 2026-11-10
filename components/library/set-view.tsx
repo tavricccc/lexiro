@@ -63,7 +63,7 @@ export function SetView({
   initialQuery?: string;
 }) {
   const router = useRouter();
-  const record = useLearningStore(s => s.record);
+  const record = useLearningStore((s) => s.record);
   const [launch, setLaunch] = useState(false);
   // Called once the set is gone, so the page it leaves is already known.
   const { actionsFor, dialogs } = useSetActions(() => router.push(libraryHref));
@@ -163,11 +163,48 @@ export function SetView({
       />
 
       <section className={`cover hue-${current.hue ?? "mint"}`}>
-        <div className="between"><h1>{current.setName}</h1><Dial value={familiarity(record, senseIds)} /></div>
-        <div className="facts">{[[words.length, t("redesign.words")], [questions.length, t("library.questionsTab")], [senseIds.filter(id => record.senses[id]?.level === 3).length, t("redesign.known")]].map(([n, label]) => <div key={label}><b>{n}</b><span>{label}</span></div>)}</div>
-        <div className="hero-acts"><Link className="btn btn-lg btn-ink" href={`/app/practice?set=${setId}`} onClick={e => { e.preventDefault(); setLaunch(true); }}><Icons.start />{t("setDetail.start")}</Link><Link className="btn btn-lg btn-veil" href={`/app/sets/${setId}/add`}><Icons.create />{t("setEditor.addWord")}</Link></div>
+        <div className="between">
+          <h1>{current.setName}</h1>
+          <Dial value={familiarity(record, senseIds)} />
+        </div>
+        <div className="facts">
+          {[
+            [words.length, t("redesign.words")],
+            [questions.length, t("library.questionsTab")],
+            [
+              senseIds.filter((id) => record.senses[id]?.level === 3).length,
+              t("redesign.known"),
+            ],
+          ].map(([n, label]) => (
+            <div key={label}>
+              <b>{n}</b>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="hero-acts">
+          <Link
+            className="btn btn-lg btn-ink"
+            href={`/app/practice?set=${setId}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setLaunch(true);
+            }}
+          >
+            <Icons.start />
+            {t("setDetail.start")}
+          </Link>
+          <Link className="btn btn-lg btn-veil" href={`/app/sets/${setId}/add`}>
+            <Icons.create />
+            {t("setEditor.addWord")}
+          </Link>
+        </div>
       </section>
-      <PracticeLaunch open={launch} onClose={() => setLaunch(false)} setId={setId} />
+      <PracticeLaunch
+        open={launch}
+        onClose={() => setLaunch(false)}
+        setId={setId}
+      />
 
       <LiquidTabs
         ariaLabel={current.setName}

@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@babel/parser": "7.29.8",
+    "@playwright/test": "^1.65.0",
     "@serwist/vite": "9.5.12",
     "@tailwindcss/vite": "4.3.3",
     "@testing-library/jest-dom": "6.9.1",

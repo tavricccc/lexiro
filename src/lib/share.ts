@@ -122,6 +122,7 @@ export function normalizeSharedSet(value: unknown, legacy = false): SharedSet {
       "id",
       "setName",
       "folderId",
+      "hue", "icon",
       "createdAt",
       "updatedAt",
       "words",
@@ -175,6 +176,8 @@ export function normalizeSharedSet(value: unknown, legacy = false): SharedSet {
   const normalized: SharedSet = {
     id: requiredText(source.id, "id"),
     setName: requiredText(source.setName, "setName"),
+    ...(["rose", "amber", "mint", "sky", "violet"].includes(String(source.hue)) ? { hue: source.hue as LibrarySet["hue"] } : {}),
+    ...(["books", "graduation-cap", "briefcase", "bookmark-simple", "airplane-tilt", "newspaper"].includes(String(source.icon)) ? { icon: source.icon as LibrarySet["icon"] } : {}),
     folderId: source.folderId.trim(),
     createdAt: requiredText(source.createdAt, "createdAt"),
     updatedAt: requiredText(source.updatedAt, "updatedAt"),

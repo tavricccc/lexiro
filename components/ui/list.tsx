@@ -53,7 +53,6 @@ export function ListSection({
         </div>
       )}
       <div className="rule-card rule-list">{children}</div>
-
     </section>
   );
 }
@@ -76,7 +75,7 @@ const toneClass = {
 } as const;
 
 function RowInner({
-  icon: Icon,
+  icon: Icon = Icons.settings,
   label,
   detail: _detail,
   value,
@@ -100,7 +99,6 @@ function RowInner({
         >
           {label}
         </span>
-
       </span>
       {value !== undefined && value !== null && value !== "" && (
         <span className="type-row-value min-w-0 max-w-[55%] text-right [overflow-wrap:anywhere]">
@@ -491,6 +489,7 @@ export function ListActionRow({
       {busy && (
         <Icons.loading aria-hidden className="size-4 shrink-0 animate-spin" />
       )}
+      {!busy && <Icons.open aria-hidden className="size-5" />}
       {children}
     </button>
   );
@@ -564,7 +563,7 @@ export function ListInputRow({
     return (
       <div className="list-input-row flex min-h-[3.25rem] items-end gap-3 py-[var(--row-padding-block)]">
         <label className="min-w-0 flex-1">
-          <span className="type-row-detail block">{label}</span>
+          <span className="field-label block">{label}</span>
           <span className="mt-0.5 flex">{field}</span>
         </label>
         {trailing}

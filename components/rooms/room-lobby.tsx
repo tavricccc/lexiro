@@ -27,47 +27,52 @@ export function Lobby({
     }
   };
   return (
-    <div className="mx-auto max-w-xl space-y-4">
-      <section className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-        <p className="text-sm text-muted-foreground">{t("rooms.shareCode")}</p>
-        <p
-          className="t-celebrate mt-2 font-latin text-4xl font-extrabold tracking-[0.3em]"
-          data-testid="room-code"
-        >
+    <div className="stack" style={{ maxWidth: 860, marginInline: "auto" }}>
+      <section
+        className="hero"
+        style={{ textAlign: "center", justifyItems: "center" }}
+      >
+        <p>{t("redesign.roomCode")}</p>
+        <p className="big-code" data-testid="room-code">
           {state.code}
         </p>
-        <Button
-          className="mt-4"
-          size="sm"
-          variant="secondary"
-          onClick={() => void copy()}
-        >
-          <Icons.copy />
-          {t("rooms.copyCode")}
-        </Button>
-      </section>
-      <section className="rounded-[var(--radius-card)] bg-card p-5">
-        <h2 className="type-section">
-          {t("rooms.players", { count: state.players.length })}
-        </h2>
-        <PlayerList state={state} />
-      </section>
-      {isHost ? (
-        <div className="space-y-2 text-center">
-          {state.players.length < 2 && (
-            <p className="text-sm text-muted-foreground">
-              {t("rooms.needPlayers")}
-            </p>
-          )}
-          <Button className="w-full" size="lg" onClick={onStart}>
-            <Icons.start />
-            {t("rooms.start")}
+        <div className="hero-acts">
+          <Button variant="secondary" onClick={() => void copy()}>
+            <Icons.copy />
+            {t("redesign.copy")}
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              if (navigator.share)
+                void navigator
+                  .share({ title: state.title, url: location.href })
+                  .catch(() => undefined);
+              else void copy();
+            }}
+          >
+            <Icons.shareLink />
+            {t("redesign.share")}
           </Button>
         </div>
+      </section>
+      <h2 className="t-section">
+        {t("rooms.players", { count: state.players.length })}
+      </h2>
+      <PlayerList state={state} />
+      <section className="tile between">
+        <b>{state.title}</b>
+        <span className="latin">
+          {state.total} {t("redesign.countUnit")}
+        </span>
+      </section>
+      {isHost ? (
+        <Button size="lg" onClick={onStart}>
+          <Icons.start />
+          {t("rooms.start")}
+        </Button>
       ) : (
-        <p className="text-center text-muted-foreground" role="status">
-          {t("rooms.waitingHost")}
-        </p>
+        <p role="status">{t("rooms.waitingHost")}</p>
       )}
     </div>
   );
@@ -85,7 +90,7 @@ export function PlayerList({
   return (
     // Players glide to their new rank when scores land, and someone joining
     // slides in; the list a screen opens with is drawn as is.
-    <ol className="mt-3">
+    <ol className={showScore ? "board" : "players"}>
       <AnimatePresence initial={false}>
         {state.players.map((player, rank) => (
           <motion.li
@@ -96,10 +101,17 @@ export function PlayerList({
             exit={{ opacity: 0 }}
             transition={timing("nav")}
             className={cn(
-              "flex items-center gap-3 border-border/60 py-2.5 [&:not(:first-child)]:border-t",
+              showScore
+                ? `p ${player.uid === state.you ? "me" : ""}`
+                : "player",
               !player.connected && "text-muted-foreground",
             )}
           >
+            <span
+              className={`avatar hue-${["mint", "rose", "sky", "amber"][rank % 4]}`}
+            >
+              {player.name[0]}
+            </span>
             {showScore && (
               <span className="w-6 text-center text-sm font-semibold tabular-nums">
                 {rank + 1}

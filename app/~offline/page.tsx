@@ -16,7 +16,7 @@ export default function OfflinePage() {
           alt=""
         />
         <h1 className="type-page">{t("offline.title")}</h1>
-        <p className="mt-3 text-muted-foreground">{t("offline.description")}</p>
+
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <OfflineRetryButton />
           <Button asChild variant="outline">

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useUIStore } from "@/stores/ui-store";
+import { useEffect, useState } from "react";
 
 import Link from "@/components/ui/app-link";
 import { BackControl } from "@/components/ui/back-control";
@@ -40,6 +41,11 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
     name,
     true,
   );
+  const setActive = useUIStore((s) => s.setPracticeActive);
+  useEffect(() => {
+    setActive(state?.phase === "question" || state?.phase === "reveal");
+    return () => setActive(false);
+  }, [state?.phase, setActive]);
   const [confirmEnd, setConfirmEnd] = useState(false);
   const back = <BackControl href="/app/rooms" label={t("rooms.leave")} />;
 
@@ -87,7 +93,14 @@ function LiveRoom({ code, name }: { code: string; name: string }) {
 
   const isHost = state.you === state.hostUid;
   return (
-    <div className="mx-auto max-w-3xl" data-room-live>
+    <div
+      className={
+        state.phase === "question" || state.phase === "reveal"
+          ? "room-focus"
+          : "generic-page"
+      }
+      data-room-live
+    >
       <PageHeader
         back={back}
         title={state.title}

@@ -19,7 +19,7 @@ export function QuestionFeedback({
     item.type === "vocabulary" || item.type === "wordBank" ? item.meaning : "";
   return (
     <motion.div
-      className="mt-6 grid gap-3 rounded-[var(--radius-card)] bg-card p-5"
+      className={`verdict mt-6 ${correct ? "is-right" : "is-wrong"}`}
       initial={{ opacity: 0.8 }}
       animate={{ opacity: 1 }}
       transition={timing("control", "arrive")}
@@ -41,7 +41,9 @@ export function QuestionFeedback({
       <p className="text-base font-semibold leading-6">
         {t("practice.answer", { answer: item.options[item.answerIndex] })}
         {answerMeaning && (
-          <span className="ml-2 font-normal text-muted-foreground">{answerMeaning}</span>
+          <span className="ml-2 font-normal text-muted-foreground">
+            {answerMeaning}
+          </span>
         )}
       </p>
       {item.explanation && (
@@ -81,7 +83,9 @@ export function QuestionFeedback({
       {item.type === "meaning" &&
         item.meaning &&
         (item.acceptedMeanings?.length ?? 0) > 1 && (
-          <p className="text-[0.8125rem] text-muted-foreground">{item.meaning}</p>
+          <p className="text-[0.8125rem] text-muted-foreground">
+            {item.meaning}
+          </p>
         )}
     </motion.div>
   );

@@ -13,9 +13,9 @@ import { cn } from "@/lib/cn";
 export function Field({
   children,
   className,
-  description,
+  description: _description,
   error,
-  hint,
+  hint: _hint,
   label,
   layout = "stacked",
 }: {
@@ -43,11 +43,7 @@ export function Field({
       >
         <span>
           {label && <span className="block text-sm font-medium">{label}</span>}
-          {description && (
-            <span className="mt-1 block text-xs leading-5 text-muted-foreground">
-              {description}
-            </span>
-          )}
+
         </span>
         <span className="block min-w-0">
           {children}
@@ -59,19 +55,13 @@ export function Field({
 
   return (
     <label className={cn("block", className)}>
-      {(label || hint) && (
+      {label && (
         <span className="mb-1.5 flex items-baseline justify-between gap-3">
           {label && <span className="text-sm font-medium">{label}</span>}
-          {hint && (
-            <span className="text-xs text-muted-foreground">{hint}</span>
-          )}
+
         </span>
       )}
-      {description && (
-        <span className="mb-2 block text-xs leading-5 text-muted-foreground">
-          {description}
-        </span>
-      )}
+
       {children}
       {message}
     </label>

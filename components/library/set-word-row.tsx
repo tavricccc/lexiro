@@ -27,9 +27,29 @@ export function SetWordRow({
   setId: string;
   returnTo?: string;
 }) {
-  const record = useLearningStore(s => s.record);
+  const record = useLearningStore((s) => s.record);
   const href = wordDetailHref(setId, entry.wordKey);
-  return <div className="w"><Link className="head" href={returnTo ? withReturnTo(href, returnTo) : href}><span className="hw font-latin">{entry.word}</span><span className="pos">{entry.senses[0]?.pos}</span><span className="zh">{entry.senses.map(s => s.meaningZh).join("；")}</span></Link><Dial value={familiarity(record, entry.senses.map(s => s.id))} /><SpeakButton text={entry.word} /></div>;
+  return (
+    <div className="w">
+      <Link
+        className="head"
+        href={returnTo ? withReturnTo(href, returnTo) : href}
+      >
+        <span className="hw font-latin">{entry.word}</span>
+        <span className="pos">{entry.senses[0]?.pos}</span>
+        <span className="zh">
+          {entry.senses.map((s) => s.meaningZh).join("；")}
+        </span>
+      </Link>
+      <Dial
+        value={familiarity(
+          record,
+          entry.senses.map((s) => s.id),
+        )}
+      />
+      <SpeakButton text={entry.word} />
+    </div>
+  );
 }
 
 /** Every meaning of a word in this set, read in full. */

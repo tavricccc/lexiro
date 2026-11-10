@@ -41,7 +41,10 @@ export function useRoom(code: string, name: string, enabled: boolean) {
   useEffect(() => {
     if (!enabled) return;
     if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") {
-      void import("@/lib/dev/demo").then(({ demoRoom }) => { setState(demoRoom(code)); setConnection("open"); });
+      void import("@/lib/dev/demo").then(({ demoRoom }) => {
+        setState(demoRoom(code));
+        setConnection("open");
+      });
       return;
     }
     let disposed = false;
@@ -170,12 +173,39 @@ export function useRoom(code: string, name: string, enabled: boolean) {
         | { type: "end" }
         | { type: "answer"; index: number; choice: number },
     ) => {
-      if (import.meta.env.DEV && sessionStorage.getItem("lexiro:demo") === "1") {
-        setState(current => {
+      if (
+        import.meta.env.DEV &&
+        sessionStorage.getItem("lexiro:demo") === "1"
+      ) {
+        setState((current) => {
           if (!current) return current;
-          if (message.type === "start") return { ...current, phase: "question", endsAt: Date.now() + 20000, duration: 20000, question: { type: "vocabulary", prompt: "The new policy was so _____ that even the experts disagreed on what it meant.", options: ["feasible", "ambiguous", "candid", "obsolete"] } };
-          if (message.type === "end") return { ...current, phase: "ended", question: null, endsAt: null };
-          return { ...current, phase: "reveal", yourChoice: message.choice, reveal: { answerIndex: 1, accepted: [1], explanation: "ambiguous 表示模稜兩可。", gained: { "demo-user": message.choice === 1 ? 200 : 0 }, choices: { "demo-user": message.choice } } };
+          if (message.type === "start")
+            return {
+              ...current,
+              phase: "question",
+              endsAt: Date.now() + 20000,
+              duration: 20000,
+              question: {
+                type: "vocabulary",
+                prompt:
+                  "The new policy was so _____ that even the experts disagreed on what it meant.",
+                options: ["feasible", "ambiguous", "candid", "obsolete"],
+              },
+            };
+          if (message.type === "end")
+            return { ...current, phase: "ended", question: null, endsAt: null };
+          return {
+            ...current,
+            phase: "reveal",
+            yourChoice: message.choice,
+            reveal: {
+              answerIndex: 1,
+              accepted: [1],
+              explanation: "ambiguous 表示模稜兩可。",
+              gained: { "demo-user": message.choice === 1 ? 200 : 0 },
+              choices: { "demo-user": message.choice },
+            },
+          };
         });
         return true;
       }

@@ -28,9 +28,7 @@ export function Finished({ state }: { state: RoomState }) {
       {state.review && <Review review={state.review} />}
       <div className="grid gap-2 sm:grid-cols-2">
         <Button asChild size="lg" variant="secondary">
-          <Link href="/app/rooms">
-            {t("rooms.leave")}
-          </Link>
+          <Link href="/app/rooms">{t("rooms.leave")}</Link>
         </Button>
         <Button asChild size="lg">
           <Link href="/app/rooms/new">

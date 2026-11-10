@@ -153,7 +153,10 @@ export function buildMeaningQuestionGroups(
           difficulty: 1 as const,
           meaning: acceptedMeanings.join("；"),
           acceptedMeanings,
-          ...revealed(word, distractors, (other) => [other.meaning, other.word]),
+          ...revealed(word, distractors, (other) => [
+            other.meaning,
+            other.word,
+          ]),
         },
       ],
     ];

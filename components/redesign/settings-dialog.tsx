@@ -1,3 +1,4 @@
+import { useIsAdministrator } from "@/components/me/use-is-administrator";
 import { useEffect, useState } from "react";
 import { Dialog } from "radix-ui";
 import {
@@ -45,6 +46,7 @@ export function SettingsDialog({
   onClose: () => void;
   initialGroup?: string;
 }) {
+  const admin = useIsAdministrator();
   const [group, setGroup] = useState(initialGroup);
   const [confirm, setConfirm] = useState(false);
   const [failure, setFailure] = useState("");
@@ -86,7 +88,7 @@ export function SettingsDialog({
                   <span className="avatar">{name[0]}</span>
                   <b>{name}</b>
                 </div>
-                {groups.map(([id, label, Icon]) => (
+                {groups.filter(([id]) => id !== "admin" || admin).map(([id, label, Icon]) => (
                   <button
                     key={id}
                     role="tab"
@@ -290,7 +292,7 @@ export function SettingsDialog({
                   data-on={group === "admin" ? "" : undefined}
                 >
                   <h3>{t("redesign.admin")}</h3>
-                  <AdminPage />
+                  {admin && <AdminPage />}
                 </section>
                 {failure && <p role="alert">{failure}</p>}
               </div>

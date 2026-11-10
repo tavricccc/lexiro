@@ -26,10 +26,7 @@ export function QuestionOptions({
   const answered = selected !== null;
   return (
     <div
-      className={cn(
-        "opts mt-5",
-        item.options.length > 5 && "sm:grid-cols-2",
-      )}
+      className={cn("opts mt-5", item.options.length > 5 && "sm:grid-cols-2")}
     >
       {item.options.map((option, optionIndex) => {
         const usedBlank = usedBlankForOption(item, optionIndex, answeredBlanks);
@@ -57,7 +54,15 @@ export function QuestionOptions({
             aria-pressed={isSelected || isPending}
             onClick={() => onAnswer(optionIndex)}
             className="opt relative"
-            data-state={answered ? isCorrect ? "right" : isSelected ? "wrong" : "dim" : undefined}
+            data-state={
+              answered
+                ? isCorrect
+                  ? "right"
+                  : isSelected
+                    ? "wrong"
+                    : "dim"
+                : undefined
+            }
             aria-checked={isPending || isSelected}
           >
             <kbd>{String.fromCharCode(65 + optionIndex)}</kbd>

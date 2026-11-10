@@ -56,7 +56,7 @@ export function PracticePage({
   initialSet?: string;
   initialTrack?: PracticeTrack;
 }) {
-  const learning = useLearningStore(s => s.record);
+  const learning = useLearningStore((s) => s.record);
   const routeQuery = new URLSearchParams(location.search);
   const state = useLibraryStore((store) => store.state);
   const libraryStatus = useLibraryStore((store) => store.status);
@@ -158,7 +158,13 @@ export function PracticePage({
         amount,
         oneSensePerWord,
         tasks: activeTasks,
-      }).filter(entry => !routeQuery.has("review") || mostMissed(learning, 100).some(w => w.wordKey === entry.item.wordKey)),
+      }).filter(
+        (entry) =>
+          !routeQuery.has("review") ||
+          mostMissed(learning, 100).some(
+            (w) => w.wordKey === entry.item.wordKey,
+          ),
+      ),
     [
       allowedSenseIds,
       amount,
@@ -309,18 +315,51 @@ export function PracticePage({
 
   const demoAnswered = useRef(false);
   useEffect(() => {
-    if (!started && resumeChecked && libraryStatus === "ready" && setup.saved.status !== "checking" && !pendingSession && !restoreIssue && routeQuery.get("run") === "1" && queue.length) {
-      setup.clear(); actions.begin();
+    if (
+      !started &&
+      resumeChecked &&
+      libraryStatus === "ready" &&
+      setup.saved.status !== "checking" &&
+      !pendingSession &&
+      !restoreIssue &&
+      routeQuery.get("run") === "1" &&
+      queue.length
+    ) {
+      setup.clear();
+      actions.begin();
     }
-  }, [started, resumeChecked, libraryStatus, setup.saved.status, pendingSession, restoreIssue, queue]);
+  }, [
+    started,
+    resumeChecked,
+    libraryStatus,
+    setup.saved.status,
+    pendingSession,
+    restoreIssue,
+    queue,
+  ]);
   useEffect(() => {
-    if (!import.meta.env.DEV || sessionStorage.getItem("lexiro:demo") !== "1" || !started || demoAnswered.current || !activeEntries.length) return;
+    if (
+      !import.meta.env.DEV ||
+      sessionStorage.getItem("lexiro:demo") !== "1" ||
+      !started ||
+      demoAnswered.current ||
+      !activeEntries.length
+    )
+      return;
     if (routeQuery.get("result") === "1") {
-      demoAnswered.current = true; setIndex(activeEntries.length); setCorrect(Math.max(0, activeEntries.length - 3)); setWrong([0, 1, 2].filter(i => i < activeEntries.length));
+      demoAnswered.current = true;
+      setIndex(activeEntries.length);
+      setCorrect(Math.max(0, activeEntries.length - 3));
+      setWrong([0, 1, 2].filter((i) => i < activeEntries.length));
     } else if (routeQuery.has("answer") && selected === null) {
       demoAnswered.current = true;
       const item = activeEntries[index]?.item;
-      if (item) actions.answer(routeQuery.get("answer") === "right" ? item.answerIndex : (item.answerIndex + 1) % item.options.length);
+      if (item)
+        actions.answer(
+          routeQuery.get("answer") === "right"
+            ? item.answerIndex
+            : (item.answerIndex + 1) % item.options.length,
+        );
     }
   }, [started, activeEntries, selected, index]);
 

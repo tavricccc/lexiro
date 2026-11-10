@@ -26,13 +26,21 @@ export function usePracticeSetupChoices(
 ) {
   const uid = useCloudStore((store) => store.user?.uid);
   const initialSets = () => (initialSet ? [initialSet] : []);
-  const query = new URLSearchParams(typeof location === "undefined" ? "" : location.search);
-  const initialAmount = [10, 20, 30, 50].includes(Number(query.get("amount"))) ? Number(query.get("amount")) : 20;
-  const initialOneSense = typeof localStorage === "undefined" || localStorage.getItem("lexiro:one-sense") !== "0";
-  const initialTasks = () => query.get("tasks")?.split(",").filter(isPracticeTask).length ? query.get("tasks")!.split(",").filter(isPracticeTask) :
-    initialTrack === "words"
-      ? [...DEFAULT_CARD_TASKS]
-      : [...DEFAULT_QUESTION_TASKS];
+  const query = new URLSearchParams(
+    typeof location === "undefined" ? "" : location.search,
+  );
+  const initialAmount = [10, 20, 30, 50].includes(Number(query.get("amount")))
+    ? Number(query.get("amount"))
+    : 20;
+  const initialOneSense =
+    typeof localStorage === "undefined" ||
+    localStorage.getItem("lexiro:one-sense") !== "0";
+  const initialTasks = () =>
+    query.get("tasks")?.split(",").filter(isPracticeTask).length
+      ? query.get("tasks")!.split(",").filter(isPracticeTask)
+      : initialTrack === "words"
+        ? [...DEFAULT_CARD_TASKS]
+        : [...DEFAULT_QUESTION_TASKS];
   const saved = useResumableDraft<PracticeSetupDraft>(
     `lexiro:flow-draft:v1:${uid ?? "local"}:practice-setup:${initialSet || "all"}:${initialTrack ?? "choose"}`,
     {
