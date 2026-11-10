@@ -55,9 +55,6 @@ export function SetMoveDialog({
             aria-describedby={undefined}
             className="t-dialog surface-floating pointer-events-auto relative grid w-full max-w-md gap-5 p-6 outline-none sm:p-7"
           >
-            <div className="grid size-11 place-items-center rounded-md bg-brand-50 text-brand-600">
-              <Icons.folder aria-hidden className="size-5" />
-            </div>
             <div>
               <Dialog.Title className="type-section">
                 {t("library.moveSet")}

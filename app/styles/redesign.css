@@ -614,3 +614,31 @@ label.entry-field :is(input,textarea,[data-slot="select-trigger"]) { width:100%;
 .savebar > .btn-primary { order:2; }
 .savebar > [role="alert"] { flex-basis:100%;order:-1; }
 .setup-start { position:sticky;bottom:0;z-index:2; }
+/* Review D: third-round polish. */
+.question-list > li { min-width:0; }
+.question-list .t-row > .grow { min-width:0; }
+@media(min-width:960px) {
+ .heat { grid-auto-columns:minmax(0,1fr);grid-template-rows:repeat(7,auto);justify-content:stretch;gap:4px; }
+ .heat > * { width:auto;height:auto;aspect-ratio:1; }
+}
+/* Settings: one title style per group, one sub-label style inside it, one inset. */
+.settings .group > h3 { margin-inline:var(--sp-4);font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--ink); }
+.settings .group .type-list-header { font-size:.8125rem;font-weight:600;line-height:1.4;color:var(--ink-muted); }
+.settings .group section > div:has(> .type-list-header) { padding-inline:var(--sp-4); }
+/* Practice setup: every choice chip shares the count tabs' height. */
+.setup-body .chips .chip { min-height:36px;padding:0 16px;font-size:var(--t-sub-size);justify-content:center; }
+.setup-body .tabs button { min-width:52px;justify-content:center; }
+.setup-body .setup-extra { margin-top:var(--sp-5);padding-inline:var(--sp-1); }
+.setup-body .setup-extra > .switch { margin-inline-start:auto; }
+/* Result: actions stack on a phone and share one row on a desktop. */
+.result-actions { display:grid;gap:12px; }
+@media(min-width:960px) {
+ .result-actions { display:flex;flex-direction:row-reverse;justify-content:flex-start; }
+ .result-actions > * { flex:1 1 0;min-width:0; }
+}
+/* Single question on a desktop: prompt centred, footer as wide as the answers. */
+@media(min-width:960px) {
+ .focus-body:not(:has(.passage-layout)) .prompt { justify-items:center;text-align:center; }
+ .focus-foot > div { max-width:calc(720px - 2 * var(--page-x)); }
+}
+.library-workspace .pill[aria-pressed="true"] { background:var(--solid);color:var(--on-solid); }

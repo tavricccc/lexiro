@@ -76,10 +76,13 @@ export function AgentConnectionsPage() {
         actions={
           <Button
             variant="glass"
+            size="icon"
+            aria-label={t("agent.refresh")}
+            title={t("agent.refresh")}
             disabled={loading}
             onClick={() => setRefresh((value) => value + 1)}
           >
-            {t("agent.refresh")}
+            <Icons.refresh aria-hidden />
           </Button>
         }
       />

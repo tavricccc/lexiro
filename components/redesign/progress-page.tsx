@@ -57,7 +57,7 @@ export function ProgressPage() {
         <section className="tile span-2 stack">
           <b>{t("redesign.heat")}</b>
           <div className="heat">
-            {heatMap(record, today).map((day) => (
+            {heatMap(record, today, 26).map((day) => (
               <i
                 key={day.day}
                 data-v={day.intensity}

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { MeSubpage } from "@/components/me/me-subpage";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import {
   ListActionRow,
   ListInputRow,
@@ -200,10 +201,13 @@ export function AdminPage() {
         <div className="flex justify-end">
           <Button
             variant="glass"
+            size="icon"
+            aria-label={t("admin.refresh")}
+            title={t("admin.refresh")}
             disabled={loading}
             onClick={() => void load()}
           >
-            {t("admin.refresh")}
+            <Icons.refresh aria-hidden />
           </Button>
         </div>
         {error && (

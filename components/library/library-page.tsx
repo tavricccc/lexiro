@@ -295,7 +295,7 @@ export function LibraryPage({
             {status === "ready" && !listEmpty && (
               <div className="grid gap-5">
                 {!searching && childFolders.length > 0 && (
-                  <StaggerList className="flex flex-wrap gap-2"><StaggerItem><button className="chip" aria-pressed={!currentFolder} onClick={() => openFolder(ALL_FOLDER_ID)}>{t("redesign.all")}</button></StaggerItem>
+                  <StaggerList className="flex flex-wrap gap-2"><StaggerItem><button type="button" className="pill" aria-pressed={!currentFolder} onClick={() => openFolder(ALL_FOLDER_ID)}><span className="text-base font-semibold">{t("redesign.all")}</span></button></StaggerItem>
                     {childFolders.map((folder) => (
                       <StaggerItem key={folder.id} className="max-w-full">
                         <FolderRow
