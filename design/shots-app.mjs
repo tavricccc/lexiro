@@ -11,7 +11,7 @@ add('home','/app'); add('library','/app/library'); add('set','/app/sets/gsat'); 
 add('word',`/app/sets/gsat/words/${word}`); add('word-edit',`/app/sets/gsat/words/${word}/edit`);
 add('new-set','/app/sets/new'); add('set-settings','/app/sets/gsat/settings'); add('set-add','/app/sets/gsat/add');
 add('shared','/app/shared/demo-share'); add('question-edit','/app/questions/vocab-1/edit'); add('reading-edit','/app/questions/reading/reading-1/edit');
-for(const kind of ['meaning','vocabulary','cloze','wordBank','discourse','reading']){
+for(const kind of ['meaning','vocabulary','cloze','wordBank','discourse','reading','reverse']){
  for(const answer of ['before','right','wrong']) add(`practice-${kind}-${answer}`,`/app/practice?run=1&tasks=${kind}&set=gsat&amount=10${answer==='before'?'':`&answer=${answer}`}`);
 }
 add('question-try','/app/sets/gsat/questions/vocab-1'); add('reading-try','/app/sets/gsat/questions/reading-1');
@@ -60,8 +60,13 @@ add('new-set-bottom','/app/sets/new',[{css:'.savebar',scroll:true}]);
 add('question-edit-bottom','/app/questions/vocab-1/edit',[{css:'.savebar',scroll:true}]);
 add('reading-edit-bottom','/app/questions/reading/reading-1/edit',[{css:'.savebar',scroll:true}]);
 add('word-edit-bottom',`/app/sets/gsat/words/${word}/edit`,[{css:'.savebar',scroll:true}]);
+add('progress-reverse','/app/practice?run=1&tasks=reverse&answer=right',[{goto:base+'/app/progress?demo=1'}]);
 add('progress-bottom','/app/progress',[{css:'.sheet-list',scroll:true}]);
 add('settings-admin-bottom','/app/me/admin',[{css:'.group[data-on] .rule-card',index:-1,scroll:true}]);
+for(const kind of ['cloze','wordBank','discourse']) add(`${kind}-edit`,`/app/questions/reading/${kind}-1/edit`);
+for(const kind of ['wordBank','discourse']) add(`${kind}-options`,`/app/questions/reading/${kind}-1/edit`,[{role:'tab',name:'題目與答案',phoneOnly:true},{role:'tab',name:'共用選項'}]);
+add('reading-metadata','/app/questions/reading/reading-1/edit',[{css:'details > summary',index:0}]);
+add('resume-invalid','/app/practice?brokenDraft=1');
 add('dark-result','/app/practice?run=1&tasks=meaning&result=1&scheme=dark');
 add('dark-room','/app/rooms/K7M2QX?scheme=dark');
 add('dark-settings','/app/me?nav=look&scheme=dark');
@@ -71,16 +76,17 @@ mkdirSync('design/shots/app',{recursive:true});
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const results=wanted.length && existsSync("design/shots/app/audit.json") ? JSON.parse(readFileSync("design/shots/app/audit.json","utf8")).filter(r=>!wanted.includes(r.name)) : [];
 try{
- for(const item of selected){
+ const runItem=async(item)=>{
   for(const [tag,width,height] of [['d',1440,1000],['m',500,844]]){
    const route=new URL(item.route,base);route.searchParams.set('demo','1');
    const target=tag==='m'?`${frame}?w=390&h=844&src=${encodeURIComponent(route.href)}`:route.href;
    const out=`design/shots/app/${item.name}-${tag}.png`;
-   try {const result=await capture({url:target,out,width,height,actions:item.actions,browser});results.push({...item,tag,file:out,status:'captured',...result});console.log('OK',out);}
+   try {const result=await capture({url:target,out,width,height,actions:item.actions.map(a=>({...a,...(a.download?{download:a.download.replace("backup.zip",`backup-${tag}.zip`)}:{}),...(a.file?{file:a.file.replace("backup.zip",`backup-${tag}.zip`)}:{})})),browser});results.push({...item,tag,file:out,status:'captured',...result});console.log('OK',out);}
    catch(error){results.push({...item,tag,file:out,status:'failed',error:String(error)});console.error('FAIL',item.name,tag,String(error).slice(0,250));}
   }
   writeFileSync('design/shots/app/audit.json',JSON.stringify(results,null,2));
- }
+ };
+ for(let i=0;i<selected.length;i+=3) await Promise.all(selected.slice(i,i+3).map(runItem));
 }finally{await browser.close();}
 writeFileSync('design/shots/app/manifest.json',JSON.stringify(cases.map(c=>({name:c.name,route:c.route,actions:c.actions,files:[`${c.name}-d.png`,`${c.name}-m.png`]})),null,2));
 console.log(`${results.filter(r=>r.status==='captured').length}/${results.length} captures`);

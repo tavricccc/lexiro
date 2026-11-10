@@ -1,3 +1,4 @@
+import { practiceStorageKey } from "@/src/lib/practice-storage";
 import { blankToken } from "@/src/lib/question-formats";
 import { createSetSharePayload } from "@/src/lib/set-share";
 /** Imported only behind import.meta.env.DEV. Never touches a real account. */
@@ -359,6 +360,8 @@ export async function initializeDemo(): Promise<boolean> {
       useCloudStore.setState({ user: null });
     },
   });
+  if (query.get("brokenDraft") === "1")
+    localStorage.setItem(practiceStorageKey(), "{");
   useLearningStore.getState().hydrate();
   if (
     !Object.keys(useLearningStore.getState().record.days).length ||

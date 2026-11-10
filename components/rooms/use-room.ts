@@ -166,6 +166,33 @@ export function useRoom(code: string, name: string, enabled: boolean) {
     };
   }, [claim, code, enabled, name]);
 
+  useEffect(() => {
+    if (
+      !import.meta.env.DEV ||
+      sessionStorage.getItem("lexiro:demo") !== "1" ||
+      state?.phase !== "reveal"
+    )
+      return;
+    const timer = setTimeout(
+      () =>
+        setState((current) =>
+          current?.phase === "reveal"
+            ? {
+                ...current,
+                phase:
+                  current.index + 1 >= current.total ? "ended" : "question",
+                index: current.index + 1,
+                yourChoice: null,
+                reveal: null,
+                endsAt: Date.now() + 20000,
+              }
+            : current,
+        ),
+      3000,
+    );
+    return () => clearTimeout(timer);
+  }, [state?.phase, state?.index]);
+
   const send = useCallback(
     (
       message:

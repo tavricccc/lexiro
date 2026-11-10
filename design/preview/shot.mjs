@@ -18,6 +18,7 @@ export async function capture({url,out,width=1440,height=1000,actions=[],browser
     await root.waitForFunction(()=>document.body.innerText.trim().length>0,{},{timeout:20000});
     await root.evaluate(()=>document.fonts.ready);
     for(const action of actions) {
+      if(action.phoneOnly && !framed) continue;
       if(action.goto) { await root.goto(action.goto, {waitUntil:"networkidle"}); continue; }
       if(action.reload) { await root.reload({waitUntil:"networkidle"}); continue; }
       const locator = action.css ? root.locator(action.css) : root.getByRole(action.role ?? 'button',{name:action.name,exact:action.exact ?? true});

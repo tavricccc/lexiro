@@ -519,3 +519,7 @@ textarea:focus-visible {
   font-weight: 800;
   line-height: 1;
 }
+@media (max-width: 959px) {
+  .settings-body { padding-top: 0; }
+  .settings-body > .sheet-head { margin: 0 calc(-1 * var(--sp-5)); padding: 12px var(--sp-5); top: 0; }
+}
