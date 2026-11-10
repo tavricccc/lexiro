@@ -263,7 +263,7 @@ function normalizeSet(
   const source = requiredObject(value, `sets[${index}]`);
   assertKnownKeys(
     source,
-    ["id", "setName", "folderId", "order", "createdAt", "updatedAt"],
+    ["id", "setName", "folderId", "order", "hue", "icon", "createdAt", "updatedAt"],
     `sets[${index}]`,
   );
   const folderId = requiredText(source.folderId, `sets[${index}].folderId`);
@@ -280,6 +280,8 @@ function normalizeSet(
     setName: requiredText(source.setName, `sets[${index}].setName`),
     folderId,
     ...(order === undefined ? {} : { order }),
+    ...(["rose", "amber", "mint", "sky", "violet"].includes(String(source.hue)) ? { hue: source.hue as LibrarySet["hue"] } : {}),
+    ...(["books", "graduation-cap", "briefcase", "bookmark-simple", "airplane-tilt", "newspaper"].includes(String(source.icon)) ? { icon: source.icon as LibrarySet["icon"] } : {}),
     createdAt: requiredText(source.createdAt, `sets[${index}].createdAt`),
     updatedAt: requiredText(source.updatedAt, `sets[${index}].updatedAt`),
   };

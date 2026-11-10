@@ -80,7 +80,12 @@ export interface StudyWord {
   description: string
 }
 
+export type SetHue = "rose" | "amber" | "mint" | "sky" | "violet";
+export type SetIcon = "books" | "graduation-cap" | "briefcase" | "bookmark-simple" | "airplane-tilt" | "newspaper";
+
 export interface LibrarySet {
+  hue?: SetHue
+  icon?: SetIcon
   id: string
   setName: string
   folderId: string

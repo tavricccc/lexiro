@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
+import { useLearningStore } from "@/stores/learning-store";
 
 import type { PracticeEntry } from "@/components/practice/practice-queue";
 import { isCorrectChoice } from "./meaning-questions";
@@ -24,7 +25,7 @@ interface SessionSetters {
   setWrong: Setter<number[]>;
 }
 
-/** Every action reads the entry at the cursor; nothing is recorded beyond the session. */
+/** Every action reads the entry at the cursor; confirmed answers also update the device learning record. */
 export function usePracticeSessionActions({
   activeEntries,
   index,
@@ -76,6 +77,7 @@ export function usePracticeSessionActions({
     const item = questionAt(index);
     if (!item) return;
     const isCorrect = isCorrectChoice(item, choice);
+    useLearningStore.getState().answer({ senseId: item.senseId, wordKey: item.wordKey, kind: item.type, correct: isCorrect });
     setters.setSelected(choice);
     setters.setPendingChoice(null);
     setters.setRevealed(true);

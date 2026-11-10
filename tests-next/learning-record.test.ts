@@ -1,0 +1,22 @@
+import { describe, expect, it } from "vitest";
+import { accuracy, emptyLearningRecord, familiarity, heatMap, mostMissed, parseLearningRecord, recentAccuracy, recordAnswer, shiftDay, streak } from "@/src/lib/learning-record";
+const answer = { day: "2026-11-11", senseId: "s1", wordKey: "w1", kind: "meaning", correct: true };
+describe("local learning record", () => {
+  it("starts with a daily goal of twenty", () => { expect(emptyLearningRecord().goal).toBe(20); });
+  it("counts a confirmed answer by day", () => { expect(recordAnswer(emptyLearningRecord(), answer).days[answer.day]).toEqual({ answered: 1, correct: 1 }); });
+  it("leaves the previous record unchanged", () => { const r = emptyLearningRecord(); recordAnswer(r, answer); expect(r.senses).toEqual({}); });
+  it("caps familiarity at three", () => { let r = emptyLearningRecord(); for (let i = 0; i < 5; i++) r = recordAnswer(r, answer); expect(r.senses.s1.level).toBe(3); });
+  it("decreases familiarity after a wrong answer", () => { const r = recordAnswer(recordAnswer(emptyLearningRecord(), answer), { ...answer, correct: false }); expect(r.senses.s1.level).toBe(0); });
+  it("keeps familiarity nonnegative", () => { expect(recordAnswer(emptyLearningRecord(), { ...answer, correct: false }).senses.s1.level).toBe(0); });
+  it("counts accuracy separately for each kind", () => { const r = recordAnswer(recordAnswer(emptyLearningRecord(), answer), { ...answer, kind: "reading", correct: false }); expect(accuracy(r.kinds.meaning)).toBe(100); expect(accuracy(r.kinds.reading)).toBe(0); });
+  it("keeps yesterday's streak before the first answer today", () => { const r = recordAnswer(emptyLearningRecord(), { ...answer, day: "2026-11-10" }); expect(streak(r, "2026-11-11")).toBe(1); });
+  it("breaks a streak after a missed day", () => { const r = recordAnswer(emptyLearningRecord(), { ...answer, day: "2026-11-09" }); expect(streak(r, "2026-11-11")).toBe(0); });
+  it("counts consecutive days across a year boundary", () => { let r = emptyLearningRecord(); for (const day of ["2025-12-31", "2026-01-01"]) r = recordAnswer(r, { ...answer, day }); expect(streak(r, "2026-01-01")).toBe(2); });
+  it("uses only the last seven days for weekly accuracy", () => { let r = recordAnswer(emptyLearningRecord(), { ...answer, day: "2026-11-01", correct: false }); r = recordAnswer(r, answer); expect(recentAccuracy(r, answer.day)).toBe(100); });
+  it("combines missed senses of the same word", () => { let r = recordAnswer(emptyLearningRecord(), { ...answer, correct: false }); r = recordAnswer(r, { ...answer, senseId: "s2", correct: false }); expect(mostMissed(r)).toEqual([{ wordKey: "w1", missed: 2 }]); });
+  it("includes empty days in a chronological heat map", () => { const h = heatMap(recordAnswer(emptyLearningRecord(), answer), answer.day, 2); expect(h).toHaveLength(14); expect(h.at(-1)).toEqual({ day: answer.day, count: 1, intensity: 1 }); expect(h[0].count).toBe(0); });
+  it("includes unpractised senses in set familiarity", () => { const r = recordAnswer(emptyLearningRecord(), answer); expect(familiarity(r, ["s1", "s2"])).toBe(17); });
+  it("round trips persisted records", () => { const r = recordAnswer(emptyLearningRecord(), answer); expect(parseLearningRecord(JSON.parse(JSON.stringify(r)))).toEqual(r); });
+  it("discards impossible stored counts", () => { expect(parseLearningRecord({ ...emptyLearningRecord(), days: { "2026-11-11": { answered: 1, correct: 2 } } })).toEqual(emptyLearningRecord()); });
+  it("shifts calendar days over leap day", () => { expect(shiftDay("2024-03-01", -1)).toBe("2024-02-29"); });
+});

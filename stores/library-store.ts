@@ -85,6 +85,8 @@ interface LibraryStore {
     id?: string;
     setName: string;
     folderId?: string;
+    hue?: LibrarySet["hue"];
+    icon?: LibrarySet["icon"];
     words: WordDraftInput[];
     remaps?: SenseRemap[];
   }) => Promise<LibrarySet>;
@@ -394,13 +396,15 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
   }),
 
   saveSet: serial(
-    async ({ id, setName, folderId, words: drafts, remaps = [] }) => {
+    async ({ id, setName, folderId, hue, icon, words: drafts, remaps = [] }) => {
       const timestamp = now();
       const setId = id ?? randomUUID();
       const previous = get().state.sets.find((entry) => entry.id === setId);
       const librarySet: LibrarySet = {
         id: setId,
         setName: setName.trim(),
+        hue: hue ?? previous?.hue ?? "mint",
+        icon: icon ?? previous?.icon ?? "books",
         folderId: folderId || UNCATEGORIZED_FOLDER_ID,
         ...(previous?.order === undefined ? {} : { order: previous.order }),
         createdAt: previous?.createdAt ?? timestamp,

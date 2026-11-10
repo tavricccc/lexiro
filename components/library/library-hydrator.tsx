@@ -1,3 +1,4 @@
+import { useLearningStore } from "@/stores/learning-store";
 import { useEffect } from "react";
 
 import { useCloudStore } from "@/stores/cloud-store";
@@ -14,7 +15,7 @@ import { useCloudStore } from "@/stores/cloud-store";
 export function LibraryHydrator() {
   const initializeCloud = useCloudStore((store) => store.initialize);
   useEffect(() => {
-    void initializeCloud();
+    void initializeCloud().then(() => useLearningStore.getState().hydrate());
   }, [initializeCloud]);
   return null;
 }
