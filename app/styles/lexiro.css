@@ -1070,7 +1070,9 @@ body[data-focus] .main {
   margin-inline: auto;
   padding: var(--sp-4) var(--page-x) var(--sp-6);
   display: grid;
-  align-content: center;
+  /* Top-aligned, so the verdict appears in the space below and the question
+     never moves when it does. */
+  align-content: start;
   gap: var(--sp-6);
 }
 .prompt {
@@ -2112,4 +2114,51 @@ a.dashed {
 }
 .set .name {
   margin-top: var(--sp-2);
+}
+
+/* A disclosure leads with a right-pointing chevron that turns down when open,
+   instead of the browser's solid triangle. */
+.verdict summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+}
+.verdict summary::-webkit-details-marker {
+  display: none;
+}
+.verdict summary::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--d-state) var(--e-spring);
+}
+.verdict details[open] > summary::before {
+  transform: rotate(135deg);
+}
+
+/* Folders are one line that scrolls sideways, running to the page's edges. */
+.folder-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  margin-inline: calc(-1 * var(--page-x));
+  padding-inline: var(--page-x);
+  scroll-padding-inline: var(--page-x);
+}
+.folder-strip::-webkit-scrollbar {
+  display: none;
+}
+.folder-strip > * {
+  flex: none;
+  scroll-snap-align: start;
 }

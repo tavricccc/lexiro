@@ -188,3 +188,28 @@ export function markPopstateRouteDirection(state: unknown, pathname: string) {
         : "child",
   );
 }
+
+// A screen that is only a sheet (practice setup, the resume choice) is a layer
+// over the page, not a page of its own, so arriving at it or closing it must
+// not slide the route underneath.
+let openRouteSheets = 0;
+let routeSheetJustClosed = false;
+
+/** Call from a layout effect while a route-level sheet is on screen. */
+export function holdRouteSheet() {
+  openRouteSheets += 1;
+  return () => {
+    openRouteSheets -= 1;
+    routeSheetJustClosed = true;
+    requestAnimationFrame(() => {
+      routeSheetJustClosed = false;
+    });
+  };
+}
+
+/** Whether this navigation opens or closes a route-level sheet. */
+export function isSheetNavigation(from: string, to: string) {
+  const entersPractice =
+    to.startsWith("/app/practice") && !from.startsWith("/app/practice");
+  return entersPractice || openRouteSheets > 0 || routeSheetJustClosed;
+}

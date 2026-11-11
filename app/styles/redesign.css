@@ -543,7 +543,7 @@ html { scroll-padding-bottom: calc(var(--h-dock) + var(--layout-dock-margin) * 2
 .empty img { width: min(240px, 65%); }
 .empty .btn { background: var(--accent); color: var(--on-accent); }
 /* Review B: independent phone pages and full desktop compositions. */
-.main { padding-bottom: 120px; }
+/* .app already reserves the dock's height; a second gap here only added empty scroll. */
 .settings .group > :is(div,section), .settings .settings-content > div { width:100%;max-width:none;margin-inline:0; }
 .settings .group > h3 { position:static;overflow:visible; }
 .settings .group .page-header { display:none; }
@@ -658,3 +658,6 @@ label.entry-field :is(input,textarea,[data-slot="select-trigger"]) { width:100%;
 .startup-screen .btn { --button-weight:500; }
 @media (max-width:59.99rem) { .settings-body { max-height:94dvh; } }
 .flip .word { font-size:1.75rem;overflow-wrap:anywhere; }
+
+/* The settings sheet scrolls its body only, not the frame around it as well. */
+.sheet.settings { overflow: hidden; }

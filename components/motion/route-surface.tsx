@@ -4,6 +4,7 @@ import { useLocation } from "react-router";
 import {
   consumeRouteDirection,
   consumeViewDirection,
+  isSheetNavigation,
   primaryIndex,
 } from "@/lib/navigation-memory";
 import { cn } from "@/lib/cn";
@@ -36,9 +37,9 @@ export function RouteSurface({
   useLayoutEffect(() => {
     const node = surface.current!;
     const routeDirection = consumeRouteDirection(pathname);
-    const navigation = Boolean(
-      previous.current && previous.current !== pathname,
-    );
+    const navigation =
+      Boolean(previous.current && previous.current !== pathname) &&
+      !isSheetNavigation(previous.current, pathname);
     // Peers swap sideways in the order the dock shows them (Strata's Swap):
     // a destination to the right comes in from the right.
     const peerStep = Math.sign(
