@@ -81,7 +81,7 @@
     border-color var(--motion-control) var(--ease-move),
     box-shadow var(--motion-control) var(--ease-move),
     opacity var(--motion-control) var(--ease-move),
-    transform var(--motion-control) var(--ease-arrive);
+    transform var(--motion-control) var(--ease-spring);
 }
 
 /* A button sinks under the finger and eases back, the app's PressableScale:
@@ -93,6 +93,7 @@
   ):active {
   transform: scale(var(--motion-press-scale));
   transition-duration: var(--motion-touch);
+  transition-timing-function: var(--ease-move);
 }
 /* A quiet button has no fill to change, so it also greys like a row does. */
 [data-slot="button"][data-variant="ghost"]:not(:disabled):active {
@@ -214,14 +215,12 @@
   transition-delay: var(--motion-touch);
 }
 .t-primary-nav-link [data-nav-icon] {
-  transition: transform var(--motion-nav) var(--ease-nav);
+  transition: transform var(--motion-control) var(--ease-spring);
 }
 .t-primary-nav-link:active [data-nav-icon] {
-  transform: scale(0.92);
+  transform: scale(0.9);
   transition-duration: var(--motion-touch);
-}
-.t-primary-nav-link[data-active="true"]:not(:active) [data-nav-icon] {
-  transform: translateY(-1px) scale(1.04);
+  transition-timing-function: var(--ease-move);
 }
 
 /* Entrances -------------------------------------------------------------- */
@@ -230,9 +229,12 @@
    rises into place. Furniture that merely arrived with its route does not: the
    route transition already carried it in, and animating it again underneath
    that is what makes an ordinary navigation read as a reload. */
+/* Strata's Settle: it rises the shared distance on the reveal rung, and
+   siblings that carry --i step in 45ms apart. */
 .t-panel-reveal,
 .t-update-stage {
-  animation: t-panel-reveal var(--motion-control) var(--ease-arrive) both;
+  animation: t-panel-reveal var(--motion-reveal) var(--ease-arrive) both;
+  animation-delay: calc(var(--i, 0) * var(--motion-stagger));
 }
 @keyframes t-panel-reveal {
   from {
@@ -274,7 +276,7 @@
    trigger, so the menu grows out of what opened it. No per-item stagger — a
    menu is one object, and staggering it delays the item the user aimed at. */
 .t-dropdown[data-state="open"] {
-  animation: t-dropdown-in var(--motion-nav) var(--ease-arrive) both;
+  animation: t-dropdown-in var(--motion-control) var(--ease-arrive) both;
 }
 .t-dropdown[data-state="closed"] {
   animation: t-dropdown-out var(--motion-control-exit) var(--ease-depart) both;
@@ -301,24 +303,25 @@
 }
 
 .t-overlay[data-state="open"] {
-  animation: t-fade-in var(--motion-control) var(--ease-arrive) both;
+  animation: t-fade-in var(--motion-reveal) var(--ease-move) both;
 }
 .t-overlay[data-state="closed"] {
-  animation: t-fade-out var(--motion-control-exit) var(--ease-depart) both;
+  animation: t-fade-out var(--motion-sheet-exit) var(--ease-depart) both;
 }
 
 /* A centred alert is the iOS alert: it scales up in place on the control rung,
    because it interrupts rather than travels. */
+/* Strata's Bloom: the panel grows from 0.94 on the spring. */
 .t-dialog[data-state="open"] {
-  animation: t-dialog-in var(--motion-nav) var(--ease-arrive) both;
+  animation: t-dialog-in var(--motion-sheet) var(--ease-spring) both;
 }
 .t-dialog[data-state="closed"] {
-  animation: t-dialog-out var(--motion-control-exit) var(--ease-depart) both;
+  animation: t-dialog-out var(--motion-sheet-exit) var(--ease-depart) both;
 }
 @keyframes t-dialog-in {
   from {
     opacity: 0;
-    transform: scale(var(--motion-surface-scale));
+    transform: scale(var(--motion-bloom-scale));
   }
   to {
     opacity: 1;
@@ -332,7 +335,7 @@
   }
   to {
     opacity: 0;
-    transform: scale(var(--motion-surface-scale));
+    transform: scale(var(--motion-bloom-scale));
   }
 }
 
@@ -349,10 +352,10 @@
     padding-bottom: max(1.5rem, calc(var(--safe-bottom) + 0.75rem));
   }
   .t-sheet[data-state="open"] {
-    animation: t-sheet-in var(--motion-sheet) var(--ease-nav) both;
+    animation: t-sheet-in var(--motion-sheet) var(--ease-arrive) both;
   }
   .t-sheet[data-state="closed"] {
-    animation: t-sheet-out var(--motion-sheet-exit) var(--ease-nav) both;
+    animation: t-sheet-out var(--motion-sheet-exit) var(--ease-depart) both;
   }
 }
 @keyframes t-sheet-in {
@@ -387,7 +390,7 @@
   padding: 12px 16px !important;
   gap: 10px !important;
   opacity: 0;
-  transform: var(--y) translateY(var(--motion-rise));
+  transform: var(--y) translateY(16px) scale(var(--motion-bloom-scale));
   will-change: transform, opacity;
   transition:
     opacity var(--motion-control-exit) var(--ease-depart),
@@ -396,10 +399,10 @@
 }
 .t-toast[data-sonner-toast][data-mounted="true"][data-removed="false"] {
   opacity: 1;
-  transform: var(--y) translateY(0);
+  transform: var(--y) translateY(0) scale(1);
   transition:
-    opacity var(--motion-control) var(--ease-arrive),
-    transform var(--motion-control) var(--ease-arrive),
+    opacity var(--motion-control) var(--ease-move),
+    transform var(--motion-reveal) var(--ease-spring),
     height var(--motion-control) var(--ease-arrive) !important;
 }
 .t-toast[data-sonner-toast][data-removed="true"][data-swipe-out="false"] {
@@ -439,7 +442,7 @@
   translate: 0 0;
   will-change: translate;
   transition:
-    translate var(--motion-nav) var(--ease-nav),
+    translate var(--motion-glide) var(--ease-spring),
     background-color var(--motion-control) var(--ease-move);
 }
 [data-state="checked"] .t-toggle-thumb {
@@ -566,12 +569,13 @@
 
 /* A result line arrives from just below, the way a toast does. */
 .t-result-in {
-  animation: t-result-in var(--motion-control) var(--ease-arrive) backwards;
+  animation: t-result-in var(--motion-reveal) var(--ease-arrive) backwards;
+  animation-delay: calc(var(--i, 0) * var(--motion-stagger));
 }
 @keyframes t-result-in {
   from {
     opacity: 0;
-    transform: translateY(var(--motion-rise, 8px));
+    transform: translateY(var(--motion-rise));
   }
   to {
     opacity: 1;
@@ -768,7 +772,7 @@
   transform: scale(1);
 }
 .t-spinner-check[data-state="complete"] .t-spinner-check-success path {
-  animation: t-success-draw var(--motion-control) var(--ease-move) both;
+  animation: t-success-draw var(--motion-glide) var(--ease-move) both;
 }
 
 .t-success-check[data-state="in"] {
@@ -782,7 +786,7 @@
   stroke-dashoffset: var(--check-length, 24);
 }
 .t-success-check[data-state="in"] path {
-  animation: t-success-draw var(--motion-control) var(--ease-move)
+  animation: t-success-draw var(--motion-glide) var(--ease-move)
     var(--motion-touch) forwards;
 }
 @keyframes t-success-in {

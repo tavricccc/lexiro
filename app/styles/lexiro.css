@@ -1194,10 +1194,11 @@ body[data-focus] .main {
   font-size: 1.125rem;
   font-weight: 700;
 }
+/* Settle: new content rises by the shared distance. */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(var(--rise));
   }
 }
 .focus-foot {
@@ -1555,7 +1556,15 @@ body[data-focus] .main {
   display: grid;
   align-items: end;
   justify-items: center;
-  animation: fade var(--d-state) var(--e-smooth) both;
+  animation: fade var(--d-reveal) var(--e-smooth) both;
+}
+.scrim[data-state="closed"] {
+  animation: fade-away var(--d-sheet-exit) var(--e-depart) both;
+}
+@keyframes fade-away {
+  to {
+    opacity: 0;
+  }
 }
 @keyframes fade {
   from {
@@ -1574,10 +1583,18 @@ body[data-focus] .main {
     calc(var(--sp-6) + env(safe-area-inset-bottom));
   animation: up var(--d-sheet) var(--e-arrive) both;
 }
+.sheet[data-state="closed"] {
+  animation: down var(--d-sheet-exit) var(--e-depart) both;
+}
+@keyframes down {
+  to {
+    transform: translateY(100%);
+  }
+}
+/* The foot owns the bottom edge, so it comes up from it rather than floating. */
 @keyframes up {
   from {
-    transform: translateY(40px);
-    opacity: 0;
+    transform: translateY(100%);
   }
 }
 .sheet::before {
@@ -1607,14 +1624,23 @@ body[data-focus] .main {
   .sheet {
     border-radius: var(--r-stage);
     padding: var(--sp-6);
-    animation-name: pop;
+    animation: pop var(--d-sheet) var(--e-spring) both;
+  }
+  .sheet[data-state="closed"] {
+    animation: pop-away var(--d-sheet-exit) var(--e-depart) both;
+  }
+  @keyframes pop-away {
+    to {
+      transform: scale(var(--bloom-scale));
+      opacity: 0;
+    }
   }
   .sheet::before {
     display: none;
   }
   @keyframes pop {
     from {
-      transform: scale(0.96);
+      transform: scale(var(--bloom-scale));
       opacity: 0;
     }
   }
@@ -1676,7 +1702,7 @@ body[data-focus] .main {
 }
 @keyframes pop2 {
   from {
-    transform: scale(0.9);
+    transform: scale(0.975);
     opacity: 0;
   }
 }

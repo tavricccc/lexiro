@@ -73,7 +73,7 @@ export function RoomsPage() {
     <>
       <RootPageHeader title={t("rooms.title")} />
       <ActiveRoomCard />
-      <div className="duo pop-in">
+      <div className="duo">
         <section className="tile tile-hue hue-violet stack">
           <div className="rowx">
             <span className="glyph">

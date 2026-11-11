@@ -36,10 +36,9 @@ export function StaggerList({
   );
 }
 
-// Rows added or removed later hand over on opacity alone, on one rung, with no
-// stagger between them: blurring or displacing each row makes an ordinary
-// re-render read as a reload, and delaying each row by its index makes the row
-// the user was reaching for the last one to arrive.
+// A row added later Settles (Strata): it rises the shared distance and fades
+// in. Rows the list was born with never animate, so a navigation or re-render
+// stays still. A removed row leaves quicker than it came, on opacity alone.
 export function StaggerItem({
   as = "div",
   className,
@@ -49,10 +48,10 @@ export function StaggerItem({
   return (
     <Element
       className={cn("t-stagger-item", className)}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={timing("control")}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, transition: timing("controlExit", "depart") }}
+      transition={timing("reveal")}
       {...props}
     />
   );

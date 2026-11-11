@@ -93,3 +93,25 @@ it("respects reduced motion when navigating to a ready screen", () => {
   );
   expect(animate).not.toHaveBeenCalled();
 });
+
+it("swaps peer destinations sideways in dock order instead of rising", () => {
+  const screen = render(
+    <RouteSurface>
+      <header data-motion-view="Today" />
+    </RouteSurface>,
+  );
+  route.pathname = "/app/progress";
+  screen.rerender(
+    <RouteSurface>
+      <header data-motion-view="Progress" />
+    </RouteSurface>,
+  );
+  expect(animate.mock.calls[0][0][0].transform).toBe("translateX(calc(1 * 32px))");
+  route.pathname = "/app/library";
+  screen.rerender(
+    <RouteSurface>
+      <header data-motion-view="Library" />
+    </RouteSurface>,
+  );
+  expect(animate.mock.calls.at(-1)![0][0].transform).toBe("translateX(calc(-1 * 32px))");
+});

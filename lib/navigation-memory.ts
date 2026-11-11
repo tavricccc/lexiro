@@ -31,6 +31,19 @@ export const PRIMARY_DESTINATIONS = [
 
 export type PrimaryDestination = (typeof PRIMARY_DESTINATIONS)[number]["href"];
 
+/** Where a page sits in primary navigation's order, or -1 outside it. */
+export function primaryIndex(pathname: string) {
+  return PRIMARY_DESTINATIONS.findIndex((destination) => {
+    const prefix =
+      "activePathPrefix" in destination ? destination.activePathPrefix : null;
+    return (
+      destination.href === pathname ||
+      (prefix !== null &&
+        (pathname === prefix || pathname.startsWith(`${prefix}/`)))
+    );
+  });
+}
+
 /** A destination primary navigation points at. */
 export function isRootRoute(pathname: string) {
   return PRIMARY_DESTINATIONS.some(

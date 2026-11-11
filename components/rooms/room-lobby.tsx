@@ -96,10 +96,10 @@ export function PlayerList({
           <motion.li
             key={player.uid}
             layout="position"
-            initial={{ opacity: 0, x: -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0 }}
-            transition={timing("nav")}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: timing("controlExit", "depart") }}
+            transition={timing("reveal")}
             className={cn(
               showScore
                 ? `p ${player.uid === state.you ? "me" : ""}`

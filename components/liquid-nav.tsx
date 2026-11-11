@@ -37,7 +37,7 @@ function NavigationContents({
           aria-hidden
           className="t-nav-selection absolute inset-0 z-0 rounded-[inherit] bg-primary"
           layoutId={reduceMotion ? undefined : "selection"}
-          transition={timing("nav", "nav")}
+          transition={timing("glide", "glide")}
         />
       )}
       <span

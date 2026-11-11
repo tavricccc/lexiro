@@ -4,6 +4,7 @@ import { useLocation } from "react-router";
 import {
   consumeRouteDirection,
   consumeViewDirection,
+  primaryIndex,
 } from "@/lib/navigation-memory";
 import { cn } from "@/lib/cn";
 import { motionEasing, motionSeconds } from "@/generated/motion-tokens";
@@ -38,6 +39,11 @@ export function RouteSurface({
     const navigation = Boolean(
       previous.current && previous.current !== pathname,
     );
+    // Peers swap sideways in the order the dock shows them (Strata's Swap):
+    // a destination to the right comes in from the right.
+    const peerStep = Math.sign(
+      primaryIndex(pathname) - primaryIndex(previous.current),
+    );
     previous.current = pathname;
     consumeViewDirection();
     let identity: string | null = null;
@@ -49,14 +55,17 @@ export function RouteSurface({
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       animation?.cancel();
       if (direction === "root") {
-        // A peer destination is a tab switch: it settles in place rather than
-        // travelling, the way a tab bar swaps its pages.
+        // A peer destination swaps sideways a short distance (Strata's Swap):
+        // nothing rises, so a tab switch never reads as a page reloading.
+        const route =
+          getComputedStyle(node).getPropertyValue("--route").trim() || "32px";
+        const step = peerStep || 1;
         animation = node.animate(
           [
-            { opacity: 0, transform: "translateY(12px)" },
+            { opacity: 0, transform: `translateX(calc(${step} * ${route}))` },
             { opacity: 1, transform: "none" },
           ],
-          { duration: NAV_MS, easing: bezier(motionEasing.arrive) },
+          { duration: NAV_MS, easing: bezier(motionEasing.nav) },
         );
         return;
       }

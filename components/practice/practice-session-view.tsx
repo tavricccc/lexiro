@@ -121,9 +121,9 @@ export function PracticeSessionView({
               ? `passage:${entry.item.question.id}`
               : entry.id
           }
-          initial={animateCard ? { opacity: 0, x: 18 } : false}
+          initial={animateCard ? { opacity: 0, x: 32 } : false}
           animate={{ opacity: 1, x: 0 }}
-          transition={timing("nav", "arrive")}
+          transition={timing("nav", "nav")}
         >
           <QuestionCard
             item={entry.item}

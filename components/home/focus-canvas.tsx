@@ -61,7 +61,7 @@ export function FocusCanvas() {
   if (!library.sets.length) return <EmptyLibrary />;
   return (
     <>
-      <div className="bento b4 pop-in">
+      <div className="bento b4">
         <section
           className="hero wide"
           style={vars({ "--span": 7, "--rows": 2 })}

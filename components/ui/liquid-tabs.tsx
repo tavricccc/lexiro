@@ -76,7 +76,7 @@ export function LiquidTabs({
                     className="t-tabs-pill absolute inset-0 z-0 rounded-full bg-[var(--tabs-pill-bg)] shadow-[var(--shadow-control)]"
                     initial={false}
                     layoutId={`liquid-tab-pill-${layoutId}`}
-                    transition={timing("nav", "nav")}
+                    transition={timing("glide", "glide")}
                   />
                 )}
                 <span key="icon" className="relative z-10 contents">

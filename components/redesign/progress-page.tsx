@@ -30,7 +30,7 @@ export function ProgressPage() {
   return (
     <>
       <RootPageHeader title={t("redesign.progress")} />
-      <div className="trio pop-in" style={{ marginBottom: 20 }}>
+      <div className="trio" style={{ marginBottom: 20 }}>
         {[
           [streak(record, today), t("redesign.dayUnit"), "amber", Fire],
           [levels[3], t("redesign.known"), "mint", Check],
