@@ -81,7 +81,7 @@ function Brand() {
   return (
     <div className="flex flex-col items-center gap-4">
       <BrandMark className="size-20 rounded-[1.25rem]" />
-      <span className="text-2xl font-semibold tracking-tight">Lexiro</span>
+      <span className="text-xl font-semibold tracking-tight">Lexiro</span>
     </div>
   );
 }
@@ -114,7 +114,7 @@ function SignInPrompt({ onSkip }: { onSkip: () => void }) {
     <div className="flex w-full max-w-sm flex-col items-center gap-6 py-10 text-center">
       <Brand />
       <div className="space-y-2">
-        <h1 className="type-section">{t("startup.signInTitle")}</h1>
+        <h1 className="text-lg font-medium">{t("startup.signInTitle")}</h1>
       </div>
       <div className="grid w-full gap-2">
         <Button

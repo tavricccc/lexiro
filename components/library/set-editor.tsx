@@ -212,7 +212,7 @@ function SetEditorFlow({
         title={t("setEditor.createTitle")}
       />
 
-      <div>
+      <div className="stack">
         {metadataFields}
         <SetAppearancePicker
           hue={draft.hue}

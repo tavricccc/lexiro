@@ -644,3 +644,17 @@ label.entry-field :is(input,textarea,[data-slot="select-trigger"]) { width:100%;
  .focus-foot > div { max-width:calc(720px - 2 * var(--page-x)); }
 }
 .library-workspace .pill[aria-pressed="true"] { background:var(--solid);color:var(--on-solid); }
+/* Review E: calmer type, rail inset, taller settings sheet. */
+:root, [data-theme] {
+ --t-page-size:1.5rem;
+ --t-section-size:1.125rem;
+ --t-figure-size:2.125rem;
+}
+.sec h2 { font-size:var(--t-section-size); }
+.fig { font-size:2.125rem; }
+.hero .fig { font-size:3.25rem; }
+.trio .fig, .word-record .fig { font-size:1.75rem; }
+.scroller { scroll-padding-inline:var(--page-x); }
+.startup-screen .btn { --button-weight:500; }
+@media (max-width:59.99rem) { .settings-body { max-height:94dvh; } }
+.flip .word { font-size:1.75rem;overflow-wrap:anywhere; }
