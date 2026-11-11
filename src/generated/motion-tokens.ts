@@ -5,7 +5,9 @@
 export const motionSeconds = {
   touch: 0.1,
   control: 0.25,
-  nav: 0.5,
+  glide: 0.34,
+  reveal: 0.42,
+  nav: 0.46,
   sheet: 0.56,
   controlExit: 0.19,
   sheetExit: 0.38,
@@ -15,8 +17,10 @@ export const motionSeconds = {
 export const motionEasing = {
   arrive: [0.16, 1, 0.3, 1],
   depart: [0.4, 0, 1, 1],
-  move: [0.4, 0, 0.2, 1],
-  nav: [0.32, 0.72, 0, 1],
+  move: [0.2, 0, 0, 1],
+  nav: [0.2, 0, 0, 1],
+  glide: [0.25, 1.05, 0.35, 1],
+  spring: [0.34, 1.36, 0.64, 1],
 } as const;
 
 /** Indeterminate loops, in seconds. They repeat, so they sit outside the ladder. */

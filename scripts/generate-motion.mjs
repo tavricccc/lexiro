@@ -4,9 +4,20 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const DURATIONS = ['touch', 'control', 'nav', 'sheet', 'controlExit', 'sheetExit'];
-const EASINGS = ['arrive', 'depart', 'move', 'nav'];
-const TRAVEL = ['lift', 'rise', 'pressScale', 'glassPressScale', 'surfaceScale', 'routeTravel'];
+const DURATIONS = ['touch', 'control', 'glide', 'reveal', 'nav', 'sheet', 'controlExit', 'sheetExit'];
+const EASINGS = ['arrive', 'depart', 'move', 'nav', 'glide', 'spring'];
+const TRAVEL = ['lift', 'rise', 'stagger', 'pressScale', 'glassPressScale', 'surfaceScale', 'bloomScale', 'routeTravel'];
+
+// Each rung is the Strata token of the same meaning (../mydesign tokens), so the
+// desktop and Windows platforms retime the whole ladder through Strata's own
+// overrides. The config value is the fallback and what JavaScript reads.
+const STRATA = {
+  durations: { touch: 'd-press', control: 'd-state', glide: 'd-glide', reveal: 'd-reveal', nav: 'd-nav', sheet: 'd-sheet', controlExit: 'd-exit', sheetExit: 'd-sheet-exit' },
+  easings: { arrive: 'e-arrive', depart: 'e-depart', move: 'e-smooth', nav: 'e-smooth', glide: 'e-glide', spring: 'e-spring' },
+  travel: { rise: 'rise', stagger: 'stagger', pressScale: 'press-scale', bloomScale: 'bloom-scale' },
+};
+const strata = (group, name, fallback) =>
+  STRATA[group][name] ? `var(--${STRATA[group][name]}, ${fallback})` : fallback;
 const LOOPS = ['spin', 'sweep', 'pulse'];
 
 function assertMilliseconds(value, name) {
@@ -82,16 +93,16 @@ function renderStylesheet(config) {
     '     furthest. Leaving is always quicker than arriving. */',
   ];
   for (const name of DURATIONS)
-    lines.push(`  --motion-${kebab(name)}: ${config.durations[name]}ms;`);
+    lines.push(`  --motion-${kebab(name)}: ${strata('durations', name, `${config.durations[name]}ms`)};`);
   lines.push(
     '',
     '  /* Arrivals decelerate, dismissals accelerate, travel between two known',
     '     positions are symmetric, and routes use the iOS navigation curve. */',
   );
   for (const name of EASINGS)
-    lines.push(`  --ease-${kebab(name)}: ${bezier(config.easings[name])};`);
+    lines.push(`  --ease-${kebab(name)}: ${strata('easings', name, bezier(config.easings[name]))};`);
   lines.push('', '  /* How far. Everything that rises, rises by the same amount. */');
-  for (const name of TRAVEL) lines.push(`  --motion-${kebab(name)}: ${config.travel[name]};`);
+  for (const name of TRAVEL) lines.push(`  --motion-${kebab(name)}: ${strata('travel', name, config.travel[name])};`);
   lines.push('', '  /* Indeterminate loops. They repeat, so they sit outside the ladder. */');
   for (const name of LOOPS) lines.push(`  --motion-${kebab(name)}: ${config.loops[name]}ms;`);
   lines.push('}', '');

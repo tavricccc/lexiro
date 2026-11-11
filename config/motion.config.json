@@ -2,7 +2,9 @@
   "durations": {
     "touch": 100,
     "control": 250,
-    "nav": 500,
+    "glide": 340,
+    "reveal": 420,
+    "nav": 460,
     "sheet": 560,
     "controlExit": 190,
     "sheetExit": 380
@@ -10,15 +12,19 @@
   "easings": {
     "arrive": [0.16, 1, 0.3, 1],
     "depart": [0.4, 0, 1, 1],
-    "move": [0.4, 0, 0.2, 1],
-    "nav": [0.32, 0.72, 0, 1]
+    "move": [0.2, 0, 0, 1],
+    "nav": [0.2, 0, 0, 1],
+    "glide": [0.25, 1.05, 0.35, 1],
+    "spring": [0.34, 1.36, 0.64, 1]
   },
   "travel": {
     "lift": "4px",
-    "rise": "8px",
+    "rise": "12px",
+    "stagger": "45ms",
     "pressScale": "0.96",
     "glassPressScale": "1.08",
     "surfaceScale": "0.975",
+    "bloomScale": "0.94",
     "routeTravel": "min(30%, 14rem)"
   },
   "loops": {
