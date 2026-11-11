@@ -34,7 +34,7 @@ it("moves the loading phase with the route and fades ready content without a sec
       <header data-motion-view="Today" />
     </RouteSurface>,
   );
-  route.pathname = "/app/practice";
+  route.pathname = "/app/sets/abc";
   screen.rerender(
     <RouteSurface>
       <div aria-busy="true">Loading</div>
@@ -44,7 +44,7 @@ it("moves the loading phase with the route and fades ready content without a sec
   expect(animate.mock.calls[0][0][0].transform).toBe("translateX(30%)");
   screen.rerender(
     <RouteSurface>
-      <header data-motion-view="Practice setup" />
+      <header data-motion-view="Set" />
     </RouteSurface>,
   );
   await waitFor(() => expect(animate).toHaveBeenCalledTimes(2));
@@ -114,4 +114,19 @@ it("swaps peer destinations sideways in dock order instead of rising", () => {
     </RouteSurface>,
   );
   expect(animate.mock.calls.at(-1)![0][0].transform).toBe("translateX(calc(-1 * 32px))");
+});
+
+it("opens the practice sheet without sliding the route", () => {
+  const screen = render(
+    <RouteSurface>
+      <header data-motion-view="Today" />
+    </RouteSurface>,
+  );
+  route.pathname = "/app/practice";
+  screen.rerender(
+    <RouteSurface>
+      <div />
+    </RouteSurface>,
+  );
+  expect(animate).not.toHaveBeenCalled();
 });
