@@ -1,12 +1,15 @@
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Dialog } from "radix-ui";
 import { Dial } from "@/components/redesign/primitives";
 import { useLearningStore } from "@/stores/learning-store";
 import { familiarity } from "@/src/lib/learning-record";
 import { Button } from "@/components/ui/button";
 import Link from "@/components/ui/app-link";
-import { BackControl } from "@/components/ui/back-control";
 import { Icons } from "@/components/ui/icons";
+import { SetView } from "./set-view";
+import { useAppRouter } from "@/lib/use-app-router";
+import { holdRouteSheet } from "@/lib/navigation-memory";
 import { EmptyState } from "@/components/ui/page-state";
-import { PageHeader } from "@/components/ui/page-header";
 import { SpeakPill } from "@/components/ui/speak-pill";
 import { withReturnTo } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
@@ -24,6 +27,13 @@ export function WordDetailPage({
   wordKey: string;
   returnHref?: string;
 }) {
+  const router = useAppRouter();
+  const scroller = useRef<HTMLDivElement>(null);
+  const heading = useRef<HTMLHeadingElement | null>(null);
+  // Once the large word has scrolled under the top edge, the bar takes over
+  // with a small centred title, as in an iOS large-title sheet.
+  const [collapsed, setCollapsed] = useState(false);
+  useLayoutEffect(holdRouteSheet, []);
   const record = useLearningStore((s) => s.record);
   const state = useLibraryStore((store) => store.state);
   const wordKey = rawKey as WordKey;
@@ -39,32 +49,25 @@ export function WordDetailPage({
     `/app/sets/${setId}/words/${encodeURIComponent(wordKey)}/edit`,
     backHref,
   );
-
-  if (!word || !senses?.length)
-    return (
-      <div className="word-detail">
-        <PageHeader back={<BackControl href={backHref} />} title="" />
-        <EmptyState
-          variant="filtered"
-          title={t("setDetail.missingWord")}
-          description={t("setDetail.missingWordDescription")}
-        />
-      </div>
+  useEffect(() => {
+    const target = heading.current;
+    if (!target) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setCollapsed(!entry.isIntersecting),
+      { root: scroller.current, rootMargin: "-8px 0px 0px 0px" },
     );
-
-  return (
-    <div className="word-detail">
-      <PageHeader
-        back={<BackControl href={backHref} />}
-        title=""
-        actions={
-          <Button asChild size="icon" variant="glass">
-            <Link aria-label={t("setDetail.editWord")} href={editHref}>
-              <Icons.edit />
-            </Link>
-          </Button>
-        }
-      />
+    observer.observe(target);
+    return () => observer.disconnect();
+  });
+  const missing = !word || !senses?.length;
+  const body = missing ? (
+    <EmptyState
+      variant="filtered"
+      title={t("setDetail.missingWord")}
+      description={t("setDetail.missingWordDescription")}
+    />
+  ) : (
+    <>
       <div className="word-hero">
         <div className="rowx">
           <span className="chip">
@@ -78,7 +81,7 @@ export function WordDetailPage({
           />
         </div>
         <div className="rowx">
-          <h1 className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
+          <h1 ref={heading} className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
             {word.word}
           </h1>
           <SpeakPill text={word.word} label={t("setDetail.speak")} />
@@ -114,6 +117,60 @@ export function WordDetailPage({
           </div>
         </aside>
       </div>
-    </div>
+    </>
+  );
+
+  // The word is a layer over its set, not a page of its own: the set stays
+  // underneath and the word opens as a sheet (a popup on wide screens).
+  return (
+    <>
+      <SetView setId={setId} returnTo={returnHref} />
+      <Dialog.Root
+        open
+        onOpenChange={(open) => {
+          if (!open) router.push(backHref);
+        }}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="scrim">
+            <Dialog.Content
+              className="sheet sheet-record word-detail"
+              aria-describedby={undefined}
+            >
+              <header
+                className="record-bar"
+                data-collapsed={collapsed || missing ? "" : undefined}
+              >
+                <Dialog.Title className="record-title">
+                  {word?.word ?? t("setDetail.missingWord")}
+                </Dialog.Title>
+                <div className="acts">
+                  {!missing && (
+                    <Button asChild size="icon" variant="glass">
+                      <Link aria-label={t("setDetail.editWord")} href={editHref}>
+                        <Icons.edit />
+                      </Link>
+                    </Button>
+                  )}
+                  <Dialog.Close asChild>
+                    <Button
+                      aria-label={t("redesign.close")}
+                      size="icon"
+                      type="button"
+                      variant="glass"
+                    >
+                      <Icons.cancel />
+                    </Button>
+                  </Dialog.Close>
+                </div>
+              </header>
+              <div className="record-scroll" ref={scroller}>
+                {body}
+              </div>
+            </Dialog.Content>
+          </Dialog.Overlay>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </>
   );
 }

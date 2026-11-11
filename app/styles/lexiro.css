@@ -1647,6 +1647,92 @@ body[data-focus] .main {
     }
   }
 }
+/* A record sheet is the screen drawn smaller (Novae): full height on a phone,
+   86% of the window on a wide screen. Its bar stays put while the body scrolls,
+   and a small centred title fades in once the large title has scrolled away. */
+.sheet.sheet-record {
+  display: flex;
+  flex-direction: column;
+  max-height: none;
+  height: calc(100dvh - env(safe-area-inset-top) - 0.75rem);
+  overflow: hidden;
+  padding: 0;
+}
+.sheet-record::before {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+}
+.record-bar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--canvas) 72%, transparent);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 3.5rem;
+  padding: var(--sp-4) var(--sp-4) var(--sp-2);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--d-state) var(--e-smooth);
+}
+.record-bar:not([data-collapsed]) {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.record-bar[data-collapsed] {
+  border-bottom-color: var(--line, var(--fill));
+}
+.record-bar .acts {
+  display: flex;
+  gap: var(--sp-2);
+}
+.record-title {
+  position: absolute;
+  inset-inline: 4.5rem;
+  top: 50%;
+  margin-top: 4px;
+  text-align: center;
+  font-family: var(--font-latin);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(-35%) scale(1.6);
+  transition:
+    opacity var(--d-state) var(--e-smooth),
+    transform var(--d-sheet) var(--e-arrive);
+  pointer-events: none;
+}
+.record-bar[data-collapsed] .record-title {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+.record-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3.75rem var(--sp-5) calc(var(--sp-6) + env(safe-area-inset-bottom));
+}
+@media (min-width: 40rem) {
+  .sheet.sheet-record {
+    width: 86vw;
+    max-width: none;
+    height: 86dvh;
+  }
+  .record-scroll {
+    padding: 3.75rem var(--sp-6) var(--sp-6);
+  }
+}
 .modes {
   display: grid;
   grid-template-columns: 1fr 1fr;
