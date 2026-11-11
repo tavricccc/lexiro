@@ -72,7 +72,7 @@
   width: 100%;
   transform-origin: left;
   background: var(--primary);
-  transition: transform var(--d-state) var(--e-spring);
+  transition: transform var(--d-sheet) var(--e-arrive);
 }
 @media (prefers-reduced-motion: reduce) {
   .study-task-progress > span {
