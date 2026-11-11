@@ -15,6 +15,7 @@ import { useCloudStore } from "@/stores/cloud-store";
 import { useUIStore } from "@/stores/ui-store";
 import { SettingsDialog } from "@/components/redesign/settings-dialog";
 import { FocusCanvas } from "@/components/home/focus-canvas";
+import { RouteSurface } from "@/components/motion/route-surface";
 const destinations = [
   ["/app", "redesign.today", SunHorizon],
   ["/app/library", "redesign.library", Books],
@@ -102,29 +103,33 @@ export function AppShell({ children }: { children: ReactNode }) {
         </button>
       </nav>
       <main className="main">
-        {legacySettings ? (
-          <>
-            <header className="bar-top">
-              <h1 className="t-page">{t("redesign.today")}</h1>
-            </header>
-            <FocusCanvas />
-          </>
-        ) : (
-          children
-        )}
+        <RouteSurface className="route-page-full">
+          {legacySettings ? (
+            <>
+              <header className="bar-top">
+                <h1 className="t-page">{t("redesign.today")}</h1>
+              </header>
+              <FocusCanvas />
+            </>
+          ) : (
+            children
+          )}
+        </RouteSurface>
       </main>
-      {destinations.some(([href]) => pathname === href) && <nav className="dock frost" aria-label={t("redesign.library")}>
-        {destinations.map(([href, label, Icon]) => (
-          <Link
-            key={href}
-            href={href}
-            aria-label={t(label)}
-            aria-current={current === href ? "page" : undefined}
-          >
-            <Icon weight="regular" />
-          </Link>
-        ))}
-      </nav>}
+      {destinations.some(([href]) => pathname === href) && (
+        <nav className="dock frost" aria-label={t("redesign.library")}>
+          {destinations.map(([href, label, Icon]) => (
+            <Link
+              key={href}
+              href={href}
+              aria-label={t(label)}
+              aria-current={current === href ? "page" : undefined}
+            >
+              <Icon weight="regular" />
+            </Link>
+          ))}
+        </nav>
+      )}
       <SettingsDialog
         open={settings || legacySettings || query.get("sheet") === "me"}
         onClose={close}

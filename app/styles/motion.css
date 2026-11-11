@@ -881,3 +881,9 @@
     transform: none !important;
   }
 }
+
+/* Inside the Strata shell the page uses the full width of .main. */
+.route-page.route-page-full {
+  width: 100%;
+  max-width: none;
+}
