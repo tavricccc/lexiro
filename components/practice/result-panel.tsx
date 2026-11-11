@@ -70,19 +70,19 @@ export function ResultPanel({
           </div>
         </section>
         <div className="trio">
-          <section className="tile tile-hue hue-mint">
-            <p className="fig">
+          <section className="tile">
+            <p className="fig hue-mint fig-hue">
               {total ? Math.round((correct / total) * 100) : 0}
               <small>%</small>
             </p>
             <p>{t("redesign.accuracy")}</p>
           </section>
-          <section className="tile tile-hue hue-sky">
-            <p className="fig">{skipped}</p>
+          <section className="tile">
+            <p className="fig hue-sky fig-hue">{skipped}</p>
             <p>{t("practice.skippedLabel")}</p>
           </section>
-          <section className="tile tile-hue hue-amber">
-            <p className="fig">{marked}</p>
+          <section className="tile">
+            <p className="fig hue-amber fig-hue">{marked}</p>
             <p>{t("practice.markedLabel")}</p>
           </section>
         </div>

@@ -99,7 +99,7 @@ export function FocusCanvas() {
           </div>
         </section>
         <Link
-          className="tile tile-hue hue-amber"
+          className="tile"
           style={vars({ "--span": 5 })}
           href="/app/progress"
         >
@@ -113,7 +113,7 @@ export function FocusCanvas() {
                 <small>{t("redesign.dayUnit")}</small>
               </p>
             </div>
-            <div className="week hue-amber">
+            <div className="week">
               {t("redesign.weekdays")
                 .split("")
                 .map((label, i) => (
@@ -139,7 +139,7 @@ export function FocusCanvas() {
           </div>
         </Link>
         <button
-          className="tile tile-hue hue-rose"
+          className="tile"
           style={vars({ "--span": 5 })}
           onClick={() => {
             setReview(true);
@@ -212,7 +212,7 @@ export function FocusCanvas() {
           </div>
         )}
         <Link
-          className="tile tile-hue hue-violet half"
+          className="tile half"
           href="/app/rooms"
           style={vars({ "--span": 4 })}
         >

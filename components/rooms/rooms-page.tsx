@@ -74,7 +74,7 @@ export function RoomsPage() {
       <RootPageHeader title={t("rooms.title")} />
       <ActiveRoomCard />
       <div className="duo">
-        <section className="tile tile-hue hue-violet stack">
+        <section className="tile stack">
           <div className="rowx">
             <span className="glyph">
               <Icons.join />
