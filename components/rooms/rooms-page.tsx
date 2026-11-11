@@ -77,7 +77,7 @@ export function RoomsPage() {
         <section className="tile tile-hue hue-violet stack">
           <div className="rowx">
             <span className="glyph">
-              <Icons.signIn />
+              <Icons.join />
             </span>
             <h2 className="t-section">{t("redesign.joinRoom")}</h2>
           </div>

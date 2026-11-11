@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { BrandMark } from "@/components/ui/brand";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
+import { GoogleMark } from "@/components/ui/google-mark";
 import { ErrorState } from "@/components/ui/page-state";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
@@ -133,7 +134,7 @@ function SignInPrompt({ onSkip }: { onSkip: () => void }) {
               .finally(() => setBusy(false));
           }}
         >
-          <Icons.signIn />
+          <GoogleMark className="size-[1.125rem]" />
           {t("settings.signIn")}
         </Button>
         <Button size="lg" variant="ghost" disabled={busy} onClick={onSkip}>

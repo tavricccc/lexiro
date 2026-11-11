@@ -1,3 +1,4 @@
+import { GoogleMark } from "@/components/ui/google-mark";
 import { useLibraryStore } from "@/stores/library-store";
 import { useIsAdministrator } from "@/components/me/use-is-administrator";
 import { useEffect, useState } from "react";
@@ -174,7 +175,7 @@ export function SettingsDialog({
                         }
                       >
                         <span className="sicon">
-                          <UserCircle />
+                          <GoogleMark className="size-[1.125rem]" />
                         </span>
                         {t("redesign.signIn")}
                       </button>

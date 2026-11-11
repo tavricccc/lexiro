@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
+import { GoogleMark } from "@/components/ui/google-mark";
 import { t } from "@/lib/i18n";
 import { useCloudStore } from "@/stores/cloud-store";
 
@@ -12,10 +12,7 @@ export function SignInRequired({ message }: { message: string }) {
   const [error, setError] = useState("");
   return (
     <div className="rounded-[var(--radius-card)] bg-card p-6 text-center">
-      <Icons.signIn
-        aria-hidden
-        className="mx-auto size-6 text-muted-foreground"
-      />
+      <GoogleMark className="mx-auto size-6" />
       <p className="mt-3 text-sm text-muted-foreground">
         {configured ? message : t("settings.notConfigured")}
       </p>
