@@ -1,4 +1,3 @@
-import { WordCardStack } from "@/components/library/word-card-stack";
 import { CopyToSetSheet } from "@/components/library/copy-to-set-sheet";
 import type { WordKey } from "@/types";
 import { PracticeLaunch } from "@/components/redesign/practice-launch";
@@ -272,9 +271,6 @@ export function SetView({
           </>
         )}
       </div>
-      {tab === "words" && !selecting && visibleWords.length > 0 && (
-        <WordCardStack words={visibleWords} />
-      )}
       <ContentTransition identity={tab}>
         {tab === "words" ? (
           <SetWordList
