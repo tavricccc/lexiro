@@ -16,7 +16,7 @@ const fineMutation = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("edit_word"),
     wordKey: text,
-    patch: z.object({ word: text }),
+    patch: z.object({ word: text.optional(), starred: z.boolean().optional() }),
   }),
   z.object({
     type: z.literal("edit_sense"),
@@ -111,12 +111,26 @@ export function mutateAgentResource(
       "word_not_found",
       `wordKey ${action.wordKey} is not in this set; get wordKey from read words`,
     );
-  if (action.type === "edit_word")
+  if (action.type === "edit_word") {
+    if (action.patch.word === undefined && action.patch.starred === undefined)
+      throw httpError(400, "empty_patch", "patch has no fields to change");
     return mutateAgentSet(
       snapshot,
-      { type: "put_words", words: [{ ...word, word: action.patch.word }] },
+      {
+        type: "put_words",
+        words: [
+          {
+            ...word,
+            word: action.patch.word ?? word.word,
+            ...(action.patch.starred !== undefined
+              ? { starred: action.patch.starred }
+              : {}),
+          },
+        ],
+      },
       blocked,
     );
+  }
   const old = word.senses.find((sense) => sense.id === action.senseId);
   if (action.action !== "add" && !old)
     throw httpError(

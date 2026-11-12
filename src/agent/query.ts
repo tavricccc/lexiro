@@ -50,6 +50,7 @@ export const querySchema = z.object({
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
   wordKeys: ids,
   senseIds: ids,
+  starred: z.boolean().optional(),
   folderId: text.optional(),
   from: z.number().int().min(1).max(20000).optional(),
   to: z.number().int().min(1).max(20049).optional(),
@@ -304,6 +305,7 @@ function wordSummary(word: WordEntry) {
   return {
     wordKey: word.wordKey,
     word: word.word,
+    ...(word.starred ? { starred: true } : {}),
     senses: word.senses.map(({ id, pos, meaningZh }) => ({
       id,
       pos,
@@ -502,6 +504,11 @@ async function queryRecords(
     if (q.wordKeys) {
       where += " AND m.word_key IN (SELECT value FROM json_each(?))";
       args.push(JSON.stringify(q.wordKeys));
+    }
+    if (q.starred !== undefined) {
+      where += q.starred
+        ? " AND json_extract(r.payload,'$.starred')=1"
+        : " AND COALESCE(json_extract(r.payload,'$.starred'),0)=0";
     }
     if (q.q) {
       where +=
