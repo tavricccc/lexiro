@@ -20,6 +20,7 @@ export default function AppLink({
 }: AppLinkProps) {
   return (
     <Link
+      draggable={false}
       {...props}
       to={href}
       target={target}

@@ -1,8 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Dialog } from "radix-ui";
-import { Dial } from "@/components/redesign/primitives";
 import { useLearningStore } from "@/stores/learning-store";
-import { familiarity } from "@/src/lib/learning-record";
 import { Button } from "@/components/ui/button";
 import Link from "@/components/ui/app-link";
 import { Icons } from "@/components/ui/icons";
@@ -11,14 +9,15 @@ import { useAppRouter } from "@/lib/use-app-router";
 import { holdRouteSheet } from "@/lib/navigation-memory";
 import { EmptyState } from "@/components/ui/page-state";
 import { SpeakPill } from "@/components/ui/speak-pill";
+import { StarButton } from "@/components/ui/star-button";
+import { SwipeableSheetContent } from "@/components/ui/bottom-sheet";
 import { withReturnTo } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
 import type { WordKey } from "@/types";
 import { useLibraryStore } from "@/stores/library-store";
 import { WordSenseCard } from "./set-word-row";
 
-/** One word read in full, as in the app: every meaning in this set with all its examples. */
-export function WordDetailPage({
+export function WordDetailSheet({
   setId,
   wordKey: rawKey,
   returnHref,
@@ -69,19 +68,17 @@ export function WordDetailPage({
   ) : (
     <>
       <div className="word-hero">
-        <div className="rowx">
+        <div className="between">
           <span className="chip">
             {state.sets.find((s) => s.id === setId)?.setName}
           </span>
-          <Dial
-            value={familiarity(
-              record,
-              senses.map((s) => s.id),
-            )}
-          />
+          <StarButton wordKey={wordKey} />
         </div>
         <div className="rowx">
-          <h1 ref={heading} className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]">
+          <h1
+            ref={heading}
+            className="min-w-0 break-words font-latin text-[2.75rem] font-extrabold leading-[1.15] tracking-[-0.035em]"
+          >
             {word.word}
           </h1>
           <SpeakPill text={word.word} label={t("setDetail.speak")} />
@@ -120,57 +117,80 @@ export function WordDetailPage({
     </>
   );
 
-  // The word is a layer over its set, not a page of its own: the set stays
-  // underneath and the word opens as a sheet (a popup on wide screens).
   return (
-    <>
-      <SetView setId={setId} returnTo={returnHref} />
-      <Dialog.Root
-        open
-        onOpenChange={(open) => {
-          if (!open) router.push(backHref);
-        }}
-      >
-        <Dialog.Portal>
-          <Dialog.Overlay className="scrim">
-            <Dialog.Content
-              className="sheet sheet-record word-detail"
-              aria-describedby={undefined}
+    <Dialog.Root
+      open
+      onOpenChange={(open) => {
+        if (!open) router.push(backHref);
+      }}
+    >
+      <Dialog.Portal>
+        <Dialog.Overlay className="scrim">
+          <SwipeableSheetContent
+            className="sheet-record word-detail"
+            aria-describedby={undefined}
+            onDismiss={() => router.push(backHref)}
+          >
+            <header
+              className="record-bar"
+              data-collapsed={collapsed || missing ? "" : undefined}
             >
-              <header
-                className="record-bar"
-                data-collapsed={collapsed || missing ? "" : undefined}
-              >
-                <Dialog.Title className="record-title">
-                  {word?.word ?? t("setDetail.missingWord")}
-                </Dialog.Title>
-                <div className="acts">
-                  {!missing && (
+              <Dialog.Title className="record-title">
+                {word?.word ?? t("setDetail.missingWord")}
+              </Dialog.Title>
+              <div className="acts">
+                {!missing && (
+                  <>
+                    <StarButton wordKey={wordKey} size="sm" />
                     <Button asChild size="icon" variant="glass">
                       <Link aria-label={t("setDetail.editWord")} href={editHref}>
                         <Icons.edit />
                       </Link>
                     </Button>
-                  )}
-                  <Dialog.Close asChild>
-                    <Button
-                      aria-label={t("redesign.close")}
-                      size="icon"
-                      type="button"
-                      variant="glass"
-                    >
-                      <Icons.cancel />
-                    </Button>
-                  </Dialog.Close>
-                </div>
-              </header>
-              <div className="record-scroll" ref={scroller}>
-                {body}
+                  </>
+                )}
+                <Dialog.Close asChild>
+                  <Button
+                    aria-label={t("redesign.close")}
+                    size="icon"
+                    type="button"
+                    variant="glass"
+                  >
+                    <Icons.cancel />
+                  </Button>
+                </Dialog.Close>
               </div>
-            </Dialog.Content>
-          </Dialog.Overlay>
-        </Dialog.Portal>
-      </Dialog.Root>
+            </header>
+            <div className="record-scroll" ref={scroller}>
+              {body}
+            </div>
+          </SwipeableSheetContent>
+        </Dialog.Overlay>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
+/** One word read in full, as in the app: every meaning in this set with all its examples. */
+export function WordDetailPage({
+  setId,
+  wordKey,
+  returnHref,
+}: {
+  setId: string;
+  wordKey: string;
+  returnHref?: string;
+}) {
+  // The word is a layer over its set, not a page of its own: the set stays
+  // underneath and the word opens as a sheet (a popup on wide screens).
+  return (
+    <>
+      <SetView setId={setId} returnTo={returnHref} />
+      <WordDetailSheet
+        setId={setId}
+        wordKey={wordKey}
+        returnHref={returnHref}
+      />
     </>
   );
 }

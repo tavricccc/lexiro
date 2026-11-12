@@ -6,7 +6,6 @@ import {
   Lightning,
   SunHorizon,
 } from "@phosphor-icons/react";
-import { useTheme } from "next-themes";
 import Link from "@/components/ui/app-link";
 import { useAppRouter } from "@/lib/use-app-router";
 import { commitRouteHistory } from "@/lib/navigation-memory";
@@ -25,7 +24,6 @@ const destinations = [
 export function AppShell({ children }: { children: ReactNode }) {
   const { pathname, search } = useLocation();
   const router = useAppRouter();
-  const { resolvedTheme } = useTheme();
   const active = useUIStore((s) => s.practiceActive);
   const user = useCloudStore((s) => s.user);
   const [settings, setSettings] = useState(false);
@@ -61,11 +59,6 @@ export function AppShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     commitRouteHistory(pathname);
   }, [pathname]);
-  useEffect(() => {
-    document.documentElement.dataset.theme = "pine";
-    document.documentElement.dataset.scheme =
-      new URLSearchParams(search).get("scheme") ?? resolvedTheme ?? "light";
-  }, [resolvedTheme, search]);
   useEffect(() => {
     document.body.toggleAttribute("data-focus", focus);
     return () => document.body.removeAttribute("data-focus");

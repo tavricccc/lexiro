@@ -207,9 +207,31 @@ export function holdRouteSheet() {
   };
 }
 
+export function screenHostKey(pathname: string): string {
+  const wordSheet = /^(\/app\/sets\/[^/]+)\/words\/[^/]+$/.exec(pathname);
+  if (wordSheet) return wordSheet[1];
+  return pathname;
+}
+
+function isSettingsSheetPath(pathname: string): boolean {
+  return (
+    pathname === "/app/me" ||
+    pathname.startsWith("/app/me/") ||
+    pathname === "/app/sync"
+  );
+}
+
 /** Whether this navigation opens or closes a route-level sheet. */
 export function isSheetNavigation(from: string, to: string) {
   const entersPractice =
     to.startsWith("/app/practice") && !from.startsWith("/app/practice");
-  return entersPractice || openRouteSheets > 0 || routeSheetJustClosed;
+  const sameHost = Boolean(from && to && screenHostKey(from) === screenHostKey(to));
+  const settingsSheet = isSettingsSheetPath(from) || isSettingsSheetPath(to);
+  return (
+    entersPractice ||
+    sameHost ||
+    settingsSheet ||
+    openRouteSheets > 0 ||
+    routeSheetJustClosed
+  );
 }

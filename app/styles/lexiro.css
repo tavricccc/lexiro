@@ -340,9 +340,11 @@ body[data-focus] .main {
   .side a.nav i {
     font-size: 21px;
   }
-  .side a.nav:hover {
-    color: var(--ink);
-    background: var(--fill);
+  @media (hover: hover) and (pointer: fine) {
+    .side a.nav:hover {
+      color: var(--ink);
+      background: var(--fill);
+    }
   }
   .side a.nav[aria-current="page"] {
     background: var(--fill-hover);
@@ -364,8 +366,10 @@ body[data-focus] .main {
     text-align: left;
     transition: background-color var(--d-state) var(--e-smooth);
   }
-  .me-btn:hover {
-    background: var(--fill);
+  @media (hover: hover) and (pointer: fine) {
+    .me-btn:hover {
+      background: var(--fill);
+    }
   }
   .only-phone {
     display: none !important;
@@ -909,8 +913,10 @@ body[data-focus] .main {
   text-decoration: none;
   transition: background-color var(--d-state) var(--e-smooth);
 }
-.w:hover {
-  background: var(--fill);
+@media (hover: hover) and (pointer: fine) {
+  .w:hover {
+    background: var(--fill);
+  }
 }
 .w:active {
   background: var(--fill-hover);
@@ -961,10 +967,7 @@ body[data-focus] .main {
 .w .hw.set-word-heading {
   white-space: normal;
   overflow-wrap: anywhere;
-}
-.set-word-link:hover .set-word-heading,
-.set-word-link:focus-visible .set-word-heading {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .set-word-senses {
   grid-column: 1 / -1;
@@ -1011,8 +1014,10 @@ body[data-focus] .main {
   text-align: left;
   transition: background-color var(--d-state) var(--e-smooth);
 }
-.qrow:hover {
-  background: var(--fill);
+@media (hover: hover) and (pointer: fine) {
+  .qrow:hover {
+    background: var(--fill);
+  }
 }
 
 /* ---- Word page ---- */
@@ -1583,8 +1588,10 @@ body[data-focus] .main {
   width: 100%;
   transition: background-color var(--d-state) var(--e-smooth);
 }
-.dashed:hover {
-  background: var(--fill);
+@media (hover: hover) and (pointer: fine) {
+  .dashed:hover {
+    background: var(--fill);
+  }
 }
 .savebar {
   position: sticky;
@@ -1861,8 +1868,10 @@ body[data-focus] .main {
   font-weight: 600;
   text-align: left;
 }
-.menu button:hover {
-  background: var(--fill);
+@media (hover: hover) and (pointer: fine) {
+  .menu button:hover {
+    background: var(--fill);
+  }
 }
 .menu i {
   font-size: 19px;
@@ -2188,8 +2197,10 @@ a.w {
   box-shadow: none;
   background: var(--fill);
 }
-.dashed:hover {
-  background: var(--fill-hover);
+@media (hover: hover) and (pointer: fine) {
+  .dashed:hover {
+    background: var(--fill-hover);
+  }
 }
 /* Phone: sets sit two to a row, like an album grid. */
 @media (max-width: 39.99rem) {

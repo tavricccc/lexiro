@@ -11,6 +11,7 @@ import {
 import { EmptyState } from "@/components/ui/page-state";
 import { readBrowseReturn } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
+import { screenHostKey } from "@/lib/navigation-memory";
 
 type Query = URLSearchParams;
 type Params = Readonly<Record<string, string>>;
@@ -49,6 +50,35 @@ function screen<M>(
       },
     ));
 }
+
+const setScreen = screen(
+  () =>
+    both(
+      import("@/components/library/set-view"),
+      import("@/components/library/word-detail-page"),
+    ),
+  ({ SetView, WordDetailSheet }, { setId, wordKey }, query) => {
+    const returnHref = readBrowseReturn(param(query, "returnTo"));
+    return (
+      <>
+        <SetView
+          key={setId}
+          setId={setId}
+          returnTo={returnHref}
+          initialTab={param(query, "tab")}
+          initialQuery={param(query, "q")}
+        />
+        {wordKey ? (
+          <WordDetailSheet
+            setId={setId}
+            wordKey={wordKey}
+            returnHref={returnHref}
+          />
+        ) : null}
+      </>
+    );
+  },
+);
 
 /**
  * Every screen under /app, by the shape of its address. A literal segment
@@ -119,21 +149,7 @@ const SCREENS: ReadonlyArray<
       ),
     ),
   ],
-  [
-    "sets/:setId",
-    screen(
-      () => import("@/components/library/set-view"),
-      ({ SetView }, { setId }, query) => (
-        <SetView
-          key={`${setId}:${query.get("tab") ?? "words"}:${query.get("q") ?? ""}`}
-          setId={setId}
-          returnTo={readBrowseReturn(param(query, "returnTo"))}
-          initialTab={param(query, "tab")}
-          initialQuery={param(query, "q")}
-        />
-      ),
-    ),
-  ],
+  ["sets/:setId", setScreen],
   [
     "sets/:setId/add",
     screen(
@@ -177,19 +193,7 @@ const SCREENS: ReadonlyArray<
       ),
     ),
   ],
-  [
-    "sets/:setId/words/:wordKey",
-    screen(
-      () => import("@/components/library/word-detail-page"),
-      ({ WordDetailPage }, { setId, wordKey }, query) => (
-        <WordDetailPage
-          setId={setId}
-          wordKey={wordKey}
-          returnHref={readBrowseReturn(param(query, "returnTo"))}
-        />
-      ),
-    ),
-  ],
+  ["sets/:setId/words/:wordKey", setScreen],
   [
     "sets/:setId/words/:wordKey/edit",
     screen(
@@ -367,14 +371,17 @@ export function preloadScreen(href: string) {
  */
 export function AppViews() {
   const { pathname } = useLocation();
+  const hostKey = screenHostKey(pathname);
 
   // Each new screen starts at the top, as a fresh page load did.
+  // Route-level sheets share their parent screen's hostKey so opening or
+  // closing a sheet never resets the background screen's scroll position.
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [hostKey]);
 
   return (
-    <div key={pathname} className="contents">
+    <div key={hostKey} className="contents">
       <Outlet />
     </div>
   );

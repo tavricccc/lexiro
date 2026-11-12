@@ -29,6 +29,7 @@ import { AgentConnectionsPage } from "@/components/agent/connections-page";
 import { AdminPage } from "@/components/me/admin-page";
 import { AppUpdateSection } from "@/components/me/app-update-section";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
+import { SwipeableSheetContent } from "@/components/ui/bottom-sheet";
 
 const groups = [
   ["account", "redesign.account", UserCircle],
@@ -91,9 +92,10 @@ export function SettingsDialog({
       >
         <Dialog.Portal>
           <Dialog.Overlay className="scrim">
-            <Dialog.Content
+            <SwipeableSheetContent
               className="sheet settings"
               aria-describedby={undefined}
+              onDismiss={onClose}
             >
               <Dialog.Title className="sr-only">
                 {t("redesign.settings")}
@@ -319,7 +321,7 @@ export function SettingsDialog({
                   <p role="alert">{failure || cloud.error}</p>
                 )}
               </div>
-            </Dialog.Content>
+            </SwipeableSheetContent>
           </Dialog.Overlay>
         </Dialog.Portal>
       </Dialog.Root>

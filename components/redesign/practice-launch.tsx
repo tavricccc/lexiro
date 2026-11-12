@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog } from "radix-ui";
 import { Play, X, Cards, Exam, Stack } from "@phosphor-icons/react";
+import { SwipeableSheetContent } from "@/components/ui/bottom-sheet";
 import { t } from "@/lib/i18n";
 import { practiceTaskLabel } from "@/lib/practice-tasks";
 import { useAppRouter } from "@/lib/use-app-router";
@@ -34,7 +35,11 @@ export function PracticeLaunch({
     >
       <Dialog.Portal>
         <Dialog.Overlay className="scrim">
-          <Dialog.Content className="sheet" aria-describedby={undefined}>
+          <SwipeableSheetContent
+            className="sheet"
+            aria-describedby={undefined}
+            onDismiss={onClose}
+          >
             <div className="sheet-head">
               <Dialog.Title>{t("redesign.titleSetup")}</Dialog.Title>
               <Dialog.Close
@@ -66,7 +71,7 @@ export function PracticeLaunch({
               <Play />
               {t("practice.beginCount", { count: amount })}
             </button>
-          </Dialog.Content>
+          </SwipeableSheetContent>
         </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
