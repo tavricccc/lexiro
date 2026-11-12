@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/ui/page-state";
 import { withReturnTo } from "@/lib/browse-routes";
 import { t } from "@/lib/i18n";
 import { questionFormatLabel } from "@/lib/question-options";
-import type { LibraryQuestion } from "@/types";
+import type { LibraryQuestion, WordKey } from "@/types";
 
 const PAGE = 60;
 
@@ -76,10 +76,16 @@ export function SetWordList({
   returnTo,
   filtering,
   onClear,
+  selectable = false,
+  selectedKeys,
+  onToggleSelect,
 }: SearchState & {
   words: ViewWord[];
   setId: string;
   returnTo: string;
+  selectable?: boolean;
+  selectedKeys?: ReadonlySet<WordKey>;
+  onToggleSelect?: (wordKey: WordKey) => void;
 }) {
   const { shown, rest, more } = usePaged(words);
   if (!words.length)
@@ -98,7 +104,14 @@ export function SetWordList({
       <StaggerList as="ul" className="sheet-list cols">
         {shown.map((entry) => (
           <StaggerItem as="li" key={entry.wordKey}>
-            <SetWordRow entry={entry} setId={setId} returnTo={returnTo} />
+            <SetWordRow
+              entry={entry}
+              setId={setId}
+              returnTo={returnTo}
+              selectable={selectable}
+              selected={selectedKeys?.has(entry.wordKey) ?? false}
+              onToggleSelect={onToggleSelect}
+            />
           </StaggerItem>
         ))}
       </StaggerList>
@@ -142,8 +155,21 @@ export function SetQuestionList({
                 returnTo,
               )}
             >
-              <span className="chip">{questionFormatLabel(question.kind === "reading" ? question.format : question.questionStyle)}</span>
-              <span className="grow cut">{(question.kind === "reading" ? question.title : question.prompt).split("\n")[0]}</span>
+              <span className="chip">
+                {questionFormatLabel(
+                  question.kind === "reading"
+                    ? question.format
+                    : question.questionStyle,
+                )}
+              </span>
+              <span className="grow cut">
+                {
+                  (question.kind === "reading"
+                    ? question.title
+                    : question.prompt
+                  ).split("\n")[0]
+                }
+              </span>
               <Icons.open
                 aria-hidden
                 className="size-3.5 shrink-0 text-muted-foreground/60"

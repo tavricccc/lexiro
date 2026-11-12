@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import { render } from "./render";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchField } from "@/components/ui/search-field";
@@ -201,7 +207,11 @@ describe("collection search and return paths", () => {
       screen.getAllByRole("button", { name: "清除搜尋" }).at(-1)!,
     );
     expect(input).toHaveValue("");
-    expect(screen.getByText("bank")).toBeVisible();
+    expect(
+      within(document.querySelector(".sheet-list") as HTMLElement).getByText(
+        "bank",
+      ),
+    ).toBeVisible();
     expect(window.location.search).not.toContain("q=");
   });
 
@@ -230,7 +240,9 @@ describe("collection search and return paths", () => {
       />,
     );
     expect(screen.getByRole("searchbox")).toHaveValue("bank");
-    expect(screen.getByRole("link", { name: /Which bank is open\?/ })).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: /Which bank is open\?/ }),
+    ).toBeVisible();
   });
 
   it("finds reading child prompts, individual options and shared options in set search", async () => {

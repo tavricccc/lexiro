@@ -1,7 +1,5 @@
 import { useLibraryStore } from "@/stores/library-store";
-import { useLearningStore } from "@/stores/learning-store";
-import { familiarity } from "@/src/lib/learning-record";
-import { Dial, SetGlyph } from "@/components/redesign/primitives";
+import { SetGlyph } from "@/components/redesign/primitives";
 import Link from "@/components/ui/app-link";
 
 import { Button } from "@/components/ui/button";
@@ -69,12 +67,11 @@ export function SetRow({
   actions?: MenuAction[];
 }) {
   const library = useLibraryStore((store) => store.state);
-  const record = useLearningStore((store) => store.record);
   const entry = library.sets.find((set) => set.id === id);
-  const value = familiarity(
-    record,
-    (library.memberships[id] ?? []).flatMap((m) => m.senseIds),
-  );
+  const members = library.memberships[id] ?? [];
+  const starCount = members.filter(
+    (m) => library.words[m.wordKey]?.starred,
+  ).length;
   const row = (
     <Link
       className={`tile set hue-${entry?.hue ?? "mint"}`}
@@ -88,7 +85,11 @@ export function SetRow({
         <span className="latin muted">
           {entry?.createdAt.slice(0, 10).replaceAll("-", "/")}
         </span>
-        <Dial value={value} />
+        <span className="latin muted">
+          {t("library.wordCount", { count: members.length })}
+          {starCount > 0 &&
+            ` · ${t("library.starCount", { count: starCount })}`}
+        </span>
       </div>
     </Link>
   );

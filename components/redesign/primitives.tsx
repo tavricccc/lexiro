@@ -9,9 +9,8 @@ import {
   SpeakerHigh,
 } from "@phosphor-icons/react";
 import Link from "@/components/ui/app-link";
+import { StarButton } from "@/components/ui/star-button";
 import { t } from "@/lib/i18n";
-import { familiarity } from "@/src/lib/learning-record";
-import { useLearningStore } from "@/stores/learning-store";
 import type { LibrarySet, WordEntry } from "@/types";
 
 export const vars = (values: Record<string, string | number>) =>
@@ -101,7 +100,6 @@ export function SpeakButton({ text }: { text: string }) {
   );
 }
 export function WordRow({ word, setId }: { word: WordEntry; setId: string }) {
-  const record = useLearningStore((s) => s.record);
   return (
     <div className="w">
       <Link
@@ -112,12 +110,7 @@ export function WordRow({ word, setId }: { word: WordEntry; setId: string }) {
         <span className="pos">{word.senses[0]?.pos}</span>
         <span className="zh">{word.senses[0]?.meaningZh}</span>
       </Link>
-      <Dial
-        value={familiarity(
-          record,
-          word.senses.map((s) => s.id),
-        )}
-      />
+      <StarButton wordKey={word.wordKey} />
       <SpeakButton text={word.word} />
     </div>
   );

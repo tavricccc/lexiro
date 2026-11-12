@@ -114,8 +114,7 @@ export const zhTW = {
     client: "應用程式",
     account: "Lexiro 帳號",
     returnTo: "授權後返回",
-    oauthPermission:
-      "允許此應用程式讀取與修改你的 Lexiro 教材。",
+    oauthPermission: "允許此應用程式讀取與修改你的 Lexiro 教材。",
     allow: "允許連線",
     deny: "拒絕",
     connections: "Agent 連線",
@@ -332,6 +331,8 @@ export const zhTW = {
     questionsTab: "題目",
     senseCount: "{count} 個詞義",
     questionCount: "{count} 題",
+    wordCount: "{count} 字",
+    starCount: "★ {count}",
     migrationError: "無法載入詞庫：{message}",
     newFolder: "新增資料夾",
     folderName: "資料夾名稱",
@@ -352,8 +353,7 @@ export const zhTW = {
     searchHint: "換個關鍵字，或回到上一層搜尋。",
     renameFolder: "重新命名資料夾",
     deleteFolder: "刪除資料夾",
-    deleteFolderConfirm:
-      "資料夾與其中的單字集會永久刪除。",
+    deleteFolderConfirm: "資料夾與其中的單字集會永久刪除。",
     folderNameConflict: "同一層已有同名資料夾。",
     moveFolder: "移動資料夾",
     moveSet: "移動單字集",
@@ -368,8 +368,7 @@ export const zhTW = {
   questions: {
     cleared: "已清空 {count} 題。",
     clearSet: "清空本集全部題目",
-    clearSetConfirm:
-      "這個單字集的 {count} 題會刪除。",
+    clearSetConfirm: "這個單字集的 {count} 題會刪除。",
     clearPacks: "",
     clearPreserves: "",
     confirmClear: "確認清空",
@@ -560,8 +559,7 @@ export const zhTW = {
     backupExportAccountChanged: "帳號已切換。請確認目前帳號後重新匯出。",
     chooseBackupAgain: "重新選擇備份",
     importDone: "備份已匯入",
-    importPreview:
-      "將匯入 {sets} 個單字集與 {questions} 題。",
+    importPreview: "將匯入 {sets} 個單字集與 {questions} 題。",
     importTitle: "匯入完整備份",
     invalidBackup: "備份檔無法讀取：{message}",
     signIn: "使用 Google 登入",
@@ -582,8 +580,7 @@ export const zhTW = {
     syncOffline: "離線待同步",
     syncError: "同步失敗",
     syncPendingCount: "{count} 項待同步",
-    guestDataWarning:
-      "登入後會合併這台裝置與帳號的教材。",
+    guestDataWarning: "登入後會合併這台裝置與帳號的教材。",
     continueSignIn: "繼續登入",
   },
   admin: {
@@ -638,8 +635,7 @@ export const zhTW = {
     actionFailed: "操作失敗：{message}",
     deleteAccount: "刪除帳號",
     deleteAccountDescription: "刪除雲端與這台裝置上這個帳號的所有資料。",
-    deleteAccountWarning:
-      "帳號與所有資料會永久刪除。",
+    deleteAccountWarning: "帳號與所有資料會永久刪除。",
     accountDeleted: "帳號已刪除",
   },
   setEditor: {
@@ -700,8 +696,7 @@ export const zhTW = {
     start: "開始練這組字",
     summary: "{senses} 個詞義 · {questions} 題",
     toolsHeader: "工具",
-    deleteConfirm:
-      "刪除後無法復原。",
+    deleteConfirm: "刪除後無法復原。",
     share: "下載分享檔",
     shareLink: "分享連結",
     noQuestionsDescription: "題目可透過 Agent 寫入，或編輯題庫中已有的題目。",
@@ -729,7 +724,8 @@ export const zhTW = {
     copyConfirm: "加入「{name}」",
     createAndCopy: "建立並加入",
     copiedToast: "已加入 {words} 個單字至「{name}」",
-    copiedWithQuestionsToast: "已加入 {words} 個單字與 {questions} 題至「{name}」",
+    copiedWithQuestionsToast:
+      "已加入 {words} 個單字與 {questions} 題至「{name}」",
     starSelected: "加星號",
     unstarSelected: "取消星號",
   },

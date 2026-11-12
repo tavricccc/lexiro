@@ -1,6 +1,6 @@
-import { useLearningStore } from "@/stores/learning-store";
-import { familiarity } from "@/src/lib/learning-record";
-import { Dial, SpeakButton } from "@/components/redesign/primitives";
+import { Check } from "@phosphor-icons/react";
+import { SpeakButton } from "@/components/redesign/primitives";
+import { StarButton } from "@/components/ui/star-button";
 import Link from "@/components/ui/app-link";
 import type { WordKey, WordSense } from "@/types";
 import { DescriptionPoints } from "@/components/library/description-points";
@@ -22,13 +22,75 @@ export function SetWordRow({
   entry,
   setId,
   returnTo,
+  selectable = false,
+  selected = false,
+  onToggleSelect,
 }: {
   entry: ViewWord;
   setId: string;
   returnTo?: string;
+  selectable?: boolean;
+  selected?: boolean;
+  onToggleSelect?: (wordKey: WordKey) => void;
 }) {
-  const record = useLearningStore((s) => s.record);
   const href = wordDetailHref(setId, entry.wordKey);
+  const body = (
+    <>
+      <span className="hw set-word-heading font-latin">{entry.word}</span>
+      <div className="set-word-senses">
+        {entry.senses.map((sense) => {
+          const example = sense.examples.find((text) => text.trim());
+          return (
+            <div className="set-word-sense" key={sense.id}>
+              <p>
+                <span className="set-word-pos font-latin">{sense.pos}</span>{" "}
+                {sense.meaningZh}
+              </p>
+              {sense.description?.trim() && (
+                <DescriptionPoints
+                  text={sense.description}
+                  max={3}
+                  className="set-word-note"
+                  pointClassName="line-clamp-2"
+                />
+              )}
+              {example && (
+                <p
+                  className="set-word-example font-latin line-clamp-2"
+                  lang="en"
+                >
+                  {example}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+  if (selectable)
+    return (
+      <div
+        aria-pressed={selected}
+        className="w set-word-preview w-selectable"
+        data-selected={selected}
+        onClick={() => onToggleSelect?.(entry.wordKey)}
+        onKeyDown={(event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          onToggleSelect?.(entry.wordKey);
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        <div aria-label={entry.word} className="set-word-link">
+          {body}
+        </div>
+        <span aria-hidden className="w-select-indicator">
+          <Check weight="bold" />
+        </span>
+      </div>
+    );
   return (
     <div className="w set-word-preview">
       <Link
@@ -36,43 +98,9 @@ export function SetWordRow({
         className="set-word-link"
         href={returnTo ? withReturnTo(href, returnTo) : href}
       >
-        <span className="hw set-word-heading font-latin">{entry.word}</span>
-        <div className="set-word-senses">
-          {entry.senses.map((sense) => {
-            const example = sense.examples.find((text) => text.trim());
-            return (
-              <div className="set-word-sense" key={sense.id}>
-                <p>
-                  <span className="set-word-pos font-latin">{sense.pos}</span>{" "}
-                  {sense.meaningZh}
-                </p>
-                {sense.description?.trim() && (
-                  <DescriptionPoints
-                    text={sense.description}
-                    max={3}
-                    className="set-word-note"
-                    pointClassName="line-clamp-2"
-                  />
-                )}
-                {example && (
-                  <p
-                    className="set-word-example font-latin line-clamp-2"
-                    lang="en"
-                  >
-                    {example}
-                  </p>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        {body}
       </Link>
-      <Dial
-        value={familiarity(
-          record,
-          entry.senses.map((s) => s.id),
-        )}
-      />
+      <StarButton wordKey={entry.wordKey} />
       <SpeakButton text={entry.word} />
     </div>
   );

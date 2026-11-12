@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen, within } from "@testing-library/react";
 import { render } from "./render";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SetView } from "@/components/library/set-view";
@@ -74,7 +74,10 @@ describe("word order", () => {
     });
     render(<SetView setId="set" returnTo="/library" />);
     const shown = ["Apple", "banana", "cherry"].map(
-      (word) => screen.getAllByText(word)[0],
+      (word) =>
+        within(
+          document.querySelector(".sheet-list") as HTMLElement,
+        ).getAllByText(word)[0],
     );
     for (let i = 1; i < shown.length; i++)
       expect(

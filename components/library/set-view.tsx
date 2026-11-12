@@ -1,6 +1,6 @@
-import { useLearningStore } from "@/stores/learning-store";
-import { familiarity } from "@/src/lib/learning-record";
-import { Dial } from "@/components/redesign/primitives";
+import { WordCardStack } from "@/components/library/word-card-stack";
+import { CopyToSetSheet } from "@/components/library/copy-to-set-sheet";
+import type { WordKey } from "@/types";
 import { PracticeLaunch } from "@/components/redesign/practice-launch";
 import Link from "@/components/ui/app-link";
 import { useAppRouter as useRouter } from "@/lib/use-app-router";
@@ -63,7 +63,6 @@ export function SetView({
   initialQuery?: string;
 }) {
   const router = useRouter();
-  const record = useLearningStore((s) => s.record);
   const [launch, setLaunch] = useState(false);
   // Called once the set is gone, so the page it leaves is already known.
   const { actionsFor, dialogs } = useSetActions(() => router.push(libraryHref));
@@ -72,6 +71,11 @@ export function SetView({
     initialTab === "questions" ? initialTab : "words",
   );
   const [query, setQuery] = useState(initialQuery);
+  const [starredOnly, setStarredOnly] = useState(false);
+  const [selecting, setSelecting] = useState(false);
+  const [selected, setSelected] = useState<ReadonlySet<WordKey>>(new Set());
+  const [copyOpen, setCopyOpen] = useState(false);
+  const setWordsStarred = useLibraryStore((s) => s.setWordsStarred);
 
   const current = state.sets.find((entry) => entry.id === setId);
 
@@ -93,11 +97,6 @@ export function SetView({
     [setId, state.memberships, state.words],
   );
 
-  const senseIds = useMemo(
-    () => words.flatMap((entry) => entry.senses.map((sense) => sense.id)),
-    [words],
-  );
-
   const savedQuestions = useMemo(
     () =>
       state.questions.filter((question) =>
@@ -111,15 +110,37 @@ export function SetView({
   );
   const needle = query.trim().toLocaleLowerCase();
   const visibleWords = useMemo(
-    () => words.filter((word) => wordMatchesQuery(word, needle)),
-    [words, needle],
+    () =>
+      words.filter(
+        (word) =>
+          wordMatchesQuery(word, needle) &&
+          (!starredOnly || state.words[word.wordKey]?.starred),
+      ),
+    [words, needle, starredOnly, state.words],
   );
+  const starCount = words.filter(
+    (word) => state.words[word.wordKey]?.starred,
+  ).length;
+  const toggleSelect = (wordKey: WordKey) =>
+    setSelected((current) => {
+      const next = new Set(current);
+      if (next.has(wordKey)) next.delete(wordKey);
+      else next.add(wordKey);
+      return next;
+    });
+  const endSelect = () => {
+    setSelecting(false);
+    setSelected(new Set());
+  };
+  const allVisibleSelected =
+    visibleWords.length > 0 &&
+    visibleWords.every((word) => selected.has(word.wordKey));
   const visibleQuestions = useMemo(
     () =>
       questions.filter((question) => questionMatchesQuery(question, needle)),
     [questions, needle],
   );
-  const filtering = Boolean(needle);
+  const filtering = Boolean(needle) || starredOnly;
 
   const homeFolderId = current?.folderId;
   const libraryHref =
@@ -165,16 +186,12 @@ export function SetView({
       <section className={`cover hue-${current.hue ?? "mint"}`}>
         <div className="between">
           <h1>{current.setName}</h1>
-          <div className="cover-dial"><Dial value={familiarity(record, senseIds)} /><b className="latin">{familiarity(record, senseIds)}%</b></div>
         </div>
         <div className="facts">
           {[
             [words.length, t("redesign.words")],
             [questions.length, t("library.questionsTab")],
-            [
-              senseIds.filter((id) => record.senses[id]?.level === 3).length,
-              t("redesign.known"),
-            ],
+            [starCount, t("setDetail.starred")],
           ].map(([n, label]) => (
             <div key={label}>
               <b>{n}</b>
@@ -207,9 +224,57 @@ export function SetView({
       />
 
       <div className="set-toolbar">
-        <div className="tabs" role="tablist" aria-label={current.setName}>{(["words","questions"] as const).map(value => <button key={value} role="tab" aria-selected={tab === value} onClick={() => setTab(value)}>{t(value === "words" ? "setDetail.wordsTab" : "library.questionsTab")}</button>)}</div>
-        <SearchField label={t(tab === "words" ? "setDetail.searchWords" : "setDetail.searchQuestions")} value={query} onValueChange={setQuery} />
+        <div className="tabs" role="tablist" aria-label={current.setName}>
+          {(["words", "questions"] as const).map((value) => (
+            <button
+              key={value}
+              role="tab"
+              aria-selected={tab === value}
+              onClick={() => setTab(value)}
+            >
+              {t(
+                value === "words"
+                  ? "setDetail.wordsTab"
+                  : "library.questionsTab",
+              )}
+            </button>
+          ))}
+        </div>
+        <SearchField
+          label={t(
+            tab === "words"
+              ? "setDetail.searchWords"
+              : "setDetail.searchQuestions",
+          )}
+          value={query}
+          onValueChange={setQuery}
+        />
+        {tab === "words" && words.length > 0 && (
+          <>
+            <button
+              type="button"
+              className="chip"
+              aria-pressed={starredOnly}
+              onClick={() => setStarredOnly((value) => !value)}
+            >
+              {t("setDetail.starredOnly")}
+            </button>
+            <button
+              type="button"
+              className="chip"
+              aria-pressed={selecting}
+              onClick={() => (selecting ? endSelect() : setSelecting(true))}
+            >
+              {t(
+                selecting ? "setDetail.cancelSelect" : "setDetail.selectWords",
+              )}
+            </button>
+          </>
+        )}
       </div>
+      {tab === "words" && !selecting && visibleWords.length > 0 && (
+        <WordCardStack words={visibleWords} />
+      )}
       <ContentTransition identity={tab}>
         {tab === "words" ? (
           <SetWordList
@@ -217,7 +282,13 @@ export function SetView({
             setId={setId}
             returnTo={browseHref}
             filtering={filtering && words.length > 0}
-            onClear={() => setQuery("")}
+            onClear={() => {
+              setQuery("");
+              setStarredOnly(false);
+            }}
+            selectable={selecting}
+            selectedKeys={selected}
+            onToggleSelect={toggleSelect}
           />
         ) : (
           <>
@@ -237,6 +308,80 @@ export function SetView({
           </>
         )}
       </ContentTransition>
+
+      {selecting && tab === "words" && (
+        <div className="selection-bar frost" role="toolbar">
+          <span className="latin">
+            {t("setDetail.selectedCount", { count: selected.size })}
+          </span>
+          <button
+            type="button"
+            className="btn btn-veil"
+            onClick={() =>
+              setSelected(
+                allVisibleSelected
+                  ? new Set()
+                  : new Set(visibleWords.map((word) => word.wordKey)),
+              )
+            }
+          >
+            {t(
+              allVisibleSelected
+                ? "setDetail.clearSelection"
+                : "setDetail.selectAll",
+            )}
+          </button>
+          <button
+            type="button"
+            className="btn btn-veil"
+            onClick={() =>
+              setSelected(
+                new Set(
+                  words
+                    .filter((word) => state.words[word.wordKey]?.starred)
+                    .map((word) => word.wordKey),
+                ),
+              )
+            }
+          >
+            {t("setDetail.selectStarred")}
+          </button>
+          <button
+            type="button"
+            className="btn btn-veil"
+            disabled={!selected.size}
+            onClick={() => void setWordsStarred([...selected], true)}
+          >
+            {t("setDetail.starSelected")}
+          </button>
+          <button
+            type="button"
+            className="btn btn-veil"
+            disabled={!selected.size}
+            onClick={() => void setWordsStarred([...selected], false)}
+          >
+            {t("setDetail.unstarSelected")}
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            disabled={!selected.size}
+            onClick={() => setCopyOpen(true)}
+          >
+            {t("setDetail.copyToSet")}
+          </button>
+        </div>
+      )}
+      <CopyToSetSheet
+        open={copyOpen}
+        onClose={() => setCopyOpen(false)}
+        sourceSetId={setId}
+        wordKeys={[...selected]}
+        onCopied={() => {
+          setCopyOpen(false);
+          endSelect();
+        }}
+      />
 
       {dialogs}
     </div>

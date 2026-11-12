@@ -21,14 +21,10 @@ import { useLibraryStore } from "@/stores/library-store";
 import { useLearningStore } from "@/stores/learning-store";
 import { SetRow } from "@/components/library/library-rows";
 import { useSetActions } from "@/components/library/set-actions";
-import {
-  EmptyLibrary,
-  Ring,
-  SpeakButton,
-  vars,
-} from "@/components/redesign/primitives";
+import { EmptyLibrary, Ring, vars } from "@/components/redesign/primitives";
 import { KindAccuracy } from "@/components/redesign/learning-summary";
 import { PracticeLaunch } from "@/components/redesign/practice-launch";
+import { WordCardStack } from "@/components/library/word-card-stack";
 export function FocusCanvas() {
   const library = useLibraryStore((s) => s.state);
   const record = useLearningStore((s) => s.record);
@@ -36,18 +32,28 @@ export function FocusCanvas() {
     new URLSearchParams(location.search).get("sheet") === "setup",
   );
   const [review, setReview] = useState(false);
-  const [flipped, setFlipped] = useState(false);
   const { actionsFor, dialogs } = useSetActions();
   const today = calendarDay(new Date());
   const answered = record.days[today]?.answered ?? 0;
   const missed = mostMissed(record, 30).filter(
     (w) => library.words[w.wordKey as keyof typeof library.words],
   );
-  const random = Object.values(library.words)[
-    Math.floor(
-      new Date().getDate() % Math.max(1, Object.keys(library.words).length),
-    )
-  ];
+  const allWords = Object.values(library.words).filter(
+    (word) => word.senses.length,
+  );
+  const offset = new Date().getDate() % Math.max(1, allWords.length);
+  const deck = [
+    ...allWords.filter((word) => word.starred),
+    ...allWords.slice(offset),
+    ...allWords.slice(0, offset),
+  ]
+    .filter((word, index, list) => list.indexOf(word) === index)
+    .slice(0, 12)
+    .map((word) => ({
+      wordKey: word.wordKey,
+      word: word.word,
+      senses: word.senses,
+    }));
   let resume = false;
   try {
     resume = Boolean(readPracticeDraft());
@@ -186,29 +192,9 @@ export function FocusCanvas() {
         <h2>{t("redesign.ways")}</h2>
       </div>
       <div className="bento b4">
-        {random && (
-          <div
-            className="tile flip half"
-            style={vars({ "--span": 4 })}
-            data-open={flipped ? "" : undefined}
-            role="button"
-            tabIndex={0}
-            onClick={() => setFlipped(!flipped)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setFlipped(!flipped);
-              }
-            }}
-          >
-            <div className="between">
-              <span className="chip">{t("redesign.random")}</span>
-              <SpeakButton text={random.word} />
-            </div>
-            <div>
-              <p className="word">{random.word}</p>
-              <p className="back">{random.senses[0]?.meaningZh}</p>
-            </div>
+        {deck.length > 0 && (
+          <div className="half" style={vars({ "--span": 4 })}>
+            <WordCardStack compact title={t("redesign.random")} words={deck} />
           </div>
         )}
         <Link
