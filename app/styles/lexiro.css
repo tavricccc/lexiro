@@ -940,6 +940,58 @@ body[data-focus] .main {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.set-word-preview {
+  row-gap: 2px;
+  padding-block-end: 14px;
+}
+.set-word-link {
+  grid-area: 1 / 1 / 3 / -1;
+  display: grid;
+  grid-template: subgrid / subgrid;
+  align-items: center;
+  align-self: stretch;
+}
+.set-word-preview > .dial {
+  grid-area: 1 / 2;
+  pointer-events: none;
+}
+.set-word-preview > button {
+  grid-area: 1 / 3;
+}
+.w .hw.set-word-heading {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.set-word-link:hover .set-word-heading,
+.set-word-link:focus-visible .set-word-heading {
+  text-decoration: underline;
+}
+.set-word-senses {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--sp-3);
+  overflow-wrap: anywhere;
+}
+.set-word-sense {
+  display: grid;
+  gap: 4px;
+}
+.set-word-pos {
+  margin-inline-end: 4px;
+  color: var(--accent-ink);
+  font-size: var(--t-sub-size);
+  font-weight: 600;
+}
+.set-word-note,
+.set-word-example {
+  color: var(--ink-muted);
+  font-size: var(--t-sub-size);
+  line-height: 1.5;
+}
+.set-word-example {
+  border-inline-start: 2px solid var(--line);
+  padding-inline-start: 8px;
+}
 @media (min-width: 60rem) {
   .sheet-list.cols {
     columns: 2;

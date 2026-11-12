@@ -30,16 +30,42 @@ export function SetWordRow({
   const record = useLearningStore((s) => s.record);
   const href = wordDetailHref(setId, entry.wordKey);
   return (
-    <div className="w">
+    <div className="w set-word-preview">
       <Link
-        className="head"
+        aria-label={entry.word}
+        className="set-word-link"
         href={returnTo ? withReturnTo(href, returnTo) : href}
       >
-        <span className="hw font-latin">{entry.word}</span>
-        <span className="pos">{entry.senses[0]?.pos}</span>
-        <span className="zh">
-          {entry.senses.map((s) => s.meaningZh).join("；")}
-        </span>
+        <span className="hw set-word-heading font-latin">{entry.word}</span>
+        <div className="set-word-senses">
+          {entry.senses.map((sense) => {
+            const example = sense.examples.find((text) => text.trim());
+            return (
+              <div className="set-word-sense" key={sense.id}>
+                <p>
+                  <span className="set-word-pos font-latin">{sense.pos}</span>{" "}
+                  {sense.meaningZh}
+                </p>
+                {sense.description?.trim() && (
+                  <DescriptionPoints
+                    text={sense.description}
+                    max={3}
+                    className="set-word-note"
+                    pointClassName="line-clamp-2"
+                  />
+                )}
+                {example && (
+                  <p
+                    className="set-word-example font-latin line-clamp-2"
+                    lang="en"
+                  >
+                    {example}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </Link>
       <Dial
         value={familiarity(

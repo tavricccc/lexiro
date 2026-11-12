@@ -125,6 +125,37 @@ describe("collection search and return paths", () => {
     expect(setMatchesQuery(state, "set", "river")).toBe(false);
   });
 
+  it("shows each included meaning with its own part of speech, notes, and first example in the set", () => {
+    const state = library();
+    const word = state.words[normalizeWordKey("bank")];
+    word.senses[0].description = "也指銀行分行\n常與 account 搭配";
+    const verbId = buildSenseId(word.wordKey, "v.", "把錢存入銀行");
+    word.senses.push({
+      id: verbId,
+      pos: "v.",
+      meaningZh: "把錢存入銀行",
+      description: "用於處理款項",
+      examples: ["  ", "We bank our earnings weekly.", "They banked the cash."],
+      supplementary: false,
+    });
+    state.memberships.set[0].senseIds.push(verbId);
+    useLibraryStore.setState({ state });
+
+    render(<SetView setId="set" />);
+
+    expect(screen.getByText("n.")).toBeVisible();
+    expect(screen.getByText("銀行")).toBeVisible();
+    expect(screen.getByText("也指銀行分行")).toBeVisible();
+    expect(screen.getByText("常與 account 搭配")).toBeVisible();
+    expect(screen.getByText("The bank is open.")).toBeVisible();
+    expect(screen.getByText("v.")).toBeVisible();
+    expect(screen.getByText("把錢存入銀行")).toBeVisible();
+    expect(screen.getByText("用於處理款項")).toBeVisible();
+    expect(screen.getByText("We bank our earnings weekly.")).toBeVisible();
+    expect(screen.queryByText("They banked the cash.")).not.toBeInTheDocument();
+    expect(screen.queryByText("河岸")).not.toBeInTheDocument();
+  });
+
   it("returns a set's question edit to the same tab while retaining the parent folder search", () => {
     window.history.replaceState(null, "", "/app/sets/set");
     const parent = libraryBrowseHref("parent", "銀行 & bank");
