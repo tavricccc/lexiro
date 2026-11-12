@@ -15,9 +15,11 @@ import { createMutationQueue } from "@/src/lib/mutation-queue";
 import { UNCATEGORIZED_FOLDER_ID } from "@/src/lib/folders";
 import { randomUUID } from "@/src/lib/id";
 import {
+  buildQuestionId,
   buildSenseId,
   buildSetWordKey,
   canonicalizeQuestion,
+  mergeWord,
   normalizePartOfSpeech,
   normalizeWordKey,
   senseDescription,
@@ -50,6 +52,25 @@ export interface WordDraftInput {
   examples: string[];
   supplementary: boolean;
   description?: string;
+  starred?: boolean;
+}
+
+export interface CopyWordsToSetInput {
+  sourceSetId?: string;
+  wordKeys: WordKey[];
+  targetSetId?: string;
+  newSet?: {
+    setName: string;
+    folderId?: string;
+    hue?: LibrarySet["hue"];
+    icon?: LibrarySet["icon"];
+  };
+}
+
+export interface CopyWordsToSetResult {
+  targetSet: LibrarySet;
+  copiedWords: number;
+  copiedQuestions: number;
 }
 /** A draft that states a description replaces the sense's; one that omits it keeps it. */
 function withDescription(
@@ -90,6 +111,9 @@ interface LibraryStore {
     words: WordDraftInput[];
     remaps?: SenseRemap[];
   }) => Promise<LibrarySet>;
+  toggleWordStar: (wordKey: WordKey, starred?: boolean) => Promise<void>;
+  setWordsStarred: (wordKeys: WordKey[], starred: boolean) => Promise<void>;
+  copyWordsToSet: (input: CopyWordsToSetInput) => Promise<CopyWordsToSetResult>;
   deleteSet: (id: string) => Promise<void>;
   saveQuestion: (question: LibraryQuestion) => Promise<SaveQuestionResult>;
   deleteQuestion: (id: string) => Promise<void>;
@@ -427,8 +451,11 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
           updatedAt: timestamp,
         };
         const sense = entry.senses.find((item) => item.id === senseId);
+        const nextStarred =
+          draft.starred !== undefined ? draft.starred : entry.starred;
         words[wordKey] = {
           ...entry,
+          ...(nextStarred ? { starred: true } : { starred: undefined }),
           word: draft.word.trim(),
           senses: sense
             ? entry.senses.map((item) =>
@@ -534,6 +561,220 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
       await commit(state);
       set({ state });
       return librarySet;
+    },
+  ),
+
+  toggleWordStar: serial(async (wordKey, explicitStarred) => {
+    const current = get().state.words[wordKey];
+    if (!current) return;
+    const nextStarred =
+      explicitStarred !== undefined ? explicitStarred : !current.starred;
+    if (Boolean(current.starred) === nextStarred) return;
+    const timestamp = now();
+    const { starred: _prev, ...rest } = current;
+    const nextWord: WordEntry = {
+      ...rest,
+      ...(nextStarred ? { starred: true } : {}),
+      updatedAt: timestamp,
+    };
+    const state: LibraryState = {
+      ...get().state,
+      words: {
+        ...get().state.words,
+        [wordKey]: nextWord,
+      },
+      updatedAt: timestamp,
+    };
+    await commit(state);
+    set({ state });
+  }),
+
+  setWordsStarred: serial(async (wordKeys, starred) => {
+    if (!wordKeys.length) return;
+    const timestamp = now();
+    const words = { ...get().state.words };
+    let changed = false;
+    for (const wordKey of wordKeys) {
+      const current = words[wordKey];
+      if (!current || Boolean(current.starred) === starred) continue;
+      const { starred: _prev, ...rest } = current;
+      words[wordKey] = {
+        ...rest,
+        ...(starred ? { starred: true } : {}),
+        updatedAt: timestamp,
+      };
+      changed = true;
+    }
+    if (!changed) return;
+    const state: LibraryState = {
+      ...get().state,
+      words,
+      updatedAt: timestamp,
+    };
+    await commit(state);
+    set({ state });
+  }),
+
+  copyWordsToSet: serial(
+    async ({ sourceSetId, wordKeys, targetSetId, newSet }) => {
+      const current = get().state;
+      const timestamp = now();
+      const uniqueKeys = [...new Set(wordKeys)].filter(
+        (key) => current.words[key],
+      );
+      if (!uniqueKeys.length) throw new Error("請至少選擇一個要加入的單字");
+
+      let targetSet: LibrarySet | undefined;
+      let creatingNewSet = false;
+      if (targetSetId) {
+        targetSet = current.sets.find((entry) => entry.id === targetSetId);
+        if (!targetSet) throw new Error("找不到目標單字集");
+      } else if (newSet) {
+        const trimmedName = newSet.setName.trim();
+        if (!trimmedName) throw new Error("請輸入新單字集名稱");
+        targetSet = {
+          id: randomUUID(),
+          setName: trimmedName,
+          folderId: newSet.folderId || UNCATEGORIZED_FOLDER_ID,
+          hue: newSet.hue ?? "mint",
+          icon: newSet.icon ?? "bookmark-simple",
+          createdAt: timestamp,
+          updatedAt: timestamp,
+        };
+        creatingNewSet = true;
+      } else {
+        throw new Error("請指定目標單字集");
+      }
+
+      const destSetId = targetSet.id;
+      const nextWords = { ...current.words };
+      const existingMemberships = current.memberships[destSetId] ?? [];
+      const membershipMap = new Map<WordKey, Set<SenseId>>(
+        existingMemberships.map((m) => [m.wordKey, new Set(m.senseIds)]),
+      );
+      const sourceMemberLookup = sourceSetId
+        ? new Map(
+            (current.memberships[sourceSetId] ?? []).map((m) => [
+              m.wordKey,
+              new Set(m.senseIds),
+            ]),
+          )
+        : null;
+
+      const senseRemap = new Map<
+        SenseId,
+        { targetWordKey: WordKey; targetSenseId: SenseId }
+      >();
+      let copiedWords = 0;
+
+      for (const sourceKey of uniqueKeys) {
+        const sourceWord = current.words[sourceKey];
+        if (!sourceWord) continue;
+        const allowedSenses = sourceMemberLookup?.get(sourceKey);
+        const sourceSenses = allowedSenses
+          ? sourceWord.senses.filter((s) => allowedSenses.has(s.id))
+          : sourceWord.senses;
+        if (!sourceSenses.length) continue;
+
+        const targetWordKey = buildSetWordKey(destSetId, sourceWord.word);
+        const mappedSenses: WordSense[] = sourceSenses.map((sense) => {
+          const targetSenseId = buildSenseId(
+            targetWordKey,
+            sense.pos,
+            sense.meaningZh,
+          );
+          senseRemap.set(sense.id, { targetWordKey, targetSenseId });
+          return {
+            ...sense,
+            id: targetSenseId,
+            examples: [...sense.examples],
+          };
+        });
+
+        const incomingWord: WordEntry = {
+          wordKey: targetWordKey,
+          word: sourceWord.word,
+          senses: mappedSenses,
+          ...(sourceWord.starred ? { starred: true } : {}),
+          updatedAt: timestamp,
+        };
+
+        const merged = mergeWord(nextWords[targetWordKey], incomingWord);
+        nextWords[targetWordKey] = {
+          ...merged,
+          updatedAt: timestamp,
+        };
+
+        const memberSet =
+          membershipMap.get(targetWordKey) ?? new Set<SenseId>();
+        for (const sense of nextWords[targetWordKey].senses) {
+          memberSet.add(sense.id);
+        }
+        membershipMap.set(targetWordKey, memberSet);
+        copiedWords += 1;
+      }
+
+      const nextMemberships: Record<string, SetMembership[]> = {
+        ...current.memberships,
+        [destSetId]: [...membershipMap].map(([wordKey, senseIds]) => ({
+          wordKey,
+          senseIds: [...senseIds],
+        })),
+      };
+
+      const existingFingerprints = new Set(
+        current.questions.map((q) => q.fingerprint),
+      );
+      const nextQuestions = [...current.questions];
+      let copiedQuestions = 0;
+
+      for (const question of current.questions) {
+        if (
+          question.kind !== "multipleChoice" ||
+          question.questionStyle !== "vocabulary"
+        )
+          continue;
+        const mapped = senseRemap.get(question.senseId);
+        if (!mapped) continue;
+        const candidate = canonicalizeQuestion({
+          ...question,
+          id: buildQuestionId(),
+          wordKey: mapped.targetWordKey,
+          senseId: mapped.targetSenseId,
+          createdAt: timestamp,
+          updatedAt: timestamp,
+        });
+        if (existingFingerprints.has(candidate.fingerprint)) continue;
+        existingFingerprints.add(candidate.fingerprint);
+        nextQuestions.push(candidate);
+        copiedQuestions += 1;
+      }
+
+      const updatedTargetSet: LibrarySet = {
+        ...targetSet,
+        updatedAt: timestamp,
+      };
+      const nextSets = creatingNewSet
+        ? [...current.sets, updatedTargetSet]
+        : current.sets.map((s) =>
+            s.id === destSetId ? updatedTargetSet : s,
+          );
+
+      const state: LibraryState = {
+        ...current,
+        words: nextWords,
+        sets: nextSets,
+        memberships: nextMemberships,
+        questions: nextQuestions,
+        updatedAt: timestamp,
+      };
+      await commit(state);
+      set({ state });
+      return {
+        targetSet: updatedTargetSet,
+        copiedWords,
+        copiedQuestions,
+      };
     },
   ),
 

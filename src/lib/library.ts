@@ -176,10 +176,12 @@ export function mergeWord(
     if (index === -1) senses.push(incomingSense);
     else senses[index] = mergeSense(senses[index], incomingSense);
   }
+  const starred = existing.starred || incoming.starred;
   const next: WordEntry = {
     ...existing,
     word: existing.word,
     senses,
+    ...(starred ? { starred: true } : {}),
     updatedAt: new Date().toISOString(),
   };
   const comparableNext = { ...next, updatedAt: existing.updatedAt };
@@ -256,5 +258,6 @@ export function senseToStudyWord(word: WordEntry, sense: WordSense): StudyWord {
     example: sense.examples[0] ?? "",
     supplementary: sense.supplementary,
     description: sense.description ?? "",
+    ...(word.starred ? { starred: true } : {}),
   };
 }

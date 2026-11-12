@@ -144,7 +144,7 @@ function normalizeWord(value: unknown, index: number): WordEntry {
   const source = value as Record<string, unknown>;
   assertKnownKeys(
     source,
-    ["wordKey", "word", "senses", "updatedAt"],
+    ["wordKey", "word", "senses", "starred", "updatedAt"],
     `words[${index}]`,
   );
   const word = requiredText(source.word, `words[${index}].word`);
@@ -156,6 +156,8 @@ function normalizeWord(value: unknown, index: number): WordEntry {
   if (!Array.isArray(rawSenses))
     throw new Error(`第 ${index + 1} 個單字的 senses 格式錯誤`);
   if (!rawSenses.length) throw new Error(`第 ${index + 1} 個單字缺少 senses`);
+  if (source.starred !== undefined && typeof source.starred !== "boolean")
+    throw new Error(`words[${index}].starred 格式錯誤`);
   const senses = rawSenses.map((sense, senseIndex) =>
     normalizeSense(sense, wordKey, senseIndex),
   );
@@ -165,6 +167,7 @@ function normalizeWord(value: unknown, index: number): WordEntry {
     wordKey,
     word,
     senses,
+    ...(source.starred ? { starred: true } : {}),
     updatedAt: requiredText(source.updatedAt, `words[${index}].updatedAt`),
   };
 }

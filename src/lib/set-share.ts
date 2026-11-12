@@ -52,6 +52,7 @@ export async function copySharedSet(
         pos: sense.pos,
         supplementary: sense.supplementary,
         description: sense.description ?? "",
+        ...(word.starred ? { starred: true } : {}),
         word: word.word,
       };
     });

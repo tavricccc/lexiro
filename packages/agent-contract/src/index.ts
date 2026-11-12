@@ -41,6 +41,7 @@ const sense = z.object({
 const wordInput = z.object({
   wordKey: text.optional(),
   word: text.max(200),
+  starred: z.boolean().optional(),
   senses: z.array(sense).min(1).max(20),
 });
 const mutation = z.discriminatedUnion("type", [
@@ -49,6 +50,11 @@ const mutation = z.discriminatedUnion("type", [
   z.strictObject({
     type: z.literal("put_words"),
     words: z.array(wordInput).min(1).max(200),
+  }),
+  z.strictObject({
+    type: z.literal("mark_words"),
+    wordKeys: z.array(text).min(1).max(200),
+    starred: z.boolean(),
   }),
   z.strictObject({
     type: z.literal("delete_words"),
@@ -86,6 +92,7 @@ const snapshotSchema = z.strictObject({
     z.strictObject({
       wordKey: text,
       word: text.max(200),
+      starred: z.boolean().optional(),
       updatedAt: z.iso.datetime(),
       senses: z
         .array(
@@ -308,9 +315,12 @@ export function mutateAgentSet(
           throw new Error(`${at}.senses[${senseIndex}] duplicates an earlier sense (same pos ${sense.pos} and meaningZh "${sense.meaningZh}")`);
         seen.add(sense.id);
       });
+      const nextStarred =
+        draft.starred !== undefined ? draft.starred : previous?.starred;
       const word: WordEntry = {
         wordKey,
         word: draft.word,
+        ...(nextStarred ? { starred: true } : {}),
         senses,
         updatedAt: now,
       };
@@ -342,6 +352,22 @@ export function mutateAgentSet(
               : { ...q, ...change(q), updatedAt: now },
           );
         });
+    });
+  }
+  if (action.type === "mark_words") {
+    const unknown = action.wordKeys.filter(
+      (key) => !next.words.some((w) => w.wordKey === key),
+    );
+    if (unknown.length)
+      throw new Error(`wordKeys not in this set: ${unknown.join(", ")}; nothing was updated`);
+    next.words = next.words.map((w) => {
+      if (!action.wordKeys.includes(w.wordKey)) return w;
+      const { starred: _prev, ...rest } = w;
+      return {
+        ...rest,
+        ...(action.starred ? { starred: true } : {}),
+        updatedAt: now,
+      };
     });
   }
   if (action.type === "delete_words") {

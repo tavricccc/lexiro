@@ -65,6 +65,7 @@ export interface WordEntry {
   wordKey: WordKey
   word: string
   senses: WordSense[]
+  starred?: boolean
   updatedAt: string
 }
 
@@ -78,6 +79,7 @@ export interface StudyWord {
   example: string
   supplementary: boolean
   description: string
+  starred?: boolean
 }
 
 export type SetHue = "rose" | "amber" | "mint" | "sky" | "violet";
