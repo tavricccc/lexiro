@@ -25,7 +25,7 @@ export function WordSheet({ content, wordId }: { content: SetContent; wordId: st
   const [shown, setShown] = useState(wordId);
   if (wordId && wordId !== shown) setShown(wordId);
   const word = content.words.find((entry) => entry.id === shown);
-  const close = () => (navigation ? navigation.back(`/app/sets/${setId}`) : navigate(`/app/sets/${setId}`, { replace: true }));
+  const close = () => (navigation?.back ? navigation.back(`/app/sets/${setId}`) : navigate(`/app/sets/${setId}`, { replace: true }));
   if (!word) return null;
   const questions = content.questions.filter((question) => ("items" in question ? question.items.map((item) => item.senseId) : [question.senseId]).some((id) => word.senses.some((sense) => sense.id === id))).length;
   return (
