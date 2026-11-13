@@ -44,13 +44,13 @@ export function PageHeader({ actions, back, className, description, title }: {
     >
       <span className="truncate text-[0.9375rem] font-semibold">{title}</span>
     </div>
+    {back ? (
+      // Outside the header so it stays pinned top-left for the whole page, like iOS's back button.
+      <Button asChild className="sticky top-[calc(var(--safe-top)+0.25rem)] z-40 -mb-2 justify-self-start self-start md:top-3" size="icon-sm">
+        <AppLink aria-label={back.label} back href={back.href}><CaretLeft weight="bold" /></AppLink>
+      </Button>
+    ) : null}
     <header className={cn("grid gap-4", className)}>
-      {back ? (
-        // Pinned beside the small title once the page scrolls, so the way back is always in reach.
-        <Button asChild className="sticky top-[calc(var(--safe-top)+0.25rem)] z-40 justify-self-start md:top-3" size="icon-sm">
-          <AppLink aria-label={back.label} back href={back.href}><CaretLeft weight="bold" /></AppLink>
-        </Button>
-      ) : null}
       <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
         <div className="min-w-0">
           <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-[1.75rem]">{title}</h1>
