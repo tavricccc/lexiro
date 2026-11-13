@@ -1,0 +1,167 @@
+/* The few animations the primitives own. Durations and curves come from the
+   generated motion ladder. */
+
+/* A wait shorter than an acknowledged touch is not a wait: the placeholder holds
+   its space from the first frame, but only paints once the touch rung has passed. */
+.skeleton {
+  opacity: 0;
+  animation:
+    skeleton-appear 0s linear var(--motion-touch) forwards,
+    skeleton-pulse var(--motion-pulse) ease-in-out var(--motion-touch) infinite;
+}
+
+@keyframes skeleton-appear {
+  to { opacity: 1; }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { background-color: var(--surface-raised); }
+  50% { background-color: var(--surface-pressed); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: skeleton-appear 0s linear var(--motion-touch) forwards;
+  }
+}
+
+/* Floating surfaces the Radix primitives mount and unmount: menus, popovers,
+   select lists and dialogs. Radix keeps a closing surface mounted until its
+   animation ends, so leaving is animated as well as arriving. A floating
+   surface grows from the side it hangs off. */
+.float-surface {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin, var(--radix-popover-content-transform-origin, var(--radix-select-content-transform-origin, var(--radix-tooltip-content-transform-origin, center))));
+}
+
+.float-surface[data-state="open"] {
+  animation: surface-in var(--motion-control) var(--ease-arrive);
+}
+
+.float-surface[data-state="closed"] {
+  animation: surface-out var(--motion-control-exit) var(--ease-depart) forwards;
+}
+
+.dialog-surface[data-state="open"] {
+  animation: surface-in var(--motion-nav) var(--ease-nav);
+}
+
+.dialog-surface[data-state="closed"] {
+  animation: surface-out var(--motion-control-exit) var(--ease-depart) forwards;
+}
+
+.scrim[data-state="open"] {
+  animation: scrim-in var(--motion-nav) var(--ease-nav);
+}
+
+.scrim[data-state="closed"] {
+  animation: scrim-in var(--motion-control-exit) var(--ease-depart) reverse forwards;
+}
+
+@keyframes surface-in {
+  from { opacity: 0; scale: var(--motion-surface-scale); }
+}
+
+@keyframes surface-out {
+  to { opacity: 0; scale: var(--motion-surface-scale); }
+}
+
+@keyframes scrim-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-surface[data-state],
+  .dialog-surface[data-state],
+  .scrim[data-state] {
+    animation-name: scrim-in;
+  }
+}
+
+/* Content that replaces a placeholder, or joins a list, rises into place
+   instead of being there on one frame. A message that appears under a
+   control drops in from it, and a proportion bar grows from its start. */
+.content-in {
+  animation: content-in var(--motion-reveal) var(--ease-arrive) backwards;
+}
+
+.message-in {
+  animation: message-in var(--motion-control) var(--ease-arrive) backwards;
+}
+
+.bar-in {
+  transform-origin: left;
+  animation: bar-in var(--motion-reveal) var(--ease-arrive) backwards;
+}
+
+@keyframes content-in {
+  from { opacity: 0; translate: 0 var(--motion-rise); }
+}
+
+@keyframes message-in {
+  from { opacity: 0; translate: 0 calc(var(--motion-lift) * -1); }
+}
+
+@keyframes bar-in {
+  from { scale: 0 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-in,
+  .message-in {
+    animation-name: scrim-in;
+  }
+
+  .bar-in {
+    animation: none;
+  }
+}
+
+/* A screen whose code is still on its way: the current one stays put and a
+   thin line sweeps along the top. It only shows once a touch has passed, so a
+   cached screen never flashes it. */
+.route-progress {
+  pointer-events: none;
+  position: fixed;
+  inset-inline: 0;
+  top: var(--safe-top);
+  z-index: 60;
+  height: 2px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity var(--motion-control-exit) var(--ease-depart);
+}
+
+.route-progress[data-active] {
+  opacity: 1;
+  transition: opacity var(--motion-control) var(--ease-arrive) var(--motion-touch);
+}
+
+.route-progress::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--contrast);
+  animation: route-sweep var(--motion-sweep) var(--ease-move) infinite;
+}
+
+@keyframes route-sweep {
+  from { translate: -100% 0; }
+  to { translate: 250% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-progress::after {
+    width: 100%;
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* A theme change cross-fades the whole screen (see lib/theme). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--motion-reveal);
+  animation-timing-function: var(--ease-move);
+}

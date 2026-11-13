@@ -1,0 +1,200 @@
+/* Design tokens. Components read these through the Tailwind names below;
+   nothing outside this file states a colour, radius or elevation of its own.
+   Every value here is a custom property: an app retunes the palette by
+   redefining them after importing the kit (see themes/novae.css). */
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-pressed: var(--surface-pressed);
+  --color-surface-solid: var(--surface-solid);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-contrast: var(--contrast);
+  --color-on-contrast: var(--on-contrast);
+  --color-danger: var(--danger);
+  --color-positive: var(--positive);
+  --color-caution: var(--caution);
+  --color-info: var(--info);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --radius-chip: 0.5rem;
+  --radius-tile: 0.875rem;
+  --radius-panel: 1.375rem;
+  /* A home-screen app icon's corner: a fixed share of its side, so it holds at any size. */
+  --radius-icon: 22.37%;
+  --shadow-panel: var(--elevation-panel);
+  --shadow-float: var(--elevation-float);
+}
+
+/* Default palette: Strata 朱 (from cc-remote). The emphatic pill is the accent:
+   orange with white type. Light by default; `data-theme="dark"` (set before paint
+   by theme-script.js) switches to dark. */
+:root {
+  color-scheme: light;
+  --canvas: #f4f3f1;
+  --canvas-gradient: none;
+  --canvas-foot: #f4f3f1;
+  --surface: #ffffff;
+  --surface-raised: rgb(20 18 16 / 5%);
+  --surface-pressed: rgb(20 18 16 / 9%);
+  --surface-solid: #ffffff;
+  --ink: #151312;
+  --ink-muted: #5c5855;
+  --ink-faint: #918c88;
+  --line: rgb(20 18 16 / 9%);
+  --contrast: #dc3a1c;
+  --on-contrast: #ffffff;
+  --accent-soft: rgb(220 58 28 / 11%);
+  --accent-ink: #b92c0e;
+  --danger: #c2185b;
+  --positive: #23915a;
+  --caution: #b0730f;
+  --info: #2f8cf0;
+  --elevation-panel: 0 0 0 1px rgb(20 18 16 / 4%), 0 8px 24px rgb(40 30 24 / 7%);
+  --elevation-float: 0 0 0 1px rgb(20 18 16 / 6%), 0 16px 40px rgb(40 30 24 / 16%);
+  --elevation-glass: 0 8px 30px rgb(40 30 24 / 8%);
+  --focus-ring: rgb(220 58 28 / 45%);
+  --scrim: rgb(20 18 16 / 34%);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --gutter: max(1rem, var(--safe-left), var(--safe-right));
+  --bottom-nav-height: 3.75rem;
+  --bottom-nav-gap: max(0.75rem, var(--safe-bottom));
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0d0c0b;
+  --canvas-foot: #0d0c0b;
+  --surface: #181615;
+  --surface-raised: rgb(255 255 255 / 6%);
+  --surface-pressed: rgb(255 255 255 / 10%);
+  --surface-solid: #1c1a18;
+  --ink: #f4f2f0;
+  --ink-muted: #aaa5a1;
+  --ink-faint: #726d69;
+  --line: rgb(255 255 255 / 9%);
+  --contrast: #ff6a4a;
+  --on-contrast: #2a0a02;
+  --accent-soft: rgb(255 106 74 / 16%);
+  --accent-ink: #ff9076;
+  --danger: #ff7ba6;
+  --positive: #5fcb9b;
+  --caution: #eab765;
+  --info: #5aa8ff;
+  --elevation-panel: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(0 0 0 / 28%);
+  --elevation-float: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(0 0 0 / 45%);
+  --elevation-glass: 0 8px 30px rgb(0 0 0 / 20%);
+  --focus-ring: rgb(255 106 74 / 55%);
+  --scrim: rgb(0 0 0 / 58%);
+}
+
+/* The gradient is painted on the root itself, never on a fixed layer: an
+   installed app on iOS 26 stops drawing fixed layers short of the screen's
+   foot on a page too short to scroll, while the root's background always
+   reaches it. `100vh` is the whole screen there (as before the redesign). */
+html {
+  min-height: 100vh;
+  background-color: var(--canvas-foot);
+  background-image: var(--canvas-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* A layer covering the whole screen as the app itself (the update screen)
+   wears the same canvas the startup screen stands on. */
+.launch-canvas {
+  background-color: var(--canvas-foot);
+  background-image: var(--canvas-gradient);
+  background-size: 100% 100%;
+}
+
+body {
+  background: transparent;
+  color: var(--ink);
+}
+
+.glass {
+  background: var(--surface);
+}
+
+/* Floating chrome (sidebar, dock, tab rails, save bar) and quiet buttons share
+   one glass: mostly white, with only a hint of the canvas showing through. */
+/* In the components layer, so a hover tint utility still wins. */
+@layer components {
+  .glass-float,
+  .glass-control {
+    background-color: color-mix(in oklab, var(--surface) 86%, transparent);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    backdrop-filter: blur(24px) saturate(1.6);
+  }
+  .glass-float {
+    border: 1px solid color-mix(in oklab, var(--ink) 6%, transparent);
+    box-shadow: var(--elevation-glass);
+  }
+  .glass-control {
+    border-color: color-mix(in oklab, var(--ink) 7%, transparent);
+  }
+}
+
+/* The page never scrolls sideways, even when an edge's blur reaches past the
+   column it belongs to. `clip` keeps sticky positioning working. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* A scrolling edge is never a hard cut (see EdgeBlur): stacked layers whose
+   blur doubles toward the edge, each masked to a band overlapping its
+   neighbours, so the softening ramps up instead of starting at a line. */
+.edge-blur > span {
+  position: absolute;
+  inset: 0;
+  -webkit-backdrop-filter: blur(var(--b));
+  backdrop-filter: blur(var(--b));
+  -webkit-mask-image: linear-gradient(var(--dir), transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
+  mask-image: linear-gradient(var(--dir), transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
+}
+.edge-blur[data-side="bottom"] { --dir: to bottom; }
+.edge-blur[data-side="top"] { --dir: to top; }
+.edge-blur > span:nth-child(1) { --b: 0.15px; --s0: 0%; --s1: 0%; --s2: 16.7%; --s3: 33.3%; }
+.edge-blur > span:nth-child(2) { --b: 0.3px; --s0: 0%; --s1: 16.7%; --s2: 33.3%; --s3: 50%; }
+.edge-blur > span:nth-child(3) { --b: 0.6px; --s0: 16.7%; --s1: 33.3%; --s2: 50%; --s3: 66.7%; }
+.edge-blur > span:nth-child(4) { --b: 1.2px; --s0: 33.3%; --s1: 50%; --s2: 66.7%; --s3: 83.3%; }
+.edge-blur > span:nth-child(5) { --b: 2.4px; --s0: 50%; --s1: 66.7%; --s2: 83.3%; --s3: 100%; }
+.edge-blur > span:nth-child(6) { --b: 4.8px; --s0: 66.7%; --s1: 83.3%; --s2: 100%; --s3: 100%; }
+
+/* At the top of a page nothing has scrolled under the top edge yet, only the
+   page's own title, so the blur stays off and comes in over the first few
+   rems of scrolling, the way a large title's bar only fills in once content
+   passes beneath it. Browsers without scroll timelines keep it on. */
+@supports (animation-timeline: scroll()) {
+  .edge-blur[data-side="top"] {
+    animation: edge-blur-in linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 3rem;
+  }
+}
+
+@keyframes edge-blur-in {
+  from { opacity: 0; }
+}
+
+/* A scrolling area inside a layer fades out at both ends instead of slicing its content. */
+.edge-fade {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1.5rem), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1.5rem), transparent);
+}
+
+/* A tooltip only names what is under the pointer; it never takes a tap meant
+   for the control beside it (its positioning wrapper included). */
+[data-radix-popper-content-wrapper]:has(> [role="tooltip"]) {
+  pointer-events: none;
+}

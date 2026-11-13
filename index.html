@@ -1,10 +1,9 @@
 <!doctype html>
-<html lang="zh-Hant" data-theme="pine" data-scheme="light">
+<html lang="zh-Hant" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#eaf0ec" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#131d17" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#eef3f0" />
     <meta name="color-scheme" content="light dark" />
     <title>Lexiro</title>
     <meta name="description" content="%LEXIRO_DESCRIPTION%" />
@@ -15,9 +14,25 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="icon" href="/icons/lexiro.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <script>
+      // Theme before first paint: the saved choice, else the system's.
+      (function () {
+        var meta = document.querySelector('meta[name="theme-color"]');
+        var q = matchMedia("(prefers-color-scheme: dark)");
+        var apply = function () {
+          var saved = localStorage.getItem("lexiro:theme");
+          var dark = saved === "dark" || (saved !== "light" && q.matches);
+          document.documentElement.dataset.theme = dark ? "dark" : "light";
+          if (meta) meta.content = dark ? "#0b100d" : "#eef3f0";
+        };
+        apply();
+        q.addEventListener("change", apply);
+        window.addEventListener("lexiro:theme", apply);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/app/main.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

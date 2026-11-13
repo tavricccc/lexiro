@@ -6,7 +6,6 @@ const id = z.string().trim().min(1).max(80);
 const text = (max: number) => z.string().trim().min(1).max(max);
 const optionalText = (max: number) =>
   z.string().trim().max(max).optional().transform((value) => value || undefined);
-const timestamp = z.iso.datetime({ offset: true });
 
 export const SET_HUES = ["rose", "amber", "mint", "sky", "violet"] as const;
 export const SET_ICONS = ["books", "graduation-cap", "briefcase", "bookmark-simple", "airplane-tilt", "newspaper"] as const;
@@ -139,4 +138,22 @@ export const prefsInput = z.strictObject({
 });
 export type Prefs = z.output<typeof prefsInput>;
 
-export { timestamp as timestampSchema };
+
+
+/** GET /library: every folder and set, without their words. */
+export interface LibraryIndex {
+  revision: number;
+  folders: Folder[];
+  sets: SetSummary[];
+}
+/** GET /sets/:id: one set with its words (A to Z) and questions. */
+export interface SetContent {
+  set: SetSummary;
+  words: Word[];
+  questions: Question[];
+}
+export interface QuestionReport {
+  saved: string[];
+  failed: { index: number; errors: { code: string; field: string; message: string }[] }[];
+  warnings: { index: number; warnings: { code: string; field: string; message: string }[] }[];
+}

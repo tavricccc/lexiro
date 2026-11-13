@@ -1,66 +1,22 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": false,
-    "skipLibCheck": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
+    "skipLibCheck": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
-    "incremental": true,
     "paths": {
-      "@/types": [
-        "./src/types/index.ts"
-      ],
-      "@/constants": [
-        "./src/constants/index.ts"
-      ],
-      "@/constants/*": [
-        "./src/constants/*"
-      ],
-      "@/generated/*": [
-        "./src/generated/*"
-      ],
-      "@/lib/*": [
-        "./lib/*",
-        "./src/lib/*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./src/*"],
+      "@lexiro/contract": ["./packages/contract/src/index.ts"],
+      "design-kit": ["./packages/design-kit/src/index.ts"]
     },
-    "types": [
-      "vite/client",
-      "@serwist/vite/typings"
-    ]
+    "types": ["vite/client", "@serwist/vite/typings"]
   },
-  "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "components/**/*.ts",
-    "components/**/*.tsx",
-    "lib/**/*.ts",
-    "lib/**/*.tsx",
-    "stores/**/*.ts",
-    "src/**/*.ts",
-    "tests-next/**/*.ts",
-    "vite.config.ts",
-    "vitest.next.config.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "tests",
-    "dist",
-    "dev-dist"
-  ]
+  "include": ["src", "tests", "packages/contract/src", "packages/design-kit/src", "vite.config.ts"]
 }

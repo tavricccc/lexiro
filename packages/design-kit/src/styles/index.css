@@ -1,0 +1,9 @@
+/* The kit's stylesheet: import after `@import "tailwindcss";` in the app's CSS.
+   Override any token after it, e.g. `:root { --contrast: #2f62d6; }`. */
+@import "../generated/motion-ladder.css";
+@import "./theme.css";
+@import "./motion.css";
+@import "./base.css";
+
+/* Let Tailwind see the classes the primitives use. */
+@source "../ui";

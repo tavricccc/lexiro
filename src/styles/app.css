@@ -1,0 +1,104 @@
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Regular.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Medium.css";
+@import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
+@import "tailwindcss";
+@import "design-kit/styles.css";
+
+@source "../";
+
+/* Albert Sans sets Latin display text (headwords, scores, counts) via font-latin. */
+@font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-500.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-600.ttf") format("truetype"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-700.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-800.ttf") format("truetype"); font-weight: 800; font-display: swap; }
+
+@theme inline {
+  --font-latin: "Albert Sans", var(--font-sans);
+  --color-highlight: var(--highlight);
+  --color-hue-rose: var(--hue-rose);
+  --color-hue-amber: var(--hue-amber);
+  --color-hue-mint: var(--hue-mint);
+  --color-hue-sky: var(--hue-sky);
+  --color-hue-violet: var(--hue-violet);
+}
+
+/*
+ * Lexiro pine on the kit's structure. Pine green is the one emphatic fill;
+ * honey is the warm second voice (streaks, celebrations); the five set hues
+ * mark sets apart. Right and wrong answers keep their own clear green and
+ * coral so they never read as the brand colour.
+ */
+:root {
+  --kit-font-sans: "HarmonyOS Sans TC", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: light;
+  --canvas: #eef3f0;
+  --canvas-foot: #eef3f0;
+  --canvas-gradient:
+    radial-gradient(110% 55% at 10% -5%, rgb(31 122 92 / 11%), transparent 62%),
+    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 9%), transparent 70%),
+    linear-gradient(180deg, #f1f6f3 0%, #eef3f0 100%);
+  --surface: #ffffff;
+  --surface-raised: rgb(17 38 30 / 5%);
+  --surface-pressed: rgb(17 38 30 / 9%);
+  --surface-solid: #ffffff;
+  --ink: #12201a;
+  --ink-muted: #56645d;
+  --ink-faint: #8b9690;
+  --line: rgb(17 38 30 / 9%);
+  --contrast: #1f7a5c;
+  --on-contrast: #ffffff;
+  --accent-soft: rgb(31 122 92 / 11%);
+  --accent-ink: #176348;
+  --highlight: #e0a12a;
+  --danger: #d2445f;
+  --positive: #1f9d55;
+  --caution: #b97a12;
+  --info: #2f7fd8;
+  --hue-rose: #e0559b;
+  --hue-amber: #ef9a1f;
+  --hue-mint: #22a96a;
+  --hue-sky: #2f8cf0;
+  --hue-violet: #7a5cf0;
+  --elevation-panel: 0 0 0 1px rgb(17 38 30 / 4%), 0 8px 24px rgb(20 48 36 / 7%);
+  --elevation-float: 0 0 0 1px rgb(17 38 30 / 6%), 0 16px 40px rgb(20 48 36 / 16%);
+  --elevation-glass: 0 8px 30px rgb(20 48 36 / 9%);
+  --focus-ring: rgb(31 122 92 / 45%);
+  --scrim: rgb(12 24 18 / 34%);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0b100d;
+  --canvas-foot: #0f1612;
+  --canvas-gradient:
+    radial-gradient(110% 55% at 10% -5%, rgb(127 220 180 / 9%), transparent 62%),
+    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 6%), transparent 70%),
+    linear-gradient(180deg, #0b100d 0%, #0f1612 100%);
+  --surface: #141b17;
+  --surface-raised: rgb(255 255 255 / 6%);
+  --surface-pressed: rgb(255 255 255 / 10%);
+  --surface-solid: #18201b;
+  --ink: #eef3f0;
+  --ink-muted: #a3b0a9;
+  --ink-faint: #6d7a73;
+  --line: rgb(255 255 255 / 9%);
+  --contrast: #7fdcb4;
+  --on-contrast: #062016;
+  --accent-soft: rgb(127 220 180 / 14%);
+  --accent-ink: #9be6c5;
+  --highlight: #f4c060;
+  --danger: #ff7f95;
+  --positive: #5fd394;
+  --caution: #eab765;
+  --info: #6fb0ff;
+  --hue-rose: #f07ab5;
+  --hue-amber: #ffb347;
+  --hue-mint: #4fd08c;
+  --hue-sky: #5aa8ff;
+  --hue-violet: #9a82ff;
+  --elevation-panel: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(0 0 0 / 30%);
+  --elevation-float: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(0 0 0 / 46%);
+  --elevation-glass: 0 8px 30px rgb(0 0 0 / 22%);
+  --focus-ring: rgb(127 220 180 / 50%);
+  --scrim: rgb(0 0 0 / 58%);
+}

@@ -1,0 +1,30 @@
+/* Page-level defaults both apps share. The font is a token too. */
+@theme inline {
+  --font-sans: var(--kit-font-sans, ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif);
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
+}
+
+@layer base {
+  * { border-color: var(--line); }
+}
+
+html {
+  overflow-x: clip;
+  interpolate-size: allow-keywords;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: min(20rem, 100%);
+  min-height: 100svh;
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body[data-scroll-locked] { margin-right: 0 !important; padding-right: 0 !important; }
+::selection { background: var(--contrast); color: var(--on-contrast); }
+:focus-visible { outline: none; }

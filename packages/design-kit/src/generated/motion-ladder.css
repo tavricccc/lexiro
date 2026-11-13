@@ -1,0 +1,39 @@
+/* Generated from config/motion.config.json by scripts/generate-motion.mjs.
+   Do not edit: change the config and run `npm run generate:motion`. */
+:root {
+  /* How long. A touch is acknowledged in a tenth of a second, a control
+     settles in a quarter, something genuinely new takes long enough to be
+     read as arriving, navigation has a longer deceleration, and a layer
+     presented over the current place takes longest because it travels
+     furthest. Leaving is always quicker than arriving. */
+  --motion-touch: 100ms;
+  --motion-control: 250ms;
+  --motion-reveal: 400ms;
+  --motion-nav: 460ms;
+  --motion-sheet: 560ms;
+  --motion-control-exit: 190ms;
+  --motion-sheet-exit: 400ms;
+
+  /* Arrivals decelerate, dismissals accelerate, travel between two known
+     positions is symmetric, routes use the iOS navigation curve, and exactly
+     one curve is allowed to overshoot. */
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-depart: cubic-bezier(0.4, 0, 1, 1);
+  --ease-move: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-nav: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-nav-depart: cubic-bezier(1, 0, 0.68, 0.28);
+  --ease-bounce: cubic-bezier(0.22, 1.2, 0.36, 1);
+
+  /* How far. Everything that rises, rises by the same amount. */
+  --motion-lift: 4px;
+  --motion-rise: 8px;
+  --motion-press-scale: 0.985;
+  --motion-card-press-scale: 0.995;
+  --motion-surface-scale: 0.975;
+  --motion-route-travel: 32px;
+
+  /* Indeterminate loops. They repeat, so they sit outside the ladder. */
+  --motion-spin: 800ms;
+  --motion-sweep: 1100ms;
+  --motion-pulse: 2200ms;
+}

@@ -1,0 +1,81 @@
+/* Novae's palette on the kit's tokens: a deep navy canvas lightening toward the
+   foot with a white pill for the one emphatic fill, and a pale blue-grey light
+   theme with the pill turned dark. Import after the kit's index.css. */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --canvas: #121726;
+  --canvas-gradient:
+    radial-gradient(120% 60% at 15% 0%, rgb(92 108 160 / 16%), transparent 60%),
+    radial-gradient(80% 30% at 100% 62%, rgb(120 132 170 / 18%), transparent 70%),
+    /* The last stretch is flat and matches the root background: iOS can leave a
+       band at the foot of a short page that only the root background reaches. */
+    linear-gradient(180deg, #111624 0%, #181e2f 34%, #232a3f 62%, #343c53 86%, #343c53 100%);
+
+  --canvas-foot: #343c53;
+
+  /* Cards are opaque: text over a see-through card reads poorly. */
+  --surface: #0f1320;
+  --surface-raised: rgb(255 255 255 / 4.5%);
+  --surface-pressed: rgb(255 255 255 / 8%);
+  --surface-solid: #141929;
+
+  --ink: #eef1f7;
+  --ink-muted: #a4acbe;
+  --ink-faint: #6e778e;
+  --line: rgb(255 255 255 / 8%);
+
+  /* The one emphatic fill: a white pill with near-black type, used for the
+     selected destination and the primary action. */
+  --contrast: #f3f5f9;
+  --on-contrast: #111522;
+
+  --danger: #ff7a7a;
+  --positive: #5cc99a;
+  --caution: #e9b866;
+  --info: #8fb2ff;
+
+  --elevation-panel: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(4 6 14 / 28%);
+  --elevation-float: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(4 6 14 / 45%);
+  --elevation-glass: 0 8px 30px rgb(0 0 0 / 8%);
+  --focus-ring: rgb(243 245 249 / 55%);
+  --scrim: rgb(6 8 16 / 62%);
+  --accent-soft: rgb(243 245 249 / 10%);
+  --accent-ink: #f3f5f9;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* A flat pale canvas; only the dark theme carries a gradient. */
+  --canvas: #e6edf7;
+  --canvas-gradient: none;
+  --canvas-foot: #eef3f9;
+
+  --surface: #ffffff;
+  --surface-raised: rgb(17 21 34 / 4.5%);
+  --surface-pressed: rgb(17 21 34 / 8%);
+  --surface-solid: #ffffff;
+
+  --ink: #141826;
+  --ink-muted: #545d72;
+  --ink-faint: #8a92a5;
+  --line: rgb(17 21 34 / 10%);
+
+  --contrast: #161b2b;
+  --on-contrast: #f6f7fb;
+
+  --danger: #d23c3c;
+  --positive: #1f8a5d;
+  --caution: #a86a0f;
+  --info: #2f62d6;
+
+  --elevation-panel: 0 0 0 1px rgb(17 21 34 / 5%), 0 8px 24px rgb(40 50 80 / 8%);
+  --elevation-float: 0 0 0 1px rgb(17 21 34 / 6%), 0 16px 40px rgb(40 50 80 / 16%);
+  --focus-ring: rgb(22 27 43 / 45%);
+  --scrim: rgb(20 24 38 / 36%);
+  --elevation-glass: 0 8px 30px rgb(0 0 0 / 8%);
+  --accent-soft: rgb(22 27 43 / 7%);
+  --accent-ink: #161b2b;
+}

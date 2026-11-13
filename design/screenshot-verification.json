@@ -1,9 +1,0 @@
-{
-  "cases": 123,
-  "images": 246,
-  "failed": 0,
-  "horizontalOverflows": 0,
-  "forbiddenCopyMatches": 0,
-  "dimensions": "1440x1000 desktop; 390x844 phone",
-  "allImagesAfterCommit": "59eea97c"
-}
