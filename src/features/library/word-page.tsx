@@ -74,7 +74,6 @@ export function WordSheet({ content, wordId }: { content: SetContent; wordId: st
           );
         })}
       </div>
-      {questions ? <p className="px-1 pt-3 text-sm text-ink-faint">有 {questions} 題用到這個單字</p> : null}
     </Sheet>
       <ConfirmDialog
         confirmLabel="刪除"
