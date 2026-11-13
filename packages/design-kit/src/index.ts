@@ -2,6 +2,7 @@
 export * from "./lib/provider";
 export { cn } from "./lib/utils";
 export { timing, timingMs, cssEasing } from "./lib/motion-timing";
+export { routeDirection, routeMotion, type RouteDirection } from "./lib/route-motion";
 export * from "./generated/motion-tokens";
 export type { DraftStatus } from "./lib/draft";
 export * from "./ui/animated-number";

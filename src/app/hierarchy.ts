@@ -1,3 +1,5 @@
+import { routeDirection } from "design-kit";
+
 /**
  * Where a screen sits in the app. The five destinations are level 0 and only
  * cross-fade between each other, as tabs do; each step into a set, a word,
@@ -25,8 +27,4 @@ export function screenLevel(pathname: string): number {
  * goes back up (the parent returns from the left), 0 between screens on the
  * same level, which cross-fade.
  */
-export function travelDirection(from: string, to: string): -1 | 0 | 1 {
-  const a = screenLevel(from);
-  const b = screenLevel(to);
-  return b > a ? 1 : b < a ? -1 : 0;
-}
+export const travelDirection = (from: string, to: string) => routeDirection(screenLevel(from), screenLevel(to));

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useOutlet } from "react-router";
 import { motion, useReducedMotion } from "motion/react";
 import { Books, ChartLineUp, House, Sword, UserCircle } from "@phosphor-icons/react";
-import { EdgeBlur, PrimaryNav, cn, motionTravel, timing, type NavItem } from "design-kit";
+import { EdgeBlur, PrimaryNav, cn, routeMotion, type NavItem } from "design-kit";
 import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
@@ -68,8 +68,6 @@ export function WorkspaceShell() {
   );
 }
 
-const ROUTE_TRAVEL = Number.parseFloat(motionTravel.routeTravel);
-
 /**
  * The current screen, moving the way its place in the hierarchy says: a
  * child is pushed in from the right, a parent returns from the left, tabs
@@ -89,12 +87,7 @@ function Screens({ pathname }: { pathname: string }) {
     return () => window.removeEventListener("scroll", remember);
   }, [pathname]);
   return (
-    <motion.div
-      animate={{ opacity: 1, x: 0 }}
-      initial={{ opacity: 0, x: direction * ROUTE_TRAVEL }}
-      key={pathname}
-      transition={direction ? timing("nav", "nav") : timing("control", "arrive")}
-    >
+    <motion.div key={pathname} {...routeMotion(direction)}>
       {outlet}
     </motion.div>
   );
