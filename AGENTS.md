@@ -1,19 +1,15 @@
 # Agent notes
 
-Lexiro is a client-only single-page app: Vite 8, React 19 and React Router 8 (data mode). There is no server rendering.
+Lexiro 是純前端 SPA：Vite 8、React 19、React Router 8（data router，畫面全是 lazy route）、Tailwind 4、TanStack Query。沒有 server rendering。後端是另一個 private repo `../lexiro-worker`。
 
-- Routes: `app/routes.tsx`; the screens under `/app` are lazy routes in `components/app-views.tsx`.
-- Navigation inside components goes through `components/ui/app-link.tsx` and `lib/use-app-router.ts`.
-- Browser configuration is read as `process.env.NEXT_PUBLIC_*`; `vite.config.ts` writes the values into the bundle.
-- `vercel.json` owns the Firebase `/__/` proxy, the legacy redirects (kept equal to `lib/legacy-redirects.ts` by a test) and the SPA fallback.
-- Before pushing: `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build`.
-
-- Run the tests with `npm test`. It uses `vitest.next.config.ts` (jsdom and `tests-next/setup.ts`); a bare `npx vitest run` has no DOM and fails over a hundred tests for no real reason.
-- After `git pull`, run `npm ci` before any check; a `node_modules` left from before a dependency change fails in ways unrelated to your edit.
-- `src/lib`, `src/types` and the platform-free parts of `lib` and `components/practice` are mirrored into `../lexiro-app/src/core` (`scripts/sync-core.mjs` there). A change to them goes into both repos.
-- A sense `description` holds one point per line with no typed bullets; read it with `descriptionPoints()` and render it with `components/library/description-points.tsx`. `meaningZh` is only the Chinese meaning, shown as an answer option.
-- A set lists its words A to Z with `compareWords()` from `src/lib/library.ts`; membership order carries no meaning, so never show words in it. Sets themselves keep the drag order in `src/lib/set-order.ts`.
-- The web follows the app's look and gestures where a browser allows: Latin display text (headwords, scores, counts) uses `font-latin` (Albert Sans, copied from the app's `assets/fonts`), set rows open their actions on a right click or long press (`ContextMenu` in `components/ui/menu.tsx`), and celebrations use `components/motion/particle-burst.tsx`. Speech is never automatic; only a speak button reads aloud.
-- Tests check behavior a user or caller can observe: rendered text and roles, stored state, returned data. One behavior per `it`, titled with that behavior. No wall-clock budgets, no assertions on framework internals (history markers, private router state) no tests that only check a render does not throw, and no bare `toThrow()`: a rejection names its error, or it also passes for an unrelated failure.
-
-Read `docs/architecture.md` for the system overview.
+- 結構：`src/app`（router、shell、導覽）、`src/data`（Worker API、Firebase Auth、query、學習紀錄佇列）、`src/domain`（無 UI 的純邏輯：出題、回合、房間題目、批次輸入解析）、`src/features/<區塊>`（各畫面）、`src/ui`（跨畫面的小元件）。
+- UI 元件一律用 `packages/design-kit`（`design-kit`）；toast 從 `sonner` 匯入。主色是 pine green，顏色只用 design-kit 的 token class（`text-danger`、`text-positive`、`text-highlight`、`bg-accent-soft` …），不要寫死色碼。
+- Worker 的請求只走 `src/data/api.ts` 的 `api()`，錯誤用 `errorMessage()` 顯示。`ApiError.offline` 代表沒連上。
+- 資料格式在 `packages/contract`（`@lexiro/contract`，zod + 型別）。Worker 的 `src/contract` 是同一份的複本：改了這裡就複製過去（`cp packages/contract/src/*.ts ../lexiro-worker/src/contract/`），兩邊一起跑檢查。只保留最新 API，不做版本並存或舊資料相容。
+- 離線是唯讀：教材從 query 的 IndexedDB 快取讀；練習答案由 `src/data/learning.ts` 在本機排隊，連線後分批送出。進行中的回合存在 localStorage `lexiro:round:<uid>`。
+- 「我」是入口頁，帳號、偏好、資料、AI 助理、關於、管理各自是子頁面（`src/features/me`）。新設定放進對應子頁，不要堆回入口頁。
+- 瀏覽器設定從 `NEXT_PUBLIC_*` 環境變數讀（`src/data/config.ts`）；`vercel.json` 負責 Firebase `/__/auth` proxy、舊網址轉址與 SPA fallback。
+- 一個 sense 的 `description` 一行一點、不加符號；用 `descriptionPoints()` 讀。`meaning` 只放中文意思（會當選項）。單字集裡的字一律 A→Z 顯示。
+- 朗讀不自動播放，只有按鈕會念。拉丁文字（單字、分數、代碼）用 `font-latin`。
+- 推之前：`npm run typecheck`、`npm run lint`、`npm test`、`npm run build`。
+- 測試斷言使用者或呼叫端看得到的行為（回傳資料、儲存狀態、顯示文字）。一個 `it` 一個行為；預期的拒絕要斷言錯誤，不寫裸 `toThrow()`。
