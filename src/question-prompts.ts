@@ -1,5 +1,7 @@
-import type { QuestionKind, QuestionSource } from "@lexiro/ai-contract";
-import { PASSAGE_FORMATS, READING_MIN_QUESTIONS, READING_MAX_QUESTIONS, questionLengthRange } from "@lexiro/ai-contract";
+import { LENGTH_RANGES, PASSAGE_SPECS, READING_ITEMS, type QuestionKind } from "./contract";
+
+/** One word the brief hands to the writer, keyed by its ref. */
+interface QuestionSource { ref: string }
 import { COMMON_QUESTION_BRIEF } from "./question-brief";
 
 type QuestionDifficulty = 1 | 2 | 3;
@@ -39,7 +41,7 @@ Finalize five options before explaining the four removals. Four are actual origi
 Each removal has sentence and one explanation of its neighbor clues; do not explain the other options per removal. unusedReason says in one sentence why the unused option fits no location. Complete one location's check before the next, then hide all four sentences at once. Try the five actual options at all locations, verify the entire arrangement and neighbor clues, and check that no unused incompatible sentence accidentally became part of the narrative.`,
 
   reading: `Reading purpose: distinguish what the text states, what it refers to, what it is mainly about, and what follows from combining its facts.
-One passage and ${READING_MIN_QUESTIONS} to ${READING_MAX_QUESTIONS} four-choice questions. Use every supplied word naturally in its intended sense. Include mainIdea and another skill; difficulty 2 and 3 also include inference. Valid skills: mainIdea, detail, inference, reference, vocabulary. Select skill and its exact necessary evidence before writing question, answer and distractors.
+One passage and ${READING_ITEMS.min} to ${READING_ITEMS.max} four-choice questions. Use every supplied word naturally in its intended sense. Include mainIdea and another skill; difficulty 2 and 3 also include inference. Valid skills: mainIdea, detail, inference, reference, vocabulary. Select skill and its exact necessary evidence before writing question, answer and distractors.
 For inference, prepare two separate necessary facts while drafting the passage, leaving their combined conclusion for the question's answer. Here is a focused passage and one complete inference item:
 Passage: The club had only one microscope available for examining the samples. Three groups needed to examine their samples through a microscope during the same lesson. The teacher asked each group to bring its sample list.
 {"skill":"inference","evidence":["The club had only one microscope available for examining the samples.","Three groups needed to examine their samples through a microscope during the same lesson."],"question":"What arrangement would the groups need to make?","answer":"They would need to agree on different times to use the microscope.","distractors":["They could all use separate microscopes at the same time.","They would need to prepare samples because none were available.","They would need to replace a broken microscope before the lesson."],"explanation":"只有一台顯微鏡，卻有三組在同一堂課需要使用；合併這兩個條件，可推知必須協調使用時段。","whyWrong":[{"option":"They could all use separate microscopes at the same time.","reason":"可用顯微鏡只有一台，無法同時各用一台。"},{"option":"They would need to prepare samples because none were available.","reason":"本文提到各組樣本，沒有樣本全都缺少的依據。"},{"option":"They would need to replace a broken microscope before the lesson.","reason":"本文說的是數量與同時使用需求，沒有顯微鏡損壞的資訊。"}]}
@@ -56,7 +58,8 @@ function clozeCounts(count: number) {
 }
 
 export function questionPrompt(kind: QuestionKind, sources: QuestionSource[], difficulty: QuestionDifficulty) {
-  const lengthRange = questionLengthRange(kind, difficulty);
+  const [min, max] = LENGTH_RANGES[kind][difficulty];
+  const lengthRange = { min, max };
   const target = Math.round((lengthRange.min + lengthRange.max) / 2);
   const textContract = kind === "reading"
     ? "Keep supporting facts in the passage; the inference conclusion belongs in its answer."
@@ -78,6 +81,6 @@ export function questionTurnInstruction(refs: string[], kind: QuestionKind): str
     const { grammarItems, meaningItems } = clozeCounts(refs.length);
     return scope + `One passage, exactly ${refs.length} blanks in source order: ${grammarItems} grammar-form items and ${meaningItems} meaning/collocation items at suitable locations. Check the complete passage afterward.`;
   }
-  if (kind === "wordBank") return scope + `One passage, exactly ${refs.length} blanks and ${PASSAGE_FORMATS.wordBank.optionCount} options, including ${Math.max(0, PASSAGE_FORMATS.wordBank.optionCount - refs.length)} unused options. Keep the full passage length and verify the complete allocation.`;
+  if (kind === "wordBank") return scope + `One passage, exactly ${refs.length} blanks and ${PASSAGE_SPECS.wordBank.options} options, including ${Math.max(0, PASSAGE_SPECS.wordBank.options - refs.length)} unused options. Keep the full passage length and verify the complete allocation.`;
   return scope + "One complete passage set; finish individual checks, then check the set.";
 }
