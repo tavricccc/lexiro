@@ -3,7 +3,7 @@ import { Miniflare } from "miniflare";
 import type { D1Database } from "@cloudflare/workers-types";
 
 /** A local D1 with every library migration applied. Dispose the runtime after use. */
-export async function libraryDb() {
+export async function libraryDb(options: { only?: (file: string) => boolean } = {}) {
   const runtime = new Miniflare({
     workers: [{
       config: {
@@ -15,14 +15,14 @@ export async function libraryDb() {
     }],
   });
   const db = (await runtime.getD1Database("CLOUD_DB")) as unknown as D1Database;
-  await migrate(db, "library-migrations");
+  await migrate(db, "library-migrations", options.only);
   return { runtime, db };
 }
 
 /** Applies every migration in `dir`, statement by statement, comments removed. */
-export async function migrate(db: Pick<D1Database, "batch" | "prepare">, dir: string) {
+export async function migrate(db: Pick<D1Database, "batch" | "prepare">, dir: string, only: (file: string) => boolean = () => true) {
   const folder = new URL(`../${dir}/`, import.meta.url);
-  for (const file of (await readdir(folder)).filter((name) => name.endsWith(".sql")).sort()) {
+  for (const file of (await readdir(folder)).filter((name) => name.endsWith(".sql") && only(name)).sort()) {
     const sql = (await readFile(new URL(file, folder), "utf8")).replace(/^\s*--.*$/gm, "");
     const statements = sql.split(/;\s*$/m).map((part) => part.trim()).filter(Boolean);
     if (statements.length) await db.batch(statements.map((statement) => db.prepare(statement)));
