@@ -69,7 +69,6 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
     const inFolder = (set: SetSummary) => folder === ALL || (folder === LOOSE ? !set.folderId : set.folderId === folder);
     return orderedSets(sets.filter((set) => inFolder(set) && (!needle || set.name.toLocaleLowerCase().includes(needle))));
   }, [sets, folder, query]);
-  const folderName = (set: SetSummary) => (set.folderId ? folders.find((entry) => entry.id === set.folderId)?.name : undefined);
   if (!sets.length)
     return (
       <EmptyState
@@ -80,7 +79,7 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
     );
   const options = [
     { value: ALL, label: "全部" },
-    ...folders.map((f) => ({ value: f.id, label: f.name })),
+    ...folders.map((f) => ({ value: f.id, label: f.name, icon: <FolderSimple weight="fill" /> })),
     ...(sets.some((set) => !set.folderId) && folders.length ? [{ value: LOOSE, label: "未分類" }] : []),
   ];
   return (
@@ -103,12 +102,6 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
                       <span className="font-latin">{set.wordCount}</span> 個單字
                       {set.questionCount ? <> · <span className="font-latin">{set.questionCount}</span> 題</> : null}
                     </span>
-                    {folderName(set) ? (
-                      <span className="mt-0.5 flex items-center gap-1 text-[0.8125rem] text-ink-faint">
-                        <FolderSimple aria-hidden className="size-3.5 shrink-0" weight="fill" />
-                        <span className="truncate">{folderName(set)}</span>
-                      </span>
-                    ) : null}
                   </span>
                 </AppLink>
               </Panel>

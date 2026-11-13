@@ -46,7 +46,8 @@ export function PageHeader({ actions, back, className, description, title }: {
     </div>
     <header className={cn("grid gap-4", className)}>
       {back ? (
-        <Button asChild className="justify-self-start" size="icon-sm">
+        // Pinned beside the small title once the page scrolls, so the way back is always in reach.
+        <Button asChild className="sticky top-[calc(var(--safe-top)+0.25rem)] z-40 justify-self-start md:top-3" size="icon-sm">
           <AppLink aria-label={back.label} back href={back.href}><CaretLeft weight="bold" /></AppLink>
         </Button>
       ) : null}

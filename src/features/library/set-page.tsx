@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useParams, useSearchParams } from "react-router";
 import { CheckSquare, Copy, DotsThree, GearSix, MagnifyingGlass, Play, Plus, ShareNetwork, Star, Trash, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import type { Question, SetContent, Word } from "@lexiro/contract";
+import { descriptionPoints, type Question, type SetContent, type Word } from "@lexiro/contract";
 import { AppLink, Button, Chip, ConfirmDialog, EmptyState, Input, ListGroup, ListRow, Menu, Segmented, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
@@ -175,11 +175,15 @@ function WordList({ content }: { content: SetContent }) {
   );
 }
 
+/** A word's notes (each sense's description points), on one line. */
+const notes = (word: Word) => word.senses.flatMap((sense) => descriptionPoints(sense.description)).join("；");
+
 function WordText({ word }: { word: Word }) {
   return (
     <span className="min-w-0 flex-1">
       <span className="block truncate font-latin text-[1.0625rem] font-semibold">{word.word}</span>
       <span className="block truncate text-[0.8125rem] text-ink-muted">{meaningLine(word)}</span>
+      {notes(word) ? <span className="block truncate text-[0.8125rem] text-ink-faint">{notes(word)}</span> : null}
     </span>
   );
 }
