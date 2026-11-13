@@ -175,15 +175,23 @@ function WordList({ content }: { content: SetContent }) {
   );
 }
 
-/** A word's notes (each sense's description points), on one line. */
-const notes = (word: Word) => word.senses.flatMap((sense) => descriptionPoints(sense.description)).join("；");
+/** A word's notes: every sense's description points, in order. */
+const notes = (word: Word) => word.senses.flatMap((sense) => descriptionPoints(sense.description));
 
 function WordText({ word }: { word: Word }) {
+  const points = notes(word);
   return (
     <span className="min-w-0 flex-1">
       <span className="block truncate font-latin text-[1.0625rem] font-semibold">{word.word}</span>
       <span className="block truncate text-[0.8125rem] text-ink-muted">{meaningLine(word)}</span>
-      {notes(word) ? <span className="block truncate text-[0.8125rem] text-ink-faint">{notes(word)}</span> : null}
+      {points.length ? (
+        // A small card under the meaning, one point per line like the word page; the row grows to fit.
+        <span className="mt-1.5 grid gap-0.5 rounded-tile bg-surface-raised px-3 py-2 text-[0.8125rem] leading-relaxed text-ink-muted">
+          {points.map((note, index) => (
+            <span className="flex gap-1.5" key={index}><span aria-hidden className="text-ink-faint">•</span><span className="min-w-0">{note}</span></span>
+          ))}
+        </span>
+      ) : null}
     </span>
   );
 }
