@@ -7,7 +7,8 @@ import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
-import { travelDirection } from "./hierarchy";
+import { screenKey, travelDirection } from "./hierarchy";
+import { lastPopFromSystem } from "./navigation";
 import { OfflineBanner } from "@/ui/offline-banner";
 
 const NAV: NavItem[] = [
@@ -73,7 +74,8 @@ export function WorkspaceShell() {
  * child is pushed in from the right, a parent returns from the left, tabs
  * cross-fade. Each screen comes back scrolled where it was left.
  */
-function Screens({ pathname }: { pathname: string }) {
+function Screens({ pathname: current }: { pathname: string }) {
+  const pathname = screenKey(current);
   const outlet = useOutlet();
   const reduced = useReducedMotion();
   const [last, setLast] = useState({ pathname, direction: 0 as -1 | 0 | 1 });
@@ -87,7 +89,7 @@ function Screens({ pathname }: { pathname: string }) {
     return () => window.removeEventListener("scroll", remember);
   }, [pathname]);
   return (
-    <motion.div key={pathname} {...routeMotion(direction)}>
+    <motion.div key={pathname} {...routeMotion(direction)} {...(lastPopFromSystem ? { initial: false } : {})}>
       {outlet}
     </motion.div>
   );

@@ -4,6 +4,14 @@ import type { Navigation } from "design-kit";
 type AppRouter = DataRouter;
 
 /**
+ * True when the last history pop came from the browser (iOS edge swipe, the
+ * system back button) rather than the app's own back control. The system has
+ * already animated that move, so the screen must not animate it again.
+ */
+export let lastPopFromSystem = false;
+let appBackPending = false;
+
+/**
  * The kit's navigation over React Router. Back steps through history only
  * when the parent is the screen visited just before; otherwise it replaces,
  * so a deep link's back control never leaves the app.
@@ -14,6 +22,8 @@ export function routerNavigation(router: AppRouter): Navigation {
   router.subscribe((state) => {
     const now = state.location.pathname + state.location.search;
     if (now === visited.at(-1)) return;
+    lastPopFromSystem = state.historyAction === "POP" && !appBackPending;
+    appBackPending = false;
     if (state.historyAction === "POP" && visited.at(-2) === now) visited.pop();
     else if (state.historyAction === "REPLACE") visited[visited.length - 1] = now;
     else visited.push(now);
@@ -27,7 +37,10 @@ export function routerNavigation(router: AppRouter): Navigation {
     },
     back: (parent) => {
       const previous = visited.at(-2);
-      if (previous && (previous === parent || previous.split("?")[0] === parent)) void router.navigate(-1);
+      if (previous && (previous === parent || previous.split("?")[0] === parent)) {
+        appBackPending = true;
+        void router.navigate(-1);
+      }
       else void router.navigate(parent, { replace: true });
     },
   };

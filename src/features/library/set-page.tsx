@@ -14,11 +14,12 @@ import { SetIcon } from "@/ui/set-icon";
 import { StarButton } from "@/ui/star-button";
 import { CopySheet } from "./copy-sheet";
 import { ShareSheet } from "./share-sheet";
+import { WordSheet } from "./word-page";
 
 type Tab = "words" | "questions";
 
 export default function SetPage() {
-  const { setId = "" } = useParams();
+  const { setId = "", wordId } = useParams();
   const content = useSet(setId);
   const [share, setShare] = useState(false);
   const name = content.data?.set.name ?? "單字集";
@@ -48,6 +49,7 @@ export default function SetPage() {
       ) : name}
     >
       <Loaded query={content}>{(data) => <SetBody content={data} />}</Loaded>
+      {content.data ? <WordSheet content={content.data} wordId={wordId} /> : null}
       {content.data ? <ShareSheet onOpenChange={setShare} open={share} set={content.data.set} /> : null}
     </Page>
   );

@@ -1,48 +1,45 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { PencilSimple, Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { descriptionPoints, type SetContent } from "@lexiro/contract";
-import { AppLink, Chip, HeaderButton, ConfirmDialog, EmptyState, Panel } from "design-kit";
+import { AppLink, Button, Chip, ConfirmDialog, Panel, Sheet, useNavigation } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
 import { useLearning } from "@/data/learning";
-import { useSet } from "@/data/queries";
 import { FAMILIARITY_LABELS } from "@/domain/labels";
 import { useOnline } from "@/ui/offline-banner";
-import { Loaded, Page } from "@/ui/page";
 import { SpeakButton } from "@/ui/speak";
 import { StarButton } from "@/ui/star-button";
 
-export default function WordPage() {
-  const { setId = "", wordId = "" } = useParams();
-  const content = useSet(setId);
-  return <Loaded query={content}>{(data) => <WordView content={data} wordId={wordId} />}</Loaded>;
-}
-
-function WordView({ content, wordId }: { content: SetContent; wordId: string }) {
+/** A word's detail: a sheet on a phone, a popup on a wide screen, drawn over its set. */
+export function WordSheet({ content, wordId }: { content: SetContent; wordId: string | undefined }) {
   const setId = content.set.id;
-  const word = content.words.find((entry) => entry.id === wordId);
   const navigate = useNavigate();
+  const navigation = useNavigation();
   const online = useOnline();
   const { learning } = useLearning();
   const [removing, setRemoving] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading">("idle");
-  const back = { href: `/app/sets/${setId}`, label: `回到${content.set.name}` };
-  if (!word) return <Page back={back} title="找不到單字"><EmptyState description="它可能已經被刪除了。" title="找不到這個單字" /></Page>;
+  // Keep showing the word while the sheet slides away, after the route has left it.
+  const [shown, setShown] = useState(wordId);
+  if (wordId && wordId !== shown) setShown(wordId);
+  const word = content.words.find((entry) => entry.id === shown);
+  const close = () => (navigation ? navigation.back(`/app/sets/${setId}`) : navigate(`/app/sets/${setId}`, { replace: true }));
+  if (!word) return null;
   const questions = content.questions.filter((question) => ("items" in question ? question.items.map((item) => item.senseId) : [question.senseId]).some((id) => word.senses.some((sense) => sense.id === id))).length;
   return (
-    <Page
-      actions={
+    <>
+    <Sheet
+      footer={
         <>
-          <StarButton inHeader setId={setId} starred={word.starred} word={word.word} wordId={word.id} />
-          <HeaderButton aria-label="刪除單字" disabled={!online} onClick={() => setRemoving(true)}><Trash weight="bold" /></HeaderButton>
-          <HeaderButton aria-label="編輯" asChild prominent><AppLink href={`/app/sets/${setId}/words/${word.id}/edit`}><PencilSimple weight="bold" /></AppLink></HeaderButton>
+          <Button disabled={!online} onClick={() => setRemoving(true)} variant="danger"><Trash weight="bold" />刪除</Button>
+          <Button asChild variant="primary"><AppLink href={`/app/sets/${setId}/words/${word.id}/edit`}><PencilSimple weight="bold" />編輯</AppLink></Button>
         </>
       }
-      back={back}
-      documentTitle={word.word}
-      title={<span className="flex items-center gap-2"><span className="font-latin text-[2rem] md:text-[2.25rem]" lang="en">{word.word}</span><SpeakButton text={word.word} /></span>}
+      onOpenChange={(next) => { if (!next) close(); }}
+      open={Boolean(wordId)}
+      title={<span className="flex items-center gap-2"><span className="font-latin text-2xl" lang="en">{word.word}</span><SpeakButton text={word.word} /><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>}
     >
       <div className="grid gap-3">
         {word.senses.map((sense) => {
@@ -77,7 +74,8 @@ function WordView({ content, wordId }: { content: SetContent; wordId: string }) 
           );
         })}
       </div>
-      {questions ? <p className="px-1 text-sm text-ink-faint">有 {questions} 題用到這個單字</p> : null}
+      {questions ? <p className="px-1 pt-3 text-sm text-ink-faint">有 {questions} 題用到這個單字</p> : null}
+    </Sheet>
       <ConfirmDialog
         confirmLabel="刪除"
         description={questions ? `用到它的 ${questions} 題也會一起刪除。` : undefined}
@@ -86,6 +84,7 @@ function WordView({ content, wordId }: { content: SetContent; wordId: string }) 
           try {
             await deleteWords(setId, [word.id]);
             navigate(`/app/sets/${setId}`, { replace: true });
+            setStatus("idle");
           } catch (reason) {
             toast.error(errorMessage(reason));
             setStatus("idle");
@@ -97,6 +96,6 @@ function WordView({ content, wordId }: { content: SetContent; wordId: string }) 
         title={`刪除「${word.word}」？`}
         tone="danger"
       />
-    </Page>
+    </>
   );
 }
