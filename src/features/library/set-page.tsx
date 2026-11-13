@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import { CheckSquare, Copy, DotsThree, GearSix, MagnifyingGlass, Play, Plus, ShareNetwork, Star, Trash, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { Question, SetContent, Word } from "@lexiro/contract";
@@ -54,7 +54,9 @@ export default function SetPage() {
 }
 
 function SetBody({ content }: { content: SetContent }) {
-  const [tab, setTab] = useState<Tab>("words");
+  const [params, setParams] = useSearchParams();
+  const tab: Tab = params.get("tab") === "questions" ? "questions" : "words";
+  const setTab = (next: Tab) => setParams(next === "words" ? {} : { tab: next }, { replace: true });
   if (!content.words.length)
     return (
       <EmptyState
