@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
-import { FolderSimplePlus, MagnifyingGlass, Plus, SlidersHorizontal } from "@phosphor-icons/react";
+import { FolderSimple, FolderSimplePlus, MagnifyingGlass, Plus, SlidersHorizontal } from "@phosphor-icons/react";
 import { compareWords, type Folder, type SetSummary } from "@lexiro/contract";
 import { AppLink, Button, EmptyState, Input, Menu, Panel, Segmented } from "design-kit";
 import { useLibrary } from "@/data/queries";
@@ -69,6 +69,7 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
     const inFolder = (set: SetSummary) => folder === ALL || (folder === LOOSE ? !set.folderId : set.folderId === folder);
     return orderedSets(sets.filter((set) => inFolder(set) && (!needle || set.name.toLocaleLowerCase().includes(needle))));
   }, [sets, folder, query]);
+  const folderName = (set: SetSummary) => (set.folderId ? folders.find((entry) => entry.id === set.folderId)?.name : undefined);
   if (!sets.length)
     return (
       <EmptyState
@@ -102,6 +103,12 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
                       <span className="font-latin">{set.wordCount}</span> 個單字
                       {set.questionCount ? <> · <span className="font-latin">{set.questionCount}</span> 題</> : null}
                     </span>
+                    {folderName(set) ? (
+                      <span className="mt-0.5 flex items-center gap-1 text-[0.8125rem] text-ink-faint">
+                        <FolderSimple aria-hidden className="size-3.5 shrink-0" weight="fill" />
+                        <span className="truncate">{folderName(set)}</span>
+                      </span>
+                    ) : null}
                   </span>
                 </AppLink>
               </Panel>

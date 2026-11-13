@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { GoogleLogo } from "@phosphor-icons/react";
 import { Button, DesignKitProvider, Spinner, Toaster, TooltipProvider, type Navigation } from "design-kit";
@@ -14,11 +14,18 @@ export const setKitNavigation = (value: Navigation) => { navigation = value; };
 
 /** Providers every page shares, signed in or not. */
 export function RootLayout() {
+  const { pathname } = useLocation();
+  // The content layer is the scroller, so a new page starts at its top.
+  useEffect(() => { document.getElementById("app-scroll")?.scrollTo(0, 0); }, [pathname]);
   return (
     <QueryClientProvider client={queryClient}>
       <DesignKitProvider navigation={navigation}>
         <TooltipProvider delayDuration={400}>
-          <Outlet />
+          <div className="app-scroll" id="app-scroll">
+            <Outlet />
+          </div>
+          {/* The status bar is translucent: a solid band keeps content from showing under it. */}
+          <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[var(--safe-top)] bg-canvas" />
           <Toaster />
         </TooltipProvider>
       </DesignKitProvider>

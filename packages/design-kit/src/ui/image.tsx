@@ -113,7 +113,7 @@ export function ImageLightbox({ alt, height, onOpenChange, open, src, width }: {
   return (
     <Dialog.Root onOpenChange={onOpenChange} open={open}>
       <Dialog.Portal>
-        <Dialog.Overlay className="scrim fixed inset-0 z-50 bg-[var(--scrim)] backdrop-blur-md" />
+        <Dialog.Overlay className="scrim fixed inset-0 z-50 bg-[var(--scrim)]" />
         <Dialog.Content
           aria-describedby={undefined}
           className="dialog-surface fixed inset-0 z-50 grid place-items-center p-4 outline-none"

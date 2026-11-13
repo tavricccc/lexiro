@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router";
 import { Books, ChartLineUp, House, Sword, UserCircle } from "@phosphor-icons/react";
-import { EdgeBlur, PrimaryNav, type NavItem } from "design-kit";
+import { PrimaryNav, type NavItem } from "design-kit";
 import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
@@ -43,7 +43,6 @@ export function WorkspaceShell() {
           <PrimaryNav activeHref={active} items={NAV} label="主要導覽" variant="rail" />
         </aside>
       ) : null}
-      <EdgeBlur className="fixed inset-x-0 top-0 z-20 h-[calc(var(--safe-top)+1.5rem)]" side="top" />
       <main className={full ? "" : "md:pl-70"}>
         <OfflineBanner />
         <div className={full ? "" : "mx-auto w-full max-w-3xl px-[var(--gutter)] pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+2rem)] pt-[calc(var(--safe-top)+1.5rem)] md:px-10 md:pb-16 md:pt-10"}>
