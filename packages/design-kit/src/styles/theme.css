@@ -142,20 +142,49 @@ body {
   }
 }
 
-/* The app itself never scrolls or bounces; only the content layer does
-   (see .app-scroll), so the dock and status bar band stay put. */
+/* The page never scrolls sideways, even when an edge's blur reaches past the
+   column it belongs to. `clip` keeps sticky positioning working. */
 html,
 body {
-  height: 100%;
-  overflow: hidden;
+  overflow-x: clip;
+  /* The app itself never bounces; only inner scrolling areas may. */
   overscroll-behavior: none;
 }
-.app-scroll {
-  position: fixed;
+
+/* A scrolling edge is never a hard cut (see EdgeBlur): stacked layers whose
+   blur doubles toward the edge, each masked to a band overlapping its
+   neighbours, so the softening ramps up instead of starting at a line. */
+.edge-blur > span {
+  position: absolute;
   inset: 0;
-  overflow-x: clip;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
+  -webkit-backdrop-filter: blur(var(--b));
+  backdrop-filter: blur(var(--b));
+  -webkit-mask-image: linear-gradient(var(--dir), transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
+  mask-image: linear-gradient(var(--dir), transparent var(--s0), black var(--s1), black var(--s2), transparent var(--s3));
+}
+.edge-blur[data-side="bottom"] { --dir: to bottom; }
+.edge-blur[data-side="top"] { --dir: to top; }
+.edge-blur > span:nth-child(1) { --b: 0.15px; --s0: 0%; --s1: 0%; --s2: 16.7%; --s3: 33.3%; }
+.edge-blur > span:nth-child(2) { --b: 0.3px; --s0: 0%; --s1: 16.7%; --s2: 33.3%; --s3: 50%; }
+.edge-blur > span:nth-child(3) { --b: 0.6px; --s0: 16.7%; --s1: 33.3%; --s2: 50%; --s3: 66.7%; }
+.edge-blur > span:nth-child(4) { --b: 1.2px; --s0: 33.3%; --s1: 50%; --s2: 66.7%; --s3: 83.3%; }
+.edge-blur > span:nth-child(5) { --b: 2.4px; --s0: 50%; --s1: 66.7%; --s2: 83.3%; --s3: 100%; }
+.edge-blur > span:nth-child(6) { --b: 4.8px; --s0: 66.7%; --s1: 83.3%; --s2: 100%; --s3: 100%; }
+
+/* At the top of a page nothing has scrolled under the top edge yet, only the
+   page's own title, so the blur stays off and comes in over the first few
+   rems of scrolling, the way a large title's bar only fills in once content
+   passes beneath it. Browsers without scroll timelines keep it on. */
+@supports (animation-timeline: scroll()) {
+  .edge-blur[data-side="top"] {
+    animation: edge-blur-in linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 3rem;
+  }
+}
+
+@keyframes edge-blur-in {
+  from { opacity: 0; }
 }
 
 /* A scrolling area inside a layer fades out at both ends instead of slicing its content. */

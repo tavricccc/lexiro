@@ -102,3 +102,14 @@
   --focus-ring: rgb(127 220 180 / 50%);
   --scrim: rgb(0 0 0 / 58%);
 }
+
+/* The next question in a round slides in from the side, the way a new card is dealt. */
+.card-in {
+  animation: card-in var(--motion-nav) var(--ease-nav) backwards;
+}
+@keyframes card-in {
+  from { opacity: 0; translate: var(--motion-route-travel) 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-in { animation: none; }
+}

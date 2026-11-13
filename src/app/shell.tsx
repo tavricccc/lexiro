@@ -1,10 +1,13 @@
-import { Outlet, useLocation } from "react-router";
+import { useLayoutEffect, useRef, useState } from "react";
+import { useLocation, useOutlet } from "react-router";
+import { motion, useReducedMotion } from "motion/react";
 import { Books, ChartLineUp, House, Sword, UserCircle } from "@phosphor-icons/react";
-import { PrimaryNav, type NavItem } from "design-kit";
+import { EdgeBlur, PrimaryNav, cn, motionTravel, timing, type NavItem } from "design-kit";
 import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
+import { travelDirection } from "./hierarchy";
 import { OfflineBanner } from "@/ui/offline-banner";
 
 const NAV: NavItem[] = [
@@ -46,14 +49,53 @@ export function WorkspaceShell() {
       <main className={full ? "" : "md:pl-70"}>
         <OfflineBanner />
         <div className={full ? "" : "mx-auto w-full max-w-3xl px-[var(--gutter)] pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+2rem)] pt-[calc(var(--safe-top)+1.5rem)] md:px-10 md:pb-16 md:pt-10"}>
-          <Outlet />
+          <Screens pathname={pathname} />
         </div>
       </main>
-      {!full && isDestination(pathname) ? (
-        <div className="fixed inset-x-0 bottom-[var(--bottom-nav-gap)] z-40 flex justify-center px-[var(--gutter)] md:hidden">
+      {/* Content passing either edge softens under a progressive blur instead of being cut off. */}
+      <EdgeBlur className="h-[calc(var(--safe-top)+5rem)] md:left-70 md:h-20" side="top" />
+      {!full ? <EdgeBlur className={isDestination(pathname) ? "h-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+1.5rem)] md:left-70 md:h-16" : "h-[calc(var(--safe-bottom)+2rem)] md:left-70 md:h-16"} side="bottom" /> : null}
+      {!full ? (
+        <div
+          aria-hidden={!isDestination(pathname)}
+          className={cn("fixed inset-x-0 bottom-[var(--bottom-nav-gap)] z-40 flex justify-center px-[var(--gutter)] transition-[opacity,translate] duration-[var(--motion-nav)] ease-[var(--ease-nav)] md:hidden", isDestination(pathname) ? "" : "pointer-events-none translate-y-[calc(100%+var(--bottom-nav-gap))] opacity-0")}
+          inert={!isDestination(pathname)}
+        >
           <PrimaryNav activeHref={active} className="w-full max-w-md" items={NAV} label="主要導覽" variant="dock" />
         </div>
       ) : null}
     </div>
+  );
+}
+
+const ROUTE_TRAVEL = Number.parseFloat(motionTravel.routeTravel);
+
+/**
+ * The current screen, moving the way its place in the hierarchy says: a
+ * child is pushed in from the right, a parent returns from the left, tabs
+ * cross-fade. Each screen comes back scrolled where it was left.
+ */
+function Screens({ pathname }: { pathname: string }) {
+  const outlet = useOutlet();
+  const reduced = useReducedMotion();
+  const [last, setLast] = useState({ pathname, direction: 0 as -1 | 0 | 1 });
+  if (last.pathname !== pathname) setLast({ pathname, direction: travelDirection(last.pathname, pathname) });
+  const direction = reduced ? 0 : last.direction;
+  const scroll = useRef(new Map<string, number>());
+  useLayoutEffect(() => {
+    window.scrollTo(0, scroll.current.get(pathname) ?? 0);
+    const remember = () => scroll.current.set(pathname, window.scrollY);
+    window.addEventListener("scroll", remember, { passive: true });
+    return () => window.removeEventListener("scroll", remember);
+  }, [pathname]);
+  return (
+    <motion.div
+      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: direction * ROUTE_TRAVEL }}
+      key={pathname}
+      transition={direction ? timing("nav", "nav") : timing("control", "arrive")}
+    >
+      {outlet}
+    </motion.div>
   );
 }

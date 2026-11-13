@@ -32,7 +32,7 @@ export default function SharedPage() {
       const after = await queryClient.fetchQuery({ queryKey: keys.library, queryFn: () => api<LibraryIndex>("/library") });
       const created = after.sets.find((set) => !before.has(set.id));
       toast.success(`已加入「${shared.data.set.name}」`);
-      navigate(created ? `/app/sets/${created.id}` : "/app/sets");
+      navigate(created ? `/app/sets/${created.id}` : "/app/library");
     } catch (error) {
       setStatus("idle");
       toast.error(errorMessage(error));

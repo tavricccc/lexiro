@@ -12,6 +12,7 @@ export * from "./ui/chip";
 export * from "./ui/confirm-dialog";
 export * from "./ui/decision";
 export * from "./ui/dialog";
+export * from "./ui/edge-blur";
 export * from "./ui/feedback";
 export * from "./ui/field";
 export * from "./ui/image";

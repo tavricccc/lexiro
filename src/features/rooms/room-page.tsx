@@ -31,7 +31,7 @@ export default function RoomPage() {
     <Shell leave={leave} state={state} reconnecting={connection === "reconnecting"}>
       {state.phase === "lobby" ? <Lobby host={host} send={room.send} state={state} />
         : state.phase === "ended" ? <Ended state={state} />
-        : <Live host={host} offset={room.offset} send={room.send} state={state} />}
+        : <div className="card-in grid gap-5" key={state.index}><Live host={host} offset={room.offset} send={room.send} state={state} /></div>}
     </Shell>
   );
 }

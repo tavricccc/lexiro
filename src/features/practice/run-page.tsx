@@ -57,10 +57,10 @@ function Card({ round, pick, next }: { round: Round; pick: (option: number | nul
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
       </header>
-      <div className="content-in flex flex-1 flex-col gap-5 pt-6" key={`${round.index}-${round.step}`}>
+      <div className="card-in flex flex-1 flex-col gap-5 pt-6" key={round.index}>
         <Chip className="self-start">{TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} 格` : ""}</Chip>
         <Prompt chosen={chosen} item={item} round={round} step={step} />
-        <Options chosen={chosen} pick={pick} revealed={round.revealed} step={step} used={used} />
+        <div className="message-in" key={round.step}><Options chosen={chosen} pick={pick} revealed={round.revealed} step={step} used={used} /></div>
         {round.revealed ? <Feedback chosen={chosen} item={item} step={step} /> : null}
         <div className="mt-auto flex justify-end gap-2 pt-2">
           {round.revealed ? (

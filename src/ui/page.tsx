@@ -16,7 +16,7 @@ export function Page({ back, title, description, actions, children, className, d
 }) {
   useDocumentTitle(documentTitle ?? (typeof title === "string" ? title : undefined));
   return (
-    <div className={cn("content-in grid gap-6", className)}>
+    <div className={cn("grid gap-6", className)}>
       <PageHeader actions={actions} back={back} description={description} title={title} />
       {children}
     </div>

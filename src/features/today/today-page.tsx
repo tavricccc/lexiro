@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ArrowRight, Fire, Play, Target } from "@phosphor-icons/react";
 import { calendarDay, DAILY_GOALS, streak, type DailyGoal } from "@lexiro/contract";
-import { AnimatedNumber, AppLink, Button, EmptyState, Panel, ProgressBar, SectionTitle, Segmented, Tile } from "design-kit";
+import { AnimatedNumber, AppLink, Button, EmptyState, Panel, ProgressBar, SectionTitle, Segmented } from "design-kit";
 import { toast } from "sonner";
 import { errorMessage } from "@/data/api";
 import { setGoal, usePendingAnswers, useLearning } from "@/data/learning";
@@ -53,17 +53,17 @@ export default function TodayPage() {
         </Panel>
       ) : null}
       <section className="grid gap-3">
-        <SectionTitle action={<Button asChild size="sm"><AppLink href="/app/sets">全部單字集</AppLink></Button>}>從單字集開始</SectionTitle>
+        <SectionTitle action={<Button asChild size="sm"><AppLink href="/app/library">全部單字集</AppLink></Button>}>從單字集開始</SectionTitle>
         {library.data && !recent.length ? (
           <EmptyState action={<Button asChild variant="primary"><AppLink href="/app/sets/new">建立第一個單字集</AppLink></Button>} description="加入單字後就能開始練習。" title="還沒有單字" />
         ) : (
           <div className="grid gap-2 sm:grid-cols-2">
             {recent.map((set) => (
-              <Tile className="flex items-center gap-3" key={set.id}>
+              <Panel className="flex items-center gap-3" key={set.id}>
                 <SetIcon hue={set.hue} icon={set.icon} />
                 <AppLink className="min-w-0 flex-1" href={`/app/sets/${set.id}`}><span className="block truncate font-semibold">{set.name}</span><span className="text-sm text-ink-muted">{set.wordCount} 個單字</span></AppLink>
                 <Button aria-label={`練習 ${set.name}`} asChild size="icon-sm" variant="primary"><AppLink href={`/app/practice?set=${set.id}`}><Play weight="fill" /></AppLink></Button>
-              </Tile>
+              </Panel>
             ))}
           </div>
         )}
