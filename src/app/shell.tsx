@@ -3,6 +3,7 @@ import { Books, ChartLineUp, House, Sword, UserCircle } from "@phosphor-icons/re
 import { EdgeBlur, PrimaryNav, type NavItem } from "design-kit";
 import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
+import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
 import { OfflineBanner } from "@/ui/offline-banner";
 
@@ -31,6 +32,7 @@ export function WorkspaceShell() {
   const { pathname } = useLocation();
   useRevisionWatch(true);
   useAnswerFlush(true);
+  useThemeSync();
   const active = activeDestination(pathname);
   const full = immersive(pathname);
   return (

@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { serwist } from "@serwist/vite";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { readFileSync } from "node:fs";
 import { defineConfig, loadEnv, type Plugin } from "vite";
 
 const path = (relative: string) => fileURLToPath(new URL(relative, import.meta.url));
@@ -48,7 +49,10 @@ function webManifest(): Plugin {
  */
 export default defineConfig(({ mode }) => ({
   envPrefix: "NEXT_PUBLIC_",
-  define: { "import.meta.env.NEXT_PUBLIC_MODE": JSON.stringify(mode) },
+  define: {
+    "import.meta.env.NEXT_PUBLIC_MODE": JSON.stringify(mode),
+    __APP_VERSION__: JSON.stringify((JSON.parse(readFileSync(path("package.json"), "utf8")) as { version: string }).version),
+  },
   resolve: {
     alias: [
       { find: "@lexiro/contract", replacement: path("./packages/contract/src/index.ts") },
