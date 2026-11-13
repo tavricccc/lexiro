@@ -17,7 +17,6 @@ import {
   type Learning,
   type Prefs,
   type Question,
-  type QuestionInput,
   type Sense,
   type SetInput,
   type SetSummary,

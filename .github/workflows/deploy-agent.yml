@@ -5,13 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - src/agent/**
-      - src/cloud/**
-      - src/rooms/**
-      - src/auth.ts
-      - src/http.ts
-      - src/question-brief.ts
-      - src/question-prompts.ts
+      - src/**
       - vendor/**
       - agent-migrations/**
       - library-migrations/**

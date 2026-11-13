@@ -15,13 +15,18 @@ export async function libraryDb() {
     }],
   });
   const db = (await runtime.getD1Database("CLOUD_DB")) as unknown as D1Database;
-  const dir = new URL("../library-migrations/", import.meta.url);
-  for (const file of (await readdir(dir)).filter((name) => name.endsWith(".sql")).sort()) {
-    const sql = (await readFile(new URL(file, dir), "utf8")).replace(/^--.*$/gm, "");
+  await migrate(db, "library-migrations");
+  return { runtime, db };
+}
+
+/** Applies every migration in `dir`, statement by statement, comments removed. */
+export async function migrate(db: Pick<D1Database, "batch" | "prepare">, dir: string) {
+  const folder = new URL(`../${dir}/`, import.meta.url);
+  for (const file of (await readdir(folder)).filter((name) => name.endsWith(".sql")).sort()) {
+    const sql = (await readFile(new URL(file, folder), "utf8")).replace(/^\s*--.*$/gm, "");
     const statements = sql.split(/;\s*$/m).map((part) => part.trim()).filter(Boolean);
     if (statements.length) await db.batch(statements.map((statement) => db.prepare(statement)));
   }
-  return { runtime, db };
 }
 
 /** The thrown value of a rejected promise; fails when it resolves. */

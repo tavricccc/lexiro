@@ -1,5 +1,5 @@
 import { HttpError } from "../http";
-import { secondsToNextUtcDay, unlimitedAccounts } from "../cloud/repository";
+import { secondsToNextUtcDay, unlimitedAccounts } from "./types";
 import {
   DAILY_READ_LIMIT,
   meterDatabase,

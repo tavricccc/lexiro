@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "lint": "oxlint src tests-next scripts",
+    "lint": "oxlint --ignore-pattern src/agent/legacy src tests-next scripts",
     "test": "vitest run",
-    "build": "esbuild src/agent/index.ts --bundle --platform=browser --format=esm --external:cloudflare:* --outdir=dist",
+    "build": "esbuild src/index.ts --bundle --platform=browser --format=esm --external:cloudflare:* --outdir=dist",
     "dev:agent": "wrangler dev --config wrangler.agent-local.toml --port 8791",
     "db:migrate:agent": "wrangler d1 migrations apply AGENT_DB --local --config wrangler.agent-local.toml",
     "db:migrate:cloud": "wrangler d1 migrations apply CLOUD_DB --local --config wrangler.agent-local.toml",

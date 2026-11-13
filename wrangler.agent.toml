@@ -1,5 +1,5 @@
 name = "lexiro-agent"
-main = "src/agent/index.ts"
+main = "src/index.ts"
 account_id = "3a6b9f53daa83fc24242d05bc590a2ee"
 compatibility_date = "2026-10-10"
 compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]

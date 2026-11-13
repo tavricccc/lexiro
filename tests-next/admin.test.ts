@@ -1,4 +1,3 @@
-import { readFile, readdir } from "node:fs/promises";
 import { Miniflare } from "miniflare";
 import { describe, expect, it } from "vitest";
 import type { FirebaseIdentity } from "../src/auth";
@@ -6,6 +5,7 @@ import { handleAdminApi } from "../src/agent/admin";
 import { guardAccount } from "../src/agent/guard";
 import { recordProfile } from "../src/agent/profile";
 import type { AgentEnv } from "../src/agent/types";
+import { migrate } from "./d1";
 
 const NOW = Date.UTC(2026, 9, 31, 12);
 const admin: FirebaseIdentity = {
@@ -15,24 +15,6 @@ const admin: FirebaseIdentity = {
   authTime: 0,
 };
 
-type Db = Awaited<ReturnType<Miniflare["getD1Database"]>>;
-async function migrate(db: Db, dir: string) {
-  for (const file of (await readdir(new URL(`../${dir}/`, import.meta.url)))
-    .filter((name) => name.endsWith(".sql"))
-    .sort()) {
-    const sql = await readFile(
-      new URL(`../${dir}/${file}`, import.meta.url),
-      "utf8",
-    );
-    await db.batch(
-      sql
-        .split(";")
-        .map((statement) => statement.trim())
-        .filter(Boolean)
-        .map((statement) => db.prepare(statement)),
-    );
-  }
-}
 async function fixture() {
   const runtime = new Miniflare({
     workers: [
@@ -56,8 +38,8 @@ async function fixture() {
   });
   const cloud = await runtime.getD1Database("CLOUD_DB");
   const agent = await runtime.getD1Database("AGENT_DB");
-  await migrate(cloud, "library-migrations");
-  await migrate(agent, "agent-migrations");
+  await migrate(cloud as never, "library-migrations");
+  await migrate(agent as never, "agent-migrations");
   const env = {
     CLOUD_DB: cloud,
     AGENT_DB: agent,
@@ -65,7 +47,10 @@ async function fixture() {
   } as unknown as AgentEnv;
   await cloud.batch([
     cloud.prepare(
-      "INSERT INTO cloud_accounts(uid,quota_day,quota_writes,stored_bytes) VALUES('busy','2026-10-31',120,5000),('quiet','2026-10-30',900,100),('idle','',0,0)",
+      "INSERT INTO accounts(uid,quota_day,quota_writes,created_at) VALUES('busy','2026-10-31',120,''),('quiet','2026-10-30',900,''),('idle','',0,'')",
+    ),
+    cloud.prepare(
+      "INSERT INTO sets(uid,id,name,word_count,created_at,updated_at) VALUES('busy','s1','A',5000,'',''),('quiet','s2','B',100,'','')",
     ),
   ]);
   await agent.batch([
@@ -118,7 +103,7 @@ describe("admin api", () => {
     }
   });
 
-  it("counts accounts, today's activity and stored bytes", async () => {
+  it("counts accounts, today's activity and stored words", async () => {
     const f = await fixture();
     try {
       const overview = await (await call(f.env, "/admin/overview")).json();
@@ -128,7 +113,7 @@ describe("admin api", () => {
         activeToday: 1,
         writesToday: 120,
         readsToday: 300,
-        storedBytes: 5100,
+        words: 5100,
         agentPaused: false,
         disabled: [],
       });
@@ -137,7 +122,7 @@ describe("admin api", () => {
         email: "busy@example.com",
         name: "小忙",
         writesToday: 120,
-        storedBytes: 5000,
+        words: 5000,
         readsToday: 300,
         disabled: false,
       });

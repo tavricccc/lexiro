@@ -14,7 +14,7 @@ export interface AdminAccount {
   email: string;
   name: string;
   writesToday: number;
-  storedBytes: number;
+  words: number;
   readsToday: number;
   disabled: boolean;
 }
@@ -24,7 +24,7 @@ export interface AdminOverview {
   activeToday: number;
   writesToday: number;
   readsToday: number;
-  storedBytes: number;
+  words: number;
   agentPaused: boolean;
   disabled: {
     uid: string;
@@ -54,15 +54,15 @@ export async function adminOverview(
   const day = dayOf(now);
   const [totals, top, reads, disabled, paused] = await Promise.all([
     env.CLOUD_DB.prepare(
-      "SELECT COUNT(*) AS accounts,COALESCE(SUM(quota_day=?1),0) AS active,COALESCE(SUM(CASE WHEN quota_day=?1 THEN quota_writes ELSE 0 END),0) AS writes,COALESCE(SUM(stored_bytes),0) AS bytes FROM cloud_accounts",
+      "SELECT COUNT(*) AS accounts,COALESCE(SUM(quota_day=?1),0) AS active,COALESCE(SUM(CASE WHEN quota_day=?1 THEN quota_writes ELSE 0 END),0) AS writes,(SELECT COALESCE(SUM(word_count),0) FROM sets) AS words FROM accounts",
     )
       .bind(day)
-      .first<{ accounts: number; active: number; writes: number; bytes: number }>(),
+      .first<{ accounts: number; active: number; writes: number; words: number }>(),
     env.CLOUD_DB.prepare(
-      "SELECT uid,CASE WHEN quota_day=?1 THEN quota_writes ELSE 0 END AS writes,stored_bytes AS bytes FROM cloud_accounts ORDER BY writes DESC,stored_bytes DESC LIMIT ?2",
+      "SELECT a.uid,CASE WHEN a.quota_day=?1 THEN a.quota_writes ELSE 0 END AS writes,(SELECT COALESCE(SUM(word_count),0) FROM sets s WHERE s.uid=a.uid) AS words FROM accounts a ORDER BY writes DESC LIMIT ?2",
     )
       .bind(day, TOP_ACCOUNTS)
-      .all<{ uid: string; writes: number; bytes: number }>(),
+      .all<{ uid: string; writes: number; words: number }>(),
     env.AGENT_DB.prepare(
       "SELECT uid,rows FROM account_reads WHERE day=?1 ORDER BY rows DESC",
     )
@@ -87,14 +87,14 @@ export async function adminOverview(
     activeToday: totals?.active ?? 0,
     writesToday: totals?.writes ?? 0,
     readsToday: reads.results.reduce((sum, row) => sum + row.rows, 0),
-    storedBytes: totals?.bytes ?? 0,
+    words: totals?.words ?? 0,
     agentPaused: Boolean(paused),
     disabled: disabled.results,
     top: top.results.map((row) => ({
       uid: row.uid,
       ...(who.get(row.uid) ?? { email: "", name: "" }),
       writesToday: row.writes,
-      storedBytes: row.bytes,
+      words: row.words,
       readsToday: readsByUid.get(row.uid) ?? 0,
       disabled: disabledUids.has(row.uid),
     })),
@@ -135,10 +135,10 @@ export async function searchAccounts(
   const marks = uids.map(() => "?").join(",");
   const [usage, reads, disabled] = await Promise.all([
     env.CLOUD_DB.prepare(
-      `SELECT uid,CASE WHEN quota_day=? THEN quota_writes ELSE 0 END AS writes,stored_bytes AS bytes FROM cloud_accounts WHERE uid IN (${marks})`,
+      `SELECT a.uid,CASE WHEN a.quota_day=? THEN a.quota_writes ELSE 0 END AS writes,(SELECT COALESCE(SUM(word_count),0) FROM sets s WHERE s.uid=a.uid) AS words FROM accounts a WHERE a.uid IN (${marks})`,
     )
       .bind(day, ...uids)
-      .all<{ uid: string; writes: number; bytes: number }>(),
+      .all<{ uid: string; writes: number; words: number }>(),
     env.AGENT_DB.prepare(
       `SELECT uid,rows FROM account_reads WHERE day=? AND uid IN (${marks})`,
     )
@@ -158,7 +158,7 @@ export async function searchAccounts(
     email: row.email,
     name: row.name,
     writesToday: used.get(row.uid)?.writes ?? 0,
-    storedBytes: used.get(row.uid)?.bytes ?? 0,
+    words: used.get(row.uid)?.words ?? 0,
     readsToday: read.get(row.uid) ?? 0,
     disabled: off.has(row.uid),
   }));

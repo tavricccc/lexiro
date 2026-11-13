@@ -1,0 +1,92 @@
+import { z } from "zod";
+import { answerBatch, goalInput, wordInput } from "../contract";
+import { HttpError, readBody } from "../http";
+import type { Backup, Library } from "./repository";
+
+const ids = z.array(z.string().min(1).max(80)).min(1).max(500);
+const BODY_LIMIT = 2_000_000;
+
+async function json<T>(request: Request, schema: z.ZodType<T>, limit = BODY_LIMIT): Promise<T> {
+  return schema.parse(JSON.parse(await readBody(request, limit)));
+}
+const anyObject = z.record(z.string(), z.unknown());
+
+type Handler = (request: Request, uid: string, lib: Library, params: string[]) => Promise<unknown>;
+const routes: [method: string, pattern: RegExp, handler: Handler][] = [
+  ["GET", /^\/library$/, (_r, uid, lib) => lib.library(uid)],
+  ["GET", /^\/revision$/, async (_r, uid, lib) => ({ revision: await lib.revision(uid) })],
+
+  ["POST", /^\/folders$/, async (r, uid, lib) => lib.putFolder(uid, undefined, await json(r, anyObject) as never)],
+  ["PUT", /^\/folders\/([^/]+)$/, async (r, uid, lib, [id]) => lib.putFolder(uid, id, await json(r, anyObject) as never)],
+  ["DELETE", /^\/folders\/([^/]+)$/, async (_r, uid, lib, [id]) => (await lib.deleteFolder(uid, id), { deleted: true })],
+
+  ["POST", /^\/sets$/, async (r, uid, lib) => lib.putSet(uid, undefined, await json(r, anyObject) as never)],
+  ["POST", /^\/sets\/order$/, async (r, uid, lib) => (await lib.orderSets(uid, (await json(r, z.strictObject({ ids }))).ids), { ordered: true })],
+  ["GET", /^\/sets\/([^/]+)$/, (_r, uid, lib, [id]) => lib.setContent(uid, id)],
+  ["PUT", /^\/sets\/([^/]+)$/, async (r, uid, lib, [id]) => {
+    await lib.requireSet(uid, id);
+    return lib.putSet(uid, id, await json(r, anyObject) as never);
+  }],
+  ["DELETE", /^\/sets\/([^/]+)$/, async (_r, uid, lib, [id]) => (await lib.deleteSet(uid, id), { deleted: true })],
+
+  ["POST", /^\/sets\/([^/]+)\/words$/, async (r, uid, lib, [id]) =>
+    lib.putWords(uid, id, (await json(r, z.strictObject({ words: z.array(wordInput).min(1).max(200) }))).words)],
+  ["POST", /^\/sets\/([^/]+)\/words\/delete$/, async (r, uid, lib, [id]) => lib.deleteWords(uid, id, (await json(r, z.strictObject({ ids }))).ids)],
+  ["POST", /^\/sets\/([^/]+)\/words\/star$/, async (r, uid, lib, [id]) => {
+    const input = await json(r, z.strictObject({ ids, starred: z.boolean() }));
+    await lib.starWords(uid, id, input.ids, input.starred);
+    return { starred: input.starred };
+  }],
+  ["POST", /^\/sets\/([^/]+)\/words\/copy$/, async (r, uid, lib, [id]) => {
+    const input = await json(r, z.strictObject({ ids: ids.max(200), to: z.string().min(1) }));
+    return lib.copyWords(uid, id, input.ids, input.to);
+  }],
+
+  ["POST", /^\/sets\/([^/]+)\/questions$/, async (r, uid, lib, [id]) => {
+    const input = await json(r, z.strictObject({ questions: z.array(z.unknown()).min(1).max(100), mode: z.enum(["atomic", "partial"]).default("atomic") }));
+    return lib.putQuestions(uid, id, input.questions, input.mode);
+  }],
+  ["POST", /^\/sets\/([^/]+)\/questions\/delete$/, async (r, uid, lib, [id]) => lib.deleteQuestions(uid, id, (await json(r, z.strictObject({ ids }))).ids)],
+
+  ["GET", /^\/sets\/([^/]+)\/share$/, async (_r, uid, lib, [id]) => ({ id: await lib.shareOf(uid, id) })],
+  ["POST", /^\/sets\/([^/]+)\/share$/, (_r, uid, lib, [id]) => lib.share(uid, id)],
+  ["DELETE", /^\/sets\/([^/]+)\/share$/, async (_r, uid, lib, [id]) => (await lib.unshare(uid, id), { deleted: true })],
+
+  ["GET", /^\/learning$/, (_r, uid, lib) => lib.learning(uid)],
+  ["POST", /^\/learning\/answers$/, async (r, uid, lib) => lib.recordAnswers(uid, await json(r, answerBatch))],
+  ["PUT", /^\/learning\/goal$/, async (r, uid, lib) => {
+    const { goal } = await json(r, goalInput);
+    await lib.putGoal(uid, goal);
+    return { goal };
+  }],
+
+  ["GET", /^\/prefs$/, async (_r, uid, lib) => (await lib.prefs(uid)).prefs],
+  ["PUT", /^\/prefs$/, async (r, uid, lib) => lib.putPrefs(uid, await json(r, anyObject))],
+
+  ["GET", /^\/backup$/, (_r, uid, lib) => lib.exportBackup(uid)],
+  ["POST", /^\/backup$/, async (r, uid, lib) => lib.importBackup(uid, JSON.parse(await readBody(r, 20_000_000)) as Backup)],
+];
+
+/** The signed-in library routes; null when the path is not one of them. */
+export async function handleLibraryApi(request: Request, uid: string, lib: Library): Promise<Response | null> {
+  const path = new URL(request.url).pathname;
+  let known = false;
+  for (const [method, pattern, handler] of routes) {
+    const match = pattern.exec(path);
+    if (!match) continue;
+    known = true;
+    if (method !== request.method) continue;
+    return Response.json(await handler(request, uid, lib, match.slice(1).map(decodeURIComponent)));
+  }
+  if (known) throw new HttpError(405, "method_not_allowed");
+  return null;
+}
+
+/** The one public library read: a shared set, by its link id. */
+export async function handleSharedSet(path: string, lib: Library): Promise<Response | null> {
+  const match = /^\/shared\/([0-9a-f-]{36})$/.exec(path);
+  if (!match) return null;
+  const content = await lib.shared(match[1]);
+  if (!content) throw new HttpError(404, "share_unavailable");
+  return Response.json(content);
+}

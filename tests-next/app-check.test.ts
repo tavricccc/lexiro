@@ -8,7 +8,7 @@ import {
   verifyAppCheck,
 } from "../src/app-check";
 import { HttpError } from "../src/http";
-import { createAgentWorker } from "../src/agent/index";
+import { createWorker } from "../src/index";
 import type { AgentEnv } from "../src/agent/types";
 
 // The real OAuth provider imports "cloudflare:workers", which the Node test
@@ -188,7 +188,7 @@ describe("App Check boundary", () => {
 
 describe("App Check CORS preflight", () => {
   it("allows X-Firebase-AppCheck on the Agent Worker", async () => {
-    const worker = createAgentWorker();
+    const worker = createWorker();
     const response = await worker.fetch(
       new Request("https://agent.test/mcp", {
         method: "OPTIONS",
