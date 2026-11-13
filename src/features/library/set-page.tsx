@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from "react-router";
 import { CheckSquare, Copy, DotsThree, GearSix, MagnifyingGlass, Play, Plus, ShareNetwork, Star, Trash, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { descriptionPoints, type Question, type SetContent, type Word } from "@lexiro/contract";
-import { AppLink, Button, Chip, ConfirmDialog, EmptyState, Input, ListGroup, ListRow, Menu, Segmented, cn } from "design-kit";
+import { AppLink, Button, Chip, ConfirmDialog, EmptyState, HeaderButton, Input, ListGroup, ListRow, Menu, Segmented, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
 import { useSet } from "@/data/queries";
@@ -32,11 +32,11 @@ export default function SetPage() {
               { key: "share", icon: ShareNetwork, label: "分享", onSelect: () => setShare(true) },
             ]}
             title={name}
-            trigger={<Button aria-label="更多動作" size="icon"><DotsThree weight="bold" /></Button>}
+            trigger={<HeaderButton aria-label="更多動作"><DotsThree weight="bold" /></HeaderButton>}
           />
-          <Button asChild><AppLink href={`/app/sets/${setId}/add`}><Plus weight="bold" />新增單字</AppLink></Button>
+          <HeaderButton aria-label="新增單字" asChild><AppLink href={`/app/sets/${setId}/add`}><Plus weight="bold" /></AppLink></HeaderButton>
           {content.data.words.length ? (
-            <Button asChild variant="primary"><AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" />練習</AppLink></Button>
+            <HeaderButton aria-label="練習" asChild prominent><AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" /></AppLink></HeaderButton>
           ) : null}
         </>
       ) : null}

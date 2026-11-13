@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 import { FolderSimple, FolderSimplePlus, MagnifyingGlass, Plus, SlidersHorizontal } from "@phosphor-icons/react";
 import { compareWords, type Folder, type SetSummary } from "@lexiro/contract";
-import { AppLink, Button, EmptyState, Input, Menu, Panel, Segmented } from "design-kit";
+import { AppLink, Button, EmptyState, HeaderButton, Input, Menu, Panel, Segmented } from "design-kit";
 import { useLibrary } from "@/data/queries";
 import { Loaded, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
@@ -30,11 +30,11 @@ export default function LibraryPage() {
               { key: "folder", icon: FolderSimplePlus, label: "管理資料夾", onSelect: () => setFolders(true) },
             ]}
             title="單字集選項"
-            trigger={<Button aria-label="更多" size="icon"><SlidersHorizontal weight="bold" /></Button>}
+            trigger={<HeaderButton aria-label="單字集選項"><SlidersHorizontal weight="bold" /></HeaderButton>}
           />
-          <Button asChild variant="primary">
-            <AppLink href={folder !== ALL && folder !== LOOSE ? `/app/sets/new?folder=${folder}` : "/app/sets/new"}><Plus weight="bold" />新增單字集</AppLink>
-          </Button>
+          <HeaderButton aria-label="新增單字集" asChild prominent>
+            <AppLink href={folder !== ALL && folder !== LOOSE ? `/app/sets/new?folder=${folder}` : "/app/sets/new"}><Plus weight="bold" /></AppLink>
+          </HeaderButton>
         </>
       }
       title="我的單字"

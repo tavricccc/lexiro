@@ -1,12 +1,14 @@
 import { Star } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, cn } from "design-kit";
+import { Button, HeaderButton, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { starWords } from "@/data/library";
 
-export function StarButton({ setId, wordId, starred, word }: { setId: string; wordId: string; starred: boolean; word: string }) {
+/** Stars a word; `inHeader` makes it one of the page toolbar's round buttons. */
+export function StarButton({ inHeader, setId, wordId, starred, word }: { inHeader?: boolean; setId: string; wordId: string; starred: boolean; word: string }) {
+  const Control = inHeader ? HeaderButton : Button;
   return (
-    <Button
+    <Control
       aria-label={starred ? `取消標星 ${word}` : `標星 ${word}`}
       aria-pressed={starred}
       className={cn(starred && "text-highlight hover:text-highlight")}
@@ -15,10 +17,9 @@ export function StarButton({ setId, wordId, starred, word }: { setId: string; wo
         event.stopPropagation();
         starWords(setId, [wordId], !starred).catch((reason) => toast.error(errorMessage(reason)));
       }}
-      size="icon-sm"
-      variant="ghost"
+      {...(inHeader ? {} : { size: "icon-sm", variant: "ghost" } as const)}
     >
       <Star weight={starred ? "fill" : "regular"} />
-    </Button>
+    </Control>
   );
 }

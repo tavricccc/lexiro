@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowRight, ArrowCounterClockwise, Check, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, type PracticeTask } from "@lexiro/contract";
-import { AnimatedNumber, AppLink, Button, Chip, Panel, ProgressBar, cn } from "design-kit";
+import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, Panel, ProgressBar, cn } from "design-kit";
 import { recordAnswer } from "@/data/learning";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
@@ -51,9 +51,9 @@ function Card({ round, pick, next }: { round: Round; pick: (option: number | nul
   }, [round.revealed, step, used, pick, next]);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   return (
-    <div className="mx-auto flex min-h-svh w-full max-w-2xl flex-col px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+1rem)] md:pt-8">
+    <div className="mx-auto flex min-h-svh w-full max-w-2xl flex-col px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
       <header className="flex items-center gap-3">
-        <Button aria-label="離開練習（進度會保留）" asChild size="icon-sm" variant="ghost"><AppLink href="/app/practice"><X weight="bold" /></AppLink></Button>
+        <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
       </header>

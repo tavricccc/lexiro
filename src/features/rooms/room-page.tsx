@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { Check, Copy, Crown, Play, SignOut, Stop, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { AppLink, Button, Chip, EmptyState, ListGroup, ListRow, Panel, ProgressBar, Spinner, cn } from "design-kit";
+import { AppLink, Button, Chip, EmptyState, HeaderButton, ListGroup, ListRow, Panel, ProgressBar, Spinner, cn } from "design-kit";
 import { useAuth } from "@/data/auth";
 import { useRemaining, useRoomSocket } from "@/data/room-socket";
 import { TASK_LABELS } from "@/domain/labels";
@@ -17,7 +17,7 @@ export default function RoomPage() {
   const room = useRoomSocket(code.toUpperCase(), account?.name.slice(0, 40) || "Player");
   useDocumentTitle(room.state?.title ?? "對戰");
   const { state, connection } = room;
-  const leave = <Button asChild variant="ghost"><AppLink href="/app/rooms"><SignOut weight="bold" />離開</AppLink></Button>;
+  const leave = <HeaderButton aria-label="離開房間" asChild><AppLink href="/app/rooms"><SignOut weight="bold" /></AppLink></HeaderButton>;
   if (connection === "failed" || connection === "replaced")
     return (
       <Shell leave={leave}>
@@ -38,7 +38,7 @@ export default function RoomPage() {
 
 function Shell({ state, leave, reconnecting, children }: { state?: RoomState; leave: React.ReactNode; reconnecting?: boolean; children: React.ReactNode }) {
   return (
-    <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+1rem)]">
+    <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
       <header className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate font-semibold">{state?.title ?? "對戰"}</p>

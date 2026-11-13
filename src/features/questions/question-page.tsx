@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { Check, Trash } from "@phosphor-icons/react";
 import { itemOptions, type Question, type SetContent } from "@lexiro/contract";
 import { toast } from "sonner";
-import { Button, Chip, ConfirmDialog, EmptyState, Panel, cn, type ActionStatus } from "design-kit";
+import { Chip, ConfirmDialog, EmptyState, HeaderButton, Panel, cn, type ActionStatus } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteQuestions } from "@/data/library";
 import { useSet } from "@/data/queries";
@@ -83,7 +83,7 @@ export default function QuestionPage() {
     <Page
       actions={question ? (
         <ConfirmDialog confirmLabel="刪除" description="這一題會從單字集移除。" onConfirm={() => void remove()} status={status} title="刪除這一題？" tone="danger"
-          trigger={<Button aria-label="刪除這一題" disabled={!online} size="icon"><Trash weight="bold" /></Button>} />
+          trigger={<HeaderButton aria-label="刪除這一題" disabled={!online}><Trash weight="bold" /></HeaderButton>} />
       ) : undefined}
       back={back}
       description={question ? `${DIFFICULTY[question.difficulty]}難度` : undefined}

@@ -10,11 +10,25 @@ import { Panel } from "./panel";
 // Pinned at the offset it starts at, so it never shifts when the page begins to scroll.
 export const pinnedHeaderClass = "sticky top-[calc(var(--safe-top)+1.5rem)] z-30 md:top-10";
 
+/** Where the pinned toolbar sits: the back control, the small title and the actions share this line. */
+const toolbarTop = "top-[calc(var(--safe-top)+0.5rem)] md:top-4";
+
 /**
- * The top of a page: an optional way back, the title, and the page's own
- * actions. On a wide screen the actions sit beside the title; on a phone they
- * wrap underneath when they do not fit. Like a large title on iOS, it scrolls
- * away and a small centred title takes its place at the top of the screen.
+ * A round, icon-only control for a page's toolbar, like iOS's bar buttons.
+ * Give it an `aria-label`; `prominent` is for the one main action.
+ */
+export function HeaderButton({ prominent, ...props }: Omit<React.ComponentProps<typeof Button>, "size" | "variant"> & {
+  "aria-label": string;
+  prominent?: boolean;
+}) {
+  return <Button {...props} size="icon-sm" variant={prominent ? "primary" : "secondary"} />;
+}
+
+/**
+ * The top of a page. The way back sits top-left and the page's actions
+ * top-right, pinned there as the page scrolls; pass the actions as
+ * `HeaderButton`s. Like a large title on iOS, the title scrolls away and a
+ * small one appears centred between them.
  */
 export function PageHeader({ actions, back, className, description, title }: {
   actions?: React.ReactNode;
@@ -33,31 +47,40 @@ export function PageHeader({ actions, back, className, description, title }: {
     observer.observe(title);
     return () => observer.disconnect();
   }, []);
-  return (
-    <>
-    <div
+  const smallTitle = (
+    <span
       aria-hidden
       className={cn(
-        "pointer-events-none fixed inset-x-0 top-0 z-30 flex h-[calc(var(--safe-top)+2.75rem)] items-end justify-center px-16 pb-2.5 transition-[opacity,translate] duration-[var(--motion-control)] ease-[var(--ease-move)] md:left-70 md:h-14",
+        "pointer-events-none min-w-0 truncate text-center text-[0.9375rem] font-semibold transition-[opacity,translate] duration-[var(--motion-control)] ease-[var(--ease-move)]",
         collapsed ? "opacity-100" : "-translate-y-1 opacity-0",
       )}
     >
-      <span className="truncate text-[0.9375rem] font-semibold">{title}</span>
-    </div>
-    {back ? (
-      // Outside the header so it stays pinned top-left for the whole page, like iOS's back button.
-      <Button asChild className="sticky top-[calc(var(--safe-top)+0.25rem)] z-40 -mb-2 justify-self-start self-start md:top-3" size="icon-sm">
-        <AppLink aria-label={back.label} back href={back.href}><CaretLeft weight="bold" /></AppLink>
-      </Button>
-    ) : null}
-    <header className={cn("grid gap-4", className)}>
-      <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
-        <div className="min-w-0">
-          <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-[1.75rem]">{title}</h1>
-          {description ? <p className="mt-1 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
+      {title}
+    </span>
+  );
+  return (
+    <>
+    {back || actions ? (
+      // Outside the header so it stays pinned for the whole page; the small title is centred on the buttons' line.
+      <div className={cn("sticky z-40 -mb-2 grid h-9 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2", toolbarTop)}>
+        <div className="flex">
+          {back ? (
+            <HeaderButton aria-label={back.label} asChild>
+              <AppLink back href={back.href}><CaretLeft weight="bold" /></AppLink>
+            </HeaderButton>
+          ) : null}
         </div>
-        {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
+        {smallTitle}
+        <div className="flex items-center justify-end gap-2">{actions}</div>
       </div>
+    ) : (
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center px-16 pt-[calc(var(--safe-top)+0.5rem)] md:left-70 md:pt-4">
+        <div className="flex h-9 min-w-0 items-center">{smallTitle}</div>
+      </div>
+    )}
+    <header className={cn("grid gap-1", className)}>
+      <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-[1.75rem]">{title}</h1>
+      {description ? <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
     </header>
     </>
   );

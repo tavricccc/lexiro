@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { PencilSimple, Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { descriptionPoints, type SetContent } from "@lexiro/contract";
-import { AppLink, Button, Chip, ConfirmDialog, EmptyState, Panel } from "design-kit";
+import { AppLink, Chip, HeaderButton, ConfirmDialog, EmptyState, Panel } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
 import { useLearning } from "@/data/learning";
@@ -35,9 +35,9 @@ function WordView({ content, wordId }: { content: SetContent; wordId: string }) 
     <Page
       actions={
         <>
-          <StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} />
-          <Button aria-label="刪除單字" disabled={!online} onClick={() => setRemoving(true)} size="icon"><Trash /></Button>
-          <Button asChild><AppLink href={`/app/sets/${setId}/words/${word.id}/edit`}><PencilSimple />編輯</AppLink></Button>
+          <StarButton inHeader setId={setId} starred={word.starred} word={word.word} wordId={word.id} />
+          <HeaderButton aria-label="刪除單字" disabled={!online} onClick={() => setRemoving(true)}><Trash weight="bold" /></HeaderButton>
+          <HeaderButton aria-label="編輯" asChild prominent><AppLink href={`/app/sets/${setId}/words/${word.id}/edit`}><PencilSimple weight="bold" /></AppLink></HeaderButton>
         </>
       }
       back={back}
