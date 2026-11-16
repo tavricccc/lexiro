@@ -122,7 +122,7 @@ controls). Elevation: `shadow-panel`, `shadow-float`.
 
 Lessons from apps built on the kit; each one shipped once and was undone.
 
-- **No frosted glass.** Floating chrome, controls and scrims are solid. The only blur is `EdgeBlur`, the progressive edge where content passes under the status bar or dock.
+- **No frosted glass.** Floating chrome, controls and scrims are solid. The only edge treatment is `EdgeBlur`, now one eased gradient into `--edge-fade` (the canvas by default) rather than backdrop blurs, where content passes under the status bar or dock.
 - **Translucent status bar, no band.** Use `apple-mobile-web-app-status-bar-style: black-translucent` and let a top `EdgeBlur` (about `safe-top + 5rem`) soften content beneath it. A solid strip under the status bar looks pasted on. An installed PWA keeps the status bar style it was installed with: reinstall before judging a change.
 - **The window is the scroller.** Stop the root bounce with `overscroll-behavior: none` on `html, body` (the kit sets it) and let inner areas use `overscroll-contain`. Moving page scrolling into a fixed inner container breaks `window.scrollY` restoration, the `scroll(root)` timeline that fades the top blur in, and iOS's own status-bar tap to scroll.
 - **Restore scroll per screen.** Remember `window.scrollY` per path and put it back when the screen returns; a new screen starts at the top.
