@@ -51,13 +51,14 @@ function Card({ round, pick, next }: { round: Round; pick: (option: number | nul
   }, [round.revealed, step, used, pick, next]);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   return (
-    <div className="mx-auto flex min-h-svh w-full max-w-2xl flex-col px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
+    // The round sits still on the screen; only an overlong card scrolls inside itself.
+    <div className="fixed inset-0 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
       <header className="flex items-center gap-3">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
       </header>
-      <div className="card-in flex flex-1 flex-col gap-5 pt-6" key={round.index}>
+      <div className="card-in flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pt-6" key={round.index}>
         <Chip className="self-start">{TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} 格` : ""}</Chip>
         <Prompt chosen={chosen} item={item} round={round} step={step} />
         <div className="message-in" key={round.step}><Options chosen={chosen} pick={pick} revealed={round.revealed} step={step} used={used} /></div>
@@ -79,7 +80,6 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     return (
       <div className="grid gap-1 py-6 text-center">
         <p className="flex items-center justify-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /></p>
-        <p className="text-sm text-ink-muted">選出它在這裡的意思</p>
       </div>
     );
   if (item.kind === "reverse")

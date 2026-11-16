@@ -28,5 +28,5 @@ test("start goes to the run page", async () => {
   await waitFor(() => expect(start).toBeEnabled());
   fireEvent.click(start);
   await waitFor(() => expect(router.state.location.pathname).toBe("/app/practice/run"));
-  expect(await screen.findByText(/選出它在這裡的意思/)).toBeInTheDocument();
+  expect(await screen.findByText("不會，看答案")).toBeInTheDocument();
 });
