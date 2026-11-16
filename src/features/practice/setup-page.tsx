@@ -25,7 +25,10 @@ export default function SetupPage() {
   const { learning } = useLearning();
   const [saved, setSaved] = useState(loadRound);
   const sets = orderedSets(library.data?.sets ?? []).filter((set) => set.wordCount > 0);
-  const [chosen, setChosen] = useState<string[]>(() => params.getAll("set"));
+  // Opened from a set: practise that set; no second pick.
+  const [fromSets] = useState(() => params.getAll("set"));
+  const [chosen, setChosen] = useState<string[]>(fromSets);
+  const back = fromSets.length === 1 ? { href: `/app/sets/${fromSets[0]}`, label: "回到單字集" } : { href: "/app", label: "回到今天" };
   const [tasks, setTasks] = useState<PracticeTask[]>(() => (params.getAll("task") as PracticeTask[]));
   const [focus, setFocus] = useState<Focus>("all");
   const [amount, setAmount] = useState<string>("");
@@ -62,7 +65,7 @@ export default function SetupPage() {
     navigate("/app/practice/run");
   };
   return (
-    <Page back={{ href: "/app", label: "回到今天" }} title="練習">
+    <Page back={back} title="練習">
       {saved ? (
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
@@ -73,7 +76,19 @@ export default function SetupPage() {
           <Button asChild variant="primary"><AppLink href="/app/practice/run">繼續</AppLink></Button>
         </Panel>
       ) : null}
-      <ListGroup footer={chosen.length ? undefined : "沒有選的話，會從所有單字集出題。"} title="單字集">
+      {fromSets.length ? (
+        <ListGroup title="單字集">
+          {sets.filter((set) => fromSets.includes(set.id)).map((set) => (
+            <li className="flex min-h-14 items-center gap-3.5 px-4 py-2.5" key={set.id}>
+              <SetIcon className="size-9 [&_svg]:size-5" hue={set.hue} icon={set.icon} />
+              <span className="min-w-0 flex-1">
+                <span className="block truncate">{set.name}</span>
+                <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>
+              </span>
+            </li>
+          ))}
+        </ListGroup>
+      ) : <ListGroup footer={chosen.length ? undefined : "沒有選的話，會從所有單字集出題。"} title="單字集">
         {sets.map((set) => {
           const on = chosen.includes(set.id);
           return (
@@ -91,7 +106,7 @@ export default function SetupPage() {
             </li>
           );
         })}
-      </ListGroup>
+      </ListGroup>}
       <section className="grid gap-2">
         <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題型</h2>
         {loaded ? (
