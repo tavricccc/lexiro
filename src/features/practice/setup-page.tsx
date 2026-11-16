@@ -39,12 +39,17 @@ export default function SetupPage() {
     queries: ids.map((id) => ({ queryKey: keys.set(id), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`) })),
   });
   const loaded = contents.every((query) => query.data);
-  const data = useMemo(() => contents.flatMap((query) => (query.data ? [query.data] : [])), [contents]);
+  // useQueries hands back a new array every render; key the derived data on
+  // what was fetched, or the effect below re-runs every render and never settles.
+  const stamp = contents.map((query) => query.dataUpdatedAt).join();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const data = useMemo(() => contents.flatMap((query) => (query.data ? [query.data] : [])), [stamp]);
   const available = useMemo(() => (loaded ? availableTasks(data) : []), [loaded, data]);
   useEffect(() => {
     if (!available.length) return;
     setTasks((current) => {
       const kept = current.filter((task) => available.includes(task));
+      if (kept.length && kept.length === current.length) return current;
       return kept.length ? kept : [available[0]];
     });
   }, [available]);
