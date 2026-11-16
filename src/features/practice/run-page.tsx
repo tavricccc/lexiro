@@ -159,7 +159,10 @@ function Options({ step, chosen, revealed, used, pick }: { step: Step; chosen: n
             <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold", right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
               {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
             </span>
-            <span className={cn("min-w-0 flex-1", /[A-Za-z]/.test(option) && "font-latin")} lang={/[A-Za-z]/.test(option) ? "en" : undefined}>{option}</span>
+            <span className="min-w-0 flex-1">
+              <span className={cn("block", /[A-Za-z]/.test(option) && "font-latin")} lang={/[A-Za-z]/.test(option) ? "en" : undefined}>{option}</span>
+              {revealed && step.glosses?.[index] ? <span className={cn("message-in block text-[0.8125rem] text-ink-muted", /[A-Za-z]/.test(step.glosses[index]!) && "font-latin")} lang={/[A-Za-z]/.test(step.glosses[index]!) ? "en" : undefined}>{step.glosses[index]}</span> : null}
+            </span>
           </button>
         );
       })}

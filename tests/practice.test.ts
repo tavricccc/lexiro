@@ -23,6 +23,12 @@ const round = (overrides: Partial<Parameters<typeof buildRound>[0]> = {}) =>
   buildRound({ contents: [five], tasks: ["meaning"], amount: 50, focus: "all", learning: emptyLearning(), random, ...overrides });
 
 describe("practice rounds", () => {
+  it("glosses every option of a word task with its word or meaning", () => {
+    const owner = new Map(five.words.flatMap((w) => w.senses.map((sense) => [sense.meaning, w.word] as const)));
+    for (const item of round()) item.steps[0].options.forEach((option, index) => expect(item.steps[0].glosses?.[index]).toBe(owner.get(option)));
+    for (const item of round({ tasks: ["reverse"] })) item.steps[0].glosses?.forEach((gloss, index) => expect(five.words.find((w) => w.word === item.steps[0].options[index])?.senses.map((sense) => sense.meaning)).toContain(gloss));
+  });
+
   it("asks each sense once per word task", () => {
     expect(round().length).toBe(6);
   });

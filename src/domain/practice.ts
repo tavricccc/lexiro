@@ -25,6 +25,8 @@ export interface Step {
   blank?: number;
   explanation?: string;
   whyWrong?: Record<string, string>;
+  /** Per option, shown once answered: the word a meaning belongs to, or a word's meaning. */
+  glosses?: (string | undefined)[];
 }
 
 /** One card of a round: a word task, a sentence question, or a passage with several steps. */
@@ -73,19 +75,22 @@ function poolOf(contents: SetContent[], focus: Focus, learning: Learning, random
 function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], random: () => number): Step | null {
   const { word, sense } = entry;
   const norm = normalizeWord(word.word);
-  let right: string, candidates: { text: string; samePos: boolean }[];
+  let right: string, rightGloss: string, candidates: { text: string; gloss: string; samePos: boolean }[];
   if (kind === "meaning") {
     right = sense.meaning;
+    rightGloss = word.word;
     const own = new Set(word.senses.map((s) => s.meaning));
-    candidates = all.filter((other) => normalizeWord(other.word.word) !== norm && !own.has(other.sense.meaning)).map((other) => ({ text: other.sense.meaning, samePos: other.sense.pos === sense.pos }));
+    candidates = all.filter((other) => normalizeWord(other.word.word) !== norm && !own.has(other.sense.meaning)).map((other) => ({ text: other.sense.meaning, gloss: other.word.word, samePos: other.sense.pos === sense.pos }));
   } else {
     right = word.word;
+    rightGloss = sense.meaning;
     // A word that also carries this meaning would be a second right answer.
     const sharing = new Set(all.filter((other) => other.sense.meaning === sense.meaning).map((other) => normalizeWord(other.word.word)));
-    candidates = all.filter((other) => !sharing.has(normalizeWord(other.word.word))).map((other) => ({ text: other.word.word, samePos: other.sense.pos === sense.pos }));
+    candidates = all.filter((other) => !sharing.has(normalizeWord(other.word.word))).map((other) => ({ text: other.word.word, gloss: other.sense.meaning, samePos: other.sense.pos === sense.pos }));
   }
   const seen = new Set([right.toLocaleLowerCase()]);
   const pick: string[] = [];
+  const glossFor = new Map([[right, rightGloss]]);
   for (const group of [candidates.filter((c) => c.samePos), candidates.filter((c) => !c.samePos)])
     for (const candidate of shuffle(group, random)) {
       if (pick.length === 3) break;
@@ -93,6 +98,7 @@ function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], rando
       if (seen.has(key)) continue;
       seen.add(key);
       pick.push(candidate.text);
+      glossFor.set(candidate.text, candidate.gloss);
     }
   if (pick.length < 1) return null;
   const options = shuffle([right, ...pick], random);
@@ -103,8 +109,19 @@ function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], rando
     senseId: sense.id,
     wordId: word.id,
     explanation: sense.description,
+    glosses: options.map((option) => glossFor.get(option)),
   };
 }
+
+/** A word's meanings in the chosen sets, for glossing the options of a question. */
+const meaningsOf = (contents: SetContent[]) => {
+  const byWord = new Map<string, string>();
+  for (const content of contents) for (const word of content.words) {
+    const key = normalizeWord(word.word);
+    if (!byWord.has(key)) byWord.set(key, word.senses.map((sense) => sense.meaning).join("；"));
+  }
+  return (options: string[]) => options.map((option) => byWord.get(normalizeWord(option)));
+};
 
 const wordOf = (contents: SetContent[]) => {
   const bySense = new Map<string, string>();
@@ -112,17 +129,18 @@ const wordOf = (contents: SetContent[]) => {
   return bySense;
 };
 
-function questionItem(question: Question, wordIds: Map<string, string>): PracticeItem | null {
+function questionItem(question: Question, wordIds: Map<string, string>, gloss: (options: string[]) => (string | undefined)[]): PracticeItem | null {
   if (question.kind === "vocabulary") {
     const q = question as VocabularyQuestion;
     const wordId = wordIds.get(q.senseId);
     if (!wordId) return null;
-    return { kind: "vocabulary", questionId: q.id, steps: [{ prompt: q.prompt, options: q.options, answer: q.answer, senseId: q.senseId, wordId, explanation: q.explanation, whyWrong: q.whyWrong }] };
+    return { kind: "vocabulary", questionId: q.id, steps: [{ prompt: q.prompt, options: q.options, answer: q.answer, senseId: q.senseId, wordId, explanation: q.explanation, whyWrong: q.whyWrong, glosses: gloss(q.options) }] };
   }
   const q = question as PassageQuestion;
   const steps = q.items.map((item: PassageItem): Step | null => {
     const wordId = wordIds.get(item.senseId);
-    return wordId ? { prompt: item.prompt ?? "", options: itemOptions(q, item), answer: item.answer, senseId: item.senseId, wordId, blank: item.blank, explanation: item.explanation, whyWrong: item.whyWrong } : null;
+    const options = itemOptions(q, item);
+    return wordId ? { prompt: item.prompt ?? "", options, glosses: gloss(options), answer: item.answer, senseId: item.senseId, wordId, blank: item.blank, explanation: item.explanation, whyWrong: item.whyWrong } : null;
   });
   if (steps.some((step) => !step)) return null;
   return { kind: q.kind, questionId: q.id, title: q.title, passage: q.passage, bank: q.bank, steps: steps as Step[] };
@@ -148,6 +166,7 @@ export function buildRound({ contents, tasks, amount, focus, learning, random = 
   const inPool = new Set(pool.map((entry) => entry.sense.id));
   const order = new Map(pool.map((entry, index) => [entry.sense.id, index]));
   const wordIds = wordOf(contents);
+  const gloss = meaningsOf(contents);
   const lanes: PracticeItem[][] = tasks.map((task) => {
     if (task === "meaning" || task === "reverse")
       return pool.flatMap((entry) => {
@@ -160,7 +179,7 @@ export function buildRound({ contents, tasks, amount, focus, learning, random = 
     // Questions follow the pool's order through their first sense, so "weak" reaches them too.
     const first = (question: Question) => Math.min(...("items" in question ? question.items.map((item) => item.senseId) : [question.senseId]).map((id) => order.get(id) ?? Infinity));
     return shuffle(questions, random).sort((a, b) => first(a) - first(b)).flatMap((question) => {
-      const item = questionItem(question, wordIds);
+      const item = questionItem(question, wordIds, gloss);
       return item ? [item] : [];
     });
   });
