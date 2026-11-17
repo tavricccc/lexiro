@@ -2,7 +2,7 @@ import { LENGTH_RANGES, PASSAGE_SPECS, READING_ITEMS, type QuestionKind } from "
 
 /** One word the brief hands to the writer, keyed by its ref. */
 interface QuestionSource { ref: string }
-import { COMMON_QUESTION_BRIEF } from "./question-brief";
+import { COMMON_QUESTION_BRIEF, TEACHING_CORE } from "./question-brief";
 
 type QuestionDifficulty = 1 | 2 | 3;
 export const QUESTION_CACHE_KEY = "lexiro-questions-20261117-v27";
@@ -53,3 +53,25 @@ export function questionTurnInstruction(refs: string[], kind: QuestionKind): str
   if (kind === "wordBank") return scope + `One passage, exactly ${refs.length} blanks and ${PASSAGE_SPECS.wordBank.options} options, including ${Math.max(0, PASSAGE_SPECS.wordBank.options - refs.length)} unused options. Keep the full passage length and verify the complete allocation.`;
   return scope + "One complete passage set; finish individual checks, then check the set.";
 }
+
+/**
+ * 自由題型: the Agent designs the exercise and writes stored-format questions
+ * with put_questions. There is no output schema to fill and no blank cutting.
+ */
+export const CUSTOM_RULES = `自由題型 (kind "custom"): you design the exercise for Taiwanese high-school learners and save it with write put_questions, in stored format.
+
+Choosing the format
+- If the user names a format, follow it. Otherwise pick what best teaches these words: collocation choice, register or tone, error correction, synonym swap, word-form typing, spelling from Chinese, sentence ordering, word–meaning matching, or your own. Vary formats across questions.
+- label is a short Traditional Chinese name for the format (at most 12 characters, e.g. 搭配詞判斷). Reuse the same label for the same format; existing labels come with brief.
+- instructions (optional, Traditional Chinese) says how to answer when the format is new. passage (optional) is shared English text for all items.
+
+Shape: {kind:"custom", difficulty:1|2|3, label, instructions?, passage?, items:[1–10 items]}. Each item has mode, prompt, senseId (from brief sources), explanation (Traditional Chinese, teaches the clue), plus by mode:
+- single: options (2–6, all different), answer (index), whyWrong? ({option: reason} for wrong options).
+- multiple: options (2–8), answers (indices) — right only when exactly these are picked; the prompt says to pick all that apply. whyWrong? for wrong options only.
+- input: accepted — every acceptable answer, e.g. ["colour","color"] or ["can't","cannot"]. Case, spacing, curly quotes and a final full stop are ignored. Ask for one short word or phrase so the answer is checkable.
+- order: pieces in the right order (2–10, all different). The app shuffles them; exactly one order may be grammatical and sensible.
+- match: pairs [[left, right]] (2–8, each side all different). The app shuffles the right column; each left has only one fitting right.
+
+Teaching core
+${TEACHING_CORE}
+- For choices and match pieces, draw on setWords as well, so the learner cannot answer by spotting the one studied word.`;

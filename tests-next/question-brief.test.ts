@@ -44,3 +44,25 @@ describe("question brief", () => {
     expect([prompt.promptVersion, prompt.rules.includes("setWords")]).toEqual(["lexiro-questions-20261117-v27", true]);
   });
 });
+
+describe("自由題型 over MCP", () => {
+  it("serves the 自由題型 rules with put_questions as the way to write", async () => {
+    const { tools } = await agent([{ word: "fragile", pos: "adj.", meaning: "易碎的" }]);
+    const prompt = await read(tools, { resource: "prompt", kind: "custom" });
+    expect([prompt.kind, prompt.write, prompt.rules.includes("mode")]).toEqual(["custom", "write put_questions", true]);
+  });
+
+  it("saves a 自由題型 question and lists its label in the next brief", async () => {
+    const { tools, setId, senseOf } = await agent([{ word: "fragile", pos: "adj.", meaning: "易碎的" }]);
+    await tools.write(setId, { type: "put_questions", questions: [{ kind: "custom", difficulty: 2, label: "拼字", items: [{ mode: "input", prompt: "易碎的", senseId: senseOf("fragile"), accepted: ["fragile"] }] }] });
+    const brief = await read(tools, { resource: "brief", setId, kind: "custom" });
+    expect([brief.labels, brief.sources.map((source: { word: string }) => source.word)]).toEqual([["拼字"], ["fragile"]]);
+  });
+
+  it("summarizes a 自由題型 question by its label", async () => {
+    const { tools, setId, senseOf } = await agent([{ word: "fragile", pos: "adj.", meaning: "易碎的" }]);
+    await tools.write(setId, { type: "put_questions", questions: [{ kind: "custom", difficulty: 2, label: "拼字", items: [{ mode: "input", prompt: "易碎的", senseId: senseOf("fragile"), accepted: ["fragile"] }] }] });
+    const list = await read(tools, { resource: "questions", setId, kind: "custom" });
+    expect(list.items.map((item: { preview: string }) => item.preview)).toEqual(["拼字: 易碎的"]);
+  });
+});

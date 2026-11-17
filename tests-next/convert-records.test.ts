@@ -80,7 +80,7 @@ describe("record conversion", () => {
 
   it("gives a shared-bank passage its bank and no per-item options", () => {
     const q5 = content.questions.find((q) => q.id === "q5")!;
-    expect("items" in q5 && [q5.bank?.length, q5.items[0].options]).toEqual([10, undefined]);
+    expect(q5.kind === "wordBank" && [q5.bank?.length, q5.items[0].options]).toEqual([10, undefined]);
   });
 
   it("counts the converted words and questions on the set", () => {

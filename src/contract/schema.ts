@@ -92,11 +92,31 @@ const item = z.strictObject({
   whyWrong,
 });
 
+const difficulty = z.union([z.literal(1), z.literal(2), z.literal(3)]);
+const customBase = {
+  id: id.optional(),
+  prompt: text(1000),
+  senseId: id,
+  explanation: optionalText(4000),
+};
+/** One 自由題型 item; `mode` says how it is answered and graded. */
+export const customItem = z.discriminatedUnion("mode", [
+  z.strictObject({ ...customBase, mode: z.literal("single"), options: z.array(text(500)).min(2).max(6), answer: z.number().int().nonnegative(), whyWrong }),
+  /** Right only when exactly the `answers` are picked. */
+  z.strictObject({ ...customBase, mode: z.literal("multiple"), options: z.array(text(500)).min(2).max(8), answers: z.array(z.number().int().nonnegative()).min(1).max(8), whyWrong }),
+  /** Typed; right when it equals one of `accepted`, ignoring case and spacing. */
+  z.strictObject({ ...customBase, mode: z.literal("input"), accepted: z.array(text(200)).min(1).max(10) }),
+  /** `pieces` in their right order; practice shuffles them. */
+  z.strictObject({ ...customBase, mode: z.literal("order"), pieces: z.array(text(500)).min(2).max(10) }),
+  /** Right pairs; practice shuffles the right column. */
+  z.strictObject({ ...customBase, mode: z.literal("match"), pairs: z.array(z.tuple([text(300), text(300)])).min(2).max(8) }),
+]);
+
 export const questionInput = z.discriminatedUnion("kind", [
   z.strictObject({
     id: id.optional(),
     kind: z.literal("vocabulary"),
-    difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+    difficulty,
     prompt: text(1000),
     options: z.array(text(200)).length(4),
     answer: z.number().int().min(0).max(3),
@@ -107,12 +127,24 @@ export const questionInput = z.discriminatedUnion("kind", [
   z.strictObject({
     id: id.optional(),
     kind: z.enum(QUESTION_KINDS.filter((kind) => kind !== "vocabulary") as ["cloze", "wordBank", "discourse", "reading"]),
-    difficulty: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+    difficulty,
     title: optionalText(300),
     passage: text(20000),
     /** The shared options of wordBank and discourse. */
     bank: z.array(text(500)).max(10).optional(),
     items: z.array(item).min(1).max(10),
+    explanation: optionalText(4000),
+  }),
+  z.strictObject({
+    id: id.optional(),
+    kind: z.literal("custom"),
+    difficulty,
+    /** The Agent's own name for the format, shown on the question. */
+    label: text(40),
+    /** How to answer, shown above the items. */
+    instructions: optionalText(300),
+    passage: optionalText(20000),
+    items: z.array(customItem).min(1).max(10),
     explanation: optionalText(4000),
   }),
 ]);
@@ -121,8 +153,10 @@ type ParsedQuestion = z.output<typeof questionInput>;
 type Stored<T> = T & { id: string; setId: string; createdAt: string; updatedAt: string };
 export type VocabularyQuestion = Stored<Extract<ParsedQuestion, { kind: "vocabulary" }>>;
 export type PassageItem = Omit<z.output<typeof item>, "id"> & { id: string };
-export type PassageQuestion = Stored<Omit<Exclude<ParsedQuestion, { kind: "vocabulary" }>, "items"> & { items: PassageItem[] }>;
-export type Question = VocabularyQuestion | PassageQuestion;
+export type PassageQuestion = Stored<Omit<Exclude<ParsedQuestion, { kind: "vocabulary" | "custom" }>, "items"> & { items: PassageItem[] }>;
+export type CustomItem = z.output<typeof customItem> & { id: string };
+export type CustomQuestion = Stored<Omit<Extract<ParsedQuestion, { kind: "custom" }>, "items"> & { items: CustomItem[] }>;
+export type Question = VocabularyQuestion | PassageQuestion | CustomQuestion;
 
 /** Every sense a question practises. */
 export function questionSenseIds(question: Pick<Question, "kind"> & ({ senseId: string } | { items: { senseId: string }[] })): string[] {

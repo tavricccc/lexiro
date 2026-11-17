@@ -6,7 +6,8 @@ import {
   READING_ITEMS,
   SENTENCE_BLANK,
 } from "./formats";
-import { questionInput, type PassageItem, type Question } from "./schema";
+import { questionInput, type CustomItem, type PassageItem, type PassageQuestion } from "./schema";
+import type { Question } from "./schema";
 import { newId } from "./words";
 
 export interface Issue {
@@ -54,6 +55,41 @@ export function checkQuestion(value: unknown, senses: ReadonlyMap<string, string
       if (!options.includes(key) || key === options[answer])
         fail(field, "invalid_why_wrong", `whyWrong key "${key}" is not a wrong option`);
   };
+
+  if (input.kind === "custom") {
+    const items: CustomItem[] = input.items.map((entry, index) => {
+      const field = `items.${index}`;
+      sense(`${field}.senseId`, entry.senseId);
+      switch (entry.mode) {
+        case "single":
+          if (!distinct(entry.options)) fail(`${field}.options`, "duplicate_option", "Options must differ");
+          if (entry.answer >= entry.options.length) fail(`${field}.answer`, "answer_range", "The answer is not one of the options");
+          whyWrong(`${field}.whyWrong`, entry.options, entry.answer, entry.whyWrong);
+          break;
+        case "multiple":
+          if (!distinct(entry.options)) fail(`${field}.options`, "duplicate_option", "Options must differ");
+          if (entry.answers.some((answer) => answer >= entry.options.length)) fail(`${field}.answers`, "answer_range", "Every answer must be one of the options");
+          if (new Set(entry.answers).size !== entry.answers.length) fail(`${field}.answers`, "duplicate_answer", "Answers must differ");
+          for (const key of Object.keys(entry.whyWrong ?? {}))
+            if (!entry.options.includes(key) || entry.answers.some((answer) => entry.options[answer] === key))
+              fail(`${field}.whyWrong`, "invalid_why_wrong", `whyWrong key "${key}" is not a wrong option`);
+          break;
+        case "input":
+          if (!distinct(entry.accepted)) fail(`${field}.accepted`, "duplicate_answer", "Accepted answers must differ");
+          break;
+        case "order":
+          if (!distinct(entry.pieces)) fail(`${field}.pieces`, "duplicate_piece", "Pieces must differ, or their order is ambiguous");
+          break;
+        case "match":
+          if (!distinct(entry.pairs.map(([left]) => left))) fail(`${field}.pairs`, "duplicate_pair", "Left sides must differ");
+          if (!distinct(entry.pairs.map(([, right]) => right))) fail(`${field}.pairs`, "duplicate_pair", "Right sides must differ");
+          break;
+      }
+      return { ...entry, id: entry.id ?? newId("item") };
+    });
+    if (errors.length) return { ok: false, errors, warnings };
+    return { ok: true, warnings, question: { ...input, id: input.id ?? newId("q"), items } };
+  }
 
   if (input.kind === "vocabulary") {
     if (input.prompt.split(SENTENCE_BLANK).length !== 2)
@@ -116,6 +152,6 @@ export function checkQuestion(value: unknown, senses: ReadonlyMap<string, string
 }
 
 /** The options an item is answered from: its own, or the passage's shared bank. */
-export function itemOptions(question: Extract<Question, { items: unknown }>, entry: PassageItem): string[] {
+export function itemOptions(question: Pick<PassageQuestion, "bank">, entry: PassageItem): string[] {
   return entry.options ?? question.bank ?? [];
 }

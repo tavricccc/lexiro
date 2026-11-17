@@ -158,7 +158,7 @@ describe("questions", () => {
       items: [{ blank: 1, options, answer: 0, senseId: word.senses[1].id }, { blank: 2, options, answer: 1, senseId: word.senses[1].id }],
     }]);
     const [question] = (await lib.setContent(uid, set.id)).questions;
-    expect("items" in question && question.items.map((item) => item.blank)).toEqual([1, 2]);
+    expect(question.kind === "cloze" && question.items.map((item) => item.blank)).toEqual([1, 2]);
   });
 });
 

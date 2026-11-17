@@ -1,10 +1,10 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { z } from "zod";
-import { LENGTH_RANGES, PARTS_OF_SPEECH, QUESTION_KINDS, type Difficulty, type Question, type QuestionKind, type Word } from "../contract";
+import { CUSTOM_KIND, LENGTH_RANGES, PARTS_OF_SPEECH, QUESTION_KINDS, type Difficulty, type Question, type QuestionKind, type Word } from "../contract";
 import { HttpError, httpError, issueText } from "../http";
 import type { Library, SetContent } from "../library/repository";
-import { questionPrompt, QUESTION_CACHE_KEY } from "../question-prompts";
+import { CUSTOM_RULES, questionPrompt, QUESTION_CACHE_KEY } from "../question-prompts";
 import { assembleGenerated, generationBrief, outputSchema } from "./generation";
 
 export interface AgentIdentity {
@@ -14,9 +14,12 @@ export interface AgentIdentity {
   setId?: string;
 }
 
-export const AGENT_INSTRUCTIONS = `Lexiro study-material assistant. You generate all content; the service only stores it and never calls a model. Materials are English by default; talk to the user and write meanings and explanations in Taiwan Traditional Chinese. If no question type is given, ask first; never re-ask what the user already said. Plan the data you need and fetch it in one read with several requests; never download a whole set when a page will do. To write questions: read prompt(kind) once per type and brief in batches for sources (both can share one read); generate, optionally validate, then write generated_questions. Confirm before deleting. Report only what real results say. If you are Opus and can start subagents: delegate generation to Sonnet subagents, at most three in parallel, each with a non-overlapping source batch; each reads prompt/brief, generates, validates and writes itself, and reports only item count, errors and saved ids, never question content.`;
+export const AGENT_INSTRUCTIONS = `Lexiro study-material assistant. You generate all content; the service only stores it and never calls a model. Materials are English by default; talk to the user and write meanings and explanations in Taiwan Traditional Chinese. If no question type is given, ask first; never re-ask what the user already said. 自由題型 (kind custom) is for any other exercise: read prompt(custom); if the user names no format, choose one yourself. Plan the data you need and fetch it in one read with several requests; never download a whole set when a page will do. To write questions: read prompt(kind) once per type and brief in batches for sources (both can share one read); generate, optionally validate, then write generated_questions. Confirm before deleting. Report only what real results say. If you are Opus and can start subagents: delegate generation to Sonnet subagents, at most three in parallel, each with a non-overlapping source batch; each reads prompt/brief, generates, validates and writes itself, and reports only item count, errors and saved ids, never question content.`;
 
 const kind = z.enum(QUESTION_KINDS);
+/** Any stored kind, 自由題型 included; generation and validate take the five 學測 kinds only. */
+const storedKind = z.enum([...QUESTION_KINDS, CUSTOM_KIND]);
+const CUSTOM_BRIEF_LIMIT = 10;
 const difficulty = z.union([z.literal(1), z.literal(2), z.literal(3)]);
 const BRIEF_LIMITS: Record<QuestionKind, number> = { vocabulary: 16, cloze: 5, wordBank: 10, discourse: 4, reading: 5 };
 
@@ -28,7 +31,7 @@ const readRequest = z.strictObject({
   questionId: z.string().optional(),
   q: z.string().max(200).optional().describe("Substring search: words by spelling or Chinese meaning; questions by any text"),
   starred: z.boolean().optional(),
-  kind: kind.optional(),
+  kind: storedKind.optional(),
   difficulty: difficulty.optional(),
   senseIds: z.array(z.string()).max(50).optional(),
   from: z.number().int().min(0).optional().describe("0-based offset; use next from the previous page"),
@@ -39,13 +42,13 @@ type ReadRequest = z.infer<typeof readRequest>;
 
 const READ = `Read data: up to 10 independent requests per call. resource:
 sets{folderId?} folders | set{setId} | words{setId,q?,starred?,from?,limit?,view?} | word{setId,wordId} | questions{setId,kind?,q?,from?,limit?,view?} | question{setId,questionId}
-prompt{kind,difficulty?} generation rules and outputSchema, once per kind | brief{setId,kind,difficulty?,senseIds?,from?,limit?} sources for one generation batch, plus setWords to draw distractors from.
+prompt{kind,difficulty?} generation rules and outputSchema, once per kind (custom: rules for 自由題型, written with put_questions) | brief{setId,kind,difficulty?,senseIds?,from?,limit?} sources for one generation batch, plus setWords to draw distractors from.
 Lists are pages of summaries (next gives the following offset); view:"detail" returns full items.`;
 const WRITE = `Create or modify. action by type:
 put_words{words:[{id?,word,starred?,senses:[{id?,pos,meaning,description?,examples?,supplementary?}]}]} adds words, or replaces a word given its id (keep sense ids to keep their questions; a sense left out is removed with its questions). A new word spelled like an existing one gains its new meanings. meaning is only the short Chinese meaning, shown as an answer option; textbook notes (usage, collocations, register, related forms) go in description, one point per line, no bullets. pos is one of: ${PARTS_OF_SPEECH.join(" ")} (write v. for vt./vi.).
 mark_words{wordIds,starred}
 generated_questions{kind,difficulty,output,senseIds?,mode?} output follows prompt's outputSchema; bind each item with senseId.
-put_questions{questions,mode?} questions in stored format (as read returns them); with an existing id it replaces that question.
+put_questions{questions,mode?} questions in stored format (as read returns them), including 自由題型 (kind custom, see prompt(custom)); with an existing id it replaces that question.
 rename_set{name}, move_set{folderId|null}, create_folder{name,parentId?}, update_folder{folderId,name?,parentId?}
 mode: "partial" (default) saves valid items and reports the rest; "atomic" saves nothing on any error. At most 100 questions per write.`;
 const DELETE = `Delete, irreversible; confirm with the user first. action by type: delete_words{wordIds} (also removes the questions that use them), delete_questions{questionIds}, delete_set, delete_folder{folderId} (its sets move to the parent folder).`;
@@ -53,7 +56,7 @@ const VALIDATE = `Check generated questions without writing; same report as writ
 
 const wordSummary = (word: Word) => ({ id: word.id, word: word.word, ...(word.starred ? { starred: true } : {}), senses: word.senses.map((s) => ({ id: s.id, pos: s.pos, meaning: s.meaning })) });
 function questionSummary(question: Question) {
-  const text = "items" in question ? question.passage : question.prompt;
+  const text = question.kind === "custom" ? `${question.label}: ${question.passage ?? question.items[0].prompt}` : "items" in question ? question.passage : question.prompt;
   return {
     id: question.id, kind: question.kind, difficulty: question.difficulty,
     ...("title" in question && question.title ? { title: question.title } : {}),
@@ -143,6 +146,8 @@ export class AgentTools {
       }
       case "prompt": {
         if (!request.kind) throw httpError(400, "kind_required", "prompt needs kind");
+        if (request.kind === CUSTOM_KIND)
+          return { kind: CUSTOM_KIND, promptVersion: QUESTION_CACHE_KEY, rules: CUSTOM_RULES, write: "write put_questions", brief: { defaultLimit: CUSTOM_BRIEF_LIMIT, maxLimit: 50 } };
         const level = (request.difficulty ?? 2) as Difficulty;
         const [min, max] = LENGTH_RANGES[request.kind][level];
         return {
@@ -157,9 +162,17 @@ export class AgentTools {
         if (!request.kind) throw httpError(400, "kind_required", "brief needs kind");
         const level = (request.difficulty ?? 2) as Difficulty;
         const set = await content(this.setId(request.setId));
-        const all = generationBrief(set, request.kind, level, request.senseIds).sources as { ref: string; word: string; pos: string; meaningZh: string; knownExample?: string }[];
-        const limited = page(all, { ...request, limit: request.limit ?? BRIEF_LIMITS[request.kind] });
-        return { ...limited, items: undefined, sources: limited.items, setWords: setWords(set.words, limited.items), specification: questionPrompt(request.kind, limited.items, level).input };
+        if (request.kind === CUSTOM_KIND) {
+          const wanted = request.senseIds ? new Set(request.senseIds) : null;
+          const all = set.words.flatMap((word) => word.senses.filter((sense) => !wanted || wanted.has(sense.id)).map((sense) => ({ senseId: sense.id, word: word.word, pos: sense.pos, meaningZh: sense.meaning })));
+          const limited = page(all, { ...request, limit: request.limit ?? CUSTOM_BRIEF_LIMIT });
+          const labels = [...new Set(set.questions.flatMap((question) => (question.kind === CUSTOM_KIND ? [question.label] : [])))];
+          return { ...limited, items: undefined, sources: limited.items, setWords: setWords(set.words, limited.items), labels, difficulty: level };
+        }
+        const generated = request.kind;
+        const all = generationBrief(set, generated, level, request.senseIds).sources as { ref: string; word: string; pos: string; meaningZh: string; knownExample?: string }[];
+        const limited = page(all, { ...request, limit: request.limit ?? BRIEF_LIMITS[generated] });
+        return { ...limited, items: undefined, sources: limited.items, setWords: setWords(set.words, limited.items), specification: questionPrompt(generated, limited.items, level).input };
       }
     }
   }

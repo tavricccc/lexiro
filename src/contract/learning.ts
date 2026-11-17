@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { QUESTION_KINDS } from "./formats";
+import { CUSTOM_KIND, QUESTION_KINDS } from "./formats";
 
 /** What a practice round can ask: the two word tasks plus every stored question kind. */
-export const PRACTICE_TASKS = ["meaning", "reverse", ...QUESTION_KINDS] as const;
+export const PRACTICE_TASKS = ["meaning", "reverse", ...QUESTION_KINDS, CUSTOM_KIND] as const;
 export type PracticeTask = (typeof PRACTICE_TASKS)[number];
 
 export const DAILY_GOALS = [10, 20, 30] as const;
