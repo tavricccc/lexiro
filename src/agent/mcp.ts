@@ -39,7 +39,7 @@ type ReadRequest = z.infer<typeof readRequest>;
 
 const READ = `Read data: up to 10 independent requests per call. resource:
 sets{folderId?} folders | set{setId} | words{setId,q?,starred?,from?,limit?,view?} | word{setId,wordId} | questions{setId,kind?,q?,from?,limit?,view?} | question{setId,questionId}
-prompt{kind,difficulty?} generation rules and outputSchema, once per kind | brief{setId,kind,difficulty?,senseIds?,from?,limit?} sources for one generation batch.
+prompt{kind,difficulty?} generation rules and outputSchema, once per kind | brief{setId,kind,difficulty?,senseIds?,from?,limit?} sources for one generation batch, plus setWords to draw distractors from.
 Lists are pages of summaries (next gives the following offset); view:"detail" returns full items.`;
 const WRITE = `Create or modify. action by type:
 put_words{words:[{id?,word,starred?,senses:[{id?,pos,meaning,description?,examples?,supplementary?}]}]} adds words, or replaces a word given its id (keep sense ids to keep their questions; a sense left out is removed with its questions). A new word spelled like an existing one gains its new meanings. meaning is only the short Chinese meaning, shown as an answer option; textbook notes (usage, collocations, register, related forms) go in description, one point per line, no bullets. pos is one of: ${PARTS_OF_SPEECH.join(" ")} (write v. for vt./vi.).
@@ -60,6 +60,15 @@ function questionSummary(question: Question) {
     preview: text.slice(0, 160),
     senseIds: "items" in question ? [...new Set(question.items.map((item) => item.senseId))] : [question.senseId],
   };
+}
+const SET_WORDS_LIMIT = 30;
+/** Words of the set offered as distractors, the batch's own included: its parts of speech first, then A to Z. */
+export function setWords(words: Word[], sources: { pos: string }[], limit = SET_WORDS_LIMIT) {
+  const batchPos = new Set(sources.map((source) => source.pos));
+  return words
+    .flatMap((word) => word.senses.map((sense) => ({ word: word.word, pos: sense.pos, meaningZh: sense.meaning })))
+    .sort((a, b) => Number(batchPos.has(b.pos)) - Number(batchPos.has(a.pos)) || a.word.localeCompare(b.word))
+    .slice(0, limit);
 }
 const contains = (haystack: unknown, needle: string) => JSON.stringify(haystack).toLocaleLowerCase().includes(needle.toLocaleLowerCase());
 function page<T>(items: T[], request: ReadRequest) {
@@ -150,7 +159,7 @@ export class AgentTools {
         const set = await content(this.setId(request.setId));
         const all = generationBrief(set, request.kind, level, request.senseIds).sources as { ref: string; word: string; pos: string; meaningZh: string; knownExample?: string }[];
         const limited = page(all, { ...request, limit: request.limit ?? BRIEF_LIMITS[request.kind] });
-        return { ...limited, items: undefined, sources: limited.items, specification: questionPrompt(request.kind, limited.items, level).input };
+        return { ...limited, items: undefined, sources: limited.items, setWords: setWords(set.words, limited.items), specification: questionPrompt(request.kind, limited.items, level).input };
       }
     }
   }
