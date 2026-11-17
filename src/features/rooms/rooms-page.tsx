@@ -62,8 +62,8 @@ function HostForm({ name: defaultName }: { name: string }) {
   const [setId, setSetId] = useState("");
   const chosen = setId || sets[0]?.id || "";
   const content = useQuery({ queryKey: keys.set(chosen), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(chosen)}`), enabled: Boolean(chosen) });
-  const tasks = useMemo(() => (content.data ? availableTasks([content.data]) : []), [content.data]);
-  const [task, setTask] = useState<PracticeTask | "">("");
+  const tasks = useMemo(() => (content.data ? availableTasks([content.data]).filter((task) => task !== "custom") : []), [content.data]);
+  const [task, setTask] = useState<Exclude<PracticeTask, "custom"> | "">("");
   const picked = task && tasks.includes(task) ? task : tasks[0];
   const [amount, setAmount] = useState<string>("10");
   const [seconds, setSeconds] = useState<Seconds>("auto");
@@ -92,7 +92,7 @@ function HostForm({ name: defaultName }: { name: string }) {
         {({ id }) => <Input id={id} maxLength={40} onChange={(event) => setName(event.target.value)} value={name} />}
       </Field>
       {sets.length ? <LabeledSelect label="單字集" onChange={setSetId} options={sets.map((entry) => ({ value: entry.id, label: entry.name }))} value={chosen} /> : null}
-      {tasks.length ? <LabeledSelect label="題型" onChange={(value) => setTask(value as PracticeTask)} options={tasks.map((value) => ({ value, label: TASK_LABELS[value] }))} value={picked ?? ""} /> : <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>}
+      {tasks.length ? <LabeledSelect label="題型" onChange={(value) => setTask(value as Exclude<PracticeTask, "custom">)} options={tasks.map((value) => ({ value, label: TASK_LABELS[value] }))} value={picked ?? ""} /> : <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>}
       <section className="grid gap-2">
         <h3 className="px-1 text-sm font-medium text-ink-muted">題數</h3>
         <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={amount} />

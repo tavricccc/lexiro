@@ -199,6 +199,7 @@ function WordText({ word }: { word: Word }) {
 }
 
 function questionPreview(question: Question): string {
+  if (question.kind === "custom") return `${question.label}：${question.items[0].prompt}`.slice(0, 90);
   if ("items" in question) return question.title || question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90);
   return question.prompt;
 }

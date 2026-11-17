@@ -6,8 +6,10 @@ import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, Panel, ProgressBar
 import { recordAnswer } from "@/data/learning";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
+import { isCustomStep, isRight, rightAnswerText, type Choice, type CustomStep } from "@/domain/custom";
 import { passageParts, type PracticeItem, type Step } from "@/domain/practice";
-import { advance, choose, currentStep, finished, newRound, result, usedBankOptions, type Round } from "@/domain/round";
+import { acceptTyped, advance, choose, currentStep, finished, newRound, result, usedBankOptions, type Round } from "@/domain/round";
+import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
 import { SpeakButton } from "@/ui/speak";
 
@@ -19,22 +21,35 @@ export default function RunPage() {
     if (!round) navigate("/app/practice", { replace: true });
     else if (!finished(round)) saveRound(round);
   }, [round, navigate]);
-  const pick = useCallback((option: number | null) => {
+  const record = (current: Round, correct: boolean) => {
+    const item = current.items[current.index];
+    const step = item.steps[current.step];
+    recordAnswer({ senseId: step.senseId, wordId: step.wordId, task: item.kind as PracticeTask, correct, day: calendarDay(new Date()) });
+  };
+  // A typed answer is recorded on moving on, so "我其實答對了" can still change it.
+  const typed = (current: Round) => {
+    const step = currentStep(current);
+    return !!step && isCustomStep(step) && step.mode === "input";
+  };
+  const pick = useCallback((option: Choice | null) => {
     setRound((current) => {
       if (!current || current.revealed || finished(current)) return current;
-      const item = current.items[current.index];
-      const step = item.steps[current.step];
-      recordAnswer({ senseId: step.senseId, wordId: step.wordId, task: item.kind as PracticeTask, correct: option === step.answer, day: calendarDay(new Date()) });
+      if (!typed(current)) record(current, isRight(currentStep(current)!, option));
       return choose(current, option);
     });
   }, []);
-  const next = useCallback(() => setRound((current) => (current ? advance(current) : current)), []);
+  const next = useCallback(() => setRound((current) => {
+    if (!current) return current;
+    if (current.revealed && typed(current)) record(current, isRight(currentStep(current)!, current.choices[current.index][current.step]));
+    return advance(current);
+  }), []);
+  const accept = useCallback(() => setRound((current) => (current ? acceptTyped(current) : current)), []);
   if (!round) return null;
   if (finished(round)) return <Results onAgain={(items) => { const again = newRound(items, round.setIds); saveRound(again); setRound(again); }} round={round} />;
-  return <Card next={next} pick={pick} round={round} />;
+  return <Card accept={accept} next={next} pick={pick} round={round} />;
 }
 
-function Card({ round, pick, next }: { round: Round; pick: (option: number | null) => void; next: () => void }) {
+function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
@@ -44,7 +59,8 @@ function Card({ round, pick, next }: { round: Round; pick: (option: number | nul
       if (event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest("input,textarea")) return;
       if (round.revealed && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); next(); return; }
       const number = Number(event.key);
-      if (!round.revealed && number >= 1 && number <= step.options.length && !used.has(number - 1)) pick(number - 1);
+      const options = isCustomStep(step) ? (step.mode === "single" ? step.options : []) : step.options;
+      if (!round.revealed && number >= 1 && number <= options.length && !used.has(number - 1)) pick(number - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -59,10 +75,14 @@ function Card({ round, pick, next }: { round: Round; pick: (option: number | nul
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
       </header>
       <div className="card-in flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pt-6" key={round.index}>
-        <Chip className="self-start">{TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} 格` : ""}</Chip>
-        <Prompt chosen={chosen} item={item} round={round} step={step} />
-        <div className="message-in" key={round.step}><Options chosen={chosen} pick={pick} revealed={round.revealed} step={step} used={used} /></div>
-        {round.revealed ? <Feedback chosen={chosen} item={item} step={step} /> : null}
+        <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
+        {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
+        <div className="message-in" key={round.step}>
+          {isCustomStep(step) && step.mode !== "single"
+            ? <CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} />
+            : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
+        </div>
+        {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
         <div className="mt-auto flex justify-end gap-2 pt-2">
           {round.revealed ? (
             <Button autoFocus onClick={next} size="lg" variant="primary">{round.index + 1 === round.items.length && round.step + 1 === item.steps.length ? "看結果" : "下一題"}<ArrowRight weight="bold" /></Button>
@@ -101,7 +121,8 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     );
   }
   // A passage: blanks before this one show what was picked, this one is highlighted.
-  if (!("passage" in item)) return null;
+  if (!("passage" in item) || item.kind === "custom") return null;
+  const steps = item.steps;
   const answers = round.choices[round.index];
   return (
     <div className="grid gap-3">
@@ -110,10 +131,10 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
         <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
           {passageParts(item.passage).map((part, index) => {
             if (typeof part === "string") return <span key={index}>{part}</span>;
-            const at = item.steps.findIndex((entry) => entry.blank === part);
+            const at = steps.findIndex((entry) => entry.blank === part);
             const done = at < round.step || (at === round.step && round.revealed);
             const picked = done ? answers[at] : undefined;
-            const right = done && picked === item.steps[at].answer;
+            const right = done && picked === steps[at].answer;
             return (
               <span
                 className={cn(
@@ -122,7 +143,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
                 )}
                 key={index}
               >
-                {done ? (right ? item.steps[at].options[item.steps[at].answer] : `(${part}) ${item.steps[at].options[item.steps[at].answer]}`) : `(${part})`}
+                {done ? (right ? steps[at].options[steps[at].answer] : `(${part}) ${steps[at].options[steps[at].answer]}`) : `(${part})`}
               </span>
             );
           })}
@@ -134,7 +155,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
   );
 }
 
-function Options({ step, chosen, revealed, used, pick }: { step: Step; chosen: number | null | undefined; revealed: boolean; used: Set<number>; pick: (option: number) => void }) {
+function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "options" | "answer" | "glosses">; chosen: number | null | undefined; revealed: boolean; used: Set<number>; pick: (option: number) => void }) {
   const long = step.options.some((option) => option.length > 24);
   return (
     <div className={cn("grid gap-2", !long && step.options.length <= 4 && "sm:grid-cols-2")} role="group" aria-label="選項">
@@ -170,20 +191,44 @@ function Options({ step, chosen, revealed, used, pick }: { step: Step; chosen: n
   );
 }
 
-function Feedback({ item, step, chosen }: { item: PracticeItem; step: Step; chosen: number | null | undefined }) {
-  const right = chosen === step.answer;
-  const reason = chosen !== null && chosen !== undefined && !right ? step.whyWrong?.[step.options[chosen]] : undefined;
+function CustomPrompt({ item, step }: { item: Extract<PracticeItem, { kind: "custom" }>; step: CustomStep }) {
+  return (
+    <div className="grid gap-3">
+      {item.instructions ? <p className="text-[0.9375rem] text-ink-muted">{item.instructions}</p> : null}
+      {item.passage ? <Panel className="max-h-[40svh] overflow-y-auto"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></Panel> : null}
+      <p className={cn("leading-relaxed", /[A-Za-z]/.test(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-semibold")} lang={/[A-Za-z]/.test(step.prompt) ? "en" : undefined}>{step.prompt}</p>
+    </div>
+  );
+}
+
+/** Reasons for the wrong options picked: one for a single choice, every wrong pick of a multiple one. */
+function reasonsFor(step: Step | CustomStep, chosen: Choice | null | undefined): string[] {
+  const options = !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.options : [];
+  const whyWrong = !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.whyWrong : undefined;
+  const picked = typeof chosen === "number" ? [chosen] : Array.isArray(chosen) && isCustomStep(step) && step.mode === "multiple" ? chosen : [];
+  return picked.map((index) => whyWrong?.[options[index]]).filter((reason): reason is string => !!reason && !isRight(step, chosen));
+}
+
+function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: Step | CustomStep; chosen: Choice | null | undefined; accept: () => void }) {
+  const right = isRight(step, chosen);
+  const reasons = reasonsFor(step, chosen);
   const notes = item.kind === "meaning" || item.kind === "reverse" ? descriptionPoints(item.sense.description) : [];
+  const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
+  const answer = rightAnswerText(step);
   return (
     <Panel className="message-in grid gap-2" role="status">
-      <p className={cn("flex items-center gap-2 font-semibold", right ? "text-positive" : "text-danger")}>
-        {right ? <Check weight="bold" /> : <X weight="bold" />}
-        {right ? "答對了" : <>正確答案是 <span className="font-latin">{step.options[step.answer]}</span></>}
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className={cn("flex items-center gap-2 font-semibold", right ? "text-positive" : "text-danger")}>
+          {right ? <Check weight="bold" /> : <X weight="bold" />}
+          {right ? "答對了" : <>正確答案是 <span className={cn(/[A-Za-z]/.test(answer) && "font-latin")}>{answer}</span></>}
+        </p>
+        {typedWrong ? <Button onClick={accept} size="sm" variant="ghost">我其實答對了</Button> : null}
+      </div>
+      {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-latin text-[0.9375rem] text-ink-muted">{step.accepted.join(" / ")}</p> : null}
       {item.kind === "meaning" || item.kind === "reverse" ? (
         <p className="text-[0.9375rem]"><span className="font-latin font-semibold">{item.word}</span> <span className="font-latin text-ink-muted">{item.sense.pos}</span> {item.sense.meaning}</p>
       ) : null}
-      {reason ? <p className="text-[0.9375rem] text-ink-muted">{reason}</p> : null}
+      {reasons.map((reason) => <p className="text-[0.9375rem] text-ink-muted" key={reason}>{reason}</p>)}
       {step.explanation && item.kind !== "meaning" && item.kind !== "reverse" ? <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{step.explanation}</p> : null}
       {notes.length ? <ul className="grid list-disc gap-1 pl-5 text-[0.9375rem] text-ink-muted marker:text-ink-faint">{notes.map((note, index) => <li key={index}>{note}</li>)}</ul> : null}
       {item.kind === "meaning" || item.kind === "reverse" ? item.sense.examples.slice(0, 1).map((example) => (
@@ -212,7 +257,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
               <li className="text-[0.9375rem]" key={index}>
                 {item.kind === "meaning" || item.kind === "reverse"
                   ? <><span className="font-latin font-semibold">{item.word}</span> <span className="text-ink-muted">{item.sense.meaning}</span></>
-                  : <span className="text-ink-muted">{TASK_LABELS[item.kind as PracticeTask]}：{item.steps.map((step) => step.options[step.answer]).join("、")}</span>}
+                  : <span className="text-ink-muted">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}：{(item.steps as (Step | CustomStep)[]).map(rightAnswerText).join("、")}</span>}
               </li>
             ))}
           </ul>

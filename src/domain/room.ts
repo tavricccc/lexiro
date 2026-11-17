@@ -1,4 +1,4 @@
-import type { PracticeItem } from "./practice";
+import type { PracticeItem, Step } from "./practice";
 
 /** What every player sees of a question; the answer stays with the host's room. */
 export interface LiveQuestion {
@@ -20,8 +20,9 @@ export const MAX_ROOM_QUESTIONS = 50;
 
 /** A practice round flattened into one room question per step. */
 export function roomQuestions(items: PracticeItem[]): RoomQuestion[] {
-  return items.flatMap((item) =>
-    item.steps.map((step): RoomQuestion => {
+  // 自由題型 stays out of rooms: its answers are not all one option to race for.
+  return items.flatMap((item) => item.kind === "custom" ? [] :
+    (item.steps as Step[]).map((step): RoomQuestion => {
       const base = { answerIndex: step.answer, ...(step.explanation ? { explanation: step.explanation.slice(0, 4000) } : {}) };
       if (item.kind === "meaning") return { ...base, display: { type: "meaning", prompt: item.word, options: step.options } };
       if (item.kind === "reverse") return { ...base, display: { type: "reverse", prompt: item.sense.meaning, options: step.options } };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Check, Trash } from "@phosphor-icons/react";
-import { itemOptions, type Question, type SetContent } from "@lexiro/contract";
+import { itemOptions, type CustomItem, type CustomQuestion, type Question, type SetContent } from "@lexiro/contract";
 import { toast } from "sonner";
 import { Chip, ConfirmDialog, EmptyState, HeaderButton, Panel, cn, type ActionStatus } from "design-kit";
 import { errorMessage } from "@/data/api";
@@ -14,12 +14,13 @@ import { Loaded, Page } from "@/ui/page";
 
 const DIFFICULTY = ["", "簡單", "中等", "困難"];
 
-function Options({ options, answer, whyWrong }: { options: string[]; answer: number; whyWrong?: Record<string, string> }) {
+function Options({ options, answer, whyWrong }: { options: string[]; answer: number | number[]; whyWrong?: Record<string, string> }) {
+  const right = (index: number) => (Array.isArray(answer) ? answer.includes(index) : index === answer);
   return (
     <ol className="grid gap-1.5">
       {options.map((option, index) => (
-        <li className={cn("grid gap-0.5 rounded-tile px-3 py-2", index === answer ? "bg-positive/12" : "bg-surface-raised")} key={index}>
-          <span className="flex items-center gap-2"><span className="w-4 font-latin text-sm text-ink-muted">{index + 1}</span><span className="font-latin">{option}</span>{index === answer ? <Check className="ml-auto text-positive" weight="bold" /> : null}</span>
+        <li className={cn("grid gap-0.5 rounded-tile px-3 py-2", right(index) ? "bg-positive/12" : "bg-surface-raised")} key={index}>
+          <span className="flex items-center gap-2"><span className="w-4 font-latin text-sm text-ink-muted">{index + 1}</span><span className="font-latin">{option}</span>{right(index) ? <Check className="ml-auto text-positive" weight="bold" /> : null}</span>
           {whyWrong?.[option] ? <span className="pl-6 text-[0.8125rem] text-ink-muted">{whyWrong[option]}</span> : null}
         </li>
       ))}
@@ -27,8 +28,45 @@ function Options({ options, answer, whyWrong }: { options: string[]; answer: num
   );
 }
 
+function CustomAnswer({ item }: { item: CustomItem }) {
+  switch (item.mode) {
+    case "single": return <Options answer={item.answer} options={item.options} whyWrong={item.whyWrong} />;
+    case "multiple": return <Options answer={item.answers} options={item.options} whyWrong={item.whyWrong} />;
+    case "input":
+      return <div className="flex flex-wrap gap-1.5">{item.accepted.map((answer) => <Chip className="bg-positive/12 font-latin text-positive" key={answer}>{answer}</Chip>)}</div>;
+    case "order":
+      return <ol className="grid gap-1.5">{item.pieces.map((piece, index) => <li className="flex gap-2 rounded-tile bg-surface-raised px-3 py-2" key={index}><span className="w-4 font-latin text-sm text-ink-muted">{index + 1}</span><span className="font-latin">{piece}</span></li>)}</ol>;
+    case "match":
+      return <ul className="grid gap-1.5">{item.pairs.map(([left, right], index) => <li className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-tile bg-surface-raised px-3 py-2" key={index}><span className="font-latin">{left}</span><span aria-hidden className="text-ink-faint">→</span><span className="font-latin">{right}</span></li>)}</ul>;
+  }
+}
+
+function CustomPreview({ question, words }: { question: CustomQuestion; words: Map<string, string> }) {
+  return (
+    <>
+      {question.instructions || question.passage ? (
+        <Panel className="grid gap-2">
+          {question.instructions ? <p className="text-[0.9375rem] text-ink-muted">{question.instructions}</p> : null}
+          {question.passage ? <p className="whitespace-pre-line font-latin leading-[1.8]" lang="en">{question.passage}</p> : null}
+        </Panel>
+      ) : null}
+      {question.items.map((item, index) => (
+        <Panel className="grid gap-3" key={item.id}>
+          {question.items.length > 1 ? <p className="text-sm font-semibold text-ink-muted">第 {index + 1} 題</p> : null}
+          <p className="font-latin font-medium" lang="en">{item.prompt}</p>
+          <CustomAnswer item={item} />
+          <p className="text-[0.8125rem] text-ink-muted">練習字義：{words.get(item.senseId)}</p>
+          {item.explanation ? <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{item.explanation}</p> : null}
+        </Panel>
+      ))}
+      {question.explanation ? <Panel><p className="text-[0.9375rem] leading-relaxed text-ink-muted">{question.explanation}</p></Panel> : null}
+    </>
+  );
+}
+
 function Preview({ question, content }: { question: Question; content: SetContent }) {
   const words = new Map(content.words.flatMap((word) => word.senses.map((sense) => [sense.id, `${word.word} ${sense.pos} ${sense.meaning}`] as const)));
+  if (question.kind === "custom") return <CustomPreview question={question} words={words} />;
   if (question.kind === "vocabulary")
     return (
       <Panel className="grid gap-3">
@@ -87,7 +125,7 @@ export default function QuestionPage() {
       ) : undefined}
       back={back}
       description={question ? `${DIFFICULTY[question.difficulty]}難度` : undefined}
-      title={question ? KIND_LABELS[question.kind] : "題目"}
+      title={question ? (question.kind === "custom" ? question.label : KIND_LABELS[question.kind]) : "題目"}
     >
       <Loaded query={content}>
         {(data) => question ? <div className="grid gap-4"><Preview content={data} question={question} /></div> : <EmptyState description="可能已經被刪除了。" title="找不到這一題" />}

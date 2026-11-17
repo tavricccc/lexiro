@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { emptyLearning, type SetContent, type Word } from "@lexiro/contract";
-import { availableTasks, buildRound, passageParts } from "@/domain/practice";
+import { availableTasks, buildRound, passageParts, type PracticeItem, type Step } from "@/domain/practice";
+
+const first = (item: PracticeItem) => item.steps[0] as Step;
 
 let seed = 1;
 const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
@@ -25,8 +27,8 @@ const round = (overrides: Partial<Parameters<typeof buildRound>[0]> = {}) =>
 describe("practice rounds", () => {
   it("glosses every option of a word task with its word or meaning", () => {
     const owner = new Map(five.words.flatMap((w) => w.senses.map((sense) => [sense.meaning, w.word] as const)));
-    for (const item of round()) item.steps[0].options.forEach((option, index) => expect(item.steps[0].glosses?.[index]).toBe(owner.get(option)));
-    for (const item of round({ tasks: ["reverse"] })) item.steps[0].glosses?.forEach((gloss, index) => expect(five.words.find((w) => w.word === item.steps[0].options[index])?.senses.map((sense) => sense.meaning)).toContain(gloss));
+    for (const item of round()) first(item).options.forEach((option, index) => expect(first(item).glosses?.[index]).toBe(owner.get(option)));
+    for (const item of round({ tasks: ["reverse"] })) first(item).glosses?.forEach((gloss, index) => expect(five.words.find((w) => w.word === first(item).options[index])?.senses.map((sense) => sense.meaning)).toContain(gloss));
   });
 
   it("asks each sense once per word task", () => {
@@ -34,29 +36,29 @@ describe("practice rounds", () => {
   });
 
   it("never offers another meaning of the same word as a wrong option", () => {
-    const item = round().find((entry) => entry.steps[0].prompt === "bank")!;
-    expect(item.steps[0].options.filter((option) => option === "銀行" || option === "河岸")).toHaveLength(1);
+    const item = round().find((entry) => first(entry).prompt === "bank")!;
+    expect(first(item).options.filter((option) => option === "銀行" || option === "河岸")).toHaveLength(1);
   });
 
   it("puts the right answer among the options", () => {
-    expect(round().every((item) => item.steps[0].options[item.steps[0].answer] !== undefined)).toBe(true);
+    expect(round().every((item) => first(item).options[first(item).answer] !== undefined)).toBe(true);
   });
 
   it("does not offer two words sharing the asked meaning in a reverse task", () => {
     const shared = content([word("a", "big", [["adj.", "大的"]]), word("b", "large", [["adj.", "大的"]]), word("c", "red", [["adj.", "紅的"]])]);
     const items = round({ contents: [shared], tasks: ["reverse"] });
-    const big = items.find((item) => item.steps[0].prompt === "大的")!;
-    expect(big.steps[0].options.filter((option) => option === "big" || option === "large")).toHaveLength(1);
+    const big = items.find((item) => first(item).prompt === "大的")!;
+    expect(first(big).options.filter((option) => option === "big" || option === "large")).toHaveLength(1);
   });
 
   it("practises only starred words when asked to", () => {
-    expect(round({ focus: "starred" }).map((item) => item.steps[0].prompt)).toEqual(["shore"]);
+    expect(round({ focus: "starred" }).map((item) => first(item).prompt)).toEqual(["shore"]);
   });
 
   it("brings the least familiar senses first", () => {
     const learning = emptyLearning();
     for (const id of ["w1-0", "w1-1", "w2-0", "w4-0", "w5-0"]) learning.senses[id] = { wordId: "", level: 3, answered: 3, correct: 3, lastDay: "2026-01-01" };
-    expect(round({ focus: "weak", learning })[0].steps[0].senseId).toBe("w3-0");
+    expect(first(round({ focus: "weak", learning })[0]).senseId).toBe("w3-0");
   });
 
   it("interleaves tasks instead of running them in blocks", () => {
@@ -78,7 +80,7 @@ describe("practice rounds", () => {
       items: [{ id: "i1", blank: 1, answer: 0, senseId: "w1-0" }, { id: "i2", blank: 2, answer: 1, senseId: "w2-0" }],
     } as SetContent["questions"][number]]);
     const [item] = round({ contents: [withPassage], tasks: ["wordBank"] });
-    expect(item.steps.map((step) => [step.blank, step.options.length, step.options[step.answer]])).toEqual([[1, 10, "bank"], [2, 10, "river"]]);
+    expect((item.steps as Step[]).map((step) => [step.blank, step.options.length, step.options[step.answer]])).toEqual([[1, 10, "bank"], [2, 10, "river"]]);
   });
 
   it("splits a passage into text and blank numbers", () => {

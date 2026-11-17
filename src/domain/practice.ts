@@ -1,3 +1,4 @@
+import { customStep, type CustomStep } from "./custom";
 import {
   itemOptions,
   normalizeWord,
@@ -11,6 +12,7 @@ import {
   type SetContent,
   type VocabularyQuestion,
   type Word,
+  type CustomQuestion,
 } from "@lexiro/contract";
 
 /** One choice to make: a prompt, its options and the right one. */
@@ -33,7 +35,8 @@ export interface Step {
 export type PracticeItem =
   | { kind: "meaning" | "reverse"; word: string; sense: Sense; steps: [Step] }
   | { kind: "vocabulary"; questionId: string; steps: [Step] }
-  | { kind: Exclude<QuestionKind, "vocabulary">; questionId: string; title?: string; passage: string; bank?: string[]; steps: Step[] };
+  | { kind: Exclude<QuestionKind, "vocabulary">; questionId: string; title?: string; passage: string; bank?: string[]; steps: Step[] }
+  | { kind: "custom"; questionId: string; label: string; instructions?: string; passage?: string; steps: CustomStep[] };
 
 export type Focus = "all" | "weak" | "starred";
 
@@ -129,7 +132,16 @@ const wordOf = (contents: SetContent[]) => {
   return bySense;
 };
 
-function questionItem(question: Question, wordIds: Map<string, string>, gloss: (options: string[]) => (string | undefined)[]): PracticeItem | null {
+function questionItem(question: Question, wordIds: Map<string, string>, gloss: (options: string[]) => (string | undefined)[], random: () => number): PracticeItem | null {
+  if (question.kind === "custom") {
+    const q = question as CustomQuestion;
+    const steps = q.items.map((item) => {
+      const wordId = wordIds.get(item.senseId);
+      return wordId ? customStep(item, wordId, random) : null;
+    });
+    if (steps.some((step) => !step)) return null;
+    return { kind: "custom", questionId: q.id, label: q.label, instructions: q.instructions, passage: q.passage, steps: steps as CustomStep[] };
+  }
   if (question.kind === "vocabulary") {
     const q = question as VocabularyQuestion;
     const wordId = wordIds.get(q.senseId);
@@ -152,7 +164,7 @@ export function availableTasks(contents: SetContent[]): PracticeTask[] {
   const kinds = new Set(contents.flatMap((content) => content.questions.map((question) => question.kind)));
   return [
     ...(words >= 2 ? (["meaning", "reverse"] as const) : []),
-    ...(["vocabulary", "cloze", "wordBank", "discourse", "reading"] as const).filter((kind) => kinds.has(kind)),
+    ...(["vocabulary", "cloze", "wordBank", "discourse", "reading", "custom"] as const).filter((kind) => kinds.has(kind)),
   ];
 }
 
@@ -179,7 +191,7 @@ export function buildRound({ contents, tasks, amount, focus, learning, random = 
     // Questions follow the pool's order through their first sense, so "weak" reaches them too.
     const first = (question: Question) => Math.min(...("items" in question ? question.items.map((item) => item.senseId) : [question.senseId]).map((id) => order.get(id) ?? Infinity));
     return shuffle(questions, random).sort((a, b) => first(a) - first(b)).flatMap((question) => {
-      const item = questionItem(question, wordIds, gloss);
+      const item = questionItem(question, wordIds, gloss, random);
       return item ? [item] : [];
     });
   });
