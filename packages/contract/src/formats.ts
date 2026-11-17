@@ -10,6 +10,16 @@
 export const QUESTION_KINDS = ["vocabulary", "cloze", "wordBank", "discourse", "reading"] as const;
 export type QuestionKind = (typeof QUESTION_KINDS)[number];
 export type PassageKind = Exclude<QuestionKind, "vocabulary">;
+
+/**
+ * 自由題型：Agent 自訂玩法（label），每個小題各選一種作答方式，全部可在本機判分。
+ * 不屬於學測五種題型，也不走出題規格與長度範圍；對戰不收。
+ */
+export const CUSTOM_KIND = "custom";
+export const CUSTOM_MODES = ["single", "multiple", "input", "order", "match"] as const;
+export type CustomMode = (typeof CUSTOM_MODES)[number];
+/** Every kind a stored question can have. */
+export type StoredKind = QuestionKind | typeof CUSTOM_KIND;
 export type Difficulty = 1 | 2 | 3;
 
 export interface PassageSpec {
