@@ -1,12 +1,18 @@
 import { useSyncExternalStore } from "react";
 import { getApp, getApps, initializeApp, type FirebaseApp } from "firebase/app";
 import {
+  browserLocalPersistence,
+  browserPopupRedirectResolver,
   connectAuthEmulator,
   getAuth,
   GoogleAuthProvider,
+  indexedDBLocalPersistence,
+  initializeAuth,
   onAuthStateChanged,
   type Auth,
+  type AuthProvider,
   type User,
+  type UserCredential,
 } from "firebase/auth";
 import { emulator, firebaseConfig, isConfigured } from "./config";
 
@@ -27,6 +33,62 @@ function app(): FirebaseApp {
 }
 
 /**
+ * Auth that falls back to localStorage when IndexedDB is unusable (Safari
+ * closes it for pages that were hidden, private mode, some in-app browsers).
+ */
+function authFor(target: FirebaseApp): Auth {
+  try {
+    return initializeAuth(target, {
+      persistence: [indexedDBLocalPersistence, browserLocalPersistence],
+      popupRedirectResolver: browserPopupRedirectResolver,
+    });
+  } catch {
+    return getAuth(target); // already initialized
+  }
+}
+
+export const SIGN_IN_FAILED = "登入沒有完成，請重新整理頁面後再試一次。";
+
+const REDIRECT_CODES = new Set([
+  "auth/popup-blocked",
+  "auth/operation-not-supported-in-this-environment",
+  "auth/web-storage-unsupported",
+]);
+
+/** Safari's "database connection is closing" once a hidden page comes back. */
+export function isClosedStorage(reason: unknown): boolean {
+  const error = reason as { name?: string; message?: string } | null;
+  return error?.name === "InvalidStateError" || /connection is closing|database.*clos/i.test(error?.message ?? "");
+}
+
+/**
+ * Google sign-in by popup; a storage hiccup is retried once, and a browser
+ * that cannot do popups (or keeps failing storage) gets a full-page redirect.
+ * Resolves `null` when the page is leaving for the redirect.
+ */
+export async function popupOrRedirect(
+  target: Auth,
+  provider: AuthProvider,
+  beforeRedirect?: () => void,
+): Promise<UserCredential | null> {
+  const { signInWithPopup, signInWithRedirect } = await import("firebase/auth");
+  let reason: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await signInWithPopup(target, provider);
+    } catch (error) {
+      reason = error;
+      if (!isClosedStorage(error)) break;
+    }
+  }
+  const code = (reason as { code?: string } | null)?.code ?? "";
+  if (!REDIRECT_CODES.has(code) && !isClosedStorage(reason)) throw reason;
+  beforeRedirect?.();
+  await signInWithRedirect(target, provider);
+  return null;
+}
+
+/**
  * Auth whose sign-in handler is served from this site (vercel.json proxies
  * /__/auth). Browsers that partition third-party storage, such as the iOS
  * sign-in sheet, lose a redirect result kept on the firebaseapp.com domain.
@@ -36,13 +98,13 @@ export function sameOriginAuth(): Auth | null {
   if (location.protocol !== "https:") return firebaseAuth();
   const named = getApps().find((existing) => existing.name === "same-origin")
     ?? initializeApp({ ...firebaseConfig, authDomain: location.host }, "same-origin");
-  return getAuth(named);
+  return authFor(named);
 }
 
 export function firebaseAuth(): Auth | null {
   if (!isConfigured()) return null;
   if (!auth) {
-    auth = getAuth(app());
+    auth = authFor(app());
     if (emulator) connectAuthEmulator(auth, emulator, { disableWarnings: true });
     onAuthStateChanged(auth, (user) => {
       state = { ready: true, account: user ? toAccount(user) : null };
@@ -77,15 +139,11 @@ export const currentAccount = () => state.account;
 export async function signIn(): Promise<void> {
   const target = firebaseAuth();
   if (!target) throw new Error("Lexiro 尚未設定登入服務。");
-  const { signInWithPopup, signInWithRedirect } = await import("firebase/auth");
-  const provider = new GoogleAuthProvider();
   try {
-    await signInWithPopup(target, provider);
+    await popupOrRedirect(target, new GoogleAuthProvider());
   } catch (reason) {
-    // A blocked popup (in-app browsers) cannot sign in at all: use a full-page redirect.
-    const code = (reason as { code?: string } | null)?.code;
-    if (code !== "auth/popup-blocked" && code !== "auth/operation-not-supported-in-this-environment") throw reason;
-    await signInWithRedirect(target, provider);
+    if (isClosedStorage(reason)) throw new Error(SIGN_IN_FAILED);
+    throw reason;
   }
 }
 
@@ -110,7 +168,12 @@ export async function deleteAccount(erase: () => Promise<void>): Promise<void> {
   const user = current?.currentUser;
   if (!current || !user) return;
   const { reauthenticateWithPopup, deleteUser } = await import("firebase/auth");
-  await reauthenticateWithPopup(user, new GoogleAuthProvider());
+  try {
+    await reauthenticateWithPopup(user, new GoogleAuthProvider());
+  } catch (reason) {
+    if (!isClosedStorage(reason)) throw reason;
+    await reauthenticateWithPopup(user, new GoogleAuthProvider());
+  }
   if (current.currentUser?.uid !== user.uid) throw new Error("請用要刪除的那個帳號重新登入。");
   await user.getIdToken(true);
   await erase();

@@ -4,7 +4,7 @@ import { GoogleLogo } from "@phosphor-icons/react";
 import type { UserCredential } from "firebase/auth";
 import { Button, EmptyState, Panel, type ActionStatus } from "design-kit";
 import { appCheckHeaders } from "@/data/app-check";
-import { sameOriginAuth } from "@/data/auth";
+import { popupOrRedirect, sameOriginAuth } from "@/data/auth";
 import { workerUrl } from "@/data/config";
 import { Brand } from "@/ui/brand";
 import { Page } from "@/ui/page";
@@ -82,15 +82,10 @@ export default function AppAuthPage() {
       const runtime = await import("firebase/auth");
       const provider = new runtime.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: "select_account" });
-      try {
-        await handOff(await runtime.signInWithPopup(auth, provider), challenge, redirect);
-      } catch (reason) {
-        const code = (reason as { code?: string } | null)?.code;
-        if (code !== "auth/popup-blocked" && code !== "auth/operation-not-supported-in-this-environment") throw reason;
-        // In-app browser sheets may refuse popups; a full redirect works there.
+      const result = await popupOrRedirect(auth, provider, () => {
         sessionStorage.setItem(PENDING_KEY, JSON.stringify({ challenge, redirect }));
-        await runtime.signInWithRedirect(auth, provider);
-      }
+      });
+      if (result) await handOff(result, challenge, redirect);
     } catch {
       setError(FAILED);
       setStatus("idle");
