@@ -85,20 +85,20 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
   return (
     <div className="grid gap-4">
       <div className="relative">
-        <MagnifyingGlass aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-faint" />
+        <MagnifyingGlass aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-faint" weight="bold" />
         <Input aria-label="搜尋單字集" className="pl-11" onChange={(event) => onQuery(event.target.value)} placeholder="搜尋單字集" type="search" value={query} />
       </div>
       {folders.length ? <Segmented label="資料夾" onChange={onFolder} options={options} value={options.some((o) => o.value === folder) ? folder : ALL} /> : null}
       {visible.length ? (
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {visible.map((set) => (
-            <li key={set.id}>
-              <Panel asChild interactive>
-                <AppLink className="flex items-center gap-3.5" href={`/app/sets/${set.id}`}>
+        <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
+          {visible.map((set, index) => (
+            <li className="content-in" key={set.id} style={{ animationDelay: `${Math.min(index, 8) * 40}ms` }}>
+              <Panel asChild className="h-full" interactive>
+                <AppLink className="grid content-between gap-4" href={`/app/sets/${set.id}`}>
                   <SetIcon hue={set.hue} icon={set.icon} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-base font-semibold">{set.name}</span>
-                    <span className="block text-[0.8125rem] text-ink-muted">
+                  <span className="min-w-0">
+                    <span className="block truncate text-base font-extrabold">{set.name}</span>
+                    <span className="block text-[0.8125rem] font-medium text-ink-muted">
                       <span className="font-latin">{set.wordCount}</span> 個單字
                       {set.questionCount ? <> · <span className="font-latin">{set.questionCount}</span> 題</> : null}
                     </span>

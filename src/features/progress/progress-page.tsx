@@ -1,11 +1,13 @@
 import { useMemo } from "react";
 import { calendarDay, PRACTICE_TASKS, shiftDay, streak, type Tally } from "@lexiro/contract";
-import { AnimatedNumber, EmptyState, AppLink, Button, Panel, SectionTitle, Tile, cn } from "design-kit";
+import { Crown, Fire, Lightning, Target } from "@phosphor-icons/react";
+import { AnimatedNumber, EmptyState, AppLink, Button, Panel, SectionTitle, cn } from "design-kit";
 import { useLearning } from "@/data/learning";
 import { FAMILIARITY_LABELS, TASK_LABELS } from "@/domain/labels";
 import { Page } from "@/ui/page";
 
 const WEEKS = 15;
+const LEVEL_TONE = ["bg-ink-faint/40", "bg-hue-sky", "bg-contrast", "bg-positive"];
 const percent = (tally?: Tally) => (tally?.answered ? Math.round((tally.correct / tally.answered) * 100) : null);
 
 export default function ProgressPage() {
@@ -38,16 +40,17 @@ export default function ProgressPage() {
   return (
     <Page title="進度">
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-        {[
-          ["連續天數", streak(learning.days, today), "天"],
-          ["最長連續", stats.best, "天"],
-          ["總作答", stats.total.answered, "題"],
-          ["答對率", percent(stats.total) ?? 0, "%"],
-        ].map(([label, value, unit]) => (
-          <Tile key={label as string}>
-            <p className="text-sm text-ink-muted">{label}</p>
-            <p className="font-latin text-3xl font-bold tracking-tight"><AnimatedNumber value={value as number} /><span className="ml-0.5 text-base font-medium text-ink-faint">{unit}</span></p>
-          </Tile>
+        {([
+          ["連續天數", streak(learning.days, today), "天", Fire, "bg-highlight text-on-highlight"],
+          ["最長連續", stats.best, "天", Crown, "bg-hue-rose text-white"],
+          ["總作答", stats.total.answered, "題", Lightning, "bg-contrast text-on-contrast"],
+          ["答對率", percent(stats.total) ?? 0, "%", Target, "bg-positive text-on-positive"],
+        ] as const).map(([label, value, unit, Icon, tone]) => (
+          <Panel className="grid gap-2" key={label}>
+            <span aria-hidden className={cn("grid size-9 place-items-center rounded-xl", tone)}><Icon className="size-5" weight="fill" /></span>
+            <p className="font-latin text-3xl font-extrabold tracking-tight"><AnimatedNumber value={value} /><span className="ml-0.5 text-base font-bold text-ink-faint">{unit}</span></p>
+            <p className="text-sm font-bold text-ink-muted">{label}</p>
+          </Panel>
         ))}
       </div>
       <Panel className="grid gap-3">
@@ -60,9 +63,9 @@ export default function ProgressPage() {
                 const level = day > today ? -1 : answered === 0 ? 0 : answered >= learning.goal ? 4 : Math.ceil((answered / peak) * 3);
                 return (
                   <span
-                    className={cn("size-4 rounded-[4px] md:size-5", level < 0 ? "bg-transparent" : level === 0 ? "bg-surface-raised" : "bg-contrast", day === today && "ring-2 ring-highlight")}
+                    className={cn("size-4 rounded-[5px] md:size-5", level < 0 ? "bg-transparent" : level === 0 ? "bg-surface-pressed" : level === 4 ? "bg-positive" : "bg-contrast", day === today && "ring-2 ring-highlight ring-offset-1 ring-offset-surface")}
                     key={day}
-                    style={level > 0 ? { opacity: [0, 0.35, 0.6, 0.8, 1][level] } : undefined}
+                    style={level > 0 && level < 4 ? { opacity: [0, 0.35, 0.6, 0.85][level] } : undefined}
                     title={`${day}：${answered} 題`}
                   />
                 );
@@ -70,18 +73,18 @@ export default function ProgressPage() {
             </div>
           ))}
         </div>
-        <p className="text-[0.8125rem] text-ink-muted">顏色越深代表那天練得越多，最深代表達成每日目標（{learning.goal} 題）。</p>
+        <p className="text-[0.8125rem] font-medium text-ink-muted">紫色越深代表練得越多，綠色代表達成每日目標（{learning.goal} 題）。</p>
       </Panel>
       <div className="grid gap-4 md:grid-cols-2">
         <Panel className="grid gap-3">
           <SectionTitle>熟悉度</SectionTitle>
           <p className="text-sm text-ink-muted">練習過 <span className="font-latin font-semibold text-ink">{stats.practised}</span> 個字義</p>
-          <div className="flex h-3 overflow-hidden rounded-full bg-surface-raised">
-            {stats.levels.map((count, level) => count ? <span className="bg-contrast" key={level} style={{ width: `${(count / stats.practised) * 100}%`, opacity: 0.25 + level * 0.25 }} /> : null)}
+          <div className="flex h-4 gap-1 overflow-hidden rounded-full">
+            {stats.levels.map((count, level) => count ? <span className={cn("bar-in rounded-full", LEVEL_TONE[level])} key={level} style={{ width: `${(count / stats.practised) * 100}%` }} /> : null)}
           </div>
           <ul className="grid grid-cols-2 gap-2 text-sm">
             {stats.levels.map((count, level) => (
-              <li className="flex items-center gap-2" key={level}><span className="size-2.5 rounded-full bg-contrast" style={{ opacity: 0.25 + level * 0.25 }} />{FAMILIARITY_LABELS[level]}<span className="ml-auto font-latin text-ink-muted">{count}</span></li>
+              <li className="flex items-center gap-2 font-semibold" key={level}><span className={cn("size-3 rounded-full", LEVEL_TONE[level])} />{FAMILIARITY_LABELS[level]}<span className="ml-auto font-latin text-ink-muted">{count}</span></li>
             ))}
           </ul>
         </Panel>
@@ -92,8 +95,8 @@ export default function ProgressPage() {
               const rate = percent(learning.tasks[task])!;
               return (
                 <li className="grid gap-1" key={task}>
-                  <div className="flex text-sm"><span>{TASK_LABELS[task]}</span><span className="ml-auto font-latin text-ink-muted">{rate}% · {learning.tasks[task].answered} 題</span></div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-surface-raised"><div className="h-full rounded-full bg-contrast" style={{ width: `${rate}%` }} /></div>
+                  <div className="flex text-sm font-semibold"><span>{TASK_LABELS[task]}</span><span className="ml-auto font-latin text-ink-muted">{rate}% · {learning.tasks[task].answered} 題</span></div>
+                  <div className="h-3 overflow-hidden rounded-full bg-surface-pressed"><div className={cn("bar-in h-full rounded-full", rate >= 80 ? "bg-positive" : rate >= 50 ? "bg-highlight" : "bg-danger")} style={{ width: `${rate}%` }} /></div>
                 </li>
               );
             })}

@@ -98,11 +98,11 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
           return (
             <button
               className={cn(
-                "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
-                !locked && "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]",
-                !reveal && picked && "border-contrast bg-accent-soft",
-                reveal && right && "border-positive bg-positive/12",
-                wrong && "border-danger bg-danger/12",
+                "flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-semibold outline-none transition-[background-color,border-color,translate,box-shadow,opacity] duration-[var(--motion-touch)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
+                !locked && "border-line bg-surface shadow-[0_4px_0_var(--line-strong)] hover:bg-surface-hover active:translate-y-1 active:shadow-none",
+                !reveal && picked && "translate-y-1 border-contrast bg-accent-soft",
+                reveal && right && "pop-in border-positive bg-positive/15 shadow-[0_4px_0_var(--positive-edge)]",
+                wrong && "shake border-danger bg-danger/15",
                 locked && !picked && !(reveal && right) && "border-line bg-surface opacity-55",
               )}
               disabled={locked}
@@ -110,7 +110,7 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
               onClick={() => send({ type: "answer", index: state.index, choice: index })}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold", reveal && right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
+              <span aria-hidden className={cn("grid size-8 shrink-0 place-items-center rounded-xl border-2 font-latin text-sm font-extrabold", reveal && right ? "border-positive bg-positive text-on-positive" : wrong ? "border-danger bg-danger text-on-danger" : "border-line text-ink-faint")}>
                 {reveal && right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", /[A-Za-z]/.test(option) && "font-latin")}>{option}</span>
@@ -120,7 +120,7 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
       </div>
       {reveal ? (
         <Panel className="message-in grid gap-1" role="status">
-          <p className={cn("font-semibold", gained ? "text-positive" : "text-danger")}>{gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}</p>
+          <p className={cn("pop-in text-xl font-extrabold", gained ? "text-positive" : "text-danger")}>{gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}</p>
           {reveal.explanation ? <p className="text-[0.9375rem] text-ink-muted">{reveal.explanation}</p> : null}
         </Panel>
       ) : chosen !== null ? <p className="px-1 text-sm text-ink-muted">已作答，等其他人…</p> : null}
@@ -187,6 +187,8 @@ function Ended({ state }: { state: RoomState }) {
   );
 }
 
+const MEDAL = ["bg-highlight text-on-highlight shadow-[0_2px_0_var(--highlight-edge)]", "bg-ink-faint/40 text-ink", "bg-hue-amber/40 text-ink"];
+
 function Scoreboard({ players, you, hostUid, title }: { players: RoomPlayer[]; you: string; hostUid: string; title: string }) {
   return (
     <ListGroup title={title}>
@@ -196,13 +198,13 @@ function Scoreboard({ players, you, hostUid, title }: { players: RoomPlayer[]; y
           key={player.uid}
           label={
             <span className={cn("flex items-center gap-2", !player.connected && "text-ink-faint")}>
-              <span className="w-5 tabular-nums text-ink-muted">{index + 1}</span>
+              <span className={cn("grid size-7 shrink-0 place-items-center rounded-full font-latin text-sm font-extrabold", MEDAL[index] ?? "text-ink-muted")}>{index + 1}</span>
               <span className="truncate">{player.name}</span>
               {player.uid === hostUid ? <Crown aria-label="房主" className="text-highlight" weight="fill" /> : null}
               {player.uid === you ? <Chip>你</Chip> : null}
             </span>
           }
-          value={<span className="tabular-nums">{player.score}</span>}
+          value={<span className="font-latin text-lg font-extrabold tabular-nums text-ink">{player.score}</span>}
         />
       ))}
     </ListGroup>

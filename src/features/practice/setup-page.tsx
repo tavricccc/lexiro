@@ -87,7 +87,7 @@ export default function SetupPage() {
             <li className="flex min-h-14 items-center gap-3.5 px-4 py-2.5" key={set.id}>
               <SetIcon className="size-9 [&_svg]:size-5" hue={set.hue} icon={set.icon} />
               <span className="min-w-0 flex-1">
-                <span className="block truncate">{set.name}</span>
+                <span className="block truncate font-bold">{set.name}</span>
                 <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>
               </span>
             </li>
@@ -101,10 +101,10 @@ export default function SetupPage() {
               <button aria-pressed={on} className="flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" onClick={() => toggleSet(set.id)} type="button">
                 <SetIcon className="size-9 [&_svg]:size-5" hue={set.hue} icon={set.icon} />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate">{set.name}</span>
+                  <span className="block truncate font-bold">{set.name}</span>
                   <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>
                 </span>
-                <span aria-hidden className={cn("grid size-6 place-items-center rounded-full border-2 transition-colors", on ? "border-contrast bg-contrast text-on-contrast" : "border-ink-faint/50")}>
+                <span aria-hidden className={cn("grid size-7 place-items-center rounded-lg border-2 transition-[background-color,border-color,scale] duration-[var(--motion-control)] ease-[var(--ease-bounce)]", on ? "scale-110 border-contrast-edge bg-contrast text-on-contrast" : "border-line-strong")}>
                   {on ? <Check className="size-3.5" weight="bold" /> : null}
                 </span>
               </button>
@@ -113,14 +113,14 @@ export default function SetupPage() {
         })}
       </ListGroup>}
       <section className="grid gap-2">
-        <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題型</h2>
+        <h2 className="px-1 text-sm font-extrabold text-ink-muted">題型</h2>
         {loaded ? (
           <div className="grid gap-2 sm:grid-cols-2">
             {available.map((task) => {
               const on = tasks.includes(task);
               return (
-                <button aria-pressed={on} className={cn("rounded-tile border p-3.5 text-left outline-none transition-colors duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]", on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised")} key={task} onClick={() => toggleTask(task)} type="button">
-                  <span className={cn("block font-semibold", on && "text-accent-ink")}>{TASK_LABELS[task]}</span>
+                <button aria-pressed={on} className={cn("cursor-pointer rounded-2xl border-2 p-4 text-left outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] active:translate-y-1 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)]", on ? "border-contrast bg-accent-soft shadow-[0_4px_0_var(--contrast-edge)]" : "border-line bg-surface shadow-[0_4px_0_var(--line-strong)] hover:bg-surface-hover")} key={task} onClick={() => toggleTask(task)} type="button">
+                  <span className={cn("block font-extrabold", on && "text-accent-ink")}>{TASK_LABELS[task]}</span>
                   <span className="block text-[0.8125rem] text-ink-muted">{TASK_HINTS[task]}</span>
                 </button>
               );
@@ -129,15 +129,15 @@ export default function SetupPage() {
         ) : <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>}
       </section>
       <section className="grid gap-2">
-        <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">出題方式</h2>
+        <h2 className="px-1 text-sm font-extrabold text-ink-muted">出題方式</h2>
         <Segmented label="出題方式" onChange={setFocus} options={[{ value: "all", label: "隨機" }, { value: "weak", label: "不熟的優先" }, { value: "starred", label: "只練標星" }]} value={focus} />
       </section>
       <section className="grid gap-2">
-        <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題數</h2>
+        <h2 className="px-1 text-sm font-extrabold text-ink-muted">題數</h2>
         <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={size} />
       </section>
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-      <Button className="justify-self-start" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button>
+      <Button className="w-full md:w-auto md:justify-self-start md:min-w-56" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button>
     </Page>
   );
 }
