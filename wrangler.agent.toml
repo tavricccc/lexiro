@@ -10,6 +10,7 @@ crons = ["17 * * * *"]
 [vars]
 AGENT_PUBLIC_URL = "https://lexiro-agent.tavric.workers.dev"
 APP_ORIGIN = "https://lexiro.vercel.app"
+EXTRA_APP_ORIGINS = "https://lexiro-beta.vercel.app"
 FIREBASE_PROJECT_ID = "wordmem-497209"
 
 [[d1_databases]]

@@ -10,6 +10,8 @@ export interface AgentEnv {
   OAUTH_PROVIDER: OAuthHelpers;
   AGENT_PUBLIC_URL: string;
   APP_ORIGIN: string;
+  /** Other app origins allowed to call the API, comma separated, such as a beta site. */
+  EXTRA_APP_ORIGINS?: string;
   FIREBASE_PROJECT_ID: string;
   /** Firebase project number for App Check; absent disables enforcement. */
   FIREBASE_PROJECT_NUMBER?: string;

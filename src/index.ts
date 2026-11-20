@@ -16,6 +16,7 @@ import { handleAdminApi } from "./agent/admin";
 import { recordProfile } from "./agent/profile";
 import { APP_AUTH_PURGE_SQL, issueAppAuthCode, redeemAppAuthCode } from "./agent/app-auth";
 import { unlimitedAccounts, type AgentEnv } from "./agent/types";
+import { isAppOrigin } from "./agent/origins";
 
 interface Dependencies {
   verify?: typeof verifyFirebaseToken;
@@ -124,11 +125,12 @@ export function createWorker(dependencies: Dependencies = {}) {
 
     async fetch(request: Request, env: AgentEnv, ctx: ExecutionContext): Promise<Response> {
       const origin = request.headers.get("origin");
+      const allowed = isAppOrigin(env, origin);
       const headers: Record<string, string> = {
         "Cache-Control": "no-store",
         "Referrer-Policy": "no-referrer",
         "X-Content-Type-Options": "nosniff",
-        ...(origin === env.APP_ORIGIN ? { "Access-Control-Allow-Origin": origin } : {}),
+        ...(allowed && origin ? { "Access-Control-Allow-Origin": origin } : {}),
         "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, MCP-Protocol-Version, X-Firebase-AppCheck",
         "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
         "Access-Control-Max-Age": "86400",
@@ -140,12 +142,12 @@ export function createWorker(dependencies: Dependencies = {}) {
         return new Response(response.body, { status: response.status, headers: next });
       };
       try {
-        if (origin && origin !== env.APP_ORIGIN) throw new HttpError(403, "forbidden_origin");
+        if (origin && !allowed) throw new HttpError(403, "forbidden_origin");
         if (request.method === "OPTIONS") return decorate(new Response(null, { status: 204 }));
         const path = new URL(request.url).pathname;
         // A socket upgrade must reach the client untouched; rebuilding the response would drop it.
         if (isRoomSocketPath(path)) {
-          if (origin !== env.APP_ORIGIN) throw new HttpError(403, "forbidden_origin");
+          if (!allowed) throw new HttpError(403, "forbidden_origin");
           return await connectRoom(request, env.ROOMS);
         }
         // Client registration happens inside the provider, so throttle it before delegating.
