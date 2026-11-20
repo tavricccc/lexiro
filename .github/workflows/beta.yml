@@ -1,0 +1,65 @@
+name: Deploy lexiro beta
+
+# A dev/* branch goes to a Vercel preview, then the fixed beta address points at it.
+# Production (lexiro.vercel.app) is untouched; both sites share the same Worker and data.
+on:
+  push:
+    branches:
+      - "dev/**"
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-beta
+  cancel-in-progress: true
+
+env:
+  BETA_HOST: lexiro-beta.vercel.app
+
+jobs:
+  beta:
+    runs-on: ubuntu-latest
+    # The Vercel and Firebase secrets live in the Production environment.
+    environment:
+      name: Production
+      url: https://lexiro-beta.vercel.app
+    env:
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+      NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+      NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+      NEXT_PUBLIC_AGENT_WORKER_URL: ${{ vars.NEXT_PUBLIC_AGENT_WORKER_URL }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+
+      - name: Pull Vercel preview settings
+        run: |
+          rm -rf .vercel
+          npx --yes vercel@58.9.4 pull --yes --environment=preview --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN"
+
+      - name: Build
+        run: npx --yes vercel@58.9.4 build --yes --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN"
+
+      - name: Deploy preview and point the beta address at it
+        run: |
+          url=$(npx --yes vercel@58.9.4 deploy --yes --prebuilt --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN")
+          npx --yes vercel@58.9.4 alias set "$url" "$BETA_HOST" --token "$VERCEL_TOKEN"
+          echo "$url -> https://$BETA_HOST"
