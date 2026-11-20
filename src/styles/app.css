@@ -21,3 +21,11 @@
 :root {
   --kit-font-sans: "HarmonyOS Sans TC", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
 }
+
+.confetti {
+  animation: confetti-fall 1.8s var(--ease-depart) forwards;
+}
+@keyframes confetti-fall {
+  from { translate: 0 -2rem; rotate: 0deg; opacity: 1; }
+  to { translate: var(--drift) 105vh; rotate: var(--spin); opacity: 0.8; }
+}

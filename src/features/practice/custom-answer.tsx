@@ -12,8 +12,8 @@ interface Props<M extends CustomStep["mode"]> {
 }
 
 const latin = (text: string) => /[A-Za-z]/.test(text);
-const tile = "rounded-tile border px-4 py-3 text-left text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
-const chip = "rounded-chip border px-3 py-2 font-latin text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const tile = "cursor-pointer rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-semibold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const chip = "cursor-pointer rounded-xl border-2 px-3 py-2 font-latin text-base font-semibold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
 
 function Confirm({ disabled, onClick }: { disabled: boolean; onClick: () => void }) {
   return <Button className="justify-self-end" disabled={disabled} onClick={onClick} size="lg" variant="primary"><Check weight="bold" />確認</Button>;
@@ -35,7 +35,7 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
               aria-pressed={on}
               className={cn(
                 tile, "flex min-h-14 items-center gap-3",
-                !revealed && (on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]"),
+                !revealed && (on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised"),
                 right && "border-positive bg-positive/12",
                 wrong && "border-danger bg-danger/12",
                 revealed && !right && !wrong && "border-line bg-surface opacity-60",
@@ -45,7 +45,7 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
               onClick={() => toggle(index)}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
+              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "bg-positive text-on-positive" : wrong ? "bg-danger text-on-danger" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
                 {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : on ? <Check weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", latin(option) && "font-latin")} lang={latin(option) ? "en" : undefined}>{option}</span>
@@ -88,12 +88,12 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
   const left = step.pieces.map((_, index) => index).filter((index) => !line.includes(index));
   return (
     <div className="grid gap-3">
-      <div aria-label="你排的順序" className="flex min-h-16 flex-wrap content-start gap-2 rounded-tile border border-dashed border-line p-2" role="list">
+      <div aria-label="你排的順序" className="flex min-h-16 flex-wrap content-start gap-2 rounded-tile border border-2 border-dashed border-line-strong p-2" role="list">
         {line.map((index, at) => {
           const right = revealed && step.order[at] === index;
           return (
             <button
-              className={cn(chip, revealed ? (right ? "border-positive bg-positive/12 text-positive" : "border-danger bg-danger/12 text-danger") : "border-contrast bg-accent-soft active:scale-[var(--motion-press-scale)]")}
+              className={cn(chip, revealed ? (right ? "border-positive bg-positive/12 text-positive" : "border-danger bg-danger/12 text-danger") : "border-contrast bg-accent-soft")}
               disabled={revealed}
               key={index}
               lang="en"
@@ -110,7 +110,7 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
         <>
           <div aria-label="還沒排的片段" className="flex flex-wrap gap-2" role="group">
             {left.map((index) => (
-              <button className={cn(chip, "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]")} key={index} lang="en" onClick={() => setPlaced((current) => [...current, index])} type="button">
+              <button className={cn(chip, "border-line bg-surface hover:bg-surface-raised")} key={index} lang="en" onClick={() => setPlaced((current) => [...current, index])} type="button">
                 {step.pieces[index]}
               </button>
             ))}
