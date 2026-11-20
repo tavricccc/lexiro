@@ -1,7 +1,7 @@
 /* Design tokens. Components read these through the Tailwind names below;
    nothing outside this file states a colour, radius or elevation of its own.
    Every value here is a custom property: an app retunes the palette by
-   redefining them after importing the kit (see themes/novae.css). */
+   redefining them after importing the kit . */
 
 @theme inline {
   --color-canvas: var(--canvas);
@@ -21,79 +21,126 @@
   --color-info: var(--info);
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
-  --radius-chip: 0.5rem;
-  --radius-tile: 0.875rem;
-  --radius-panel: 1.375rem;
+  --color-surface-hover: var(--surface-hover);
+  --color-line-strong: var(--line-strong);
+  --color-contrast-edge: var(--contrast-edge);
+  --color-highlight: var(--highlight);
+  --color-on-highlight: var(--on-highlight);
+  --color-on-danger: var(--on-danger);
+  --color-on-positive: var(--on-positive);
+  --color-hue-rose: var(--hue-rose);
+  --color-hue-amber: var(--hue-amber);
+  --color-hue-mint: var(--hue-mint);
+  --color-hue-sky: var(--hue-sky);
+  --color-hue-violet: var(--hue-violet);
+  --radius-chip: 0.625rem;
+  --radius-tile: 1rem;
+  --radius-panel: 1.5rem;
   /* A home-screen app icon's corner: a fixed share of its side, so it holds at any size. */
   --radius-icon: 22.37%;
   --shadow-panel: var(--elevation-panel);
   --shadow-float: var(--elevation-float);
 }
 
-/* Default palette: Strata 朱 (from cc-remote). The emphatic pill is the accent:
-   orange with white type. Light by default; `data-theme="dark"` (set before paint
-   by theme-script.js) switches to dark. */
+/* Lexiro "grape": one bold violet for the main action, a sunny yellow for
+   streaks and rewards, and clear green and coral that only ever mean right
+   and wrong. Every pressable thing has a darker `-edge` underneath it. */
 :root {
   color-scheme: light;
-  --canvas: #f4f3f1;
-  --canvas-gradient: none;
-  --canvas-foot: #f4f3f1;
+  --canvas: #f5f2ff;
+  --canvas-foot: #f5f2ff;
+  --canvas-gradient:
+    radial-gradient(90% 45% at 0% 0%, rgb(124 77 255 / 12%), transparent 65%),
+    radial-gradient(60% 35% at 100% 8%, rgb(255 176 32 / 14%), transparent 70%),
+    linear-gradient(180deg, #f7f4ff 0%, #f5f2ff 100%);
   --surface: #ffffff;
-  --surface-raised: rgb(20 18 16 / 5%);
-  --surface-pressed: rgb(20 18 16 / 9%);
+  --surface-hover: #faf8ff;
+  --surface-raised: rgb(70 40 160 / 5%);
+  --surface-pressed: rgb(70 40 160 / 9%);
   --surface-solid: #ffffff;
-  --ink: #151312;
-  --ink-muted: #5c5855;
-  --ink-faint: #918c88;
-  --line: rgb(20 18 16 / 9%);
-  --contrast: #dc3a1c;
+  --ink: #241b45;
+  --ink-muted: #625a80;
+  --ink-faint: #9890b3;
+  --line: #e8e2f8;
+  --line-strong: #d9d0f2;
+  --contrast: #7547f5;
+  --contrast-edge: #5229cf;
   --on-contrast: #ffffff;
-  --accent-soft: rgb(220 58 28 / 11%);
-  --accent-ink: #b92c0e;
-  --danger: #c2185b;
-  --positive: #23915a;
-  --caution: #b0730f;
-  --info: #2f8cf0;
-  --elevation-panel: 0 0 0 1px rgb(20 18 16 / 4%), 0 8px 24px rgb(40 30 24 / 7%);
-  --elevation-float: 0 0 0 1px rgb(20 18 16 / 6%), 0 16px 40px rgb(40 30 24 / 16%);
-  --elevation-glass: 0 8px 30px rgb(40 30 24 / 8%);
-  --focus-ring: rgb(220 58 28 / 45%);
-  --scrim: rgb(20 18 16 / 34%);
+  --accent-soft: #efe9ff;
+  --accent-ink: #5a2fd9;
+  --highlight: #ffb020;
+  --highlight-edge: #e08600;
+  --on-highlight: #3d2400;
+  --danger: #f2405f;
+  --danger-edge: #c4223f;
+  --on-danger: #ffffff;
+  --positive: #1db86c;
+  --positive-edge: #11904f;
+  --on-positive: #ffffff;
+  --caution: #c27a00;
+  --info: #2f7ff0;
+  --hue-rose: #f0479a;
+  --hue-amber: #ff9a1f;
+  --hue-mint: #1db86c;
+  --hue-sky: #2f8cf0;
+  --hue-violet: #7547f5;
+  --elevation-panel: 0 4px 0 var(--line-strong);
+  --elevation-float: 0 18px 50px rgb(60 30 140 / 20%);
+  --focus-ring: rgb(117 71 245 / 35%);
+  --scrim: rgb(30 18 70 / 40%);
 
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --gutter: max(1rem, var(--safe-left), var(--safe-right));
-  --bottom-nav-height: 3.75rem;
+  --bottom-nav-height: 4.25rem;
   --bottom-nav-gap: max(0.75rem, var(--safe-bottom));
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --canvas: #0d0c0b;
-  --canvas-foot: #0d0c0b;
-  --surface: #181615;
-  --surface-raised: rgb(255 255 255 / 6%);
-  --surface-pressed: rgb(255 255 255 / 10%);
-  --surface-solid: #1c1a18;
-  --ink: #f4f2f0;
-  --ink-muted: #aaa5a1;
-  --ink-faint: #726d69;
-  --line: rgb(255 255 255 / 9%);
-  --contrast: #ff6a4a;
-  --on-contrast: #2a0a02;
-  --accent-soft: rgb(255 106 74 / 16%);
-  --accent-ink: #ff9076;
-  --danger: #ff7ba6;
-  --positive: #5fcb9b;
-  --caution: #eab765;
-  --info: #5aa8ff;
-  --elevation-panel: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(0 0 0 / 28%);
-  --elevation-float: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(0 0 0 / 45%);
-  --elevation-glass: 0 8px 30px rgb(0 0 0 / 20%);
-  --focus-ring: rgb(255 106 74 / 55%);
-  --scrim: rgb(0 0 0 / 58%);
+  --canvas: #150f2b;
+  --canvas-foot: #150f2b;
+  --canvas-gradient:
+    radial-gradient(90% 45% at 0% 0%, rgb(140 100 255 / 18%), transparent 65%),
+    radial-gradient(60% 35% at 100% 8%, rgb(255 176 32 / 8%), transparent 70%),
+    linear-gradient(180deg, #170f30 0%, #150f2b 100%);
+  --surface: #211a3f;
+  --surface-hover: #271f4a;
+  --surface-raised: rgb(255 255 255 / 5%);
+  --surface-pressed: rgb(255 255 255 / 9%);
+  --surface-solid: #251d47;
+  --ink: #f4f1ff;
+  --ink-muted: #b6aed6;
+  --ink-faint: #7c739e;
+  --line: #342a5c;
+  --line-strong: #0f0a22;
+  --contrast: #a585ff;
+  --contrast-edge: #6b44e0;
+  --on-contrast: #1a0f40;
+  --accent-soft: rgb(165 133 255 / 16%);
+  --accent-ink: #c4b0ff;
+  --highlight: #ffc043;
+  --highlight-edge: #d18a00;
+  --on-highlight: #3d2400;
+  --danger: #ff6680;
+  --danger-edge: #c4304d;
+  --on-danger: #2b0610;
+  --positive: #3ddc8c;
+  --positive-edge: #1a9a5b;
+  --on-positive: #052715;
+  --caution: #f2b84b;
+  --info: #69a8ff;
+  --hue-rose: #ff6fb0;
+  --hue-amber: #ffad47;
+  --hue-mint: #3ddc8c;
+  --hue-sky: #5aa8ff;
+  --hue-violet: #a585ff;
+  --elevation-panel: 0 4px 0 var(--line-strong);
+  --elevation-float: 0 18px 50px rgb(0 0 0 / 50%);
+  --focus-ring: rgb(165 133 255 / 45%);
+  --scrim: rgb(5 2 15 / 62%);
 }
 
 /* The gradient is painted on the root itself, never on a fixed layer: an
@@ -121,24 +168,12 @@ body {
   color: var(--ink);
 }
 
-.glass {
-  background: var(--surface);
-}
-
-/* Floating chrome (sidebar, dock, tab rails, save bar) and quiet buttons share
-   one solid surface; nothing is frosted. */
-/* In the components layer, so a hover tint utility still wins. */
+/* Floating chrome (dock, rails, action bars) sits on a solid card with a tactile edge. */
 @layer components {
-  .glass-float,
-  .glass-control {
-    background-color: var(--surface);
-  }
   .glass-float {
-    border: 1px solid color-mix(in oklab, var(--ink) 6%, transparent);
-    box-shadow: var(--elevation-glass);
-  }
-  .glass-control {
-    border-color: color-mix(in oklab, var(--ink) 7%, transparent);
+    background-color: var(--surface);
+    border: 2px solid var(--line);
+    box-shadow: 0 4px 0 var(--line-strong), var(--elevation-float);
   }
 }
 
@@ -189,10 +224,4 @@ body {
 .edge-fade {
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1.5rem), transparent);
   mask-image: linear-gradient(to bottom, transparent, black 1rem, black calc(100% - 1.5rem), transparent);
-}
-
-/* A tooltip only names what is under the pointer; it never takes a tap meant
-   for the control beside it (its positioning wrapper included). */
-[data-radix-popper-content-wrapper]:has(> [role="tooltip"]) {
-  pointer-events: none;
 }

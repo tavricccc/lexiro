@@ -25,58 +25,6 @@
   }
 }
 
-/* Floating surfaces the Radix primitives mount and unmount: menus, popovers,
-   select lists and dialogs. Radix keeps a closing surface mounted until its
-   animation ends, so leaving is animated as well as arriving. A floating
-   surface grows from the side it hangs off. */
-.float-surface {
-  transform-origin: var(--radix-dropdown-menu-content-transform-origin, var(--radix-popover-content-transform-origin, var(--radix-select-content-transform-origin, var(--radix-tooltip-content-transform-origin, center))));
-}
-
-.float-surface[data-state="open"] {
-  animation: surface-in var(--motion-control) var(--ease-arrive);
-}
-
-.float-surface[data-state="closed"] {
-  animation: surface-out var(--motion-control-exit) var(--ease-depart) forwards;
-}
-
-.dialog-surface[data-state="open"] {
-  animation: surface-in var(--motion-nav) var(--ease-nav);
-}
-
-.dialog-surface[data-state="closed"] {
-  animation: surface-out var(--motion-control-exit) var(--ease-depart) forwards;
-}
-
-.scrim[data-state="open"] {
-  animation: scrim-in var(--motion-nav) var(--ease-nav);
-}
-
-.scrim[data-state="closed"] {
-  animation: scrim-in var(--motion-control-exit) var(--ease-depart) reverse forwards;
-}
-
-@keyframes surface-in {
-  from { opacity: 0; scale: var(--motion-surface-scale); }
-}
-
-@keyframes surface-out {
-  to { opacity: 0; scale: var(--motion-surface-scale); }
-}
-
-@keyframes scrim-in {
-  from { opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .float-surface[data-state],
-  .dialog-surface[data-state],
-  .scrim[data-state] {
-    animation-name: scrim-in;
-  }
-}
-
 /* Content that replaces a placeholder, or joins a list, rises into place
    instead of being there on one frame. A message that appears under a
    control drops in from it, and a proportion bar grows from its start. */
@@ -114,10 +62,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .pop-in,
   .content-in,
   .card-in,
   .message-in {
-    animation-name: scrim-in;
+    animation-name: fade-in;
   }
 
   .bar-in {
@@ -173,4 +122,38 @@
 ::view-transition-new(root) {
   animation-duration: var(--motion-reveal);
   animation-timing-function: var(--ease-move);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+/* Game feedback: things that matter pop in on the one overshooting curve, a miss shakes. */
+.pop-in {
+  animation: pop-in var(--motion-reveal) var(--ease-bounce) backwards;
+}
+@keyframes pop-in {
+  from { opacity: 0; scale: 0.6; }
+}
+
+.shake {
+  animation: shake 360ms var(--ease-move);
+}
+@keyframes shake {
+  20%, 60% { translate: -6px 0; }
+  40%, 80% { translate: 6px 0; }
+}
+
+.wiggle {
+  animation: wiggle 2.4s var(--ease-move) infinite;
+}
+@keyframes wiggle {
+  0%, 84%, 100% { rotate: 0deg; }
+  88% { rotate: -10deg; }
+  92% { rotate: 8deg; }
+  96% { rotate: -4deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shake, .wiggle { animation: none; }
 }

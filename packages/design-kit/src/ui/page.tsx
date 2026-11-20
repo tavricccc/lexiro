@@ -51,7 +51,7 @@ export function PageHeader({ actions, back, className, description, title }: {
     <span
       aria-hidden
       className={cn(
-        "pointer-events-none min-w-0 truncate text-center text-[0.9375rem] font-semibold transition-[opacity,translate] duration-[var(--motion-control)] ease-[var(--ease-move)]",
+        "pointer-events-none min-w-0 truncate text-center text-[0.9375rem] font-extrabold transition-[opacity,translate] duration-[var(--motion-control)] ease-[var(--ease-move)]",
         collapsed ? "opacity-100" : "-translate-y-1 opacity-0",
       )}
     >
@@ -62,7 +62,7 @@ export function PageHeader({ actions, back, className, description, title }: {
     <>
     {back || actions ? (
       // Outside the header so it stays pinned for the whole page; the small title is centred on the buttons' line.
-      <div className={cn("sticky z-40 -mb-2 grid h-9 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2", toolbarTop)}>
+      <div className={cn("sticky z-40 -mb-2 grid h-10 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2", toolbarTop)}>
         <div className="flex">
           {back ? (
             <HeaderButton aria-label={back.label} asChild>
@@ -79,7 +79,7 @@ export function PageHeader({ actions, back, className, description, title }: {
       </div>
     )}
     <header className={cn("grid gap-1", className)}>
-      <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-[1.75rem]">{title}</h1>
+      <h1 ref={titleRef} className="text-balance text-[1.75rem] font-extrabold leading-tight tracking-tight md:text-[2rem]">{title}</h1>
       {description ? <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
     </header>
     </>
@@ -95,11 +95,11 @@ function StateMessage({ action, description, icon, title, tone = "default" }: {
 }) {
   return (
     <Panel className="content-in flex flex-col items-center gap-4 px-6 py-10 text-center" role={tone === "danger" ? "alert" : undefined}>
-      <span aria-hidden className={cn("grid size-11 place-items-center rounded-full [&_svg]:size-5", tone === "danger" ? "bg-danger/15 text-danger" : "bg-surface-raised text-ink-muted")}>
+      <span aria-hidden className={cn("pop-in grid size-16 place-items-center rounded-3xl [&_svg]:size-8", tone === "danger" ? "bg-danger/15 text-danger" : "bg-accent-soft text-accent-ink")}>
         {icon}
       </span>
       <div className="grid gap-1">
-        <h2 className="text-base font-semibold">{title}</h2>
+        <h2 className="text-lg font-extrabold">{title}</h2>
         {description ? <p className="mx-auto max-w-md text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
       </div>
       {action}
@@ -108,7 +108,7 @@ function StateMessage({ action, description, icon, title, tone = "default" }: {
 }
 
 export function EmptyState({ action, description, title }: { action?: React.ReactNode; description?: React.ReactNode; title: React.ReactNode }) {
-  return <StateMessage action={action} description={description} icon={<Tray />} title={title} />;
+  return <StateMessage action={action} description={description} icon={<Tray weight="duotone" />} title={title} />;
 }
 
 /** A load that failed, with the reason and a way to try again. */

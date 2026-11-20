@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { GoogleLogo } from "@phosphor-icons/react";
-import { Button, DesignKitProvider, Spinner, Toaster, TooltipProvider, type Navigation } from "design-kit";
+import { Button, DesignKitProvider, Spinner, Toaster, type Navigation } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { signIn, useAuth } from "@/data/auth";
 import { isConfigured } from "@/data/config";
@@ -17,10 +17,10 @@ export function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <DesignKitProvider navigation={navigation}>
-        <TooltipProvider delayDuration={400}>
+
           <Outlet />
           <Toaster />
-        </TooltipProvider>
+
       </DesignKitProvider>
     </QueryClientProvider>
   );

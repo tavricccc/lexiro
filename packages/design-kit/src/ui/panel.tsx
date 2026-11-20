@@ -1,21 +1,15 @@
 import * as React from "react";
-import { Slot } from "radix-ui";
 import { cn } from "../lib/utils";
+import { Slot } from "./slot";
 
-/** The floating glass card every grouped piece of content sits on. */
-export function Panel({
-  asChild = false,
-  className,
-  interactive = false,
-  ...props
-}: React.ComponentProps<"div"> & { asChild?: boolean; interactive?: boolean }) {
-  const Component = asChild ? Slot.Root : "div";
+/** The card grouped content sits on; `interactive` makes the whole card a pressable tile. */
+export function Panel({ asChild = false, className, interactive = false, ...props }: React.ComponentProps<"div"> & { asChild?: boolean; interactive?: boolean }) {
+  const Component = asChild ? Slot : "div";
   return (
     <Component
       className={cn(
-        "glass block rounded-panel p-4 text-ink shadow-panel md:p-5",
-        interactive &&
-          "outline-none transition-[background-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+        "block rounded-panel border-2 border-line bg-surface p-4 text-ink shadow-[0_4px_0_var(--line-strong)] md:p-5",
+        interactive && "cursor-pointer outline-none transition-[translate,box-shadow,background-color] duration-[var(--motion-touch)] ease-[var(--ease-move)] hover:bg-surface-hover active:translate-y-1 active:shadow-[0_0_0_var(--line-strong)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)]",
         className,
       )}
       {...props}
@@ -23,19 +17,14 @@ export function Panel({
   );
 }
 
-/** A quieter surface nested inside a panel, such as one figure in a row of figures. */
 export function Tile({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("rounded-tile bg-surface-raised p-4", className)} {...props} />;
 }
 
-export function SectionTitle({ action, children, className }: {
-  action?: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
-}) {
+export function SectionTitle({ action, children, className }: { action?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("flex min-h-8 items-center justify-between gap-3 px-1", className)}>
-      <h2 className="text-[0.8125rem] font-medium text-ink-muted">{children}</h2>
+    <div className={cn("flex min-h-9 items-center justify-between gap-3 px-1", className)}>
+      <h2 className="text-lg font-extrabold tracking-tight">{children}</h2>
       {action}
     </div>
   );

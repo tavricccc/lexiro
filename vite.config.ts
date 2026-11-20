@@ -81,6 +81,8 @@ export default defineConfig(({ mode }) => ({
     environment: "jsdom",
     setupFiles: ["./tests/setup.ts"],
     include: ["tests/**/*.test.{ts,tsx}"],
+    // Rendering whole screens with ui-sdk parts in jsdom takes a few seconds.
+    testTimeout: 20000,
     env: loadEnv("test", process.cwd(), "NEXT_PUBLIC_"),
   },
 }));

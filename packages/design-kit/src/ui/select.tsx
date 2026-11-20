@@ -1,7 +1,7 @@
-import * as React from "react";
 import { CaretDown, Check } from "@phosphor-icons/react/ssr";
-import { Select as SelectPrimitive } from "radix-ui";
+import { Select as SelectRoot, SelectContent, SelectItem, SelectItemIndicator, SelectTrigger, SelectValue } from "@ui-sdk/react/select";
 import { cn } from "../lib/utils";
+import { popupClass } from "./popup";
 
 export interface SelectOption<Value extends string = string> {
   disabled?: boolean;
@@ -9,71 +9,47 @@ export interface SelectOption<Value extends string = string> {
   value: Value;
 }
 
-/**
- * One choice from a short list. The trigger shows the current answer unless
- * `renderTrigger` lays it out differently, as a list row does.
- */
-export function Select<Value extends string>({
-  className,
-  disabled,
-  label,
-  onChange,
-  options,
-  placeholder,
-  renderTrigger,
-  value,
-}: {
+export function Select<Value extends string>({ className, disabled, label, onChange, options, placeholder, value }: {
   className?: string;
   disabled?: boolean;
   label: string;
   onChange: (value: Value) => void;
   options: readonly SelectOption<Value>[];
   placeholder?: string;
-  renderTrigger?: (selected: SelectOption<Value> | undefined) => React.ReactNode;
   value: Value | "";
 }) {
-  const selected = options.find((option) => option.value === value);
   return (
-    <SelectPrimitive.Root disabled={disabled} onValueChange={(next) => onChange(next as Value)} value={value || undefined}>
-      <SelectPrimitive.Trigger
+    <SelectRoot
+      disabled={disabled}
+      onValueChange={(next) => { if (typeof next === "string") onChange(next as Value); }}
+      placeholder={placeholder}
+      presentation="auto"
+      value={value || null}
+    >
+      <SelectTrigger
         aria-label={label}
         className={cn(
-          renderTrigger
-            ? "outline-none"
-            : "inline-flex h-11 max-w-full items-center gap-2 rounded-full bg-surface-raised px-4 text-[0.9375rem] text-ink outline-none transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:opacity-40",
+          "inline-flex h-12 max-w-full cursor-pointer items-center gap-2 rounded-2xl border-2 border-line bg-surface px-4 text-[0.9375rem] font-semibold text-ink shadow-[0_3px_0_var(--line-strong)] outline-none transition-[translate,box-shadow] duration-[var(--motion-touch)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] data-disabled:opacity-40",
           className,
         )}
       >
-        {renderTrigger ? renderTrigger(selected) : (
-          <>
-            <span className={cn("min-w-0 truncate", !selected && "text-ink-faint")}>{selected?.label ?? placeholder}</span>
-            <CaretDown aria-hidden className="size-4 shrink-0 text-ink-muted" weight="bold" />
-          </>
-        )}
-      </SelectPrimitive.Trigger>
-      <SelectPrimitive.Portal>
-        <SelectPrimitive.Content
-          className="float-surface z-50 max-h-[min(24rem,var(--radix-select-content-available-height))] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-panel border border-line bg-surface-solid p-1.5 text-ink shadow-float"
-          position="popper"
-          sideOffset={8}
-        >
-          <SelectPrimitive.Viewport>
-            {options.map((option) => (
-              <SelectPrimitive.Item
-                className="flex h-11 cursor-pointer items-center gap-3 rounded-tile pl-3 pr-2 text-[0.9375rem] outline-none data-[disabled]:opacity-40 data-[highlighted]:bg-surface-raised"
-                disabled={option.disabled}
-                key={option.value}
-                value={option.value}
-              >
-                <SelectPrimitive.ItemText>{option.label}</SelectPrimitive.ItemText>
-                <SelectPrimitive.ItemIndicator className="ml-auto">
-                  <Check aria-hidden className="size-4" weight="bold" />
-                </SelectPrimitive.ItemIndicator>
-              </SelectPrimitive.Item>
-            ))}
-          </SelectPrimitive.Viewport>
-        </SelectPrimitive.Content>
-      </SelectPrimitive.Portal>
-    </SelectPrimitive.Root>
+        <SelectValue className="min-w-0 truncate" />
+        <CaretDown aria-hidden className="size-4 shrink-0 text-ink-muted" weight="bold" />
+      </SelectTrigger>
+      <SelectContent className={cn(popupClass, "max-h-[min(24rem,var(--available-height))] min-w-(--anchor-width) overflow-y-auto p-1.5")} sideOffset={8}>
+        {options.map((option) => (
+          <SelectItem
+            className="flex h-12 cursor-pointer items-center gap-3 rounded-xl pl-3 pr-2 text-[0.9375rem] font-semibold outline-none data-disabled:opacity-40 data-highlighted:bg-surface-raised data-selected:text-accent-ink"
+            disabled={option.disabled}
+            key={option.value}
+            label={option.label}
+            value={option.value}
+          >
+            {option.label}
+            <SelectItemIndicator className="ml-auto"><Check aria-hidden className="size-4" weight="bold" /></SelectItemIndicator>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </SelectRoot>
   );
 }

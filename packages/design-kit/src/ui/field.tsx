@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 
 const controlClass =
-  "w-full rounded-tile border border-line bg-surface-raised px-4 text-base text-ink outline-none placeholder:text-ink-faint transition-[border-color,background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus:border-[var(--focus-ring)] focus:bg-surface-pressed disabled:opacity-40 aria-invalid:border-danger";
+  "w-full rounded-2xl border-2 border-line bg-surface px-4 text-base font-medium text-ink outline-none placeholder:font-normal placeholder:text-ink-faint transition-[border-color,box-shadow] duration-[var(--motion-control)] ease-[var(--ease-move)] focus:border-contrast focus:ring-4 focus:ring-[var(--focus-ring)] disabled:opacity-40 aria-invalid:border-danger";
 
 export function Input({ className, ...props }: React.ComponentProps<"input">) {
   return <input className={cn(controlClass, "h-12", className)} {...props} />;
@@ -24,7 +24,7 @@ export function Field({ children, error, hint, label }: {
   const message = error ?? hint;
   return (
     <div className="grid gap-2">
-      <label className="px-1 text-sm font-medium text-ink-muted" htmlFor={id}>{label}</label>
+      <label className="px-1 text-sm font-bold text-ink-muted" htmlFor={id}>{label}</label>
       {children({ id, describedBy: message ? messageId : undefined, invalid: Boolean(error) })}
       {message ? (
         <p className={cn("px-1 text-sm", error && "message-in", error ? "text-danger" : "text-ink-faint")} id={messageId} key={error ? `error:${error}` : "hint"} role={error ? "alert" : undefined}>

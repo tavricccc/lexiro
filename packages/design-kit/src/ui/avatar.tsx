@@ -1,14 +1,13 @@
-import { Avatar as AvatarPrimitive } from "radix-ui";
+import { Avatar as AvatarRoot, AvatarFallback, AvatarImage } from "@ui-sdk/react/avatar";
 import { cn } from "../lib/utils";
 
-/** A person's photo, falling back to the first letter of their name. */
 export function Avatar({ className, name, src }: { className?: string; name: string; src?: string | null }) {
   return (
-    <AvatarPrimitive.Root className={cn("relative inline-flex size-10 shrink-0 overflow-hidden rounded-full bg-contrast", className)}>
-      {src ? <AvatarPrimitive.Image alt={name} className="size-full object-cover" src={src} /> : null}
-      <AvatarPrimitive.Fallback className="grid size-full place-items-center text-sm font-semibold text-on-contrast">
+    <AvatarRoot className={cn("relative inline-flex size-10 shrink-0 overflow-hidden rounded-full border-2 border-contrast-edge bg-contrast", className)}>
+      {src ? <AvatarImage alt={name} className="size-full object-cover" src={src} /> : null}
+      <AvatarFallback className="grid size-full place-items-center font-latin text-lg font-extrabold text-on-contrast">
         {name.trim().slice(0, 1).toUpperCase() || "?"}
-      </AvatarPrimitive.Fallback>
-    </AvatarPrimitive.Root>
+      </AvatarFallback>
+    </AvatarRoot>
   );
 }

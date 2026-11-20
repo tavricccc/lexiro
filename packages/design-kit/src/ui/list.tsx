@@ -24,11 +24,11 @@ export function ListGroup({ action, children, className, footer, label, role, ti
     <section aria-label={title ? undefined : label} aria-labelledby={title ? titleId : undefined} className={cn("grid grid-cols-[minmax(0,1fr)] gap-2", className)}>
       {title || action ? (
         <div className="flex min-h-8 items-center justify-between gap-3 px-1">
-          {title ? <h2 className="text-[0.8125rem] font-medium text-ink-muted" id={titleId}>{title}</h2> : <span />}
+          {title ? <h2 className="text-sm font-extrabold text-ink-muted" id={titleId}>{title}</h2> : <span />}
           {action}
         </div>
       ) : null}
-      <ul className="glass divide-y divide-line overflow-hidden rounded-panel shadow-panel" role={role}>{children}</ul>
+      <ul className="divide-y-2 divide-line overflow-hidden rounded-panel border-2 border-line bg-surface shadow-panel" role={role}>{children}</ul>
       {footer ? <p className="px-1 text-sm leading-relaxed text-ink-faint">{footer}</p> : null}
     </section>
   );
@@ -52,7 +52,7 @@ type ListRowProps = ListRowContent &
   );
 
 export const rowClass =
-  "flex min-h-12 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none";
+  "flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none";
 const actionClass =
   "transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised disabled:pointer-events-none disabled:opacity-40";
 
@@ -60,12 +60,12 @@ function RowBody({ detail, icon, label, tone = "default", value }: ListRowConten
   return (
     <>
       {icon ? (
-        <span aria-hidden className={cn("shrink-0 [&_svg]:size-5", tone === "danger" ? "text-danger" : "text-ink")}>
+        <span aria-hidden className={cn("grid size-9 shrink-0 place-items-center rounded-xl [&_svg]:size-5", tone === "danger" ? "bg-danger/12 text-danger" : "bg-accent-soft text-accent-ink")}>
           {icon}
         </span>
       ) : null}
       <span className="min-w-0 flex-1">
-        <span className={cn("block truncate text-base", tone === "danger" ? "text-danger" : "text-ink")}>{label}</span>
+        <span className={cn("block truncate text-base font-semibold", tone === "danger" ? "text-danger" : "text-ink")}>{label}</span>
         {detail ? <span className="block truncate text-[0.8125rem] text-ink-muted">{detail}</span> : null}
       </span>
       {value !== undefined ? <span className="max-w-[45%] shrink-0 truncate text-[0.9375rem] text-ink-muted">{value}</span> : null}
