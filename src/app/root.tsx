@@ -7,7 +7,7 @@ import { errorMessage } from "@/data/api";
 import { signIn, useAuth } from "@/data/auth";
 import { isConfigured } from "@/data/config";
 import { queryClient, startPersistence, stopPersistence } from "@/data/queries";
-import { Brand } from "@/ui/brand";
+import { Mascot } from "@/ui/mascot";
 
 let navigation: Navigation | undefined;
 export const setKitNavigation = (value: Navigation) => { navigation = value; };
@@ -30,7 +30,7 @@ export function Splash({ label }: { label?: string }) {
   return (
     <div className="grid min-h-svh place-items-center">
       <div className="content-in flex flex-col items-center gap-5">
-        <Brand />
+        <Mascot className="size-28" />
         <span className="flex items-center gap-2.5 text-[0.9375rem] text-ink-muted" role="status">
           <Spinner className="size-4" />
           {label ?? "正在開啟"}
@@ -46,9 +46,10 @@ function SignInScreen() {
   return (
     <div className="grid min-h-svh place-items-center px-6">
       <div className="content-in flex w-full max-w-sm flex-col items-center gap-8 text-center">
-        <Brand className="scale-125" />
+        <Mascot className="pop-in size-36" mood="cheer" />
         <div className="grid gap-2">
-          <h1 className="text-2xl font-bold tracking-tight">用自己的單字集練英文</h1>
+          <p className="font-latin text-4xl font-extrabold tracking-tight text-contrast">Lexiro</p>
+          <h1 className="text-xl font-extrabold">用自己的單字集練英文</h1>
           <p className="text-[0.9375rem] leading-relaxed text-ink-muted">登入後，單字集、題目和練習紀錄會跟著帳號，在每台裝置都一樣。</p>
         </div>
         <Button

@@ -29,3 +29,14 @@
   from { translate: 0 -2rem; rotate: 0deg; opacity: 1; }
   to { translate: var(--drift) 105vh; rotate: var(--spin); opacity: 0.8; }
 }
+
+/* Lexi breathes, blinks and hops; all of it stops for reduced motion. */
+.mascot-bob { animation: mascot-bob 3.2s ease-in-out infinite; transform-box: fill-box; }
+@keyframes mascot-bob { 50% { translate: 0 -3px; } }
+.mascot-hop { animation: mascot-hop 0.9s var(--ease-bounce) infinite alternate; transform-box: fill-box; }
+@keyframes mascot-hop { from { translate: 0 2px; } to { translate: 0 -6px; } }
+.mascot-blink { animation: mascot-blink 4.5s infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes mascot-blink { 0%, 94%, 100% { scale: 1 1; } 97% { scale: 1 0.1; } }
+@media (prefers-reduced-motion: reduce) {
+  .mascot-bob, .mascot-hop, .mascot-blink, .confetti { animation: none; }
+}
