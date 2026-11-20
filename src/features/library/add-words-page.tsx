@@ -59,7 +59,7 @@ function AddOne({ content }: { content: SetContent }) {
       <WordEditor autoFocus draft={draft} key={draft.senses[0]?.key} onChange={(next) => { setDraft(next); setError(""); }} />
       {existing ? <p className="px-1 text-sm text-info">這個單字集已經有「{existing.word}」，新的意思會加到它下面。</p> : null}
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-      <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-full p-1.5 md:bottom-6">
+      <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-3xl p-2 md:bottom-6">
         <Button disabled={!online || status !== "idle"} onClick={() => void save(false)} variant="ghost">儲存並返回</Button>
         <Button disabled={!online} status={status} type="submit" variant="primary">儲存，再加一個</Button>
       </div>
@@ -89,7 +89,7 @@ function AddList({ content }: { content: SetContent }) {
       <div className="max-w-48"><LabeledSelect label="沒寫詞性時當作" onChange={setPos} options={PARTS_OF_SPEECH.map((value) => ({ value, label: value }))} value={pos} /></div>
       {parsed.words.length || parsed.problems.length ? (
         <Panel className="grid gap-2 text-[0.9375rem]">
-          <p>讀到 <span className="font-latin font-semibold">{parsed.words.length}</span> 個單字{parsed.words.length - fresh ? `，其中 ${parsed.words.length - fresh} 個已在單字集，會補上新的意思` : ""}。</p>
+          <p>讀到 <span className="font-latin font-bold">{parsed.words.length}</span> 個單字{parsed.words.length - fresh ? `，其中 ${parsed.words.length - fresh} 個已在單字集，會補上新的意思` : ""}。</p>
           {parsed.problems.length ? (
             <ul className="grid gap-1 text-sm text-danger">
               {parsed.problems.slice(0, 5).map((problem) => <li key={problem.line}>第 {problem.line} 行：{problem.error}（{problem.text}）</li>)}

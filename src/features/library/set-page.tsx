@@ -144,8 +144,8 @@ function WordList({ content }: { content: SetContent }) {
         </ListGroup>
       ) : <p className="py-6 text-center text-[0.9375rem] text-ink-muted">沒有符合的單字</p>}
       {selected ? (
-        <div className="bar-in glass-float sticky bottom-[calc(var(--bottom-nav-gap)+0.5rem)] z-30 flex items-center gap-2 rounded-full p-1.5 pl-5 md:bottom-6">
-          <span className="flex-1 text-[0.9375rem] font-medium">已選 <span className="font-latin">{selected.size}</span> 個</span>
+        <div className="bar-in glass-float sticky bottom-[calc(var(--bottom-nav-gap)+0.5rem)] z-30 flex items-center gap-2 rounded-3xl p-2 pl-5 md:bottom-6">
+          <span className="flex-1 text-[0.9375rem] font-extrabold">已選 <span className="font-latin">{selected.size}</span> 個</span>
           <Button disabled={!selected.size} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
           <Button disabled={!selected.size} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>
         </div>
@@ -184,7 +184,7 @@ function WordText({ word }: { word: Word }) {
   const points = notes(word);
   return (
     <span className="min-w-0 flex-1">
-      <span className="block truncate font-latin text-[1.0625rem] font-semibold">{word.word}</span>
+      <span className="block truncate font-latin text-[1.0625rem] font-bold">{word.word}</span>
       <span className="block truncate text-[0.8125rem] text-ink-muted">{meaningLine(word)}</span>
       {points.length ? (
         // A small card under the meaning, one point per line like the word page; the row grows to fit.

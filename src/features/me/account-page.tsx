@@ -49,7 +49,7 @@ export default function AccountPage() {
     <Page back={BACK} title="帳號與同步">
       <Panel className="grid gap-1">
         <p className="text-sm text-ink-muted">登入帳號</p>
-        <p className="font-semibold">{account?.email}</p>
+        <p className="font-bold">{account?.email}</p>
         <p className="text-[0.8125rem] text-ink-muted">你的單字集、練習紀錄和設定都存在這個帳號，換裝置登入同一個帳號就會出現。</p>
       </Panel>
       <ListGroup footer={online ? "Lexiro 會自動同步；離線時可以瀏覽和練習，作答會在連線後送出。" : "目前離線：可以瀏覽和練習，但不能修改單字集。"} title="同步">

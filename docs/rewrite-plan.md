@@ -9,7 +9,7 @@
 - **舊資料**：server 端轉換腳本一次轉到新 schema；裝置上未同步的本機修改直接丟棄。API 只保留最新版，不做版本並存。
 - **保留功能**：單字集／資料夾、單字與詞義、題目（單句與四種篇章）、練習、今天、進度、對戰、分享、Agent（MCP + OAuth）、admin、備份匯出匯入、PWA。
 - **刪除**：本機 repository／head pointer／manifest、sync journal、mutation 與 account queue、所有 migration／repair、前端題目組裝（`question-assembly` 等已無呼叫者）、跨裝置練習草稿（改為只存本機）、set cache、membership 表。
-- **UI**：web design kit 複製進 `packages/design-kit`；主色 Lexiro pine 綠（`#1f7a5c` / 暗色 `#7fdcb4`），其餘副色重新搭配。
+- **UI**：web design kit 複製進 `packages/design-kit`；主色 grape 紫（見 packages/design-kit/README.md）。
 - **資訊架構**：一頁一件事，次要內容進子頁或 sheet。「我」只放頭像與導覽列。
 
 ## 資料模型（D1 `CLOUD_DB`，新 schema）

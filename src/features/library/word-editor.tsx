@@ -69,7 +69,7 @@ export function WordEditor({ draft, onChange, autoFocus }: { draft: WordDraft; o
       {draft.senses.map((sense, index) => (
         <Panel className="grid gap-4" key={sense.key}>
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-sm font-semibold text-ink-muted">意思 {index + 1}</h3>
+            <h3 className="text-sm font-bold text-ink-muted">意思 {index + 1}</h3>
             {draft.senses.length > 1 ? (
               <Button aria-label={`移除意思 ${index + 1}`} onClick={() => onChange({ ...draft, senses: draft.senses.filter((_, at) => at !== index) })} size="icon-sm" variant="ghost"><Trash /></Button>
             ) : null}

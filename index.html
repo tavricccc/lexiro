@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#eef3f0" />
+    <meta name="theme-color" content="#f5f2ff" />
     <meta name="color-scheme" content="light dark" />
     <title>Lexiro</title>
     <meta name="description" content="%LEXIRO_DESCRIPTION%" />
@@ -23,7 +23,7 @@
           var saved = localStorage.getItem("lexiro:theme");
           var dark = saved === "dark" || (saved !== "light" && q.matches);
           document.documentElement.dataset.theme = dark ? "dark" : "light";
-          if (meta) meta.content = dark ? "#0b100d" : "#eef3f0";
+          if (meta) meta.content = dark ? "#150f2b" : "#f5f2ff";
         };
         apply();
         q.addEventListener("change", apply);

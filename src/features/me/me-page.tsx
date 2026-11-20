@@ -14,7 +14,7 @@ export default function MePage() {
       <Panel className="flex items-center gap-4">
         <Avatar className="size-14" name={account?.name || account?.email || "?"} src={account?.photo} />
         <div className="min-w-0">
-          <p className="truncate text-lg font-semibold">{account?.name || "Lexiro 使用者"}</p>
+          <p className="truncate text-lg font-bold">{account?.name || "Lexiro 使用者"}</p>
           <p className="truncate text-sm text-ink-muted">{account?.email}</p>
         </div>
       </Panel>

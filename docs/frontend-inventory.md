@@ -11,7 +11,7 @@
 - 上下邊緣漸層模糊（EdgeBlur）。
 - 離線橫幅：離線時唯讀，可瀏覽與練習；顯示待上傳作答數。
 - 背景同步：資料修訂監看、作答佇列自動送出。
-- 主題：系統／淺色／深色（目前是 pine green，定義在 src/styles/app.css）。
+- 主題：系統／淺色／深色（grape 紫遊戲風，token 在 packages/design-kit/src/styles/theme.css）。
 - 字體：中文 HarmonyOS Sans，拉丁文字 `font-latin`（Albert Sans）。
 - Toast（sonner）、確認對話框、Sheet、Menu、Segmented、Switch、Select 等元件來自 `packages/design-kit`。
 - PWA：Service Worker、離線頁 `/~offline`、版本更新提示。

@@ -49,7 +49,7 @@ export function WordSheet({ content, wordId }: { content: SetContent; wordId: st
             <Panel className="grid gap-3" key={sense.id}>
               <div className="flex flex-wrap items-center gap-2">
                 <Chip className="font-latin">{sense.pos}</Chip>
-                <span className="text-lg font-semibold">{sense.meaning}</span>
+                <span className="text-lg font-bold">{sense.meaning}</span>
                 {sense.supplementary ? <Chip tone="info">補充</Chip> : null}
                 <span className="ml-auto text-[0.8125rem] text-ink-faint">
                   {progress ? `${FAMILIARITY_LABELS[progress.level]} · 答對 ${progress.correct}/${progress.answered}` : FAMILIARITY_LABELS[0]}

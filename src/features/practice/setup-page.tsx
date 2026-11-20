@@ -74,7 +74,7 @@ export default function SetupPage() {
       {saved ? (
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="font-semibold">有一輪還沒做完</p>
+            <p className="font-bold">有一輪還沒做完</p>
             <p className="text-sm text-ink-muted">做到第 {Math.min(saved.index + 1, saved.items.length)} / {saved.items.length} 題</p>
           </div>
           <Button onClick={() => { clearRound(); setSaved(null); }} variant="ghost">捨棄</Button>

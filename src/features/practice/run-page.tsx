@@ -153,7 +153,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
   return (
     <div className="grid gap-3">
       <Panel className="max-h-[45svh] overflow-y-auto">
-        {item.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{item.title}</h2> : null}
+        {item.title ? <h2 className="mb-2 font-latin text-lg font-bold" lang="en">{item.title}</h2> : null}
         <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
           {passageParts(item.passage).map((part, index) => {
             if (typeof part === "string") return <span key={index}>{part}</span>;
@@ -164,7 +164,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
             return (
               <span
                 className={cn(
-                  "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold",
+                  "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-bold",
                   at === round.step && !round.revealed ? "bg-contrast text-on-contrast" : done ? (right ? "bg-positive/12 text-positive" : "bg-danger/12 text-danger") : "bg-surface-raised text-ink-muted",
                 )}
                 key={index}
@@ -191,7 +191,7 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
         return (
           <button
             className={cn(
-              "flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-semibold outline-none transition-[background-color,border-color,translate,box-shadow,opacity] duration-[var(--motion-touch)] ease-[var(--ease-move)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
+              "flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-bold outline-none transition-[background-color,border-color,translate,box-shadow,opacity] duration-[var(--motion-touch)] ease-[var(--ease-move)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
               !revealed && "border-line bg-surface shadow-[0_4px_0_var(--line-strong)] hover:border-contrast/40 hover:bg-surface-hover active:translate-y-1 active:shadow-none",
               right && "pop-in border-positive bg-positive/15 text-ink shadow-[0_4px_0_var(--positive-edge)]",
               wrong && "shake border-danger bg-danger/15 shadow-[0_4px_0_var(--danger-edge)]",
@@ -222,7 +222,7 @@ function CustomPrompt({ item, step }: { item: Extract<PracticeItem, { kind: "cus
     <div className="grid gap-3">
       {item.instructions ? <p className="text-[0.9375rem] text-ink-muted">{item.instructions}</p> : null}
       {item.passage ? <Panel className="max-h-[40svh] overflow-y-auto"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></Panel> : null}
-      <p className={cn("leading-relaxed", /[A-Za-z]/.test(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-semibold")} lang={/[A-Za-z]/.test(step.prompt) ? "en" : undefined}>{step.prompt}</p>
+      <p className={cn("leading-relaxed", /[A-Za-z]/.test(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-bold")} lang={/[A-Za-z]/.test(step.prompt) ? "en" : undefined}>{step.prompt}</p>
     </div>
   );
 }
@@ -252,7 +252,7 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
       </div>
       {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-latin text-[0.9375rem] text-ink-muted">{step.accepted.join(" / ")}</p> : null}
       {item.kind === "meaning" || item.kind === "reverse" ? (
-        <p className="text-[0.9375rem]"><span className="font-latin font-semibold">{item.word}</span> <span className="font-latin text-ink-muted">{item.sense.pos}</span> {item.sense.meaning}</p>
+        <p className="text-[0.9375rem]"><span className="font-latin font-bold">{item.word}</span> <span className="font-latin text-ink-muted">{item.sense.pos}</span> {item.sense.meaning}</p>
       ) : null}
       {reasons.map((reason) => <p className="text-[0.9375rem] text-ink-muted" key={reason}>{reason}</p>)}
       {step.explanation && item.kind !== "meaning" && item.kind !== "reverse" ? <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{step.explanation}</p> : null}

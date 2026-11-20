@@ -12,8 +12,8 @@ interface Props<M extends CustomStep["mode"]> {
 }
 
 const latin = (text: string) => /[A-Za-z]/.test(text);
-const tile = "cursor-pointer rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-semibold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
-const chip = "cursor-pointer rounded-xl border-2 px-3 py-2 font-latin text-base font-semibold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const tile = "cursor-pointer rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-bold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const chip = "cursor-pointer rounded-xl border-2 px-3 py-2 font-latin text-base font-bold shadow-[0_3px_0_var(--line-strong)] outline-none transition-[background-color,border-color,translate,box-shadow] duration-[var(--motion-touch)] ease-[var(--ease-move)] active:translate-y-0.5 active:shadow-none focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
 
 function Confirm({ disabled, onClick }: { disabled: boolean; onClick: () => void }) {
   return <Button className="justify-self-end" disabled={disabled} onClick={onClick} size="lg" variant="primary"><Check weight="bold" />確認</Button>;
@@ -45,7 +45,7 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
               onClick={() => toggle(index)}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "bg-positive text-on-positive" : wrong ? "bg-danger text-on-danger" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
+              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-bold", right ? "bg-positive text-on-positive" : wrong ? "bg-danger text-on-danger" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
                 {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : on ? <Check weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", latin(option) && "font-latin")} lang={latin(option) ? "en" : undefined}>{option}</span>
@@ -150,7 +150,7 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
                 onClick={() => setActive(index)}
                 type="button"
               >
-                <span aria-hidden className="grid size-6 shrink-0 place-items-center rounded-full bg-surface-raised font-latin text-xs font-semibold text-ink-muted">{index + 1}</span>
+                <span aria-hidden className="grid size-6 shrink-0 place-items-center rounded-full bg-surface-raised font-latin text-xs font-bold text-ink-muted">{index + 1}</span>
                 <span className={cn("min-w-0 flex-1", latin(text) && "font-latin")} lang={latin(text) ? "en" : undefined}>{text}</span>
               </button>
             );
@@ -168,7 +168,7 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
                 type="button"
               >
                 <span className={cn("min-w-0 flex-1", latin(text) && "font-latin")} lang={latin(text) ? "en" : undefined}>{text}</span>
-                {owner === -1 ? null : <span aria-label={`配給第 ${owner + 1} 項`} className="grid size-6 shrink-0 place-items-center rounded-full bg-contrast font-latin text-xs font-semibold text-on-contrast">{owner + 1}</span>}
+                {owner === -1 ? null : <span aria-label={`配給第 ${owner + 1} 項`} className="grid size-6 shrink-0 place-items-center rounded-full bg-contrast font-latin text-xs font-bold text-on-contrast">{owner + 1}</span>}
               </button>
             );
           })}

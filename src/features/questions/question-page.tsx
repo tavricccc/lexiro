@@ -52,7 +52,7 @@ function CustomPreview({ question, words }: { question: CustomQuestion; words: M
       ) : null}
       {question.items.map((item, index) => (
         <Panel className="grid gap-3" key={item.id}>
-          {question.items.length > 1 ? <p className="text-sm font-semibold text-ink-muted">第 {index + 1} 題</p> : null}
+          {question.items.length > 1 ? <p className="text-sm font-bold text-ink-muted">第 {index + 1} 題</p> : null}
           <p className="font-latin font-medium" lang="en">{item.prompt}</p>
           <CustomAnswer item={item} />
           <p className="text-[0.8125rem] text-ink-muted">練習字義：{words.get(item.senseId)}</p>
@@ -79,15 +79,15 @@ function Preview({ question, content }: { question: Question; content: SetConten
   return (
     <>
       <Panel className="grid gap-2">
-        {question.title ? <h2 className="font-latin text-lg font-semibold" lang="en">{question.title}</h2> : null}
+        {question.title ? <h2 className="font-latin text-lg font-bold" lang="en">{question.title}</h2> : null}
         <p className="whitespace-pre-line font-latin leading-[1.8]" lang="en">
-          {passageParts(question.passage).map((part, index) => typeof part === "string" ? <span key={index}>{part}</span> : <span className="mx-0.5 rounded-chip bg-accent-soft px-1.5 font-semibold" key={index}>({part})</span>)}
+          {passageParts(question.passage).map((part, index) => typeof part === "string" ? <span key={index}>{part}</span> : <span className="mx-0.5 rounded-chip bg-accent-soft px-1.5 font-bold" key={index}>({part})</span>)}
         </p>
         {question.bank?.length ? <div className="flex flex-wrap gap-1.5 pt-2">{question.bank.map((option) => <Chip className="font-latin" key={option}>{option}</Chip>)}</div> : null}
       </Panel>
       {question.items.map((item, index) => (
         <Panel className="grid gap-3" key={item.id}>
-          <p className="text-sm font-semibold text-ink-muted">{item.blank ? `第 ${item.blank} 格` : `第 ${index + 1} 題`}</p>
+          <p className="text-sm font-bold text-ink-muted">{item.blank ? `第 ${item.blank} 格` : `第 ${index + 1} 題`}</p>
           {item.prompt ? <p className="font-latin font-medium" lang="en">{item.prompt}</p> : null}
           <Options answer={item.answer} options={itemOptions(question, item)} whyWrong={item.whyWrong} />
           <p className="text-[0.8125rem] text-ink-muted">練習字義：{words.get(item.senseId)}</p>

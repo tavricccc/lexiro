@@ -36,14 +36,14 @@ export default function RoomsPage() {
       {active.data?.room ? (
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="font-semibold">你開的房間還在進行</p>
+            <p className="font-bold">你開的房間還在進行</p>
             <p className="truncate text-sm text-ink-muted">{active.data.room.title} · <span className="font-latin">{active.data.room.code}</span></p>
           </div>
           <Button asChild variant="primary"><AppLink href={`/app/rooms/${active.data.room.code}`}>回到房間</AppLink></Button>
         </Panel>
       ) : null}
       <Panel className="grid gap-3">
-        <h2 className="font-semibold">加入房間</h2>
+        <h2 className="font-bold">加入房間</h2>
         <form className="flex gap-2" onSubmit={(event) => { event.preventDefault(); join(); }}>
           <Input aria-label="房間代碼" autoCapitalize="characters" autoComplete="off" className="flex-1 font-latin text-lg uppercase tracking-[0.3em]" maxLength={6} onChange={(event) => setCode(event.target.value.replace(/[^a-z0-9]/gi, ""))} placeholder="ABC234" spellCheck={false} value={code} />
           <Button disabled={normalized.length !== 6} type="submit" variant="primary"><ArrowRight weight="bold" />加入</Button>
@@ -87,7 +87,7 @@ function HostForm({ name: defaultName }: { name: string }) {
   };
   return (
     <Panel className="grid gap-5">
-      <h2 className="font-semibold">開房間</h2>
+      <h2 className="font-bold">開房間</h2>
       <Field label="你的暱稱">
         {({ id }) => <Input id={id} maxLength={40} onChange={(event) => setName(event.target.value)} value={name} />}
       </Field>

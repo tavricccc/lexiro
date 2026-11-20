@@ -41,7 +41,7 @@ function Shell({ state, leave, reconnecting, children }: { state?: RoomState; le
     <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
       <header className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate font-semibold">{state?.title ?? "對戰"}</p>
+          <p className="truncate font-bold">{state?.title ?? "對戰"}</p>
           {state ? <p className="font-latin text-sm tracking-[0.2em] text-ink-muted">{state.code}</p> : null}
         </div>
         {reconnecting ? <Chip>重新連線中…</Chip> : null}
@@ -98,7 +98,7 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
           return (
             <button
               className={cn(
-                "flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-semibold outline-none transition-[background-color,border-color,translate,box-shadow,opacity] duration-[var(--motion-touch)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
+                "flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left text-[1.0625rem] font-bold outline-none transition-[background-color,border-color,translate,box-shadow,opacity] duration-[var(--motion-touch)] focus-visible:ring-4 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
                 !locked && "border-line bg-surface shadow-[0_4px_0_var(--line-strong)] hover:bg-surface-hover active:translate-y-1 active:shadow-none",
                 !reveal && picked && "translate-y-1 border-contrast bg-accent-soft",
                 reveal && right && "pop-in border-positive bg-positive/15 shadow-[0_4px_0_var(--positive-edge)]",
@@ -140,11 +140,11 @@ function Prompt({ question, revealed }: { question: LiveQuestion; revealed: Reco
   return (
     <div className="grid gap-3">
       <Panel className="max-h-[45svh] overflow-y-auto">
-        {question.passage.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{question.passage.title}</h2> : null}
+        {question.passage.title ? <h2 className="mb-2 font-latin text-lg font-bold" lang="en">{question.passage.title}</h2> : null}
         <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
           {passageParts(question.passage.text).map((part, index) =>
             typeof part === "string" ? <span key={index}>{part}</span> : (
-              <span className={cn("mx-0.5 inline-flex min-w-12 justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold", part === question.blank ? "bg-contrast text-on-contrast" : revealed[part] ? "bg-positive/12 text-positive" : "bg-surface-raised text-ink-muted")} key={index}>
+              <span className={cn("mx-0.5 inline-flex min-w-12 justify-center rounded-chip px-1.5 text-[0.9375rem] font-bold", part === question.blank ? "bg-contrast text-on-contrast" : revealed[part] ? "bg-positive/12 text-positive" : "bg-surface-raised text-ink-muted")} key={index}>
                 {revealed[part] && part !== question.blank ? revealed[part] : `(${part})`}
               </span>
             ),

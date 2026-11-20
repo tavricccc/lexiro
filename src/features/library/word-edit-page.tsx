@@ -48,7 +48,7 @@ function Editor({ content, wordId }: { content: SetContent; wordId: string }) {
         <WordEditor draft={draft} onChange={(next) => { setDraft(next); setError(""); }} />
         {removed ? <p className="px-1 text-sm text-caution">刪掉的 {removed} 個意思，相關題目會一起移除。</p> : null}
         {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-        <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-full p-1.5 md:bottom-6">
+        <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-3xl p-2 md:bottom-6">
           <Button onClick={() => navigate(back)} variant="ghost">取消</Button>
           <Button disabled={!online} status={status} type="submit" variant="primary">儲存</Button>
         </div>

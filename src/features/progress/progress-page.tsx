@@ -78,13 +78,13 @@ export default function ProgressPage() {
       <div className="grid gap-4 md:grid-cols-2">
         <Panel className="grid gap-3">
           <SectionTitle>熟悉度</SectionTitle>
-          <p className="text-sm text-ink-muted">練習過 <span className="font-latin font-semibold text-ink">{stats.practised}</span> 個字義</p>
+          <p className="text-sm text-ink-muted">練習過 <span className="font-latin font-bold text-ink">{stats.practised}</span> 個字義</p>
           <div className="flex h-4 gap-1 overflow-hidden rounded-full">
             {stats.levels.map((count, level) => count ? <span className={cn("bar-in rounded-full", LEVEL_TONE[level])} key={level} style={{ width: `${(count / stats.practised) * 100}%` }} /> : null)}
           </div>
           <ul className="grid grid-cols-2 gap-2 text-sm">
             {stats.levels.map((count, level) => (
-              <li className="flex items-center gap-2 font-semibold" key={level}><span className={cn("size-3 rounded-full", LEVEL_TONE[level])} />{FAMILIARITY_LABELS[level]}<span className="ml-auto font-latin text-ink-muted">{count}</span></li>
+              <li className="flex items-center gap-2 font-bold" key={level}><span className={cn("size-3 rounded-full", LEVEL_TONE[level])} />{FAMILIARITY_LABELS[level]}<span className="ml-auto font-latin text-ink-muted">{count}</span></li>
             ))}
           </ul>
         </Panel>
@@ -95,7 +95,7 @@ export default function ProgressPage() {
               const rate = percent(learning.tasks[task])!;
               return (
                 <li className="grid gap-1" key={task}>
-                  <div className="flex text-sm font-semibold"><span>{TASK_LABELS[task]}</span><span className="ml-auto font-latin text-ink-muted">{rate}% · {learning.tasks[task].answered} 題</span></div>
+                  <div className="flex text-sm font-bold"><span>{TASK_LABELS[task]}</span><span className="ml-auto font-latin text-ink-muted">{rate}% · {learning.tasks[task].answered} 題</span></div>
                   <div className="h-3 overflow-hidden rounded-full bg-surface-pressed"><div className={cn("bar-in h-full rounded-full", rate >= 80 ? "bg-positive" : rate >= 50 ? "bg-highlight" : "bg-danger")} style={{ width: `${rate}%` }} /></div>
                 </li>
               );
