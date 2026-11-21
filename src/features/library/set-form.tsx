@@ -16,7 +16,7 @@ const ICON_LABELS: Record<SetIconName, string> = {
 };
 const HUE_SWATCH: Record<SetHue, string> = { rose: "bg-hue-rose", amber: "bg-hue-amber", mint: "bg-hue-mint", sky: "bg-hue-sky", violet: "bg-hue-violet" };
 
-/** Name, folder, colour and icon of a set. */
+/** Name, folder, colour and icon of a set in Swiss architectural layout. */
 export function SetForm({ value, onChange, folders, error }: {
   value: SetFormValue;
   onChange: (value: SetFormValue) => void;
@@ -26,15 +26,24 @@ export function SetForm({ value, onChange, folders, error }: {
   return (
     <div className="grid gap-6">
       <div className="flex items-end gap-4">
-        <SetIcon className="size-14 [&_svg]:size-8" hue={value.hue} icon={value.icon} />
+        <SetIcon className="size-14 [&_svg]:size-7" hue={value.hue} icon={value.icon} />
         <div className="min-w-0 flex-1">
-          <Field error={error} label="名稱">
+          <Field error={error} label="單字集名稱">
             {({ id, describedBy, invalid }) => (
-              <Input aria-describedby={describedBy} aria-invalid={invalid} id={id} maxLength={200} onChange={(event) => onChange({ ...value, name: event.target.value })} placeholder="例如：第三課、多益 600" value={value.name} />
+              <Input
+                aria-describedby={describedBy}
+                aria-invalid={invalid}
+                id={id}
+                maxLength={200}
+                onChange={(event) => onChange({ ...value, name: event.target.value })}
+                placeholder="例如：第三課、多益 600"
+                value={value.name}
+              />
             )}
           </Field>
         </div>
       </div>
+
       {folders.length ? (
         <LabeledSelect
           label="資料夾"
@@ -43,38 +52,49 @@ export function SetForm({ value, onChange, folders, error }: {
           value={value.folderId ?? "none"}
         />
       ) : null}
-      <fieldset className="grid gap-2">
-        <legend className="mb-2 px-1 text-sm font-medium text-ink-muted">顏色</legend>
-        <div className="flex flex-wrap gap-3">
-          {SET_HUES.map((hue) => (
-            <label className="relative cursor-pointer" key={hue}>
-              <input checked={value.hue === hue} className="peer sr-only" name="hue" onChange={() => onChange({ ...value, hue })} type="radio" />
-              <span className={cn("grid size-11 place-items-center rounded-full text-white ring-offset-2 ring-offset-canvas peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--focus-ring)]", HUE_SWATCH[hue])}>
-                {value.hue === hue ? <Check aria-hidden className="size-5" weight="bold" /> : null}
-              </span>
-              <span className="sr-only">{HUE_LABELS[hue]}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-      <fieldset className="grid gap-2">
-        <legend className="mb-2 px-1 text-sm font-medium text-ink-muted">圖示</legend>
-        <div className="grid grid-cols-6 gap-2">
-          {SET_ICONS.map((icon) => {
-            const Component = SET_ICON_COMPONENTS[icon];
-            const selected = value.icon === icon;
-            return (
-              <label className="cursor-pointer" key={icon}>
-                <input checked={selected} className="peer sr-only" name="icon" onChange={() => onChange({ ...value, icon })} type="radio" />
-                <span className={cn("grid aspect-square place-items-center rounded-tile border transition-colors duration-[var(--motion-control)] peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--focus-ring)] [&_svg]:size-6", selected ? "border-contrast bg-accent-soft text-accent-ink" : "border-line text-ink-muted hover:bg-surface-raised")}>
-                  <Component aria-hidden weight={selected ? "fill" : "regular"} />
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <fieldset className="grid gap-2.5">
+          <legend className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">色標</legend>
+          <div className="grid grid-cols-5 gap-2">
+            {SET_HUES.map((hue) => (
+              <label className="relative cursor-pointer" key={hue}>
+                <input checked={value.hue === hue} className="peer sr-only" name="hue" onChange={() => onChange({ ...value, hue })} type="radio" />
+                <span className={cn(
+                  "grid aspect-square place-items-center text-white outline-offset-2 transition-opacity peer-focus-visible:outline-2 peer-focus-visible:outline-contrast",
+                  HUE_SWATCH[hue],
+                  value.hue === hue ? "outline-2 outline-line-strong" : "opacity-80 hover:opacity-100",
+                )}>
+                  {value.hue === hue ? <Check aria-hidden className="size-5" weight="bold" /> : null}
                 </span>
-                <span className="sr-only">{ICON_LABELS[icon]}</span>
+                <span className="sr-only">{HUE_LABELS[hue]}</span>
               </label>
-            );
-          })}
-        </div>
-      </fieldset>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset className="grid gap-2.5">
+          <legend className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">符號</legend>
+          <div className="grid grid-cols-6 gap-2">
+            {SET_ICONS.map((icon) => {
+              const Component = SET_ICON_COMPONENTS[icon];
+              const selected = value.icon === icon;
+              return (
+                <label className="cursor-pointer" key={icon}>
+                  <input checked={selected} className="peer sr-only" name="icon" onChange={() => onChange({ ...value, icon })} type="radio" />
+                  <span className={cn(
+                    "grid aspect-square place-items-center border transition-colors duration-[var(--motion-control)] peer-focus-visible:ring-2 peer-focus-visible:ring-contrast [&_svg]:size-5",
+                    selected ? "border-contrast bg-contrast text-on-contrast" : "border-line bg-surface text-ink-muted hover:border-line-strong hover:text-ink",
+                  )}>
+                    <Component aria-hidden weight={selected ? "fill" : "regular"} />
+                  </span>
+                  <span className="sr-only">{ICON_LABELS[icon]}</span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      </div>
     </div>
   );
 }

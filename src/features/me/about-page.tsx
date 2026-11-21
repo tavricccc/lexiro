@@ -6,7 +6,6 @@ import { Page } from "@/ui/page";
 
 type Update = "checking" | "current" | "ready" | "unsupported";
 
-/** A new version installs in the background and waits; this screen lets it take over. */
 function useUpdate() {
   const [state, setState] = useState<Update>("checking");
   const [waiting, setWaiting] = useState<ServiceWorker | null>(null);
@@ -37,13 +36,22 @@ function useUpdate() {
 export default function AboutPage() {
   const { state, apply } = useUpdate();
   return (
-    <Page back={{ href: "/app/me", label: "我" }} title="關於 Lexiro">
-      <Panel className="grid justify-items-center gap-2 py-8 text-center">
+    <Page back={{ href: "/app/me", label: "我" }} kicker="SYSTEM // COLOPHON" title="關於 Lexiro" width="narrow">
+      <Panel className="grid gap-6 border-2 border-line-strong p-8">
         <Brand />
-        <p className="text-sm text-ink-muted">把背單字變成每天的小習慣。</p>
-        <p className="font-latin text-[0.8125rem] text-ink-faint">版本 {__APP_VERSION__}</p>
+        <p className="text-lg font-bold tracking-[-0.02em]">把背單字變成每天的小習慣。</p>
+        <div className="grid grid-cols-2 divide-x divide-line border-t border-line pt-4 font-mono text-xs">
+          <div>
+            <span className="block text-ink-faint">VERSION</span>
+            <span className="mt-1 block font-bold text-ink">{__APP_VERSION__}</span>
+          </div>
+          <div className="pl-4">
+            <span className="block text-ink-faint">EDITION</span>
+            <span className="mt-1 block font-bold text-contrast">SWISS / IKB</span>
+          </div>
+        </div>
       </Panel>
-      <ListGroup title="更新">
+      <ListGroup title="版本更新">
         <ListRow
           label={{ checking: "正在檢查更新…", current: "已是最新版本", ready: "有新版本可以更新", unsupported: "這個瀏覽器不支援離線更新" }[state]}
           trailing={state === "ready" ? <Button onClick={apply} size="sm" variant="primary"><ArrowsClockwise weight="bold" />更新並重新載入</Button> : undefined}

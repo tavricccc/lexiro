@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { DownloadSimple, UploadSimple } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, ConfirmDialog, ListGroup, Panel, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, Panel, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { calendarDay } from "@lexiro/contract";
 import { invalidate } from "@/data/queries";
@@ -46,18 +46,32 @@ export default function DataPage() {
     }
   };
   return (
-    <Page back={{ href: "/app/me", label: "我" }} title="資料與備份">
-      <ListGroup footer="下載一份包含所有資料夾、單字集、單字和題目的 JSON 檔。練習紀錄不包含在內。" title="匯出">
-        <Panel>
-          <Button disabled={!online} onClick={() => void download()} status={exporting} variant="primary"><DownloadSimple weight="bold" />下載備份</Button>
+    <Page back={{ href: "/app/me", label: "我" }} kicker="ME // ARCHIVE & PORTABILITY" title="資料與備份" width="wide">
+      <div className="grid gap-6 md:grid-cols-2">
+        <Panel className="flex flex-col justify-between gap-6 border-t-2 border-t-line-strong">
+          <div className="grid gap-2">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-contrast">01 // EXPORT JSON</span>
+            <h2 className="text-xl font-extrabold tracking-[-0.02em]">匯出備份</h2>
+            <p className="text-sm leading-relaxed text-ink-muted">下載包含所有資料夾、單字集、單字與題目的 JSON 檔案（不含練習紀錄）。</p>
+          </div>
+          <div>
+            <Button disabled={!online} onClick={() => void download()} size="lg" status={exporting} variant="primary"><DownloadSimple weight="bold" />下載備份</Button>
+          </div>
         </Panel>
-      </ListGroup>
-      <ListGroup footer="備份裡的單字集會新增為新的單字集，不會覆蓋或刪除現有的資料。" title="匯入">
-        <Panel>
-          <input accept="application/json,.json" className="hidden" onChange={(event) => { setFile(event.target.files?.[0] ?? null); event.target.value = ""; }} ref={input} type="file" />
-          <Button disabled={!online} onClick={() => input.current?.click()}><UploadSimple weight="bold" />選擇備份檔</Button>
+
+        <Panel className="flex flex-col justify-between gap-6 border-t-2 border-t-line-strong">
+          <div className="grid gap-2">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-muted">02 // IMPORT BACKUP</span>
+            <h2 className="text-xl font-extrabold tracking-[-0.02em]">匯入資料</h2>
+            <p className="text-sm leading-relaxed text-ink-muted">備份裡的單字集會新增為獨立項目，不會覆蓋或刪除現有資料。</p>
+          </div>
+          <div>
+            <input accept="application/json,.json" className="hidden" onChange={(event) => { setFile(event.target.files?.[0] ?? null); event.target.value = ""; }} ref={input} type="file" />
+            <Button disabled={!online} onClick={() => input.current?.click()} size="lg" variant="secondary"><UploadSimple weight="bold" />選擇備份檔</Button>
+          </div>
         </Panel>
-      </ListGroup>
+      </div>
+
       <ConfirmDialog
         confirmLabel="匯入"
         description={file ? `要從「${file.name}」匯入嗎？內容會加到你現有的單字集旁邊。` : undefined}

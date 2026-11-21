@@ -92,7 +92,7 @@ export function ImageTile({ actions, alt, disabled = false, height, onOpen, plac
         )}
       </button>
       {src && !disabled ? (
-        <span className="pointer-events-none absolute bottom-1.5 right-1.5 grid size-7 place-items-center rounded-full bg-[var(--scrim)] text-ink opacity-0 transition-opacity duration-[var(--motion-control)] group-hover:opacity-100">
+        <span className="pointer-events-none absolute bottom-1.5 right-1.5 grid size-7 place-items-center rounded-none bg-[var(--scrim)] text-white opacity-0 transition-opacity duration-[var(--motion-control)] group-hover:opacity-100">
           <MagnifyingGlassPlus className="size-3.5" weight="bold" />
         </span>
       ) : null}

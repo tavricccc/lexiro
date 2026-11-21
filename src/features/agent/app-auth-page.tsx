@@ -9,17 +9,10 @@ import { workerUrl } from "@/data/config";
 import { Brand } from "@/ui/brand";
 import { Page } from "@/ui/page";
 
-/**
- * The native app cannot show the Google popup, so it opens this page with a
- * PKCE challenge. The Google ID token from a fresh sign-in stays with the
- * Worker behind a one-time code; only the code goes back through the redirect,
- * and only the app holding the verifier can redeem it.
- */
 const CHALLENGE = /^[A-Za-z0-9_-]{43}$/;
 const PENDING_KEY = "lexiro:app-auth";
 const FAILED = "登入失敗，請回到 App 再試一次。";
 
-/** Release builds use the lexiroapp scheme; Expo Go uses exp. */
 function isAppRedirect(value: string): boolean {
   try {
     const { protocol } = new URL(value);
@@ -54,7 +47,6 @@ export default function AppAuthPage() {
   const [status, setStatus] = useState<ActionStatus>("idle");
   const [error, setError] = useState("");
 
-  // Back from the redirect fallback: finish where the popup would have.
   useEffect(() => {
     let pending: { challenge: string; redirect: string } | null = null;
     try {
@@ -93,19 +85,21 @@ export default function AppAuthPage() {
   };
 
   return (
-    <div className="mx-auto grid w-full max-w-xl gap-6 px-[var(--gutter)] pb-12 pt-[calc(var(--safe-top)+1.5rem)]">
-      <Brand />
-      <Page title="登入 Lexiro App">
-        {!valid ? (
-          <EmptyState description="這個登入連結不完整，請回到 App 重新開始。" title="無效的連結" />
-        ) : (
-          <Panel className="grid gap-3">
-            <p className="text-[0.9375rem] text-ink-muted">用 Google 登入後會自動回到 App。</p>
-            <Button className="justify-self-start" onClick={() => void start()} size="lg" status={status} variant="primary"><GoogleLogo weight="bold" />用 Google 登入</Button>
-            {error && <p className="text-sm text-danger" role="alert">{error}</p>}
-          </Panel>
-        )}
-      </Page>
+    <div className="swiss-grid-bg grid min-h-svh place-items-center px-[var(--gutter)] py-10">
+      <div className="grid w-full max-w-xl gap-6 border-2 border-line-strong bg-surface p-6 shadow-float md:p-8">
+        <Brand compact />
+        <Page kicker="NATIVE HANDOFF // PKCE" title="登入 Lexiro App">
+          {!valid ? (
+            <EmptyState description="這個登入連結不完整，請回到 App 重新開始。" title="無效的連結" />
+          ) : (
+            <Panel className="grid gap-4">
+              <p className="text-sm text-ink-muted">用 Google 登入後會自動返回 Lexiro App。</p>
+              <Button className="w-full" onClick={() => void start()} size="lg" status={status} variant="primary"><GoogleLogo weight="bold" />用 Google 登入</Button>
+              {error && <p className="border-l-2 border-danger pl-3 text-sm font-medium text-danger" role="alert">{error}</p>}
+            </Panel>
+          )}
+        </Page>
+      </div>
     </div>
   );
 }

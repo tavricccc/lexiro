@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, ConfirmDialog, EmptyState, Field, Input, ListGroup, ListRow, Tile, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, EmptyState, Field, Input, ListGroup, ListRow, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
 import { useIsAdministrator } from "@/data/admin";
@@ -27,6 +27,7 @@ export default function AdminPage() {
   const [target, setTarget] = useState<Target | null>(null);
   const [reason, setReason] = useState("");
   const [status, setStatus] = useState<ActionStatus>("idle");
+
   const search = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -47,9 +48,10 @@ export default function AdminPage() {
     } catch (error) { toast.error(errorMessage(error)); }
     finally { setStatus("idle"); }
   };
+
   const row = (entry: AdminAccount) => (
     <ListRow
-      detail={`${entry.email || entry.uid} · ${n(entry.words)} 字 · 今日寫 ${n(entry.writesToday)} / 讀 ${n(entry.readsToday)}`}
+      detail={`${entry.email || entry.uid} · ${n(entry.words)} 字 · 寫 ${n(entry.writesToday)} / 讀 ${n(entry.readsToday)}`}
       key={entry.uid}
       label={entry.name || entry.email || entry.uid}
       trailing={entry.uid === account?.uid ? undefined : (
@@ -57,39 +59,50 @@ export default function AdminPage() {
       )}
     />
   );
-  if (!admin) return <Page back={{ href: "/app/me", label: "我" }} title="管理後台"><EmptyState description="這個帳號沒有管理權限。" title="無法存取" /></Page>;
+
+  if (!admin) return <Page back={{ href: "/app/me", label: "我" }} kicker="ADMIN // RESTRICTED" title="管理後台"><EmptyState description="這個帳號沒有管理權限。" title="無法存取" /></Page>;
   return (
-    <Page back={{ href: "/app/me", label: "我" }} title="管理後台">
+    <Page back={{ href: "/app/me", label: "我" }} kicker="ADMIN // SYSTEM TELEMETRY" title="管理後台">
       <Loaded query={overview}>
         {(data) => (
           <>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
-              {([["帳號", data.accounts], ["今日活躍", data.activeToday], ["今日寫入", data.writesToday], ["今日讀取", data.readsToday], ["單字總數", data.words]] as const).map(([label, value]) => (
-                <Tile key={label}><p className="text-sm text-ink-muted">{label}</p><p className="font-latin text-2xl font-bold">{n(value)}</p></Tile>
+            <div className="grid grid-cols-2 divide-y divide-line border-2 border-line-strong bg-surface md:grid-cols-5 md:divide-x md:divide-y-0">
+              {([["帳號", data.accounts], ["今日活躍", data.activeToday], ["今日寫入", data.writesToday], ["今日讀取", data.readsToday], ["單字總數", data.words]] as const).map(([label, value], i) => (
+                <div className="grid gap-1.5 p-4 md:p-5" key={label}>
+                  <span className="font-mono text-xs text-ink-muted">0{i + 1} · {label}</span>
+                  <span className="font-latin text-3xl font-black tabular-nums">{n(value)}</span>
+                </div>
               ))}
             </div>
-            {data.agentPaused ? <p className="rounded-tile bg-caution/15 px-4 py-3 text-sm text-caution">Agent 服務目前暫停中。</p> : null}
-            <ListGroup title={`今日用量最高（${data.day}）`}>{data.top.length ? data.top.map(row) : <ListRow label="今天還沒有活動" />}</ListGroup>
-            {data.disabled.length ? (
-              <ListGroup title="已停用">
-                {data.disabled.map((entry) => (
-                  <ListRow
-                    detail={`${entry.reason || "未填原因"} · ${new Date(entry.disabledAt).toLocaleDateString("zh-TW")}`}
-                    key={entry.uid}
-                    label={entry.name || entry.email || entry.uid}
-                    trailing={<Button onClick={() => setTarget({ uid: entry.uid, label: entry.name || entry.email || entry.uid, disabled: true })} size="sm">恢復</Button>}
-                  />
-                ))}
-              </ListGroup>
-            ) : null}
+            {data.agentPaused ? <p className="border-l-4 border-caution bg-caution/10 px-4 py-3 font-mono text-xs font-semibold text-caution">AGENT SERVICE PAUSED // 服務暫停中</p> : null}
+            <div className="grid items-start gap-6 lg:grid-cols-12">
+              <div className="lg:col-span-7">
+                <ListGroup title={`今日用量最高（${data.day}）`}>{data.top.length ? data.top.map(row) : <ListRow label="今天還沒有活動" />}</ListGroup>
+              </div>
+              <div className="grid gap-6 lg:col-span-5">
+                <form className="flex gap-2" onSubmit={(event) => void search(event)}>
+                  <Input aria-label="搜尋帳號" className="flex-1" onChange={(event) => setQuery(event.target.value)} placeholder="搜尋 Email、名稱或 UID" value={query} />
+                  <Button aria-label="搜尋" disabled={!query.trim()} size="icon" type="submit" variant="primary"><MagnifyingGlass weight="bold" /></Button>
+                </form>
+                {results ? <ListGroup title="搜尋結果">{results.length ? results.map(row) : <ListRow label="找不到符合的帳號" />}</ListGroup> : null}
+                {data.disabled.length ? (
+                  <ListGroup title="已停用帳號">
+                    {data.disabled.map((entry) => (
+                      <ListRow
+                        detail={`${entry.reason || "未填原因"} · ${new Date(entry.disabledAt).toLocaleDateString("zh-TW")}`}
+                        key={entry.uid}
+                        label={entry.name || entry.email || entry.uid}
+                        trailing={<Button onClick={() => setTarget({ uid: entry.uid, label: entry.name || entry.email || entry.uid, disabled: true })} size="sm">恢復</Button>}
+                      />
+                    ))}
+                  </ListGroup>
+                ) : null}
+              </div>
+            </div>
           </>
         )}
       </Loaded>
-      <form className="flex gap-2" onSubmit={(event) => void search(event)}>
-        <Input aria-label="搜尋帳號" className="flex-1" onChange={(event) => setQuery(event.target.value)} placeholder="Email、名稱或 UID" value={query} />
-        <Button aria-label="搜尋" disabled={!query.trim()} size="icon" type="submit"><MagnifyingGlass weight="bold" /></Button>
-      </form>
-      {results ? <ListGroup title="搜尋結果">{results.length ? results.map(row) : <ListRow label="找不到符合的帳號" />}</ListGroup> : null}
+
       <ConfirmDialog
         confirmLabel={target?.disabled ? "恢復帳號" : "停用帳號"}
         description={target ? (target.disabled ? `「${target.label}」將可以再次使用 Lexiro。` : `「${target.label}」將無法讀寫資料，直到你恢復它。`) : undefined}

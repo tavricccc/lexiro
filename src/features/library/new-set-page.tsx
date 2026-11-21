@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
-import { Button } from "design-kit";
+import { Button, Panel } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { createSet } from "@/data/library";
 import { useLibrary } from "@/data/queries";
@@ -13,7 +13,7 @@ export default function NewSetPage() {
   const library = useLibrary();
   const navigate = useNavigate();
   const online = useOnline();
-  const [value, setValue] = useState<SetFormValue>({ name: "", folderId: params.get("folder"), hue: "mint", icon: "books" });
+  const [value, setValue] = useState<SetFormValue>({ name: "", folderId: params.get("folder"), hue: "sky", icon: "books" });
   const [error, setError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading">("idle");
   const submit = async () => {
@@ -28,11 +28,15 @@ export default function NewSetPage() {
     }
   };
   return (
-    <Page back={{ href: "/app/library", label: "回到我的單字" }} title="新增單字集">
-      <form className="grid gap-8" onSubmit={(event) => { event.preventDefault(); void submit(); }}>
-        <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} value={value} />
-        <Button className="justify-self-start" disabled={!online} size="lg" status={status} type="submit" variant="primary">建立</Button>
-      </form>
+    <Page back={{ href: "/app/library", label: "我的單字" }} kicker="LIBRARY // NEW SET" title="新增單字集" width="narrow">
+      <Panel className="border-t-2 border-t-line-strong">
+        <form className="grid gap-8" onSubmit={(event) => { event.preventDefault(); void submit(); }}>
+          <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} value={value} />
+          <div className="border-t border-line pt-5">
+            <Button disabled={!online} size="lg" status={status} type="submit" variant="primary">建立單字集</Button>
+          </div>
+        </form>
+      </Panel>
     </Page>
   );
 }

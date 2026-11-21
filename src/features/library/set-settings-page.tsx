@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { SetContent } from "@lexiro/contract";
-import { Button, ConfirmDialog, ListGroup, ListRow } from "design-kit";
+import { Button, ConfirmDialog, ListGroup, ListRow, Panel } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteSet, updateSet } from "@/data/library";
 import { useLibrary, useSet } from "@/data/queries";
@@ -15,7 +15,7 @@ export default function SetSettingsPage() {
   const { setId = "" } = useParams();
   const content = useSet(setId);
   return (
-    <Page back={{ href: `/app/sets/${setId}`, label: "回到單字集" }} title="單字集設定">
+    <Page back={{ href: `/app/sets/${setId}`, label: "回到單字集" }} kicker="SET // CONFIGURATION" title="單字集設定" width="wide">
       <Loaded query={content}>{(data) => <Settings content={data} key={data.set.updatedAt} />}</Loaded>
     </Page>
   );
@@ -33,29 +33,37 @@ function Settings({ content }: { content: SetContent }) {
   const [deleting, setDeleting] = useState<"idle" | "loading">("idle");
   const changed = value.name !== set.name || value.folderId !== set.folderId || value.hue !== set.hue || value.icon !== set.icon;
   return (
-    <div className="grid gap-10">
-      <form
-        className="grid gap-8"
-        onSubmit={async (event) => {
-          event.preventDefault();
-          if (!value.name.trim()) return setError("請輸入名稱");
-          setSaving("loading");
-          try {
-            await updateSet(set, { ...value, name: value.name.trim() });
-            toast.success("已儲存");
-          } catch (reason) {
-            setError(errorMessage(reason));
-          } finally {
-            setSaving("idle");
-          }
-        }}
-      >
-        <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} value={value} />
-        <Button className="justify-self-start" disabled={!changed || !online} size="lg" status={saving} type="submit" variant="primary">儲存</Button>
-      </form>
-      <ListGroup footer="單字、題目和分享連結會一起刪除，無法復原。練習紀錄會保留。" title="危險區">
-        <ListRow disabled={!online} icon={<Trash />} label="刪除這個單字集" onClick={() => setRemoving(true)} tone="danger" />
-      </ListGroup>
+    <div className="grid items-start gap-8 lg:grid-cols-12">
+      <Panel className="border-t-2 border-t-line-strong lg:col-span-7">
+        <form
+          className="grid gap-8"
+          onSubmit={async (event) => {
+            event.preventDefault();
+            if (!value.name.trim()) return setError("請輸入名稱");
+            setSaving("loading");
+            try {
+              await updateSet(set, { ...value, name: value.name.trim() });
+              toast.success("已儲存");
+            } catch (reason) {
+              setError(errorMessage(reason));
+            } finally {
+              setSaving("idle");
+            }
+          }}
+        >
+          <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} value={value} />
+          <div className="border-t border-line pt-5">
+            <Button disabled={!changed || !online} size="lg" status={saving} type="submit" variant="primary">儲存變更</Button>
+          </div>
+        </form>
+      </Panel>
+
+      <div className="lg:col-span-5">
+        <ListGroup footer="單字、題目和分享連結會一起刪除，無法復原。練習紀錄會保留。" title="DANGER ZONE // 危險區">
+          <ListRow disabled={!online} icon={<Trash weight="bold" />} label="刪除這個單字集" onClick={() => setRemoving(true)} tone="danger" />
+        </ListGroup>
+      </div>
+
       <ConfirmDialog
         confirmLabel="刪除"
         description={`${content.words.length} 個單字和 ${content.questions.length} 題會一起刪除。`}
