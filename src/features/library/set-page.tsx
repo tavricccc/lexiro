@@ -3,6 +3,7 @@ import { useParams, useSearchParams } from "react-router";
 import { CheckSquare, Copy, DotsThree, GearSix, MagnifyingGlass, Play, Plus, ShareNetwork, Star, Trash, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { descriptionPoints, type Question, type SetContent, type Word } from "@lexiro/contract";
+import { Resizable, ResizableHandle, ResizablePanel } from "@ui-sdk/react/resizable";
 import { AppLink, Button, Chip, ConfirmDialog, EmptyState, HeaderButton, Input, ListGroup, ListRow, Menu, Segmented, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
@@ -67,14 +68,14 @@ export default function SetPage() {
         <span className="inline-flex items-center gap-3.5"><SetIcon className="size-10 [&_svg]:size-5" hue={content.data.set.hue} icon={content.data.set.icon} /><span>{name}</span></span>
       ) : name}
     >
-      <Loaded query={content}>{(data) => <SetBody content={data} wordId={wordId} />}</Loaded>
+      <Loaded query={content}>{(data) => <SetBody content={data} wide={wide} wordId={wordId} />}</Loaded>
       {content.data && !wide ? <WordSheet content={content.data} wordId={wordId} /> : null}
       {content.data ? <ShareSheet onOpenChange={setShare} open={share} set={content.data.set} /> : null}
     </Page>
   );
 }
 
-function SetBody({ content, wordId }: { content: SetContent; wordId: string | undefined }) {
+function SetBody({ content, wide, wordId }: { content: SetContent; wide: boolean; wordId: string | undefined }) {
   const [params, setParams] = useSearchParams();
   const tab: Tab = params.get("tab") === "questions" ? "questions" : "words";
   const setTab = (next: Tab) => setParams(next === "words" ? {} : { tab: next }, { replace: true });
@@ -97,10 +98,24 @@ function SetBody({ content, wordId }: { content: SetContent; wordId: string | un
         />
       </div>
       {tab === "words" ? (
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(22rem,0.85fr)] lg:gap-8">
+        wide ? (
+          <Resizable autoSaveId="lexiro:set-split" className="flex items-start">
+            <ResizablePanel className="min-w-0 pr-5" defaultSize={58} id="words" minSize={36}>
+              <WordList activeWordId={wordId} content={content} />
+            </ResizablePanel>
+            <ResizableHandle
+              aria-label="調整單字列表與詞條檢視寬度"
+              className="group sticky top-8 flex h-40 w-1.5 shrink-0 cursor-col-resize items-center justify-center bg-line outline-none transition-colors hover:bg-contrast data-dragging:bg-contrast focus-visible:bg-contrast"
+            >
+              <span aria-hidden className="h-8 w-0.5 bg-surface" />
+            </ResizableHandle>
+            <ResizablePanel className="min-w-0 pl-5" defaultSize={42} id="inspector" minSize={28}>
+              <WordInspector content={content} wordId={wordId} />
+            </ResizablePanel>
+          </Resizable>
+        ) : (
           <WordList activeWordId={wordId} content={content} />
-          <WordInspector content={content} wordId={wordId} />
-        </div>
+        )
       ) : <QuestionList content={content} />}
     </div>
   );

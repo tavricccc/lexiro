@@ -1,3 +1,5 @@
+@layer ui-sdk;
+
 @import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Regular.css";
 @import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Medium.css";
 @import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
@@ -6,7 +8,6 @@
 
 @source "../";
 
-/* Local Albert Sans ensures offline grotesque clarity alongside Inter. */
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-500.ttf") format("truetype"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-600.ttf") format("truetype"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-700.ttf") format("truetype"); font-weight: 700; font-display: swap; }
@@ -23,11 +24,6 @@
   --color-hue-violet: var(--hue-violet);
 }
 
-/*
- * Lexiro — International Typographic Style (International Klein Blue edition).
- * Archival warm paper, dense printer's black ink, razor-sharp hairlines,
- * and International Klein Blue (#0038FF) as the singular graphic accent.
- */
 :root {
   --kit-font-sans: "Inter", "HarmonyOS Sans TC", "Helvetica Neue", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
   --kit-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
@@ -100,25 +96,43 @@
   --scrim: rgb(0 0 0 / 72%);
 }
 
-/* Swiss editorial helpers */
-.swiss-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-.swiss-index {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-}
-
 .swiss-grid-bg {
   background-image:
     linear-gradient(to right, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* ui-sdk SegmentedControl sliding indicator */
+[data-slot="segmented-control-indicator"] {
+  position: absolute;
+  z-index: -1;
+  top: var(--segmented-control-indicator-top);
+  left: var(--segmented-control-indicator-left);
+  width: var(--segmented-control-indicator-width);
+  height: var(--segmented-control-indicator-height);
+  background: var(--contrast);
+  transition: top var(--motion-control) var(--ease-move), left var(--motion-control) var(--ease-move), width var(--motion-control) var(--ease-move), height var(--motion-control) var(--ease-move);
+}
+[data-slot="segmented-control-indicator"][data-activation-direction="none"] {
+  transition: none;
+}
+
+/* ui-sdk OTPInput blinking caret */
+[data-slot="otp-input-slot"][data-fake-caret]::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 1.5rem;
+  background: var(--contrast);
+  animation: swiss-caret 1s steps(1) infinite;
+}
+@keyframes swiss-caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="otp-input-slot"][data-fake-caret]::after {
+    animation: none;
+  }
 }

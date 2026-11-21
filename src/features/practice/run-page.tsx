@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useNavigate } from "react-router";
 import { ArrowRight, ArrowCounterClockwise, Check, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, type PracticeTask } from "@lexiro/contract";
+import { Resizable, ResizableHandle, ResizablePanel } from "@ui-sdk/react/resizable";
 import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, ProgressBar, cn } from "design-kit";
 import { recordAnswer } from "@/data/learning";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
@@ -53,12 +54,27 @@ function hasPassage(item: PracticeItem): boolean {
   return "passage" in item;
 }
 
+const WIDE_EXAM_QUERY = "(min-width: 1024px)";
+function useWideExam() {
+  return useSyncExternalStore(
+    (cb) => {
+      if (typeof window === "undefined" || !window.matchMedia) return () => {};
+      const mql = window.matchMedia(WIDE_EXAM_QUERY);
+      mql.addEventListener("change", cb);
+      return () => mql.removeEventListener("change", cb);
+    },
+    () => (typeof window !== "undefined" && window.matchMedia ? window.matchMedia(WIDE_EXAM_QUERY).matches : false),
+    () => false,
+  );
+}
+
 function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
   const used = usedBankOptions(round);
   const split = hasPassage(item);
+  const wide = useWideExam();
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -101,13 +117,31 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
         </span>
       </header>
 
-      {/* Adaptive Exam Surface: 50/50 split for passages, editorial focus for standalone prompts */}
-      {split ? (
-        <div className="card-in grid min-h-0 flex-1 lg:grid-cols-2 lg:divide-x-2 lg:divide-line-strong" key={round.index}>
-          <section className="min-h-0 overflow-y-auto overscroll-contain border-b border-line-strong bg-surface p-5 md:p-10 lg:border-b-0">
+      {/* Adaptive Exam Surface: draggable Resizable 50/50 split on desktop for passages */}
+      {split && wide ? (
+        <Resizable autoSaveId="lexiro:exam-split" className="card-in flex min-h-0 flex-1" key={round.index}>
+          <ResizablePanel className="min-h-0 overflow-y-auto overscroll-contain bg-surface p-8 xl:p-12" defaultSize={50} id="passage" minSize={28}>
+            <PassagePane item={item} round={round} />
+          </ResizablePanel>
+          <ResizableHandle
+            aria-label="調整篇章與題目寬度"
+            className="group relative flex w-2 shrink-0 cursor-col-resize items-center justify-center bg-line-strong/20 outline-none transition-colors hover:bg-contrast data-dragging:bg-contrast focus-visible:bg-contrast"
+          >
+            <span aria-hidden className="h-10 w-0.5 bg-surface" />
+          </ResizableHandle>
+          <ResizablePanel className="min-h-0 overflow-y-auto overscroll-contain p-8 xl:p-12" defaultSize={50} id="question" minSize={28}>
+            <div className="mx-auto grid max-w-xl gap-6">
+              <PassageQuestionStem chosen={chosen as number | null | undefined} item={item} step={step} />
+              {answerArea}
+            </div>
+          </ResizablePanel>
+        </Resizable>
+      ) : split ? (
+        <div className="card-in grid min-h-0 flex-1 overflow-y-auto overscroll-contain" key={round.index}>
+          <section className="border-b-2 border-line-strong bg-surface p-5 md:p-8">
             <PassagePane item={item} round={round} />
           </section>
-          <section className="min-h-0 overflow-y-auto overscroll-contain p-5 md:p-10">
+          <section className="p-5 md:p-8">
             <div className="mx-auto grid max-w-xl gap-6">
               <PassageQuestionStem chosen={chosen as number | null | undefined} item={item} step={step} />
               {answerArea}

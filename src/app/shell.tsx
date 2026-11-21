@@ -7,6 +7,7 @@ import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
+import { CommandPalette } from "@/ui/command-palette";
 import { screenKey, travelDirection } from "./hierarchy";
 import { lastPopFromSystem } from "./navigation";
 import { OfflineBanner } from "@/ui/offline-banner";
@@ -43,10 +44,11 @@ export function WorkspaceShell() {
     <div className="min-h-svh">
       {!full ? (
         <aside className="fixed inset-y-0 left-0 z-40 hidden w-56 flex-col border-r-2 border-line-strong bg-surface md:flex lg:w-64">
-          <div className="border-b border-line px-5 py-6">
+          <div className="grid gap-4 border-b border-line px-5 py-5">
             <AppLink className="inline-block outline-none focus-visible:ring-2 focus-visible:ring-contrast" href="/app">
               <Brand />
             </AppLink>
+            <CommandPalette />
           </div>
           <div className="flex-1 overflow-y-auto py-4">
             <p className="mb-2 px-4 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-ink-faint">INDEX</p>

@@ -1,4 +1,5 @@
 import { Toaster as Sonner } from "sonner";
+import { Progress, ProgressIndicator, ProgressTrack } from "@ui-sdk/react/progress";
 import { cn } from "../lib/utils";
 
 export function Spinner({ className, label }: { className?: string; label?: string }) {
@@ -12,18 +13,21 @@ export function Spinner({ className, label }: { className?: string; label?: stri
   );
 }
 
-/** Space held for content that is still loading. */
 export function Skeleton({ className }: { className?: string }) {
   return <span aria-hidden className={cn("skeleton block rounded-none bg-surface-raised", className)} />;
 }
 
-/** Determinate geometric progress rule. */
 export function ProgressBar({ className, label, value }: { className?: string; label: string; value: number }) {
   const percent = Math.round(Math.min(1, Math.max(0, value)) * 100);
   return (
-    <div aria-label={label} aria-valuemax={100} aria-valuemin={0} aria-valuenow={percent} className={cn("h-2 overflow-hidden rounded-none border border-line-strong/20 bg-surface-raised", className)} role="progressbar">
-      <div className="h-full rounded-none bg-contrast transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]" style={{ width: `${percent}%` }} />
-    </div>
+    <Progress aria-label={label} className={cn("block", className)} max={100} min={0} value={percent}>
+      <ProgressTrack className="h-2 overflow-hidden rounded-none border border-line-strong/20 bg-surface-raised">
+        <ProgressIndicator
+          className="h-full rounded-none bg-contrast transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]"
+          style={{ width: `${percent}%` }}
+        />
+      </ProgressTrack>
+    </Progress>
   );
 }
 

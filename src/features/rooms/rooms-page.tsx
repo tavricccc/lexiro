@@ -1,9 +1,15 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Sword } from "@phosphor-icons/react";
+import { ArrowRight, Minus, Sword } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { PracticeTask, SetContent } from "@lexiro/contract";
+import {
+  OTPInput,
+  OTPInputGroup,
+  OTPInputSeparator,
+  OTPInputSlot,
+} from "@ui-sdk/react/otp-input";
 import { AppLink, Button, Field, Input, ListGroup, ListRow, Segmented, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
@@ -20,15 +26,19 @@ const AMOUNTS = ["10", "20", "30"] as const;
 const SECONDS = ["auto", "15", "25", "40"] as const;
 type Seconds = (typeof SECONDS)[number];
 
+const slotClass =
+  "relative grid h-14 flex-1 place-items-center border-2 border-line-strong/35 bg-canvas font-mono text-2xl font-black uppercase text-ink transition-[border-color,background-color] duration-[var(--motion-control)] data-filled:border-line-strong data-filled:bg-surface data-active:border-contrast data-active:bg-accent-soft";
+
 export default function RoomsPage() {
   const navigate = useNavigate();
   const { account } = useAuth();
   const active = useQuery({ queryKey: ["rooms", "active"], queryFn: () => api<{ room: { code: string; title: string; phase: string } | null }>("/rooms/active") });
   const [code, setCode] = useState("");
   const normalized = code.trim().toUpperCase();
-  const join = () => {
-    if (!ROOM_CODE.test(normalized)) return toast.error("房間代碼是 6 個英數字。");
-    navigate(`/app/rooms/${normalized}`);
+  const join = (target = normalized) => {
+    const clean = target.trim().toUpperCase();
+    if (!ROOM_CODE.test(clean)) return toast.error("房間代碼是 6 個英數字。");
+    navigate(`/app/rooms/${clean}`);
   };
 
   return (
@@ -39,31 +49,46 @@ export default function RoomsPage() {
             <span className="block font-mono text-xs font-semibold uppercase tracking-[0.1em] text-on-contrast/80">ACTIVE ROOM // {active.data.room.code}</span>
             <p className="truncate text-lg font-bold">{active.data.room.title}</p>
           </div>
-          <Button asChild className="border-on-contrast bg-on-contrast text-contrast hover:bg-ink hover:border-ink hover:text-surface" variant="secondary">
+          <Button asChild className="border-on-contrast bg-on-contrast text-contrast hover:border-ink hover:bg-ink hover:text-surface" variant="secondary">
             <AppLink href={`/app/rooms/${active.data.room.code}`}>回到房間<ArrowRight weight="bold" /></AppLink>
           </Button>
         </div>
       ) : null}
 
       <div className="grid items-start gap-6 lg:grid-cols-12">
-        {/* Left: Join via 6-char room code */}
+        {/* Left: 6-Cell Swiss Room Code OTP Input */}
         <section className="grid gap-5 border-2 border-line-strong bg-surface p-6 md:p-8 lg:col-span-5">
           <div className="grid gap-1 border-b border-line pb-4">
             <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-contrast">01 // JOIN MATCH</span>
             <h2 className="text-2xl font-extrabold tracking-[-0.025em]">加入房間</h2>
           </div>
-          <form className="grid gap-4" onSubmit={(event) => { event.preventDefault(); join(); }}>
-            <Input
-              aria-label="房間代碼"
-              autoCapitalize="characters"
-              autoComplete="off"
-              className="h-16 border-2 text-center font-mono text-3xl font-bold uppercase tracking-[0.35em]"
-              maxLength={6}
-              onChange={(event) => setCode(event.target.value.replace(/[^a-z0-9]/gi, ""))}
-              placeholder="ABC234"
-              spellCheck={false}
-              value={code}
-            />
+          <form className="grid gap-5" onSubmit={(event) => { event.preventDefault(); join(); }}>
+            <div className="grid gap-2">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">6 位房間代碼</span>
+              <OTPInput
+                aria-label="房間代碼"
+                className="flex items-center gap-2"
+                inputMode="text"
+                maxLength={6}
+                onValueChange={(next) => setCode(next.toUpperCase())}
+                pattern="alphanumeric"
+                value={code}
+              >
+                <OTPInputGroup className="flex flex-1 gap-1.5">
+                  {[0, 1, 2].map((index) => (
+                    <OTPInputSlot className={slotClass} index={index} key={index} />
+                  ))}
+                </OTPInputGroup>
+                <OTPInputSeparator className="text-ink-faint">
+                  <Minus aria-hidden className="size-4" weight="bold" />
+                </OTPInputSeparator>
+                <OTPInputGroup className="flex flex-1 gap-1.5">
+                  {[3, 4, 5].map((index) => (
+                    <OTPInputSlot className={slotClass} index={index} key={index} />
+                  ))}
+                </OTPInputGroup>
+              </OTPInput>
+            </div>
             <Button className="h-12 w-full justify-between px-5" disabled={normalized.length !== 6} size="lg" type="submit" variant="primary">
               <span>進入對戰房間</span>
               <ArrowRight weight="bold" />
@@ -71,7 +96,6 @@ export default function RoomsPage() {
           </form>
         </section>
 
-        {/* Right: Host a new room */}
         <div className="lg:col-span-7">
           {account ? <HostForm name={account.name} /> : null}
         </div>

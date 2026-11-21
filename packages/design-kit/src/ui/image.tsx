@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Dialog } from "radix-ui";
+import { Dialog, DialogBackdrop, DialogContent, DialogTitle } from "@ui-sdk/react/dialog";
 import { ImageBroken, MagnifyingGlassPlus } from "@phosphor-icons/react/ssr";
 import { useLabels } from "../lib/provider";
 import { cn } from "../lib/utils";
@@ -111,27 +111,25 @@ export function ImageLightbox({ alt, height, onOpenChange, open, src, width }: {
   width?: number;
 }) {
   return (
-    <Dialog.Root onOpenChange={onOpenChange} open={open}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="scrim fixed inset-0 z-50 bg-[var(--scrim)]" />
-        <Dialog.Content
-          aria-describedby={undefined}
-          className="dialog-surface fixed inset-0 z-50 grid place-items-center p-4 outline-none"
-          onClick={() => onOpenChange(false)}
-        >
-          <Dialog.Title className="sr-only">{alt}</Dialog.Title>
-          {src ? (
-            <DecodedImage
-              alt={alt}
-              className="max-h-[calc(100svh-2rem)] max-w-full rounded-tile object-contain"
-              containerClassName="max-w-[min(100%,70rem)] place-items-center"
-              height={height}
-              src={src}
-              width={width}
-            />
-          ) : null}
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <Dialog onOpenChange={(next) => onOpenChange(next)} open={open}>
+      <DialogBackdrop className="fixed inset-0 z-50 bg-[var(--scrim)] transition-opacity duration-[var(--motion-nav)] data-starting-style:opacity-0 data-ending-style:opacity-0" />
+      <DialogContent
+        aria-describedby={undefined}
+        className="fixed inset-0 z-50 grid place-items-center p-4 outline-none"
+        onClick={() => onOpenChange(false)}
+      >
+        <DialogTitle className="sr-only">{alt}</DialogTitle>
+        {src ? (
+          <DecodedImage
+            alt={alt}
+            className="max-h-[calc(100svh-2rem)] max-w-full rounded-none object-contain"
+            containerClassName="max-w-[min(100%,70rem)] place-items-center"
+            height={height}
+            src={src}
+            width={width}
+          />
+        ) : null}
+      </DialogContent>
+    </Dialog>
   );
 }
