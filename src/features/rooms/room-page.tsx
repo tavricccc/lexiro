@@ -21,7 +21,13 @@ export default function RoomPage() {
   if (connection === "failed" || connection === "replaced")
     return (
       <Shell leave={leave}>
-        <EmptyState action={<Button asChild variant="primary"><AppLink href="/app/rooms">回到對戰</AppLink></Button>} description={connection === "replaced" ? "你在另一台裝置進入了這個房間。" : room.error} title="無法留在這個房間" />
+        <div className="mx-auto max-w-xl py-8">
+          <EmptyState
+            action={<Button asChild variant="primary"><AppLink href="/app/rooms">回到對戰</AppLink></Button>}
+            description={connection === "replaced" ? "你在另一台裝置進入了這個房間。" : room.error}
+            title="無法留在這個房間"
+          />
+        </div>
       </Shell>
     );
   if (!state)
@@ -31,23 +37,25 @@ export default function RoomPage() {
     <Shell leave={leave} state={state} reconnecting={connection === "reconnecting"}>
       {state.phase === "lobby" ? <Lobby host={host} send={room.send} state={state} />
         : state.phase === "ended" ? <Ended state={state} />
-        : <div className="card-in grid gap-5" key={state.index}><Live host={host} offset={room.offset} send={room.send} state={state} /></div>}
+        : <div className="card-in" key={state.index}><Live host={host} offset={room.offset} send={room.send} state={state} /></div>}
     </Shell>
   );
 }
 
 function Shell({ state, leave, reconnecting, children }: { state?: RoomState; leave: React.ReactNode; reconnecting?: boolean; children: React.ReactNode }) {
   return (
-    <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
-      <header className="flex items-center gap-3">
-        <div className="min-w-0 flex-1">
-          <p className="truncate font-semibold">{state?.title ?? "對戰"}</p>
-          {state ? <p className="font-latin text-sm tracking-[0.2em] text-ink-muted">{state.code}</p> : null}
+    <div className="min-h-svh bg-canvas">
+      <header className="sticky top-0 z-30 flex items-center gap-4 border-b-2 border-line-strong bg-surface px-[var(--gutter)] pb-3 pt-[calc(var(--safe-top)+0.75rem)] md:px-8 md:py-3.5">
+        <div className="min-w-0 flex-1 flex items-baseline gap-3">
+          <span className="truncate text-base font-extrabold tracking-[-0.02em] md:text-lg">{state?.title ?? "對戰"}</span>
+          {state ? <Chip tone="info">{state.code}</Chip> : null}
         </div>
-        {reconnecting ? <Chip>重新連線中…</Chip> : null}
+        {reconnecting ? <Chip tone="caution">重新連線中…</Chip> : null}
         {leave}
       </header>
-      {children}
+      <div className="mx-auto w-full max-w-[1360px] px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2.5rem)] pt-6 md:px-8 md:pt-8">
+        {children}
+      </div>
     </div>
   );
 }
@@ -56,18 +64,26 @@ function Lobby({ state, host, send }: { state: RoomState; host: boolean; send: S
   const link = `${location.origin}/app/rooms/${state.code}`;
   const copy = () => void navigator.clipboard.writeText(link).then(() => toast.success("已複製邀請連結"), () => toast.error("無法複製，請手動分享代碼。"));
   return (
-    <>
-      <Panel className="grid justify-items-center gap-3 py-8 text-center">
-        <p className="text-sm text-ink-muted">房間代碼</p>
-        <p className="font-latin text-5xl font-bold tracking-[0.25em]">{state.code}</p>
-        <Button onClick={copy} variant="secondary"><Copy weight="bold" />複製邀請連結</Button>
-        <p className="text-sm text-ink-muted">共 {state.total} 題</p>
-      </Panel>
-      <Scoreboard hostUid={state.hostUid} players={state.players} title={`玩家 ${state.players.length}/8`} you={state.you} />
-      {host ? (
-        <Button className="justify-self-start" onClick={() => send({ type: "start" })} size="lg" variant="primary"><Play weight="fill" />開始</Button>
-      ) : <p className="px-1 text-sm text-ink-muted">等房主開始…</p>}
-    </>
+    <div className="grid items-start gap-6 lg:grid-cols-12">
+      <section className="grid gap-6 border-2 border-line-strong bg-surface p-8 md:p-10 lg:col-span-7">
+        <div className="flex items-center justify-between font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">
+          <span>LOBBY // ROOM CODE</span>
+          <span>{state.total} QUESTIONS</span>
+        </div>
+        <p className="font-mono text-[clamp(3rem,9vw,5.5rem)] font-black leading-none tracking-[0.22em] text-contrast">
+          {state.code}
+        </p>
+        <div className="flex flex-wrap items-center gap-3 border-t border-line pt-6">
+          <Button onClick={copy} size="lg" variant="secondary"><Copy weight="bold" />複製邀請連結</Button>
+          {host ? (
+            <Button onClick={() => send({ type: "start" })} size="lg" variant="primary"><Play weight="fill" />開始對戰</Button>
+          ) : <span className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">WAITING FOR HOST…</span>}
+        </div>
+      </section>
+      <div className="lg:col-span-5">
+        <Scoreboard hostUid={state.hostUid} players={state.players} title={`玩家名冊 ${state.players.length}/8`} you={state.you} />
+      </div>
+    </div>
   );
 }
 
@@ -80,93 +96,132 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
   const used = new Set(question.sharedBank ? Object.entries(state.revealedBlanks).filter(([blank]) => Number(blank) !== question.blank).map(([, option]) => option) : []);
   const gained = reveal?.gained[state.you];
   const answered = state.players.filter((player) => player.answered).length;
+
   return (
-    <>
-      <div className="flex items-center gap-3">
-        <Chip>{TASK_LABELS[question.type]}</Chip>
-        <span className="text-sm text-ink-muted">第 {state.index + 1} / {state.total} 題</span>
-        <span className="ms-auto text-sm tabular-nums text-ink-muted">{reveal ? "看結果" : `${answered}/${state.players.length} 已作答`}</span>
+    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_21rem]">
+      {/* Left: Arena Question & Options */}
+      <div className="grid gap-6">
+        <div className="grid gap-3 border-b-2 border-line-strong pb-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <Chip tone="info">{TASK_LABELS[question.type]}</Chip>
+            <span className="font-mono text-sm font-bold tabular-nums">
+              {String(state.index + 1).padStart(2, "0")} / {String(state.total).padStart(2, "0")}
+            </span>
+            <span className="ml-auto font-mono text-xs font-semibold uppercase tracking-[0.06em] text-ink-muted">
+              {reveal ? "REVEAL" : `${answered}/${state.players.length} 已作答`}
+            </span>
+          </div>
+          <ProgressBar className="h-2.5" label={reveal ? "下一題倒數" : "作答倒數"} value={remaining !== null && state.duration ? remaining / state.duration : 0} />
+        </div>
+
+        <Prompt question={question} revealed={state.revealedBlanks} />
+
+        <div className={cn("grid gap-2.5", question.options.length <= 4 && question.options.every((option) => option.length <= 24) && "sm:grid-cols-2")} role="group" aria-label="選項">
+          {question.options.map((option, index) => {
+            const right = Boolean(reveal?.accepted.includes(index));
+            const picked = chosen === index;
+            const wrong = Boolean(reveal) && picked && !right;
+            const locked = chosen !== null || Boolean(reveal) || used.has(option);
+            return (
+              <button
+                className={cn(
+                  "group flex min-h-16 items-stretch border text-left text-base outline-none transition-[background-color,border-color] duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-contrast disabled:cursor-default",
+                  !locked && "border-line-strong/30 bg-surface hover:border-line-strong hover:bg-surface-raised",
+                  !reveal && picked && "border-contrast bg-accent-soft",
+                  reveal && right && "border-positive bg-positive/10",
+                  wrong && "border-danger bg-danger/10",
+                  locked && !picked && !(reveal && right) && "border-line bg-surface opacity-45",
+                )}
+                disabled={locked}
+                key={index}
+                onClick={() => send({ type: "answer", index: state.index, choice: index })}
+                type="button"
+              >
+                <span
+                  aria-hidden
+                  className={cn(
+                    "grid w-11 shrink-0 place-items-center border-r font-mono text-xs font-bold",
+                    reveal && right ? "border-positive bg-positive text-white"
+                      : wrong ? "border-danger bg-danger text-white"
+                        : !reveal && picked ? "border-contrast bg-contrast text-on-contrast"
+                          : "border-line bg-surface-raised text-ink-muted",
+                  )}
+                >
+                  {reveal && right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
+                </span>
+                <span className={cn("flex min-w-0 flex-1 items-center px-4 py-3 font-semibold", /[A-Za-z]/.test(option) && "font-latin")}>{option}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {reveal ? (
+          <div className={cn("message-in grid gap-1.5 border border-l-4 bg-surface p-5", gained ? "border-line border-l-positive" : "border-line border-l-danger")} role="status">
+            <p className={cn("font-bold", gained ? "text-positive" : "text-danger")}>{gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}</p>
+            {reveal.explanation ? <p className="text-[0.9375rem] text-ink-muted">{reveal.explanation}</p> : null}
+          </div>
+        ) : chosen !== null ? <p className="font-mono text-xs uppercase tracking-[0.08em] text-ink-muted">LOCKED IN // 等待其他玩家…</p> : null}
       </div>
-      <ProgressBar label={reveal ? "下一題倒數" : "作答倒數"} value={remaining !== null && state.duration ? remaining / state.duration : 0} />
-      <Prompt question={question} revealed={state.revealedBlanks} />
-      <div className={cn("grid gap-2", question.options.length <= 4 && question.options.every((option) => option.length <= 24) && "sm:grid-cols-2")} role="group" aria-label="選項">
-        {question.options.map((option, index) => {
-          const right = Boolean(reveal?.accepted.includes(index));
-          const picked = chosen === index;
-          const wrong = Boolean(reveal) && picked && !right;
-          const locked = chosen !== null || Boolean(reveal) || used.has(option);
-          return (
-            <button
-              className={cn(
-                "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
-                !locked && "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]",
-                !reveal && picked && "border-contrast bg-accent-soft",
-                reveal && right && "border-positive bg-positive/12",
-                wrong && "border-danger bg-danger/12",
-                locked && !picked && !(reveal && right) && "border-line bg-surface opacity-55",
-              )}
-              disabled={locked}
-              key={index}
-              onClick={() => send({ type: "answer", index: state.index, choice: index })}
-              type="button"
-            >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold", reveal && right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
-                {reveal && right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
-              </span>
-              <span className={cn("min-w-0 flex-1", /[A-Za-z]/.test(option) && "font-latin")}>{option}</span>
-            </button>
-          );
-        })}
-      </div>
-      {reveal ? (
-        <Panel className="message-in grid gap-1" role="status">
-          <p className={cn("font-semibold", gained ? "text-positive" : "text-danger")}>{gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}</p>
-          {reveal.explanation ? <p className="text-[0.9375rem] text-ink-muted">{reveal.explanation}</p> : null}
-        </Panel>
-      ) : chosen !== null ? <p className="px-1 text-sm text-ink-muted">已作答，等其他人…</p> : null}
-      <Scoreboard hostUid={state.hostUid} players={state.players} title="排名" you={state.you} />
-      {host ? <Button className="justify-self-start" onClick={() => send({ type: "end" })} variant="ghost"><Stop weight="fill" />提前結束</Button> : null}
-    </>
+
+      {/* Right: Broadcast Scoreboard Sidebar */}
+      <aside className="grid gap-4 lg:sticky lg:top-20">
+        <Scoreboard hostUid={state.hostUid} players={state.players} title="即時排名" you={state.you} />
+        {host ? (
+          <Button className="justify-self-start" onClick={() => send({ type: "end" })} size="sm" variant="danger">
+            <Stop weight="fill" />提前結束
+          </Button>
+        ) : null}
+      </aside>
+    </div>
   );
 }
 
 function Prompt({ question, revealed }: { question: LiveQuestion; revealed: Record<number, string> }) {
   if (question.type === "meaning")
-    return <p className="py-6 text-center font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{question.prompt}</p>;
+    return <p className="py-4 font-latin text-[clamp(2.5rem,7vw,4.5rem)] font-black leading-[1.02] tracking-[-0.045em]" lang="en">{question.prompt}</p>;
   if (question.type === "reverse")
-    return <p className="py-6 text-center text-3xl font-bold md:text-4xl">{question.prompt}</p>;
+    return <p className="py-4 text-[clamp(2rem,5.5vw,3.5rem)] font-black leading-[1.1] tracking-[-0.03em]">{question.prompt}</p>;
   if (!question.passage)
-    return <p className="whitespace-pre-line py-4 font-latin text-xl leading-relaxed md:text-2xl" lang="en">{question.prompt}</p>;
+    return <p className="whitespace-pre-line py-2 font-latin text-2xl font-medium leading-relaxed" lang="en">{question.prompt}</p>;
   return (
-    <div className="grid gap-3">
-      <Panel className="max-h-[45svh] overflow-y-auto">
-        {question.passage.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{question.passage.title}</h2> : null}
-        <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
+    <div className="grid gap-4">
+      <Panel className="max-h-[42svh] overflow-y-auto border-t-2 border-t-line-strong">
+        {question.passage.title ? <h2 className="mb-2 font-latin text-xl font-extrabold" lang="en">{question.passage.title}</h2> : null}
+        <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.85]" lang="en">
           {passageParts(question.passage.text).map((part, index) =>
             typeof part === "string" ? <span key={index}>{part}</span> : (
-              <span className={cn("mx-0.5 inline-flex min-w-12 justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold", part === question.blank ? "bg-contrast text-on-contrast" : revealed[part] ? "bg-positive/12 text-positive" : "bg-surface-raised text-ink-muted")} key={index}>
+              <span className={cn("mx-0.5 inline-flex min-w-12 justify-center border px-1.5 font-mono text-[0.9375rem] font-bold", part === question.blank ? "border-contrast bg-contrast text-on-contrast" : revealed[part] ? "border-positive bg-positive/12 text-positive" : "border-line bg-surface-raised text-ink-muted")} key={index}>
                 {revealed[part] && part !== question.blank ? revealed[part] : `(${part})`}
               </span>
             ),
           )}
         </p>
       </Panel>
-      {question.type === "reading" ? <p className="font-latin text-lg font-medium leading-relaxed" lang="en">{question.prompt}</p> : <p className="text-sm text-ink-muted">選出第 {question.blank} 格的答案</p>}
+      {question.type === "reading" ? <p className="font-latin text-xl font-bold leading-snug" lang="en">{question.prompt}</p> : <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">選出第 {question.blank} 格的答案</p>}
     </div>
   );
 }
 
 function Ended({ state }: { state: RoomState }) {
   const place = state.players.findIndex((player) => player.uid === state.you) + 1;
+  const score = state.players.find((player) => player.uid === state.you)?.score ?? 0;
   const review = state.review;
   return (
-    <>
-      <Panel className="grid justify-items-center gap-1 py-8 text-center">
-        <p className="text-sm text-ink-muted">對戰結束</p>
-        <p className="text-4xl font-bold">{place ? `第 ${place} 名` : "完成"}</p>
-        <p className="text-sm text-ink-muted">{state.players.find((player) => player.uid === state.you)?.score ?? 0} 分</p>
-      </Panel>
-      <Scoreboard hostUid={state.hostUid} players={state.players} title="最終排名" you={state.you} />
+    <div className="grid gap-8">
+      <div className="grid gap-6 lg:grid-cols-12">
+        <section className="grid content-between gap-6 border-2 border-line-strong bg-surface p-8 lg:col-span-5">
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">FINAL STANDING // 對戰結束</span>
+          <div>
+            <p className="font-latin text-6xl font-black tracking-[-0.04em] text-contrast md:text-7xl">{place ? `#${place}` : "FIN"}</p>
+            <p className="mt-2 font-mono text-sm font-bold text-ink">{place ? `第 ${place} 名` : "完成"} · {score} 分</p>
+          </div>
+          <Button asChild size="lg" variant="primary"><AppLink href="/app/rooms">再開一場</AppLink></Button>
+        </section>
+        <div className="lg:col-span-7">
+          <Scoreboard hostUid={state.hostUid} players={state.players} title="最終排名" you={state.you} />
+        </div>
+      </div>
+
       {review?.items.length ? (
         <ListGroup title={`答錯或沒答的 ${review.items.length} 題`}>
           {review.items.map((item) => {
@@ -181,9 +236,8 @@ function Ended({ state }: { state: RoomState }) {
             );
           })}
         </ListGroup>
-      ) : review ? <p className="px-1 text-sm text-positive">全部答對，太強了。</p> : null}
-      <Button asChild className="justify-self-start" variant="primary"><AppLink href="/app/rooms">再開一場</AppLink></Button>
-    </>
+      ) : review ? <p className="border-l-4 border-positive pl-4 font-bold text-positive">全部答對，太強了。</p> : null}
+    </div>
   );
 }
 
@@ -195,14 +249,14 @@ function Scoreboard({ players, you, hostUid, title }: { players: RoomPlayer[]; y
           detail={!player.connected ? "離線" : player.answered ? "已作答" : undefined}
           key={player.uid}
           label={
-            <span className={cn("flex items-center gap-2", !player.connected && "text-ink-faint")}>
-              <span className="w-5 tabular-nums text-ink-muted">{index + 1}</span>
-              <span className="truncate">{player.name}</span>
+            <span className={cn("flex items-center gap-2.5", !player.connected && "text-ink-faint")}>
+              <span className="w-6 font-mono text-xs font-bold tabular-nums text-ink-faint">{String(index + 1).padStart(2, "0")}</span>
+              <span className="truncate font-bold">{player.name}</span>
               {player.uid === hostUid ? <Crown aria-label="房主" className="text-highlight" weight="fill" /> : null}
-              {player.uid === you ? <Chip>你</Chip> : null}
+              {player.uid === you ? <Chip tone="info">YOU</Chip> : null}
             </span>
           }
-          value={<span className="tabular-nums">{player.score}</span>}
+          value={<span className="font-mono font-bold tabular-nums text-ink">{player.score}</span>}
         />
       ))}
     </ListGroup>

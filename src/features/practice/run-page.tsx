@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowRight, ArrowCounterClockwise, Check, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, type PracticeTask } from "@lexiro/contract";
-import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, Panel, ProgressBar, cn } from "design-kit";
+import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, ProgressBar, cn } from "design-kit";
 import { recordAnswer } from "@/data/learning";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
@@ -26,7 +26,6 @@ export default function RunPage() {
     const step = item.steps[current.step];
     recordAnswer({ senseId: step.senseId, wordId: step.wordId, task: item.kind as PracticeTask, correct, day: calendarDay(new Date()) });
   };
-  // A typed answer is recorded on moving on, so "我其實答對了" can still change it.
   const typed = (current: Round) => {
     const step = currentStep(current);
     return !!step && isCustomStep(step) && step.mode === "input";
@@ -49,11 +48,18 @@ export default function RunPage() {
   return <Card accept={accept} next={next} pick={pick} round={round} />;
 }
 
+function hasPassage(item: PracticeItem): boolean {
+  if (item.kind === "custom") return Boolean(item.passage);
+  return "passage" in item;
+}
+
 function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
   const used = usedBankOptions(round);
+  const split = hasPassage(item);
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest("input,textarea")) return;
@@ -65,92 +71,193 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [round.revealed, step, used, pick, next]);
+
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
+  const taskTag = `${item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}${item.steps.length > 1 ? ` · ${round.step + 1}/${item.steps.length}` : ""}`;
+  const isLast = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+
+  const answerArea = (
+    <div className="grid gap-5">
+      <div className="message-in" key={round.step}>
+        {isCustomStep(step) && step.mode !== "single"
+          ? <CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} />
+          : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
+      </div>
+      {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
+    </div>
+  );
+
   return (
-    // The round sits still on the screen; only an overlong card scrolls inside itself.
-    <div className="fixed inset-0 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
-      <header className="flex items-center gap-3">
-        <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
+    <div className="fixed inset-0 flex flex-col bg-canvas overscroll-none">
+      {/* Top Swiss Instrument Bar */}
+      <header className="flex shrink-0 items-center gap-3 border-b-2 border-line-strong bg-surface px-[var(--gutter)] pb-3 pt-[calc(var(--safe-top)+0.75rem)] md:px-8 md:py-3">
+        <HeaderButton aria-label="離開練習（進度會保留）" asChild>
+          <AppLink href="/app/practice"><X weight="bold" /></AppLink>
+        </HeaderButton>
+        <Chip tone="info">{taskTag}</Chip>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
-        <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
+        <span className="font-mono text-sm font-bold tabular-nums text-ink">
+          {String(round.index + 1).padStart(2, "0")}/{String(round.items.length).padStart(2, "0")}
+        </span>
       </header>
-      <div className="card-in flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pt-6" key={round.index}>
-        <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
-        {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
-        <div className="message-in" key={round.step}>
-          {isCustomStep(step) && step.mode !== "single"
-            ? <CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} />
-            : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
+
+      {/* Adaptive Exam Surface: 50/50 split for passages, editorial focus for standalone prompts */}
+      {split ? (
+        <div className="card-in grid min-h-0 flex-1 lg:grid-cols-2 lg:divide-x-2 lg:divide-line-strong" key={round.index}>
+          <section className="min-h-0 overflow-y-auto overscroll-contain border-b border-line-strong bg-surface p-5 md:p-10 lg:border-b-0">
+            <PassagePane item={item} round={round} />
+          </section>
+          <section className="min-h-0 overflow-y-auto overscroll-contain p-5 md:p-10">
+            <div className="mx-auto grid max-w-xl gap-6">
+              <PassageQuestionStem chosen={chosen as number | null | undefined} item={item} step={step} />
+              {answerArea}
+            </div>
+          </section>
         </div>
-        {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
-        <div className="mt-auto flex justify-end gap-2 pt-2">
+      ) : (
+        <div className="card-in min-h-0 flex-1 overflow-y-auto overscroll-contain px-[var(--gutter)] py-6 md:px-10 md:py-12" key={round.index}>
+          <div className="mx-auto grid max-w-3xl gap-8">
+            <div className="border-b-2 border-line-strong pb-6">
+              {item.kind === "custom"
+                ? <CustomStem item={item} step={step as CustomStep} />
+                : <StandalonePrompt item={item} round={round} step={step as Step} />}
+            </div>
+            {answerArea}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom Action Bar */}
+      <footer className="flex shrink-0 items-center justify-between gap-4 border-t-2 border-line-strong bg-surface px-[var(--gutter)] pb-[max(0.875rem,var(--safe-bottom))] pt-3.5 md:px-8">
+        <span className="hidden font-mono text-xs uppercase tracking-[0.08em] text-ink-faint md:inline">
+          {round.revealed ? "ENTER / SPACE — CONTINUE" : "KEYS 1–4 — SELECT OPTION"}
+        </span>
+        <div className="ml-auto flex items-center gap-2">
           {round.revealed ? (
-            <Button autoFocus onClick={next} size="lg" variant="primary">{round.index + 1 === round.items.length && round.step + 1 === item.steps.length ? "看結果" : "下一題"}<ArrowRight weight="bold" /></Button>
+            <Button autoFocus onClick={next} size="lg" variant="primary">
+              {isLast ? "看結果" : "下一題"}
+              <ArrowRight weight="bold" />
+            </Button>
           ) : (
             <Button onClick={() => pick(null)} size="lg" variant="ghost">不會，看答案</Button>
           )}
         </div>
-      </div>
+      </footer>
     </div>
   );
 }
 
-function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step; round: Round; chosen: number | null | undefined }) {
+function PassagePane({ item, round }: { item: PracticeItem; round: Round }) {
+  if (item.kind === "custom") {
+    return (
+      <div className="mx-auto grid max-w-prose gap-4">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-contrast">PASSAGE // 閱讀文本</span>
+        {item.instructions ? <p className="border-l-2 border-line-strong pl-3 text-sm text-ink-muted">{item.instructions}</p> : null}
+        {item.passage ? <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.9] text-ink" lang="en">{item.passage}</p> : null}
+      </div>
+    );
+  }
+  if (!("passage" in item)) return null;
+  const steps = item.steps;
+  const answers = round.choices[round.index];
+  return (
+    <div className="mx-auto grid max-w-prose gap-4">
+      <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-contrast">PASSAGE // 篇章閱讀</span>
+      {item.title ? <h2 className="font-latin text-2xl font-extrabold tracking-[-0.025em]" lang="en">{item.title}</h2> : null}
+      <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.9] text-ink" lang="en">
+        {passageParts(item.passage).map((part, index) => {
+          if (typeof part === "string") return <span key={index}>{part}</span>;
+          const at = steps.findIndex((entry) => entry.blank === part);
+          const done = at < round.step || (at === round.step && round.revealed);
+          const picked = done ? answers[at] : undefined;
+          const right = done && picked === steps[at].answer;
+          return (
+            <span
+              className={cn(
+                "mx-1 inline-flex min-w-12 items-baseline justify-center border px-1.5 font-mono text-[0.9375rem] font-bold",
+                at === round.step && !round.revealed
+                  ? "border-contrast bg-contrast text-on-contrast"
+                  : done
+                    ? (right ? "border-positive bg-positive/12 text-positive" : "border-danger bg-danger/12 text-danger")
+                    : "border-line-strong/30 bg-surface-raised text-ink-muted",
+              )}
+              key={index}
+            >
+              {done ? (right ? steps[at].options[steps[at].answer] : `(${part}) ${steps[at].options[steps[at].answer]}`) : `(${part})`}
+            </span>
+          );
+        })}
+      </p>
+    </div>
+  );
+}
+
+function PassageQuestionStem({ item, step, chosen }: { item: PracticeItem; step: Step | CustomStep; chosen: number | null | undefined }) {
+  if (item.kind === "custom") {
+    const customStep = step as CustomStep;
+    return (
+      <p className={cn("leading-relaxed", /[A-Za-z]/.test(customStep.prompt) ? "font-latin text-xl font-bold md:text-2xl" : "text-xl font-bold")} lang={/[A-Za-z]/.test(customStep.prompt) ? "en" : undefined}>
+        {customStep.prompt}
+      </p>
+    );
+  }
+  const regularStep = step as Step;
+  if (item.kind === "reading")
+    return <p className="font-latin text-xl font-bold leading-snug tracking-[-0.015em] md:text-2xl" lang="en">{regularStep.prompt}</p>;
+  if (chosen === undefined)
+    return <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">選出第 {regularStep.blank} 格的答案</p>;
+  return null;
+}
+
+function StandalonePrompt({ item, step, round }: { item: PracticeItem; step: Step; round: Round }) {
   if (item.kind === "meaning")
     return (
-      <div className="grid gap-1 py-6 text-center">
-        <p className="flex items-center justify-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /></p>
+      <div className="grid gap-3">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-faint">TERM // 選出正確意思</span>
+        <div className="flex flex-wrap items-center gap-3">
+          <p className="font-latin text-[clamp(2.5rem,7vw,4.75rem)] font-black leading-[1.02] tracking-[-0.045em] text-ink" lang="en">{item.word}</p>
+          <SpeakButton size="icon" text={item.word} />
+        </div>
       </div>
     );
   if (item.kind === "reverse")
     return (
-      <div className="grid gap-2 py-6 text-center">
-        <p className="text-3xl font-bold md:text-4xl">{item.sense.meaning}</p>
-        <p className="text-sm text-ink-muted"><span className="font-latin">{item.sense.pos}</span> · 選出對應的英文單字</p>
+      <div className="grid gap-3">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-faint">
+          <span className="text-contrast">{item.sense.pos}</span> // 選出對應英文單字
+        </span>
+        <p className="text-[clamp(2rem,5.5vw,3.5rem)] font-black leading-[1.1] tracking-[-0.03em] text-ink">{item.sense.meaning}</p>
       </div>
     );
   if (item.kind === "vocabulary") {
     const [before, after] = step.prompt.split("_____");
     const filled = round.revealed ? step.options[step.answer] : null;
     return (
-      <p className="py-4 font-latin text-xl leading-relaxed md:text-2xl" lang="en">
-        {before}
-        <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center", filled ? "border-positive bg-positive/10 text-positive" : "border-contrast bg-accent-soft")}>{filled ?? " "}</span>
-        {after}
-      </p>
+      <div className="grid gap-3">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-faint">CONTEXT // 語境填空</span>
+        <p className="font-latin text-2xl font-medium leading-[1.55] tracking-[-0.015em] md:text-3xl" lang="en">
+          {before}
+          <span className={cn(
+            "mx-1.5 inline-block min-w-28 border-b-4 px-2 text-center font-bold",
+            filled ? "border-positive bg-positive/12 text-positive" : "border-contrast bg-accent-soft text-contrast",
+          )}>
+            {filled ?? "\u00A0"}
+          </span>
+          {after}
+        </p>
+      </div>
     );
   }
-  // A passage: blanks before this one show what was picked, this one is highlighted.
-  if (!("passage" in item) || item.kind === "custom") return null;
-  const steps = item.steps;
-  const answers = round.choices[round.index];
+  return null;
+}
+
+function CustomStem({ item, step }: { item: Extract<PracticeItem, { kind: "custom" }>; step: CustomStep }) {
   return (
     <div className="grid gap-3">
-      <Panel className="max-h-[45svh] overflow-y-auto">
-        {item.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{item.title}</h2> : null}
-        <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
-          {passageParts(item.passage).map((part, index) => {
-            if (typeof part === "string") return <span key={index}>{part}</span>;
-            const at = steps.findIndex((entry) => entry.blank === part);
-            const done = at < round.step || (at === round.step && round.revealed);
-            const picked = done ? answers[at] : undefined;
-            const right = done && picked === steps[at].answer;
-            return (
-              <span
-                className={cn(
-                  "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold",
-                  at === round.step && !round.revealed ? "bg-contrast text-on-contrast" : done ? (right ? "bg-positive/12 text-positive" : "bg-danger/12 text-danger") : "bg-surface-raised text-ink-muted",
-                )}
-                key={index}
-              >
-                {done ? (right ? steps[at].options[steps[at].answer] : `(${part}) ${steps[at].options[steps[at].answer]}`) : `(${part})`}
-              </span>
-            );
-          })}
-        </p>
-      </Panel>
-      {item.kind === "reading" ? <p className="font-latin text-lg font-medium leading-relaxed" lang="en">{step.prompt}</p> : null}
-      {chosen === undefined && item.kind !== "reading" ? <p className="text-sm text-ink-muted">選出第 {step.blank} 格的答案</p> : null}
+      {item.instructions ? <p className="font-mono text-xs font-semibold text-ink-muted">{item.instructions}</p> : null}
+      <p className={cn("leading-snug tracking-[-0.02em]", /[A-Za-z]/.test(step.prompt) ? "font-latin text-2xl font-bold md:text-3xl" : "text-2xl font-extrabold md:text-3xl")} lang={/[A-Za-z]/.test(step.prompt) ? "en" : undefined}>
+        {step.prompt}
+      </p>
     </div>
   );
 }
@@ -158,31 +265,43 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
 function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "options" | "answer" | "glosses">; chosen: number | null | undefined; revealed: boolean; used: Set<number>; pick: (option: number) => void }) {
   const long = step.options.some((option) => option.length > 24);
   return (
-    <div className={cn("grid gap-2", !long && step.options.length <= 4 && "sm:grid-cols-2")} role="group" aria-label="選項">
+    <div className={cn("grid gap-2.5", !long && step.options.length <= 4 && "sm:grid-cols-2")} role="group" aria-label="選項">
       {step.options.map((option, index) => {
         const right = revealed && index === step.answer;
         const wrong = revealed && index === chosen && chosen !== step.answer;
         return (
           <button
             className={cn(
-              "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
-              !revealed && "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]",
-              right && "border-positive bg-positive/12",
-              wrong && "border-danger bg-danger/12",
-              revealed && !right && !wrong && "border-line bg-surface opacity-60",
-              used.has(index) && !revealed && "opacity-35",
+              "group flex min-h-16 items-stretch border text-left text-base outline-none transition-[background-color,border-color,color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-contrast disabled:cursor-default",
+              !revealed && "border-line-strong/30 bg-surface hover:border-line-strong hover:bg-surface-raised",
+              right && "border-positive bg-positive/10",
+              wrong && "border-danger bg-danger/10",
+              revealed && !right && !wrong && "border-line bg-surface opacity-45",
+              used.has(index) && !revealed && "opacity-30",
             )}
             disabled={revealed || used.has(index)}
             key={index}
             onClick={() => pick(index)}
             type="button"
           >
-            <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold", right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
+            <span
+              aria-hidden
+              className={cn(
+                "grid w-11 shrink-0 place-items-center border-r font-mono text-xs font-bold tabular-nums transition-colors",
+                right ? "border-positive bg-positive text-white"
+                  : wrong ? "border-danger bg-danger text-white"
+                    : "border-line bg-surface-raised text-ink-muted group-hover:border-line-strong group-hover:bg-contrast group-hover:text-on-contrast",
+              )}
+            >
               {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
             </span>
-            <span className="min-w-0 flex-1">
-              <span className={cn("block", /[A-Za-z]/.test(option) && "font-latin")} lang={/[A-Za-z]/.test(option) ? "en" : undefined}>{option}</span>
-              {revealed && step.glosses?.[index] ? <span className={cn("message-in block text-[0.8125rem] text-ink-muted", /[A-Za-z]/.test(step.glosses[index]!) && "font-latin")} lang={/[A-Za-z]/.test(step.glosses[index]!) ? "en" : undefined}>{step.glosses[index]}</span> : null}
+            <span className="flex min-w-0 flex-1 flex-col justify-center px-4 py-3">
+              <span className={cn("block font-semibold", /[A-Za-z]/.test(option) && "font-latin")} lang={/[A-Za-z]/.test(option) ? "en" : undefined}>{option}</span>
+              {revealed && step.glosses?.[index] ? (
+                <span className={cn("message-in mt-0.5 block text-[0.8125rem] text-ink-muted", /[A-Za-z]/.test(step.glosses[index]!) && "font-latin")} lang={/[A-Za-z]/.test(step.glosses[index]!) ? "en" : undefined}>
+                  {step.glosses[index]}
+                </span>
+              ) : null}
             </span>
           </button>
         );
@@ -191,17 +310,6 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
   );
 }
 
-function CustomPrompt({ item, step }: { item: Extract<PracticeItem, { kind: "custom" }>; step: CustomStep }) {
-  return (
-    <div className="grid gap-3">
-      {item.instructions ? <p className="text-[0.9375rem] text-ink-muted">{item.instructions}</p> : null}
-      {item.passage ? <Panel className="max-h-[40svh] overflow-y-auto"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></Panel> : null}
-      <p className={cn("leading-relaxed", /[A-Za-z]/.test(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-semibold")} lang={/[A-Za-z]/.test(step.prompt) ? "en" : undefined}>{step.prompt}</p>
-    </div>
-  );
-}
-
-/** Reasons for the wrong options picked: one for a single choice, every wrong pick of a multiple one. */
 function reasonsFor(step: Step | CustomStep, chosen: Choice | null | undefined): string[] {
   const options = !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.options : [];
   const whyWrong = !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.whyWrong : undefined;
@@ -216,25 +324,31 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
   const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
   const answer = rightAnswerText(step);
   return (
-    <Panel className="message-in grid gap-2" role="status">
+    <div
+      className={cn(
+        "message-in grid gap-2.5 border border-l-4 bg-surface p-5",
+        right ? "border-line border-l-positive" : "border-line border-l-danger",
+      )}
+      role="status"
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className={cn("flex items-center gap-2 font-semibold", right ? "text-positive" : "text-danger")}>
+        <p className={cn("flex items-center gap-2 font-bold", right ? "text-positive" : "text-danger")}>
           {right ? <Check weight="bold" /> : <X weight="bold" />}
           {right ? "答對了" : <>正確答案是 <span className={cn(/[A-Za-z]/.test(answer) && "font-latin")}>{answer}</span></>}
         </p>
-        {typedWrong ? <Button onClick={accept} size="sm" variant="ghost">我其實答對了</Button> : null}
+        {typedWrong ? <Button onClick={accept} size="sm" variant="secondary">我其實答對了</Button> : null}
       </div>
-      {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-latin text-[0.9375rem] text-ink-muted">{step.accepted.join(" / ")}</p> : null}
+      {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-mono text-xs text-ink-muted">{step.accepted.join(" / ")}</p> : null}
       {item.kind === "meaning" || item.kind === "reverse" ? (
-        <p className="text-[0.9375rem]"><span className="font-latin font-semibold">{item.word}</span> <span className="font-latin text-ink-muted">{item.sense.pos}</span> {item.sense.meaning}</p>
+        <p className="text-[0.9375rem]"><span className="font-latin font-bold">{item.word}</span> <span className="font-mono text-xs text-ink-muted">{item.sense.pos}</span> {item.sense.meaning}</p>
       ) : null}
       {reasons.map((reason) => <p className="text-[0.9375rem] text-ink-muted" key={reason}>{reason}</p>)}
       {step.explanation && item.kind !== "meaning" && item.kind !== "reverse" ? <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{step.explanation}</p> : null}
-      {notes.length ? <ul className="grid list-disc gap-1 pl-5 text-[0.9375rem] text-ink-muted marker:text-ink-faint">{notes.map((note, index) => <li key={index}>{note}</li>)}</ul> : null}
+      {notes.length ? <ul className="grid gap-1 border-l-2 border-line pl-3 text-[0.9375rem] text-ink-muted">{notes.map((note, index) => <li key={index}>{note}</li>)}</ul> : null}
       {item.kind === "meaning" || item.kind === "reverse" ? item.sense.examples.slice(0, 1).map((example) => (
         <p className="font-latin text-[0.9375rem] italic text-ink-muted" key={example} lang="en">{example}</p>
       )) : null}
-    </Panel>
+    </div>
   );
 }
 
@@ -243,29 +357,51 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
   useEffect(() => clearRound(), []);
   const score = outcome.total ? Math.round((outcome.correct / outcome.total) * 100) : 0;
   return (
-    <div className="mx-auto grid min-h-svh w-full max-w-xl content-center gap-8 px-[var(--gutter)] py-10">
-      <div className="content-in grid justify-items-center gap-2 text-center">
-        <p className="text-sm font-medium text-ink-muted">這一輪完成了</p>
-        <p className="font-latin text-7xl font-extrabold tracking-tight text-contrast"><AnimatedNumber value={score} />%</p>
-        <p className="text-[0.9375rem] text-ink-muted">答對 <span className="font-latin font-semibold text-ink">{outcome.correct}</span> / <span className="font-latin">{outcome.total}</span></p>
-      </div>
-      {outcome.missed.length ? (
-        <Panel className="grid gap-2">
-          <h2 className="text-sm font-semibold text-ink-muted">要再看看的</h2>
-          <ul className="grid gap-1.5">
-            {outcome.missed.slice(0, 8).map((item, index) => (
-              <li className="text-[0.9375rem]" key={index}>
-                {item.kind === "meaning" || item.kind === "reverse"
-                  ? <><span className="font-latin font-semibold">{item.word}</span> <span className="text-ink-muted">{item.sense.meaning}</span></>
-                  : <span className="text-ink-muted">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}：{(item.steps as (Step | CustomStep)[]).map(rightAnswerText).join("、")}</span>}
-              </li>
-            ))}
-          </ul>
-        </Panel>
-      ) : <p className="text-center text-lg font-semibold text-positive">全對，太強了！</p>}
-      <div className="grid gap-2 sm:grid-cols-2">
-        {outcome.missed.length ? <Button onClick={() => onAgain(outcome.missed)} size="lg" variant="primary"><ArrowCounterClockwise weight="bold" />再練錯的 {outcome.missed.length} 題</Button> : null}
-        <Button asChild size="lg" variant={outcome.missed.length ? "secondary" : "primary"}><AppLink href="/app">完成</AppLink></Button>
+    <div className="swiss-grid-bg grid min-h-svh place-items-center px-[var(--gutter)] py-10">
+      <div className="content-in grid w-full max-w-2xl border-2 border-line-strong bg-surface shadow-float">
+        <div className="grid gap-4 border-b-2 border-line-strong p-8 md:p-10">
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">SESSION REPORT // 回合結算</span>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <p className="font-latin text-[clamp(4.5rem,14vw,8rem)] font-black leading-[0.84] tracking-[-0.06em] text-contrast">
+              <AnimatedNumber value={score} />%
+            </p>
+            <div className="text-right font-mono">
+              <span className="block text-xs uppercase text-ink-faint">ACCURACY</span>
+              <span className="text-2xl font-bold tabular-nums text-ink">{outcome.correct} / {outcome.total}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-5 p-8 md:p-10">
+          {outcome.missed.length ? (
+            <div className="grid gap-3">
+              <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-danger">MISSED ITEMS // 要再看看 ({outcome.missed.length})</h2>
+              <ul className="divide-y divide-line border border-line">
+                {outcome.missed.slice(0, 8).map((item, index) => (
+                  <li className="flex items-baseline gap-3 px-4 py-2.5 text-[0.9375rem]" key={index}>
+                    <span className="font-mono text-xs text-ink-faint">{String(index + 1).padStart(2, "0")}</span>
+                    {item.kind === "meaning" || item.kind === "reverse"
+                      ? <span><span className="font-latin font-bold">{item.word}</span> <span className="text-ink-muted">{item.sense.meaning}</span></span>
+                      : <span className="text-ink-muted">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}：{(item.steps as (Step | CustomStep)[]).map(rightAnswerText).join("、")}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <p className="border-l-4 border-positive pl-4 text-xl font-extrabold text-positive">全對，表現完美。</p>
+          )}
+
+          <div className="grid gap-3 pt-2 sm:grid-cols-2">
+            {outcome.missed.length ? (
+              <Button onClick={() => onAgain(outcome.missed)} size="lg" variant="primary">
+                <ArrowCounterClockwise weight="bold" />再練錯的 {outcome.missed.length} 題
+              </Button>
+            ) : null}
+            <Button asChild size="lg" variant={outcome.missed.length ? "secondary" : "primary"}>
+              <AppLink href="/app">完成</AppLink>
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Sword } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { PracticeTask, SetContent } from "@lexiro/contract";
-import { AppLink, Button, Field, Input, ListGroup, ListRow, Panel, Segmented, type ActionStatus } from "design-kit";
+import { AppLink, Button, Field, Input, ListGroup, ListRow, Segmented, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
 import { useLearning } from "@/data/learning";
@@ -20,7 +20,6 @@ const AMOUNTS = ["10", "20", "30"] as const;
 const SECONDS = ["auto", "15", "25", "40"] as const;
 type Seconds = (typeof SECONDS)[number];
 
-/** Host a match from one of your sets, or join someone else's with a code. */
 export default function RoomsPage() {
   const navigate = useNavigate();
   const { account } = useAuth();
@@ -31,25 +30,52 @@ export default function RoomsPage() {
     if (!ROOM_CODE.test(normalized)) return toast.error("房間代碼是 6 個英數字。");
     navigate(`/app/rooms/${normalized}`);
   };
+
   return (
-    <Page description="用同一組題目和朋友即時比快、比準。" title="對戰">
+    <Page description="同一組題目，即時競速與準度對決。" kicker="04 // LIVE ARENA" title="對戰">
       {active.data?.room ? (
-        <Panel className="flex flex-wrap items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="font-semibold">你開的房間還在進行</p>
-            <p className="truncate text-sm text-ink-muted">{active.data.room.title} · <span className="font-latin">{active.data.room.code}</span></p>
+        <div className="flex flex-wrap items-center justify-between gap-4 border-2 border-contrast bg-contrast p-5 text-on-contrast">
+          <div className="min-w-0">
+            <span className="block font-mono text-xs font-semibold uppercase tracking-[0.1em] text-on-contrast/80">ACTIVE ROOM // {active.data.room.code}</span>
+            <p className="truncate text-lg font-bold">{active.data.room.title}</p>
           </div>
-          <Button asChild variant="primary"><AppLink href={`/app/rooms/${active.data.room.code}`}>回到房間</AppLink></Button>
-        </Panel>
+          <Button asChild className="border-on-contrast bg-on-contrast text-contrast hover:bg-ink hover:border-ink hover:text-surface" variant="secondary">
+            <AppLink href={`/app/rooms/${active.data.room.code}`}>回到房間<ArrowRight weight="bold" /></AppLink>
+          </Button>
+        </div>
       ) : null}
-      <Panel className="grid gap-3">
-        <h2 className="font-semibold">加入房間</h2>
-        <form className="flex gap-2" onSubmit={(event) => { event.preventDefault(); join(); }}>
-          <Input aria-label="房間代碼" autoCapitalize="characters" autoComplete="off" className="flex-1 font-latin text-lg uppercase tracking-[0.3em]" maxLength={6} onChange={(event) => setCode(event.target.value.replace(/[^a-z0-9]/gi, ""))} placeholder="ABC234" spellCheck={false} value={code} />
-          <Button disabled={normalized.length !== 6} type="submit" variant="primary"><ArrowRight weight="bold" />加入</Button>
-        </form>
-      </Panel>
-      {account ? <HostForm name={account.name} /> : null}
+
+      <div className="grid items-start gap-6 lg:grid-cols-12">
+        {/* Left: Join via 6-char room code */}
+        <section className="grid gap-5 border-2 border-line-strong bg-surface p-6 md:p-8 lg:col-span-5">
+          <div className="grid gap-1 border-b border-line pb-4">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-contrast">01 // JOIN MATCH</span>
+            <h2 className="text-2xl font-extrabold tracking-[-0.025em]">加入房間</h2>
+          </div>
+          <form className="grid gap-4" onSubmit={(event) => { event.preventDefault(); join(); }}>
+            <Input
+              aria-label="房間代碼"
+              autoCapitalize="characters"
+              autoComplete="off"
+              className="h-16 border-2 text-center font-mono text-3xl font-bold uppercase tracking-[0.35em]"
+              maxLength={6}
+              onChange={(event) => setCode(event.target.value.replace(/[^a-z0-9]/gi, ""))}
+              placeholder="ABC234"
+              spellCheck={false}
+              value={code}
+            />
+            <Button className="h-12 w-full justify-between px-5" disabled={normalized.length !== 6} size="lg" type="submit" variant="primary">
+              <span>進入對戰房間</span>
+              <ArrowRight weight="bold" />
+            </Button>
+          </form>
+        </section>
+
+        {/* Right: Host a new room */}
+        <div className="lg:col-span-7">
+          {account ? <HostForm name={account.name} /> : null}
+        </div>
+      </div>
     </Page>
   );
 }
@@ -69,8 +95,10 @@ function HostForm({ name: defaultName }: { name: string }) {
   const [seconds, setSeconds] = useState<Seconds>("auto");
   const [name, setName] = useState(defaultName.slice(0, 40));
   const [status, setStatus] = useState<ActionStatus>("idle");
+
   if (library.data && !sets.length)
     return <ListGroup title="開房間"><ListRow detail="先在單字集裡加一些單字。" label="還沒有可以出題的單字集" /></ListGroup>;
+
   const set = sets.find((entry) => entry.id === chosen);
   const host = async () => {
     if (!content.data || !picked || !set) return;
@@ -78,30 +106,56 @@ function HostForm({ name: defaultName }: { name: string }) {
     if (!questions.length) return toast.error("這個題型在這個單字集裡沒有可以出的題目。");
     setStatus("loading");
     try {
-      const { code } = await api<{ code: string }>("/rooms", { method: "POST", json: { name: name.trim() || defaultName, title: `${set.name} · ${TASK_LABELS[picked]}`.slice(0, 120), ...(seconds === "auto" ? {} : { seconds: Number(seconds) }), questions } });
+      const { code } = await api<{ code: string }>("/rooms", {
+        method: "POST",
+        json: {
+          name: name.trim() || defaultName,
+          title: `${set.name} · ${TASK_LABELS[picked]}`.slice(0, 120),
+          ...(seconds === "auto" ? {} : { seconds: Number(seconds) }),
+          questions,
+        },
+      });
       navigate(`/app/rooms/${code}`);
     } catch (error) {
       setStatus("idle");
       toast.error(errorMessage(error));
     }
   };
+
   return (
-    <Panel className="grid gap-5">
-      <h2 className="font-semibold">開房間</h2>
-      <Field label="你的暱稱">
-        {({ id }) => <Input id={id} maxLength={40} onChange={(event) => setName(event.target.value)} value={name} />}
-      </Field>
-      {sets.length ? <LabeledSelect label="單字集" onChange={setSetId} options={sets.map((entry) => ({ value: entry.id, label: entry.name }))} value={chosen} /> : null}
-      {tasks.length ? <LabeledSelect label="題型" onChange={(value) => setTask(value as Exclude<PracticeTask, "custom">)} options={tasks.map((value) => ({ value, label: TASK_LABELS[value] }))} value={picked ?? ""} /> : <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>}
-      <section className="grid gap-2">
-        <h3 className="px-1 text-sm font-medium text-ink-muted">題數</h3>
-        <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={amount} />
-      </section>
-      <section className="grid gap-2">
-        <h3 className="px-1 text-sm font-medium text-ink-muted">每題秒數</h3>
-        <Segmented label="每題秒數" onChange={setSeconds} options={SECONDS.map((value) => ({ value, label: value === "auto" ? "依題型" : `${value} 秒` }))} value={seconds} />
-      </section>
-      <Button className="justify-self-start" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary"><Sword weight="fill" />開房間</Button>
-    </Panel>
+    <section className="grid gap-6 border border-line border-t-2 border-t-line-strong bg-surface p-6 md:p-8">
+      <div className="grid gap-1 border-b border-line pb-4">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-muted">02 // CREATE ROOM</span>
+        <h2 className="text-2xl font-extrabold tracking-[-0.025em]">開設對戰房間</h2>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="你的暱稱">
+          {({ id }) => <Input id={id} maxLength={40} onChange={(event) => setName(event.target.value)} value={name} />}
+        </Field>
+        {sets.length ? <LabeledSelect label="單字集" onChange={setSetId} options={sets.map((entry) => ({ value: entry.id, label: entry.name }))} value={chosen} /> : null}
+      </div>
+
+      {tasks.length ? (
+        <LabeledSelect label="題型" onChange={(value) => setTask(value as Exclude<PracticeTask, "custom">)} options={tasks.map((value) => ({ value, label: TASK_LABELS[value] }))} value={picked ?? ""} />
+      ) : <p className="font-mono text-xs text-ink-faint">正在讀取單字集…</p>}
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <section className="grid gap-2">
+          <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">題數</h3>
+          <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={amount} />
+        </section>
+        <section className="grid gap-2">
+          <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">每題秒數</h3>
+          <Segmented label="每題秒數" onChange={setSeconds} options={SECONDS.map((value) => ({ value, label: value === "auto" ? "依題型" : `${value} 秒` }))} value={seconds} />
+        </section>
+      </div>
+
+      <div className="border-t border-line pt-4">
+        <Button className="h-12 px-6" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary">
+          <Sword weight="fill" />開房間
+        </Button>
+      </div>
+    </section>
   );
 }
