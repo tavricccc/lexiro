@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { useParams, useSearchParams } from "react-router";
 import { CheckSquare, Copy, DotsThree, GearSix, MagnifyingGlass, Play, Plus, ShareNetwork, Star, Trash, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
@@ -14,14 +14,29 @@ import { SetIcon } from "@/ui/set-icon";
 import { StarButton } from "@/ui/star-button";
 import { CopySheet } from "./copy-sheet";
 import { ShareSheet } from "./share-sheet";
-import { WordSheet } from "./word-page";
+import { WordInspector, WordSheet } from "./word-page";
 
 type Tab = "words" | "questions";
+
+const WIDE_QUERY = "(min-width: 1024px)";
+function useWideDesktop() {
+  return useSyncExternalStore(
+    (cb) => {
+      if (typeof window === "undefined" || !window.matchMedia) return () => {};
+      const mql = window.matchMedia(WIDE_QUERY);
+      mql.addEventListener("change", cb);
+      return () => mql.removeEventListener("change", cb);
+    },
+    () => (typeof window !== "undefined" && window.matchMedia ? window.matchMedia(WIDE_QUERY).matches : false),
+    () => false,
+  );
+}
 
 export default function SetPage() {
   const { setId = "", wordId } = useParams();
   const content = useSet(setId);
   const [share, setShare] = useState(false);
+  const wide = useWideDesktop();
   const name = content.data?.set.name ?? "單字集";
   return (
     <Page
@@ -35,27 +50,31 @@ export default function SetPage() {
             title={name}
             trigger={<HeaderButton aria-label="更多動作"><DotsThree weight="bold" /></HeaderButton>}
           />
-          <HeaderButton aria-label="新增單字" asChild><AppLink href={`/app/sets/${setId}/add`}><Plus weight="bold" /></AppLink></HeaderButton>
+          <Button asChild size="sm" variant="secondary">
+            <AppLink href={`/app/sets/${setId}/add`}><Plus weight="bold" /><span className="hidden sm:inline">新增單字</span></AppLink>
+          </Button>
           {content.data.words.length ? (
-            <HeaderButton aria-label="練習" asChild prominent><AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" /></AppLink></HeaderButton>
+            <Button asChild size="sm" variant="primary">
+              <AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" />練習</AppLink>
+            </Button>
           ) : null}
         </>
       ) : null}
-      back={{ href: "/app/library", label: "回到我的單字" }}
-      description={content.data ? `${content.data.words.length} 個單字 · ${content.data.questions.length} 題` : undefined}
+      back={{ href: "/app/library", label: "我的單字" }}
       documentTitle={name}
+      kicker={content.data ? `SET // ${content.data.words.length} WORDS · ${content.data.questions.length} QUESTIONS` : "SET"}
       title={content.data ? (
-        <span className="flex items-center gap-3"><SetIcon className="size-9 [&_svg]:size-5" hue={content.data.set.hue} icon={content.data.set.icon} />{name}</span>
+        <span className="inline-flex items-center gap-3.5"><SetIcon className="size-10 [&_svg]:size-5" hue={content.data.set.hue} icon={content.data.set.icon} /><span>{name}</span></span>
       ) : name}
     >
-      <Loaded query={content}>{(data) => <SetBody content={data} />}</Loaded>
-      {content.data ? <WordSheet content={content.data} wordId={wordId} /> : null}
+      <Loaded query={content}>{(data) => <SetBody content={data} wordId={wordId} />}</Loaded>
+      {content.data && !wide ? <WordSheet content={content.data} wordId={wordId} /> : null}
       {content.data ? <ShareSheet onOpenChange={setShare} open={share} set={content.data.set} /> : null}
     </Page>
   );
 }
 
-function SetBody({ content }: { content: SetContent }) {
+function SetBody({ content, wordId }: { content: SetContent; wordId: string | undefined }) {
   const [params, setParams] = useSearchParams();
   const tab: Tab = params.get("tab") === "questions" ? "questions" : "words";
   const setTab = (next: Tab) => setParams(next === "words" ? {} : { tab: next }, { replace: true });
@@ -68,14 +87,21 @@ function SetBody({ content }: { content: SetContent }) {
       />
     );
   return (
-    <div className="grid gap-4">
-      <Segmented
-        label="內容"
-        onChange={setTab}
-        options={[{ value: "words", label: `單字 ${content.words.length}` }, { value: "questions", label: `題目 ${content.questions.length}` }]}
-        value={tab}
-      />
-      {tab === "words" ? <WordList content={content} /> : <QuestionList content={content} />}
+    <div className="grid gap-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <Segmented
+          label="內容"
+          onChange={setTab}
+          options={[{ value: "words", label: `單字 ${content.words.length}` }, { value: "questions", label: `題目 ${content.questions.length}` }]}
+          value={tab}
+        />
+      </div>
+      {tab === "words" ? (
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(22rem,0.85fr)] lg:gap-8">
+          <WordList activeWordId={wordId} content={content} />
+          <WordInspector content={content} wordId={wordId} />
+        </div>
+      ) : <QuestionList content={content} />}
     </div>
   );
 }
@@ -87,7 +113,7 @@ export function meaningLine(word: Word): string {
   return [...groups].map(([pos, meanings]) => `${pos} ${meanings.join("；")}`).join(" · ");
 }
 
-function WordList({ content }: { content: SetContent }) {
+function WordList({ content, activeWordId }: { content: SetContent; activeWordId: string | undefined }) {
   const setId = content.set.id;
   const online = useOnline();
   const [query, setQuery] = useState("");
@@ -109,47 +135,64 @@ function WordList({ content }: { content: SetContent }) {
     return next;
   });
   return (
-    <div className="grid gap-3">
+    <div className="grid min-w-0 gap-4">
       <div className="flex items-center gap-2">
         <div className="relative min-w-0 flex-1">
-          <MagnifyingGlass aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-faint" />
-          <Input aria-label="搜尋單字" className="pl-11" onChange={(event) => setQuery(event.target.value)} placeholder="搜尋英文或中文" type="search" value={query} />
+          <MagnifyingGlass aria-hidden className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ink-faint" weight="bold" />
+          <Input aria-label="搜尋單字" className="pl-10" onChange={(event) => setQuery(event.target.value)} placeholder="搜尋英文或中文…" type="search" value={query} />
         </div>
         {starred ? (
-          <Button aria-pressed={starredOnly} className={cn(starredOnly && "text-highlight")} onClick={() => setStarredOnly(!starredOnly)}>
-            <Star weight={starredOnly ? "fill" : "regular"} />{starred}
+          <Button
+            aria-pressed={starredOnly}
+            className={cn(starredOnly && "border-highlight bg-highlight text-white hover:bg-highlight/90")}
+            onClick={() => setStarredOnly(!starredOnly)}
+            size="md"
+          >
+            <Star weight={starredOnly ? "fill" : "regular"} />
+            <span className="font-mono">{starred}</span>
           </Button>
         ) : null}
         <Button aria-label={selected ? "結束選取" : "選取單字"} aria-pressed={selected !== null} disabled={!online} onClick={() => setSelected(selected ? null : new Set())} size="icon">
-          {selected ? <X weight="bold" /> : <CheckSquare />}
+          {selected ? <X weight="bold" /> : <CheckSquare weight="bold" />}
         </Button>
       </div>
+
       {words.length ? (
-        <ListGroup label="單字">
-          {words.map((word) => selected ? (
-            <li key={word.id}>
-              <label className="flex min-h-14 cursor-pointer items-center gap-3.5 px-4 py-2.5 hover:bg-surface-raised">
-                <input checked={selected.has(word.id)} className="size-5 accent-[var(--contrast)]" onChange={() => toggle(word.id)} type="checkbox" />
-                <WordText word={word} />
-              </label>
-            </li>
-          ) : (
-            <li className="flex items-center" key={word.id}>
-              <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
-                <WordText word={word} />
-              </AppLink>
-              <span className="pr-2"><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>
-            </li>
-          ))}
-        </ListGroup>
-      ) : <p className="py-6 text-center text-[0.9375rem] text-ink-muted">沒有符合的單字</p>}
+        <ul aria-label="單字" className="divide-y divide-line border border-line border-t-2 border-t-line-strong bg-surface">
+          {words.map((word, index) => {
+            const isCurrent = word.id === activeWordId;
+            return selected ? (
+              <li key={word.id}>
+                <label className="flex min-h-14 cursor-pointer items-start gap-3.5 px-4 py-3 hover:bg-surface-raised">
+                  <input checked={selected.has(word.id)} className="mt-1 size-4 accent-[var(--contrast)]" onChange={() => toggle(word.id)} type="checkbox" />
+                  <WordText index={index} word={word} />
+                </label>
+              </li>
+            ) : (
+              <li className={cn("flex items-center transition-colors", isCurrent && "border-l-4 border-l-contrast bg-accent-soft")} key={word.id}>
+                <AppLink
+                  className="flex min-h-14 min-w-0 flex-1 items-start gap-3.5 py-3 pl-4 pr-2 outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised"
+                  href={`/app/sets/${setId}/words/${word.id}`}
+                >
+                  <WordText index={index} word={word} />
+                </AppLink>
+                <span className="pr-2"><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="border border-line bg-surface py-10 text-center font-mono text-sm text-ink-muted">沒有符合的單字</p>
+      )}
+
       {selected ? (
-        <div className="bar-in glass-float sticky bottom-[calc(var(--bottom-nav-gap)+0.5rem)] z-30 flex items-center gap-2 rounded-full p-1.5 pl-5 md:bottom-6">
-          <span className="flex-1 text-[0.9375rem] font-medium">已選 <span className="font-latin">{selected.size}</span> 個</span>
-          <Button disabled={!selected.size} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
-          <Button disabled={!selected.size} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>
+        <div className="bar-in sticky bottom-[calc(var(--bottom-nav-gap)+0.75rem)] z-30 flex items-center gap-2 border-2 border-line-strong bg-surface p-2.5 pl-4 shadow-float md:bottom-6">
+          <span className="flex-1 font-mono text-xs font-bold uppercase tracking-[0.06em]">已選 {selected.size} 個</span>
+          <Button disabled={!selected.size} onClick={() => setCopying(true)} size="sm"><Copy weight="bold" />複製到…</Button>
+          <Button disabled={!selected.size} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash weight="bold" />刪除</Button>
         </div>
       ) : null}
+
       <CopySheet fromSetId={setId} ids={[...(selected ?? [])]} onDone={() => setSelected(null)} onOpenChange={setCopying} open={copying} />
       <ConfirmDialog
         confirmLabel="刪除"
@@ -177,24 +220,27 @@ function WordList({ content }: { content: SetContent }) {
   );
 }
 
-/** A word's notes: every sense's description points, in order. */
 const notes = (word: Word) => word.senses.flatMap((sense) => descriptionPoints(sense.description));
 
-function WordText({ word }: { word: Word }) {
+function WordText({ word, index }: { word: Word; index: number }) {
   const points = notes(word);
   return (
-    <span className="min-w-0 flex-1">
-      <span className="block truncate font-latin text-[1.0625rem] font-semibold">{word.word}</span>
-      <span className="block truncate text-[0.8125rem] text-ink-muted">{meaningLine(word)}</span>
-      {points.length ? (
-        // A small card under the meaning, one point per line like the word page; the row grows to fit.
-        <span className="mt-1.5 grid gap-0.5 rounded-tile bg-surface-raised px-3 py-2 text-[0.8125rem] leading-relaxed text-ink-muted">
-          {points.map((note, index) => (
-            <span className="flex gap-1.5" key={index}><span aria-hidden className="text-ink-faint">•</span><span className="min-w-0">{note}</span></span>
-          ))}
-        </span>
-      ) : null}
-    </span>
+    <div className="flex min-w-0 flex-1 items-baseline gap-3">
+      <span className="w-6 shrink-0 font-mono text-[0.75rem] font-medium tabular-nums text-ink-faint">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate font-latin text-[1.0625rem] font-bold tracking-[-0.015em] text-ink">{word.word}</span>
+        <span className="mt-0.5 block truncate text-[0.8125rem] text-ink-muted">{meaningLine(word)}</span>
+        {points.length ? (
+          <span className="mt-2 grid gap-0.5 border-l-2 border-line-strong/30 pl-3 text-[0.8125rem] leading-relaxed text-ink-muted">
+            {points.map((note, idx) => (
+              <span className="min-w-0" key={idx}>{note}</span>
+            ))}
+          </span>
+        ) : null}
+      </span>
+    </div>
   );
 }
 
@@ -215,12 +261,12 @@ function QuestionList({ content }: { content: SetContent }) {
   const groups = new Map<string, Question[]>();
   for (const question of content.questions) groups.set(question.kind, [...(groups.get(question.kind) ?? []), question]);
   return (
-    <div className="grid gap-5">
+    <div className="grid gap-6 lg:grid-cols-2">
       {[...groups].map(([kind, questions]) => (
         <ListGroup key={kind} title={`${KIND_LABELS[kind as Question["kind"]]} · ${questions.length}`}>
           {questions.map((question) => (
             <ListRow
-              detail={<span className="flex items-center gap-2"><Chip>難度 {question.difficulty}</Chip>{"items" in question ? `${question.items.length} 小題` : null}</span>}
+              detail={<span className="flex items-center gap-2 pt-0.5"><Chip>L{question.difficulty}</Chip>{"items" in question ? <span className="font-mono text-xs">{question.items.length} 小題</span> : null}</span>}
               href={`/app/sets/${content.set.id}/questions/${question.id}`}
               key={question.id}
               label={<span className="font-latin">{questionPreview(question)}</span>}
