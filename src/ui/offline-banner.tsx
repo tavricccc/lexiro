@@ -12,15 +12,15 @@ const subscribe = (listener: () => void) => {
 };
 export const useOnline = () => useSyncExternalStore(subscribe, () => navigator.onLine, () => true);
 
-/** Offline the app still reads and practises; editing waits for the network. */
+/** Offline status bar: stark Swiss warning strip. */
 export function OfflineBanner() {
   const online = useOnline();
   const pending = usePendingAnswers();
   if (online) return null;
   return (
-    <div className="bar-in sticky top-0 z-30 flex items-center justify-center gap-2 bg-caution/15 px-4 py-2 pt-[calc(var(--safe-top)+0.5rem)] text-sm text-caution md:pt-2" role="status">
-      <CloudSlash aria-hidden className="size-4" weight="bold" />
-      <span>離線中：可以瀏覽和練習，編輯要等連線{pending ? `；${pending} 筆作答待上傳` : ""}</span>
+    <div className="bar-in sticky top-0 z-30 flex items-center gap-2.5 border-b-2 border-caution bg-caution/12 px-5 py-2.5 pt-[calc(var(--safe-top)+0.625rem)] font-mono text-xs font-semibold text-caution md:pt-2.5" role="status">
+      <CloudSlash aria-hidden className="size-4 shrink-0" weight="bold" />
+      <span>OFFLINE // 可瀏覽與練習，編輯於連線後恢復{pending ? ` · ${pending} 筆待同步` : ""}</span>
     </div>
   );
 }

@@ -6,20 +6,20 @@ import { cn } from "../lib/utils";
 import { Spinner } from "./feedback";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap outline-none select-none transition-[background-color,color,opacity,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[1.125rem]",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-none font-semibold tracking-[-0.01em] whitespace-nowrap outline-none select-none transition-[background-color,border-color,color,opacity,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--canvas)] disabled:pointer-events-none disabled:opacity-35 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[1.0625rem]",
   {
     variants: {
       variant: {
-        primary: "bg-contrast text-on-contrast hover:bg-contrast/90",
-        secondary: "glass-control border text-ink hover:bg-surface-pressed",
-        ghost: "text-ink-muted hover:bg-surface-raised hover:text-ink",
-        danger: "bg-danger/15 text-danger hover:bg-danger/25",
+        primary: "border border-contrast bg-contrast text-on-contrast hover:border-ink hover:bg-ink hover:text-surface",
+        secondary: "border border-line-strong bg-surface text-ink hover:bg-ink hover:text-surface",
+        ghost: "border border-transparent text-ink-muted hover:border-line hover:bg-surface-raised hover:text-ink",
+        danger: "border border-danger bg-danger/10 text-danger hover:bg-danger hover:text-white",
       },
       size: {
-        sm: "h-9 px-4 text-sm",
-        md: "h-11 px-5 text-[0.9375rem]",
+        sm: "h-9 px-3.5 text-sm",
+        md: "h-10 px-4 text-[0.9375rem]",
         lg: "h-12 px-6 text-base",
-        icon: "size-11",
+        icon: "size-10",
         "icon-sm": "size-9",
       },
     },

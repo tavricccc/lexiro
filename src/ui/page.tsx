@@ -4,20 +4,28 @@ import { ErrorState, LoadingList, PageHeader, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { useDocumentTitle } from "./title";
 
-/** A screen: its header, then its sections with even spacing. */
-export function Page({ back, title, description, actions, children, className, documentTitle }: {
+const WIDTH_CLASS = {
+  full: "w-full",
+  wide: "max-w-6xl",
+  narrow: "max-w-3xl",
+} as const;
+
+/** A Swiss grid screen: architectural header followed by page-specific layout. */
+export function Page({ back, title, kicker, description, actions, children, className, documentTitle, width = "full" }: {
   back?: { href: string; label: string };
   title: React.ReactNode;
+  kicker?: React.ReactNode;
   description?: React.ReactNode;
   actions?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   documentTitle?: string;
+  width?: keyof typeof WIDTH_CLASS;
 }) {
   useDocumentTitle(documentTitle ?? (typeof title === "string" ? title : undefined));
   return (
-    <div className={cn("grid gap-6", className)}>
-      <PageHeader actions={actions} back={back} description={description} title={title} />
+    <div className={cn("grid gap-7", WIDTH_CLASS[width], className)}>
+      <PageHeader actions={actions} back={back} description={description} kicker={kicker} title={title} />
       {children}
     </div>
   );
@@ -32,5 +40,5 @@ export function Loaded<T>({ query, children, label = "載入中" }: {
   if (query.data !== undefined) return <>{children(query.data)}</>;
   if (query.isError)
     return <ErrorState message={errorMessage(query.error)} onRetry={() => void query.refetch()} retryLabel="再試一次" title="讀取失敗" />;
-  return <LoadingList label={label} rows={3} />;
+  return <LoadingList label={label} rows={4} />;
 }

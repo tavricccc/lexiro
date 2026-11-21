@@ -6,14 +6,15 @@
 
 @source "../";
 
-/* Albert Sans sets Latin display text (headwords, scores, counts) via font-latin. */
+/* Local Albert Sans ensures offline grotesque clarity alongside Inter. */
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-500.ttf") format("truetype"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-600.ttf") format("truetype"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-700.ttf") format("truetype"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Albert Sans"; src: url("/fonts/AlbertSans-800.ttf") format("truetype"); font-weight: 800; font-display: swap; }
 
 @theme inline {
-  --font-latin: "Albert Sans", var(--font-sans);
+  --font-latin: "Inter", "Albert Sans", "Helvetica Neue", var(--font-sans);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
   --color-highlight: var(--highlight);
   --color-hue-rose: var(--hue-rose);
   --color-hue-amber: var(--hue-amber);
@@ -23,83 +24,101 @@
 }
 
 /*
- * Lexiro pine on the kit's structure. Pine green is the one emphatic fill;
- * honey is the warm second voice (streaks, celebrations); the five set hues
- * mark sets apart. Right and wrong answers keep their own clear green and
- * coral so they never read as the brand colour.
+ * Lexiro — International Typographic Style (International Klein Blue edition).
+ * Archival warm paper, dense printer's black ink, razor-sharp hairlines,
+ * and International Klein Blue (#0038FF) as the singular graphic accent.
  */
 :root {
-  --kit-font-sans: "HarmonyOS Sans TC", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --kit-font-sans: "Inter", "HarmonyOS Sans TC", "Helvetica Neue", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --kit-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
   color-scheme: light;
-  --canvas: #eef3f0;
-  --canvas-foot: #eef3f0;
-  --canvas-gradient:
-    radial-gradient(110% 55% at 10% -5%, rgb(31 122 92 / 11%), transparent 62%),
-    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 9%), transparent 70%),
-    linear-gradient(180deg, #f1f6f3 0%, #eef3f0 100%);
+  --canvas: #f4f3ef;
+  --canvas-foot: #f4f3ef;
+  --canvas-gradient: none;
   --surface: #ffffff;
-  --surface-raised: rgb(17 38 30 / 5%);
-  --surface-pressed: rgb(17 38 30 / 9%);
+  --surface-raised: #ebe9e2;
+  --surface-pressed: #dfddd4;
   --surface-solid: #ffffff;
-  --ink: #12201a;
-  --ink-muted: #56645d;
-  --ink-faint: #8b9690;
-  --line: rgb(17 38 30 / 9%);
-  --contrast: #1f7a5c;
+  --ink: #0e0e10;
+  --ink-muted: #525258;
+  --ink-faint: #86868e;
+  --line: #d3d1c8;
+  --line-strong: #0e0e10;
+  --contrast: #0038ff;
   --on-contrast: #ffffff;
-  --accent-soft: rgb(31 122 92 / 11%);
-  --accent-ink: #176348;
-  --highlight: #e0a12a;
-  --danger: #d2445f;
-  --positive: #1f9d55;
-  --caution: #b97a12;
-  --info: #2f7fd8;
-  --hue-rose: #e0559b;
-  --hue-amber: #ef9a1f;
-  --hue-mint: #22a96a;
-  --hue-sky: #2f8cf0;
-  --hue-violet: #7a5cf0;
-  --elevation-panel: 0 0 0 1px rgb(17 38 30 / 4%), 0 8px 24px rgb(20 48 36 / 7%);
-  --elevation-float: 0 0 0 1px rgb(17 38 30 / 6%), 0 16px 40px rgb(20 48 36 / 16%);
-  --elevation-glass: 0 8px 30px rgb(20 48 36 / 9%);
-  --focus-ring: rgb(31 122 92 / 45%);
-  --scrim: rgb(12 24 18 / 34%);
+  --accent-soft: rgb(0 56 255 / 8%);
+  --accent-ink: #002ad1;
+  --highlight: #e1251b;
+  --danger: #d91e18;
+  --positive: #008248;
+  --caution: #b87400;
+  --info: #0038ff;
+  --hue-rose: #e1251b;
+  --hue-amber: #d98c00;
+  --hue-mint: #008248;
+  --hue-sky: #0038ff;
+  --hue-violet: #5828d8;
+  --elevation-panel: none;
+  --elevation-float: 4px 4px 0 0 rgb(14 14 16 / 16%);
+  --elevation-glass: none;
+  --focus-ring: #0038ff;
+  --scrim: rgb(14 14 16 / 52%);
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --canvas: #0b100d;
-  --canvas-foot: #0f1612;
-  --canvas-gradient:
-    radial-gradient(110% 55% at 10% -5%, rgb(127 220 180 / 9%), transparent 62%),
-    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 6%), transparent 70%),
-    linear-gradient(180deg, #0b100d 0%, #0f1612 100%);
-  --surface: #141b17;
-  --surface-raised: rgb(255 255 255 / 6%);
-  --surface-pressed: rgb(255 255 255 / 10%);
-  --surface-solid: #18201b;
-  --ink: #eef3f0;
-  --ink-muted: #a3b0a9;
-  --ink-faint: #6d7a73;
-  --line: rgb(255 255 255 / 9%);
-  --contrast: #7fdcb4;
-  --on-contrast: #062016;
-  --accent-soft: rgb(127 220 180 / 14%);
-  --accent-ink: #9be6c5;
-  --highlight: #f4c060;
-  --danger: #ff7f95;
-  --positive: #5fd394;
-  --caution: #eab765;
-  --info: #6fb0ff;
-  --hue-rose: #f07ab5;
-  --hue-amber: #ffb347;
-  --hue-mint: #4fd08c;
-  --hue-sky: #5aa8ff;
-  --hue-violet: #9a82ff;
-  --elevation-panel: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 12px 32px rgb(0 0 0 / 30%);
-  --elevation-float: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(0 0 0 / 46%);
-  --elevation-glass: 0 8px 30px rgb(0 0 0 / 22%);
-  --focus-ring: rgb(127 220 180 / 50%);
-  --scrim: rgb(0 0 0 / 58%);
+  --canvas: #0a0a0c;
+  --canvas-foot: #0a0a0c;
+  --canvas-gradient: none;
+  --surface: #121216;
+  --surface-raised: #1b1b21;
+  --surface-pressed: #25252e;
+  --surface-solid: #141419;
+  --ink: #f4f3ef;
+  --ink-muted: #9e9ea8;
+  --ink-faint: #646470;
+  --line: #292933;
+  --line-strong: #f4f3ef;
+  --contrast: #4776ff;
+  --on-contrast: #ffffff;
+  --accent-soft: rgb(71 118 255 / 16%);
+  --accent-ink: #8cabff;
+  --highlight: #ff4a3d;
+  --danger: #ff4a45;
+  --positive: #25c97e;
+  --caution: #f2b42c;
+  --info: #4776ff;
+  --hue-rose: #ff4a45;
+  --hue-amber: #f5b731;
+  --hue-mint: #25c97e;
+  --hue-sky: #4776ff;
+  --hue-violet: #9575ff;
+  --elevation-panel: none;
+  --elevation-float: 4px 4px 0 0 rgb(0 0 0 / 70%);
+  --elevation-glass: none;
+  --focus-ring: #4776ff;
+  --scrim: rgb(0 0 0 / 72%);
 }
 
+/* Swiss editorial helpers */
+.swiss-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.swiss-index {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.swiss-grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

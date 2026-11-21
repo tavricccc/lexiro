@@ -3,40 +3,40 @@
 
 /** Rungs of the duration ladder, in seconds, for animations driven from JavaScript. */
 export const motionSeconds = {
-  touch: 0.1,
-  control: 0.25,
-  reveal: 0.4,
-  nav: 0.46,
-  sheet: 0.56,
-  controlExit: 0.19,
-  sheetExit: 0.4,
+  touch: 0.06,
+  control: 0.14,
+  reveal: 0.24,
+  nav: 0.24,
+  sheet: 0.26,
+  controlExit: 0.12,
+  sheetExit: 0.2,
 } as const;
 
 /** The sanctioned easing curves as cubic-bezier control points. */
 export const motionEasing = {
-  arrive: [0.16, 1, 0.3, 1],
+  arrive: [0.2, 0, 0, 1],
   depart: [0.4, 0, 1, 1],
-  move: [0.4, 0, 0.2, 1],
-  nav: [0.32, 0.72, 0, 1],
-  navDepart: [1, 0, 0.68, 0.28],
-  bounce: [0.22, 1.2, 0.36, 1],
+  move: [0.2, 0, 0, 1],
+  nav: [0.2, 0, 0, 1],
+  navDepart: [0.4, 0, 1, 1],
+  bounce: [0.2, 0, 0, 1],
 } as const;
 
 /** How far things travel, as the CSS values the stylesheet uses. */
 export const motionTravel = {
-  lift: "4px",
-  rise: "8px",
-  pressScale: "0.985",
-  cardPressScale: "0.995",
-  surfaceScale: "0.975",
-  routeTravel: "32px",
+  lift: "2px",
+  rise: "6px",
+  pressScale: "0.99",
+  cardPressScale: "0.996",
+  surfaceScale: "0.985",
+  routeTravel: "16px",
 } as const;
 
 /** Indeterminate loops, in seconds. They repeat, so they sit outside the ladder. */
 export const motionLoopSeconds = {
-  spin: 0.8,
-  sweep: 1.1,
-  pulse: 2.2,
+  spin: 0.7,
+  sweep: 0.95,
+  pulse: 1.6,
 } as const;
 
 export type MotionRung = keyof typeof motionSeconds;

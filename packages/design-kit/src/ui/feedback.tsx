@@ -6,7 +6,7 @@ export function Spinner({ className, label }: { className?: string; label?: stri
     <span
       aria-hidden={label ? undefined : true}
       aria-label={label}
-      className={cn("inline-block size-5 shrink-0 animate-spin rounded-full border-2 border-ink-faint border-t-ink [animation-duration:var(--motion-spin)]", className)}
+      className={cn("inline-block size-4 shrink-0 animate-spin rounded-none border-2 border-ink-faint/40 border-t-contrast [animation-duration:var(--motion-spin)]", className)}
       role={label ? "status" : undefined}
     />
   );
@@ -14,22 +14,21 @@ export function Spinner({ className, label }: { className?: string; label?: stri
 
 /** Space held for content that is still loading. */
 export function Skeleton({ className }: { className?: string }) {
-  return <span aria-hidden className={cn("skeleton block rounded-tile bg-surface-raised", className)} />;
+  return <span aria-hidden className={cn("skeleton block rounded-none bg-surface-raised", className)} />;
 }
 
-/** Determinate progress, such as an upload. */
+/** Determinate geometric progress rule. */
 export function ProgressBar({ className, label, value }: { className?: string; label: string; value: number }) {
   const percent = Math.round(Math.min(1, Math.max(0, value)) * 100);
   return (
-    <div aria-label={label} aria-valuemax={100} aria-valuemin={0} aria-valuenow={percent} className={cn("h-1.5 overflow-hidden rounded-full bg-surface-raised", className)} role="progressbar">
-      <div className="h-full rounded-full bg-contrast transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]" style={{ width: `${percent}%` }} />
+    <div aria-label={label} aria-valuemax={100} aria-valuemin={0} aria-valuenow={percent} className={cn("h-2 overflow-hidden rounded-none border border-line-strong/20 bg-surface-raised", className)} role="progressbar">
+      <div className="h-full rounded-none bg-contrast transition-[width] duration-[var(--motion-control)] ease-[var(--ease-move)]" style={{ width: `${percent}%` }} />
     </div>
   );
 }
 
 const toastClassNames = {
-  toast: "glass !rounded-full !border-line !bg-[var(--surface)] !text-ink !shadow-float",
-  // Sonner names the secondary line `description`; this is a class list, not copy.
+  toast: "!rounded-none !border !border-[var(--line-strong)] !bg-[var(--surface)] !text-ink !shadow-[var(--elevation-float)] !font-medium",
   ["description"]: "!text-ink-muted",
 };
 
@@ -37,7 +36,7 @@ export function Toaster() {
   return (
     <Sonner
       mobileOffset={{ bottom: "calc(var(--bottom-nav-height) + var(--bottom-nav-gap) + 0.75rem)" }}
-      position="bottom-center"
+      position="bottom-right"
       theme="system"
       toastOptions={{ classNames: toastClassNames }}
     />

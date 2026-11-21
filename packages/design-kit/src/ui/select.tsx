@@ -9,10 +9,6 @@ export interface SelectOption<Value extends string = string> {
   value: Value;
 }
 
-/**
- * One choice from a short list. The trigger shows the current answer unless
- * `renderTrigger` lays it out differently, as a list row does.
- */
 export function Select<Value extends string>({
   className,
   disabled,
@@ -40,7 +36,7 @@ export function Select<Value extends string>({
         className={cn(
           renderTrigger
             ? "outline-none"
-            : "inline-flex h-11 max-w-full items-center gap-2 rounded-full bg-surface-raised px-4 text-[0.9375rem] text-ink outline-none transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:opacity-40",
+            : "inline-flex h-11 max-w-full items-center gap-2 rounded-none border border-line-strong/35 bg-surface px-3.5 text-[0.9375rem] font-medium text-ink outline-none transition-[border-color,background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:border-line-strong focus-visible:border-contrast focus-visible:ring-1 focus-visible:ring-contrast disabled:opacity-40",
           className,
         )}
       >
@@ -53,14 +49,14 @@ export function Select<Value extends string>({
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
-          className="float-surface z-50 max-h-[min(24rem,var(--radix-select-content-available-height))] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-panel border border-line bg-surface-solid p-1.5 text-ink shadow-float"
+          className="float-surface z-50 max-h-[min(24rem,var(--radix-select-content-available-height))] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-none border-2 border-line-strong bg-surface-solid text-ink shadow-float"
           position="popper"
-          sideOffset={8}
+          sideOffset={4}
         >
-          <SelectPrimitive.Viewport>
+          <SelectPrimitive.Viewport className="divide-y divide-line">
             {options.map((option) => (
               <SelectPrimitive.Item
-                className="flex h-11 cursor-pointer items-center gap-3 rounded-tile pl-3 pr-2 text-[0.9375rem] outline-none data-[disabled]:opacity-40 data-[highlighted]:bg-surface-raised"
+                className="flex h-11 cursor-pointer items-center gap-3 px-3.5 text-[0.9375rem] font-medium outline-none data-[disabled]:opacity-40 data-[highlighted]:bg-contrast data-[highlighted]:text-on-contrast"
                 disabled={option.disabled}
                 key={option.value}
                 value={option.value}

@@ -1,21 +1,17 @@
 import * as React from "react";
 import { AppLink } from "./app-link";
-import { CaretRight } from "@phosphor-icons/react/ssr";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { cn } from "../lib/utils";
 
 /**
- * Rows that belong together, on one panel, split by hairlines. A title names
- * the group above it; a footer explains it underneath.
+ * Swiss structural rows separated by crisp hairlines under a bold top rule.
  */
 export function ListGroup({ action, children, className, footer, label, role, title }: {
-  /** One trailing control on the title line, such as a refresh. */
   action?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
   footer?: React.ReactNode;
-  /** Names the group for assistive technology when it has no visible title. */
   label?: string;
-  /** `radiogroup` when the rows are ChoiceRows. */
   role?: "radiogroup";
   title?: React.ReactNode;
 }) {
@@ -23,24 +19,22 @@ export function ListGroup({ action, children, className, footer, label, role, ti
   return (
     <section aria-label={title ? undefined : label} aria-labelledby={title ? titleId : undefined} className={cn("grid grid-cols-[minmax(0,1fr)] gap-2", className)}>
       {title || action ? (
-        <div className="flex min-h-8 items-center justify-between gap-3 px-1">
-          {title ? <h2 className="text-[0.8125rem] font-medium text-ink-muted" id={titleId}>{title}</h2> : <span />}
+        <div className="flex min-h-7 items-baseline justify-between gap-3">
+          {title ? <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.09em] text-ink-muted" id={titleId}>{title}</h2> : <span />}
           {action}
         </div>
       ) : null}
-      <ul className="glass divide-y divide-line overflow-hidden rounded-panel shadow-panel" role={role}>{children}</ul>
-      {footer ? <p className="px-1 text-sm leading-relaxed text-ink-faint">{footer}</p> : null}
+      <ul className="divide-y divide-line border border-line border-t-2 border-t-line-strong bg-surface" role={role}>{children}</ul>
+      {footer ? <p className="text-xs leading-relaxed text-ink-faint">{footer}</p> : null}
     </section>
   );
 }
 
 interface ListRowContent {
-  /** A second line under the label. */
   detail?: React.ReactNode;
   icon?: React.ReactNode;
   label: React.ReactNode;
   tone?: "default" | "danger";
-  /** What the row is currently set to, read at the trailing edge. */
   value?: React.ReactNode;
 }
 
@@ -52,30 +46,30 @@ type ListRowProps = ListRowContent &
   );
 
 export const rowClass =
-  "flex min-h-12 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none";
+  "flex min-h-13 w-full items-center gap-3.5 px-4 py-3 text-left outline-none";
 const actionClass =
-  "transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised disabled:pointer-events-none disabled:opacity-40";
+  "group transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised disabled:pointer-events-none disabled:opacity-40";
 
 function RowBody({ detail, icon, label, tone = "default", value }: ListRowContent) {
   return (
     <>
       {icon ? (
-        <span aria-hidden className={cn("shrink-0 [&_svg]:size-5", tone === "danger" ? "text-danger" : "text-ink")}>
+        <span aria-hidden className={cn("shrink-0 [&_svg]:size-5", tone === "danger" ? "text-danger" : "text-ink-muted group-hover:text-contrast")}>
           {icon}
         </span>
       ) : null}
       <span className="min-w-0 flex-1">
-        <span className={cn("block truncate text-base", tone === "danger" ? "text-danger" : "text-ink")}>{label}</span>
-        {detail ? <span className="block truncate text-[0.8125rem] text-ink-muted">{detail}</span> : null}
+        <span className={cn("block truncate text-[0.9375rem] font-semibold tracking-[-0.01em]", tone === "danger" ? "text-danger" : "text-ink")}>{label}</span>
+        {detail ? <span className="mt-0.5 block truncate text-[0.8125rem] text-ink-muted">{detail}</span> : null}
       </span>
-      {value !== undefined ? <span className="max-w-[45%] shrink-0 truncate text-[0.9375rem] text-ink-muted">{value}</span> : null}
+      {value !== undefined ? <span className="max-w-[45%] shrink-0 truncate font-mono text-sm font-medium text-ink-muted">{value}</span> : null}
     </>
   );
 }
 
 /** One row: a link, an action, or a label with its own trailing control. */
 export function ListRow(props: ListRowProps) {
-  const chevron = <CaretRight aria-hidden className="size-4 shrink-0 text-ink-faint" weight="bold" />;
+  const arrow = <ArrowRight aria-hidden className="size-4 shrink-0 text-ink-faint transition-transform duration-[var(--motion-control)] group-hover:translate-x-0.5 group-hover:text-contrast" weight="bold" />;
   if (props.href !== undefined) {
     return (
       <li>
@@ -86,7 +80,7 @@ export function ListRow(props: ListRowProps) {
           {...(props.external ? { rel: "noreferrer", target: "_blank" } : {})}
         >
           <RowBody {...props} />
-          {chevron}
+          {arrow}
         </AppLink>
       </li>
     );
@@ -96,7 +90,7 @@ export function ListRow(props: ListRowProps) {
       <li>
         <button className={cn(rowClass, actionClass)} disabled={props.disabled} onClick={props.onClick} type="button">
           <RowBody {...props} />
-          {props.tone === "danger" ? null : chevron}
+          {props.tone === "danger" ? null : arrow}
         </button>
       </li>
     );

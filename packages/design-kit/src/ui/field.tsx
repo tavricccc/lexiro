@@ -2,10 +2,10 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 
 const controlClass =
-  "w-full rounded-tile border border-line bg-surface-raised px-4 text-base text-ink outline-none placeholder:text-ink-faint transition-[border-color,background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus:border-[var(--focus-ring)] focus:bg-surface-pressed disabled:opacity-40 aria-invalid:border-danger";
+  "w-full rounded-none border border-line-strong/35 bg-surface px-3.5 text-base text-ink outline-none placeholder:text-ink-faint transition-[border-color,background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus:border-contrast focus:ring-1 focus:ring-contrast disabled:opacity-40 aria-invalid:border-danger";
 
 export function Input({ className, ...props }: React.ComponentProps<"input">) {
-  return <input className={cn(controlClass, "h-12", className)} {...props} />;
+  return <input className={cn(controlClass, "h-11", className)} {...props} />;
 }
 
 export function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
@@ -23,11 +23,11 @@ export function Field({ children, error, hint, label }: {
   const messageId = `${id}-message`;
   const message = error ?? hint;
   return (
-    <div className="grid gap-2">
-      <label className="px-1 text-sm font-medium text-ink-muted" htmlFor={id}>{label}</label>
+    <div className="grid gap-1.5">
+      <label className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted" htmlFor={id}>{label}</label>
       {children({ id, describedBy: message ? messageId : undefined, invalid: Boolean(error) })}
       {message ? (
-        <p className={cn("px-1 text-sm", error && "message-in", error ? "text-danger" : "text-ink-faint")} id={messageId} key={error ? `error:${error}` : "hint"} role={error ? "alert" : undefined}>
+        <p className={cn("text-sm", error && "message-in", error ? "text-danger" : "text-ink-faint")} id={messageId} key={error ? `error:${error}` : "hint"} role={error ? "alert" : undefined}>
           {message}
         </p>
       ) : null}

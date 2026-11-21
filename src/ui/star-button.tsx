@@ -4,7 +4,7 @@ import { Button, HeaderButton, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { starWords } from "@/data/library";
 
-/** Stars a word; `inHeader` makes it one of the page toolbar's round buttons. */
+/** Stars a word. */
 export function StarButton({ inHeader, setId, wordId, starred, word }: { inHeader?: boolean; setId: string; wordId: string; starred: boolean; word: string }) {
   const Control = inHeader ? HeaderButton : Button;
   return (

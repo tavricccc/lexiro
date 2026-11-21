@@ -1,32 +1,32 @@
 {
   "durations": {
-    "touch": 100,
-    "control": 250,
-    "reveal": 400,
-    "nav": 460,
-    "sheet": 560,
-    "controlExit": 190,
-    "sheetExit": 400
+    "touch": 60,
+    "control": 140,
+    "reveal": 240,
+    "nav": 240,
+    "sheet": 260,
+    "controlExit": 120,
+    "sheetExit": 200
   },
   "easings": {
-    "arrive": [0.16, 1, 0.3, 1],
+    "arrive": [0.2, 0, 0, 1],
     "depart": [0.4, 0, 1, 1],
-    "move": [0.4, 0, 0.2, 1],
-    "nav": [0.32, 0.72, 0, 1],
-    "navDepart": [1, 0, 0.68, 0.28],
-    "bounce": [0.22, 1.2, 0.36, 1]
+    "move": [0.2, 0, 0, 1],
+    "nav": [0.2, 0, 0, 1],
+    "navDepart": [0.4, 0, 1, 1],
+    "bounce": [0.2, 0, 0, 1]
   },
   "travel": {
-    "lift": "4px",
-    "rise": "8px",
-    "pressScale": "0.985",
-    "cardPressScale": "0.995",
-    "surfaceScale": "0.975",
-    "routeTravel": "32px"
+    "lift": "2px",
+    "rise": "6px",
+    "pressScale": "0.99",
+    "cardPressScale": "0.996",
+    "surfaceScale": "0.985",
+    "routeTravel": "16px"
   },
   "loops": {
-    "spin": 800,
-    "sweep": 1100,
-    "pulse": 2200
+    "spin": 700,
+    "sweep": 950,
+    "pulse": 1600
   }
 }

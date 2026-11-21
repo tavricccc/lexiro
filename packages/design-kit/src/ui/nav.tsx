@@ -11,11 +11,9 @@ export interface NavItem {
 }
 
 /**
- * The primary destinations, in one of two shapes:
- * - `dock`: the floating bar at the bottom of a phone, icon over label;
- * - `rail`: a column of icon-and-label rows down the side of a wide screen.
- * The current destination wears the same dark pill in both shapes, like the
- * Segmented control, and its icon fills.
+ * Swiss International primary navigation:
+ * - `rail`: numbered architectural index column on desktop (`01`..`05`), with solid Klein Blue active block;
+ * - `dock`: full-width flat grid bar on phones with top Klein Blue indicator rule.
  */
 export function PrimaryNav({
   activeHref,
@@ -30,50 +28,69 @@ export function PrimaryNav({
   label: string;
   variant: "dock" | "rail";
 }) {
-  const activeIndex = items.findIndex((item) => item.href === activeHref);
-  return (
-    <nav
-      aria-label={label}
-      className={cn(
-        "flex",
-        variant === "dock" && "glass-float relative h-[var(--bottom-nav-height)] items-stretch gap-1 rounded-full p-1.5",
-        variant === "rail" && "relative flex-col gap-1",
-        className,
-      )}
-      style={{ "--nav-count": items.length, "--nav-index": Math.max(activeIndex, 0) } as React.CSSProperties}
-    >
-      {/* One pill slides between items inside the nav. A shared-layout
-          animation measured it against the page, so a route change that
-          scrolled the page sent it flying across the screen. */}
-      <span
-        aria-hidden
+  if (variant === "dock") {
+    return (
+      <nav
+        aria-label={label}
         className={cn(
-          "pointer-events-none absolute rounded-full transition-[translate,opacity] duration-[var(--motion-control)] ease-[var(--ease-move)]",
-          variant === "dock" && "inset-y-1.5 left-1.5 w-[calc((100%-0.75rem-(var(--nav-count)-1)*0.25rem)/var(--nav-count))] translate-x-[calc(var(--nav-index)*(100%+0.25rem))]",
-          variant === "rail" && "inset-x-0 top-0 h-11 translate-y-[calc(var(--nav-index)*3rem)]",
-          "bg-contrast",
-          activeIndex < 0 && "opacity-0",
+          "grid h-[var(--bottom-nav-height)] w-full grid-cols-5 divide-x divide-line border-t-2 border-line-strong bg-surface",
+          className,
         )}
-      />
-      {items.map(({ badge, href, icon: ItemIcon, label: itemLabel }) => {
+      >
+        {items.map(({ badge, href, icon: ItemIcon, label: itemLabel }, index) => {
+          const active = href === activeHref;
+          return (
+            <AppLink
+              aria-current={active ? "page" : undefined}
+              className={cn(
+                "relative flex min-w-0 flex-col items-center justify-center gap-0.5 text-[0.6875rem] font-semibold tracking-[0.02em] outline-none transition-colors duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-contrast",
+                active ? "bg-contrast text-on-contrast" : "text-ink-muted hover:bg-surface-raised hover:text-ink",
+              )}
+              href={href}
+              key={href}
+            >
+              <span aria-hidden className="relative flex items-center gap-1">
+                <ItemIcon className="size-[1.125rem]" weight={active ? "fill" : "regular"} />
+                {badge ? <span className="absolute -right-1.5 -top-0.5 size-1.5 bg-danger" /> : null}
+              </span>
+              <span className="max-w-full truncate px-1">{itemLabel}</span>
+              <span aria-hidden className="sr-only">{String(index + 1).padStart(2, "0")}</span>
+            </AppLink>
+          );
+        })}
+      </nav>
+    );
+  }
+
+  return (
+    <nav aria-label={label} className={cn("flex flex-col border-y border-line divide-y divide-line", className)}>
+      {items.map(({ badge, href, icon: ItemIcon, label: itemLabel }, index) => {
         const active = href === activeHref;
+        const num = String(index + 1).padStart(2, "0");
         return (
           <AppLink
             aria-current={active ? "page" : undefined}
             className={cn(
-              "relative isolate flex min-w-0 items-center rounded-full font-medium outline-none transition-[color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
-              active ? "text-on-contrast" : "text-ink-muted hover:text-ink",
-              variant === "dock" && "flex-1 flex-col justify-center gap-0.5 text-[0.6875rem]",
-              variant === "rail" && "h-11 gap-3 px-3.5 text-[0.9375rem]",
+              "group relative flex h-12 min-w-0 items-center gap-3 px-4 text-[0.9375rem] font-semibold tracking-[-0.01em] outline-none transition-colors duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-contrast",
+              active ? "bg-contrast text-on-contrast" : "bg-surface text-ink hover:bg-surface-raised",
             )}
             href={href}
             key={href}
           >
-            <span aria-hidden className="relative">
-              <ItemIcon className="size-5" weight={active ? "fill" : "regular"} />
-              {badge ? <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-danger" /> : null}
+            <span
+              aria-hidden
+              className={cn(
+                "font-mono text-[0.75rem] font-medium tabular-nums",
+                active ? "text-on-contrast/80" : "text-ink-faint group-hover:text-contrast",
+              )}
+            >
+              {num}
             </span>
-            <span className="max-w-full truncate px-1">{itemLabel}</span>
+            <span className="min-w-0 flex-1 truncate">{itemLabel}</span>
+            <span aria-hidden className="relative shrink-0">
+              <ItemIcon className={cn("size-4", active ? "text-on-contrast" : "text-ink-faint group-hover:text-ink")} weight={active ? "fill" : "regular"} />
+              {badge ? <span className="absolute -right-1 -top-1 size-1.5 bg-danger" /> : null}
+            </span>
           </AppLink>
         );
       })}

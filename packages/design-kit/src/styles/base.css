@@ -1,7 +1,7 @@
-/* Page-level defaults both apps share. The font is a token too. */
+/* Page-level Swiss typographic defaults. */
 @theme inline {
-  --font-sans: var(--kit-font-sans, ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif);
-  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace;
+  --font-sans: var(--kit-font-sans, "Inter", "Helvetica Neue", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif);
+  --font-mono: var(--kit-font-mono, "IBM Plex Mono", ui-monospace, SFMono-Regular, "Cascadia Code", Consolas, monospace);
 }
 
 @layer base {
@@ -20,6 +20,7 @@ body {
   min-height: 100svh;
   margin: 0;
   font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;

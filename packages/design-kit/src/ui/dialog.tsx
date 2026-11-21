@@ -2,11 +2,6 @@ import * as React from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { cn } from "../lib/utils";
 
-/**
- * A centred question or explanation that asks for attention, such as an
- * install guide or a permission request. `dismissible={false}` keeps the scrim
- * and Escape from closing it, for prompts that must be answered.
- */
 export function Dialog({
   actions,
   children,
@@ -35,23 +30,23 @@ export function Dialog({
         <DialogPrimitive.Overlay className="scrim fixed inset-0 z-50 bg-[var(--scrim)]" />
         <DialogPrimitive.Content
           className={cn(
-            "dialog-surface fixed left-1/2 top-1/2 z-50 grid max-h-[calc(100svh-2rem)] w-[min(26rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 gap-5 overflow-y-auto rounded-panel border border-line bg-surface-solid p-6 text-ink shadow-float outline-none",
+            "dialog-surface fixed left-1/2 top-1/2 z-50 grid max-h-[calc(100svh-2rem)] w-[min(28rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 gap-5 overflow-y-auto rounded-none border-2 border-line-strong bg-surface-solid p-6 text-ink shadow-float outline-none",
             className,
           )}
           onEscapeKeyDown={block}
           onInteractOutside={block}
         >
-          <div className="grid gap-2">
+          <div className="grid gap-2 border-b border-line pb-4">
             {icon ? (
-              <span aria-hidden className="mb-2 grid size-12 place-items-center rounded-full bg-surface-raised text-ink [&_svg]:size-6">{icon}</span>
+              <span aria-hidden className="mb-1 grid size-10 place-items-center border border-line-strong bg-surface-raised text-ink [&_svg]:size-5">{icon}</span>
             ) : null}
-            <DialogPrimitive.Title className="text-lg font-semibold">{title}</DialogPrimitive.Title>
+            <DialogPrimitive.Title className="text-xl font-bold tracking-[-0.02em]">{title}</DialogPrimitive.Title>
             {description ? (
               <DialogPrimitive.Description className="text-[0.9375rem] leading-relaxed text-ink-muted">{description}</DialogPrimitive.Description>
             ) : null}
           </div>
           {children}
-          {actions ? <div className="flex flex-wrap justify-end gap-2">{actions}</div> : null}
+          {actions ? <div className="flex flex-wrap justify-end gap-2 pt-1">{actions}</div> : null}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

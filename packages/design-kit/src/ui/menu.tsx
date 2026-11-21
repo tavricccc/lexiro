@@ -17,12 +17,8 @@ export interface MenuItem {
 }
 
 const itemClass =
-  "flex h-11 cursor-pointer items-center gap-3 rounded-tile px-3 text-[0.9375rem] text-ink outline-none data-[highlighted]:bg-surface-raised [&_svg]:size-5 [&_svg]:text-ink-muted";
+  "flex h-11 cursor-pointer items-center gap-3 px-3.5 text-[0.9375rem] font-medium text-ink outline-none data-[highlighted]:bg-contrast data-[highlighted]:text-on-contrast [&_svg]:size-4 [&_svg]:text-ink-muted data-[highlighted]:[&_svg]:text-on-contrast";
 
-/**
- * The few things that can be done here: a menu hung off the trigger on a
- * pointer screen, a sheet of full-width rows on a phone.
- */
 export function Menu({
   align = "end",
   description,
@@ -31,7 +27,6 @@ export function Menu({
   trigger,
 }: {
   align?: "center" | "end" | "start";
-  /** A second line naming the menu, such as an account's address. */
   description?: string;
   items: readonly MenuItem[];
   title: string;
@@ -71,18 +66,18 @@ export function Menu({
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align={align}
-          className="float-surface z-50 min-w-56 rounded-panel border border-line bg-surface-solid p-1.5 text-ink shadow-float"
-          sideOffset={8}
+          className="float-surface z-50 min-w-56 divide-y divide-line rounded-none border-2 border-line-strong bg-surface-solid text-ink shadow-float"
+          sideOffset={4}
         >
           {description ? (
-            <DropdownMenu.Label className="px-3 pb-2 pt-1.5">
-              <span className="block truncate text-sm font-medium">{title}</span>
-              <span className="block truncate text-xs text-ink-muted">{description}</span>
+            <DropdownMenu.Label className="px-3.5 py-2.5">
+              <span className="block truncate text-sm font-bold">{title}</span>
+              <span className="block truncate font-mono text-xs text-ink-muted">{description}</span>
             </DropdownMenu.Label>
           ) : null}
           {items.map(({ href, icon: ItemIcon, key, label, onSelect, tone }) => {
             const content = <><ItemIcon aria-hidden className={cn(tone === "danger" && "!text-danger")} />{label}</>;
-            const className = cn(itemClass, tone === "danger" && "text-danger");
+            const className = cn(itemClass, tone === "danger" && "text-danger data-[highlighted]:bg-danger data-[highlighted]:text-white");
             return href ? (
               <DropdownMenu.Item asChild className={className} key={key}>
                 <AppLink href={href}>{content}</AppLink>

@@ -8,11 +8,9 @@ import { cn } from "../lib/utils";
 import { Button } from "./button";
 import { useCompactViewport } from "./use-compact-viewport";
 
-// How far, or how fast, the grabber has to be pulled before letting go puts the sheet away.
 const DISMISS_DISTANCE = 120;
 const DISMISS_VELOCITY = 0.6;
 
-/** Pulling the grabber down: the sheet follows the finger, and lets go either away or back home. */
 function useGrabber(onDismiss: () => void) {
   const offset = useMotionValue(0);
   const start = React.useRef<{ time: number; y: number } | null>(null);
@@ -39,12 +37,8 @@ function useGrabber(onDismiss: () => void) {
 }
 
 /**
- * A layer over the current page. On a phone it rises from the bottom edge on
- * the iOS presentation curve and is pulled away by its grabber; from the
- * tablet breakpoint up it is a centred panel that settles into place.
- * `layout="record"` gives a phone the whole screen for a record or composer.
- * Escape, the scrim, the grabber and the close button all route through
- * `onOpenChange`, so a caller guarding unsaved work sees every exit.
+ * Swiss architectural drawer: rises sharply from bottom on phone, slides cleanly
+ * from the right edge (or wide modal for `screen`) on desktop.
  */
 export function Sheet({
   children,
@@ -61,11 +55,9 @@ export function Sheet({
   description?: React.ReactNode;
   footer?: React.ReactNode;
   layout?: "record" | "sheet";
-  /** Called once the closing animation has finished. */
   onClosed?: () => void;
   onOpenChange: (open: boolean) => void;
   open: boolean;
-  /** `screen` (a record, a composer) is the screen drawn smaller on a wide screen. */
   size?: "md" | "screen";
   title: React.ReactNode;
 }) {
@@ -85,7 +77,6 @@ export function Sheet({
               <motion.div
                 animate={{ opacity: 1 }}
                 className="fixed inset-0 z-50 bg-[var(--scrim)]"
-                // The scrim leaves at once: iOS tints the status bar from it, and the bar should be back the moment the sheet is let go.
                 exit={{ opacity: 0, transition: { duration: 0 } }}
                 initial={{ opacity: 0 }}
                 style={compact ? { opacity: scrimOpacity } : undefined}
@@ -94,44 +85,42 @@ export function Sheet({
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount>
               <motion.div
-                animate={compact ? { y: 0 } : { opacity: 1, scale: 1 }}
+                animate={compact ? { y: 0 } : { x: 0, opacity: 1 }}
                 className={cn(
-                  "fixed inset-x-0 bottom-0 z-50 flex flex-col rounded-t-panel border-t border-line bg-surface-solid text-ink shadow-float outline-none",
-                  layout === "record" ? "top-[calc(var(--safe-top)+0.75rem)]" : "max-h-[calc(100svh-var(--safe-top)-1.5rem)]",
-                  "md:inset-x-auto md:bottom-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-panel md:border",
-                  size === "md" && "md:max-h-[min(44rem,calc(100svh-4rem))] md:w-[min(34rem,calc(100vw-4rem))]",
-                  // A record or composer is the screen drawn smaller: the same share of its
-                  // width and its height, so it keeps the screen's proportions on any device.
-                  size === "screen" && "md:h-[86svh] md:w-[86vw]",
+                  "fixed inset-x-0 bottom-0 z-50 flex flex-col rounded-none border-t-2 border-line-strong bg-surface-solid text-ink shadow-float outline-none",
+                  layout === "record" ? "top-[calc(var(--safe-top)+0.5rem)]" : "max-h-[calc(100svh-var(--safe-top)-1.5rem)]",
+                  "md:inset-y-0 md:left-auto md:right-0 md:top-0 md:max-h-none md:border-l-2 md:border-t-0",
+                  size === "md" && "md:w-[min(32rem,92vw)]",
+                  size === "screen" && "md:w-[min(46rem,92vw)]",
                 )}
                 data-sheet-surface=""
                 exit={compact
                   ? { transition: timing("sheetExit", "nav"), y: "100%" }
-                  : { opacity: 0, scale: 0.97, transition: timing("controlExit", "depart") }}
-                initial={compact ? { y: "100%" } : { opacity: 0, scale: 0.96 }}
+                  : { x: "100%", opacity: 0.4, transition: timing("controlExit", "depart") }}
+                initial={compact ? { y: "100%" } : { x: "100%", opacity: 0.4 }}
                 style={compact ? { translate: pulled } : undefined}
                 transition={compact ? timing("sheet", "nav") : timing("nav", "nav")}
               >
                 <div className="flex min-h-0 flex-1 flex-col">
-                  <header className="relative flex shrink-0 items-start gap-3 px-5 pb-2 pt-4 md:px-6 md:pt-5">
+                  <header className="relative flex shrink-0 items-start gap-4 border-b border-line-strong px-5 pb-4 pt-5 md:px-6">
                     {compact ? (
-                      <div aria-hidden className="absolute inset-x-0 top-0 flex h-8 touch-none cursor-grab justify-center pt-2" {...grabber.handlers}>
-                        <span className="h-1.5 w-10 rounded-full bg-ink-faint/60" />
+                      <div aria-hidden className="absolute inset-x-0 top-0 flex h-5 touch-none cursor-grab justify-center pt-1.5" {...grabber.handlers}>
+                        <span className="h-1 w-10 bg-ink-faint/70" />
                       </div>
                     ) : null}
-                    <div className="min-w-0 flex-1 pt-1.5">
-                      <Dialog.Title className="text-base font-semibold md:text-lg">{title}</Dialog.Title>
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <Dialog.Title className="text-lg font-bold tracking-[-0.02em] md:text-xl">{title}</Dialog.Title>
                       {description ? (
                         <Dialog.Description className="mt-1 text-sm text-ink-muted">{description}</Dialog.Description>
                       ) : null}
                     </div>
                     <Dialog.Close asChild>
-                      <Button aria-label={labels.close} className="relative" size="icon" variant="secondary"><X weight="bold" /></Button>
+                      <Button aria-label={labels.close} className="relative" size="icon-sm" variant="secondary"><X weight="bold" /></Button>
                     </Dialog.Close>
                   </header>
-                  <div className="edge-fade min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,var(--safe-bottom))] pt-2 md:px-6 md:pb-6">{children}</div>
+                  <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,var(--safe-bottom))] pt-5 md:px-6 md:pb-6">{children}</div>
                   {footer ? (
-                    <footer className="flex shrink-0 justify-end gap-2 border-t border-line px-5 pb-[max(1rem,var(--safe-bottom))] pt-4 md:px-6">{footer}</footer>
+                    <footer className="flex shrink-0 justify-end gap-2 border-t border-line-strong bg-surface px-5 pb-[max(1rem,var(--safe-bottom))] pt-4 md:px-6">{footer}</footer>
                   ) : null}
                 </div>
               </motion.div>

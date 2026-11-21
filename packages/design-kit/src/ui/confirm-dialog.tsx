@@ -3,11 +3,6 @@ import { AlertDialog } from "radix-ui";
 import { useLabels } from "../lib/provider";
 import { Button, type ActionStatus } from "./button";
 
-/**
- * A question that has to be answered before something irreversible happens.
- * The dialog stays open while the action runs, so a failure can be read and
- * retried in place; `status` reaching `success` is the caller's cue to close it.
- */
 export function ConfirmDialog({
   cancelLabel,
   children,
@@ -21,9 +16,7 @@ export function ConfirmDialog({
   tone = "default",
   trigger,
 }: {
-  /** What backing out is called when "Cancel" would be unclear, such as "Stay". */
   cancelLabel?: string;
-  /** Anything the decision needs besides the description, such as a reason field. */
   children?: React.ReactNode;
   confirmLabel: string;
   description?: React.ReactNode;
@@ -42,9 +35,9 @@ export function ConfirmDialog({
       {trigger ? <AlertDialog.Trigger asChild>{trigger}</AlertDialog.Trigger> : null}
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="scrim fixed inset-0 z-50 bg-[var(--scrim)]" />
-        <AlertDialog.Content className="dialog-surface fixed left-1/2 top-1/2 z-50 grid w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 gap-5 rounded-panel border border-line bg-surface-solid p-6 text-ink shadow-float outline-none">
-          <div className="grid gap-2">
-            <AlertDialog.Title className="text-lg font-semibold">{title}</AlertDialog.Title>
+        <AlertDialog.Content className="dialog-surface fixed left-1/2 top-1/2 z-50 grid w-[min(26rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 gap-5 rounded-none border-2 border-line-strong bg-surface-solid p-6 text-ink shadow-float outline-none">
+          <div className="grid gap-2 border-b border-line pb-4">
+            <AlertDialog.Title className="text-xl font-bold tracking-[-0.02em]">{title}</AlertDialog.Title>
             {description ? <AlertDialog.Description className="text-[0.9375rem] leading-relaxed text-ink-muted">{description}</AlertDialog.Description> : null}
           </div>
           {children}

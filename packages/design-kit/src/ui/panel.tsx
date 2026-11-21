@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slot } from "radix-ui";
 import { cn } from "../lib/utils";
 
-/** The floating glass card every grouped piece of content sits on. */
+/** Sharp Swiss structural module on the grid. */
 export function Panel({
   asChild = false,
   className,
@@ -13,9 +13,9 @@ export function Panel({
   return (
     <Component
       className={cn(
-        "glass block rounded-panel p-4 text-ink shadow-panel md:p-5",
+        "block rounded-none border border-line bg-surface p-5 text-ink md:p-6",
         interactive &&
-          "outline-none transition-[background-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+          "outline-none transition-[background-color,border-color] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:border-line-strong hover:bg-surface-raised focus-visible:border-contrast focus-visible:ring-1 focus-visible:ring-contrast",
         className,
       )}
       {...props}
@@ -23,9 +23,9 @@ export function Panel({
   );
 }
 
-/** A quieter surface nested inside a panel, such as one figure in a row of figures. */
+/** A quieter architectural cell nested inside a module or grid. */
 export function Tile({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("rounded-tile bg-surface-raised p-4", className)} {...props} />;
+  return <div className={cn("rounded-none border border-line bg-surface p-4", className)} {...props} />;
 }
 
 export function SectionTitle({ action, children, className }: {
@@ -34,8 +34,8 @@ export function SectionTitle({ action, children, className }: {
   className?: string;
 }) {
   return (
-    <div className={cn("flex min-h-8 items-center justify-between gap-3 px-1", className)}>
-      <h2 className="text-[0.8125rem] font-medium text-ink-muted">{children}</h2>
+    <div className={cn("flex min-h-8 items-baseline justify-between gap-4 border-b border-line-strong pb-2", className)}>
+      <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.09em] text-ink">{children}</h2>
       {action}
     </div>
   );
