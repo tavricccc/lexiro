@@ -15,6 +15,7 @@ import {
   type UserCredential,
 } from "firebase/auth";
 import { emulator, firebaseConfig, isConfigured } from "./config";
+import { mockAccount, mockEnabled } from "./mock";
 
 export interface Account {
   uid: string;
@@ -25,7 +26,7 @@ export interface Account {
 type State = { ready: boolean; account: Account | null };
 
 let auth: Auth | null = null;
-let state: State = { ready: false, account: null };
+let state: State = mockEnabled ? { ready: true, account: mockAccount } : { ready: false, account: null };
 const listeners = new Set<() => void>();
 
 function app(): FirebaseApp {
@@ -123,6 +124,7 @@ const toAccount = (user: User): Account => ({
 
 function subscribe(listener: () => void) {
   listeners.add(listener);
+  if (mockEnabled) return () => listeners.delete(listener);
   if (!firebaseAuth()) {
     state = { ready: true, account: null };
     queueMicrotask(listener);
@@ -154,6 +156,7 @@ export async function signOut(): Promise<void> {
 
 /** An ID token for the Worker; `fresh` forces a new one. */
 export async function idToken(fresh = false): Promise<string | null> {
+  if (mockEnabled) return "mock";
   const current = firebaseAuth();
   await current?.authStateReady();
   return (await current?.currentUser?.getIdToken(fresh)) ?? null;

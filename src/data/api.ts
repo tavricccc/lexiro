@@ -1,6 +1,7 @@
 import { appCheckHeaders } from "./app-check";
 import { idToken } from "./auth";
 import { workerUrl } from "./config";
+import { mockApi, mockEnabled } from "./mock";
 
 /** A Worker refusal or a failed request, with a message fit to show. */
 export class ApiError extends Error {
@@ -43,6 +44,7 @@ export function errorMessage(reason: unknown): string {
  */
 export async function api<T>(path: string, init: RequestInit & { auth?: boolean; json?: unknown } = {}): Promise<T> {
   const { auth = true, json, ...rest } = init;
+  if (mockEnabled) return mockApi(path, { method: rest.method, json }) as Promise<T>;
   for (let attempt = 0; attempt < 2; attempt++) {
     const headers = new Headers(rest.headers);
     if (json !== undefined) headers.set("Content-Type", "application/json");
