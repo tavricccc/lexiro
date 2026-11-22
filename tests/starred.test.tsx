@@ -11,7 +11,12 @@ const sets: Record<string, unknown> = {
   a: { set: summary("a", "甲"), words: [word("a", "apple", false), word("a", "banana", true), word("a", "cherry", false)], questions: [] },
   b: { set: summary("b", "乙"), words: [word("b", "dog", true), word("b", "egg", false), word("b", "fig", false)], questions: [] },
 };
-vi.mock("@/data/api", () => ({ api: vi.fn(async (path: string) => (path === "/library" ? { folders: [], sets: [summary("a", "甲"), summary("b", "乙")], revision: 1 } : sets[path.split("/").pop()!])), errorMessage: String }));
+const starred = () => ({ words: Object.values(sets).flatMap((content) => (content as { words: { starred: boolean }[] }).words.filter((entry) => entry.starred)) });
+vi.mock("@/data/api", () => ({
+  api: vi.fn(async (path: string) => (path === "/library" ? { folders: [], sets: [summary("a", "甲"), summary("b", "乙")], revision: 1 } : path === "/starred" ? starred() : sets[path.split("/").pop()!])),
+  errorMessage: String,
+  setRevisionListener: () => {},
+}));
 vi.mock("@/ui/offline-banner", () => ({ useOnline: () => true }));
 
 async function open(path: string, route: string, load: () => Promise<{ default: () => React.ReactNode }>) {

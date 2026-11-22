@@ -116,6 +116,7 @@ export async function mockApi(path: string, init: { method?: string; json?: unkn
     if (path === "/learning") return learning;
     if (path === "/prefs") return prefs;
     if (path === "/revision") return { revision: library.revision };
+    if (path === "/starred") return { words: Object.values(contents).flatMap((content) => content.words.filter((word) => word.starred)) };
     if (path === "/admin/status") return { admin: false };
     if (set && contents[decodeURIComponent(set[1]!)]) return contents[decodeURIComponent(set[1]!)];
     if (path.endsWith("/share")) return { id: null };

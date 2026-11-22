@@ -1,10 +1,8 @@
-import { useMemo, useState } from "react";
-import { useQueries } from "@tanstack/react-query";
+import { useState } from "react";
 import { Play, Star } from "@phosphor-icons/react";
-import { compareWords, type SetContent, type Word } from "@lexiro/contract";
+import type { Word } from "@lexiro/contract";
 import { AppLink, Button, EmptyState, ListGroup, LoadingList, Panel, Segmented, cn } from "design-kit";
-import { api } from "@/data/api";
-import { keys, useLibrary } from "@/data/queries";
+import { useStarredWords as useStarredWordsIn } from "@/data/queries";
 import { Page } from "@/ui/page";
 import { StarButton } from "@/ui/star-button";
 import { orderedSets } from "./library-page";
@@ -12,24 +10,8 @@ import { meaningLine } from "./set-page";
 
 const ALL = "all";
 
-/** Every set's starred words, A to Z, grouped by set in library order. */
-export function useStarredWords() {
-  const library = useLibrary();
-  const sets = orderedSets(library.data?.sets ?? []).filter((set) => set.wordCount > 0);
-  const contents = useQueries({ queries: sets.map((set) => ({ queryKey: keys.set(set.id), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(set.id)}`) })) });
-  const stamp = contents.map((query) => query.dataUpdatedAt).join();
-  const groups = useMemo(
-    () => contents.flatMap((query) => {
-      const words = query.data?.words.filter((word) => word.starred).sort((a, b) => compareWords(a.word, b.word)) ?? [];
-      return query.data && words.length ? [{ set: query.data.set, words }] : [];
-    }),
-    // useQueries hands back a new array every render; key on what was fetched.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [stamp],
-  );
-  const loading = !library.data || contents.some((query) => query.isPending);
-  return { groups, loading, count: groups.reduce((sum, group) => sum + group.words.length, 0) };
-}
+/** Every set's starred words, A to Z, grouped by set in library order: one request. */
+export const useStarredWords = () => useStarredWordsIn(orderedSets);
 
 /** Starred words of every set, grouped by set: the words to come back to. */
 export default function StarredPage() {

@@ -2,11 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { useQueries } from "@tanstack/react-query";
 import { Check, Play } from "@phosphor-icons/react";
-import type { PracticeTask, SetContent } from "@lexiro/contract";
+import type { PracticeTask } from "@lexiro/contract";
 import { AppLink, Button, EmptyState, ListGroup, Panel, Segmented, cn } from "design-kit";
-import { api } from "@/data/api";
 import { useLearning } from "@/data/learning";
-import { keys, useLibrary, usePrefs } from "@/data/queries";
+import { setQuery, useLibrary, usePrefs } from "@/data/queries";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_HINTS, TASK_LABELS } from "@/domain/labels";
 import { availableTasks, buildRound, type Focus } from "@/domain/practice";
@@ -39,7 +38,7 @@ export default function SetupPage() {
   // With nothing chosen yet, the round draws from every set.
   const ids = chosen.length ? chosen : sets.map((set) => set.id);
   const contents = useQueries({
-    queries: ids.map((id) => ({ queryKey: keys.set(id), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`) })),
+    queries: ids.map((id) => setQuery(id)),
   });
   const loaded = contents.every((query) => query.data);
   // useQueries hands back a new array every render; key the derived data on

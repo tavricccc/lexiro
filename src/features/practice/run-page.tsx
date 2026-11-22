@@ -3,12 +3,12 @@ import { useQueries } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import { ArrowRight, ArrowCounterClockwise, Check, Star, X } from "@phosphor-icons/react";
-import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask, type SetContent } from "@lexiro/contract";
+import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask } from "@lexiro/contract";
 import { AnimatedNumber, AppLink, Button, HeaderButton, ProgressBar, Segmented, cn } from "design-kit";
-import { api, errorMessage } from "@/data/api";
+import { errorMessage } from "@/data/api";
 import { recordAnswer } from "@/data/learning";
 import { starWords } from "@/data/library";
-import { keys } from "@/data/queries";
+import { setQuery } from "@/data/queries";
 import { isMarked, optionWord, promptWord, wordIndex, type SetWord } from "@/domain/marks";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
@@ -28,7 +28,7 @@ const latinProps = (text: string | undefined) => (isLatin(text) ? { className: "
 const kindLabel = (item: PracticeItem) => (item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]);
 
 function useSetWords(setIds: string[]) {
-  const contents = useQueries({ queries: setIds.map((id) => ({ queryKey: keys.set(id), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`) })) });
+  const contents = useQueries({ queries: setIds.map((id) => setQuery(id)) });
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => wordIndex(contents.flatMap((query) => (query.data ? [query.data] : []))), [stamp]);

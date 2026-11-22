@@ -29,7 +29,7 @@ export default function SharedPage() {
       const before = new Set((await api<LibraryIndex>("/library")).sets.map((set) => set.id));
       await api("/backup", { method: "POST", json: { version: 1, folders: [], sets: [{ ...shared.data, set: { ...shared.data.set, folderId: null, order: null } }] } });
       await invalidate();
-      const after = await queryClient.fetchQuery({ queryKey: keys.library, queryFn: () => api<LibraryIndex>("/library") });
+      const after = queryClient.getQueryData<LibraryIndex>(keys.library) ?? { sets: [] };
       const created = after.sets.find((set) => !before.has(set.id));
       toast.success(`已加入「${shared.data.set.name}」`);
       navigate(created ? `/app/sets/${created.id}` : "/app/library");

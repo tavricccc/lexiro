@@ -8,6 +8,7 @@ const content = (id: string) => ({ set: { id, name: id }, words: [1, 2, 3, 4].ma
 vi.mock("@/data/api", () => ({ api: vi.fn(async (path: string) => content(path.split("/").pop()!)) }));
 vi.mock("@/data/queries", () => ({
   keys: { set: (id: string) => ["set", id] },
+  setQuery: (id: string) => ({ queryKey: ["set", id], queryFn: async () => content(id) }),
   useLibrary: () => ({ data: { sets: [{ id: "a", name: "A", wordCount: 4, questionCount: 0 }] } }),
   usePrefs: () => ({ data: { practiceSize: 20 } }),
   useRevisionWatch: () => {},
