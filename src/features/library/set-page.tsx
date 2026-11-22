@@ -97,17 +97,20 @@ function WordList({ content }: { content: SetContent }) {
   const setId = content.set.id;
   const online = useOnline();
   const [query, setQuery] = useState("");
-  const [starredOnly, setStarredOnly] = useState(false);
+  const [starredFirst, setStarredFirst] = useStarredFirst();
   const [selected, setSelected] = useState<Set<string> | null>(null);
   const [copying, setCopying] = useState(false);
   const [removing, setRemoving] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading">("idle");
   const words = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase();
-    return content.words.filter((word) => (!starredOnly || word.starred)
-      && (!needle || word.word.toLocaleLowerCase().includes(needle) || word.senses.some((sense) => sense.meaning.includes(needle))));
-  }, [content.words, query, starredOnly]);
+    return content.words.filter((word) => !needle || word.word.toLocaleLowerCase().includes(needle) || word.senses.some((sense) => sense.meaning.includes(needle)));
+  }, [content.words, query]);
   const starred = content.words.filter((word) => word.starred).length;
+  // Starred words lift to the top in the order they already had; the rest follow under a divider.
+  const lifted = starredFirst && starred > 0 && !selected;
+  const top = lifted ? words.filter((word) => word.starred) : [];
+  const rest = lifted ? words.filter((word) => !word.starred) : words;
   const toggle = (id: string) => setSelected((current) => {
     const next = new Set(current);
     if (next.has(id)) next.delete(id);
@@ -122,8 +125,8 @@ function WordList({ content }: { content: SetContent }) {
           <Input aria-label="搜尋單字" className="pl-11" onChange={(event) => setQuery(event.target.value)} placeholder="搜尋英文或中文" type="search" value={query} />
         </div>
         {starred ? (
-          <Button aria-pressed={starredOnly} className={cn(starredOnly && "text-highlight")} onClick={() => setStarredOnly(!starredOnly)}>
-            <Star weight={starredOnly ? "fill" : "regular"} />{starred}
+          <Button aria-label="標星置頂" aria-pressed={starredFirst} className={cn(starredFirst && "text-highlight")} onClick={() => setStarredFirst(!starredFirst)}>
+            <Star weight={starredFirst ? "fill" : "regular"} /><span className="font-latin">{starred}</span>
           </Button>
         ) : null}
         <Button aria-label={selected ? "結束選取" : "選取單字"} aria-pressed={selected !== null} disabled={!online} onClick={() => setSelected(selected ? null : new Set())} size="icon">
@@ -132,21 +135,16 @@ function WordList({ content }: { content: SetContent }) {
       </div>
       {words.length ? (
         <ListGroup label="單字">
-          {words.map((word) => selected ? (
+          {top.map((word) => <WordRow key={word.id} setId={setId} word={word} />)}
+          {top.length && rest.length ? <li aria-hidden className="px-4 pb-1.5 pt-3 text-[0.75rem] font-medium text-ink-faint">其他 <span className="font-latin">{rest.length}</span> 個</li> : null}
+          {rest.map((word) => selected ? (
             <li key={word.id}>
               <label className="flex min-h-14 cursor-pointer items-center gap-3.5 px-4 py-2.5 hover:bg-surface-raised">
                 <input checked={selected.has(word.id)} className="size-5 accent-[var(--contrast)]" onChange={() => toggle(word.id)} type="checkbox" />
                 <WordText word={word} />
               </label>
             </li>
-          ) : (
-            <li className="flex items-center" key={word.id}>
-              <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
-                <WordText word={word} />
-              </AppLink>
-              <span className="pr-2"><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>
-            </li>
-          ))}
+          ) : <WordRow key={word.id} setId={setId} word={word} />)}
         </ListGroup>
       ) : <p className="py-6 text-center text-[0.9375rem] text-ink-muted">沒有符合的單字</p>}
       {selected ? (
@@ -180,6 +178,29 @@ function WordList({ content }: { content: SetContent }) {
         tone="danger"
       />
     </div>
+  );
+}
+
+const STARRED_FIRST = "lexiro:starredFirst";
+
+/** Whether a set lists its starred words first; one choice for every set, kept on this device. */
+function useStarredFirst() {
+  const [on, setOn] = useState(() => localStorage.getItem(STARRED_FIRST) === "1");
+  const change = (next: boolean) => {
+    setOn(next);
+    localStorage.setItem(STARRED_FIRST, next ? "1" : "0");
+  };
+  return [on, change] as const;
+}
+
+function WordRow({ setId, word }: { setId: string; word: Word }) {
+  return (
+    <li className="flex items-center">
+      <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
+        <WordText word={word} />
+      </AppLink>
+      <span className="pr-2"><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>
+    </li>
   );
 }
 

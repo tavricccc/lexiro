@@ -7,6 +7,7 @@ import { useLibrary } from "@/data/queries";
 import { Loaded, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
 import { FolderSheet } from "./folder-sheet";
+import { StarredLink } from "./starred-page";
 
 const ALL = "all", LOOSE = "none";
 
@@ -88,6 +89,7 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
         <MagnifyingGlass aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-faint" />
         <Input aria-label="搜尋單字集" className="pl-11" onChange={(event) => onQuery(event.target.value)} placeholder="搜尋單字集" type="search" value={query} />
       </div>
+      {query ? null : <StarredLink />}
       {folders.length ? <Segmented label="資料夾" onChange={onFolder} options={options} value={options.some((o) => o.value === folder) ? folder : ALL} /> : null}
       {visible.length ? (
         <ul className="grid gap-3 sm:grid-cols-2">
