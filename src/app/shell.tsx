@@ -49,13 +49,13 @@ export function WorkspaceShell() {
       ) : null}
       <main className={full ? "" : "md:pl-70"}>
         <OfflineBanner />
-        <div className={full ? "" : "mx-auto w-full max-w-3xl px-[var(--gutter)] pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+2rem)] pt-[calc(var(--safe-top)+1.5rem)] md:px-10 md:pb-16 md:pt-10"}>
+        <div className={full ? "" : "mx-auto w-full max-w-3xl px-[var(--gutter)] pb-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+2rem)] pt-[calc(var(--safe-top)+1.5rem)] md:px-10 md:pb-[calc(var(--safe-bottom)+4rem)] md:pt-[calc(var(--safe-top)+2.5rem)]"}>
           <Screens pathname={pathname} />
         </div>
       </main>
       {/* Content passing either edge softens under a progressive blur instead of being cut off. */}
-      <EdgeBlur className="h-[calc(var(--safe-top)+5rem)] md:left-70 md:h-20" side="top" />
-      {!full ? <EdgeBlur className={isDestination(pathname) ? "h-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+1.5rem)] md:left-70 md:h-16" : "h-[calc(var(--safe-bottom)+2rem)] md:left-70 md:h-16"} side="bottom" /> : null}
+      <EdgeBlur className="h-[calc(var(--safe-top)+5rem)] md:left-70 md:h-[calc(var(--safe-top)+5rem)]" side="top" />
+      {!full ? <EdgeBlur className={isDestination(pathname) ? "h-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+1.5rem)] md:left-70 md:h-[calc(var(--safe-bottom)+4rem)]" : "h-[calc(var(--safe-bottom)+2rem)] md:left-70 md:h-[calc(var(--safe-bottom)+4rem)]"} side="bottom" /> : null}
       {!full ? (
         <div
           aria-hidden={!isDestination(pathname)}

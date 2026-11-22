@@ -101,7 +101,7 @@ function HostForm({ name: defaultName }: { name: string }) {
         <h3 className="px-1 text-sm font-medium text-ink-muted">每題秒數</h3>
         <Segmented label="每題秒數" onChange={setSeconds} options={SECONDS.map((value) => ({ value, label: value === "auto" ? "依題型" : `${value} 秒` }))} value={seconds} />
       </section>
-      <Button className="sticky bottom-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+0.75rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-6 md:w-auto md:justify-self-start" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary"><Sword weight="fill" />開房間</Button>
+      <Button className="sticky bottom-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+0.75rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-start" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary"><Sword weight="fill" />開房間</Button>
     </Panel>
   );
 }

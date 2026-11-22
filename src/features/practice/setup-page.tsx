@@ -137,7 +137,7 @@ export default function SetupPage() {
         <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={size} />
       </section>
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-      <Button className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-6 md:w-auto md:justify-self-start" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button>
+      <Button className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-start" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button>
     </Page>
   );
 }

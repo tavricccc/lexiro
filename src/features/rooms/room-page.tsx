@@ -38,7 +38,7 @@ export default function RoomPage() {
 
 function Shell({ state, leave, reconnecting, children }: { state?: RoomState; leave: React.ReactNode; reconnecting?: boolean; children: React.ReactNode }) {
   return (
-    <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
+    <div className="mx-auto grid w-full max-w-3xl content-start gap-5 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2rem)] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <p className="truncate font-semibold">{state?.title ?? "對戰"}</p>

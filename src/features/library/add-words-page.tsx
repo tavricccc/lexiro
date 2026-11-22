@@ -59,7 +59,7 @@ function AddOne({ content }: { content: SetContent }) {
       <WordEditor autoFocus draft={draft} key={draft.senses[0]?.key} onChange={(next) => { setDraft(next); setError(""); }} />
       {existing ? <p className="px-1 text-sm text-info">這個單字集已經有「{existing.word}」，新的意思會加到它下面。</p> : null}
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-      <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-full p-1.5 md:bottom-6">
+      <div className="glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex justify-end gap-2 rounded-full p-1.5 md:bottom-[calc(var(--safe-bottom)+1.5rem)]">
         <Button disabled={!online || status !== "idle"} onClick={() => void save(false)} variant="ghost">儲存並返回</Button>
         <Button disabled={!online} status={status} type="submit" variant="primary">儲存，再加一個</Button>
       </div>

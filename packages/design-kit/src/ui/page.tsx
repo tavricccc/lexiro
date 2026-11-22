@@ -8,10 +8,10 @@ import { Panel } from "./panel";
 
 /** Pins a page's top row under the status bar while the page scrolls beneath it. */
 // Pinned at the offset it starts at, so it never shifts when the page begins to scroll.
-export const pinnedHeaderClass = "sticky top-[calc(var(--safe-top)+1.5rem)] z-30 md:top-10";
+export const pinnedHeaderClass = "sticky top-[calc(var(--safe-top)+1.5rem)] z-30 md:top-[calc(var(--safe-top)+2.5rem)]";
 
 /** Where the pinned toolbar sits: the back control, the small title and the actions share this line. */
-const toolbarTop = "top-[calc(var(--safe-top)+0.5rem)] md:top-4";
+const toolbarTop = "top-[calc(var(--safe-top)+0.5rem)] md:top-[calc(var(--safe-top)+1rem)]";
 
 /**
  * A round, icon-only control for a page's toolbar, like iOS's bar buttons.
@@ -74,7 +74,7 @@ export function PageHeader({ actions, back, className, description, title }: {
         <div className="flex items-center justify-end gap-2">{actions}</div>
       </div>
     ) : (
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center px-16 pt-[calc(var(--safe-top)+0.5rem)] md:left-70 md:pt-4">
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center px-16 pt-[calc(var(--safe-top)+0.5rem)] md:left-70 md:pt-[calc(var(--safe-top)+1rem)]">
         <div className="flex h-9 min-w-0 items-center">{smallTitle}</div>
       </div>
     )}
