@@ -15,6 +15,9 @@
 @theme inline {
   --font-latin: "Albert Sans", var(--font-sans);
   --color-highlight: var(--highlight);
+  /* Right and wrong as text: deep enough to read on their own tinted fills. */
+  --color-positive-ink: var(--positive-ink);
+  --color-danger-ink: var(--danger-ink);
   --color-hue-rose: var(--hue-rose);
   --color-hue-amber: var(--hue-amber);
   --color-hue-mint: var(--hue-mint);
@@ -52,6 +55,8 @@
   --highlight: #e0a12a;
   --danger: #d2445f;
   --positive: #1f9d55;
+  --positive-ink: #12703a;
+  --danger-ink: #b0263f;
   --caution: #b97a12;
   --info: #2f7fd8;
   --hue-rose: #e0559b;
@@ -89,6 +94,8 @@
   --highlight: #f4c060;
   --danger: #ff7f95;
   --positive: #5fd394;
+  --positive-ink: #7fe3aa;
+  --danger-ink: #ff9aab;
   --caution: #eab765;
   --info: #6fb0ff;
   --hue-rose: #f07ab5;

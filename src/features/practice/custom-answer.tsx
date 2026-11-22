@@ -45,7 +45,7 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
               onClick={() => toggle(index)}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
+              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "text-base text-positive-ink" : wrong ? "text-base text-danger-ink" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
                 {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : on ? <Check weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", latin(option) && "font-latin")} lang={latin(option) ? "en" : undefined}>{option}</span>
@@ -93,7 +93,7 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
           const right = revealed && step.order[at] === index;
           return (
             <button
-              className={cn(chip, revealed ? (right ? "border-positive bg-positive/12 text-positive" : "border-danger bg-danger/12 text-danger") : "border-contrast bg-accent-soft active:scale-[var(--motion-press-scale)]")}
+              className={cn(chip, revealed ? (right ? "border-positive bg-positive/12 text-positive-ink" : "border-danger bg-danger/12 text-danger-ink") : "border-contrast bg-accent-soft active:scale-[var(--motion-press-scale)]")}
               disabled={revealed}
               key={index}
               lang="en"

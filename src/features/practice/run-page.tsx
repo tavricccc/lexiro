@@ -201,7 +201,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     return (
       <p className="font-latin text-xl leading-relaxed" lang="en">
         {before}
-        <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center", filled ? "border-positive bg-positive/10 text-positive" : "border-ink bg-surface-raised")}>{filled ?? " "}</span>
+        <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center", filled ? "border-positive bg-positive/10 text-positive-ink" : "border-ink bg-surface-raised")}>{filled ?? " "}</span>
         {after}
       </p>
     );
@@ -224,7 +224,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
             <span
               className={cn(
                 "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold",
-                at === round.step && !round.revealed ? "bg-ink text-canvas" : done ? (right ? "bg-positive/12 text-positive" : "bg-danger/12 text-danger") : "bg-surface-raised text-ink-muted",
+                at === round.step && !round.revealed ? "bg-ink text-canvas" : done ? (right ? "bg-positive/12 text-positive-ink" : "bg-danger/12 text-danger-ink") : "bg-surface-raised text-ink-muted",
               )}
               key={index}
             >
@@ -279,13 +279,13 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
                 aria-hidden
                 className={cn(
                   "grid size-6 shrink-0 place-items-center rounded-[0.45rem] font-mono text-xs",
-                  right ? "rounded-full bg-positive text-white" : wrong ? "rounded-full bg-danger text-white" : "border border-line text-ink-muted",
+                  right ? "text-base text-positive-ink" : wrong ? "text-base text-danger-ink" : "border border-line text-ink-muted",
                 )}
               >
                 {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0", wide && "flex-1", word && "pr-7")}>
-                <span className={cn("block text-lg font-semibold leading-snug", right && "text-positive", wrong && "text-danger", isLatin(option) && "font-latin tracking-[-0.01em]")} lang={isLatin(option) ? "en" : undefined}>{option}</span>
+                <span className={cn("block text-lg font-semibold leading-snug", right && "text-positive-ink", wrong && "text-danger-ink", isLatin(option) && "font-latin tracking-[-0.01em]")} lang={isLatin(option) ? "en" : undefined}>{option}</span>
                 {revealed ? <Gloss index={index} step={step} /> : null}
               </span>
             </button>
@@ -340,7 +340,7 @@ function Explanation({ item, step, chosen, brief = false }: { item: PracticeItem
         <ul className="grid gap-1.5 text-[0.9375rem] leading-relaxed">
           {reasons.map(({ option, reason, picked }) => (
             <li key={option}>
-              <span className={cn("font-semibold", picked ? "text-danger" : "text-ink")} {...(isLatin(option) ? { lang: "en" } : {})}><span className={cn(isLatin(option) && "font-latin")}>{option}</span></span>
+              <span className={cn("font-semibold", picked ? "text-danger-ink" : "text-ink")} {...(isLatin(option) ? { lang: "en" } : {})}><span className={cn(isLatin(option) && "font-latin")}>{option}</span></span>
               <span className="text-ink-muted">：{reason}</span>
             </li>
           ))}
@@ -359,7 +359,7 @@ function Feedback({ item, step, chosen, accept, children }: { item: PracticeItem
       <div className="grid max-h-[38svh] gap-2.5 overflow-y-auto overscroll-contain">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="flex items-center gap-2.5 font-semibold">
-            <span aria-hidden className={cn("grid size-6 shrink-0 place-items-center rounded-full text-[0.8125rem] text-white", right ? "bg-positive" : "bg-danger")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
+            <span aria-hidden className={cn("grid shrink-0 place-items-center text-lg", right ? "text-positive-ink" : "text-danger-ink")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
             {right ? "答對了" : <span>正確答案是 <span {...latinProps(answer)}>{answer}</span></span>}
           </p>
           {typedWrong ? <Button onClick={accept} size="sm" variant="ghost">我其實答對了</Button> : null}
@@ -467,7 +467,7 @@ function ReviewItem({ item, step, at, choice }: { item: PracticeItem; step: Step
   return (
     <li className="grid gap-1.5 rounded-[1.5rem] bg-surface px-4 py-3.5">
       <div className="flex items-start gap-2.5">
-        <span aria-label={right ? "答對" : "答錯"} className={cn("mt-1 grid size-5 shrink-0 place-items-center rounded-full text-xs text-white", right ? "bg-positive" : "bg-danger")} role="img">{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
+        <span aria-label={right ? "答對" : "答錯"} className={cn("mt-1 grid size-5 shrink-0 place-items-center text-base", right ? "text-positive-ink" : "text-danger-ink")} role="img">{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
         <button aria-expanded={explained ? open : undefined} className="min-w-0 flex-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default" disabled={!explained} onClick={() => setOpen((value) => !value)} type="button">
           <span className={cn("leading-relaxed", wordTask ? "font-latin text-lg font-semibold tracking-[-0.01em]" : "text-[0.9375rem]", !wordTask && isLatin(title) && "font-latin")} lang={isLatin(title) ? "en" : undefined}>{title.replace("_____", "＿＿")}</span>
           {wordTask ? <span className="ml-1.5 font-latin text-sm text-ink-muted">{item.sense.pos}</span> : null}
@@ -476,10 +476,10 @@ function ReviewItem({ item, step, at, choice }: { item: PracticeItem; step: Step
       </div>
       <div className="grid gap-1 pl-7.5">
         <p className="text-[0.9375rem]">
-          {wordTask ? <span className="font-medium">{item.sense.meaning}</span> : <span className={cn("font-semibold text-positive", isLatin(answer) && "font-latin")}>{answer}</span>}
+          {wordTask ? <span className="font-medium">{item.sense.meaning}</span> : <span className={cn("font-semibold text-positive-ink", isLatin(answer) && "font-latin")}>{answer}</span>}
         </p>
         {right ? null : (
-          <p className="text-[0.8125rem] text-danger">
+          <p className="text-[0.8125rem] text-danger-ink">
             你的答案：<span className={cn(isLatin(answered) && "font-latin")}>{answered}</span>
             {picked ? <span className="text-ink-muted"> — 那是 <span className={cn(isLatin(picked) && "font-latin")}>{picked}</span></span> : null}
           </p>

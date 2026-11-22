@@ -30,7 +30,10 @@ export default function SetupPage() {
   const [chosen, setChosen] = useState<string[]>(fromSets);
   const back = fromSets.length === 1 ? { href: `/app/sets/${fromSets[0]}`, label: "回到單字集" } : { href: "/app", label: "回到今天" };
   const [tasks, setTasks] = useState<PracticeTask[]>(() => (params.getAll("task") as PracticeTask[]));
-  const [focus, setFocus] = useState<Focus>("all");
+  const [focus, setFocus] = useState<Focus>(() => {
+    const asked = params.get("focus");
+    return asked === "weak" || asked === "starred" ? asked : "all";
+  });
   const [amount, setAmount] = useState<string>("");
   const [error, setError] = useState("");
   // With nothing chosen yet, the round draws from every set.
