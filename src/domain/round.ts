@@ -11,6 +11,8 @@ export interface Round {
   /** choices[card][step]: what was answered, or null when skipped. */
   choices: (Choice | null)[][];
   revealed: boolean;
+  /** Words starred during the round, kept for its review. */
+  marked?: string[];
   startedAt: string;
 }
 

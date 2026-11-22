@@ -1,9 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { useQueries } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { useNavigate } from "react-router";
-import { ArrowRight, ArrowCounterClockwise, Check, X } from "@phosphor-icons/react";
-import { calendarDay, descriptionPoints, type PracticeTask } from "@lexiro/contract";
+import { ArrowRight, ArrowCounterClockwise, Check, Star, X } from "@phosphor-icons/react";
+import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask, type SetContent } from "@lexiro/contract";
 import { AnimatedNumber, AppLink, Button, Chip, HeaderButton, Panel, ProgressBar, cn } from "design-kit";
+import { api, errorMessage } from "@/data/api";
 import { recordAnswer } from "@/data/learning";
+import { starWords } from "@/data/library";
+import { keys } from "@/data/queries";
+import { isMarked, optionWord, promptWord, wordIndex, type SetWord } from "@/domain/marks";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
 import { isCustomStep, isRight, rightAnswerText, type Choice, type CustomStep } from "@/domain/custom";
@@ -12,6 +18,39 @@ import { acceptTyped, advance, choose, currentStep, finished, newRound, result, 
 import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
 import { SpeakButton } from "@/ui/speak";
+
+/** Starring during a round: set words star for good, other words only for this round's review. */
+interface Marks { words: Map<string, SetWord>; marked: string[]; mark: (word: string, on: boolean) => void }
+const MarksContext = createContext<Marks>({ words: new Map(), marked: [], mark: () => {} });
+
+function useSetWords(setIds: string[]) {
+  const contents = useQueries({ queries: setIds.map((id) => ({ queryKey: keys.set(id), queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`) })) });
+  const stamp = contents.map((query) => query.dataUpdatedAt).join();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return useMemo(() => wordIndex(contents.flatMap((query) => (query.data ? [query.data] : []))), [stamp]);
+}
+
+function MarkStar({ word, className }: { word: string; className?: string }) {
+  const { words, marked, mark } = useContext(MarksContext);
+  const entry = words.get(normalizeWord(word));
+  const starred = entry ? entry.starred : isMarked(marked, word);
+  return (
+    <Button
+      aria-label={starred ? `取消標星 ${word}` : `標星 ${word}`}
+      aria-pressed={starred}
+      className={cn("shrink-0", starred ? "text-highlight hover:text-highlight" : "text-ink-faint", className)}
+      onClick={(event) => {
+        event.stopPropagation();
+        mark(word, !starred);
+        if (entry) starWords(entry.setId, [entry.wordId], !starred).catch((reason) => { mark(word, starred); toast.error(errorMessage(reason)); });
+      }}
+      size="icon-sm"
+      variant="ghost"
+    >
+      <Star weight={starred ? "fill" : "regular"} />
+    </Button>
+  );
+}
 
 export default function RunPage() {
   const navigate = useNavigate();
@@ -44,9 +83,21 @@ export default function RunPage() {
     return advance(current);
   }), []);
   const accept = useCallback(() => setRound((current) => (current ? acceptTyped(current) : current)), []);
+  const words = useSetWords(round?.setIds ?? []);
+  const mark = useCallback((word: string, on: boolean) => setRound((current) => {
+    if (!current) return current;
+    const rest = (current.marked ?? []).filter((entry) => normalizeWord(entry) !== normalizeWord(word));
+    return { ...current, marked: on ? [...rest, word] : rest };
+  }), []);
+  const marks = useMemo(() => ({ words, marked: round?.marked ?? [], mark }), [words, round?.marked, mark]);
   if (!round) return null;
-  if (finished(round)) return <Results onAgain={(items) => { const again = newRound(items, round.setIds); saveRound(again); setRound(again); }} round={round} />;
-  return <Card accept={accept} next={next} pick={pick} round={round} />;
+  return (
+    <MarksContext.Provider value={marks}>
+      {finished(round)
+        ? <Results onAgain={(items) => { const again = newRound(items, round.setIds); saveRound(again); setRound(again); }} round={round} />
+        : <Card accept={accept} next={next} pick={pick} round={round} />}
+    </MarksContext.Provider>
+  );
 }
 
 function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
@@ -68,7 +119,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   return (
     // The round sits still on the screen; only an overlong card scrolls inside itself.
-    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
+    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="flex items-center gap-3">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
@@ -77,7 +128,10 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
       <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
         {/* The question and its explanation scroll at the top; the answers stay put where a thumb rests. */}
         <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pb-3 pt-6">
-          <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
+          <div className="flex items-center justify-between gap-2">
+          <Chip>{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
+            {round.revealed && item.kind !== "meaning" && item.kind !== "reverse" && promptWord(item, step) ? <MarkStar word={promptWord(item, step)!} /> : null}
+          </div>
           {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
           {round.revealed ? <div ref={(node) => node?.scrollIntoView?.({ block: "nearest", behavior: "smooth" })}><Feedback accept={accept} chosen={chosen} item={item} step={step} /></div> : null}
         </div>
@@ -102,13 +156,13 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
   if (item.kind === "meaning")
     return (
       <div className="grid gap-1 py-2">
-        <p className="flex items-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /></p>
+        <p className="flex items-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /><MarkStar word={item.word} /></p>
       </div>
     );
   if (item.kind === "reverse")
     return (
       <div className="grid gap-2 py-2">
-        <p className="text-3xl font-bold md:text-4xl">{item.sense.meaning}</p>
+        <p className="flex items-center gap-2 text-3xl font-bold md:text-4xl">{item.sense.meaning}<MarkStar word={item.word} /></p>
         <p className="text-sm text-ink-muted"><span className="font-latin">{item.sense.pos}</span> · 選出對應的英文單字</p>
       </div>
     );
@@ -165,7 +219,9 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
       {step.options.map((option, index) => {
         const right = revealed && index === step.answer;
         const wrong = revealed && index === chosen && chosen !== step.answer;
+        const word = revealed ? optionWord(step as Step, index) : undefined;
         return (
+          <div className="relative" key={index}>
           <button
             className={cn(
               "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
@@ -176,7 +232,6 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
               used.has(index) && !revealed && "opacity-35",
             )}
             disabled={revealed || used.has(index)}
-            key={index}
             onClick={() => pick(index)}
             type="button"
           >
@@ -187,7 +242,10 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
               <span className={cn("block", /[A-Za-z]/.test(option) && "font-latin")} lang={/[A-Za-z]/.test(option) ? "en" : undefined}>{option}</span>
               {revealed && step.glosses?.[index] ? <span className={cn("message-in block text-[0.8125rem] text-ink-muted", /[A-Za-z]/.test(step.glosses[index]!) && "font-latin")} lang={/[A-Za-z]/.test(step.glosses[index]!) ? "en" : undefined}>{step.glosses[index]}</span> : null}
             </span>
+            {word ? <span aria-hidden className="size-8 shrink-0" /> : null}
           </button>
+          {word ? <MarkStar className="absolute right-2 top-1/2 -translate-y-1/2" word={word} /> : null}
+          </div>
         );
       })}
     </div>
@@ -241,35 +299,77 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
   );
 }
 
+/** What the learner answered on a step, as text. */
+function answeredText(step: Step | CustomStep, choice: Choice | null | undefined): string {
+  if (choice === null || choice === undefined) return "沒作答";
+  if (typeof choice === "string") return choice;
+  const options = !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.options : [];
+  return (Array.isArray(choice) ? choice : [choice]).map((index) => options[index]).join("、");
+}
+
+const textClass = (text: string) => (/[A-Za-z]/.test(text) ? "font-latin" : undefined);
+
 function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeItem[]) => void }) {
   const outcome = useMemo(() => result(round), [round]);
+  const { words, marked } = useContext(MarksContext);
   useEffect(() => clearRound(), []);
   const score = outcome.total ? Math.round((outcome.correct / outcome.total) * 100) : 0;
   return (
-    <div className="mx-auto grid min-h-svh w-full max-w-xl content-center gap-8 px-[var(--gutter)] py-10">
+    <div className="mx-auto grid w-full max-w-xl content-start gap-6 px-[var(--gutter)] pb-[calc(var(--safe-bottom)+2.5rem)] pt-[calc(var(--safe-top)+2.5rem)]">
       <div className="content-in grid justify-items-center gap-2 text-center">
         <p className="text-sm font-medium text-ink-muted">這一輪完成了</p>
         <p className="font-latin text-7xl font-extrabold tracking-tight text-contrast"><AnimatedNumber value={score} />%</p>
         <p className="text-[0.9375rem] text-ink-muted">答對 <span className="font-latin font-semibold text-ink">{outcome.correct}</span> / <span className="font-latin">{outcome.total}</span></p>
       </div>
-      {outcome.missed.length ? (
-        <Panel className="grid gap-2">
-          <h2 className="text-sm font-semibold text-ink-muted">要再看看的</h2>
-          <ul className="grid gap-1.5">
-            {outcome.missed.slice(0, 8).map((item, index) => (
-              <li className="text-[0.9375rem]" key={index}>
-                {item.kind === "meaning" || item.kind === "reverse"
-                  ? <><span className="font-latin font-semibold">{item.word}</span> <span className="text-ink-muted">{item.sense.meaning}</span></>
-                  : <span className="text-ink-muted">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}：{(item.steps as (Step | CustomStep)[]).map(rightAnswerText).join("、")}</span>}
-              </li>
-            ))}
-          </ul>
-        </Panel>
-      ) : <p className="text-center text-lg font-semibold text-positive">全對，太強了！</p>}
       <div className="grid gap-2 sm:grid-cols-2">
         {outcome.missed.length ? <Button onClick={() => onAgain(outcome.missed)} size="lg" variant="primary"><ArrowCounterClockwise weight="bold" />再練錯的 {outcome.missed.length} 題</Button> : null}
         <Button asChild size="lg" variant={outcome.missed.length ? "secondary" : "primary"}><AppLink href="/app">完成</AppLink></Button>
       </div>
+      {marked.length ? (
+        <Panel className="grid gap-1">
+          <h2 className="text-sm font-semibold text-ink-muted">這輪標星的</h2>
+          <ul className="grid">
+            {marked.map((word) => {
+              const entry = words.get(normalizeWord(word));
+              return (
+                <li className="flex items-center gap-2 py-1 text-[0.9375rem]" key={word}>
+                  <span className="font-latin font-semibold" lang="en">{entry?.word ?? word}</span>
+                  <span className="min-w-0 flex-1 truncate text-ink-muted">{entry ? entry.meaning : "不在單字集，離開後不保留"}</span>
+                  <MarkStar word={word} />
+                </li>
+              );
+            })}
+          </ul>
+        </Panel>
+      ) : null}
+      <section className="grid gap-2">
+        <h2 className="text-sm font-semibold text-ink-muted">復盤</h2>
+        <ol className="grid gap-2">
+          {round.items.map((item, index) => (
+            (item.steps as (Step | CustomStep)[]).map((step, at) => {
+              const choice = round.choices[index]?.[at];
+              const right = isRight(step, choice);
+              const answer = rightAnswerText(step);
+              const word = promptWord(item, step);
+              const title = item.kind === "meaning" ? item.word : item.kind === "reverse" ? item.sense.meaning : step.prompt || `${item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]} 第 ${at + 1} 格`;
+              return (
+                <li className={cn("grid gap-1 rounded-tile border px-4 py-3", right ? "border-line bg-surface" : "border-danger/40 bg-danger/6")} key={`${index}-${at}`}>
+                  <div className="flex items-start gap-2">
+                    <span className={cn("mt-0.5 grid size-5 shrink-0 place-items-center rounded-full text-xs text-white", right ? "bg-positive" : "bg-danger")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
+                    <p className={cn("min-w-0 flex-1 text-[0.9375rem] leading-relaxed", textClass(title))} lang={textClass(title) ? "en" : undefined}>{title.replace("_____", "＿＿")}</p>
+                    {word ? <MarkStar className="-my-1" word={word} /> : null}
+                  </div>
+                  <p className="pl-7 text-[0.9375rem]">
+                    <span className={cn("font-semibold text-positive", textClass(answer))}>{answer}</span>
+                    {item.kind === "meaning" || item.kind === "reverse" ? <span className="text-ink-muted"> · <span className="font-latin">{item.sense.pos}</span></span> : null}
+                  </p>
+                  {right ? null : <p className="pl-7 text-[0.8125rem] text-ink-muted">你的答案：<span className={textClass(answeredText(step, choice))}>{answeredText(step, choice)}</span></p>}
+                </li>
+              );
+            })
+          ))}
+        </ol>
+      </section>
     </div>
   );
 }

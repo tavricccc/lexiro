@@ -1,4 +1,5 @@
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createMemoryRouter, RouterProvider } from "react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import type { PracticeItem } from "@/domain/practice";
@@ -16,7 +17,7 @@ const typed: PracticeItem = {
 async function run(item: PracticeItem) {
   localStorage.setItem("lexiro:round:u", JSON.stringify(newRound([item, item], ["set"])));
   const { default: RunPage } = await import("@/features/practice/run-page");
-  render(<RouterProvider router={createMemoryRouter([{ path: "/", Component: RunPage }, { path: "/app/practice", Component: () => null }])} />);
+  render(<QueryClientProvider client={new QueryClient()}><RouterProvider router={createMemoryRouter([{ path: "/", Component: RunPage }, { path: "/app/practice", Component: () => null }])} /></QueryClientProvider>);
 }
 
 beforeEach(() => { recorded.length = 0; localStorage.clear(); });
