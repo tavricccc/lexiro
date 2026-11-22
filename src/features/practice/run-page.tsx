@@ -219,7 +219,7 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
   const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
   const answer = rightAnswerText(step);
   return (
-    <Panel className="message-in grid gap-2" role="status">
+    <div className="message-in grid gap-2 rounded-tile border border-line bg-surface px-4 py-3" role="status">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className={cn("flex items-center gap-2 font-semibold", right ? "text-positive" : "text-danger")}>
           {right ? <Check weight="bold" /> : <X weight="bold" />}
@@ -237,7 +237,7 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
       {item.kind === "meaning" || item.kind === "reverse" ? item.sense.examples.slice(0, 1).map((example) => (
         <p className="font-latin text-[0.9375rem] italic text-ink-muted" key={example} lang="en">{example}</p>
       )) : null}
-    </Panel>
+    </div>
   );
 }
 
