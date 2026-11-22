@@ -74,18 +74,18 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1}/{round.items.length}</span>
       </header>
-      <div className="card-in flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pt-6" key={round.index}>
-        <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
-        <div className="flex flex-1 flex-col justify-center">
+      <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
+        {/* The question and its explanation scroll at the top; the answers stay put where a thumb rests. */}
+        <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pb-3 pt-6">
+          <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
           {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
+          {round.revealed ? <div ref={(node) => node?.scrollIntoView?.({ block: "nearest", behavior: "smooth" })}><Feedback accept={accept} chosen={chosen} item={item} step={step} /></div> : null}
         </div>
-        {/* Choices sit low, where a thumb rests; a long card still scrolls from the top. */}
-        <div className="message-in mt-auto" key={round.step}>
+        <div className="message-in shrink-0 pt-2" key={round.step}>
           {isCustomStep(step) && step.mode !== "single"
             ? <CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} />
             : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
         </div>
-        {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
       </div>
       <div className="flex shrink-0 justify-end gap-2 pt-3">
         {round.revealed ? (
@@ -101,13 +101,13 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
 function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step; round: Round; chosen: number | null | undefined }) {
   if (item.kind === "meaning")
     return (
-      <div className="grid gap-1 py-6 text-center">
-        <p className="flex items-center justify-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /></p>
+      <div className="grid gap-1 py-2">
+        <p className="flex items-center gap-2 font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{item.word}<SpeakButton text={item.word} /></p>
       </div>
     );
   if (item.kind === "reverse")
     return (
-      <div className="grid gap-2 py-6 text-center">
+      <div className="grid gap-2 py-2">
         <p className="text-3xl font-bold md:text-4xl">{item.sense.meaning}</p>
         <p className="text-sm text-ink-muted"><span className="font-latin">{item.sense.pos}</span> · 選出對應的英文單字</p>
       </div>
@@ -129,7 +129,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
   const answers = round.choices[round.index];
   return (
     <div className="grid gap-3">
-      <Panel className="max-h-[45svh] overflow-y-auto">
+      <Panel>
         {item.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{item.title}</h2> : null}
         <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
           {passageParts(item.passage).map((part, index) => {

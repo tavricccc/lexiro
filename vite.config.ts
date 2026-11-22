@@ -81,6 +81,8 @@ export default defineConfig(({ mode }) => ({
     environment: "jsdom",
     setupFiles: ["./tests/setup.ts"],
     include: ["tests/**/*.test.{ts,tsx}"],
+    // A screen test imports the whole page on first use; cold, that alone can pass 5s.
+    testTimeout: 30_000,
     env: loadEnv("test", process.cwd(), "NEXT_PUBLIC_"),
   },
 }));
