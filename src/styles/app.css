@@ -34,17 +34,15 @@
 :root {
   --kit-font-sans: "HarmonyOS Sans TC", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
   color-scheme: light;
-  --canvas: #eef3f0;
-  --canvas-foot: #eef3f0;
-  --canvas-gradient:
-    radial-gradient(110% 55% at 10% -5%, rgb(31 122 92 / 11%), transparent 62%),
-    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 9%), transparent 70%),
-    linear-gradient(180deg, #f1f6f3 0%, #eef3f0 100%);
+  /* A flat, quiet canvas: white cards carry the structure, colour is kept for meaning. */
+  --canvas: #f2f3f0;
+  --canvas-foot: #f2f3f0;
+  --canvas-gradient: none;
   --surface: #ffffff;
   --surface-raised: rgb(17 38 30 / 5%);
   --surface-pressed: rgb(17 38 30 / 9%);
   --surface-solid: #ffffff;
-  --ink: #12201a;
+  --ink: #111512;
   --ink-muted: #56645d;
   --ink-faint: #8b9690;
   --line: rgb(17 38 30 / 9%);
@@ -73,12 +71,9 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --canvas: #0b100d;
-  --canvas-foot: #0f1612;
-  --canvas-gradient:
-    radial-gradient(110% 55% at 10% -5%, rgb(127 220 180 / 9%), transparent 62%),
-    radial-gradient(70% 40% at 100% 0%, rgb(242 177 52 / 6%), transparent 70%),
-    linear-gradient(180deg, #0b100d 0%, #0f1612 100%);
+  --canvas: #0c0f0d;
+  --canvas-foot: #0c0f0d;
+  --canvas-gradient: none;
   --surface: #141b17;
   --surface-raised: rgb(255 255 255 / 6%);
   --surface-pressed: rgb(255 255 255 / 10%);
