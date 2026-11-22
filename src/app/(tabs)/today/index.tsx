@@ -1,128 +1,218 @@
-import { router } from "expo-router";
-import { useMemo } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Animated from "react-native-reanimated";
+import { router, useFocusEffect } from "expo-router";
+import { SymbolView } from "expo-symbols";
+import { useCallback, useMemo, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
-import { ActiveRoomCard } from "@/components/rooms/active-room-card";
-import { Bubble } from "@/components/ui/bubble";
+import { AnimatedNumber } from "@/components/ui/animated-number";
 import { Button } from "@/components/ui/button";
-import { Screen } from "@/components/ui/layout";
-import { enterUp, pop } from "@/components/ui/motion";
-import { senseCount } from "@/lexiro/library";
-import { useLibraryStore } from "@/core/stores/library-store";
-import { useLastPracticedSetId } from "@/lib/last-practiced";
-import { colors, isLatin, latin, radius, type } from "@/lib/theme";
-
-const STEPS = [
-  {
-    title: "加入想記住的單字",
-    body: "手動輸入，或請連上 MCP 的 AI 助理幫你整理成詞義。",
-  },
-  {
-    title: "讓 AI 出題",
-    body: "透過 MCP 請 AI 助理用你自己的字出學測型式的題目。",
-  },
-  {
-    title: "練一輪、找朋友比",
-    body: "自己選題型練習，答錯的題目可以馬上重練；也能開房間和朋友即時對戰。",
-  },
-];
-
-const openSet = (setId: string) =>
-  router.push({ pathname: "/library/[setId]", params: { setId } });
+import { EmptyState, Screen, SectionTitle } from "@/components/ui/layout";
+import { NativeMenuTrigger } from "@/components/ui/list";
+import { PressableScale } from "@/components/ui/pressable-scale";
+import { SetIcon } from "@/components/ui/set-icon";
+import { calendarDay, DAILY_GOALS, streak, type DailyGoal } from "@/core/contract";
+import { errorMessage } from "@/data/api";
+import { setGoal, useLearning, usePendingAnswers } from "@/data/learning";
+import { orderedSets, useLibrary, useStarredWords } from "@/data/queries";
+import { loadRound } from "@/data/round-store";
+import { haptics } from "@/lib/haptics";
+import { colors, latin, radius, type } from "@/lib/theme";
+import { toast } from "@/platform/toast";
 
 export default function TodayScreen() {
-  const library = useLibraryStore((store) => store.state);
-  const lastPracticedId = useLastPracticedSetId();
+  const { learning } = useLearning();
+  const library = useLibrary();
+  const pending = usePendingAnswers();
+  const starred = useStarredWords();
+  const [saved, setSaved] = useState(loadRound);
 
-  // 接著練 follows the last set practiced on this device, and otherwise the
-  // most recently changed set.
-  const latest = useMemo(() => {
-    const remembered = lastPracticedId
-      ? library.sets.find((set) => set.id === lastPracticedId)
-      : undefined;
-    return (
-      remembered ??
-      [...library.sets].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0]
-    );
-  }, [lastPracticedId, library.sets]);
+  useFocusEffect(
+    useCallback(() => {
+      setSaved(loadRound());
+    }, []),
+  );
+
+  const today = calendarDay(new Date());
+  const done = learning.days[today]?.answered ?? 0;
+  const left = Math.max(0, learning.goal - done);
+  const days = streak(learning.days, today);
+
+  const recent = useMemo(
+    () =>
+      orderedSets(library.data?.sets ?? [])
+        .filter((set) => set.wordCount > 0)
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+        .slice(0, starred.count ? 3 : 4),
+    [library.data?.sets, starred.count],
+  );
+
+  const changeGoal = (goal: DailyGoal) => {
+    setGoal(goal)
+      .then(() => haptics.success())
+      .catch((reason) => {
+        haptics.error();
+        toast.error(errorMessage(reason));
+      });
+  };
 
   return (
     <Screen refreshControl={<SyncRefreshControl />}>
-      <View style={styles.panel}>
-        <ActiveRoomCard />
-        {latest ? (
-          <>
-            <View style={styles.poster}>
-              <Animated.View entering={pop} style={styles.giantBubble} />
-              <Text style={styles.posterHint}>接著練</Text>
-              <Text
-                style={[
-                  styles.posterTitle,
-                  isLatin(latest.setName) && styles.posterTitleLatin,
-                ]}
-                numberOfLines={1}
-                adjustsFontSizeToFit
-                minimumFontScale={0.4}
-              >
-                {latest.setName}
+      {/* Ink Goal Hero Card */}
+      <View style={styles.heroCard} accessibilityLabel="今日目標">
+        <View style={styles.heroTop}>
+          <NativeMenuTrigger
+            label="每日目標"
+            items={DAILY_GOALS.map((goal) => ({
+              key: String(goal),
+              label: `每天 ${goal} 題`,
+              systemImage: learning.goal === goal ? "checkmark" : "target",
+              onPress: () => changeGoal(goal),
+            }))}
+          >
+            <View style={styles.goalTrigger}>
+              <Text style={styles.heroTopText}>
+                今日目標 <Text style={latin.semibold}>{learning.goal}</Text> 題
               </Text>
-              <View style={styles.count}>
-                <Text style={styles.countValue}>
-                  {senseCount(library, latest.id)}
-                </Text>
-                <Text style={styles.countLabel}>個詞義</Text>
-              </View>
-              <View style={styles.actions}>
-                <Button
-                  label="看單字"
-                  variant="onField"
-                  onPress={() => openSet(latest.id)}
-                  style={styles.secondaryAction}
-                />
-                <Button
-                  label="開始練習"
-                  icon="play.fill"
-                  variant="ink"
-                  onPress={() =>
-                    router.push({
-                      pathname: "/practice",
-                      params: { setId: latest.id },
-                    })
-                  }
-                  style={styles.primaryAction}
-                />
-              </View>
+              <SymbolView
+                name="chevron.down"
+                size={12}
+                weight="bold"
+                tintColor={colors.heroMuted}
+              />
             </View>
-          </>
+          </NativeMenuTrigger>
+
+          {days > 0 ? (
+            <View style={styles.streakPill}>
+              <SymbolView name="flame.fill" size={14} weight="semibold" tintColor={colors.highlight} />
+              <Text style={styles.heroTopText}>
+                連續 <Text style={latin.bold}>{days}</Text> 天
+              </Text>
+            </View>
+          ) : null}
+        </View>
+
+        <View style={styles.scoreRow}>
+          <AnimatedNumber value={done} style={styles.bigNumber} />
+          <Text style={styles.goalSuffix}> / {learning.goal}</Text>
+        </View>
+
+        <View style={styles.segmentGrid} accessible={false}>
+          {Array.from({ length: learning.goal }, (_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.segmentBar,
+                index < done ? styles.segmentFilled : styles.segmentEmpty,
+              ]}
+            />
+          ))}
+        </View>
+
+        {saved ? (
+          <Button
+            label={`繼續上次 ${Math.min(saved.index + 1, saved.items.length)}/${saved.items.length}`}
+            icon="play.fill"
+            variant="hero"
+            size="lg"
+            haptic="confirm"
+            onPress={() => router.push("/session")}
+          />
         ) : (
-          <>
-            <View style={styles.poster}>
-              <Animated.View entering={pop} style={styles.giantBubble} />
-              <Text style={[styles.posterTitle, styles.introTitle]}>
-                先加入一組單字
-              </Text>
-              <Text style={styles.posterBody}>
-                手動輸入或透過 MCP 加入，儲存後就能開始練習。
-              </Text>
-            </View>
-            <View style={styles.steps}>
-              {STEPS.map((step, index) => (
-                <Animated.View
-                  key={step.title}
-                  entering={enterUp.delay(80 + index * 70)}
-                  style={styles.step}
-                >
-                  <Bubble letter={String.fromCharCode(65 + index)} size={26} />
-                  <View style={styles.stepText}>
-                    <Text style={styles.stepTitle}>{step.title}</Text>
-                    <Text style={styles.stepBody}>{step.body}</Text>
-                  </View>
-                </Animated.View>
-              ))}
-            </View>
-          </>
+          <Button
+            label={left ? `再練 ${left} 題` : "多練幾題"}
+            icon="play.fill"
+            variant="hero"
+            size="lg"
+            haptic="confirm"
+            onPress={() => router.push("/practice")}
+          />
+        )}
+
+        {pending > 0 ? (
+          <Text style={styles.pendingNote}>
+            有 {pending} 筆作答還沒上傳，連線後會自動送出。
+          </Text>
+        ) : null}
+      </View>
+
+      {/* Recent Sets + Starred Tile */}
+      <View style={styles.section}>
+        <SectionTitle
+          title="單字集"
+          action={
+            <Pressable
+              hitSlop={8}
+              onPress={() => {
+                haptics.select();
+                router.push("/practice");
+              }}
+              style={styles.sectionLink}
+            >
+              <Text style={styles.sectionLinkText}>自選練習</Text>
+              <SymbolView name="arrow.right" size={13} weight="bold" tintColor={colors.contrast} />
+            </Pressable>
+          }
+        />
+
+        {library.data && !recent.length ? (
+          <EmptyState
+            icon="books.vertical"
+            title="還沒有單字"
+            description="加入單字後就能開始練習。"
+            action={
+              <Button
+                label="建立第一個單字集"
+                icon="plus"
+                onPress={() => router.push("/sets/new")}
+              />
+            }
+          />
+        ) : (
+          <View style={styles.tileGrid}>
+            {recent.map((set) => (
+              <PressableScale
+                key={set.id}
+                scaleTo={0.97}
+                onPress={() => {
+                  haptics.tap();
+                  router.push({ pathname: "/practice", params: { set: set.id } });
+                }}
+                style={styles.setTile}
+              >
+                <SetIcon icon={set.icon} size={38} />
+                <View style={styles.tileMeta}>
+                  <Text style={styles.tileTitle} numberOfLines={2}>
+                    {set.name}
+                  </Text>
+                  <Text style={styles.tileSub}>
+                    <Text style={latin.semibold}>{set.wordCount}</Text> 字
+                  </Text>
+                </View>
+              </PressableScale>
+            ))}
+
+            {starred.count > 0 ? (
+              <PressableScale
+                scaleTo={0.97}
+                onPress={() => {
+                  haptics.tap();
+                  router.push("/library/starred");
+                }}
+                style={styles.setTile}
+              >
+                <View style={styles.starIconBox}>
+                  <SymbolView name="star.fill" size={20} weight="semibold" tintColor={colors.highlight} />
+                </View>
+                <View style={styles.tileMeta}>
+                  <Text style={styles.tileTitle}>標星單字</Text>
+                  <Text style={styles.tileSub} numberOfLines={1}>
+                    <Text style={latin.semibold}>{starred.count}</Text> 字 · {starred.groups.length} 個單字集
+                  </Text>
+                </View>
+              </PressableScale>
+            ) : null}
+          </View>
         )}
       </View>
     </Screen>
@@ -130,58 +220,118 @@ export default function TodayScreen() {
 }
 
 const styles = StyleSheet.create({
-  panel: { gap: 28 },
-  // The answer card's green as one poster: the latest set, how much is in
-  // it, and the way in. Ink on green in both modes.
-  poster: {
-    overflow: "hidden",
-    gap: 6,
-    padding: 22,
-    paddingTop: 20,
-    borderRadius: radius.stage,
+  heroCard: {
+    backgroundColor: colors.heroBg,
+    borderRadius: radius.hero,
     borderCurve: "continuous",
-    backgroundColor: colors.field,
+    padding: 20,
+    gap: 16,
   },
-  // The bubble at its largest, filled in and cropped by the corner.
-  giantBubble: {
-    position: "absolute",
-    top: -70,
-    right: -80,
-    width: 270,
-    height: 180,
-    borderRadius: 999,
-    backgroundColor: colors.fieldInk,
+  heroTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
   },
-  posterHint: { ...type.section, color: colors.fieldInk },
-  posterTitle: {
-    ...type.display,
-    fontSize: 40,
-    lineHeight: 46,
-    color: colors.fieldInk,
-    marginTop: 64,
+  goalTrigger: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: 4,
+    paddingRight: 6,
   },
-  posterTitleLatin: {
-    ...latin.heavy,
-    fontWeight: undefined,
-    fontSize: 48,
-    lineHeight: 50,
-    letterSpacing: -2,
+  heroTopText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: colors.heroMuted,
   },
-  introTitle: { marginTop: 96 },
-  posterBody: { ...type.body, color: colors.fieldInk },
-  count: { flexDirection: "row", alignItems: "baseline", gap: 8 },
-  countValue: {
-    ...type.poster,
-    color: colors.fieldInk,
-    fontVariant: ["tabular-nums"],
+  streakPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
   },
-  countLabel: { ...type.section, color: colors.fieldInk },
-  actions: { flexDirection: "row", gap: 10, marginTop: 14 },
-  secondaryAction: { flex: 1 },
-  primaryAction: { flex: 1.4 },
-  steps: { gap: 22, paddingHorizontal: 4 },
-  step: { flexDirection: "row", gap: 14 },
-  stepText: { flex: 1, gap: 3 },
-  stepTitle: { ...type.section, color: colors.foreground },
-  stepBody: { ...type.body, color: colors.muted },
+  scoreRow: {
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
+  bigNumber: {
+    ...type.heroNumber,
+    color: colors.heroText,
+  },
+  goalSuffix: {
+    ...latin.bold,
+    fontSize: 28,
+    color: colors.heroFaint,
+  },
+  segmentGrid: {
+    flexDirection: "row",
+    gap: 3,
+  },
+  segmentBar: {
+    flex: 1,
+    height: 14,
+    borderRadius: 4,
+    borderCurve: "continuous",
+  },
+  segmentFilled: {
+    backgroundColor: colors.heroText,
+  },
+  segmentEmpty: {
+    backgroundColor: colors.heroTrack,
+  },
+  pendingNote: {
+    ...type.hint,
+    color: colors.heroMuted,
+  },
+  section: {
+    gap: 12,
+  },
+  sectionLink: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  sectionLinkText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: colors.contrast,
+  },
+  tileGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  setTile: {
+    width: "48.3%",
+    flexGrow: 1,
+    minHeight: 128,
+    backgroundColor: colors.surface,
+    borderRadius: 24,
+    borderCurve: "continuous",
+    padding: 16,
+    justifyContent: "space-between",
+    gap: 12,
+  },
+  starIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 11,
+    borderCurve: "continuous",
+    backgroundColor: colors.highlightSoft,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tileMeta: {
+    gap: 2,
+  },
+  tileTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: colors.ink,
+    lineHeight: 21,
+  },
+  tileSub: {
+    ...type.hint,
+    color: colors.inkMuted,
+  },
 });

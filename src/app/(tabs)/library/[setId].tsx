@@ -1,658 +1,561 @@
-import { Link, Stack, router, useLocalSearchParams } from "expo-router";
+import { router, Stack, useLocalSearchParams } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { useMemo, useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
-import Animated from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { DescriptionPoints } from "@/components/library/description-points";
-import { setFolderOptions } from "@/components/library/folder-options";
-import { confirmDeleteQuestion } from "@/components/questions/delete-question";
+import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
-import { EmptyState, Screen } from "@/components/ui/layout";
-import { ListGroup, ListRow } from "@/components/ui/list";
-import { swapIn } from "@/components/ui/motion";
+import { GlassSurface } from "@/components/ui/glass-bar";
+import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
+import { CheckRow, ListGroup, ListRow, NativeMenuTrigger } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
-import { UNCATEGORIZED_FOLDER_ID } from "@/core/lib/folders";
-import { t } from "@/core/lib/i18n";
-import {
-  questionMatchesQuery,
-  wordMatchesQuery,
-} from "@/core/lib/library-search";
-import {
-  difficultyLabel,
-  questionFormatLabel,
-} from "@/core/lib/question-options";
-import { questionBelongsToMemberships } from "@/core/lib/question-ownership";
-import { createSetSharePayload } from "@/core/lib/set-share";
-import { useLibraryStore } from "@/core/stores/library-store";
-import type { LibraryQuestion } from "@/core/types";
-import { senseCount, setWords } from "@/lexiro/library";
-import { speak } from "@/lib/speech";
+import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
+import type { Question, SetContent } from "@/core/contract";
+import { KIND_LABELS } from "@/core/domain/labels";
+import { errorMessage } from "@/data/api";
+import { deleteWords, starWords } from "@/data/library";
+import { useOnline } from "@/data/network";
+import { usePrefs, useSet } from "@/data/queries";
+import { haptics } from "@/lib/haptics";
 import { colors, latin, radius, space, type } from "@/lib/theme";
-import { shareSetShareFile } from "@/platform/set-share-files";
+import { syncStorage } from "@/platform/install";
 import { toast } from "@/platform/toast";
 
-type Tab = "words" | "questions" | "tools";
+type Tab = "words" | "questions";
+const STARRED_FIRST_KEY = "lexiro:starredFirst";
 
-/** Rows drawn at first, and added each time the reader nears the end. */
-const PAGE = 60;
-const NEAR_END = 600;
-
-const itemCount = (question: LibraryQuestion) =>
-  question.kind === "reading" ? question.questions.length : 1;
-
-function questionFormat(question: LibraryQuestion) {
-  return question.kind === "reading" ? question.format : question.questionStyle;
-}
-
-function questionText(question: LibraryQuestion) {
-  return question.kind === "reading"
-    ? question.title || question.passage
-    : question.prompt;
-}
-
-/** One set, as on the web: its words, its questions, and what can be done with it. */
-export default function SetScreen() {
-  const { setId } = useLocalSearchParams<{ setId: string }>();
-  const library = useLibraryStore((store) => store.state);
-  const status = useLibraryStore((store) => store.status);
-  const set = library.sets.find((entry) => entry.id === setId);
-  const words = useMemo(() => setWords(library, setId), [library, setId]);
-  const questions = useMemo(() => {
-    const memberships = library.memberships[setId] ?? [];
-    return library.questions.filter((question) =>
-      questionBelongsToMemberships(question, memberships),
-    );
-  }, [library, setId]);
+export default function SetDetailScreen() {
+  const { setId = "" } = useLocalSearchParams<{ setId: string }>();
+  const content = useSet(setId);
   const [tab, setTab] = useState<Tab>("words");
   const [query, setQuery] = useState("");
-  const [sharing, setSharing] = useState(false);
-  // A large set draws a page of rows and adds more as the reader scrolls.
-  const listKey = `${tab}:${query}`;
-  const [shown, setShown] = useState({ key: listKey, limit: PAGE });
-  const limit = shown.key === listKey ? shown.limit : PAGE;
+  const [selected, setSelected] = useState<Set<string> | null>(null);
+  const insets = useSafeAreaInsets();
+  const online = useOnline();
+  const name = content.data?.set.name ?? "單字集";
 
-  const needle = query.trim().toLocaleLowerCase();
-  const visibleWords = needle
-    ? words.filter((entry) => wordMatchesQuery(entry, needle))
-    : words;
-  const visibleQuestions = needle
-    ? questions.filter((question) => questionMatchesQuery(question, needle))
-    : questions;
-  const questionTotal = questions.reduce(
-    (total, question) => total + itemCount(question),
-    0,
-  );
-  const senses = senseCount(library, setId);
-
-  if (!set)
-    return (
-      <>
-        <Stack.Screen options={{ title: "" }} />
-        <Screen>
-          {status === "ready" ? (
-            <EmptyState
-              illustrated={false}
-              title={t("setDetail.missingTitle")}
-              body={t("setDetail.missingDescription")}
-            />
-          ) : null}
-        </Screen>
-      </>
-    );
-
-  const store = useLibraryStore.getState;
-  const openSheet = (
-    pathname:
-      "/sets/[setId]/add" | "/sets/[setId]/settings" | "/sets/[setId]/share",
-  ) => router.push({ pathname, params: { setId } });
-  const currentFolder = set.folderId || UNCATEGORIZED_FOLDER_ID;
-  const downloadShare = async () => {
-    setSharing(true);
-    try {
-      await shareSetShareFile(createSetSharePayload(store().state, setId));
-    } catch (reason) {
-      toast.error(reason instanceof Error ? reason.message : String(reason));
-    } finally {
-      setSharing(false);
-    }
-  };
-  const deleteSet = () =>
-    Alert.alert(
-      t("setDetail.delete"),
-      t("setDetail.deleteConfirm", { name: set.setName }),
-      [
-        { text: t("common.cancel"), style: "cancel" },
-        {
-          text: t("setDetail.delete"),
-          style: "destructive",
-          onPress: () => {
-            router.back();
-            void store().deleteSet(setId);
-          },
+  const deleteSelected = () => {
+    const ids = [...(selected ?? [])];
+    if (!ids.length) return;
+    haptics.warning();
+    Alert.alert(`刪除 ${ids.length} 個單字？`, "用到這些單字的題目也會一起刪除。", [
+      { text: "取消", style: "cancel" },
+      {
+        text: "刪除",
+        style: "destructive",
+        onPress: () => {
+          deleteWords(setId, ids)
+            .then(({ removedQuestionIds }) => {
+              haptics.success();
+              toast.success(
+                removedQuestionIds.length
+                  ? `已刪除，另移除 ${removedQuestionIds.length} 題`
+                  : "已刪除",
+              );
+              setSelected(null);
+            })
+            .catch((reason) => {
+              haptics.error();
+              toast.error(errorMessage(reason));
+            });
         },
-      ],
-    );
-  const clearQuestions = () => {
-    const packs = questions.filter(
-      (question) => question.kind === "reading",
-    ).length;
-    Alert.alert(
-      t("questions.clearSet"),
-      [
-        t("questions.clearSetConfirm", {
-          name: set.setName,
-          count: questionTotal,
-        }),
-        ...(packs ? [t("questions.clearPacks", { count: packs })] : []),
-        t("questions.clearPreserves"),
-      ].join("\n\n"),
-      [
-        { text: t("common.cancel"), style: "cancel" },
-        {
-          text: t("questions.confirmClear"),
-          style: "destructive",
-          onPress: () =>
-            void store()
-              .clearQuestions(setId)
-              .then(() =>
-                toast.success(t("questions.cleared", { count: questionTotal })),
-              ),
-        },
-      ],
-    );
+      },
+    ]);
   };
 
   return (
-    <>
-      <Stack.Screen options={{ title: set.setName }} />
-      {tab !== "tools" ? (
-        <Stack.SearchBar
-          placeholder={t(
-            tab === "words"
-              ? "setDetail.searchWords"
-              : "setDetail.searchQuestions",
-          )}
-          onChangeText={(event) => setQuery(event.nativeEvent.text)}
-          onCancelButtonPress={() => setQuery("")}
-        />
-      ) : null}
-      <Stack.Toolbar placement="right">
-        <Stack.Toolbar.Menu
-          icon="ellipsis"
-          accessibilityLabel={t("common.more")}
-        >
-          <Stack.Toolbar.MenuAction
-            icon="pencil"
-            onPress={() => openSheet("/sets/[setId]/settings")}
-          >
-            {t("setDetail.edit")}
-          </Stack.Toolbar.MenuAction>
-          <Stack.Toolbar.Menu icon="folder" title={t("setEditor.folder")}>
-            {setFolderOptions(library.folders).map((option) => (
-              <Stack.Toolbar.MenuAction
-                key={option.value}
-                isOn={option.value === currentFolder}
-                onPress={() => {
-                  if (option.value !== currentFolder)
-                    void store().moveSet(setId, option.value);
-                }}
-              >
-                {option.label}
-              </Stack.Toolbar.MenuAction>
-            ))}
-          </Stack.Toolbar.Menu>
-          <Stack.Toolbar.MenuAction
-            icon="link"
-            onPress={() => openSheet("/sets/[setId]/share")}
-          >
-            {t("setDetail.shareLink")}
-          </Stack.Toolbar.MenuAction>
-          <Stack.Toolbar.MenuAction
-            icon="square.and.arrow.up"
-            disabled={sharing}
-            onPress={() => void downloadShare()}
-          >
-            {t("setDetail.share")}
-          </Stack.Toolbar.MenuAction>
-          <Stack.Toolbar.MenuAction
-            icon="trash"
-            destructive
-            onPress={deleteSet}
-          >
-            {t("setDetail.delete")}
-          </Stack.Toolbar.MenuAction>
-        </Stack.Toolbar.Menu>
-      </Stack.Toolbar>
-      <Screen
-        scrollEventThrottle={100}
-        onScroll={({
-          nativeEvent: { contentOffset, contentSize, layoutMeasurement },
-        }) => {
-          const total =
-            tab === "words" ? visibleWords.length : visibleQuestions.length;
-          if (limit >= total) return;
-          if (
-            contentOffset.y + layoutMeasurement.height >
-            contentSize.height - NEAR_END
-          )
-            setShown({ key: listKey, limit: limit + PAGE });
-        }}
-      >
-        <Animated.View entering={swapIn}>
-          <View style={styles.summary}>
-            <View style={styles.summaryBubble} />
-            <View style={styles.figures}>
-              <Figure value={senses} label="詞義" />
-              <Figure value={questionTotal} label="題目" />
-            </View>
-            <View style={styles.actions}>
-              <Button
-                label={t("setEditor.addWord")}
-                icon="plus"
-                variant="onField"
-                style={styles.action}
-                onPress={() => openSheet("/sets/[setId]/add")}
-              />
-              <Button
-                label="開始練習"
-                icon="play.fill"
-                variant="ink"
-                style={styles.action}
-                disabled={!words.length}
-                onPress={() =>
-                  router.push({ pathname: "/practice", params: { setId } })
+    <View style={styles.root}>
+      <Stack.Screen
+        options={{
+          title: name,
+          headerSearchBarOptions:
+            tab === "words" && (content.data?.words.length ?? 0) > 0
+              ? {
+                  placeholder: "搜尋英文或中文",
+                  onChangeText: (event) => setQuery(event.nativeEvent.text),
+                  onCancelButtonPress: () => setQuery(""),
                 }
-              />
-            </View>
-          </View>
-        </Animated.View>
-
-        <Animated.View entering={swapIn}>
-          <Segmented
-            value={tab}
-            onChange={setTab}
-            options={[
-              {
-                value: "words",
-                label: `${t("setDetail.wordsTab")} ${words.length}`,
-              },
-              {
-                value: "questions",
-                label: `${t("setDetail.questions")} ${questionTotal}`,
-              },
-              { value: "tools", label: "工具" },
-            ]}
-          />
-        </Animated.View>
-
-        {tab === "words" ? (
-          <Animated.View key="words" entering={swapIn}>
-            {visibleWords.length ? (
-              <ListGroup
-                iconInset={false}
-                footer={
-                  needle
-                    ? t("setDetail.wordSearchCount", {
-                        count: visibleWords.length,
-                        total: words.length,
-                      })
-                    : undefined
-                }
-              >
-                {visibleWords.slice(0, limit).map((entry) => (
-                  <Link
-                    key={entry.wordKey}
-                    href={{
-                      pathname: "/sets/[setId]/words/[wordKey]",
-                      params: { setId, wordKey: entry.wordKey },
-                    }}
-                    asChild
-                  >
-                    <Link.Trigger>
-                      {/* Link's Slot flattens the trigger's style, so the
-                          pressed look lives on the inner view. */}
-                      <Pressable accessibilityRole="button">
-                        {({ pressed }) => (
-                          <View
-                            style={[styles.word, pressed && styles.pressed]}
-                          >
-                        <View style={styles.wordBody}>
-                          <Text style={styles.spelling}>{entry.word}</Text>
-                          {entry.senses.map((sense) => (
-                            <View key={sense.id} style={styles.sense}>
-                              <Text style={styles.meaning}>
-                                {sense.pos ? (
-                                  <Text style={styles.pos}>{sense.pos} </Text>
-                                ) : null}
-                                {sense.meaningZh}
-                              </Text>
-                              {sense.description ? (
-                                <DescriptionPoints
-                                  text={sense.description}
-                                  max={3}
-                                  style={styles.description}
-                                  textStyle={styles.descriptionText}
-                                  numberOfLines={2}
-                                />
-                              ) : null}
-                              {sense.examples[0] ? (
-                                <Text style={styles.example} numberOfLines={2}>
-                                  {sense.examples[0]}
-                                </Text>
-                              ) : null}
-                            </View>
-                          ))}
-                        </View>
-                        <PressableScale
-                          scaleTo={0.85}
-                          accessibilityRole="button"
-                          accessibilityLabel={t("setDetail.speak")}
-                          hitSlop={10}
-                          onPress={() => speak(entry.word)}
-                          style={styles.speak}
-                        >
-                          <SymbolView
-                            name="speaker.wave.2.fill"
-                            size={17}
-                            tintColor={colors.fieldInk}
-                          />
-                        </PressableScale>
-                          </View>
-                        )}
-                      </Pressable>
-                    </Link.Trigger>
-                    <Link.Menu title={entry.word}>
-                      <Link.MenuAction
-                        icon="pencil"
-                        onPress={() =>
-                          router.push({
-                            pathname: "/sets/[setId]/words/[wordKey]/edit",
-                            params: { setId, wordKey: entry.wordKey },
-                          })
-                        }
-                      >
-                        {t("setDetail.editWord")}
-                      </Link.MenuAction>
-                      <Link.MenuAction
-                        icon="speaker.wave.2"
-                        onPress={() => speak(entry.word)}
-                      >
-                        {t("setDetail.speak")}
-                      </Link.MenuAction>
-                    </Link.Menu>
-                  </Link>
-                ))}
-              </ListGroup>
-            ) : needle ? (
-              <EmptyState
-                illustrated={false}
-                title={t("setDetail.noSearchResults")}
-                body={t("setDetail.noSearchResultsHint")}
-              />
-            ) : (
-              <EmptyState
-                title={t("setDetail.noWords")}
-                body="用上方的「新增單字」加入第一個。"
-                action={
-                  <Button
-                    label={t("setEditor.addWord")}
-                    icon="plus"
-                    onPress={() => openSheet("/sets/[setId]/add")}
-                  />
-                }
-              />
-            )}
-          </Animated.View>
-        ) : tab === "questions" ? (
-          <Animated.View key="questions" entering={swapIn}>
-            {visibleQuestions.length ? (
-              <View style={styles.stack}>
-                <ListGroup
-                  iconInset={false}
-                  footer={
-                    needle
-                      ? t("setDetail.questionSearchCount", {
-                          count: visibleQuestions.length,
-                          total: questions.length,
-                        })
-                      : undefined
-                  }
+              : undefined,
+          headerRight: () =>
+            content.data ? (
+              <View style={styles.headerActions}>
+                <NativeMenuTrigger
+                  label="更多動作"
+                  items={[
+                    {
+                      key: "settings",
+                      label: "單字集設定",
+                      systemImage: "gearshape",
+                      onPress: () =>
+                        router.push({ pathname: "/sets/[setId]/settings", params: { setId } }),
+                    },
+                    {
+                      key: "share",
+                      label: "分享單字集",
+                      systemImage: "square.and.arrow.up",
+                      onPress: () =>
+                        router.push({ pathname: "/sets/[setId]/share", params: { setId } }),
+                    },
+                  ]}
                 >
-                  {visibleQuestions.slice(0, limit).map((question) => (
-                    <Link
-                      key={question.id}
-                      href={{
-                        pathname: "/sets/[setId]/questions/[questionId]",
-                        params: { setId, questionId: question.id },
-                      }}
-                      asChild
-                    >
-                      <Link.Trigger>
-                        <Pressable accessibilityRole="button">
-                          {({ pressed }) => (
-                            <View
-                              style={[styles.word, pressed && styles.pressed]}
-                            >
-                          <View style={styles.wordBody}>
-                            <Text style={styles.questionMeta}>
-                              <Text style={styles.format}>
-                                {questionFormatLabel(questionFormat(question))}
-                              </Text>
-                              {[
-                                "",
-                                difficultyLabel(question.difficulty),
-                                ...(question.kind === "reading"
-                                  ? [
-                                      t("library.questionCount", {
-                                        count: question.questions.length,
-                                      }),
-                                    ]
-                                  : []),
-                              ].join(" · ")}
-                            </Text>
-                            <Text style={styles.questionTitle} numberOfLines={3}>
-                              {questionText(question)}
-                            </Text>
-                            {question.kind === "reading" && question.title ? (
-                              <Text style={styles.example} numberOfLines={2}>
-                                {question.passage}
-                              </Text>
-                            ) : null}
-                          </View>
-                          <SymbolView
-                            name="chevron.right"
-                            size={13}
-                            weight="semibold"
-                            tintColor={colors.faint}
-                          />
-                            </View>
-                          )}
-                        </Pressable>
-                      </Link.Trigger>
-                      <Link.Menu>
-                        <Link.MenuAction
-                          icon="pencil"
-                          onPress={() =>
-                            router.push({
-                              pathname:
-                                "/sets/[setId]/questions/[questionId]/edit",
-                              params: { setId, questionId: question.id },
-                            })
-                          }
-                        >
-                          編輯題目
-                        </Link.MenuAction>
-                        <Link.Menu inline>
-                          <Link.MenuAction
-                            icon="trash"
-                            destructive
-                            onPress={() => confirmDeleteQuestion(question.id)}
-                          >
-                            刪除題目
-                          </Link.MenuAction>
-                        </Link.Menu>
-                      </Link.Menu>
-                    </Link>
-                  ))}
-                </ListGroup>
-                {!needle ? (
-                  <ListGroup>
-                    <ListRow
-                      icon="trash"
-                      destructive
-                      title={t("questions.clearSet")}
-                      onPress={clearQuestions}
+                  <View style={styles.headerBtn}>
+                    <SymbolView
+                      name="ellipsis.circle"
+                      size={22}
+                      weight="medium"
+                      tintColor={colors.ink}
                     />
-                  </ListGroup>
-                ) : null}
+                  </View>
+                </NativeMenuTrigger>
+                <Pressable
+                  hitSlop={8}
+                  accessibilityLabel="新增單字"
+                  onPress={() => {
+                    haptics.tap();
+                    router.push({ pathname: "/sets/[setId]/add", params: { setId } });
+                  }}
+                  style={styles.headerBtn}
+                >
+                  <SymbolView name="plus" size={20} weight="semibold" tintColor={colors.contrast} />
+                </Pressable>
               </View>
-            ) : needle ? (
-              <EmptyState
-                illustrated={false}
-                title={t("setDetail.noSearchResults")}
-                body={t("setDetail.noSearchResultsHint")}
-              />
-            ) : (
-              <EmptyState
-                illustrated={false}
-                title="這個單字集還沒有題目"
-                body="透過 MCP 連線的 AI 助理可以依這個單字集出題並存進題庫。"
-              />
-            )}
-          </Animated.View>
-        ) : (
-          <Animated.View key="tools" entering={swapIn} style={styles.stack}>
-            <ListGroup title={t("setDetail.toolsHeader")}>
-              <ListRow
-                icon="plus.circle"
-                title={t("setEditor.addWord")}
-                chevron
-                onPress={() => openSheet("/sets/[setId]/add")}
-              />
-              <ListRow
-                icon="pencil"
-                title={t("setDetail.edit")}
-                chevron
-                onPress={() => openSheet("/sets/[setId]/settings")}
-              />
-            </ListGroup>
-            <ListGroup>
-              <ListRow
-                icon="link"
-                title={t("setDetail.shareLink")}
-                chevron
-                onPress={() => openSheet("/sets/[setId]/share")}
-              />
-              <ListRow
-                icon="square.and.arrow.up"
-                title={t("setDetail.share")}
-                onPress={sharing ? undefined : () => void downloadShare()}
-              />
-              <ListRow
-                icon="trash"
-                destructive
-                title={t("setDetail.delete")}
-                onPress={deleteSet}
-              />
-            </ListGroup>
-          </Animated.View>
-        )}
+            ) : null,
+        }}
+      />
+
+      <Screen
+        refreshControl={<SyncRefreshControl />}
+        contentContainerStyle={{ paddingBottom: 112 }}
+      >
+        <Loaded query={content}>
+          {(data) => (
+            <SetBody
+              content={data}
+              tab={tab}
+              onTab={(next) => {
+                setTab(next);
+                setSelected(null);
+              }}
+              query={query}
+              selected={selected}
+              onSelected={setSelected}
+            />
+          )}
+        </Loaded>
       </Screen>
-    </>
+
+      {/* Bottom Floating Liquid Glass Action Dock */}
+      {content.data && content.data.words.length > 0 ? (
+        <View
+          style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
+          pointerEvents="box-none"
+        >
+          {selected ? (
+            <GlassSurface style={styles.selectionBar}>
+              <Text style={styles.selectionCount}>
+                已選 <Text style={latin.bold}>{selected.size}</Text> 個
+              </Text>
+              <Button
+                label="複製到…"
+                icon="doc.on.doc"
+                size="sm"
+                variant="secondary"
+                disabled={!selected.size || !online}
+                onPress={() => {
+                  router.push({
+                    pathname: "/sets/[setId]/copy",
+                    params: { setId, ids: [...selected].join(",") },
+                  });
+                  setSelected(null);
+                }}
+              />
+              <Button
+                label="刪除"
+                icon="trash"
+                size="sm"
+                variant="danger"
+                disabled={!selected.size || !online}
+                onPress={deleteSelected}
+              />
+            </GlassSurface>
+          ) : (
+            <GlassSurface style={styles.practiceDock}>
+              <Button
+                label="練習這組"
+                icon="play.fill"
+                size="lg"
+                variant="primary"
+                haptic="confirm"
+                onPress={() => router.push({ pathname: "/practice", params: { set: setId } })}
+                style={styles.practiceBtn}
+              />
+            </GlassSurface>
+          )}
+        </View>
+      ) : null}
+    </View>
   );
 }
 
-/** One of the set's sizes, at poster size on the green. */
-function Figure({ value, label }: { value: number; label: string }) {
+function SetBody({
+  content,
+  tab,
+  onTab,
+  query,
+  selected,
+  onSelected,
+}: {
+  content: SetContent;
+  tab: Tab;
+  onTab: (tab: Tab) => void;
+  query: string;
+  selected: Set<string> | null;
+  onSelected: (next: Set<string> | null) => void;
+}) {
+  if (!content.words.length) {
+    return (
+      <EmptyState
+        icon="text.badge.plus"
+        title="這個單字集還沒有單字"
+        description="一次加一個，或貼上一整份清單。也可以請 Agent 幫你加。"
+        action={
+          <Button
+            label="新增單字"
+            icon="plus"
+            onPress={() =>
+              router.push({ pathname: "/sets/[setId]/add", params: { setId: content.set.id } })
+            }
+          />
+        }
+      />
+    );
+  }
+
   return (
-    <View>
-      <Text style={styles.figureValue}>{value}</Text>
-      <Text style={styles.figureLabel}>{label}</Text>
+    <View style={styles.body}>
+      <Segmented
+        value={tab}
+        onChange={onTab}
+        options={[
+          { value: "words", label: `單字 ${content.words.length}` },
+          { value: "questions", label: `題目 ${content.questions.length}` },
+        ]}
+      />
+      {tab === "words" ? (
+        <WordList
+          content={content}
+          query={query}
+          selected={selected}
+          onSelected={onSelected}
+        />
+      ) : (
+        <QuestionList content={content} />
+      )}
+    </View>
+  );
+}
+
+function WordList({
+  content,
+  query,
+  selected,
+  onSelected,
+}: {
+  content: SetContent;
+  query: string;
+  selected: Set<string> | null;
+  onSelected: (next: Set<string> | null) => void;
+}) {
+  const setId = content.set.id;
+  const online = useOnline();
+  const showMeanings = usePrefs().data?.showMeanings ?? true;
+  const [starredFirst, setStarredFirstState] = useState(
+    () => syncStorage.getItem(STARRED_FIRST_KEY) === "1",
+  );
+
+  const toggleStarredFirst = () => {
+    const next = !starredFirst;
+    haptics.select();
+    setStarredFirstState(next);
+    syncStorage.setItem(STARRED_FIRST_KEY, next ? "1" : "0");
+  };
+
+  const words = useMemo(() => {
+    const needle = query.trim().toLocaleLowerCase();
+    return content.words.filter(
+      (word) =>
+        !needle ||
+        word.word.toLocaleLowerCase().includes(needle) ||
+        word.senses.some((sense) => sense.meaning.includes(needle)),
+    );
+  }, [content.words, query]);
+
+  const starredCount = content.words.filter((word) => word.starred).length;
+  const lifted = starredFirst && starredCount > 0 && !selected;
+  const top = lifted ? words.filter((word) => word.starred) : [];
+  const rest = lifted ? words.filter((word) => !word.starred) : words;
+
+  const toggleSelect = (id: string) => {
+    const next = new Set(selected);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    onSelected(next);
+  };
+
+  const confirmDeleteOne = (wordId: string, label: string) => {
+    Alert.alert(`刪除「${label}」？`, "用到這個單字的題目也會一起刪除。", [
+      { text: "取消", style: "cancel" },
+      {
+        text: "刪除",
+        style: "destructive",
+        onPress: () => {
+          deleteWords(setId, [wordId])
+            .then(() => {
+              haptics.success();
+              toast.success("已刪除");
+            })
+            .catch((reason) => {
+              haptics.error();
+              toast.error(errorMessage(reason));
+            });
+        },
+      },
+    ]);
+  };
+
+  const renderWord = (word: SetContent["words"][number]) =>
+    selected ? (
+      <CheckRow
+        key={word.id}
+        title={word.word}
+        subtitle={showMeanings ? meaningLine(word) : undefined}
+        checked={selected.has(word.id)}
+        onPress={() => toggleSelect(word.id)}
+      />
+    ) : (
+      <SwipeableWordRow
+        key={word.id}
+        setId={setId}
+        word={word}
+        showMeanings={showMeanings}
+        online={online}
+        onPress={() =>
+          router.push({
+            pathname: "/sets/[setId]/words/[wordId]",
+            params: { setId, wordId: word.id },
+          })
+        }
+        onToggleStar={() => {
+          starWords(setId, [word.id], !word.starred).catch((reason) => {
+            haptics.error();
+            toast.error(errorMessage(reason));
+          });
+        }}
+        onDelete={() => confirmDeleteOne(word.id, word.word)}
+      />
+    );
+
+  return (
+    <View style={styles.wordSection}>
+      {/* Compact Toolbar: Starred-first + Multi-select */}
+      <View style={styles.toolbar}>
+        {starredCount > 0 ? (
+          <PressableScale
+            scaleTo={0.95}
+            onPress={toggleStarredFirst}
+            style={[styles.toolChip, starredFirst && styles.toolChipStarred]}
+          >
+            <SymbolView
+              name={starredFirst ? "star.fill" : "star"}
+              size={14}
+              weight="semibold"
+              tintColor={starredFirst ? colors.highlight : colors.inkMuted}
+            />
+            <Text style={[styles.toolChipText, starredFirst && { color: colors.highlight }]}>
+              標星置頂 <Text style={latin.semibold}>{starredCount}</Text>
+            </Text>
+          </PressableScale>
+        ) : (
+          <View />
+        )}
+
+        <PressableScale
+          scaleTo={0.95}
+          disabled={!online}
+          onPress={() => {
+            haptics.select();
+            onSelected(selected ? null : new Set());
+          }}
+          style={[
+            styles.toolChip,
+            selected && styles.toolChipActive,
+            !online && styles.disabled,
+          ]}
+        >
+          <SymbolView
+            name={selected ? "xmark" : "checklist"}
+            size={14}
+            weight="semibold"
+            tintColor={selected ? colors.onContrast : colors.inkMuted}
+          />
+          <Text style={[styles.toolChipText, selected && { color: colors.onContrast }]}>
+            {selected ? "結束選取" : "多選"}
+          </Text>
+        </PressableScale>
+      </View>
+
+      {words.length === 0 ? (
+        <Text style={styles.emptySearch}>沒有符合的單字</Text>
+      ) : (
+        <>
+          {top.length > 0 ? (
+            <ListGroup title={`標星 · ${top.length}`}>
+              {top.map(renderWord)}
+            </ListGroup>
+          ) : null}
+          {rest.length > 0 ? (
+            <ListGroup title={top.length > 0 ? `其他 · ${rest.length}` : undefined}>
+              {rest.map(renderWord)}
+            </ListGroup>
+          ) : null}
+        </>
+      )}
+    </View>
+  );
+}
+
+function questionPreview(question: Question): string {
+  if (question.kind === "custom") return `${question.label}：${question.items[0].prompt}`.slice(0, 90);
+  if ("items" in question) {
+    return question.title || question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90);
+  }
+  return question.prompt;
+}
+
+function QuestionList({ content }: { content: SetContent }) {
+  if (!content.questions.length) {
+    return (
+      <EmptyState
+        icon="sparkles"
+        title="還沒有題目"
+        description="題目由 Agent 依你的單字產生。到「我 › Agent 連線」連接 Claude 等助理，請它幫這個單字集出題。"
+      />
+    );
+  }
+
+  const groups = new Map<string, Question[]>();
+  for (const question of content.questions) {
+    groups.set(question.kind, [...(groups.get(question.kind) ?? []), question]);
+  }
+
+  return (
+    <View style={styles.questionGroups}>
+      {[...groups].map(([kind, questions]) => (
+        <ListGroup
+          key={kind}
+          title={`${KIND_LABELS[kind as Question["kind"]]} · ${questions.length}`}
+        >
+          {questions.map((question) => (
+            <ListRow
+              key={question.id}
+              title={questionPreview(question)}
+              latinTitle
+              subtitle={"items" in question ? `${question.items.length} 小題` : undefined}
+              accessory={<Chip label={`難度 ${question.difficulty}`} />}
+              chevron
+              onPress={() =>
+                router.push({
+                  pathname: "/sets/[setId]/questions/[questionId]",
+                  params: { setId: content.set.id, questionId: question.id },
+                })
+              }
+            />
+          ))}
+        </ListGroup>
+      ))}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // The set's size on the answer card's green, with the way in.
-  summary: {
-    overflow: "hidden",
-    gap: 18,
-    padding: 22,
-    borderRadius: radius.stage,
-    borderCurve: "continuous",
-    backgroundColor: colors.field,
-  },
-  summaryBubble: {
-    position: "absolute",
-    top: -56,
-    right: -84,
-    width: 180,
-    height: 120,
-    borderRadius: 999,
-    backgroundColor: colors.fieldInk,
-  },
-  figures: { flexDirection: "row", gap: 32 },
-  figureValue: {
-    ...latin.heavy,
-    fontSize: 56,
-    lineHeight: 58,
-    letterSpacing: -2.5,
-    color: colors.fieldInk,
-    fontVariant: ["tabular-nums"],
-  },
-  figureLabel: { ...type.section, color: colors.fieldInk },
-  actions: { flexDirection: "row", gap: 10 },
-  action: { flex: 1 },
-  stack: { gap: 20 },
-  word: {
+  root: { flex: 1, backgroundColor: colors.canvas },
+  headerActions: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
-    paddingVertical: 13,
-    paddingHorizontal: space.row,
+    gap: 6,
   },
-  pressed: { backgroundColor: colors.secondary },
-  wordBody: { flex: 1, gap: 4 },
-  spelling: {
-    ...latin.bold,
-    fontSize: 22,
-    letterSpacing: -0.4,
-    color: colors.foreground,
-  },
-  sense: { gap: 1 },
-  meaning: { ...type.body, color: colors.foreground },
-  pos: { ...latin.semibold, color: colors.brand },
-  format: { color: colors.brand, fontWeight: "600" },
-  example: { ...type.hint, color: colors.muted },
-  // The same tinted note as the word sheet, so a remark never reads as an example.
-  description: {
-    alignSelf: "flex-start",
-    marginTop: 4,
-    marginBottom: 2,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: radius.segment,
-    borderCurve: "continuous",
-    overflow: "hidden",
-    backgroundColor: colors.brandSoft,
-  },
-  descriptionText: { ...type.hint, color: colors.foreground },
-  questionMeta: { ...type.hint, color: colors.muted },
-  questionTitle: {
-    fontSize: 17,
-    lineHeight: 24,
-    fontWeight: "600",
-    color: colors.foreground,
-  },
-  // A bubble in the card's green.
-  speak: {
-    width: 50,
+  headerBtn: {
+    width: 34,
     height: 34,
-    borderRadius: 999,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.field,
+  },
+  body: { gap: 14 },
+  wordSection: { gap: 12 },
+  toolbar: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  toolChip: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: radius.pill,
+    borderCurve: "continuous",
+    backgroundColor: colors.surface,
+  },
+  toolChipStarred: {
+    backgroundColor: colors.highlightSoft,
+  },
+  toolChipActive: {
+    backgroundColor: colors.contrast,
+  },
+  toolChipText: {
+    fontSize: 13,
+    fontWeight: "600",
+    color: colors.inkMuted,
+  },
+  disabled: { opacity: 0.45 },
+  emptySearch: {
+    ...type.body,
+    color: colors.inkMuted,
+    textAlign: "center",
+    paddingVertical: 28,
+  },
+  questionGroups: { gap: 16 },
+  floatingWrap: {
+    position: "absolute",
+    left: space.gutter,
+    right: space.gutter,
+    alignItems: "center",
+  },
+  practiceDock: {
+    padding: 6,
+    width: "100%",
+    maxWidth: 420,
+  },
+  practiceBtn: {
+    width: "100%",
+  },
+  selectionBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingVertical: 8,
+    paddingLeft: 18,
+    paddingRight: 8,
+    width: "100%",
+    maxWidth: 480,
+  },
+  selectionCount: {
+    flex: 1,
+    fontSize: 15,
+    fontWeight: "600",
+    color: colors.ink,
   },
 });

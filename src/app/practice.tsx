@@ -1,443 +1,292 @@
-import Slider from "@react-native-community/slider";
-import * as Haptics from "expo-haptics";
-import { Stack, router, useLocalSearchParams } from "expo-router";
-import { useCallback, useMemo, useRef, useState } from "react";
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
-import Animated from "react-native-reanimated";
+import { useQueries } from "@tanstack/react-query";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { useCallback, useMemo, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { handOffRun } from "@/components/practice/practice-run";
-import { ResumeChoice } from "@/components/resume-choice";
 import { Button } from "@/components/ui/button";
-import { CONTENT_MAX_WIDTH, EmptyState, Screen } from "@/components/ui/layout";
-import {
-  ListGroup,
-  MultiPickerRow,
-  PickerRow,
-  SwitchRow,
-} from "@/components/ui/list";
-import { glide, swapIn, swapOut } from "@/components/ui/motion";
+import { GlassSurface } from "@/components/ui/glass-bar";
+import { EmptyState, Panel, Screen } from "@/components/ui/layout";
+import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
+import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
-import { isWordTask } from "@/core/components/practice/meaning-questions";
-import {
-  buildPracticeQueue,
-  countQuestionAvailability,
-  countTaskAvailability,
-  type PracticeEntry,
-} from "@/core/components/practice/practice-queue";
-import {
-  useRestorePracticeSession,
-  type PracticeRestoreIssue,
-} from "@/core/components/practice/use-practice-persistence";
-import {
-  liveSetIds,
-  practiceScopeLabel,
-  usePracticePool,
-} from "@/core/components/practice/use-practice-pool";
-import { usePracticeSetupChoices } from "@/core/components/practice/use-practice-setup-choices";
-import { PRACTICE_TASKS } from "@/core/constants";
-import { t } from "@/core/lib/i18n";
-import { clearPracticeDraft } from "@/core/lib/practice-storage";
-import { practiceTaskHint, practiceTaskLabel } from "@/core/lib/practice-tasks";
-import { difficultyOptions } from "@/core/lib/question-options";
-import { isPassageKind } from "@/core/lib/question-formats";
-import { useLibraryStore } from "@/core/stores/library-store";
-import type {
-  PracticeSessionSnapshot,
-  PracticeTask,
-  WorkspaceQuestionDifficulty,
-} from "@/core/types";
-import { rememberPracticedSet } from "@/lib/last-practiced";
-import {
-  BRAND_DARK,
-  BRAND_LIGHT,
-  colors,
-  radius,
-  space,
-  type,
-} from "@/lib/theme";
+import { SetIcon } from "@/components/ui/set-icon";
+import type { PracticeTask, SetContent } from "@/core/contract";
+import { TASK_HINTS, TASK_LABELS } from "@/core/domain/labels";
+import { availableTasks, buildRound, type Focus } from "@/core/domain/practice";
+import { newRound } from "@/core/domain/round";
+import { api } from "@/data/api";
+import { useLearning } from "@/data/learning";
+import { keys, orderedSets, useLibrary, usePrefs } from "@/data/queries";
+import { clearRound, loadRound, saveRound } from "@/data/round-store";
+import { haptics } from "@/lib/haptics";
+import { colors, radius, space, type } from "@/lib/theme";
 
-const CUSTOM = "custom";
-type Amount = number | typeof CUSTOM;
-const PRESETS = [10, 20, 30, 50];
-const AMOUNTS: { value: Amount; label: string }[] = [
-  ...PRESETS.map((value) => ({ value, label: String(value) })),
-  { value: CUSTOM, label: "自訂" },
-];
-
-const RESTORE_ISSUE: Record<PracticeRestoreIssue, string> = {
-  unreadable:
-    "上次的練習草稿無法讀取，原始資料仍保留。選擇重新開始才會清除原進度。",
-  source:
-    "找不到上次練習的部分來源，原草稿仍保留。選擇重新開始才會清除原進度。",
-  storage: "暫時無法讀取或保存上次練習。重新開始會清除已有草稿。",
-};
+const AMOUNTS = ["10", "20", "30", "50"] as const;
 
 export default function PracticeSetupScreen() {
-  const status = useLibraryStore((store) => store.status);
-  if (status !== "ready") return null;
-  return <PracticeSetup />;
-}
-
-/** The web's practice setup: scope, formats, difficulty, how many; resumes a saved session. */
-function PracticeSetup() {
-  const params = useLocalSearchParams<{ setId?: string }>();
-  const initialSet = params.setId ?? "";
-  const state = useLibraryStore((store) => store.state);
+  const params = useLocalSearchParams<{ set?: string; focus?: string }>();
+  const library = useLibrary();
+  const prefs = usePrefs();
+  const { learning } = useLearning();
   const insets = useSafeAreaInsets();
-  const scheme = useColorScheme();
-  const setup = usePracticeSetupChoices(initialSet);
-  const { amount, difficulty, oneSensePerWord, tasks } = setup;
-  const setIds = useMemo(
-    () => liveSetIds(state.sets, setup.setIds),
-    [setup.setIds, state.sets],
-  );
-  // Opened from a set, practice stays in that set; only the tab offers a choice.
-  const fixedSet = initialSet
-    ? state.sets.find((set) => set.id === initialSet)
-    : undefined;
+  const [saved, setSaved] = useState(loadRound);
 
-  const {
-    allowedSenseIds,
-    studyItems,
-    allStudyItems,
-    questionGroups,
-    allQuestionItems,
-  } = usePracticePool(state, setIds);
-  const counts = useMemo(
-    () =>
-      countTaskAvailability({
-        allowedSenseIds,
-        difficulty,
-        questionGroups,
-        studyItems,
-      }),
-    [allowedSenseIds, difficulty, questionGroups, studyItems],
-  );
-  // Saved 學測 questions first, as on the web; a bank without them starts on words.
-  const activeTasks = useMemo<PracticeTask[]>(() => {
-    const chosen = tasks.filter((task) => counts[task] > 0);
-    if (chosen.length) return chosen;
-    return counts.meaning > 0 ? ["meaning"] : [];
-  }, [counts, tasks]);
-  const available = useMemo(
-    () =>
-      countQuestionAvailability({
-        allowedSenseIds,
-        difficulty,
-        questionGroups,
-        studyItems,
-        tasks: activeTasks,
-        oneSensePerWord,
-      }),
-    [
-      activeTasks,
-      allowedSenseIds,
-      difficulty,
-      oneSensePerWord,
-      questionGroups,
-      studyItems,
-    ],
-  );
-
-  // A saved session in progress is offered before anything else, as on the web.
-  const [pendingSession, setPendingSession] = useState<{
-    snapshot: PracticeSessionSnapshot;
-    entries: PracticeEntry[];
-  } | null>(null);
-  const [restoreIssue, setRestoreIssue] = useState<PracticeRestoreIssue | null>(
-    null,
-  );
-  const [checked, setChecked] = useState(false);
-  const restoreAttempted = useRef(false);
-  const retiredEntryIds = useMemo(
-    () =>
-      new Set(
-        state.questions.flatMap((question) =>
-          question.kind === "multipleChoice" &&
-          question.questionStyle === "grammar"
-            ? [`question:${question.id}`]
-            : [],
-        ),
-      ),
-    [state.questions],
-  );
-  useRestorePracticeSession({
-    allQuestionItems,
-    allStudyItems,
-    checkRevision: 0,
-    enabled: true,
-    initialSet,
-    library: state,
-    retiredEntryIds,
-    restoreAttempted,
-    onOffer: useCallback((snapshot, entries) => {
-      setPendingSession({ snapshot, entries });
-      setChecked(true);
+  useFocusEffect(
+    useCallback(() => {
+      setSaved(loadRound());
     }, []),
-    onChecked: useCallback(() => setChecked(true), []),
-    onUnavailable: useCallback((issue) => setRestoreIssue(issue), []),
+  );
+
+  const fromSets = useMemo(
+    () => (params.set ? params.set.split(",").filter(Boolean) : []),
+    [params.set],
+  );
+  const [chosen, setChosen] = useState<string[]>(fromSets);
+  const [tasks, setTasks] = useState<PracticeTask[]>([]);
+  const [focus, setFocus] = useState<Focus>(() =>
+    params.focus === "weak" || params.focus === "starred" ? params.focus : "all",
+  );
+  const [amount, setAmount] = useState<string>("");
+  const [error, setError] = useState("");
+
+  const sets = useMemo(
+    () => orderedSets(library.data?.sets ?? []).filter((set) => set.wordCount > 0),
+    [library.data?.sets],
+  );
+
+  const ids = useMemo(
+    () => (chosen.length ? chosen : sets.map((set) => set.id)),
+    [chosen, sets],
+  );
+
+  const contents = useQueries({
+    queries: ids.map((id) => ({
+      queryKey: keys.set(id),
+      queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
+    })),
   });
 
-  const [preset, setPreset] = useState<Amount>(() =>
-    PRESETS.includes(amount) ? amount : CUSTOM,
+  const loaded = contents.length > 0 && contents.every((query) => query.data);
+  const stamp = contents.map((query) => query.dataUpdatedAt).join();
+  const data = useMemo(
+    () => contents.flatMap((query) => (query.data ? [query.data] : [])),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [stamp],
   );
-  const customMax = Math.max(1, available);
-  const shownAmount = Math.min(amount, customMax);
 
-  if (!checked || setup.saved.status === "checking") return null;
+  const available = useMemo(() => (loaded ? availableTasks(data) : []), [loaded, data]);
 
-  if (pendingSession || restoreIssue)
+  const activeTasks = useMemo(() => {
+    if (!available.length) return [];
+    const kept = tasks.filter((task) => available.includes(task));
+    return kept.length ? kept : [available[0]];
+  }, [available, tasks]);
+
+  const size =
+    amount ||
+    String(AMOUNTS.find((value) => Number(value) >= (prefs.data?.practiceSize ?? 20)) ?? "20");
+
+  if (library.data && !sets.length) {
     return (
-      <ResumeChoice
-        invalid={Boolean(restoreIssue)}
-        description={
-          restoreIssue
-            ? RESTORE_ISSUE[restoreIssue]
-            : t("draft.practiceDescription")
-        }
-        onResume={() => {
-          if (!pendingSession) return;
-          const { snapshot, entries } = pendingSession;
-          handOffRun({
-            choices: {
-              setIds: snapshot.setIds,
-              tasks: snapshot.tasks,
-              amount: snapshot.amount,
-              difficulty: snapshot.difficulty,
-              oneSensePerWord,
-            },
-            entries,
-            snapshot,
-          });
-          setPendingSession(null);
-          router.push("/session");
-        }}
-        onRestart={() => {
-          try {
-            clearPracticeDraft();
-          } catch {
-            // The next save overwrites it.
+      <Screen>
+        <EmptyState
+          icon="books.vertical"
+          title="還沒有可以練習的單字"
+          description="先在單字集裡加一些單字，就能開始練習。"
+          action={
+            <Button
+              label="去加單字"
+              icon="plus"
+              onPress={() => router.push("/(tabs)/library")}
+            />
           }
-          setup.restart();
-          setPendingSession(null);
-          setRestoreIssue(null);
-        }}
-      />
+        />
+      </Screen>
     );
+  }
 
-  if (setup.saved.status === "offer" || setup.saved.status === "invalid")
-    return (
-      <ResumeChoice
-        invalid={setup.saved.status === "invalid"}
-        description={t(
-          setup.saved.status === "invalid"
-            ? "draft.invalidDescription"
-            : "draft.practiceDescription",
-        )}
-        onResume={setup.resume}
-        onRestart={setup.restart}
-      />
+  const toggleSet = (id: string) => {
+    setError("");
+    setChosen((current) =>
+      current.includes(id) ? current.filter((value) => value !== id) : [...current, id],
     );
-
-  const hasWords = Object.keys(state.words).length > 0;
-  const formats = PRACTICE_TASKS.filter((task) => counts[task] > 0);
-  const groups = [
-    {
-      title: t("practice.wordReview"),
-      formats: formats.filter((task) => isWordTask(task)),
-    },
-    {
-      title: t("practice.examFormats"),
-      formats: formats.filter((task) => !isWordTask(task)),
-    },
-  ].filter((group) => group.formats.length);
-  const hasExam = activeTasks.some((task) => !isWordTask(task));
-  const sets = [...state.sets].sort((a, b) =>
-    b.updatedAt.localeCompare(a.updatedAt),
-  );
-  const queueLength = Math.min(shownAmount, available);
-
-  const toggle = (task: PracticeTask, on: boolean) =>
-    setup.changeTasks(
-      PRACTICE_TASKS.filter((entry) =>
-        entry === task ? on : activeTasks.includes(entry),
-      ),
-    );
-  const changeAmount = (value: Amount) => {
-    setPreset(value);
-    if (value !== CUSTOM) setup.changeAmount(value);
   };
+
+  const toggleTask = (task: PracticeTask) => {
+    haptics.select();
+    setError("");
+    setTasks(() =>
+      activeTasks.includes(task)
+        ? activeTasks.length > 1
+          ? activeTasks.filter((value) => value !== task)
+          : activeTasks
+        : [...activeTasks, task],
+    );
+  };
+
   const start = () => {
-    const choices = {
-      setIds,
+    const items = buildRound({
+      contents: data,
       tasks: activeTasks,
-      amount: shownAmount,
-      difficulty,
-      oneSensePerWord,
-    };
-    const entries = buildPracticeQueue({
-      allowedSenseIds,
-      difficulty,
-      questionGroups,
-      studyItems,
-      amount: shownAmount,
-      oneSensePerWord,
-      tasks: activeTasks,
+      amount: Number(size),
+      focus,
+      learning,
     });
-    if (!entries.length) return;
-    setup.clear();
-    handOffRun({ choices, entries });
-    if (setIds.length) rememberPracticedSet(setIds[0]);
+    if (!items.length) {
+      haptics.error();
+      setError(
+        focus === "starred"
+          ? "選的單字集裡沒有標星的單字。"
+          : "這些題型在選的單字集裡沒有可以出的題目。",
+      );
+      return;
+    }
+    haptics.confirm();
+    saveRound(newRound(items, ids));
     router.push("/session");
   };
 
   return (
     <View style={styles.root}>
-      {fixedSet ? <Stack.Screen options={{ title: fixedSet.setName }} /> : null}
-      <Screen contentContainerStyle={{ paddingBottom: 120 + insets.bottom }}>
-        {!formats.length ? (
-          <EmptyState
-            illustrated={false}
-            title={t("practice.noContent")}
-            body={t("practice.addWordsHint")}
-          />
-        ) : (
-          <>
-            {fixedSet ? null : (
-              <ListGroup title={t("practice.scopeHeader")}>
-                <MultiPickerRow
-                  title={t("practice.set")}
-                  icon="books.vertical"
-                  allLabel={t("practice.allSets")}
-                  summary={practiceScopeLabel(state.sets, setIds)}
-                  value={setIds}
-                  options={sets.map((set) => ({
-                    value: set.id,
-                    label: set.setName,
-                  }))}
-                  onChange={setup.changeSets}
-                />
-              </ListGroup>
-            )}
-            {groups.map((group) => (
-              <ListGroup
-                key={group.title}
-                title={group.title}
-                footer={
-                  group.formats.some(isWordTask) &&
-                  hasWords &&
-                  counts.meaning === 0
-                    ? t("practice.meaningPoolHint")
-                    : undefined
-                }
-              >
-                {group.formats.map((task) => (
-                  <SwitchRow
-                    key={task}
-                    icon={
-                      task === "meaning"
-                        ? "character.book.closed"
-                        : task === "reverse"
-                          ? "textformat.abc"
-                          : isPassageKind(task)
-                            ? "doc.text"
-                            : "list.bullet.rectangle"
-                    }
-                    title={practiceTaskLabel(task)}
-                    subtitle={`${practiceTaskHint(task)} · ${t("practice.formatReady", { count: counts[task] })}`}
-                    value={activeTasks.includes(task)}
-                    onValueChange={(on) => toggle(task, on)}
-                  />
-                ))}
-              </ListGroup>
-            ))}
-
-            <ListGroup footer={t("practice.oneSenseHint")}>
-              {hasExam ? (
-                <PickerRow
-                  title={t("practice.difficulty")}
-                  icon="dial.medium"
-                  value={difficulty}
-                  options={difficultyOptions(t("practice.allDifficulties")).map(
-                    (option) => ({
-                      value: option.value as WorkspaceQuestionDifficulty,
-                      label: option.label,
-                    }),
-                  )}
-                  onChange={setup.changeDifficulty}
-                />
-              ) : null}
-              <SwitchRow
-                title={t("practice.oneSensePerWord")}
-                icon="1.circle"
-                value={oneSensePerWord}
-                onValueChange={setup.changeOneSense}
-              />
-            </ListGroup>
-
-            <View style={styles.block}>
-              <View style={styles.blockHeader}>
-                <Text style={styles.blockTitle}>{t("practice.amount")}</Text>
-                <Text style={styles.blockAside}>
-                  {t("practice.readyQuestions", { count: available })}
-                </Text>
-              </View>
-              <Segmented
-                options={AMOUNTS}
-                value={preset}
-                onChange={changeAmount}
-              />
-              {preset === CUSTOM ? (
-                <Animated.View
-                  entering={swapIn}
-                  exiting={swapOut}
-                  layout={glide}
-                  style={styles.custom}
-                >
-                  <Text style={styles.customValue}>
-                    {t("practice.amountValue", { count: shownAmount })}
-                  </Text>
-                  <Slider
-                    minimumValue={1}
-                    maximumValue={customMax}
-                    step={1}
-                    value={shownAmount}
-                    disabled={available < 2}
-                    minimumTrackTintColor={
-                      scheme === "dark" ? BRAND_DARK : BRAND_LIGHT
-                    }
-                    onValueChange={(value) => {
-                      if (value !== amount) void Haptics.selectionAsync();
-                      setup.changeAmount(value);
-                    }}
-                  />
-                  <View style={styles.customRange}>
-                    <Text style={styles.blockAside}>1</Text>
-                    <Text style={styles.blockAside}>{customMax}</Text>
-                  </View>
-                </Animated.View>
-              ) : null}
+      <Screen contentContainerStyle={{ paddingBottom: 112 }}>
+        {saved ? (
+          <Panel style={styles.resumeCard}>
+            <View style={styles.resumeText}>
+              <Text style={styles.resumeTitle}>有一輪還沒做完</Text>
+              <Text style={styles.resumeSub}>
+                做到第 {Math.min(saved.index + 1, saved.items.length)} / {saved.items.length} 題
+              </Text>
             </View>
-          </>
+            <View style={styles.resumeActions}>
+              <Button
+                label="捨棄"
+                size="sm"
+                variant="ghost"
+                onPress={() => {
+                  clearRound();
+                  setSaved(null);
+                }}
+              />
+              <Button
+                label="繼續"
+                icon="play.fill"
+                size="sm"
+                haptic="confirm"
+                onPress={() => router.push("/session")}
+              />
+            </View>
+          </Panel>
+        ) : null}
+
+        {fromSets.length > 0 ? (
+          <ListGroup title="單字集">
+            {sets
+              .filter((set) => fromSets.includes(set.id))
+              .map((set) => (
+                <ListRow
+                  key={set.id}
+                  title={set.name}
+                  subtitle={`${set.wordCount} 個單字${set.questionCount ? ` · ${set.questionCount} 題` : ""}`}
+                  leading={<SetIcon icon={set.icon} size={36} />}
+                />
+              ))}
+          </ListGroup>
+        ) : (
+          <ListGroup
+            title="單字集"
+            footer={chosen.length ? undefined : "沒有選的話，會從所有單字集出題。"}
+          >
+            {sets.map((set) => (
+              <CheckRow
+                key={set.id}
+                title={set.name}
+                subtitle={`${set.wordCount} 個單字${set.questionCount ? ` · ${set.questionCount} 題` : ""}`}
+                leading={<SetIcon icon={set.icon} size={36} />}
+                checked={chosen.includes(set.id)}
+                onPress={() => toggleSet(set.id)}
+              />
+            ))}
+          </ListGroup>
         )}
+
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>題型</Text>
+          {loaded ? (
+            <View style={styles.taskGrid}>
+              {available.map((task) => {
+                const on = activeTasks.includes(task);
+                return (
+                  <PressableScale
+                    key={task}
+                    scaleTo={0.97}
+                    accessibilityRole="checkbox"
+                    accessibilityState={{ checked: on }}
+                    onPress={() => toggleTask(task)}
+                    style={[styles.taskCard, on && styles.taskCardOn]}
+                  >
+                    <Text style={[styles.taskTitle, on && styles.taskTitleOn]}>
+                      {TASK_LABELS[task]}
+                    </Text>
+                    <Text style={styles.taskHint} numberOfLines={2}>
+                      {TASK_HINTS[task]}
+                    </Text>
+                  </PressableScale>
+                );
+              })}
+            </View>
+          ) : (
+            <Text style={styles.loadingText}>正在讀取單字集…</Text>
+          )}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>出題方式</Text>
+          <Segmented<Focus>
+            value={focus}
+            onChange={(next) => {
+              setFocus(next);
+              setError("");
+            }}
+            options={[
+              { value: "all", label: "隨機" },
+              { value: "weak", label: "不熟的優先" },
+              { value: "starred", label: "只練標星" },
+            ]}
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>題數</Text>
+          <Segmented
+            value={size}
+            onChange={setAmount}
+            options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))}
+          />
+        </View>
+
+        {error ? (
+          <Text style={styles.error} accessibilityRole="alert">
+            {error}
+          </Text>
+        ) : null}
       </Screen>
 
       <View
-        style={[styles.dock, { paddingBottom: Math.max(insets.bottom, 16) }]}
+        style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
+        pointerEvents="box-none"
       >
-        <Button
-          label={
-            queueLength
-              ? t("practice.beginCount", { count: queueLength })
-              : t("practice.noSelection")
-          }
-          icon="play.fill"
-          variant="field"
-          disabled={!activeTasks.length || !queueLength}
-          onPress={start}
-          style={styles.start}
-        />
+        <GlassSurface style={styles.dock}>
+          <Button
+            label="開始練習"
+            icon="play.fill"
+            size="lg"
+            disabled={!loaded || !activeTasks.length}
+            haptic="confirm"
+            onPress={start}
+            style={styles.startBtn}
+          />
+        </GlassSurface>
       </View>
     </View>
   );
@@ -445,45 +294,76 @@ function PracticeSetup() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.canvas },
-  block: { gap: 10 },
-  blockHeader: {
+  resumeCard: {
     flexDirection: "row",
-    alignItems: "baseline",
-    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 12,
+  },
+  resumeText: { flex: 1, minWidth: 160, gap: 2 },
+  resumeTitle: { fontSize: 16, fontWeight: "600", color: colors.ink },
+  resumeSub: { ...type.hint, color: colors.inkMuted },
+  resumeActions: { flexDirection: "row", gap: 8 },
+  section: { gap: 8 },
+  sectionLabel: {
+    ...type.hint,
+    fontWeight: "600",
+    color: colors.inkMuted,
     paddingHorizontal: 4,
   },
-  blockTitle: { ...type.section, color: colors.foreground },
-  blockAside: {
-    ...type.hint,
-    color: colors.muted,
-    fontVariant: ["tabular-nums"],
+  taskGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
   },
-  custom: {
-    gap: 6,
-    paddingVertical: 12,
-    paddingHorizontal: space.row,
-    borderRadius: radius.card,
+  taskCard: {
+    width: "48.5%",
+    flexGrow: 1,
+    backgroundColor: colors.surface,
+    borderRadius: radius.tile,
     borderCurve: "continuous",
-    backgroundColor: colors.card,
+    borderWidth: 1.5,
+    borderColor: colors.line,
+    padding: 14,
+    gap: 4,
   },
-  customValue: {
-    ...type.title,
-    fontSize: 32,
-    color: colors.foreground,
-    textAlign: "center",
-    fontVariant: ["tabular-nums"],
+  taskCardOn: {
+    backgroundColor: colors.accentSoft,
+    borderColor: colors.contrast,
   },
-  customRange: { flexDirection: "row", justifyContent: "space-between" },
-  start: { minHeight: 60, width: "100%", maxWidth: CONTENT_MAX_WIDTH },
-  // The start action stays at the bottom while the scope list scrolls.
-  dock: {
+  taskTitle: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: colors.ink,
+  },
+  taskTitleOn: {
+    color: colors.accentInk,
+  },
+  taskHint: {
+    fontSize: 12,
+    lineHeight: 17,
+    color: colors.inkMuted,
+  },
+  loadingText: {
+    ...type.hint,
+    color: colors.inkFaint,
+    paddingHorizontal: 4,
+  },
+  error: {
+    ...type.hint,
+    color: colors.dangerInk,
+    paddingHorizontal: 6,
+  },
+  floatingWrap: {
     position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
+    left: space.gutter,
+    right: space.gutter,
     alignItems: "center",
-    paddingTop: 12,
-    paddingHorizontal: space.gutter,
-    backgroundColor: colors.canvas,
   },
+  dock: {
+    padding: 6,
+    width: "100%",
+    maxWidth: 420,
+  },
+  startBtn: { width: "100%" },
 });

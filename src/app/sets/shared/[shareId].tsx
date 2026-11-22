@@ -1,194 +1,158 @@
+import { useQuery } from "@tanstack/react-query";
 import { router, useLocalSearchParams } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import Animated from "react-native-reanimated";
 
-import { FormScreen, SheetHeader } from "@/components/form-sheet";
-import { SignInPrompt } from "@/components/sign-in-prompt";
 import { Button } from "@/components/ui/button";
-import { EmptyState } from "@/components/ui/layout";
-import { ListGroup } from "@/components/ui/list";
-import { swapIn } from "@/components/ui/motion";
-import { t } from "@/core/lib/i18n";
-import { compareWords } from "@/core/lib/library";
-import { copySharedSet } from "@/core/lib/set-share";
-import { createUniqueSetName } from "@/core/lib/set-name";
-import { readSharedSet, type SharedSetView } from "@/core/lib/share-client";
-import { useCloudStore } from "@/core/stores/cloud-store";
-import { useLibraryStore } from "@/core/stores/library-store";
-import { colors, space, type } from "@/lib/theme";
+import { EmptyState, Panel, Screen } from "@/components/ui/layout";
+import { ListGroup, ListRow } from "@/components/ui/list";
+import { SetIcon } from "@/components/ui/set-icon";
+import { SheetHeader } from "@/components/ui/sheet-header";
+import { meaningLine } from "@/components/ui/swipeable-word-row";
+import type { LibraryIndex } from "@/core/contract";
+import { KIND_LABELS } from "@/core/domain/labels";
+import { api, ApiError, errorMessage } from "@/data/api";
+import { useAuth } from "@/data/auth";
+import { sharedSet } from "@/data/library";
+import { invalidate, keys, queryClient } from "@/data/queries";
+import { haptics } from "@/lib/haptics";
+import { colors, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
 
-const PREVIEW_WORDS = 60;
-
-/**
- * Someone else's set, read straight from their cloud copy, as on the web.
- * Nothing is stored until the reader saves a copy, which is then theirs.
- */
 export default function SharedSetScreen() {
-  const { shareId } = useLocalSearchParams<{ shareId: string }>();
-  const ready = useCloudStore((store) => store.ready);
-  const uid = useCloudStore((store) => store.user?.uid);
-  const libraryStatus = useLibraryStore((store) => store.status);
-  const [view, setView] = useState<SharedSetView | null>(null);
-  const [error, setError] = useState("");
-  const [saving, setSaving] = useState(false);
+  const { shareId = "" } = useLocalSearchParams<{ shareId: string }>();
+  const { account } = useAuth();
+  const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
-    if (!ready || !uid) return;
-    const controller = new AbortController();
-    readSharedSet(shareId, controller.signal)
-      .then((value) => {
-        if (!controller.signal.aborted) setView(value);
-      })
-      .catch((reason) => {
-        if (!controller.signal.aborted)
-          setError(reason instanceof Error ? reason.message : String(reason));
-      });
-    return () => controller.abort();
-  }, [ready, shareId, uid]);
+  const shared = useQuery({
+    queryKey: keys.shared(shareId),
+    queryFn: () => sharedSet(shareId),
+    enabled: Boolean(shareId),
+    retry: (count, error) => !(error instanceof ApiError && error.status === 404) && count < 2,
+  });
 
-  const rows = useMemo(() => {
-    if (!view) return [];
-    const wordsByKey = new Map(
-      view.set.words.map((word) => [word.wordKey, word]),
-    );
-    return view.set.memberships
-      .flatMap((membership) => {
-        const word = wordsByKey.get(membership.wordKey);
-        if (!word) return [];
-        const senses = word.senses.filter((sense) =>
-          membership.senseIds.includes(sense.id),
-        );
-        return [{ key: membership.wordKey, word: word.word, senses }];
-      })
-      .sort((a, b) => compareWords(a.word, b.word));
-  }, [view]);
-
-  const header = (
-    <SheetHeader
-      title={view?.set.setName ?? t("share.pageTitle")}
-      cancelLabel={t("share.close")}
-      busy={saving}
-      onCancel={() => router.back()}
-    />
-  );
-  if (ready && !uid)
-    return (
-      <>
-        {header}
-        <SignInPrompt body={t("share.viewSignIn")} />
-      </>
-    );
-
-  const openSet = (setId: string) => {
-    router.back();
-    router.push({ pathname: "/library/[setId]", params: { setId } });
-  };
-  const save = async () => {
-    if (!view) return;
-    setSaving(true);
+  const add = async () => {
+    if (!shared.data) return;
+    setBusy(true);
     try {
-      const store = useLibraryStore.getState();
-      const setName = createUniqueSetName(
-        view.set.setName,
-        store.state.sets.map((entry) => entry.setName),
-      );
-      const imported = await copySharedSet(
-        view.set,
-        { setName },
-        { saveSet: store.saveSet, saveQuestion: store.saveQuestion },
-      );
-      toast.success(t("share.saved", { name: imported.setName }));
-      openSet(imported.id);
+      const before = new Set((await api<LibraryIndex>("/library")).sets.map((set) => set.id));
+      await api("/backup", {
+        method: "POST",
+        json: {
+          version: 1,
+          folders: [],
+          sets: [
+            {
+              ...shared.data,
+              set: { ...shared.data.set, folderId: null, order: null },
+            },
+          ],
+        },
+      });
+      await invalidate();
+      const after = await queryClient.fetchQuery({
+        queryKey: keys.library,
+        queryFn: () => api<LibraryIndex>("/library"),
+      });
+      const created = after.sets.find((set) => !before.has(set.id));
+      haptics.success();
+      toast.success(`已加入「${shared.data.set.name}」`);
+      if (created) {
+        router.replace({ pathname: "/library/[setId]", params: { setId: created.id } });
+      } else {
+        router.back();
+      }
     } catch (reason) {
-      toast.error(
-        t("share.saveFailed", {
-          message: reason instanceof Error ? reason.message : String(reason),
-        }),
-      );
-      setSaving(false);
+      haptics.error();
+      toast.error(errorMessage(reason));
+      setBusy(false);
     }
   };
-  const senseCount = rows.reduce((count, row) => count + row.senses.length, 0);
+
+  const content = shared.data;
+  const questionGroups = new Map<string, number>();
+  for (const q of content?.questions ?? []) {
+    questionGroups.set(q.kind, (questionGroups.get(q.kind) ?? 0) + 1);
+  }
 
   return (
-    <FormScreen>
-      {header}
-      {error ? (
-        <EmptyState
-          illustrated={false}
-          title={t("share.loadFailed")}
-          body={error}
-        />
-      ) : !view ? (
-        <ActivityIndicator style={styles.loading} />
-      ) : (
-        <Animated.View entering={swapIn} style={styles.stack}>
-          <Text style={styles.summary}>
-            {t("share.summary", {
-              words: rows.length,
-              senses: senseCount,
-              questions: view.set.questions.length,
-            })}
-          </Text>
-          <ListGroup
-            iconInset={false}
-            footer={
-              rows.length > PREVIEW_WORDS
-                ? t("share.more", { count: rows.length - PREVIEW_WORDS })
-                : undefined
-            }
-          >
-            {rows.slice(0, PREVIEW_WORDS).map((row) => (
-              <View key={row.key} style={styles.word}>
-                <Text style={styles.spelling}>{row.word}</Text>
-                <Text style={styles.meaning}>
-                  {row.senses
-                    .map((sense) => `${sense.pos} ${sense.meaningZh}`)
-                    .join("；")}
-                </Text>
-              </View>
-            ))}
-          </ListGroup>
-          <View style={styles.actions}>
-            <Text style={styles.hint}>
-              {t(view.own ? "share.own" : "share.copyHint")}
-            </Text>
-            {view.own ? (
-              <Button
-                label={t("share.openOwn")}
-                icon="rectangle.stack"
-                onPress={() => openSet(view.set.id)}
-              />
-            ) : (
-              <Button
-                label={t(saving ? "share.saving" : "share.save")}
-                icon="square.and.arrow.down"
-                busy={saving}
-                disabled={libraryStatus !== "ready"}
-                onPress={() => void save()}
-              />
-            )}
+    <View style={styles.root}>
+      <SheetHeader
+        title={content?.set.name ?? "分享單字集"}
+        subtitle={
+          content ? `${content.words.length} 個單字 · ${content.questions.length} 題` : undefined
+        }
+        leading={content ? <SetIcon icon={content.set.icon} size={36} /> : undefined}
+      />
+      <Screen>
+        {shared.isError ? (
+          <EmptyState
+            icon="link.badge.plus"
+            title="無法開啟這個分享"
+            description={errorMessage(shared.error)}
+          />
+        ) : !content ? (
+          <View style={styles.loader}>
+            <ActivityIndicator size="small" color={colors.contrast as string} />
           </View>
-        </Animated.View>
-      )}
-    </FormScreen>
+        ) : (
+          <View style={styles.body}>
+            <Panel>
+              <Text style={styles.desc}>
+                有人分享了這個單字集給你。加入後會複製一份到你的帳號，之後可以自由修改和練習。
+              </Text>
+              {account ? (
+                <Button
+                  label="加入我的單字"
+                  icon="square.and.arrow.down"
+                  size="lg"
+                  busy={busy}
+                  haptic="confirm"
+                  onPress={() => void add()}
+                />
+              ) : (
+                <Text style={styles.desc}>請先登入 Lexiro 帳號以加入這個單字集。</Text>
+              )}
+            </Panel>
+
+            <ListGroup title="單字">
+              {content.words.slice(0, 200).map((word) => (
+                <ListRow
+                  key={word.id}
+                  title={word.word}
+                  latinTitle
+                  subtitle={meaningLine(word)}
+                />
+              ))}
+            </ListGroup>
+            {content.words.length > 200 ? (
+              <Text style={styles.more}>
+                還有 {content.words.length - 200} 個單字，加入後可以看到全部。
+              </Text>
+            ) : null}
+
+            {questionGroups.size > 0 ? (
+              <ListGroup title="題目">
+                {[...questionGroups].map(([kind, count]) => (
+                  <ListRow
+                    key={kind}
+                    title={KIND_LABELS[kind as keyof typeof KIND_LABELS]}
+                    detail={`${count} 題`}
+                  />
+                ))}
+              </ListGroup>
+            ) : null}
+          </View>
+        )}
+      </Screen>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  loading: { marginTop: 32 },
-  stack: { gap: space.section },
-  summary: {
-    ...type.hint,
-    color: colors.muted,
-    paddingHorizontal: 4,
-    fontVariant: ["tabular-nums"],
-  },
-  word: { gap: 2, paddingVertical: 12, paddingHorizontal: space.row },
-  spelling: { ...type.body, fontWeight: "600", color: colors.foreground },
-  meaning: { ...type.hint, color: colors.muted },
-  actions: { gap: 12 },
-  hint: { ...type.hint, color: colors.muted, paddingHorizontal: 4 },
+  root: { flex: 1, backgroundColor: colors.canvas },
+  loader: { paddingVertical: 48, alignItems: "center" },
+  body: { gap: 16 },
+  desc: { ...type.body, color: colors.inkMuted },
+  more: { ...type.hint, color: colors.inkMuted, textAlign: "center" },
 });

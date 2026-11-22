@@ -1,6 +1,6 @@
 import { Redirect } from "expo-router";
 
-// The tabs live under /today, /library, /rooms and /account; "/" opens 今天.
+// The five native tabs live under /today, /library, /progress, /rooms and /me; "/" opens 今天.
 export default function Index() {
   return <Redirect href="/today" />;
 }

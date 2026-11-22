@@ -1,159 +1,164 @@
 import * as Clipboard from "expo-clipboard";
-import * as Haptics from "expo-haptics";
-import { router, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Share, StyleSheet, Text } from "react-native";
-import Animated from "react-native-reanimated";
+import { ActivityIndicator, Share, StyleSheet, Text, View } from "react-native";
 
-import { FormScreen, SheetHeader } from "@/components/form-sheet";
-import { SignInPrompt } from "@/components/sign-in-prompt";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/layout";
-import { swapIn } from "@/components/ui/motion";
-import { t } from "@/core/lib/i18n";
-import {
-  createSetShareLink,
-  findSetShareLink,
-  revokeSetShareLink,
-  shareLinkUrl,
-  type SetShareLink,
-} from "@/core/lib/share-client";
-import { useCloudStore } from "@/core/stores/cloud-store";
-import { colors, type } from "@/lib/theme";
+import { Panel, Screen } from "@/components/ui/layout";
+import { SheetHeader } from "@/components/ui/sheet-header";
+import { errorMessage } from "@/data/api";
+import { shareOf, shareSet, unshareSet } from "@/data/library";
+import { useSet } from "@/data/queries";
+import { haptics } from "@/lib/haptics";
+import { colors, latin, radius, type } from "@/lib/theme";
+import { WEB_ORIGIN } from "@/platform/config";
 import { toast } from "@/platform/toast";
 
-/** 分享連結: the web dialog as a sheet, with the system share sheet beside copying. */
-export default function ShareLinkScreen() {
-  const { setId } = useLocalSearchParams<{ setId: string }>();
-  const uid = useCloudStore((store) => store.user?.uid);
-  const [link, setLink] = useState<SetShareLink | null>(null);
-  const [loading, setLoading] = useState(Boolean(uid));
+export default function ShareSetSheet() {
+  const { setId = "" } = useLocalSearchParams<{ setId: string }>();
+  const set = useSet(setId).data?.set;
+  const [link, setLink] = useState<string | null | undefined>(undefined);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!uid) return;
-    const controller = new AbortController();
-    findSetShareLink(setId, controller.signal)
-      .then((found) => {
-        if (!controller.signal.aborted) setLink(found);
-      })
-      .catch((reason) => {
-        if (!controller.signal.aborted)
-          setError(reason instanceof Error ? reason.message : String(reason));
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setLoading(false);
-      });
-    return () => controller.abort();
-  }, [setId, uid]);
+    if (!setId) return;
+    let cancelled = false;
+    shareOf(setId).then(
+      (id) => {
+        if (!cancelled) setLink(id);
+      },
+      (reason) => {
+        if (cancelled) return;
+        toast.error(errorMessage(reason));
+        setLink(null);
+      },
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [setId]);
 
-  const act = async (action: () => Promise<void>) => {
+  const url = link ? `${WEB_ORIGIN}/shared/${link}` : "";
+
+  const run = async (action: () => Promise<void>) => {
     setBusy(true);
-    setError("");
     try {
       await action();
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : String(reason));
+      haptics.error();
+      toast.error(errorMessage(reason));
     } finally {
       setBusy(false);
     }
   };
-  const url = link ? shareLinkUrl(link.id) : "";
-
-  if (!uid)
-    return (
-      <>
-        <SheetHeader title={t("share.title")} onCancel={() => router.back()} />
-        <SignInPrompt body={t("share.signInRequired")} />
-      </>
-    );
 
   return (
-    <FormScreen>
+    <View style={styles.root}>
       <SheetHeader
-        title={t("share.title")}
-        busy={busy}
-        onCancel={() => router.back()}
+        title={`分享「${set?.name ?? "單字集"}」`}
+        subtitle="拿到連結的人都能看到這個單字集目前的單字，並複製到自己的帳號。"
       />
-      <Animated.View entering={swapIn}>
-        <Text style={styles.description}>{t("share.description")}</Text>
-      </Animated.View>
-      {loading ? (
-        <ActivityIndicator />
-      ) : link ? (
-        <Animated.View entering={swapIn} style={styles.stack}>
-          <Card style={styles.link}>
-            <Text style={styles.label}>{t("share.linkLabel")}</Text>
-            <Text selectable style={styles.url}>
-              {url}
+      <Screen>
+        {link === undefined ? (
+          <View style={styles.loader}>
+            <ActivityIndicator size="small" color={colors.contrast as string} />
+          </View>
+        ) : link ? (
+          <Panel>
+            <View style={styles.urlBox}>
+              <Text style={styles.urlText} selectable>
+                {url}
+              </Text>
+            </View>
+            <View style={styles.btnRow}>
+              <Button
+                label="複製連結"
+                icon="doc.on.doc"
+                variant="primary"
+                style={styles.flexBtn}
+                onPress={() => {
+                  void Clipboard.setStringAsync(url).then(() => {
+                    haptics.success();
+                    toast.success("已複製分享連結");
+                  });
+                }}
+              />
+              <Button
+                label="分享…"
+                icon="square.and.arrow.up"
+                variant="secondary"
+                style={styles.flexBtn}
+                onPress={() => {
+                  void Share.share({
+                    title: set?.name ?? "Lexiro 單字集",
+                    message: `${set?.name ?? "Lexiro 單字集"}\n${url}`,
+                    url,
+                  });
+                }}
+              />
+            </View>
+            <Button
+              label="停止分享"
+              icon="link.badge.plus"
+              variant="danger"
+              busy={busy}
+              onPress={() =>
+                void run(async () => {
+                  await unshareSet(setId);
+                  setLink(null);
+                  haptics.success();
+                  toast.success("已停止分享");
+                })
+              }
+            />
+          </Panel>
+        ) : (
+          <Panel>
+            <Text style={styles.desc}>
+              建立分享連結後，朋友點開就能預覽並複製這份單字集。隨時可以停止分享。
             </Text>
-          </Card>
-          <Button
-            label="分享…"
-            icon="square.and.arrow.up"
-            onPress={() => void Share.share({ url })}
-          />
-          <Button
-            label={t("share.copy")}
-            icon="doc.on.doc"
-            variant="secondary"
-            onPress={() =>
-              void Clipboard.setStringAsync(url).then(
-                () => {
-                  void Haptics.notificationAsync(
-                    Haptics.NotificationFeedbackType.Success,
-                  );
-                  toast.success(t("share.copied"));
-                },
-                () => toast.error(t("share.copyFailed")),
-              )
-            }
-          />
-          <Button
-            label={t("share.revoke")}
-            variant="destructive"
-            busy={busy}
-            onPress={() =>
-              void act(async () => {
-                await revokeSetShareLink(link.id);
-                setLink(null);
-              })
-            }
-          />
-          <Text style={styles.hint}>{t("share.revokeHint")}</Text>
-        </Animated.View>
-      ) : (
-        <Animated.View entering={swapIn}>
-          <Button
-            label={t(busy ? "share.creating" : "share.create")}
-            icon="link"
-            busy={busy}
-            onPress={() =>
-              void act(async () => {
-                const created = await createSetShareLink(setId);
-                setLink(created);
-                void Share.share({ url: shareLinkUrl(created.id) });
-              })
-            }
-          />
-        </Animated.View>
-      )}
-      {error ? (
-        <Animated.View entering={swapIn}>
-          <Text style={styles.error}>{error}</Text>
-        </Animated.View>
-      ) : null}
-    </FormScreen>
+            <Button
+              label="建立分享連結"
+              icon="link"
+              size="lg"
+              busy={busy}
+              haptic="confirm"
+              onPress={() =>
+                void run(async () => {
+                  const id = await shareSet(setId);
+                  setLink(id);
+                  haptics.success();
+                })
+              }
+            />
+          </Panel>
+        )}
+      </Screen>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  description: { ...type.body, color: colors.muted, paddingHorizontal: 4 },
-  stack: { gap: 12 },
-  link: { gap: 4 },
-  label: { ...type.hint, color: colors.muted },
-  url: { ...type.body, color: colors.foreground },
-  hint: { ...type.hint, color: colors.muted, paddingHorizontal: 4 },
-  error: { ...type.hint, color: colors.destructive, paddingHorizontal: 4 },
+  root: { flex: 1, backgroundColor: colors.canvas },
+  loader: { paddingVertical: 40, alignItems: "center" },
+  urlBox: {
+    backgroundColor: colors.surfaceRaised,
+    borderRadius: radius.tile,
+    borderCurve: "continuous",
+    padding: 14,
+  },
+  urlText: {
+    ...latin.medium,
+    fontSize: 14,
+    color: colors.ink,
+  },
+  btnRow: {
+    flexDirection: "row",
+    gap: 10,
+  },
+  flexBtn: { flex: 1 },
+  desc: {
+    ...type.body,
+    color: colors.inkMuted,
+  },
 });

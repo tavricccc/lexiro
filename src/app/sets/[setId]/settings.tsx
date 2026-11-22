@@ -1,156 +1,141 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, Text } from "react-native";
-import Animated from "react-native-reanimated";
+import { Alert, StyleSheet, View } from "react-native";
 
-import { FormScreen, SheetHeader, leaveFlow } from "@/components/form-sheet";
-import { setFolderOptions } from "@/components/library/folder-options";
-import { ResumeChoice } from "@/components/resume-choice";
-import { InputRow, ListGroup, PickerRow } from "@/components/ui/list";
-import { swapIn } from "@/components/ui/motion";
-import { useResumableDraft } from "@/core/lib/use-resumable-draft";
-import { UNCATEGORIZED_FOLDER_ID } from "@/core/lib/folders";
-import { t } from "@/core/lib/i18n";
-import { setWordDrafts } from "@/core/lib/word-edit";
-import { useCloudStore } from "@/core/stores/cloud-store";
-import { useLibraryStore } from "@/core/stores/library-store";
-import { colors, type } from "@/lib/theme";
+import { SetForm, type SetFormValue } from "@/components/library/set-form";
+import { Button } from "@/components/ui/button";
+import { KeyboardScreen, Loaded } from "@/components/ui/layout";
+import { ActionRow, ListGroup } from "@/components/ui/list";
+import { SheetHeader } from "@/components/ui/sheet-header";
+import type { SetContent } from "@/core/contract";
+import { errorMessage } from "@/data/api";
+import { deleteSet, updateSet } from "@/data/library";
+import { useOnline } from "@/data/network";
+import { useLibrary, useSet } from "@/data/queries";
+import { haptics } from "@/lib/haptics";
+import { colors } from "@/lib/theme";
+import { toast } from "@/platform/toast";
 
-/** 名稱與資料夾: renames a set or files it elsewhere. */
 export default function SetSettingsScreen() {
-  const { setId } = useLocalSearchParams<{ setId: string }>();
-  const current = useLibraryStore((store) =>
-    store.state.sets.find((entry) => entry.id === setId),
-  );
-  if (!current) {
-    return (
-      <SheetHeader
-        title={t("wordEdit.metadata")}
-        onCancel={() => router.back()}
-      />
-    );
-  }
+  const { setId = "" } = useLocalSearchParams<{ setId: string }>();
+  const content = useSet(setId);
+
   return (
-    <SettingsFlow
-      key={`${setId}:${current.updatedAt}`}
-      setId={setId}
-      revision={current.updatedAt}
-      initial={{
-        name: current.setName,
-        folder: current.folderId || UNCATEGORIZED_FOLDER_ID,
-      }}
-    />
+    <View style={styles.root}>
+      <SheetHeader title="單字集設定" />
+      <KeyboardScreen>
+        <Loaded query={content}>
+          {(data) => <SettingsBody content={data} key={data.set.updatedAt} />}
+        </Loaded>
+      </KeyboardScreen>
+    </View>
   );
 }
 
-function SettingsFlow({
-  setId,
-  revision,
-  initial,
-}: {
-  setId: string;
-  revision: string;
-  initial: { name: string; folder: string };
-}) {
-  const uid = useCloudStore((store) => store.user?.uid);
-  const folders = useLibraryStore((store) => store.state.folders);
-  const saved = useResumableDraft(
-    `lexiro:flow-draft:v1:${uid ?? "local"}:set-metadata:${setId}:${revision}`,
-    initial,
-  );
+function SettingsBody({ content }: { content: SetContent }) {
+  const { set } = content;
+  const library = useLibrary();
+  const online = useOnline();
+  const [value, setValue] = useState<SetFormValue>({
+    name: set.name,
+    folderId: set.folderId,
+    hue: set.hue,
+    icon: set.icon,
+  });
   const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-  const title = t("wordEdit.metadata");
+  const [saving, setSaving] = useState(false);
 
-  if (saved.status === "checking") return null;
-  if (saved.status === "offer" || saved.status === "invalid")
-    return (
-      <>
-        <SheetHeader title={title} onCancel={() => router.back()} />
-        <ResumeChoice
-          invalid={saved.status === "invalid"}
-          description={t(
-            saved.status === "invalid"
-              ? "draft.invalidDescription"
-              : "draft.setMetadataDescription",
-          )}
-          onResume={saved.resume}
-          onRestart={saved.restart}
-        />
-      </>
-    );
+  const changed =
+    value.name !== set.name ||
+    value.folderId !== set.folderId ||
+    value.hue !== set.hue ||
+    value.icon !== set.icon;
 
-  const { name, folder } = saved.draft;
   const save = async () => {
-    const store = useLibraryStore.getState();
-    if (!name.trim()) return setError(t("setEditor.required"));
-    if (
-      store.state.sets.some(
-        (entry) =>
-          entry.id !== setId &&
-          entry.setName.toLocaleLowerCase() === name.trim().toLocaleLowerCase(),
-      )
-    )
-      return setError(t("setEditor.duplicateName"));
-    setBusy(true);
+    if (!value.name.trim()) {
+      haptics.error();
+      setError("請輸入名稱");
+      return;
+    }
+    setSaving(true);
     try {
-      await store.saveSet({
-        id: setId,
-        setName: name,
-        folderId: folder,
-        words: setWordDrafts(store.state, setId),
-      });
-      saved.clear();
+      await updateSet(set, { ...value, name: value.name.trim() });
+      haptics.success();
+      toast.success("已儲存");
       router.back();
-    } catch {
-      setError(t("wordEdit.saveFailed"));
-      setBusy(false);
+    } catch (reason) {
+      haptics.error();
+      setError(errorMessage(reason));
+      setSaving(false);
     }
   };
 
+  const confirmDelete = () => {
+    haptics.warning();
+    Alert.alert(
+      `刪除「${set.name}」？`,
+      `${content.words.length} 個單字和 ${content.questions.length} 題會一起刪除，無法復原。練習紀錄會保留。`,
+      [
+        { text: "取消", style: "cancel" },
+        {
+          text: "刪除",
+          style: "destructive",
+          onPress: () => {
+            deleteSet(set.id)
+              .then(() => {
+                haptics.success();
+                toast.success(`已刪除「${set.name}」`);
+                router.dismissAll();
+              })
+              .catch((reason) => {
+                haptics.error();
+                toast.error(errorMessage(reason));
+              });
+          },
+        },
+      ],
+    );
+  };
+
   return (
-    <FormScreen>
-      <SheetHeader
-        title={title}
-        busy={busy}
-        onSave={() => void save()}
-        onCancel={() => leaveFlow(saved.persistence, saved.clear)}
+    <View style={styles.body}>
+      <SetForm
+        value={value}
+        folders={library.data?.folders ?? []}
+        error={error}
+        onChange={(next) => {
+          setValue(next);
+          setError("");
+        }}
       />
-      <Animated.View entering={swapIn}>
-        <ListGroup>
-          <InputRow
-            label={t("setEditor.name")}
-            value={name}
-            editable={!busy}
-            invalid={Boolean(error) && !name.trim()}
-            placeholder={t("setEditor.namePlaceholder")}
-            onChangeText={(next) => {
-              saved.update({ name: next });
-              setError("");
-            }}
-          />
-          <PickerRow
-            title={t("setEditor.folder")}
-            icon="folder"
-            value={folder}
-            options={setFolderOptions(folders)}
-            disabled={busy}
-            onChange={(next) => {
-              saved.update({ folder: next });
-              setError("");
-            }}
-          />
-        </ListGroup>
-      </Animated.View>
-      {error ? (
-        <Animated.View entering={swapIn}>
-          <Text style={styles.error}>{error}</Text>
-        </Animated.View>
-      ) : null}
-    </FormScreen>
+
+      <Button
+        label="儲存變更"
+        icon="checkmark"
+        size="lg"
+        busy={saving}
+        disabled={!changed || !online}
+        haptic="confirm"
+        onPress={() => void save()}
+      />
+
+      <ListGroup
+        title="危險區域"
+        footer="單字、題目和分享連結會一起刪除，無法復原。練習紀錄會保留。"
+      >
+        <ActionRow
+          title="刪除這個單字集"
+          icon="trash"
+          destructive
+          disabled={!online}
+          onPress={confirmDelete}
+        />
+      </ListGroup>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  error: { ...type.hint, color: colors.destructive, paddingHorizontal: 4 },
+  root: { flex: 1, backgroundColor: colors.canvas },
+  body: { gap: 22 },
 });
