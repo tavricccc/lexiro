@@ -86,13 +86,13 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
             : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
         </div>
         {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
-        <div className="flex justify-end gap-2">
-          {round.revealed ? (
-            <Button autoFocus onClick={next} size="lg" variant="primary">{round.index + 1 === round.items.length && round.step + 1 === item.steps.length ? "看結果" : "下一題"}<ArrowRight weight="bold" /></Button>
-          ) : (
-            <Button onClick={() => pick(null)} size="lg" variant="ghost">不會，看答案</Button>
-          )}
-        </div>
+      </div>
+      <div className="flex shrink-0 justify-end gap-2 pt-3">
+        {round.revealed ? (
+          <Button autoFocus onClick={next} size="lg" variant="primary">{round.index + 1 === round.items.length && round.step + 1 === item.steps.length ? "看結果" : "下一題"}<ArrowRight weight="bold" /></Button>
+        ) : (
+          <Button onClick={() => pick(null)} size="lg" variant="ghost">不會，看答案</Button>
+        )}
       </div>
     </div>
   );
@@ -116,7 +116,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     const [before, after] = step.prompt.split("_____");
     const filled = round.revealed ? step.options[step.answer] : null;
     return (
-      <p className="py-4 font-latin text-xl leading-relaxed md:text-2xl" lang="en">
+      <p className="py-2 font-latin text-[1.0625rem] leading-relaxed" lang="en">
         {before}
         <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center", filled ? "border-positive bg-positive/10 text-positive" : "border-contrast bg-accent-soft")}>{filled ?? " "}</span>
         {after}
