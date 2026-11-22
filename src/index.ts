@@ -134,6 +134,7 @@ export function createWorker(dependencies: Dependencies = {}) {
         "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, MCP-Protocol-Version, X-Firebase-AppCheck",
         "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
         "Access-Control-Max-Age": "86400",
+        "Access-Control-Expose-Headers": "Lexiro-Revision, Lexiro-Revision-Before",
         Vary: "Origin",
       };
       const decorate = (response: Response) => {

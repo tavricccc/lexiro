@@ -68,6 +68,12 @@ export interface Backup { version: 1; exportedAt: string; folders: Folder[]; set
 export class Library {
   constructor(readonly db: D1Database, readonly options: { unlimited?: boolean; now?: () => Date } = {}) {}
 
+  /**
+   * The account revision just before this instance's first write and just
+   * after its last, so a client can tell its own change from someone else's.
+   */
+  written: { before: number; after: number } | null = null;
+
   private now() { return (this.options.now?.() ?? new Date()).toISOString(); }
 
   // ---- account ----------------------------------------------------------
@@ -88,13 +94,17 @@ export class Library {
       const used = quota?.quota_day === day ? quota.quota_writes : 0;
       if (used + rows > DAILY_WRITE_LIMIT) throw httpError(429, "daily_write_limit", `Daily write limit of ${DAILY_WRITE_LIMIT} rows reached; it resets at 00:00 UTC`);
     }
-    await this.db.batch([
+    const results = await this.db.batch([
       this.ensure(uid),
+      this.db.prepare("SELECT revision FROM accounts WHERE uid=?").bind(uid),
       ...statements,
       this.db.prepare(
-        "UPDATE accounts SET revision=revision+1, quota_writes=CASE WHEN quota_day=? THEN quota_writes+? ELSE ? END, quota_day=? WHERE uid=?",
+        "UPDATE accounts SET revision=revision+1, quota_writes=CASE WHEN quota_day=? THEN quota_writes+? ELSE ? END, quota_day=? WHERE uid=? RETURNING revision",
       ).bind(day, rows, rows, day, uid),
     ]);
+    const before = (results[1].results[0] as { revision: number } | undefined)?.revision ?? 0;
+    const after = (results.at(-1)?.results[0] as { revision: number } | undefined)?.revision ?? before + 1;
+    this.written = { before: this.written?.before ?? before, after };
   }
 
   async revision(uid: string): Promise<number> {
@@ -141,6 +151,12 @@ export class Library {
       })),
       sets: (sets.results as unknown as SetRow[]).map(setValue),
     };
+  }
+
+  /** Every starred word across the library, for the starred list and its count. */
+  async starred(uid: string): Promise<{ words: Word[] }> {
+    const { results } = await this.db.prepare("SELECT id,set_id,word,starred,senses,updated_at FROM words WHERE uid=? AND starred=1").bind(uid).all();
+    return { words: (results as unknown as WordRow[]).map(wordValue).sort((a, b) => compareWords(a.word, b.word)) };
   }
 
   async findSet(uid: string, setId: string): Promise<SetSummary | null> {

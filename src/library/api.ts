@@ -14,6 +14,7 @@ const anyObject = z.record(z.string(), z.unknown());
 type Handler = (request: Request, uid: string, lib: Library, params: string[]) => Promise<unknown>;
 const routes: [method: string, pattern: RegExp, handler: Handler][] = [
   ["GET", /^\/library$/, (_r, uid, lib) => lib.library(uid)],
+  ["GET", /^\/starred$/, (_r, uid, lib) => lib.starred(uid)],
   ["GET", /^\/revision$/, async (_r, uid, lib) => ({ revision: await lib.revision(uid) })],
 
   ["POST", /^\/folders$/, async (r, uid, lib) => lib.putFolder(uid, undefined, await json(r, anyObject) as never)],
@@ -76,7 +77,12 @@ export async function handleLibraryApi(request: Request, uid: string, lib: Libra
     if (!match) continue;
     known = true;
     if (method !== request.method) continue;
-    return Response.json(await handler(request, uid, lib, match.slice(1).map(decodeURIComponent)));
+    const body = await handler(request, uid, lib, match.slice(1).map(decodeURIComponent));
+    // A write names the revision it moved from and to (see Library.written).
+    const headers: Record<string, string> = lib.written
+      ? { "Lexiro-Revision-Before": String(lib.written.before), "Lexiro-Revision": String(lib.written.after) }
+      : {};
+    return Response.json(body, { headers });
   }
   if (known) throw new HttpError(405, "method_not_allowed");
   return null;
