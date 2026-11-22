@@ -272,10 +272,10 @@ function SetCard({
   if (Platform.OS !== "ios") return card;
 
   return (
-    <Host matchContents={{ vertical: true }}>
+    <Host matchContents={{ vertical: true }} style={styles.menuHost}>
       <ContextMenu>
         <ContextMenu.Trigger>
-          <RNHostView matchContents>{card}</RNHostView>
+          <RNHostView matchContents={{ vertical: true }}>{card}</RNHostView>
         </ContextMenu.Trigger>
         <ContextMenu.Items>
           {set.wordCount > 0 ? (
@@ -358,6 +358,7 @@ const styles = StyleSheet.create({
   list: {
     gap: 10,
   },
+  menuHost: { alignSelf: "stretch" },
   setCard: {
     flexDirection: "row",
     alignItems: "center",
