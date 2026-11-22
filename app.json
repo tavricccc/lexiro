@@ -13,6 +13,9 @@
     "ios": {
       "bundleIdentifier": "app.lexiro.ios",
       "supportsTablet": true,
+      "associatedDomains": [
+        "applinks:lexiro.vercel.app"
+      ],
       "infoPlist": {
         "UISupportedInterfaceOrientations~ipad": [
           "UIInterfaceOrientationPortrait",
