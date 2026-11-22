@@ -314,7 +314,11 @@ export class Library {
   }
 
   async starWords(uid: string, setId: string, ids: string[], starred: boolean) {
-    await this.commit(uid, ids.length, ids.map((id) => this.db.prepare("UPDATE words SET starred=? WHERE uid=? AND set_id=? AND id=?").bind(Number(starred), uid, setId, id)));
+    // Touching the set lets other devices see the change from the library index alone.
+    await this.commit(uid, ids.length, [
+      ...ids.map((id) => this.db.prepare("UPDATE words SET starred=? WHERE uid=? AND set_id=? AND id=?").bind(Number(starred), uid, setId, id)),
+      this.db.prepare("UPDATE sets SET updated_at=? WHERE uid=? AND id=?").bind(this.now(), uid, setId),
+    ]);
   }
 
   async deleteWords(uid: string, setId: string, ids: string[]): Promise<{ removedQuestionIds: string[] }> {
