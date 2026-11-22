@@ -36,9 +36,6 @@ export default function SetPage() {
             trigger={<HeaderButton aria-label="更多動作"><DotsThree weight="bold" /></HeaderButton>}
           />
           <HeaderButton aria-label="新增單字" asChild><AppLink href={`/app/sets/${setId}/add`}><Plus weight="bold" /></AppLink></HeaderButton>
-          {content.data.words.length ? (
-            <HeaderButton aria-label="練習" asChild prominent><AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" /></AppLink></HeaderButton>
-          ) : null}
         </>
       ) : null}
       back={{ href: "/app/library", label: "回到我的單字" }}
@@ -75,8 +72,17 @@ function SetBody({ content }: { content: SetContent }) {
         options={[{ value: "words", label: `單字 ${content.words.length}` }, { value: "questions", label: `題目 ${content.questions.length}` }]}
         value={tab}
       />
-      {tab === "words" ? <WordList content={content} /> : <QuestionList content={content} />}
+      {tab === "words" ? <WordList content={content} /> : <><QuestionList content={content} /><PracticeButton setId={content.set.id} /></>}
     </div>
+  );
+}
+
+/** The set's main action, kept where a thumb reaches it. */
+function PracticeButton({ setId }: { setId: string }) {
+  return (
+    <Button asChild className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-6 md:w-auto md:justify-self-end" size="lg" variant="primary">
+          <AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" />練習這組</AppLink>
+        </Button>
   );
 }
 
@@ -149,7 +155,7 @@ function WordList({ content }: { content: SetContent }) {
           <Button disabled={!selected.size} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
           <Button disabled={!selected.size} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>
         </div>
-      ) : null}
+      ) : <PracticeButton setId={setId} />}
       <CopySheet fromSetId={setId} ids={[...(selected ?? [])]} onDone={() => setSelected(null)} onOpenChange={setCopying} open={copying} />
       <ConfirmDialog
         confirmLabel="刪除"

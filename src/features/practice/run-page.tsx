@@ -68,7 +68,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   return (
     // The round sits still on the screen; only an overlong card scrolls inside itself.
-    <div className="fixed inset-0 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
+    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1.5rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-4">
       <header className="flex items-center gap-3">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
@@ -76,14 +76,17 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
       </header>
       <div className="card-in flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain pt-6" key={round.index}>
         <Chip className="self-start">{item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]}{item.steps.length > 1 ? ` · 第 ${round.step + 1}/${item.steps.length} ${item.kind === "custom" || item.kind === "reading" ? "題" : "格"}` : ""}</Chip>
-        {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
-        <div className="message-in" key={round.step}>
+        <div className="flex flex-1 flex-col justify-center">
+          {item.kind === "custom" ? <CustomPrompt item={item} step={step as CustomStep} /> : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
+        </div>
+        {/* Choices sit low, where a thumb rests; a long card still scrolls from the top. */}
+        <div className="message-in mt-auto" key={round.step}>
           {isCustomStep(step) && step.mode !== "single"
             ? <CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} />
             : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
         </div>
         {round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null}
-        <div className="mt-auto flex justify-end gap-2 pt-2">
+        <div className="flex justify-end gap-2">
           {round.revealed ? (
             <Button autoFocus onClick={next} size="lg" variant="primary">{round.index + 1 === round.items.length && round.step + 1 === item.steps.length ? "看結果" : "下一題"}<ArrowRight weight="bold" /></Button>
           ) : (
