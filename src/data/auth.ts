@@ -29,8 +29,16 @@ let auth: Auth | null = null;
 let state: State = mockEnabled ? { ready: true, account: mockAccount } : { ready: false, account: null };
 const listeners = new Set<() => void>();
 
+/**
+ * Sign-in runs through this site's own /__/auth (vercel.json proxies it), so
+ * the redirect result lives on our origin. With the firebaseapp.com domain,
+ * Safari and the iOS home-screen app drop the result as third-party storage,
+ * and every redirect sign-in came back signed out: the sign-in loop.
+ */
+const ownAuthDomain = () => (location.protocol === "https:" && !emulator ? location.host : firebaseConfig.authDomain);
+
 function app(): FirebaseApp {
-  return getApps().length ? getApp() : initializeApp(firebaseConfig);
+  return getApps().length ? getApp() : initializeApp({ ...firebaseConfig, authDomain: ownAuthDomain() });
 }
 
 /**
@@ -95,11 +103,7 @@ export async function popupOrRedirect(
  * sign-in sheet, lose a redirect result kept on the firebaseapp.com domain.
  */
 export function sameOriginAuth(): Auth | null {
-  if (!isConfigured()) return null;
-  if (location.protocol !== "https:") return firebaseAuth();
-  const named = getApps().find((existing) => existing.name === "same-origin")
-    ?? initializeApp({ ...firebaseConfig, authDomain: location.host }, "same-origin");
-  return authFor(named);
+  return firebaseAuth();
 }
 
 export function firebaseAuth(): Auth | null {
