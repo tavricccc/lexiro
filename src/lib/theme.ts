@@ -1,77 +1,100 @@
-import { DynamicColorIOS, type ColorValue } from "react-native";
+import { DynamicColorIOS, Platform, type ColorValue } from "react-native";
 
-/** A light/dark pair that iOS resolves itself, so styles need no color-scheme hook. */
+/**
+ * Light/dark dynamic color pair resolved natively on iOS so static styles
+ * respond to Appearance changes without re-rendering every tree.
+ */
 function pair(light: string, dark: string): ColorValue {
-  return DynamicColorIOS({ light, dark });
+  if (Platform.OS === "ios") return DynamicColorIOS({ light, dark });
+  return light;
 }
 
 /**
- * The look is the 學測 answer card in Lexiro green: the 2B pencil that fills a
- * bubble and the white of the sheet. Green is the one accent; ink is the
- * strong fill; the bubble (a full oval) is the one shape that recurs.
+ * Lexiro v2 palette — flat, quiet canvas with white cards, pine green accent,
+ * honey highlight (streaks & stars), and ink hero cards.
  */
-export const GREEN = "#7cc49c";
-export const INK = "#13201a";
+export const PINE_LIGHT = "#1f7a5c";
+export const PINE_DARK = "#7fdcb4";
 
-/** The tint for controls: switches, sliders, the tab bar. */
-export const BRAND_LIGHT = "#3f7c5a";
-export const BRAND_DARK = "#8ecdab";
-export const brand = pair(BRAND_LIGHT, BRAND_DARK);
-
-/** Plain values for native options that take a string, not a dynamic color. */
 export const plain = {
-  canvas: { light: "#eaf0ec", dark: "#131d17" },
-  foreground: { light: INK, dark: "#eef4f0" },
+  canvas: { light: "#f2f3f0", dark: "#0c0f0d" },
+  surface: { light: "#ffffff", dark: "#141b17" },
+  ink: { light: "#111512", dark: "#eef3f0" },
+  inkMuted: { light: "#56645d", dark: "#a3b0a9" },
+  inkFaint: { light: "#8b9690", dark: "#6d7a73" },
+  contrast: { light: PINE_LIGHT, dark: PINE_DARK },
+  onContrast: { light: "#ffffff", dark: "#062016" },
+  highlight: { light: "#e0a12a", dark: "#f4c060" },
+  positive: { light: "#1f9d55", dark: "#5fd394" },
+  positiveInk: { light: "#12703a", dark: "#7fe3aa" },
+  danger: { light: "#d2445f", dark: "#ff7f95" },
+  dangerInk: { light: "#b0263f", dark: "#ff9aab" },
+  caution: { light: "#b97a12", dark: "#eab765" },
+  info: { light: "#2f7fd8", dark: "#6fb0ff" },
 } as const;
 
-/** Surfaces are told apart by a step in tone, not by lines or shadows. */
 export const colors = {
-  brand,
   canvas: pair(plain.canvas.light, plain.canvas.dark),
-  card: pair("#ffffff", "#0c130f"),
-  foreground: pair(plain.foreground.light, plain.foreground.dark),
-  muted: pair("#4f6157", "#a3b5aa"),
-  faint: pair("rgba(19,32,26,0.42)", "rgba(238,244,240,0.42)"),
-  // Pencil on paper: ink with green words; at night the green takes over.
-  primary: pair(INK, GREEN),
-  primaryForeground: pair("#8ecdab", INK),
-  secondary: pair("rgba(19,32,26,0.06)", "rgba(255,255,255,0.08)"),
-  inset: pair("rgba(19,32,26,0.05)", "rgba(255,255,255,0.06)"),
-  pressed: pair("rgba(19,32,26,0.08)", "rgba(255,255,255,0.10)"),
-  separator: pair("rgba(19,32,26,0.12)", "rgba(255,255,255,0.12)"),
-  selected: pair("#e6f0ea", "#1d3428"),
-  brandSoft: pair("#e3f0e8", "#16261d"),
-  destructive: pair("#d22f2f", "#ff7a7a"),
-  destructiveSoft: pair("#fde6e4", "#3d1717"),
-  success: pair("#10894d", "#4fd18b"),
-  successSoft: pair("#dcf3e5", "#0f3020"),
-  // The green field keeps ink on it in both modes, like the printed card.
-  field: GREEN,
-  fieldInk: INK,
-  fieldSoft: "#c6dfd1",
-  fieldDeep: "#3f7c5a",
+  surface: pair(plain.surface.light, plain.surface.dark),
+  surfaceSolid: pair("#ffffff", "#18201b"),
+  surfaceRaised: pair("rgba(17,38,30,0.05)", "rgba(255,255,255,0.06)"),
+  surfacePressed: pair("rgba(17,38,30,0.09)", "rgba(255,255,255,0.10)"),
+  line: pair("rgba(17,38,30,0.09)", "rgba(255,255,255,0.09)"),
+
+  ink: pair(plain.ink.light, plain.ink.dark),
+  inkMuted: pair(plain.inkMuted.light, plain.inkMuted.dark),
+  inkFaint: pair(plain.inkFaint.light, plain.inkFaint.dark),
+
+  // Brand pine green
+  contrast: pair(plain.contrast.light, plain.contrast.dark),
+  onContrast: pair(plain.onContrast.light, plain.onContrast.dark),
+  accentSoft: pair("rgba(31,122,92,0.11)", "rgba(127,220,180,0.14)"),
+  accentInk: pair("#176348", "#9be6c5"),
+
+  // Semantic accents
+  highlight: pair(plain.highlight.light, plain.highlight.dark),
+  highlightSoft: pair("rgba(224,161,42,0.15)", "rgba(244,192,96,0.16)"),
+  positive: pair(plain.positive.light, plain.positive.dark),
+  positiveInk: pair(plain.positiveInk.light, plain.positiveInk.dark),
+  positiveSoft: pair("rgba(31,157,85,0.12)", "rgba(95,211,148,0.14)"),
+  danger: pair(plain.danger.light, plain.danger.dark),
+  dangerInk: pair(plain.dangerInk.light, plain.dangerInk.dark),
+  dangerSoft: pair("rgba(210,68,95,0.11)", "rgba(255,127,149,0.14)"),
+  caution: pair(plain.caution.light, plain.caution.dark),
+  cautionSoft: pair("rgba(185,122,18,0.14)", "rgba(234,183,101,0.16)"),
+  info: pair(plain.info.light, plain.info.dark),
+  infoSoft: pair("rgba(47,127,216,0.12)", "rgba(111,176,255,0.15)"),
+
+  // Ink hero card (dark in light mode, light in dark mode — matches web `bg-ink text-canvas`)
+  heroBg: pair("#111512", "#eef3f0"),
+  heroText: pair("#f2f3f0", "#0c0f0d"),
+  heroMuted: pair("rgba(242,243,240,0.65)", "rgba(12,15,13,0.62)"),
+  heroFaint: pair("rgba(242,243,240,0.45)", "rgba(12,15,13,0.42)"),
+  heroTrack: pair("rgba(242,243,240,0.14)", "rgba(12,15,13,0.14)"),
+  heroButtonBg: pair("#f2f3f0", "#0c0f0d"),
+  heroButtonText: pair("#111512", "#eef3f0"),
+  heroGhostBg: pair("rgba(242,243,240,0.13)", "rgba(12,15,13,0.11)"),
 } as const;
 
 export const radius = {
-  control: 22,
+  chip: 10,
+  tile: 16,
+  control: 18,
   card: 24,
-  stage: 24,
-  segment: 21,
-  /** The bubble: always a full oval. */
-  bubble: 999,
+  hero: 30,
+  pill: 999,
 } as const;
 
 export const space = {
   gutter: 16,
-  section: 28,
-  block: 16,
-  row: 20,
+  section: 24,
+  block: 14,
+  row: 16,
 } as const;
 
 /**
- * Albert Sans sets the Latin side of the app (the words being learnt, the
- * numbers, the A–D letters); Chinese stays in the system face. Each weight is
- * its own family, so styles name the family and never set fontWeight.
+ * Albert Sans renders English headwords, scores, and counts; CJK stays in the
+ * system UI font (PingFang TC on iOS). Each weight is its own family.
  */
 export const fonts = {
   "AlbertSans-500": require("../../assets/fonts/AlbertSans-500.ttf"),
@@ -87,41 +110,44 @@ export const latin = {
   heavy: { fontFamily: "AlbertSans-800" },
 } as const;
 
-/** Text with nothing outside Latin script, which can be set in Albert Sans. */
-export function isLatin(text: string) {
-  return /^[\u0000-\u024f\u2000-\u206f]*$/.test(text);
+/** Returns true when text contains Latin letters (matches web `isLatin`). */
+export function hasLatin(text: string | undefined): boolean {
+  return Boolean(text && /[A-Za-z]/.test(text));
 }
 
-/** Two sizes do the work, a very large one and a small one. */
 export const type = {
-  /** Numbers and words at poster size. */
-  poster: { ...latin.heavy, fontSize: 88, lineHeight: 88, letterSpacing: -4 },
-  display: { fontSize: 36, fontWeight: "800", letterSpacing: -1 },
-  title: { fontSize: 24, fontWeight: "800", letterSpacing: -0.5 },
-  section: { fontSize: 18, fontWeight: "700", letterSpacing: -0.2 },
-  row: { fontSize: 17, fontWeight: "400" },
-  body: { fontSize: 16, lineHeight: 24 },
-  hint: { fontSize: 13, lineHeight: 19 },
+  heroNumber: { ...latin.bold, fontSize: 64, lineHeight: 68, letterSpacing: -2.5 },
+  display: { fontSize: 32, fontWeight: "700" as const, letterSpacing: -0.8 },
+  title: { fontSize: 22, fontWeight: "700" as const, letterSpacing: -0.4 },
+  section: { fontSize: 15, fontWeight: "600" as const, letterSpacing: -0.1 },
+  row: { fontSize: 16, fontWeight: "500" as const },
+  body: { fontSize: 15, lineHeight: 22 },
+  hint: { fontSize: 13, lineHeight: 18 },
 } as const;
 
-/**
- * Plain hex values for animated styles: Reanimated interpolates strings, not
- * the dynamic colors above, so animations pick a mode with useColorScheme.
- */
+/** Plain strings for Reanimated color interpolation & native options. */
 export function hexPalette(dark: boolean) {
   return dark
     ? {
-        foreground: "#eef4f0",
-        muted: "#a3b5aa",
-        primaryForeground: INK,
-        card: "#0c130f",
-        selected: "#1d3428",
+        canvas: plain.canvas.dark,
+        surface: plain.surface.dark,
+        ink: plain.ink.dark,
+        inkMuted: plain.inkMuted.dark,
+        contrast: plain.contrast.dark,
+        onContrast: plain.onContrast.dark,
+        highlight: plain.highlight.dark,
+        positive: plain.positive.dark,
+        danger: plain.danger.dark,
       }
     : {
-        foreground: INK,
-        muted: "#4f6157",
-        primaryForeground: "#8ecdab",
-        card: "#ffffff",
-        selected: "#e6f0ea",
+        canvas: plain.canvas.light,
+        surface: plain.surface.light,
+        ink: plain.ink.light,
+        inkMuted: plain.inkMuted.light,
+        contrast: plain.contrast.light,
+        onContrast: plain.onContrast.light,
+        highlight: plain.highlight.light,
+        positive: plain.positive.light,
+        danger: plain.danger.light,
       };
 }
