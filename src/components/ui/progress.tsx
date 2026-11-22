@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { StyleSheet, View, type ColorValue } from "react-native";
 import Animated, {
   Easing,
@@ -9,40 +9,45 @@ import Animated, {
 
 import { colors } from "@/lib/theme";
 
-/** The fill eases to each new value (the web app's local 180ms exception, a touch longer). */
+const GROW = { duration: 280, easing: Easing.bezier(0.22, 1, 0.36, 1) };
+
 export function ProgressBar({
   value,
-  tint = colors.primary,
-  track = colors.inset,
+  tint = colors.contrast,
+  height = 6,
 }: {
   value: number;
   tint?: ColorValue;
-  track?: ColorValue;
+  height?: number;
 }) {
   const clamped = Math.max(0, Math.min(1, value));
-  const [width, setWidth] = useState(0);
-  const progress = useSharedValue(clamped);
+  const width = useSharedValue(clamped * 100);
 
   useEffect(() => {
-    progress.set(withTiming(clamped, { duration: 320, easing: Easing.out(Easing.cubic) }));
-  }, [clamped, progress]);
+    width.set(withTiming(clamped * 100, GROW));
+  }, [clamped, width]);
 
-  const fill = useAnimatedStyle(() => ({ width: progress.value * width }));
+  const fill = useAnimatedStyle(() => ({ width: `${width.value}%` }));
 
   return (
-    <View
-      style={[styles.track, { backgroundColor: track }]}
-      onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
-      accessibilityRole="progressbar"
-      accessibilityValue={{ min: 0, max: 100, now: Math.round(clamped * 100) }}
-    >
-      <Animated.View style={[styles.fill, { backgroundColor: tint }, fill]} />
+    <View style={[styles.track, { height, borderRadius: height / 2 }]}>
+      <Animated.View
+        style={[
+          styles.fill,
+          { backgroundColor: tint, borderRadius: height / 2 },
+          fill,
+        ]}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // A long bubble filling in from the left.
-  track: { height: 12, borderRadius: 999, overflow: "hidden" },
-  fill: { height: 12, borderRadius: 999 },
+  track: {
+    overflow: "hidden",
+    backgroundColor: colors.surfaceRaised,
+  },
+  fill: {
+    height: "100%",
+  },
 });

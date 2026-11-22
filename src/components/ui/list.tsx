@@ -1,4 +1,5 @@
 import {
+  Button as SwiftButton,
   Divider,
   HStack,
   Host,
@@ -17,45 +18,44 @@ import {
   shapes,
   tag,
 } from "@expo/ui/swift-ui/modifiers";
-import * as Haptics from "expo-haptics";
 import { SymbolView, type SymbolViewProps } from "expo-symbols";
-import { Children, Fragment, isValidElement, type ReactNode } from "react";
+import { Children, Fragment, isValidElement, type ComponentProps, type ReactNode } from "react";
 import {
+  Platform,
   Pressable,
   StyleSheet,
   Switch,
   Text,
   TextInput,
   View,
+  type ColorValue,
+  type StyleProp,
   type TextInputProps,
   type ViewStyle,
 } from "react-native";
 import Animated from "react-native-reanimated";
 
-import { BRAND_LIGHT, colors, radius, space, type } from "@/lib/theme";
+import { haptics } from "@/lib/haptics";
+import { PINE_LIGHT, colors, radius, space, type } from "@/lib/theme";
 import { pop, popOut } from "./motion";
 
 const ICON_INSET = space.row + 24 + 14;
 
-/**
- * The iOS inset grouped list: one card per group, hairline separators that
- * start after the row icon, and the group title above it.
- */
+/** iOS inset grouped card list with hairline separators. */
 export function ListGroup({
   title,
   aside,
   footer,
   children,
-  iconInset = true,
+  iconInset = false,
   style,
 }: {
   title?: string;
   aside?: ReactNode;
   footer?: string;
   children: ReactNode;
-  /** Separators start after the icon column; turn off for rows without icons. */
   iconInset?: boolean;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 }) {
   const rows = Children.toArray(children).filter(isValidElement);
   return (
@@ -96,46 +96,64 @@ export function ListRow({
   chevron,
   accessory,
   destructive,
+  disabled,
+  latinTitle = false,
   onPress,
 }: {
   title: string;
   subtitle?: string;
   detail?: string;
   icon?: SymbolViewProps["name"];
-  iconTint?: ViewStyle["backgroundColor"];
+  iconTint?: ColorValue;
   leading?: ReactNode;
   chevron?: boolean;
   accessory?: ReactNode;
   destructive?: boolean;
+  disabled?: boolean;
+  latinTitle?: boolean;
   onPress?: () => void;
 }) {
   return (
     <Pressable
       accessibilityRole={onPress ? "button" : undefined}
-      onPress={onPress}
-      disabled={!onPress}
-      style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+      onPress={
+        onPress
+          ? () => {
+              haptics.select();
+              onPress();
+            }
+          : undefined
+      }
+      disabled={!onPress || disabled}
+      style={({ pressed }) => [
+        styles.row,
+        pressed && styles.pressed,
+        disabled && styles.disabled,
+      ]}
     >
       {leading}
       {icon ? (
         <SymbolView
           name={icon}
-          size={22}
-          tintColor={
-            destructive ? colors.destructive : (iconTint ?? colors.brand)
-          }
+          size={21}
+          weight="medium"
+          tintColor={destructive ? colors.danger : (iconTint ?? colors.contrast)}
           style={styles.icon}
         />
       ) : null}
       <View style={styles.rowText}>
         <Text
-          style={[styles.title, destructive && { color: colors.destructive }]}
+          style={[
+            styles.title,
+            latinTitle && { fontFamily: "AlbertSans-600" },
+            destructive && { color: colors.danger },
+          ]}
           numberOfLines={2}
         >
           {title}
         </Text>
         {subtitle ? (
-          <Text style={styles.subtitle} numberOfLines={2}>
+          <Text style={styles.subtitle} numberOfLines={3}>
             {subtitle}
           </Text>
         ) : null}
@@ -151,18 +169,18 @@ export function ListRow({
           name="chevron.right"
           size={13}
           weight="semibold"
-          tintColor={colors.faint}
+          tintColor={colors.inkFaint}
         />
       ) : null}
     </Pressable>
   );
 }
 
-/** A row that picks one value out of a list; the check pops in on the chosen row. */
 export function CheckRow({
   title,
   subtitle,
   icon,
+  leading,
   detail,
   checked,
   disabled,
@@ -171,6 +189,7 @@ export function CheckRow({
   title: string;
   subtitle?: string;
   icon?: SymbolViewProps["name"];
+  leading?: ReactNode;
   detail?: string;
   checked: boolean;
   disabled?: boolean;
@@ -181,27 +200,19 @@ export function CheckRow({
       title={title}
       subtitle={subtitle}
       icon={icon}
+      leading={leading}
       detail={detail}
-      onPress={
-        disabled
-          ? undefined
-          : () => {
-              if (!checked) void Haptics.selectionAsync();
-              onPress();
-            }
-      }
+      disabled={disabled}
+      onPress={onPress}
       accessory={
-        <View style={styles.check}>
+        <View style={[styles.checkCircle, checked && styles.checkCircleOn]}>
           {checked ? (
-            <Animated.View
-              entering={pop}
-              exiting={popOut}
-            >
+            <Animated.View entering={pop} exiting={popOut}>
               <SymbolView
                 name="checkmark"
-                size={17}
+                size={12}
                 weight="bold"
-                tintColor={colors.brand}
+                tintColor={colors.onContrast}
               />
             </Animated.View>
           ) : null}
@@ -235,15 +246,17 @@ export function SwitchRow({
         <Switch
           value={value}
           disabled={disabled}
-          onValueChange={onValueChange}
-          trackColor={{ true: BRAND_LIGHT }}
+          onValueChange={(next) => {
+            haptics.select();
+            onValueChange(next);
+          }}
+          trackColor={{ true: PINE_LIGHT }}
         />
       }
     />
   );
 }
 
-/** A short value on one line: its label on the left, what you type on the right. */
 export function InputRow({
   label,
   value,
@@ -253,6 +266,10 @@ export function InputRow({
   autoFocus,
   editable = true,
   autoCapitalize = "none",
+  latinValue = false,
+  maxLength,
+  returnKeyType,
+  onSubmitEditing,
 }: {
   label: string;
   value: string;
@@ -262,47 +279,55 @@ export function InputRow({
   autoFocus?: boolean;
   editable?: boolean;
   autoCapitalize?: TextInputProps["autoCapitalize"];
+  latinValue?: boolean;
+  maxLength?: number;
+  returnKeyType?: TextInputProps["returnKeyType"];
+  onSubmitEditing?: () => void;
 }) {
   return (
     <View style={styles.row}>
-      <Text
-        style={[styles.inputLabel, invalid && { color: colors.destructive }]}
-      >
-        {label}
-      </Text>
+      <Text style={[styles.inputLabel, invalid && { color: colors.danger }]}>{label}</Text>
       <TextInput
         accessibilityLabel={label}
         autoCapitalize={autoCapitalize}
         autoCorrect={false}
         autoFocus={autoFocus}
         editable={editable}
+        maxLength={maxLength}
         onChangeText={onChangeText}
+        onSubmitEditing={onSubmitEditing}
         placeholder={placeholder}
-        placeholderTextColor={colors.faint}
-        style={styles.input}
+        placeholderTextColor={colors.inkFaint}
+        returnKeyType={returnKeyType}
+        style={[styles.input, latinValue && { fontFamily: "AlbertSans-600" }]}
         value={value}
       />
     </View>
   );
 }
 
-/** A sentence-length value: the label sits above, the text gets the width. */
 export function TextBlockRow({
   label,
   value,
   onChangeText,
   placeholder,
+  hint,
   onRemove,
   removeLabel,
   editable = true,
+  latinValue = false,
+  maxLength,
 }: {
   label: string;
   value: string;
   onChangeText: (value: string) => void;
   placeholder?: string;
+  hint?: string;
   onRemove?: () => void;
   removeLabel?: string;
   editable?: boolean;
+  latinValue?: boolean;
+  maxLength?: number;
 }) {
   return (
     <View style={styles.block}>
@@ -313,13 +338,12 @@ export function TextBlockRow({
             accessibilityRole="button"
             accessibilityLabel={removeLabel}
             hitSlop={10}
-            onPress={onRemove}
+            onPress={() => {
+              haptics.select();
+              onRemove();
+            }}
           >
-            <SymbolView
-              name="minus.circle.fill"
-              size={20}
-              tintColor={colors.destructive}
-            />
+            <SymbolView name="minus.circle.fill" size={20} tintColor={colors.danger} />
           </Pressable>
         ) : null}
       </View>
@@ -327,19 +351,20 @@ export function TextBlockRow({
         accessibilityLabel={label}
         autoCorrect={false}
         editable={editable}
+        maxLength={maxLength}
         multiline
         onChangeText={onChangeText}
         placeholder={placeholder}
-        placeholderTextColor={colors.faint}
+        placeholderTextColor={colors.inkFaint}
         scrollEnabled={false}
-        style={styles.blockInput}
+        style={[styles.blockInput, latinValue && { fontFamily: "AlbertSans-500" }]}
         value={value}
       />
+      {hint ? <Text style={styles.blockHint}>{hint}</Text> : null}
     </View>
   );
 }
 
-/** A tappable verb inside a group: 新增例句, 刪除此詞義. */
 export function ActionRow({
   title,
   icon,
@@ -353,12 +378,16 @@ export function ActionRow({
   disabled?: boolean;
   onPress: () => void;
 }) {
-  const tint = destructive ? colors.destructive : colors.brand;
+  const tint = destructive ? colors.danger : colors.contrast;
   return (
     <Pressable
       accessibilityRole="button"
       disabled={disabled}
-      onPress={onPress}
+      onPress={() => {
+        if (destructive) haptics.warning();
+        else haptics.tap();
+        onPress();
+      }}
       style={({ pressed }) => [
         styles.row,
         pressed && styles.pressed,
@@ -366,8 +395,9 @@ export function ActionRow({
       ]}
     >
       <SymbolView
-        name={icon ?? (destructive ? "minus.circle" : "plus.circle")}
-        size={22}
+        name={icon ?? (destructive ? "trash" : "plus.circle")}
+        size={20}
+        weight="medium"
         tintColor={tint}
         style={styles.icon}
       />
@@ -376,18 +406,14 @@ export function ActionRow({
   );
 }
 
-/**
- * The row itself opens the native iOS menu: a transparent SwiftUI menu laid
- * over it, so the menu unfolds from the row instead of a centred sheet.
- */
 function RowMenu({ label, children }: { label: string; children: ReactNode }) {
+  if (Platform.OS !== "ios") return null;
   return (
     <Host style={StyleSheet.absoluteFill}>
       <Menu
         label={
           <HStack
             modifiers={[
-              // The bridge has no infinity; this is "as large as the row".
               frame({ maxWidth: 10_000, maxHeight: 10_000 }),
               contentShape(shapes.rectangle()),
             ]}
@@ -408,11 +434,11 @@ const menuChevron = (
     name="chevron.up.chevron.down"
     size={13}
     weight="semibold"
-    tintColor={colors.faint}
+    tintColor={colors.inkFaint}
   />
 );
 
-/** Picks one option from a menu that opens from the row; the current one is checked. */
+/** Native iOS SwiftUI inline Menu Picker anchored directly to the row. */
 export function PickerRow<T extends string>({
   title,
   icon,
@@ -442,7 +468,7 @@ export function PickerRow<T extends string>({
           <Picker
             selection={value}
             onSelectionChange={(next: T) => {
-              void Haptics.selectionAsync();
+              haptics.select();
               onChange(next);
             }}
             modifiers={[pickerStyle("inline")]}
@@ -459,10 +485,7 @@ export function PickerRow<T extends string>({
   );
 }
 
-/**
- * Several values from one menu, with an "all" choice that clears them.
- * Ticking a value keeps the menu open, so a few can be chosen in one go.
- */
+/** Native iOS SwiftUI multi-select menu anchored to a row. */
 export function MultiPickerRow({
   title,
   icon,
@@ -475,7 +498,6 @@ export function MultiPickerRow({
   title: string;
   icon?: SymbolViewProps["name"];
   allLabel: string;
-  /** What the row shows for the current choice. */
   summary: string;
   value: readonly string[];
   options: readonly { value: string; label: string }[];
@@ -483,18 +505,13 @@ export function MultiPickerRow({
 }) {
   return (
     <View>
-      <ListRow
-        title={title}
-        icon={icon}
-        detail={summary}
-        accessory={menuChevron}
-      />
+      <ListRow title={title} icon={icon} detail={summary} accessory={menuChevron} />
       <RowMenu label={title}>
         <Toggle
           label={allLabel}
           isOn={!value.length}
           onIsOnChange={() => {
-            void Haptics.selectionAsync();
+            haptics.select();
             onChange([]);
           }}
         />
@@ -505,13 +522,11 @@ export function MultiPickerRow({
             label={option.label}
             isOn={value.includes(option.value)}
             onIsOnChange={(on) => {
-              void Haptics.selectionAsync();
+              haptics.select();
               onChange(
                 options
                   .map((entry) => entry.value)
-                  .filter((entry) =>
-                    entry === option.value ? on : value.includes(entry),
-                  ),
+                  .filter((entry) => (entry === option.value ? on : value.includes(entry))),
               );
             }}
             modifiers={[menuActionDismissBehavior("disabled")]}
@@ -522,67 +537,154 @@ export function MultiPickerRow({
   );
 }
 
+export interface NativeMenuItem {
+  key: string;
+  label: string;
+  systemImage?: ComponentProps<typeof SwiftButton>["systemImage"];
+  role?: "default" | "destructive";
+  onPress: () => void;
+}
+
+/**
+ * Wraps any trigger element in an invisible SwiftUI Menu overlay so tapping it
+ * unfolds a true native iOS pull-down menu from the exact touch origin.
+ */
+export function NativeMenuTrigger({
+  label,
+  items,
+  children,
+  style,
+}: {
+  label: string;
+  items: NativeMenuItem[];
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+}) {
+  if (Platform.OS !== "ios") {
+    return <View style={style}>{children}</View>;
+  }
+  return (
+    <View style={style}>
+      {children}
+      <Host style={StyleSheet.absoluteFill}>
+        <Menu
+          label={
+            <HStack
+              modifiers={[
+                frame({ maxWidth: 10_000, maxHeight: 10_000 }),
+                contentShape(shapes.rectangle()),
+              ]}
+            >
+              <Spacer />
+            </HStack>
+          }
+          modifiers={[accessibilityLabel(label)]}
+        >
+          {items.map((item) => (
+            <SwiftButton
+              key={item.key}
+              label={item.label}
+              systemImage={item.systemImage}
+              role={item.role === "destructive" ? "destructive" : undefined}
+              onPress={() => {
+                if (item.role === "destructive") haptics.warning();
+                else haptics.select();
+                item.onPress();
+              }}
+            />
+          ))}
+        </Menu>
+      </Host>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   group: { gap: 8 },
   groupHeader: {
     flexDirection: "row",
-    alignItems: "baseline",
+    alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 4,
   },
-  groupTitle: { ...type.section, color: colors.foreground },
+  groupTitle: {
+    ...type.hint,
+    fontWeight: "600",
+    color: colors.inkMuted,
+  },
   card: {
-    backgroundColor: colors.card,
+    backgroundColor: colors.surface,
     borderRadius: radius.card,
     borderCurve: "continuous",
     overflow: "hidden",
   },
   separator: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: colors.separator,
+    backgroundColor: colors.line,
   },
-  footer: { ...type.hint, color: colors.muted, paddingHorizontal: 4 },
+  footer: {
+    ...type.hint,
+    color: colors.inkMuted,
+    paddingHorizontal: 6,
+  },
   row: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 14,
+    gap: 12,
     minHeight: 52,
     paddingHorizontal: space.row,
     paddingVertical: 11,
   },
-  pressed: { backgroundColor: colors.pressed },
+  pressed: { backgroundColor: colors.surfacePressed },
   icon: { width: 24, height: 24 },
   rowText: { flex: 1, gap: 2 },
-  title: { ...type.row, color: colors.foreground },
-  subtitle: { ...type.hint, color: colors.muted },
+  title: { ...type.row, color: colors.ink },
+  subtitle: { ...type.hint, color: colors.inkMuted },
   detail: {
     flexShrink: 1,
-    maxWidth: "55%",
-    fontSize: 17,
-    color: colors.muted,
+    maxWidth: "50%",
+    fontSize: 15,
+    color: colors.inkMuted,
     fontVariant: ["tabular-nums"],
   },
-  check: { width: 22, alignItems: "center" },
-  disabled: { opacity: 0.4 },
-  inputLabel: { ...type.row, color: colors.foreground, width: 92 },
+  checkCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: colors.inkFaint,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkCircleOn: {
+    borderColor: colors.contrast,
+    backgroundColor: colors.contrast,
+  },
+  disabled: { opacity: 0.45 },
+  inputLabel: { ...type.row, color: colors.ink, width: 88 },
   input: {
     ...type.row,
     flex: 1,
-    color: colors.foreground,
+    color: colors.ink,
     textAlign: "right",
     paddingVertical: 4,
   },
-  block: { gap: 4, paddingHorizontal: space.row, paddingVertical: 12 },
+  block: { gap: 6, paddingHorizontal: space.row, paddingVertical: 12 },
   blockHead: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  blockLabel: { ...type.hint, color: colors.muted },
+  blockLabel: { ...type.hint, fontWeight: "600", color: colors.inkMuted },
   blockInput: {
     ...type.body,
-    color: colors.foreground,
-    minHeight: 24,
+    color: colors.ink,
+    minHeight: 28,
     paddingVertical: 2,
+  },
+  blockHint: {
+    ...type.hint,
+    fontSize: 12,
+    color: colors.inkFaint,
   },
 });
