@@ -42,7 +42,7 @@ export default function SetPage() {
       description={content.data ? `${content.data.words.length} 個單字 · ${content.data.questions.length} 題` : undefined}
       documentTitle={name}
       title={content.data ? (
-        <span className="flex items-center gap-3"><SetIcon className="size-9 [&_svg]:size-5" hue={content.data.set.hue} icon={content.data.set.icon} />{name}</span>
+        <span className="flex items-center gap-3"><SetIcon className="size-9 [&_svg]:size-5" icon={content.data.set.icon} />{name}</span>
       ) : name}
     >
       <Loaded query={content}>{(data) => <SetBody content={data} />}</Loaded>

@@ -85,7 +85,7 @@ export default function SetupPage() {
         <ListGroup title="單字集">
           {sets.filter((set) => fromSets.includes(set.id)).map((set) => (
             <li className="flex min-h-14 items-center gap-3.5 px-4 py-2.5" key={set.id}>
-              <SetIcon className="size-9 [&_svg]:size-5" hue={set.hue} icon={set.icon} />
+              <SetIcon className="size-9 [&_svg]:size-5" icon={set.icon} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate">{set.name}</span>
                 <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>
@@ -99,7 +99,7 @@ export default function SetupPage() {
           return (
             <li key={set.id}>
               <button aria-pressed={on} className="flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" onClick={() => toggleSet(set.id)} type="button">
-                <SetIcon className="size-9 [&_svg]:size-5" hue={set.hue} icon={set.icon} />
+                <SetIcon className="size-9 [&_svg]:size-5" icon={set.icon} />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate">{set.name}</span>
                   <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>

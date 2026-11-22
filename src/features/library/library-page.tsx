@@ -95,7 +95,7 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
             <li key={set.id}>
               <Panel asChild interactive>
                 <AppLink className="flex items-center gap-3.5" href={`/app/sets/${set.id}`}>
-                  <SetIcon hue={set.hue} icon={set.icon} />
+                  <SetIcon icon={set.icon} />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-base font-semibold">{set.name}</span>
                     <span className="block text-[0.8125rem] text-ink-muted">

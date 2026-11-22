@@ -47,7 +47,7 @@ export default function SharedPage() {
       ) : !content ? (
         <Page title="載入中…" />
       ) : (
-        <Page description={`${content.words.length} 個單字 · ${content.questions.length} 題`} documentTitle={content.set.name} title={<span className="flex items-center gap-3"><SetIcon hue={content.set.hue} icon={content.set.icon} />{content.set.name}</span>}>
+        <Page description={`${content.words.length} 個單字 · ${content.questions.length} 題`} documentTitle={content.set.name} title={<span className="flex items-center gap-3"><SetIcon icon={content.set.icon} />{content.set.name}</span>}>
           <Panel className="grid gap-3">
             <p className="text-[0.9375rem] text-ink-muted">有人分享了這個單字集給你。加入後會複製一份到你的帳號，之後可以自由修改和練習。</p>
             {!ready ? null : account ? (

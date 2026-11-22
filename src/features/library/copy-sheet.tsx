@@ -46,7 +46,7 @@ export function CopySheet({ fromSetId, ids, open, onOpenChange, onDone }: {
               <ListRow
                 detail={`${set.wordCount} 個單字`}
                 disabled={busy}
-                icon={<SetIcon className="size-8 [&_svg]:size-4" hue={set.hue} icon={set.icon} />}
+                icon={<SetIcon className="size-8 [&_svg]:size-4" icon={set.icon} />}
                 key={set.id}
                 label={set.name}
                 onClick={async () => {

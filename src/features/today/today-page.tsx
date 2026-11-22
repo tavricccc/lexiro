@@ -53,21 +53,22 @@ export default function TodayPage() {
         </Panel>
       ) : null}
       <section className="grid gap-3">
-        <SectionTitle action={<Button asChild size="sm"><AppLink href="/app/library">全部單字集</AppLink></Button>}>從單字集開始</SectionTitle>
+        <SectionTitle action={<Button asChild size="sm"><AppLink href="/app/practice">自選練習</AppLink></Button>}>從單字集開始</SectionTitle>
         {library.data && !recent.length ? (
           <EmptyState action={<Button asChild variant="primary"><AppLink href="/app/sets/new">建立第一個單字集</AppLink></Button>} description="加入單字後就能開始練習。" title="還沒有單字" />
         ) : (
           <div className="grid gap-2 sm:grid-cols-2">
             {recent.map((set) => (
-              <Panel className="flex items-center gap-3" key={set.id}>
-                <SetIcon hue={set.hue} icon={set.icon} />
-                <AppLink className="min-w-0 flex-1" href={`/app/sets/${set.id}`}><span className="block truncate font-semibold">{set.name}</span><span className="text-sm text-ink-muted">{set.wordCount} 個單字</span></AppLink>
-                <Button aria-label={`練習 ${set.name}`} asChild size="icon-sm" variant="primary"><AppLink href={`/app/practice?set=${set.id}`}><Play weight="fill" /></AppLink></Button>
+              <Panel asChild className="flex items-center gap-3" interactive key={set.id}>
+                <AppLink href={`/app/practice?set=${set.id}`}>
+                  <SetIcon icon={set.icon} />
+                  <span className="min-w-0 flex-1"><span className="block truncate font-semibold">{set.name}</span><span className="text-sm text-ink-muted">{set.wordCount} 個單字</span></span>
+                  <Play aria-hidden className="size-5 text-accent-ink" weight="fill" />
+                </AppLink>
               </Panel>
             ))}
           </div>
         )}
-        <Button asChild size="lg" variant="primary"><AppLink href="/app/practice"><Play weight="fill" />開始練習</AppLink></Button>
       </section>
     </Page>
   );
