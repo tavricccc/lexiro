@@ -29,7 +29,15 @@ export const queryClient = new QueryClient({
       gcTime: 7 * 86_400_000,
       networkMode: "offlineFirst",
       retry: (count, error) =>
-        !(error instanceof ApiError && error.status >= 400 && error.status < 500) && count < 2,
+        count < 2 &&
+        !(
+          error instanceof ApiError &&
+          error.status >= 400 &&
+          error.status < 500 &&
+          error.status !== 429
+        ),
+      retryDelay: (count, error) =>
+        error instanceof ApiError && error.status === 429 ? 20_000 : Math.min(1000 * 2 ** count, 8000),
     },
   },
 });
@@ -47,10 +55,34 @@ export const keys = {
 export const useLibrary = () =>
   useQuery({ queryKey: keys.library, queryFn: () => api<LibraryIndex>("/library") });
 
+const fetchSet = (id: string) => api<SetContent>(`/sets/${encodeURIComponent(id)}`);
+
+/**
+ * Background set loads (starred words, practice across sets) run a few at a
+ * time so they stay under the Worker's per-minute limit and never queue ahead
+ * of the set on screen, which `useSet` fetches directly.
+ */
+const BACKGROUND_LIMIT = 3;
+let backgroundRunning = 0;
+const backgroundWaiting: (() => void)[] = [];
+async function inBackground<T>(task: () => Promise<T>): Promise<T> {
+  if (backgroundRunning >= BACKGROUND_LIMIT) {
+    await new Promise<void>((resolve) => backgroundWaiting.push(resolve));
+  }
+  backgroundRunning++;
+  try {
+    return await task();
+  } finally {
+    backgroundRunning--;
+    backgroundWaiting.shift()?.();
+  }
+}
+const fetchSetInBackground = (id: string) => inBackground(() => fetchSet(id));
+
 export const useSet = (id: string) =>
   useQuery({
     queryKey: keys.set(id),
-    queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
+    queryFn: () => fetchSet(id),
     enabled: Boolean(id),
   });
 
@@ -72,7 +104,7 @@ export async function loadSets(ids: string[]): Promise<SetContent[]> {
     ids.map((id) =>
       queryClient.fetchQuery({
         queryKey: keys.set(id),
-        queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
+        queryFn: () => fetchSetInBackground(id),
         staleTime: 30_000,
       }),
     ),
@@ -95,9 +127,12 @@ export function useStarredWords() {
     [library.data?.sets],
   );
   const contents = useQueries({
+    // Cached content stays until `syncLibrary` sees the set change, so opening
+    // a tab does not refetch every set.
     queries: sets.map((set) => ({
       queryKey: keys.set(set.id),
-      queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(set.id)}`),
+      queryFn: () => fetchSetInBackground(set.id),
+      staleTime: Infinity,
     })),
   });
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
@@ -122,6 +157,41 @@ export function useStarredWords() {
 }
 
 /**
+ * Brings the cache up to date with the Worker without refetching every set:
+ * the library index, learning and prefs are refetched, and only the sets whose
+ * `updatedAt` moved (or that disappeared) are refetched. The rest are marked
+ * stale, so a set refetches the next time its screen opens.
+ */
+export async function syncLibrary() {
+  const before = queryClient.getQueryData<LibraryIndex>(keys.library);
+  await queryClient.refetchQueries({ queryKey: keys.library }).catch(() => {});
+  const after = queryClient.getQueryData<LibraryIndex>(keys.library);
+  const stamps = new Map(after?.sets.map((set) => [set.id, set.updatedAt]));
+  const changed = (id: string) => {
+    const cached = queryClient.getQueryData<SetContent>(keys.set(id));
+    return !cached || !stamps.has(id) || cached.set.updatedAt !== stamps.get(id);
+  };
+  const cachedSetIds = queryClient
+    .getQueryCache()
+    .findAll({ queryKey: ["set"] })
+    .map((query) => String(query.queryKey[1]));
+  await Promise.all([
+    queryClient.invalidateQueries({ queryKey: keys.learning }),
+    queryClient.invalidateQueries({ queryKey: keys.prefs }),
+    ...cachedSetIds.map((id) => {
+      if (after && !stamps.has(id)) {
+        queryClient.removeQueries({ queryKey: keys.set(id), type: "inactive" });
+      }
+      // Without a fresh index nothing can be compared, so mark only.
+      return queryClient.invalidateQueries({
+        queryKey: keys.set(id),
+        refetchType: after && after !== before && changed(id) ? "active" : "none",
+      });
+    }),
+  ]);
+}
+
+/**
  * Watches for library edits made by another device or an AI Agent. Polls
  * `/revision` every 30s while foregrounded and online, and checks immediately on
  * foreground resume or network reconnect.
@@ -135,9 +205,7 @@ export function useRevisionWatch(enabled: boolean) {
       const cached = queryClient.getQueryData<LibraryIndex>(keys.library);
       try {
         const { revision } = await api<{ revision: number }>("/revision");
-        if (cached && revision !== cached.revision) {
-          await queryClient.invalidateQueries();
-        }
+        if (cached && revision !== cached.revision) await syncLibrary();
       } catch {
         // Next poll or foreground resume will retry.
       }
@@ -182,7 +250,7 @@ export async function startPersistence(uid: string) {
           PERSISTED.has(String((query.queryKey as QueryKey)[0])),
       });
       void store(cacheKey(uid), snapshot).catch(() => {});
-    }, 1000);
+    }, 2500);
   });
 }
 

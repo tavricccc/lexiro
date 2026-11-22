@@ -3,12 +3,12 @@ import { RefreshControl, useColorScheme } from "react-native";
 
 import { errorMessage } from "@/data/api";
 import { flushAnswers } from "@/data/learning";
-import { queryClient } from "@/data/queries";
+import { queryClient, syncLibrary } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
 import { PINE_DARK, PINE_LIGHT } from "@/lib/theme";
 import { toast } from "@/platform/toast";
 
-/** Native pull-to-refresh that flushes queued learning answers and refetches all active queries. */
+/** Native pull-to-refresh that flushes queued learning answers and refetches what changed. */
 export function SyncRefreshControl({ onRefreshed }: { onRefreshed?: () => void }) {
   const [refreshing, setRefreshing] = useState(false);
   const dark = useColorScheme() === "dark";
@@ -18,7 +18,13 @@ export function SyncRefreshControl({ onRefreshed }: { onRefreshed?: () => void }
     haptics.tap();
     try {
       await flushAnswers();
-      await queryClient.invalidateQueries();
+      await Promise.all([
+        syncLibrary(),
+        queryClient.invalidateQueries({
+          predicate: (query) =>
+            !["library", "set", "learning", "prefs"].includes(String(query.queryKey[0])),
+        }),
+      ]);
       haptics.success();
       onRefreshed?.();
     } catch (reason) {

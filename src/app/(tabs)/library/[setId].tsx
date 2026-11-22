@@ -1,7 +1,15 @@
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { useMemo, useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
@@ -25,6 +33,9 @@ import { toast } from "@/platform/toast";
 
 type Tab = "words" | "questions";
 const STARRED_FIRST_KEY = "lexiro:starredFirst";
+/** Rows mounted at first, and added each time the list nears its end. */
+const FIRST_ROWS = 40;
+const MORE_ROWS = 80;
 
 export default function SetDetailScreen() {
   const { setId = "" } = useLocalSearchParams<{ setId: string }>();
@@ -32,9 +43,23 @@ export default function SetDetailScreen() {
   const [tab, setTab] = useState<Tab>("words");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Set<string> | null>(null);
+  const [rows, setRows] = useState(FIRST_ROWS);
   const insets = useSafeAreaInsets();
   const online = useOnline();
   const name = content.data?.set.name ?? "單字集";
+  const total = content.data?.words.length ?? 0;
+
+  const search = (text: string) => {
+    setQuery(text);
+    setRows(FIRST_ROWS);
+  };
+
+  const onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentOffset, layoutMeasurement, contentSize } = nativeEvent;
+    const nearEnd =
+      contentOffset.y + layoutMeasurement.height > contentSize.height - layoutMeasurement.height;
+    if (nearEnd && rows < total) setRows((count) => count + MORE_ROWS);
+  };
 
   const deleteSelected = () => {
     const ids = [...(selected ?? [])];
@@ -74,8 +99,8 @@ export default function SetDetailScreen() {
             tab === "words" && (content.data?.words.length ?? 0) > 0
               ? {
                   placeholder: "搜尋英文或中文",
-                  onChangeText: (event) => setQuery(event.nativeEvent.text),
-                  onCancelButtonPress: () => setQuery(""),
+                  onChangeText: (event) => search(event.nativeEvent.text),
+                  onCancelButtonPress: () => search(""),
                 }
               : undefined,
           headerRight: () =>
@@ -126,8 +151,10 @@ export default function SetDetailScreen() {
       />
 
       <Screen
-        refreshControl={<SyncRefreshControl />}
+        refreshControl={<SyncRefreshControl onRefreshed={() => void content.refetch()} />}
         contentContainerStyle={{ paddingBottom: 112 }}
+        onScroll={tab === "words" ? onScroll : undefined}
+        scrollEventThrottle={100}
       >
         <Loaded query={content}>
           {(data) => (
@@ -137,8 +164,10 @@ export default function SetDetailScreen() {
               onTab={(next) => {
                 setTab(next);
                 setSelected(null);
+                setRows(FIRST_ROWS);
               }}
               query={query}
+              rows={rows}
               selected={selected}
               onSelected={setSelected}
             />
@@ -204,6 +233,7 @@ function SetBody({
   tab,
   onTab,
   query,
+  rows,
   selected,
   onSelected,
 }: {
@@ -211,6 +241,7 @@ function SetBody({
   tab: Tab;
   onTab: (tab: Tab) => void;
   query: string;
+  rows: number;
   selected: Set<string> | null;
   onSelected: (next: Set<string> | null) => void;
 }) {
@@ -247,6 +278,7 @@ function SetBody({
         <WordList
           content={content}
           query={query}
+          rows={rows}
           selected={selected}
           onSelected={onSelected}
         />
@@ -260,11 +292,13 @@ function SetBody({
 function WordList({
   content,
   query,
+  rows,
   selected,
   onSelected,
 }: {
   content: SetContent;
   query: string;
+  rows: number;
   selected: Set<string> | null;
   onSelected: (next: Set<string> | null) => void;
 }) {
@@ -292,10 +326,16 @@ function WordList({
     );
   }, [content.words, query]);
 
-  const starredCount = content.words.filter((word) => word.starred).length;
+  const starredCount = useMemo(
+    () => content.words.filter((word) => word.starred).length,
+    [content.words],
+  );
   const lifted = starredFirst && starredCount > 0 && !selected;
-  const top = lifted ? words.filter((word) => word.starred) : [];
-  const rest = lifted ? words.filter((word) => !word.starred) : words;
+  const allTop = lifted ? words.filter((word) => word.starred) : [];
+  const allRest = lifted ? words.filter((word) => !word.starred) : words;
+  // Only the first `rows` rows mount; the screen raises `rows` as it scrolls.
+  const top = allTop.slice(0, rows);
+  const rest = allRest.slice(0, Math.max(0, rows - top.length));
 
   const toggleSelect = (id: string) => {
     const next = new Set(selected);
@@ -411,12 +451,12 @@ function WordList({
       ) : (
         <>
           {top.length > 0 ? (
-            <ListGroup title={`標星 · ${top.length}`}>
+            <ListGroup title={`標星 · ${allTop.length}`}>
               {top.map(renderWord)}
             </ListGroup>
           ) : null}
           {rest.length > 0 ? (
-            <ListGroup title={top.length > 0 ? `其他 · ${rest.length}` : undefined}>
+            <ListGroup title={allTop.length > 0 ? `其他 · ${allRest.length}` : undefined}>
               {rest.map(renderWord)}
             </ListGroup>
           ) : null}
