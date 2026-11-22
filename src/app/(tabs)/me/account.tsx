@@ -7,7 +7,7 @@ import { api, errorMessage } from "@/data/api";
 import { deleteAccount, SignInCancelled, signOut, useAuth } from "@/data/auth";
 import { flushAnswers, usePendingAnswers } from "@/data/learning";
 import { useOnline } from "@/data/network";
-import { queryClient } from "@/data/queries";
+import { refreshAll } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
 import { colors, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
@@ -24,7 +24,7 @@ export default function AccountScreen() {
     setSyncing(true);
     try {
       await flushAnswers();
-      await queryClient.invalidateQueries();
+      await refreshAll();
       haptics.success();
       toast.success("已同步最新資料");
     } catch (reason) {

@@ -40,6 +40,15 @@ export function errorMessage(reason: unknown): string {
   return "發生錯誤，請再試一次。";
 }
 
+/**
+ * Told about every write the Worker answers with the revisions it moved the
+ * account from and to; answers whether the move was this device's alone.
+ */
+let revisionListener: ((before: number, after: number) => boolean) | null = null;
+export function setRevisionListener(listener: (before: number, after: number) => boolean) {
+  revisionListener = listener;
+}
+
 export const workerUrl = AGENT_WORKER_URL.replace(/\/$/, "");
 
 /**
@@ -48,9 +57,14 @@ export const workerUrl = AGENT_WORKER_URL.replace(/\/$/, "");
  */
 export async function api<T>(
   path: string,
-  init: RequestInit & { auth?: boolean; json?: unknown } = {},
+  init: RequestInit & {
+    auth?: boolean;
+    json?: unknown;
+    /** Whether this write was the only one since the revision the cache knows. */
+    onRevision?: (own: boolean) => void;
+  } = {},
 ): Promise<T> {
-  const { auth = true, json, ...rest } = init;
+  const { auth = true, json, onRevision, ...rest } = init;
   for (let attempt = 0; attempt < 2; attempt++) {
     const headers = new Headers(rest.headers);
     if (json !== undefined) headers.set("Content-Type", "application/json");
@@ -86,6 +100,11 @@ export async function api<T>(
         code,
         MESSAGES[code] ?? body?.error?.message ?? "伺服器暫時無法使用，請稍後再試。",
       );
+    }
+    const before = Number(response.headers.get("Lexiro-Revision-Before"));
+    const after = Number(response.headers.get("Lexiro-Revision"));
+    if (response.headers.has("Lexiro-Revision") && Number.isFinite(before) && after > 0) {
+      onRevision?.(revisionListener?.(before, after) ?? false);
     }
     return body as T;
   }

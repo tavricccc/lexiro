@@ -1,6 +1,6 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 import { SymbolView, type SymbolViewProps } from "expo-symbols";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -196,6 +196,14 @@ export function Loaded<T>({
   query: UseQueryResult<T, unknown>;
   children: (data: T) => ReactNode;
 }) {
+  // A query left waiting with no fetch running (one whose read was cancelled
+  // underneath it) would spin forever; it starts again instead.
+  const stuck = query.isEnabled && query.isPending && query.fetchStatus === "idle";
+  const { refetch } = query;
+  useEffect(() => {
+    if (stuck) void refetch();
+  }, [stuck, refetch]);
+
   if (query.data !== undefined) return <>{children(query.data)}</>;
   if (query.isPending) {
     return (

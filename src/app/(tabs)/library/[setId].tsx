@@ -151,7 +151,7 @@ export default function SetDetailScreen() {
       />
 
       <Screen
-        refreshControl={<SyncRefreshControl onRefreshed={() => void content.refetch()} />}
+        refreshControl={<SyncRefreshControl />}
         contentContainerStyle={{ paddingBottom: 112 }}
         onScroll={tab === "words" ? onScroll : undefined}
         scrollEventThrottle={100}

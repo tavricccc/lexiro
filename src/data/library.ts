@@ -1,131 +1,220 @@
-import type {
-  Folder,
+import {
+  compareWords,
+  type Folder,
   FolderInput,
-  QuestionInput,
-  QuestionReport,
-  SetContent,
-  SetInput,
-  SetSummary,
-  Word,
-  WordInput,
+  type QuestionInput,
+  type QuestionReport,
+  type SetContent,
+  type SetInput,
+  type SetSummary,
+  type Word,
+  type WordInput,
 } from "@/core/contract";
 import { api } from "./api";
-import { invalidate, keys, queryClient } from "./queries";
+import { afterWrite, keys, queryClient } from "./queries";
 
-const path = (setId: string, rest = "") => `/sets/${encodeURIComponent(setId)}${rest}`;
+const path = (setId: string, rest = "") =>
+  `/sets/${encodeURIComponent(setId)}${rest}`;
 
-export async function createSet(input: SetInput): Promise<SetSummary> {
-  const set = await api<SetSummary>("/sets", { method: "POST", json: input });
-  await invalidate();
-  return set;
+/**
+ * Sends a write. `patch` applies the Worker's answer to the cached sets named
+ * in `setIds`; afterwards the library index syncs, and those sets take their
+ * new summary without being downloaded again when this device's write was the
+ * only one. A set that is not patched is refetched by the sync instead.
+ */
+async function write<T>(
+  url: string,
+  init: Parameters<typeof api>[1],
+  setIds: string[] = [],
+  patch?: (result: T) => void,
+): Promise<T> {
+  let own = false;
+  const result = await api<T>(url, {
+    ...init,
+    onRevision: (value) => (own = value),
+  });
+  if (patch) {
+    patch(result);
+    afterWrite(setIds, own);
+  } else {
+    // Nothing was patched, so the caller waits for the synced index and sets.
+    await afterWrite([], own, true);
+  }
+  return result;
 }
 
-export async function updateSet(set: SetSummary, change: Partial<SetInput>): Promise<SetSummary> {
+const patchSet = (setId: string, change: (content: SetContent) => SetContent) =>
+  queryClient.setQueryData<SetContent>(
+    keys.set(setId),
+    (content) => content && change(content),
+  );
+
+export const createSet = (input: SetInput) =>
+  write<SetSummary>("/sets", { method: "POST", json: input });
+
+export function updateSet(
+  set: SetSummary,
+  change: Partial<SetInput>,
+): Promise<SetSummary> {
   const { name, folderId, hue, icon, order } = { ...set, ...change };
-  const saved = await api<SetSummary>(path(set.id), {
-    method: "PUT",
-    json: { name, folderId, hue, icon, order },
-  });
-  await invalidate(set.id);
-  return saved;
+  return write<SetSummary>(
+    path(set.id),
+    { method: "PUT", json: { name, folderId, hue, icon, order } },
+    [set.id],
+    (saved) =>
+      patchSet(set.id, (content) => ({
+        ...content,
+        set: { ...content.set, ...saved },
+      })),
+  );
 }
 
 export async function deleteSet(setId: string) {
-  await api(path(setId), { method: "DELETE" });
+  await write(path(setId), { method: "DELETE" });
   queryClient.removeQueries({ queryKey: keys.set(setId) });
-  await invalidate();
 }
 
 export async function orderSets(ids: string[]) {
-  await api("/sets/order", { method: "POST", json: { ids } });
-  await invalidate();
+  await write("/sets/order", { method: "POST", json: { ids } });
 }
 
-export async function createFolder(input: FolderInput): Promise<Folder> {
-  const folder = await api<Folder>("/folders", { method: "POST", json: input });
-  await invalidate();
-  return folder;
-}
+export const createFolder = (input: FolderInput) =>
+  write<Folder>("/folders", { method: "POST", json: input });
 
-export async function updateFolder(folder: Folder, change: Partial<FolderInput>) {
+export async function updateFolder(
+  folder: Folder,
+  change: Partial<FolderInput>,
+) {
   const { name, parentId, order } = { ...folder, ...change };
-  await api(`/folders/${encodeURIComponent(folder.id)}`, {
+  await write(`/folders/${encodeURIComponent(folder.id)}`, {
     method: "PUT",
     json: { name, parentId, order },
   });
-  await invalidate();
 }
 
 export async function deleteFolder(folderId: string) {
-  await api(`/folders/${encodeURIComponent(folderId)}`, { method: "DELETE" });
-  await invalidate();
+  await write(`/folders/${encodeURIComponent(folderId)}`, { method: "DELETE" });
 }
 
-export async function putWords(
-  setId: string,
-  words: WordInput[],
-): Promise<{ words: Word[]; removedQuestionIds: string[] }> {
-  const result = await api<{ words: Word[]; removedQuestionIds: string[] }>(
+const withoutQuestions = (content: SetContent, ids: string[]) =>
+  ids.length
+    ? {
+        ...content,
+        questions: content.questions.filter(
+          (question) => !ids.includes(question.id),
+        ),
+      }
+    : content;
+
+export const putWords = (setId: string, words: WordInput[]) =>
+  write<{ words: Word[]; removedQuestionIds: string[] }>(
     path(setId, "/words"),
     { method: "POST", json: { words } },
+    [setId],
+    (result) =>
+      patchSet(setId, (content) => {
+        const saved = new Map(result.words.map((word) => [word.id, word]));
+        const kept = content.words.filter((word) => !saved.has(word.id));
+        const words = [...kept, ...result.words].sort((a, b) =>
+          compareWords(a.word, b.word),
+        );
+        return withoutQuestions(
+          { ...content, words },
+          result.removedQuestionIds,
+        );
+      }),
   );
-  await invalidate(setId);
-  return result;
-}
 
-export async function deleteWords(setId: string, ids: string[]) {
-  const result = await api<{ removedQuestionIds: string[] }>(path(setId, "/words/delete"), {
-    method: "POST",
-    json: { ids },
-  });
-  await invalidate(setId);
-  return result;
-}
+export const deleteWords = (setId: string, ids: string[]) =>
+  write<{ removedQuestionIds: string[] }>(
+    path(setId, "/words/delete"),
+    { method: "POST", json: { ids } },
+    [setId],
+    (result) =>
+      patchSet(setId, (content) =>
+        withoutQuestions(
+          {
+            ...content,
+            words: content.words.filter((word) => !ids.includes(word.id)),
+          },
+          result.removedQuestionIds,
+        ),
+      ),
+  );
 
+/** The target set is refetched by the sync that follows. */
 export async function copyWords(setId: string, ids: string[], to: string) {
-  await api(path(setId, "/words/copy"), { method: "POST", json: { ids, to } });
-  await invalidate(to);
+  await write(
+    path(setId, "/words/copy"),
+    { method: "POST", json: { ids, to } },
+    [to],
+  );
 }
 
 /** Stars or unstars optimistically on screen; rolls back if the Worker refuses. */
-export async function starWords(setId: string, ids: string[], starred: boolean) {
+export async function starWords(
+  setId: string,
+  ids: string[],
+  starred: boolean,
+) {
   const key = keys.set(setId);
   const previous = queryClient.getQueryData<SetContent>(key);
-  queryClient.setQueryData<SetContent>(
-    key,
-    (content) =>
-      content && {
-        ...content,
-        words: content.words.map((word) => (ids.includes(word.id) ? { ...word, starred } : word)),
-      },
+  const previousStarred = queryClient.getQueryData<{ words: Word[] }>(
+    keys.starred,
   );
+  patchSet(setId, (content) => ({
+    ...content,
+    words: content.words.map((word) =>
+      ids.includes(word.id) ? { ...word, starred } : word,
+    ),
+  }));
+  if (previousStarred) {
+    const others = previousStarred.words.filter(
+      (word) => !ids.includes(word.id),
+    );
+    const added = starred
+      ? (previous?.words ?? [])
+          .filter((word) => ids.includes(word.id))
+          .map((word) => ({ ...word, starred }))
+      : [];
+    queryClient.setQueryData(keys.starred, { words: [...others, ...added] });
+  }
   try {
-    await api(path(setId, "/words/star"), { method: "POST", json: { ids, starred } });
+    await write(
+      path(setId, "/words/star"),
+      { method: "POST", json: { ids, starred } },
+      [setId],
+      () => {},
+    );
   } catch (reason) {
     queryClient.setQueryData(key, previous);
+    if (previousStarred)
+      queryClient.setQueryData(keys.starred, previousStarred);
     throw reason;
   }
 }
 
-export async function putQuestions(
-  setId: string,
-  questions: QuestionInput[],
-): Promise<QuestionReport> {
-  const report = await api<QuestionReport>(path(setId, "/questions"), {
-    method: "POST",
-    json: { questions, mode: "atomic" },
-  });
-  await invalidate(setId);
-  return report;
-}
+/** The Worker reports only ids, so the set is refetched by the sync that follows. */
+export const putQuestions = (setId: string, questions: QuestionInput[]) =>
+  write<QuestionReport>(
+    path(setId, "/questions"),
+    { method: "POST", json: { questions, mode: "atomic" } },
+    [setId],
+  );
 
 export async function deleteQuestions(setId: string, ids: string[]) {
-  await api(path(setId, "/questions/delete"), { method: "POST", json: { ids } });
-  await invalidate(setId);
+  await write(
+    path(setId, "/questions/delete"),
+    { method: "POST", json: { ids } },
+    [setId],
+    () => patchSet(setId, (content) => withoutQuestions(content, ids)),
+  );
 }
 
 export async function shareSet(setId: string): Promise<string> {
-  const { id } = await api<{ id: string }>(path(setId, "/share"), { method: "POST" });
+  const { id } = await api<{ id: string }>(path(setId, "/share"), {
+    method: "POST",
+  });
   return id;
 }
 

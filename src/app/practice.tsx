@@ -11,13 +11,12 @@ import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
 import { SetIcon } from "@/components/ui/set-icon";
-import type { PracticeTask, SetContent } from "@/core/contract";
+import type { PracticeTask } from "@/core/contract";
 import { TASK_HINTS, TASK_LABELS } from "@/core/domain/labels";
 import { availableTasks, buildRound, type Focus } from "@/core/domain/practice";
 import { newRound } from "@/core/domain/round";
-import { api } from "@/data/api";
 import { useLearning } from "@/data/learning";
-import { keys, orderedSets, useLibrary, usePrefs } from "@/data/queries";
+import { orderedSets, setQuery, useLibrary, usePrefs } from "@/data/queries";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { haptics } from "@/lib/haptics";
 import { colors, radius, space, type } from "@/lib/theme";
@@ -61,10 +60,7 @@ export default function PracticeSetupScreen() {
   );
 
   const contents = useQueries({
-    queries: ids.map((id) => ({
-      queryKey: keys.set(id),
-      queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
-    })),
+    queries: ids.map((id) => setQuery(id, true)),
   });
 
   const loaded = contents.length > 0 && contents.every((query) => query.data);

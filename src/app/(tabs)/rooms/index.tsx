@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { KeyboardScreen, Panel } from "@/components/ui/layout";
 import { InputRow, ListGroup, ListRow, PickerRow } from "@/components/ui/list";
 import { Segmented } from "@/components/ui/segmented";
-import type { PracticeTask, SetContent } from "@/core/contract";
+import type { PracticeTask } from "@/core/contract";
 import { TASK_LABELS } from "@/core/domain/labels";
 import { availableTasks, buildRound } from "@/core/domain/practice";
 import { ROOM_CODE, roomQuestions } from "@/core/domain/room";
@@ -16,7 +16,7 @@ import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
 import { useLearning } from "@/data/learning";
 import { useOnline } from "@/data/network";
-import { keys, orderedSets, useLibrary } from "@/data/queries";
+import { keys, orderedSets, useLibrary, useSet } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
 import { colors, latin, radius, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
@@ -114,11 +114,7 @@ function HostForm({ defaultName, online }: { defaultName: string; online: boolea
   const [setId, setSetId] = useState("");
   const chosen = setId || sets[0]?.id || "";
 
-  const content = useQuery({
-    queryKey: keys.set(chosen),
-    queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(chosen)}`),
-    enabled: Boolean(chosen),
-  });
+  const content = useSet(chosen);
 
   const tasks = useMemo(
     () => (content.data ? availableTasks([content.data]).filter((task) => task !== "custom") : []),

@@ -3,7 +3,7 @@ import { RefreshControl, useColorScheme } from "react-native";
 
 import { errorMessage } from "@/data/api";
 import { flushAnswers } from "@/data/learning";
-import { queryClient, syncLibrary } from "@/data/queries";
+import { refreshAll } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
 import { PINE_DARK, PINE_LIGHT } from "@/lib/theme";
 import { toast } from "@/platform/toast";
@@ -18,13 +18,7 @@ export function SyncRefreshControl({ onRefreshed }: { onRefreshed?: () => void }
     haptics.tap();
     try {
       await flushAnswers();
-      await Promise.all([
-        syncLibrary(),
-        queryClient.invalidateQueries({
-          predicate: (query) =>
-            !["library", "set", "learning", "prefs"].includes(String(query.queryKey[0])),
-        }),
-      ]);
+      await refreshAll();
       haptics.success();
       onRefreshed?.();
     } catch (reason) {

@@ -50,11 +50,8 @@ export default function SharedSetScreen() {
         },
       });
       await invalidate();
-      const after = await queryClient.fetchQuery({
-        queryKey: keys.library,
-        queryFn: () => api<LibraryIndex>("/library"),
-      });
-      const created = after.sets.find((set) => !before.has(set.id));
+      const after = queryClient.getQueryData<LibraryIndex>(keys.library);
+      const created = after?.sets.find((set) => !before.has(set.id));
       haptics.success();
       toast.success(`已加入「${shared.data.set.name}」`);
       if (created) {

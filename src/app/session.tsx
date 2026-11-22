@@ -45,7 +45,6 @@ import {
   descriptionPoints,
   normalizeWord,
   type PracticeTask,
-  type SetContent,
 } from "@/core/contract";
 import {
   isCustomStep,
@@ -74,10 +73,10 @@ import {
   usedBankOptions,
   type Round,
 } from "@/core/domain/round";
-import { api, errorMessage } from "@/data/api";
+import { errorMessage } from "@/data/api";
 import { recordAnswer } from "@/data/learning";
 import { starWords } from "@/data/library";
-import { keys } from "@/data/queries";
+import { setQuery } from "@/data/queries";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { haptics } from "@/lib/haptics";
 import { colors, hasLatin, latin, radius, space, type } from "@/lib/theme";
@@ -95,10 +94,7 @@ const kindLabel = (item: PracticeItem) =>
 
 function useSetWords(setIds: string[]) {
   const contents = useQueries({
-    queries: setIds.map((id) => ({
-      queryKey: keys.set(id),
-      queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
-    })),
+    queries: setIds.map((id) => setQuery(id, true)),
   });
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
   return useMemo(

@@ -12,6 +12,12 @@ export async function get<T = unknown>(key: string): Promise<T | undefined> {
   return raw === null ? undefined : (JSON.parse(raw) as T);
 }
 
+export async function getMany<T = unknown>(names: string[]): Promise<(T | undefined)[]> {
+  if (!names.length) return [];
+  const pairs = await AsyncStorage.multiGet(names.map((key) => PREFIX + key));
+  return pairs.map(([, raw]) => (raw === null ? undefined : (JSON.parse(raw) as T)));
+}
+
 export async function set(key: string, value: unknown): Promise<void> {
   await AsyncStorage.setItem(PREFIX + key, JSON.stringify(value));
 }
