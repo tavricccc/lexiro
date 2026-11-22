@@ -143,7 +143,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
       </header>
       <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
         <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overscroll-contain pb-2 pt-3">
-          <section className={cn("flex flex-col gap-3 rounded-[2rem] bg-surface p-5", !round.revealed && "min-h-44 flex-auto")}>
+          <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">
             <div className="flex items-center justify-between gap-2">
               <p className="text-sm text-ink-muted">
                 {kindLabel(item)}
@@ -179,12 +179,11 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
 
 function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step; round: Round; chosen: number | null | undefined }) {
   if (item.kind === "meaning" || item.kind === "reverse") {
-    const compact = round.revealed;
     return (
-      <div className={cn("mt-auto grid gap-3", compact && "gap-2")}>
+      <div className="mt-auto grid gap-3">
         {item.kind === "meaning"
-          ? <h1 className={cn("break-words font-latin font-semibold tracking-[-0.03em]", compact ? "text-3xl" : "text-5xl md:text-6xl")} lang="en">{item.word}</h1>
-          : <h1 className={cn("font-bold", compact ? "text-2xl" : "text-4xl md:text-5xl")}>{item.sense.meaning}</h1>}
+          ? <h1 className="break-words font-latin text-5xl font-semibold tracking-[-0.03em] md:text-6xl" lang="en">{item.word}</h1>
+          : <h1 className="text-4xl font-bold md:text-5xl">{item.sense.meaning}</h1>}
         <div className="flex items-center gap-2 text-sm text-ink-muted">
           <span className="font-latin">{item.sense.pos}</span>
           <span className="ml-auto flex gap-1">
