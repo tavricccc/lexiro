@@ -11,6 +11,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-contrast text-on-contrast hover:bg-contrast/90",
+        /** Ink on canvas: the one decisive step of a focused flow, like moving on in a round. */
+        solid: "bg-ink text-canvas hover:bg-ink/88",
         secondary: "glass-control border text-ink hover:bg-surface-pressed",
         ghost: "text-ink-muted hover:bg-surface-raised hover:text-ink",
         danger: "bg-danger/15 text-danger hover:bg-danger/25",

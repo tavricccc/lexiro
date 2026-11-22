@@ -47,3 +47,11 @@ test("an order is answered by tapping its pieces in sequence", async () => {
   fireEvent.click(screen.getByRole("button", { name: /確認/ }));
   expect(await screen.findByText("答對了")).toBeInTheDocument();
 });
+
+test("a right answer still shows why each other option is wrong", async () => {
+  await run({ kind: "custom", questionId: "q", label: "選擇", steps: [{ mode: "single", prompt: "pick", senseId: "s", wordId: "w", options: ["right", "near", "far"], answer: 0, whyWrong: { near: "too close", far: "too far" } }] });
+  fireEvent.click(screen.getByRole("button", { name: /right/ }));
+  expect(await screen.findByText("答對了")).toBeInTheDocument();
+  expect(screen.getByText("：too close")).toBeInTheDocument();
+  expect(screen.getByText("：too far")).toBeInTheDocument();
+});

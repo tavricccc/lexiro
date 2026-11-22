@@ -31,6 +31,11 @@ describe("practice rounds", () => {
     for (const item of round({ tasks: ["reverse"] })) first(item).glosses?.forEach((gloss, index) => expect(five.words.find((w) => w.word === first(item).options[index])?.senses.map((sense) => sense.meaning)).toContain(gloss));
   });
 
+  it("gives every option of a word task the part of speech of the word behind it", () => {
+    const posOf = new Map(five.words.flatMap((w) => w.senses.map((sense) => [sense.meaning, sense.pos] as const)));
+    for (const item of round()) first(item).options.forEach((option, index) => expect(first(item).poses?.[index]).toBe(posOf.get(option)));
+  });
+
   it("asks each sense once per word task", () => {
     expect(round().length).toBe(6);
   });

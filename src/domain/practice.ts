@@ -29,6 +29,8 @@ export interface Step {
   whyWrong?: Record<string, string>;
   /** Per option, shown once answered: the word a meaning belongs to, or a word's meaning. */
   glosses?: (string | undefined)[];
+  /** Per option, the part of speech of the word behind it, when known. */
+  poses?: (string | undefined)[];
 }
 
 /** One card of a round: a word task, a sentence question, or a passage with several steps. */
@@ -78,22 +80,23 @@ function poolOf(contents: SetContent[], focus: Focus, learning: Learning, random
 function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], random: () => number): Step | null {
   const { word, sense } = entry;
   const norm = normalizeWord(word.word);
-  let right: string, rightGloss: string, candidates: { text: string; gloss: string; samePos: boolean }[];
+  let right: string, rightGloss: string, candidates: { text: string; gloss: string; pos: string; samePos: boolean }[];
   if (kind === "meaning") {
     right = sense.meaning;
     rightGloss = word.word;
     const own = new Set(word.senses.map((s) => s.meaning));
-    candidates = all.filter((other) => normalizeWord(other.word.word) !== norm && !own.has(other.sense.meaning)).map((other) => ({ text: other.sense.meaning, gloss: other.word.word, samePos: other.sense.pos === sense.pos }));
+    candidates = all.filter((other) => normalizeWord(other.word.word) !== norm && !own.has(other.sense.meaning)).map((other) => ({ text: other.sense.meaning, gloss: other.word.word, pos: other.sense.pos, samePos: other.sense.pos === sense.pos }));
   } else {
     right = word.word;
     rightGloss = sense.meaning;
     // A word that also carries this meaning would be a second right answer.
     const sharing = new Set(all.filter((other) => other.sense.meaning === sense.meaning).map((other) => normalizeWord(other.word.word)));
-    candidates = all.filter((other) => !sharing.has(normalizeWord(other.word.word))).map((other) => ({ text: other.word.word, gloss: other.sense.meaning, samePos: other.sense.pos === sense.pos }));
+    candidates = all.filter((other) => !sharing.has(normalizeWord(other.word.word))).map((other) => ({ text: other.word.word, gloss: other.sense.meaning, pos: other.sense.pos, samePos: other.sense.pos === sense.pos }));
   }
   const seen = new Set([right.toLocaleLowerCase()]);
   const pick: string[] = [];
   const glossFor = new Map([[right, rightGloss]]);
+  const posFor = new Map([[right, sense.pos]]);
   for (const group of [candidates.filter((c) => c.samePos), candidates.filter((c) => !c.samePos)])
     for (const candidate of shuffle(group, random)) {
       if (pick.length === 3) break;
@@ -102,6 +105,7 @@ function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], rando
       seen.add(key);
       pick.push(candidate.text);
       glossFor.set(candidate.text, candidate.gloss);
+      posFor.set(candidate.text, candidate.pos);
     }
   if (pick.length < 1) return null;
   const options = shuffle([right, ...pick], random);
@@ -113,17 +117,21 @@ function wordStep(kind: "meaning" | "reverse", entry: Entry, all: Entry[], rando
     wordId: word.id,
     explanation: sense.description,
     glosses: options.map((option) => glossFor.get(option)),
+    poses: options.map((option) => posFor.get(option)),
   };
 }
 
-/** A word's meanings in the chosen sets, for glossing the options of a question. */
+/** A word's meanings and part of speech in the chosen sets, for glossing the options of a question. */
 const meaningsOf = (contents: SetContent[]) => {
-  const byWord = new Map<string, string>();
+  const byWord = new Map<string, { meaning: string; pos?: string }>();
   for (const content of contents) for (const word of content.words) {
     const key = normalizeWord(word.word);
-    if (!byWord.has(key)) byWord.set(key, word.senses.map((sense) => sense.meaning).join("；"));
+    if (!byWord.has(key)) byWord.set(key, { meaning: word.senses.map((sense) => sense.meaning).join("；"), pos: word.senses[0]?.pos });
   }
-  return (options: string[]) => options.map((option) => byWord.get(normalizeWord(option)));
+  return (options: string[]) => {
+    const found = options.map((option) => byWord.get(normalizeWord(option)));
+    return { glosses: found.map((entry) => entry?.meaning), poses: found.map((entry) => entry?.pos) };
+  };
 };
 
 const wordOf = (contents: SetContent[]) => {
@@ -132,7 +140,7 @@ const wordOf = (contents: SetContent[]) => {
   return bySense;
 };
 
-function questionItem(question: Question, wordIds: Map<string, string>, gloss: (options: string[]) => (string | undefined)[], random: () => number): PracticeItem | null {
+function questionItem(question: Question, wordIds: Map<string, string>, gloss: (options: string[]) => Pick<Step, "glosses" | "poses">, random: () => number): PracticeItem | null {
   if (question.kind === "custom") {
     const q = question as CustomQuestion;
     const steps = q.items.map((item) => {
@@ -146,13 +154,13 @@ function questionItem(question: Question, wordIds: Map<string, string>, gloss: (
     const q = question as VocabularyQuestion;
     const wordId = wordIds.get(q.senseId);
     if (!wordId) return null;
-    return { kind: "vocabulary", questionId: q.id, steps: [{ prompt: q.prompt, options: q.options, answer: q.answer, senseId: q.senseId, wordId, explanation: q.explanation, whyWrong: q.whyWrong, glosses: gloss(q.options) }] };
+    return { kind: "vocabulary", questionId: q.id, steps: [{ prompt: q.prompt, options: q.options, answer: q.answer, senseId: q.senseId, wordId, explanation: q.explanation, whyWrong: q.whyWrong, ...gloss(q.options) }] };
   }
   const q = question as PassageQuestion;
   const steps = q.items.map((item: PassageItem): Step | null => {
     const wordId = wordIds.get(item.senseId);
     const options = itemOptions(q, item);
-    return wordId ? { prompt: item.prompt ?? "", options, glosses: gloss(options), answer: item.answer, senseId: item.senseId, wordId, blank: item.blank, explanation: item.explanation, whyWrong: item.whyWrong } : null;
+    return wordId ? { prompt: item.prompt ?? "", options, ...gloss(options), answer: item.answer, senseId: item.senseId, wordId, blank: item.blank, explanation: item.explanation, whyWrong: item.whyWrong } : null;
   });
   if (steps.some((step) => !step)) return null;
   return { kind: q.kind, questionId: q.id, title: q.title, passage: q.passage, bank: q.bank, steps: steps as Step[] };
