@@ -272,6 +272,12 @@ function PracticeCard({
     (item.kind === "custom" && Boolean(item.passage));
   const useTwoCols = split && hasPassage;
 
+  // Fills the screen, and scrolls only when the question is longer than it.
+  const scrollContent = [
+    styles.scrollContent,
+    !round.revealed && { paddingBottom: Math.max(insets.bottom, 20) },
+  ];
+
   const promptCard = (
     <View style={styles.promptCard}>
       <Text style={styles.kindBadge}>
@@ -325,6 +331,21 @@ function PracticeCard({
           <View style={styles.progressWrap}>
             <ProgressBar value={progress} />
           </View>
+          {/* Keeps its place once answered, so the bar does not change length. */}
+          <View
+            style={round.revealed && styles.hidden}
+            pointerEvents={round.revealed ? "none" : "auto"}
+            accessibilityElementsHidden={round.revealed}
+            importantForAccessibility={round.revealed ? "no-hide-descendants" : "auto"}
+          >
+            <Button
+              label="看答案"
+              variant="secondary"
+              size="sm"
+              haptic="none"
+              onPress={() => pick(null)}
+            />
+          </View>
         </View>
 
         {/* Main Content */}
@@ -334,17 +355,19 @@ function PracticeCard({
           style={styles.stage}
         >
           {useTwoCols ? (
-            <View style={styles.splitRow}>
+            <View style={[styles.splitRow, round.revealed && styles.mainRevealed]}>
               <ScrollView
                 style={styles.splitLeft}
-                contentContainerStyle={styles.scrollContent}
+                contentContainerStyle={scrollContent}
+                alwaysBounceVertical={false}
                 showsVerticalScrollIndicator={false}
               >
                 {promptCard}
               </ScrollView>
               <ScrollView
                 style={styles.splitRight}
-                contentContainerStyle={styles.scrollContent}
+                contentContainerStyle={scrollContent}
+                alwaysBounceVertical={false}
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
               >
@@ -353,8 +376,9 @@ function PracticeCard({
             </View>
           ) : (
             <ScrollView
-              style={styles.flex}
-              contentContainerStyle={styles.scrollContent}
+              style={[styles.flex, round.revealed && styles.mainRevealed]}
+              contentContainerStyle={scrollContent}
+              alwaysBounceVertical={false}
               keyboardDismissMode="interactive"
               keyboardShouldPersistTaps="handled"
               showsVerticalScrollIndicator={false}
@@ -364,7 +388,7 @@ function PracticeCard({
             </ScrollView>
           )}
 
-          {/* Bottom Feedback or Skip */}
+          {/* Bottom Feedback */}
           {round.revealed ? (
             <FeedbackCard
               item={item}
@@ -383,17 +407,7 @@ function PracticeCard({
                 />
               }
             />
-          ) : (
-            <View style={[styles.skipBar, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-              <Pressable
-                hitSlop={10}
-                onPress={() => pick(null)}
-                style={styles.skipBtn}
-              >
-                <Text style={styles.skipText}>不會，看答案</Text>
-              </Pressable>
-            </View>
-          )}
+          ) : null}
         </Animated.View>
       </View>
     </KeyboardAvoidingView>
@@ -771,6 +785,7 @@ function FeedbackCard({
       <ScrollView
         style={styles.feedbackScroll}
         contentContainerStyle={styles.feedbackInner}
+        alwaysBounceVertical={false}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.feedbackHead}>
@@ -1073,6 +1088,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   progressWrap: { flex: 1 },
+  hidden: { opacity: 0 },
   stage: { flex: 1 },
   scrollContent: {
     paddingHorizontal: space.gutter,
@@ -1081,6 +1097,7 @@ const styles = StyleSheet.create({
     gap: 12,
     flexGrow: 1,
   },
+  mainRevealed: { minHeight: "64%" },
   splitRow: { flex: 1, flexDirection: "row", gap: 8 },
   splitLeft: { flex: 1.15 },
   splitRight: { flex: 1 },
@@ -1215,16 +1232,8 @@ const styles = StyleSheet.create({
   optionLabelRight: { color: colors.positiveInk },
   optionLabelWrong: { color: colors.dangerInk },
   glossText: { fontSize: 13, lineHeight: 18, color: colors.inkMuted },
-  skipBar: {
-    alignItems: "center",
-    paddingTop: 6,
-  },
-  skipBtn: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-  },
-  skipText: { fontSize: 15, fontWeight: "600", color: colors.inkMuted },
   feedbackCard: {
+    flexShrink: 1,
     marginHorizontal: space.gutter - 4,
     backgroundColor: colors.surfaceSolid,
     borderTopLeftRadius: radius.hero,
@@ -1235,7 +1244,7 @@ const styles = StyleSheet.create({
     gap: 12,
     boxShadow: "0 -6px 28px rgba(17,38,30,0.12)",
   },
-  feedbackScroll: { maxHeight: 230 },
+  feedbackScroll: { flexGrow: 0, flexShrink: 1, maxHeight: 230 },
   feedbackInner: { gap: 10 },
   feedbackHead: {
     flexDirection: "row",
