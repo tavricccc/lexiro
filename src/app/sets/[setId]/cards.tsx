@@ -8,7 +8,11 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import {
+  Gesture,
+  GestureDetector,
+  ScrollView,
+} from "react-native-gesture-handler";
 import Animated, {
   interpolate,
   runOnJS,
@@ -22,7 +26,12 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { DescriptionPoints } from "@/components/ui/description-points";
-import { CONTENT_MAX_WIDTH, EmptyState, Loaded } from "@/components/ui/layout";
+import {
+  CONTENT_MAX_WIDTH,
+  Chip,
+  EmptyState,
+  Loaded,
+} from "@/components/ui/layout";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
@@ -30,7 +39,7 @@ import { StarButton } from "@/components/ui/star-button";
 import { compareWords, type SetContent, type Word } from "@/core/contract";
 import { useSet } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
-import { colors, latin, radius, space, type } from "@/lib/theme";
+import { colors, latin, radius, space } from "@/lib/theme";
 
 /** Flip-through word cards for one set: word on the front, senses on the back. */
 export default function CardsScreen() {
@@ -55,7 +64,7 @@ function shuffled<T>(items: T[]): T[] {
 /** Spring that settles a released card without a visible wobble. */
 const SETTLE = { damping: 20, stiffness: 240, mass: 0.8 } as const;
 /** Spring for turning a card over: quick, with a small overshoot you can feel. */
-const TURN = { damping: 15, stiffness: 160, mass: 0.9 } as const;
+const TURN = { damping: 16, stiffness: 120, mass: 1 } as const;
 const COMMIT_DISTANCE = 110;
 const COMMIT_VELOCITY = 750;
 
@@ -159,10 +168,9 @@ function Deck({ content }: { content: SetContent }) {
     haptics.tap();
     const next = !flipped;
     setFlippedId(next && word ? word.id : null);
-    flip.set(withSpring(next ? 1 : 0, TURN));
-    press.set(
-      withSequence(withTiming(0.95, { duration: 110 }), withSpring(1, TURN)),
-    );
+    // Always turn the same way, half a turn per tap, so the card keeps rolling
+    // over instead of swinging back on its hinge.
+    flip.set(withSpring(Math.round(flip.get()) + 1, TURN));
   };
 
   const pan = Gesture.Pan()
@@ -217,18 +225,19 @@ function Deck({ content }: { content: SetContent }) {
       press.set(withSpring(1, SETTLE));
     });
 
-  const cardMove = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: x.get() },
-      { translateY: y.get() },
-      { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
-      { scale: press.get() },
-    ],
-  }));
-  const lift = useAnimatedStyle(() => {
-    const t = Math.min(Math.abs(x.get()) / 160, 1);
+  const cardMove = useAnimatedStyle(() => {
+    // 0 at rest, 1 when the card stands on its edge mid-turn: it lifts off the
+    // table and comes closer while it turns, then settles back down.
+    const turning = Math.abs(flip.get() - Math.round(flip.get())) * 2;
     return {
-      boxShadow: `0px ${8 + t * 14}px ${24 + t * 26}px rgba(17,21,18,${0.08 + t * 0.08})`,
+      transform: [
+        { translateX: x.get() },
+        { translateY: y.get() - turning * 30 },
+        {
+          rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14]) + turning * 2}deg`,
+        },
+        { scale: press.get() * (1 + turning * 0.07) },
+      ],
     };
   });
   const underMove = useAnimatedStyle(() => {
@@ -241,20 +250,20 @@ function Deck({ content }: { content: SetContent }) {
       ],
     };
   });
-  const front = useAnimatedStyle(() => ({
-    transform: [
-      { perspective: 1200 },
-      { rotateY: `${interpolate(flip.get(), [0, 1], [0, 180])}deg` },
-    ],
-    opacity: flip.get() < 0.5 ? 1 : 0,
-  }));
-  const back = useAnimatedStyle(() => ({
-    transform: [
-      { perspective: 1200 },
-      { rotateY: `${interpolate(flip.get(), [0, 1], [180, 360])}deg` },
-    ],
-    opacity: flip.get() >= 0.5 ? 1 : 0,
-  }));
+  const front = useAnimatedStyle(() => {
+    const angle = (((flip.get() * 180) % 360) + 360) % 360;
+    return {
+      transform: [{ perspective: 1000 }, { rotateY: `${angle}deg` }],
+      opacity: angle < 90 || angle > 270 ? 1 : 0,
+    };
+  });
+  const back = useAnimatedStyle(() => {
+    const angle = (((flip.get() * 180) % 360) + 360) % 360;
+    return {
+      transform: [{ perspective: 1000 }, { rotateY: `${angle + 180}deg` }],
+      opacity: angle >= 90 && angle <= 270 ? 1 : 0,
+    };
+  });
 
   const starredCount = content.words.filter((entry) => entry.starred).length;
 
@@ -301,7 +310,7 @@ function Deck({ content }: { content: SetContent }) {
           <View style={styles.cardSlot}>
             {under ? (
               <Animated.View
-                style={[styles.card, styles.under, underMove]}
+                style={[styles.card, underMove]}
                 pointerEvents="none"
               >
                 <Text
@@ -315,7 +324,7 @@ function Deck({ content }: { content: SetContent }) {
             ) : null}
             <GestureDetector gesture={Gesture.Exclusive(pan, tap)}>
               <Animated.View style={[StyleSheet.absoluteFill, cardMove]}>
-                <Animated.View style={[styles.card, lift, front]}>
+                <Animated.View style={[styles.card, front]}>
                   <Text
                     style={styles.word}
                     adjustsFontSizeToFit
@@ -324,26 +333,31 @@ function Deck({ content }: { content: SetContent }) {
                     {word.word}
                   </Text>
                 </Animated.View>
-                <Animated.View
-                  style={[styles.card, styles.cardBack, lift, back]}
-                >
+                <Animated.View style={[styles.card, styles.cardBack, back]}>
                   <Text style={styles.backWord} numberOfLines={1}>
                     {word.word}
                   </Text>
-                  <View style={styles.senses}>
-                    {word.senses.map((sense) => (
-                      <View key={sense.id} style={styles.sense}>
-                        <Text style={styles.meaning}>
-                          <Text style={styles.pos}>{sense.pos} </Text>
-                          {sense.meaning}
-                          {sense.supplementary ? (
-                            <Text style={styles.extra}>　補充</Text>
-                          ) : null}
-                        </Text>
-                        <DescriptionPoints description={sense.description} />
+                  <ScrollView
+                    style={styles.backScroll}
+                    contentContainerStyle={styles.senses}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    {word.senses
+                      .filter((sense) => !sense.supplementary)
+                      .map((sense) => (
+                        <SenseBlock key={sense.id} sense={sense} />
+                      ))}
+                    {word.senses.some((sense) => sense.supplementary) ? (
+                      <View style={styles.extraGroup}>
+                        <Chip label="補充" tone="info" />
+                        {word.senses
+                          .filter((sense) => sense.supplementary)
+                          .map((sense) => (
+                            <SenseBlock key={sense.id} sense={sense} />
+                          ))}
                       </View>
-                    ))}
-                  </View>
+                    ) : null}
+                  </ScrollView>
                 </Animated.View>
               </Animated.View>
             </GestureDetector>
@@ -386,6 +400,18 @@ function Deck({ content }: { content: SetContent }) {
           onPress={() => go(1)}
         />
       </View>
+    </View>
+  );
+}
+
+function SenseBlock({ sense }: { sense: Word["senses"][number] }) {
+  return (
+    <View style={styles.sense}>
+      <Text style={styles.meaning}>
+        <Text style={styles.pos}>{sense.pos} </Text>
+        {sense.meaning}
+      </Text>
+      <DescriptionPoints description={sense.description} />
     </View>
   );
 }
@@ -505,9 +531,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 20,
     backfaceVisibility: "hidden",
-    boxShadow: "0 8px 24px rgba(17,21,18,0.08)",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.line,
   },
-  under: { boxShadow: "0px 4px 14px rgba(17,21,18,0.05)" },
   cardBack: {
     alignItems: "stretch",
     justifyContent: "flex-start",
@@ -535,7 +561,8 @@ const styles = StyleSheet.create({
     color: colors.ink,
     lineHeight: 27,
   },
-  extra: { ...type.hint, color: colors.inkFaint },
+  backScroll: { flex: 1, alignSelf: "stretch" },
+  extraGroup: { gap: 10, alignItems: "flex-start" },
   nav: {
     flexDirection: "row",
     justifyContent: "center",

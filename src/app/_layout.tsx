@@ -117,7 +117,7 @@ function AppShell({
             headerBackButtonDisplayMode: "minimal",
             headerShadowVisible: false,
             headerTintColor: dark ? plain.ink.dark : plain.ink.light,
-            headerStyle: { backgroundColor: canvas },
+            headerTransparent: true,
             contentStyle: { backgroundColor: canvas },
           }}
         />
@@ -193,7 +193,7 @@ function AppShell({
             headerBackButtonDisplayMode: "minimal",
             headerShadowVisible: false,
             headerTintColor: dark ? plain.ink.dark : plain.ink.light,
-            headerStyle: { backgroundColor: canvas },
+            headerTransparent: true,
             contentStyle: { backgroundColor: canvas },
           }}
         />

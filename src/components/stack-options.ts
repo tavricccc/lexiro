@@ -21,10 +21,9 @@ export const largeTitleOptions = {
 export const standardHeaderOptions = {
   ...softEdges,
   headerLargeTitleEnabled: false,
-  headerTransparent: false,
+  headerTransparent: true,
   headerShadowVisible: false,
   headerBackButtonDisplayMode: "minimal",
   headerTintColor: colors.ink as string,
-  headerStyle: { backgroundColor: colors.canvas as string },
   contentStyle: { backgroundColor: colors.canvas },
 } as const;
