@@ -56,12 +56,9 @@ the TypeScript module from it; JavaScript animations use `timing(rung, curve)`.
 
 ### Screens
 
-Each screen has a level: the primary destinations are 0, and every step into
-a child (a record, its editor, a settings subpage) adds one. The app keys a
-`motion.div` by the path and spreads `routeMotion(routeDirection(from, to))`
-on it: deeper pushes in from the right, shallower returns from the left, the
-same level cross-fades. Inside a run (a quiz, a game), the next card wears
-`card-in`. The dock belongs to level 0 only; it slides away on deeper
+The app keys a `motion.div` by the path and spreads `routeMotion` on it: a
+screen arrives with one quick fade and does not travel. Inside a run (a quiz, a game), the next card wears
+`card-in`. The dock belongs to the primary destinations only; it slides away on deeper
 screens instead of unmounting, and every deeper screen has a back control
 that leads to its parent.
 
@@ -112,7 +109,7 @@ controls). Elevation: `shadow-panel`, `shadow-float`.
 - Colour comes from tokens only. Emphasis comes from the contrast pill, not from hue.
 - Status colours describe state; they never become a control's theme.
 - Motion durations and curves come from the motion ladder; no raw `duration-*`, springs or inline easing.
-- Nothing appears or leaves on a single frame. Content that replaces a placeholder or joins a list wears `content-in`, a message that appears under a control wears `message-in`, a proportion bar wears `bar-in`, and a block that can also leave uses `Reveal` inside `AnimatePresence`. Switching between sibling views moves sideways through `Pane`, never up from below. Each falls back to a plain fade under reduced motion.
+- Nothing appears or leaves on a single frame. Content that replaces a placeholder or joins a list wears `content-in` (a quick fade, never a float up), a message that appears under a control wears `message-in`, a proportion bar wears `bar-in`, and a block that can also leave uses `Reveal` inside `AnimatePresence`. Switching between sibling views moves sideways through `Pane`, never up from below. Each falls back to a plain fade under reduced motion.
 - Hover styles go through the `hover:` variant, which is gated to real pointers.
 - Primitives in `src/ui` import no app code: routing and words come through `DesignKitProvider`.
 - A scrolling edge is never a hard cut: `PageHeader` sticks to the top over an `edge-top` blur, the shell fades content under the dock or window bottom with `edge-bottom`, and scrolling areas inside layers use `edge-fade`.

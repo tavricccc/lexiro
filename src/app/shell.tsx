@@ -1,13 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useLocation, useOutlet } from "react-router";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Books, ChartLineUp, House, Sword, UserCircle } from "@phosphor-icons/react";
 import { EdgeBlur, PrimaryNav, cn, routeMotion, type NavItem } from "design-kit";
 import { useAnswerFlush } from "@/data/learning";
 import { useRevisionWatch } from "@/data/queries";
 import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
-import { screenKey, travelDirection } from "./hierarchy";
+import { screenKey } from "./hierarchy";
 import { lastPopFromSystem } from "./navigation";
 import { ScrollMore } from "@/ui/scroll-more";
 import { OfflineBanner } from "@/ui/offline-banner";
@@ -77,18 +77,10 @@ export function WorkspaceShell() {
   );
 }
 
-/**
- * The current screen, moving the way its place in the hierarchy says: a
- * child is pushed in from the right, a parent returns from the left, tabs
- * cross-fade. Each screen comes back scrolled where it was left.
- */
+/** The current screen, faded in and scrolled where it was left. */
 function Screens({ pathname: current }: { pathname: string }) {
   const pathname = screenKey(current);
   const outlet = useOutlet();
-  const reduced = useReducedMotion();
-  const [last, setLast] = useState({ pathname, direction: 0 as -1 | 0 | 1 });
-  if (last.pathname !== pathname) setLast({ pathname, direction: travelDirection(last.pathname, pathname) });
-  const direction = reduced ? 0 : last.direction;
   const scroll = useRef(new Map<string, number>());
   useLayoutEffect(() => {
     window.scrollTo(0, scroll.current.get(pathname) ?? 0);
@@ -97,7 +89,7 @@ function Screens({ pathname: current }: { pathname: string }) {
     return () => window.removeEventListener("scroll", remember);
   }, [pathname]);
   return (
-    <motion.div key={pathname} {...routeMotion(direction)} {...(lastPopFromSystem ? { initial: false } : {})}>
+    <motion.div key={pathname} {...routeMotion} {...(lastPopFromSystem ? { initial: false } : {})}>
       {outlet}
     </motion.div>
   );

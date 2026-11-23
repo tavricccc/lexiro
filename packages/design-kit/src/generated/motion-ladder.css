@@ -24,9 +24,8 @@
   --ease-nav-depart: cubic-bezier(1, 0, 0.68, 0.28);
   --ease-bounce: cubic-bezier(0.22, 1.2, 0.36, 1);
 
-  /* How far. Everything that rises, rises by the same amount. */
+  /* How far. */
   --motion-lift: 4px;
-  --motion-rise: 8px;
   --motion-press-scale: 0.985;
   --motion-card-press-scale: 0.995;
   --motion-surface-scale: 0.975;

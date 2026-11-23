@@ -6,7 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 
 const DURATIONS = ['touch', 'control', 'reveal', 'nav', 'sheet', 'controlExit', 'sheetExit'];
 const EASINGS = ['arrive', 'depart', 'move', 'nav', 'navDepart', 'bounce'];
-const TRAVEL = ['lift', 'rise', 'pressScale', 'cardPressScale', 'surfaceScale', 'routeTravel'];
+const TRAVEL = ['lift', 'pressScale', 'cardPressScale', 'surfaceScale', 'routeTravel'];
 const LOOPS = ['spin', 'sweep', 'pulse'];
 
 function assertMilliseconds(value, name) {
@@ -92,7 +92,7 @@ function renderStylesheet(config) {
   );
   for (const name of EASINGS)
     lines.push(`  --ease-${kebab(name)}: ${bezier(config.easings[name])};`);
-  lines.push('', '  /* How far. Everything that rises, rises by the same amount. */');
+  lines.push('', '  /* How far. */');
   for (const name of TRAVEL) lines.push(`  --motion-${kebab(name)}: ${config.travel[name]};`);
   lines.push('', '  /* Indeterminate loops. They repeat, so they sit outside the ladder. */');
   for (const name of LOOPS) lines.push(`  --motion-${kebab(name)}: ${config.loops[name]}ms;`);

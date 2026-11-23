@@ -34,12 +34,11 @@ export interface PaneStep {
 /**
  * The content behind a Segmented control, or any row of sibling views. A
  * view further along the row slides in from the right and one before it from
- * the left, as if the views sat side by side, instead of every view rising
- * from below. Nothing is remounted to play it, so a view keeps its state; a
+ * the left, as if the views sat side by side. Nothing is remounted to play it, so a view keeps its state; a
  * pane that is itself new (its parent swapped it in) plays on arrival.
  *
- * Content the switch brings in arrives with the pane: its own rise is
- * finished at once, so it does not drift upward while the pane moves sideways.
+ * Content the switch brings in arrives with the pane: its own fade is
+ * finished at once, so it is not faded twice.
  */
 export function Pane({ children, className, direction, step }: PaneStep & {
   children: React.ReactNode;

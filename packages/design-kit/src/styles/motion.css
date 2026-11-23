@@ -77,11 +77,11 @@
   }
 }
 
-/* Content that replaces a placeholder, or joins a list, rises into place
-   instead of being there on one frame. A message that appears under a
+/* Content that replaces a placeholder, or joins a list, fades in quickly
+   where it stands; nothing floats up. A message that appears under a
    control drops in from it, and a proportion bar grows from its start. */
 .content-in {
-  animation: content-in var(--motion-reveal) var(--ease-arrive) backwards;
+  animation: content-in var(--motion-touch) var(--ease-move) backwards;
 }
 
 .message-in {
@@ -102,7 +102,7 @@
 }
 
 @keyframes content-in {
-  from { opacity: 0; translate: 0 var(--motion-rise); }
+  from { opacity: 0; }
 }
 
 @keyframes message-in {

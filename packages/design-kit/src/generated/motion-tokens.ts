@@ -25,7 +25,6 @@ export const motionEasing = {
 /** How far things travel, as the CSS values the stylesheet uses. */
 export const motionTravel = {
   lift: "4px",
-  rise: "8px",
   pressScale: "0.985",
   cardPressScale: "0.995",
   surfaceScale: "0.975",
