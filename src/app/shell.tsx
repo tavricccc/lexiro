@@ -9,6 +9,7 @@ import { useThemeSync } from "@/data/prefs";
 import { Brand } from "@/ui/brand";
 import { screenKey, travelDirection } from "./hierarchy";
 import { lastPopFromSystem } from "./navigation";
+import { ScrollMore } from "@/ui/scroll-more";
 import { OfflineBanner } from "@/ui/offline-banner";
 
 const NAV: NavItem[] = [
@@ -56,6 +57,13 @@ export function WorkspaceShell() {
       {/* Content passing either edge softens under a progressive blur instead of being cut off. */}
       <EdgeBlur className="h-[calc(var(--safe-top)+5rem)] md:left-70 md:h-[calc(var(--safe-top)+5rem)]" side="top" />
       {!full ? <EdgeBlur className={isDestination(pathname) ? "h-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+1.5rem)] md:left-70 md:h-[calc(var(--safe-bottom)+4rem)]" : "h-[calc(var(--safe-bottom)+2rem)] md:left-70 md:h-[calc(var(--safe-bottom)+4rem)]"} side="bottom" /> : null}
+      <ScrollMore
+        className={cn(
+          "page-scroll-more fixed left-1/2 -translate-x-1/2 md:bottom-[calc(var(--safe-bottom)+1.5rem)]",
+          !full && "md:left-[calc(50%+8.75rem)]",
+          isDestination(pathname) ? "bottom-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+0.75rem)]" : "bottom-[calc(var(--safe-bottom)+1rem)]",
+        )}
+      />
       {!full ? (
         <div
           aria-hidden={!isDestination(pathname)}

@@ -139,7 +139,7 @@ function Prompt({ question, revealed }: { question: LiveQuestion; revealed: Reco
     return <p className="whitespace-pre-line py-4 font-latin text-xl leading-relaxed md:text-2xl" lang="en">{question.prompt}</p>;
   return (
     <div className="grid gap-3">
-      <Panel className="max-h-[45svh] overflow-y-auto">
+      <Panel>
         {question.passage.title ? <h2 className="mb-2 font-latin text-lg font-semibold" lang="en">{question.passage.title}</h2> : null}
         <p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">
           {passageParts(question.passage.text).map((part, index) =>

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useQueries } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
@@ -17,6 +17,7 @@ import { passageParts, type PracticeItem, type Step } from "@/domain/practice";
 import { acceptTyped, advance, choose, currentStep, finished, newRound, result, usedBankOptions, type Round } from "@/domain/round";
 import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
+import { ScrollMore } from "@/ui/scroll-more";
 import { SpeakButton } from "@/ui/speak";
 
 /** Starring during a round: set words star for good, other words only for this round's review. */
@@ -32,6 +33,19 @@ function useSetWords(setIds: string[]) {
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => wordIndex(contents.flatMap((query) => (query.data ? [query.data] : []))), [stamp]);
+}
+
+const WIDE = "(min-width: 768px)";
+/** Room for the question beside its options (Tailwind's md). */
+function useWide() {
+  return useSyncExternalStore(
+    (changed) => {
+      const query = window.matchMedia?.(WIDE);
+      query?.addEventListener("change", changed);
+      return () => query?.removeEventListener("change", changed);
+    },
+    () => window.matchMedia?.(WIDE)?.matches ?? false,
+  );
 }
 
 function useStarred(word: string) {
@@ -131,11 +145,44 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [round.revealed, step, used, pick, next]);
+  const wide = useWide();
+  const page = useRef<HTMLDivElement>(null);
+  const prompt = useRef<HTMLElement>(null);
+  const answers = useRef<HTMLDivElement>(null);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   const last = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+  const question = (
+    <>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-sm text-ink-muted">
+          {kindLabel(item)}
+          {item.steps.length > 1 ? <span className="font-latin"> · {round.step + 1}/{item.steps.length}</span> : null}
+        </p>
+      </div>
+      {item.kind === "custom"
+        ? <CustomPrompt item={item} step={step as CustomStep} />
+        : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
+    </>
+  );
+  const options = (
+    <div className="message-in shrink-0" key={round.step}>
+      {isCustomStep(step) && step.mode !== "single"
+        ? <div className="rounded-[2rem] bg-surface p-3"><CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} /></div>
+        : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
+    </div>
+  );
+  const feedback = round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null;
+  const onward = round.revealed ? (
+    <div className="shrink-0 max-md:pt-2">
+      <Button autoFocus className="h-14 w-full rounded-[1.125rem]" onClick={next} size="lg" variant="solid">
+        {last ? "看結果" : "下一題"}
+        <kbd className="hidden rounded-[0.3rem] bg-canvas/15 px-1.5 py-0.5 font-mono text-[0.6875rem] font-medium md:inline">Enter</kbd>
+      </Button>
+    </div>
+  ) : null;
   return (
     // The round sits still on the screen; the question and answers scroll only when they are longer than it.
-    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-xl flex-col overscroll-none px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
+    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-xl flex-col overscroll-none md:max-w-6xl md:px-6 px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="flex items-center gap-3 px-1">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
@@ -143,32 +190,36 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
         <Button className={cn(round.revealed && "invisible")} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
       </header>
       <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
-        <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overscroll-contain pb-2 pt-3">
-          <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">
-            <div className="flex items-center justify-between gap-2">
-              <p className="text-sm text-ink-muted">
-                {kindLabel(item)}
-                {item.steps.length > 1 ? <span className="font-latin"> · {round.step + 1}/{item.steps.length}</span> : null}
-              </p>
+        {wide ? (
+          <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[minmax(0,1fr)] gap-2 pt-4">
+            <div className="relative min-h-0">
+              <section className="flex h-full flex-col gap-3 overflow-y-auto overscroll-contain rounded-[2rem] bg-surface p-6" ref={prompt}>{question}</section>
+              <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={prompt} />
             </div>
-            {item.kind === "custom"
-              ? <CustomPrompt item={item} step={step as CustomStep} />
-              : <Prompt chosen={chosen as number | null | undefined} item={item} round={round} step={step as Step} />}
-          </section>
-          <div className="message-in shrink-0" key={round.step}>
-            {isCustomStep(step) && step.mode !== "single"
-              ? <div className="rounded-[2rem] bg-surface p-3"><CustomAnswer chosen={chosen} revealed={round.revealed} step={step} submit={pick} /></div>
-              : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
+            <div className="flex min-h-0 flex-col gap-2">
+              <div className="relative min-h-0 flex-1">
+                <div className="flex h-full flex-col gap-2 overflow-y-auto overscroll-contain" ref={answers}>{options}{feedback}</div>
+                <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={answers} />
+              </div>
+              {onward}
+            </div>
           </div>
-        </div>
-        {round.revealed ? (
-          <Feedback accept={accept} chosen={chosen} item={item} step={step}>
-            <Button autoFocus className="h-14 w-full rounded-[1.125rem]" onClick={next} size="lg" variant="solid">
-              {last ? "看結果" : "下一題"}
-              <kbd className="hidden rounded-[0.3rem] bg-canvas/15 px-1.5 py-0.5 font-mono text-[0.6875rem] font-medium md:inline">Enter</kbd>
-            </Button>
-          </Feedback>
-        ) : null}
+        ) : (
+          <>
+            <div className="relative min-h-0 flex-1">
+              <div className="h-full overflow-y-auto overscroll-contain pt-3" ref={page}>
+                {/* Once answered, the top of the feedback shows below the question. */}
+                <div className={cn("flex flex-col gap-2 pb-2", round.revealed ? "min-h-[calc(100%-4.25rem)]" : "min-h-full")}>
+                  <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">{question}</section>
+                  {options}
+                </div>
+                {feedback}
+              </div>
+              <ScrollMore className="absolute bottom-2 left-1/2 -translate-x-1/2" target={page} />
+            </div>
+            {onward}
+          </>
+        )}
       </div>
     </div>
   );
@@ -297,7 +348,7 @@ function CustomPrompt({ item, step }: { item: Extract<PracticeItem, { kind: "cus
   return (
     <div className="grid gap-3">
       {item.instructions ? <p className="text-[0.9375rem] text-ink-muted">{item.instructions}</p> : null}
-      {item.passage ? <div className="max-h-[40svh] overflow-y-auto rounded-[1.25rem] bg-surface-raised px-4 py-3"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></div> : null}
+      {item.passage ? <div className="rounded-[1.25rem] bg-surface-raised px-4 py-3"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></div> : null}
       <p className={cn("leading-relaxed", isLatin(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-semibold")} lang={isLatin(step.prompt) ? "en" : undefined}>{step.prompt}</p>
     </div>
   );
@@ -346,13 +397,12 @@ function Explanation({ item, step, chosen, brief = false }: { item: PracticeItem
   );
 }
 
-function Feedback({ item, step, chosen, accept, children }: { item: PracticeItem; step: Step | CustomStep; chosen: Choice | null | undefined; accept: () => void; children: ReactNode }) {
+function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: Step | CustomStep; chosen: Choice | null | undefined; accept: () => void }) {
   const right = isRight(step, chosen);
   const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
   const answer = rightAnswerText(step);
   return (
-    <div className="message-in -mx-1 grid shrink-0 gap-3 rounded-[2rem] bg-surface p-4 shadow-float" role="status">
-      <div className="grid max-h-[38svh] gap-2.5 overflow-y-auto overscroll-contain">
+    <div className="message-in grid shrink-0 gap-2.5 rounded-[2rem] bg-surface p-5" role="status">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="flex items-center gap-2.5 font-semibold">
             <span aria-hidden className={cn("grid shrink-0 place-items-center text-lg", right ? "text-positive-ink" : "text-danger-ink")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
@@ -362,8 +412,6 @@ function Feedback({ item, step, chosen, accept, children }: { item: PracticeItem
         </div>
         {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-latin text-[0.9375rem] text-ink-muted">{step.accepted.join(" / ")}</p> : null}
         <Explanation brief chosen={chosen} item={item} step={step} />
-      </div>
-      {children}
     </div>
   );
 }

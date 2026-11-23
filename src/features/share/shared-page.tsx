@@ -14,6 +14,7 @@ import { meaningLine } from "@/features/library/set-page";
 import { Brand } from "@/ui/brand";
 import { LabeledSelect } from "@/ui/labeled-select";
 import { Page } from "@/ui/page";
+import { ScrollMore } from "@/ui/scroll-more";
 import { SetIcon } from "@/ui/set-icon";
 
 const gone = (error: unknown) => error instanceof ApiError && error.status === 404;
@@ -27,6 +28,7 @@ export default function SharedPage() {
   const content = shared.data;
   return (
     <div className="mx-auto grid w-full max-w-2xl gap-6 px-[var(--gutter)] pb-12 pt-[calc(var(--safe-top)+1.5rem)]">
+      <ScrollMore className="fixed bottom-[calc(var(--safe-bottom)+1rem)] left-1/2 -translate-x-1/2" />
       <AppLink className="justify-self-start" href={account ? "/app/library" : "/"}><Brand /></AppLink>
       {content ? (
         <Page description={`${content.words.length} 個單字 · ${content.questions.length} 題`} documentTitle={content.set.name} title={<span className="flex items-center gap-3"><SetIcon icon={content.set.icon} />{content.set.name}</span>}>

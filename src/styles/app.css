@@ -105,3 +105,8 @@
   --scrim: rgb(0 0 0 / 58%);
 }
 
+
+/* The page's down arrow sits above a bar stuck to the bottom of the page. */
+body:has(main .sticky[class*="bottom-["]) .page-scroll-more {
+  margin-bottom: 4.5rem;
+}
