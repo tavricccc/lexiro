@@ -2,6 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { randomUUID } from "node:crypto";
 import type { D1Database } from "@cloudflare/workers-types";
 import { Library } from "../src/library/repository";
+import { parseShareCode, SHARE_CODE_LENGTH } from "../src/contract";
 import { libraryDb, rejection } from "./d1";
 
 let runtime: Awaited<ReturnType<typeof libraryDb>>["runtime"];
@@ -203,6 +204,54 @@ describe("sharing and backup", () => {
     const { id } = await lib.share(uid, set.id);
     await lib.unshare(uid, set.id);
     expect(await lib.shared(id)).toBeNull();
+  });
+
+  it("shares under a short code", async () => {
+    const { uid, lib } = account();
+    const { set } = await setWithWord(lib, uid);
+    const { id } = await lib.share(uid, set.id);
+    expect(parseShareCode(id)).toHaveLength(SHARE_CODE_LENGTH);
+  });
+
+  it("keeps the owner's stars out of a shared set", async () => {
+    const { uid, lib } = account();
+    const { set, word } = await setWithWord(lib, uid);
+    await lib.starWords(uid, set.id, [word.id], true);
+    const { id } = await lib.share(uid, set.id);
+    expect((await lib.shared(id))?.words[0].starred).toBe(false);
+  });
+
+  it("copies a shared set with its questions into the chosen folder", async () => {
+    const { uid, lib } = account();
+    const { set, word } = await setWithWord(lib, uid);
+    await lib.putQuestions(uid, set.id, [vocabulary(word.senses[1].id)]);
+    const { id } = await lib.share(uid, set.id);
+    const other = account();
+    const folder = await other.lib.putFolder(other.uid, undefined, { name: "朋友" });
+    const added = await other.lib.addShared(other.uid, id, folder.id);
+    expect(added).toMatchObject({ name: "Unit 1", folderId: folder.id, wordCount: 1, questionCount: 1 });
+  });
+
+  it("refuses to add your own shared set", async () => {
+    const { uid, lib } = account();
+    const { set } = await setWithWord(lib, uid);
+    const { id } = await lib.share(uid, set.id);
+    expect((await rejection(lib.addShared(uid, id, null))).code).toBe("own_share");
+  });
+
+  it("refuses a code nobody shares", async () => {
+    const { uid, lib } = account();
+    expect((await rejection(lib.addShared(uid, "ABCDEFG2", null))).code).toBe("share_unavailable");
+  });
+
+  it("adds nothing when the copy would pass the daily limit", async () => {
+    const { uid, lib } = account();
+    const { set } = await setWithWord(lib, uid);
+    const { id } = await lib.share(uid, set.id);
+    const other = account({ unlimited: false });
+    await db.prepare("INSERT INTO accounts(uid,created_at,quota_day,quota_writes) VALUES(?,?,?,?)").bind(other.uid, "2026-01-01", new Date().toISOString().slice(0, 10), 2999).run();
+    const error = await rejection(other.lib.addShared(other.uid, id, null));
+    expect([error.code, (await other.lib.library(other.uid)).sets]).toEqual(["daily_write_limit", []]);
   });
 
   it("restores a backup into another account with its questions", async () => {

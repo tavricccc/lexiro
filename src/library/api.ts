@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { answerBatch, goalInput, wordInput } from "../contract";
+import { answerBatch, goalInput, parseShareCode, wordInput } from "../contract";
 import { HttpError, readBody } from "../http";
 import type { Backup, Library } from "./repository";
 
@@ -8,6 +8,11 @@ const BODY_LIMIT = 2_000_000;
 
 async function json<T>(request: Request, schema: z.ZodType<T>, limit = BODY_LIMIT): Promise<T> {
   return schema.parse(JSON.parse(await readBody(request, limit)));
+}
+function requireCode(text: string): string {
+  const code = parseShareCode(text);
+  if (!code) throw new HttpError(404, "share_unavailable");
+  return code;
 }
 const anyObject = z.record(z.string(), z.unknown());
 
@@ -53,6 +58,11 @@ const routes: [method: string, pattern: RegExp, handler: Handler][] = [
   ["POST", /^\/sets\/([^/]+)\/share$/, (_r, uid, lib, [id]) => lib.share(uid, id)],
   ["DELETE", /^\/sets\/([^/]+)\/share$/, async (_r, uid, lib, [id]) => (await lib.unshare(uid, id), { deleted: true })],
 
+  ["POST", /^\/shared\/([^/]+)\/add$/, async (r, uid, lib, [code]) => {
+    const { folderId } = await json(r, z.strictObject({ folderId: z.string().max(80).nullable().default(null) }));
+    return lib.addShared(uid, requireCode(code), folderId);
+  }],
+
   ["GET", /^\/learning$/, (_r, uid, lib) => lib.learning(uid)],
   ["POST", /^\/learning\/answers$/, async (r, uid, lib) => lib.recordAnswers(uid, await json(r, answerBatch))],
   ["PUT", /^\/learning\/goal$/, async (r, uid, lib) => {
@@ -88,11 +98,11 @@ export async function handleLibraryApi(request: Request, uid: string, lib: Libra
   return null;
 }
 
-/** The one public library read: a shared set, by its link id. */
+/** The one public library read: a shared set, by its code. */
 export async function handleSharedSet(path: string, lib: Library): Promise<Response | null> {
-  const match = /^\/shared\/([0-9a-f-]{36})$/.exec(path);
+  const match = /^\/shared\/([\w-]{1,64})$/.exec(path);
   if (!match) return null;
-  const content = await lib.shared(match[1]);
+  const content = await lib.shared(requireCode(match[1]));
   if (!content) throw new HttpError(404, "share_unavailable");
   return Response.json(content);
 }

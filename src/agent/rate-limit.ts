@@ -20,6 +20,9 @@ export const RATE_LIMIT_ROOM_CREATE_MAX = 5;
 // Joining is retried on reconnect and a room may seat eight players, so the
 // per-account allowance is deliberately looser than room creation.
 export const RATE_LIMIT_ROOM_TICKET_MAX = 30;
+// Opening a share link. Generous, since a whole class may open one behind the
+// same IP, yet far too slow to guess eight-character codes.
+export const RATE_LIMIT_SHARED_MAX = 120;
 // How long stale counters are kept before the Agent Cron removes them. Only
 // needs to exceed the window length; it reuses the existing 7 day cutoff.
 export const RATE_LIMIT_RETENTION_MS = 7 * 86400000;
@@ -30,6 +33,7 @@ export type RateLimitEndpoint =
   | "authorize"
   | "oauth_register"
   | "app_auth_token"
+  | "shared"
   | "room_create"
   | "room_ticket";
 
@@ -37,6 +41,7 @@ const LIMITS: Record<RateLimitEndpoint, number> = {
   authorize: RATE_LIMIT_AUTHORIZE_MAX,
   oauth_register: RATE_LIMIT_OAUTH_REGISTER_MAX,
   app_auth_token: RATE_LIMIT_APP_AUTH_TOKEN_MAX,
+  shared: RATE_LIMIT_SHARED_MAX,
   room_create: RATE_LIMIT_ROOM_CREATE_MAX,
   room_ticket: RATE_LIMIT_ROOM_TICKET_MAX,
 };

@@ -41,6 +41,7 @@ export function createWorker(dependencies: Dependencies = {}) {
         return redeemAppAuthCode(request, env.AGENT_DB, Date.now());
       }
       if (path.startsWith("/shared/") && request.method === "GET") {
+        await checkRateLimit(env.AGENT_DB, "shared", request, Date.now());
         const shared = await handleSharedSet(path, new Library(env.CLOUD_DB));
         if (shared) return shared;
       }

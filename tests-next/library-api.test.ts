@@ -61,4 +61,12 @@ describe("library API", () => {
     const response = await handleSharedSet(`/shared/${id}`, lib);
     expect(((await response!.json()) as any).set.name).toBe("Shared");
   });
+
+  it("adds a shared set by a code typed in lower case", async () => {
+    const uid = randomUUID(), lib = new Library(db, { unlimited: true });
+    const set = await lib.putSet(uid, undefined, { name: "Shared" });
+    const { id } = await lib.share(uid, set.id);
+    const added = await call(lib, randomUUID(), "POST", `/shared/${id.toLowerCase()}/add`, {});
+    expect(added?.body.name).toBe("Shared");
+  });
 });

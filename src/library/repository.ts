@@ -5,6 +5,7 @@ import {
   compareWords,
   emptyLearning,
   newId,
+  newShareCode,
   normalizeWord,
   prefsInput,
   questionSenseIds,
@@ -83,17 +84,21 @@ export class Library {
     return this.db.prepare("INSERT INTO accounts(uid,created_at) VALUES(?,?) ON CONFLICT(uid) DO NOTHING").bind(uid, this.now());
   }
 
+  /** Refuses `rows` more writes when they would pass today's limit. */
+  private async requireQuota(uid: string, rows: number) {
+    if (this.options.unlimited) return;
+    const quota = await this.db.prepare("SELECT quota_day,quota_writes FROM accounts WHERE uid=?").bind(uid).first<{ quota_day: string; quota_writes: number }>();
+    const used = quota?.quota_day === this.now().slice(0, 10) ? quota.quota_writes : 0;
+    if (used + rows > DAILY_WRITE_LIMIT) throw httpError(429, "daily_write_limit", `Daily write limit of ${DAILY_WRITE_LIMIT} rows reached; it resets at 00:00 UTC`);
+  }
+
   /**
    * Runs `statements` with the account revision raised and `rows` counted
    * against the daily write limit, all in one transaction.
    */
   private async commit(uid: string, rows: number, statements: D1PreparedStatement[]) {
     const day = this.now().slice(0, 10);
-    if (!this.options.unlimited) {
-      const quota = await this.db.prepare("SELECT quota_day,quota_writes FROM accounts WHERE uid=?").bind(uid).first<{ quota_day: string; quota_writes: number }>();
-      const used = quota?.quota_day === day ? quota.quota_writes : 0;
-      if (used + rows > DAILY_WRITE_LIMIT) throw httpError(429, "daily_write_limit", `Daily write limit of ${DAILY_WRITE_LIMIT} rows reached; it resets at 00:00 UTC`);
-    }
+    await this.requireQuota(uid, rows);
     const results = await this.db.batch([
       this.ensure(uid),
       this.db.prepare("SELECT revision FROM accounts WHERE uid=?").bind(uid),
@@ -482,33 +487,42 @@ export class Library {
         name: content.set.name, hue: content.set.hue, icon: content.set.icon, order: content.set.order,
         folderId: content.set.folderId ? folderIds.get(content.set.folderId) ?? null : null,
       });
-      const senseIds = new Map<string, string>();
-      for (let at = 0; at < content.words.length; at += 200) {
-        const batch = content.words.slice(at, at + 200);
-        const saved = await this.putWords(uid, set.id, batch.map((word) => ({ word: word.word, starred: word.starred, senses: word.senses.map(({ id: _id, ...sense }) => sense) })));
-        const byNorm = new Map(saved.words.map((word) => [normalizeWord(word.word), word]));
-        for (const old of batch) {
-          const now = byNorm.get(normalizeWord(old.word));
-          for (const sense of old.senses) {
-            const match = now?.senses.find((s) => s.pos === sense.pos && s.meaning === sense.meaning);
-            if (match) senseIds.set(sense.id, match.id);
-          }
-        }
-        words += saved.words.length;
-      }
-      const remapped = content.questions.flatMap((question): unknown[] => {
-        const { id: _id, setId: _set, createdAt: _c, updatedAt: _u, ...rest } = question;
-        if ("items" in rest) {
-          const items = rest.items.map(({ id: _item, ...entry }) => ({ ...entry, senseId: senseIds.get(entry.senseId) ?? "" }));
-          return items.every((entry) => entry.senseId) ? [{ ...rest, items }] : [];
-        }
-        const senseId = senseIds.get(rest.senseId);
-        return senseId ? [{ ...rest, senseId }] : [];
-      });
-      for (let at = 0; at < remapped.length; at += 100)
-        questions += (await this.putQuestions(uid, set.id, remapped.slice(at, at + 100))).saved.length;
+      const copied = await this.fillSet(uid, set.id, content);
+      words += copied.words;
+      questions += copied.questions;
     }
     return { sets: backup.sets.length, words, questions };
+  }
+
+  /** Copies words and questions into an empty set; a question whose senses did not survive is skipped. */
+  private async fillSet(uid: string, setId: string, content: Pick<SetContent, "words" | "questions">): Promise<{ words: number; questions: number }> {
+    let words = 0, questions = 0;
+    const senseIds = new Map<string, string>();
+    for (let at = 0; at < content.words.length; at += 200) {
+      const batch = content.words.slice(at, at + 200);
+      const saved = await this.putWords(uid, setId, batch.map((word) => ({ word: word.word, starred: word.starred, senses: word.senses.map(({ id: _id, ...sense }) => sense) })));
+      const byNorm = new Map(saved.words.map((word) => [normalizeWord(word.word), word]));
+      for (const old of batch) {
+        const now = byNorm.get(normalizeWord(old.word));
+        for (const sense of old.senses) {
+          const match = now?.senses.find((s) => s.pos === sense.pos && s.meaning === sense.meaning);
+          if (match) senseIds.set(sense.id, match.id);
+        }
+      }
+      words += saved.words.length;
+    }
+    const remapped = content.questions.flatMap((question): unknown[] => {
+      const { id: _id, setId: _set, createdAt: _c, updatedAt: _u, ...rest } = question;
+      if ("items" in rest) {
+        const items = rest.items.map(({ id: _item, ...entry }) => ({ ...entry, senseId: senseIds.get(entry.senseId) ?? "" }));
+        return items.every((entry) => entry.senseId) ? [{ ...rest, items }] : [];
+      }
+      const senseId = senseIds.get(rest.senseId);
+      return senseId ? [{ ...rest, senseId }] : [];
+    });
+    for (let at = 0; at < remapped.length; at += 100)
+      questions += (await this.putQuestions(uid, setId, remapped.slice(at, at + 100))).saved.length;
+    return { words, questions };
   }
 
   // ---- sharing ----------------------------------------------------------
@@ -518,7 +532,7 @@ export class Library {
     await this.requireSet(uid, setId);
     const existing = await this.db.prepare("SELECT id FROM shares WHERE uid=? AND set_id=?").bind(uid, setId).first<string>("id");
     if (existing) return { id: existing };
-    const id = crypto.randomUUID();
+    const id = newShareCode();
     await this.commit(uid, 1, [this.db.prepare("INSERT INTO shares(id,uid,set_id,created_at) VALUES(?,?,?,?)").bind(id, uid, setId, this.now())]);
     return { id };
   }
@@ -528,12 +542,35 @@ export class Library {
   async unshare(uid: string, setId: string) {
     await this.commit(uid, 1, [this.db.prepare("DELETE FROM shares WHERE uid=? AND set_id=?").bind(uid, setId)]);
   }
-  /** Anyone with the link reads the set's current words and questions. */
-  async shared(shareId: string): Promise<SetContent | null> {
-    const share = await this.db.prepare("SELECT uid,set_id FROM shares WHERE id=?").bind(shareId).first<{ uid: string; set_id: string }>();
-    if (!share) return null;
-    try { return await this.setContent(share.uid, share.set_id); }
-    catch { return null; }
+  private async sharedContent(code: string): Promise<{ uid: string; content: SetContent } | null> {
+    const share = await this.db.prepare("SELECT uid,set_id FROM shares WHERE id=?").bind(code).first<{ uid: string; set_id: string }>();
+    if (!share || !(await this.findSet(share.uid, share.set_id))) return null;
+    const { set, words, questions } = await this.setContent(share.uid, share.set_id);
+    // The owner's folder, order and stars are their own.
+    return {
+      uid: share.uid,
+      content: { set: { ...set, folderId: null, order: null }, words: words.map((word) => ({ ...word, starred: false })), questions },
+    };
+  }
+  /** Anyone with the code reads the set's current words and questions. */
+  async shared(code: string): Promise<SetContent | null> {
+    return (await this.sharedContent(code))?.content ?? null;
+  }
+  /** Copies a shared set into the account, whole or not at all. */
+  async addShared(uid: string, code: string, folderId: string | null): Promise<SetSummary> {
+    const shared = await this.sharedContent(code);
+    if (!shared) throw new HttpError(404, "share_unavailable");
+    if (shared.uid === uid) throw new HttpError(409, "own_share");
+    const { set: source, words, questions } = shared.content;
+    await this.requireQuota(uid, 1 + words.length + questions.length);
+    const set = await this.putSet(uid, undefined, { name: source.name, hue: source.hue, icon: source.icon, folderId });
+    try {
+      await this.fillSet(uid, set.id, shared.content);
+    } catch (reason) {
+      await this.deleteSet(uid, set.id).catch(() => {});
+      throw reason;
+    }
+    return this.requireSet(uid, set.id);
   }
 
   // ---- account ----------------------------------------------------------
