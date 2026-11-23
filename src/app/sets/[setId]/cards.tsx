@@ -284,7 +284,7 @@ function Deck({ content }: { content: SetContent }) {
         { translateX: x.get() },
         { translateY: y.get() - turning * 26 },
         { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
-        { scale: press.get() },
+        { scale: press.get() * (1 + turning * 0.08) },
       ],
     };
   });
