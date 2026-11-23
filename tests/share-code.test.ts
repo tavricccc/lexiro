@@ -19,6 +19,11 @@ describe("parseShareCode", () => {
     expect(parseShareCode("https://lexiro.vercel.app/shared/0B7C2A52-6B43-4c2e-9d0a-0f6c1f1c2d3e")).toBe("0b7c2a52-6b43-4c2e-9d0a-0f6c1f1c2d3e");
   });
 
+  it.each(["aB3_dE-fG7hIjK0lMn1oPq", "-B3_dE-fG7hIjK0lMn1oP_"])("keeps the case of the oldest code %s, alone or in a link", (code) => {
+    expect([parseShareCode(` ${code}
+`), parseShareCode(`https://lexiro.vercel.app/app/shared/${code}`)]).toEqual([code, code]);
+  });
+
   it("refuses what is not a code", () => {
     expect(["", "ABC", "ABCDEFG0", "https://lexiro.vercel.app/app"].map(parseShareCode)).toEqual([null, null, null, null]);
   });

@@ -45,10 +45,10 @@ function JoinForm({ folder }: { folder: string }) {
           <Input
             aria-describedby={describedBy}
             aria-invalid={invalid}
-            autoCapitalize="characters"
+            autoCapitalize="none"
             autoComplete="off"
             autoFocus
-            className="font-latin text-lg uppercase tracking-[0.2em]"
+            className={text.length > SHARE_CODE_LENGTH + 2 ? "font-latin" : "font-latin text-lg uppercase tracking-[0.2em]"}
             id={id}
             onChange={(event) => { setText(event.target.value); setError(""); }}
             onPaste={(event) => {
