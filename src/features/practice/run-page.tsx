@@ -134,12 +134,13 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   const last = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
   return (
-    // The round sits still on the screen; the question and answers scroll above the bottom bar.
+    // The round sits still on the screen; the question and answers scroll only when they are longer than it.
     <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-xl flex-col overscroll-none px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="flex items-center gap-3 px-1">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
+        <Button className={cn(round.revealed && "invisible")} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
       </header>
       <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
         <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overscroll-contain pb-2 pt-3">
@@ -167,11 +168,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
               <kbd className="hidden rounded-[0.3rem] bg-canvas/15 px-1.5 py-0.5 font-mono text-[0.6875rem] font-medium md:inline">Enter</kbd>
             </Button>
           </Feedback>
-        ) : (
-          <div className="flex shrink-0 justify-center pt-1">
-            <Button className="h-12" onClick={() => pick(null)} variant="ghost">不會，看答案</Button>
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
