@@ -9,6 +9,7 @@ import { descriptionPoints, type Word } from "@/core/contract";
 import { haptics } from "@/lib/haptics";
 import { colors, latin, space, type } from "@/lib/theme";
 import { DescriptionPoints } from "./description-points";
+import { PressableRow } from "./pressable-row";
 import { StarButton } from "./star-button";
 
 /** "n. 銀行；河岸 · v. 存錢" grouped by part of speech. */
@@ -106,12 +107,12 @@ export function SwipeableWordRow({
       }}
     >
       <View style={styles.rowContainer}>
-        <Pressable
+        <PressableRow
           onPress={() => {
             haptics.select();
             onPress();
           }}
-          style={({ pressed }) => [styles.main, pressed && styles.pressed]}
+          style={styles.main}
         >
           <View style={styles.textCol}>
             <Text style={styles.word} numberOfLines={1}>
@@ -134,7 +135,7 @@ export function SwipeableWordRow({
               <DescriptionPoints points={points} boxed compact />
             ) : null}
           </View>
-        </Pressable>
+        </PressableRow>
         <View style={styles.starWrap}>
           <StarButton
             setId={setId}
@@ -161,9 +162,6 @@ const styles = StyleSheet.create({
     paddingLeft: space.row,
     paddingRight: 4,
     justifyContent: "center",
-  },
-  pressed: {
-    backgroundColor: colors.surfacePressed,
   },
   textCol: {
     gap: 2,

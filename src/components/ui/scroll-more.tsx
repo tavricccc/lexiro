@@ -1,10 +1,16 @@
 import { Button, Host, Image } from "@expo/ui/swift-ui";
 import {
+  accessibilityHidden,
   accessibilityLabel,
+  animation,
+  Animation,
   buttonBorderShape,
   buttonStyle,
   controlSize,
+  disabled,
   frame,
+  opacity,
+  scaleEffect,
 } from "@expo/ui/swift-ui/modifiers";
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { HeaderHeightContext } from "expo-router/react-navigation";
@@ -20,6 +26,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { haptics } from "@/lib/haptics";
+import { DURATION } from "./motion";
 
 const glass = isLiquidGlassAvailable();
 /** Less than this below the fold is only padding. */
@@ -115,9 +122,8 @@ export function ScrollMore({
   onPress: () => void;
   bottom: number;
 }) {
-  if (!visible) return null;
   return (
-    <View pointerEvents="box-none" style={[styles.place, { bottom }]}>
+    <View pointerEvents={visible ? "box-none" : "none"} style={[styles.place, { bottom }]}>
       <Host matchContents>
         <Button
           onPress={onPress}
@@ -126,6 +132,11 @@ export function ScrollMore({
             buttonBorderShape("circle"),
             controlSize("large"),
             accessibilityLabel("往下捲"),
+            accessibilityHidden(!visible),
+            disabled(!visible),
+            opacity(visible ? 1 : 0),
+            scaleEffect(visible ? 1 : 0.8),
+            animation(Animation.easeOut({ duration: DURATION.state / 1000 }), visible),
           ]}
         >
           <Image systemName="chevron.down" size={17} modifiers={[frame({ width: 20, height: 22 })]} />

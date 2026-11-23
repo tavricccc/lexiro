@@ -22,7 +22,6 @@ import { SymbolView, type SymbolViewProps } from "expo-symbols";
 import { Children, Fragment, isValidElement, type ComponentProps, type ReactNode } from "react";
 import {
   Platform,
-  Pressable,
   StyleSheet,
   Switch,
   Text,
@@ -38,6 +37,8 @@ import Animated from "react-native-reanimated";
 import { haptics } from "@/lib/haptics";
 import { PINE_LIGHT, colors, radius, space, type } from "@/lib/theme";
 import { pop, popOut } from "./motion";
+import { PressableRow } from "./pressable-row";
+import { PressableScale } from "./pressable-scale";
 
 const ICON_INSET = space.row + 24 + 14;
 
@@ -114,7 +115,7 @@ export function ListRow({
   onPress?: () => void;
 }) {
   return (
-    <Pressable
+    <PressableRow
       accessibilityRole={onPress ? "button" : undefined}
       onPress={
         onPress
@@ -125,11 +126,7 @@ export function ListRow({
           : undefined
       }
       disabled={!onPress || disabled}
-      style={({ pressed }) => [
-        styles.row,
-        pressed && styles.pressed,
-        disabled && styles.disabled,
-      ]}
+      style={[styles.row, disabled && styles.disabled]}
     >
       {leading}
       {icon ? (
@@ -172,7 +169,7 @@ export function ListRow({
           tintColor={colors.inkFaint}
         />
       ) : null}
-    </Pressable>
+    </PressableRow>
   );
 }
 
@@ -334,7 +331,8 @@ export function TextBlockRow({
       <View style={styles.blockHead}>
         <Text style={styles.blockLabel}>{label}</Text>
         {onRemove ? (
-          <Pressable
+          <PressableScale
+            scaleTo={0.85}
             accessibilityRole="button"
             accessibilityLabel={removeLabel}
             hitSlop={10}
@@ -344,7 +342,7 @@ export function TextBlockRow({
             }}
           >
             <SymbolView name="minus.circle.fill" size={20} tintColor={colors.danger} />
-          </Pressable>
+          </PressableScale>
         ) : null}
       </View>
       <TextInput
@@ -380,7 +378,7 @@ export function ActionRow({
 }) {
   const tint = destructive ? colors.danger : colors.ink;
   return (
-    <Pressable
+    <PressableRow
       accessibilityRole="button"
       disabled={disabled}
       onPress={() => {
@@ -388,11 +386,7 @@ export function ActionRow({
         else haptics.tap();
         onPress();
       }}
-      style={({ pressed }) => [
-        styles.row,
-        pressed && styles.pressed,
-        disabled && styles.disabled,
-      ]}
+      style={[styles.row, disabled && styles.disabled]}
     >
       <SymbolView
         name={icon ?? (destructive ? "trash" : "plus.circle")}
@@ -402,7 +396,7 @@ export function ActionRow({
         style={styles.icon}
       />
       <Text style={[styles.title, { color: tint }]}>{title}</Text>
-    </Pressable>
+    </PressableRow>
   );
 }
 
@@ -635,7 +629,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.row,
     paddingVertical: 11,
   },
-  pressed: { backgroundColor: colors.surfacePressed },
   icon: { width: 24, height: 24 },
   rowText: { flex: 1, gap: 2 },
   title: { ...type.row, color: colors.ink },

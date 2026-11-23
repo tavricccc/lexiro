@@ -1,7 +1,8 @@
 import { SymbolView } from "expo-symbols";
 import { StyleSheet, Text } from "react-native";
-import Animated, { FadeInUp, FadeOutUp } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
+import { dropIn, dropOut } from "@/components/ui/motion";
 import { useOnline } from "@/data/network";
 import { colors, radius, type } from "@/lib/theme";
 
@@ -11,8 +12,8 @@ export function OfflineBanner() {
   if (online) return null;
   return (
     <Animated.View
-      entering={FadeInUp.duration(220)}
-      exiting={FadeOutUp.duration(180)}
+      entering={dropIn}
+      exiting={dropOut}
       style={styles.banner}
       accessibilityRole="alert"
     >

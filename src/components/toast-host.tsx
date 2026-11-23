@@ -1,12 +1,14 @@
 import { GlassView, isLiquidGlassAvailable } from "expo-glass-effect";
 import { SymbolView } from "expo-symbols";
+import { useEffect, useState } from "react";
 import { Platform, Pressable, StyleSheet, Text } from "react-native";
-import Animated, { FadeInUp, FadeOutUp } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { FullWindowOverlay } from "react-native-screens";
 
+import { DURATION, dropIn, dropOut } from "@/components/ui/motion";
 import { colors, radius, type } from "@/lib/theme";
-import { toast, useToasts } from "@/platform/toast";
+import { toast, useToasts, type ToastMessage } from "@/platform/toast";
 
 const ICONS = {
   success: "checkmark.circle.fill",
@@ -22,9 +24,27 @@ const hasGlass = isLiquidGlassAvailable();
  */
 export function ToastHost() {
   const current = useToasts((state) => state.current);
-  const insets = useSafeAreaInsets();
-  if (!current) return null;
+  // The overlay outlives its toast, or the toast would vanish without leaving.
+  const [overlay, setOverlay] = useState<number | null>(null);
+  if (current && current.id !== overlay) setOverlay(current.id);
+  useEffect(() => {
+    if (current) return;
+    const timer = setTimeout(() => setOverlay(null), DURATION.state + 50);
+    return () => clearTimeout(timer);
+  }, [current]);
 
+  const pill = current ? <ToastPill key={current.id} toast={current} /> : null;
+  if (Platform.OS !== "ios") return pill;
+  if (overlay === null) return null;
+  return (
+    <FullWindowOverlay key={overlay} unstable_accessibilityContainerViewIsModal={false}>
+      {pill}
+    </FullWindowOverlay>
+  );
+}
+
+function ToastPill({ toast: current }: { toast: ToastMessage }) {
+  const insets = useSafeAreaInsets();
   const iconTint =
     current.kind === "error"
       ? colors.danger
@@ -41,11 +61,10 @@ export function ToastHost() {
     </Pressable>
   );
 
-  const pill = (
+  return (
     <Animated.View
-      key={current.id}
-      entering={FadeInUp.duration(240)}
-      exiting={FadeOutUp.duration(160)}
+      entering={dropIn}
+      exiting={dropOut}
       style={[styles.wrap, { top: insets.top + 8 }]}
       pointerEvents="box-none"
     >
@@ -57,12 +76,6 @@ export function ToastHost() {
         <Animated.View style={styles.fallbackPill}>{content}</Animated.View>
       )}
     </Animated.View>
-  );
-  if (Platform.OS !== "ios") return pill;
-  return (
-    <FullWindowOverlay key={current.id} unstable_accessibilityContainerViewIsModal={false}>
-      {pill}
-    </FullWindowOverlay>
   );
 }
 

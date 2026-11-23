@@ -2,39 +2,52 @@ import {
   Easing,
   FadeIn,
   FadeInDown,
+  FadeInLeft,
   FadeInRight,
   FadeInUp,
   FadeOut,
+  FadeOutUp,
   LinearTransition,
   ZoomIn,
   ZoomOut,
 } from "react-native-reanimated";
 
 /**
- * One curve for everything that moves: fast off the mark, then a long soft
- * landing with no overshoot. Springs were dropped because their settle read
- * as slow drifting and wobbling.
+ * Three speeds for everything that moves: an answer to a finger, a change of
+ * state, and a change of place. Springs are kept for things thrown by hand
+ * (the flashcards); elsewhere their settle read as drifting. Reanimated skips
+ * all of these when the system asks for reduced motion.
  */
+export const DURATION = { press: 100, state: 180, move: 300 } as const;
+
+/** Fast off the mark, then a long soft landing with no overshoot. */
 export const EASE_OUT = Easing.bezier(0.22, 1, 0.36, 1);
 /** Gentler for things that travel, so a move is followed rather than jumped. */
 export const EASE_MOVE = Easing.bezier(0.25, 0.8, 0.25, 1);
 
-/**
- * Swapping one view for another, such as a tab panel, or a row being added.
- * Pages themselves appear at once: Screen skips entering on first mount.
- */
-export const swapIn = FadeIn.duration(160);
-export const swapOut = FadeOut.duration(100);
+/** `withTiming` settings. */
+export const timing = {
+  press: { duration: DURATION.press, easing: EASE_OUT },
+  state: { duration: DURATION.state, easing: EASE_OUT },
+  move: { duration: DURATION.move, easing: EASE_MOVE },
+} as const;
+
+/** Swapping one view for another, such as a tab panel, or a row being added. */
+export const swapIn = FadeIn.duration(DURATION.state);
+export const swapOut = FadeOut.duration(DURATION.press);
 
 /** Neighbours glide when something above them changes size. */
-export const glide = LinearTransition.duration(340).easing(EASE_MOVE);
+export const glide = LinearTransition.duration(DURATION.move).easing(EASE_MOVE);
 
 /** A mark or badge appearing: a check, a crown, a finish icon. */
-export const pop = ZoomIn.duration(200).easing(EASE_OUT);
-export const popOut = ZoomOut.duration(100);
+export const pop = ZoomIn.duration(DURATION.state).easing(EASE_OUT);
+export const popOut = ZoomOut.duration(DURATION.press);
 
-/** Reanimated's short fade-and-shift entrances, on the shared curve. */
-export const enterDown = FadeInDown.duration(320).easing(EASE_MOVE);
-export const enterUp = FadeInUp.duration(320).easing(EASE_MOVE);
-/** The next question sliding in. */
-export const slideNext = FadeInRight.duration(320).easing(EASE_MOVE);
+/** Short fade-and-shift entrances. */
+export const enterDown = FadeInDown.duration(DURATION.move).easing(EASE_MOVE);
+/** From the top edge, and back out through it: toasts and banners. */
+export const dropIn = FadeInUp.duration(DURATION.move).easing(EASE_MOVE);
+export const dropOut = FadeOutUp.duration(DURATION.state);
+/** The next question sliding in, or the one before. */
+export const slideNext = FadeInRight.duration(DURATION.move).easing(EASE_MOVE);
+export const slideBack = FadeInLeft.duration(DURATION.move).easing(EASE_MOVE);

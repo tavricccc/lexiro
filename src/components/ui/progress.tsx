@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { StyleSheet, View, type ColorValue } from "react-native";
 import Animated, {
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
 
 import { colors } from "@/lib/theme";
-
-const GROW = { duration: 280, easing: Easing.bezier(0.22, 1, 0.36, 1) };
+import { timing } from "./motion";
 
 export function ProgressBar({
   value,
@@ -24,7 +22,7 @@ export function ProgressBar({
   const width = useSharedValue(clamped * 100);
 
   useEffect(() => {
-    width.set(withTiming(clamped * 100, GROW));
+    width.set(withTiming(clamped * 100, timing.move));
   }, [clamped, width]);
 
   const fill = useAnimatedStyle(() => ({ width: `${width.value}%` }));

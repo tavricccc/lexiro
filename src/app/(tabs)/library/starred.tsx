@@ -1,14 +1,14 @@
 import { router, Stack } from "expo-router";
 import { useState } from "react";
-import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
 import { EmptyState, Screen } from "@/components/ui/layout";
-import { ListGroup } from "@/components/ui/list";
-import { Segmented } from "@/components/ui/segmented";
+import { ListGroup, PickerRow } from "@/components/ui/list";
+import { PressableRow } from "@/components/ui/pressable-row";
 import { StarButton } from "@/components/ui/star-button";
 import { meaningLine } from "@/components/ui/swipeable-word-row";
 import type { Word } from "@/core/contract";
@@ -52,18 +52,20 @@ export default function StarredScreen() {
             </Text>
 
             {groups.length > 1 ? (
-              <Segmented
-                scrollable
-                value={activeFilter}
-                onChange={setFilter}
-                options={[
-                  { value: ALL, label: `全部 ${count}` },
-                  ...groups.map((group) => ({
-                    value: group.set.id,
-                    label: `${group.set.name} ${group.words.length}`,
-                  })),
-                ]}
-              />
+              <ListGroup>
+                <PickerRow
+                  title="單字集"
+                  value={activeFilter}
+                  onChange={setFilter}
+                  options={[
+                    { value: ALL, label: `全部 ${count}` },
+                    ...groups.map((group) => ({
+                      value: group.set.id,
+                      label: `${group.set.name} ${group.words.length}`,
+                    })),
+                  ]}
+                />
+              </ListGroup>
             ) : null}
 
             {shown.map((group) => (
@@ -113,7 +115,7 @@ export default function StarredScreen() {
 function StarredWordRow({ setId, word }: { setId: string; word: Word }) {
   return (
     <View style={styles.row}>
-      <Pressable
+      <PressableRow
         onPress={() => {
           haptics.select();
           router.push({
@@ -121,13 +123,13 @@ function StarredWordRow({ setId, word }: { setId: string; word: Word }) {
             params: { setId, wordId: word.id },
           });
         }}
-        style={({ pressed }) => [styles.rowMain, pressed && styles.pressed]}
+        style={styles.rowMain}
       >
         <Text style={styles.wordText}>{word.word}</Text>
         <Text style={styles.meaningText} numberOfLines={1}>
           {meaningLine(word)}
         </Text>
-      </Pressable>
+      </PressableRow>
       <View style={styles.starWrap}>
         <StarButton setId={setId} wordId={word.id} starred={word.starred} word={word.word} />
       </View>
@@ -157,7 +159,6 @@ const styles = StyleSheet.create({
     paddingRight: 4,
     paddingVertical: 10,
   },
-  pressed: { backgroundColor: colors.surfacePressed },
   wordText: {
     ...latin.semibold,
     fontSize: 17,
