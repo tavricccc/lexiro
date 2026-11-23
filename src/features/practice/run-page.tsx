@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useLayoutEffect, use
 import { useQueries } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
-import { ArrowRight, ArrowCounterClockwise, CaretLeft, Check, Star, X } from "@phosphor-icons/react";
+import { ArrowRight, ArrowCounterClockwise, CaretLeft, Check, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask } from "@lexiro/contract";
 import { AnimatedNumber, AppLink, Button, HeaderButton, ProgressBar, Segmented, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
@@ -19,6 +19,7 @@ import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
 import { ScrollMore } from "@/ui/scroll-more";
 import { SpeakButton } from "@/ui/speak";
+import { StarMark } from "@/ui/star-button";
 
 /** Starring during a round: set words star for good, other words only for this round's review. */
 interface Marks { words: Map<string, SetWord>; marked: string[]; mark: (word: string, on: boolean) => void }
@@ -71,7 +72,7 @@ function MarkStar({ word, className }: { word: string; className?: string }) {
       size="icon-sm"
       variant="ghost"
     >
-      <Star weight={starred ? "fill" : "regular"} />
+      <StarMark starred={starred} />
     </Button>
   );
 }
@@ -150,6 +151,9 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [round.revealed, step, used, pick, next]);
+  // Looking back deals the card in from the other side.
+  const [place, setPlace] = useState({ index: round.index, back: false });
+  if (place.index !== round.index) setPlace({ index: round.index, back: round.index < place.index });
   const wide = useWide();
   const page = useRef<HTMLDivElement>(null);
   const prompt = useRef<HTMLElement>(null);
@@ -178,7 +182,7 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
   );
   const feedback = round.revealed ? <Feedback accept={back ? undefined : accept} chosen={chosen} item={item} step={step} /> : null;
   const nextBar = round.revealed ? (
-    <div className="shrink-0 max-md:pt-2">
+    <div className="content-in shrink-0 max-md:pt-2">
       <Button autoFocus className="h-14 w-full rounded-[1.125rem]" onClick={next} size="lg" variant="solid">
         {last ? "看結果" : "下一題"}
         <kbd className="hidden rounded-[0.3rem] bg-canvas/15 px-1.5 py-0.5 font-mono text-[0.6875rem] font-medium md:inline">Enter</kbd>
@@ -193,9 +197,9 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
         <HeaderButton aria-label="上一題" disabled={first} onClick={() => setBack(back + 1)}><CaretLeft weight="bold" /></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
-        <Button className={cn(round.revealed && "invisible")} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
+        <Button className={cn(round.revealed && "pointer-events-none opacity-0")} inert={round.revealed} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
       </header>
-      <div className="card-in flex min-h-0 flex-1 flex-col" key={round.index}>
+      <div className="card-in flex min-h-0 flex-1 flex-col" data-back={place.back || undefined} key={round.index}>
         {wide ? (
           <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[minmax(0,1fr)] gap-2 pt-4">
             <div className="relative min-h-0">
@@ -215,7 +219,7 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
             <div className="relative min-h-0 flex-1">
               <div className="h-full overflow-y-auto overscroll-contain pt-3" ref={page}>
                 {/* Once answered, the top of the feedback shows below the question. */}
-                <div className={cn("flex flex-col gap-2 pb-2", round.revealed ? "min-h-[calc(100%-4.25rem)]" : "min-h-full")}>
+                <div className={cn("flex flex-col gap-2 pb-2 transition-[min-height] duration-[var(--motion-control)] ease-[var(--ease-move)] motion-reduce:transition-none", round.revealed ? "min-h-[calc(100%-4.25rem)]" : "min-h-full")}>
                   <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">{question}</section>
                   {options}
                 </div>
@@ -254,7 +258,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     return (
       <p className="font-latin text-xl leading-relaxed" lang="en">
         {before}
-        <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center", filled ? "border-positive bg-positive/10 text-positive-ink" : "border-ink bg-surface-raised")}>{filled ?? " "}</span>
+        <span className={cn("mx-1 inline-block min-w-20 rounded-chip border-b-2 px-2 text-center transition-colors duration-[var(--motion-control)]", filled ? "border-positive bg-positive/10 text-positive-ink" : "border-ink bg-surface-raised")}>{filled ?? " "}</span>
         {after}
       </p>
     );
@@ -276,7 +280,7 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
           return (
             <span
               className={cn(
-                "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold",
+                "mx-0.5 inline-flex min-w-12 items-baseline justify-center rounded-chip px-1.5 text-[0.9375rem] font-semibold transition-colors duration-[var(--motion-control)]",
                 at === round.step && !round.revealed ? "bg-ink text-canvas" : done ? (right ? "bg-positive/12 text-positive-ink" : "bg-danger/12 text-danger-ink") : "bg-surface-raised text-ink-muted",
               )}
               key={index}
@@ -317,11 +321,12 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
           <div className="relative min-w-0" key={index}>
             <button
               className={cn(
-                "flex size-full rounded-[1.5rem] bg-surface px-4 py-3 text-left outline-none transition-[background-color,transform,opacity] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
+                "flex size-full rounded-[1.5rem] bg-surface px-4 py-3 text-left outline-none transition-[background-color,scale,opacity] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
                 wide ? "min-h-16 items-center gap-3" : "min-h-24 flex-col justify-between gap-2",
                 !revealed && "hover:bg-surface-solid hover:shadow-panel active:scale-[var(--motion-press-scale)]",
                 right && "bg-positive/12",
                 wrong && "bg-danger/10",
+                revealed && !right && !wrong && "opacity-70",
                 used.has(index) && !revealed && "opacity-35",
               )}
               disabled={revealed || used.has(index)}
@@ -331,14 +336,14 @@ function Options({ step, chosen, revealed, used, pick }: { step: Pick<Step, "opt
               <span
                 aria-hidden
                 className={cn(
-                  "grid size-6 shrink-0 place-items-center rounded-[0.45rem] font-mono text-xs",
+                  "grid size-6 shrink-0 place-items-center rounded-[0.45rem] font-mono text-xs transition-colors duration-[var(--motion-control)]",
                   right ? "text-base text-positive-ink" : wrong ? "text-base text-danger-ink" : "border border-line text-ink-muted",
                 )}
               >
-                {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
+                {right ? <Check className="mark-in" key="right" weight="bold" /> : wrong ? <X className="mark-in" key="wrong" weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0", wide && "flex-1", word && "pr-7")}>
-                <span className={cn("block text-lg font-semibold leading-snug", right && "text-positive-ink", wrong && "text-danger-ink", isLatin(option) && "font-latin tracking-[-0.01em]")} lang={isLatin(option) ? "en" : undefined}>{option}</span>
+                <span className={cn("block text-lg font-semibold leading-snug transition-colors duration-[var(--motion-control)]", right && "text-positive-ink", wrong && "text-danger-ink", isLatin(option) && "font-latin tracking-[-0.01em]")} lang={isLatin(option) ? "en" : undefined}>{option}</span>
                 {revealed ? <Gloss index={index} step={step} /> : null}
               </span>
             </button>
@@ -483,7 +488,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
         value={filter}
       />
       {filter === "starred" ? (
-        <ul className="grid rounded-[1.5rem] bg-surface px-2 py-1">
+        <ul className="content-in grid rounded-[1.5rem] bg-surface px-2 py-1">
           {marked.map((word) => {
             const entry = words.get(normalizeWord(word));
             return (
@@ -496,7 +501,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
           })}
         </ul>
       ) : (
-        <ol className="grid gap-2">
+        <ol className="content-in grid gap-2" key={filter}>
           {shown.map(({ item, step, key, at, choice }) => <ReviewItem at={at} choice={choice} item={item} key={key} step={step} />)}
         </ol>
       )}
@@ -534,7 +539,11 @@ function ReviewItem({ item, step, at, choice }: { item: PracticeItem; step: Step
             {picked ? <span className="text-ink-muted"> — 那是 <span className={cn(isLatin(picked) && "font-latin")}>{picked}</span></span> : null}
           </p>
         )}
-        {open && explained ? <div className="mt-1.5 grid gap-2 border-t border-line pt-2.5"><Explanation brief chosen={choice} item={item} step={step} /></div> : null}
+        {explained ? (
+          <div className="fold" data-open={open || undefined} inert={!open}>
+            <div><div className="mt-1.5 grid gap-2 border-t border-line pt-2.5"><Explanation brief chosen={choice} item={item} step={step} /></div></div>
+          </div>
+        ) : null}
       </div>
     </li>
   );

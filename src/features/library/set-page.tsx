@@ -148,7 +148,7 @@ function WordList({ content }: { content: SetContent }) {
         </ListGroup>
       ) : <p className="py-6 text-center text-[0.9375rem] text-ink-muted">沒有符合的單字</p>}
       {selected ? (
-        <div className="bar-in glass-float sticky bottom-[calc(var(--bottom-nav-gap)+0.5rem)] z-30 flex items-center gap-2 rounded-full p-1.5 pl-5 md:bottom-[calc(var(--safe-bottom)+1.5rem)]">
+        <div className="content-in glass-float sticky bottom-[calc(var(--bottom-nav-gap)+0.5rem)] z-30 flex items-center gap-2 rounded-full p-1.5 pl-5 md:bottom-[calc(var(--safe-bottom)+1.5rem)]">
           <span className="flex-1 text-[0.9375rem] font-medium">已選 <span className="font-latin">{selected.size}</span> 個</span>
           <Button disabled={!selected.size} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
           <Button disabled={!selected.size} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>

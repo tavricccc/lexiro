@@ -1,6 +1,8 @@
 import * as React from "react";
 import { AppLink } from "./app-link";
 import { CaretRight } from "@phosphor-icons/react/ssr";
+import { motion, useReducedMotion } from "motion/react";
+import { timing } from "../lib/motion-timing";
 import { cn } from "../lib/utils";
 
 /**
@@ -48,7 +50,7 @@ type ListRowProps = ListRowContent &
   (
     | { href: string; external?: boolean; onClick?: () => void; trailing?: never; disabled?: never }
     | { href?: never; external?: never; onClick: () => void; trailing?: never; disabled?: boolean }
-    | { href?: never; external?: never; onClick?: never; trailing?: React.ReactNode; disabled?: never }
+    | { href?: never; external?: never; onClick?: never; trailing?: React.ReactNode; disabled?: never; /** The row glides to its new place when the order changes. */ ranked?: boolean }
   );
 
 export const rowClass =
@@ -75,6 +77,7 @@ function RowBody({ detail, icon, label, tone = "default", value }: ListRowConten
 
 /** One row: a link, an action, or a label with its own trailing control. */
 export function ListRow(props: ListRowProps) {
+  const reduced = useReducedMotion();
   const chevron = <CaretRight aria-hidden className="size-4 shrink-0 text-ink-faint" weight="bold" />;
   if (props.href !== undefined) {
     return (
@@ -102,9 +105,9 @@ export function ListRow(props: ListRowProps) {
     );
   }
   return (
-    <li className={rowClass}>
+    <motion.li className={rowClass} layout={props.ranked ? "position" : false} transition={reduced ? { duration: 0 } : timing("nav", "nav")}>
       <RowBody {...props} />
       {props.trailing}
-    </li>
+    </motion.li>
   );
 }

@@ -21,13 +21,13 @@ export default function PreferencesPage() {
             <ListGroup title="外觀">
               <ListRow
                 label="主題"
-                trailing={<Segmented label="主題" onChange={(theme) => void save({ theme })} options={[{ label: "系統", value: "system" }, { label: "淺色", value: "light" }, { label: "深色", value: "dark" }]} value={value.theme} />}
+                trailing={<Segmented disabled={!online} label="主題" onChange={(theme) => void save({ theme })} options={[{ label: "系統", value: "system" }, { label: "淺色", value: "light" }, { label: "深色", value: "dark" }]} value={value.theme} />}
               />
             </ListGroup>
             <ListGroup footer="從練習頁開始時預設的題數，開始前仍可調整。" title="練習">
               <ListRow
                 label="每輪題數"
-                trailing={<Segmented label="每輪題數" onChange={(size) => void save({ practiceSize: Number(size) })} options={SIZES.map((size) => ({ label: size, value: size }))} value={SIZES.find((size) => Number(size) === value.practiceSize) ?? "20"} />}
+                trailing={<Segmented disabled={!online} label="每輪題數" onChange={(size) => void save({ practiceSize: Number(size) })} options={SIZES.map((size) => ({ label: size, value: size }))} value={SIZES.find((size) => Number(size) === value.practiceSize) ?? "20"} />}
               />
             </ListGroup>
             <ListGroup title="單字集">

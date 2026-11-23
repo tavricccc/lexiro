@@ -15,7 +15,7 @@ export function Panel({
       className={cn(
         "glass block rounded-panel p-4 text-ink shadow-panel md:p-5",
         interactive &&
-          "outline-none transition-[background-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+          "outline-none transition-[background-color,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-pressed active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
         className,
       )}
       {...props}

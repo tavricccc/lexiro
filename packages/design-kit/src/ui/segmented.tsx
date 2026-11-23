@@ -16,6 +16,7 @@ export interface SegmentedOption<Value extends string = string> {
  */
 export function Segmented<Value extends string>({
   className,
+  disabled,
   label,
   onChange,
   options,
@@ -23,6 +24,7 @@ export function Segmented<Value extends string>({
   value,
 }: {
   className?: string;
+  disabled?: boolean;
   label: string;
   onChange: (value: Value) => void;
   options: SegmentedOption<Value>[];
@@ -44,10 +46,11 @@ export function Segmented<Value extends string>({
           return (
             <Tabs.Trigger
               className={cn(
-                "relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full font-medium outline-none transition-[color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+                "relative isolate inline-flex shrink-0 disabled:opacity-40 items-center justify-center gap-1.5 rounded-full font-medium outline-none transition-[color,opacity,scale] active:scale-[var(--motion-press-scale)] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
                 size === "lg" ? "h-11 px-5 text-[0.9375rem]" : "h-9 px-4 text-sm",
                 selected ? "text-canvas" : "text-ink-muted hover:text-ink",
               )}
+              disabled={disabled}
               key={option.value}
               value={option.value}
             >

@@ -100,14 +100,14 @@ export default function SetupPage() {
           const on = chosen.includes(set.id);
           return (
             <li key={set.id}>
-              <button aria-pressed={on} className="flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" onClick={() => toggleSet(set.id)} type="button">
+              <button aria-pressed={on} className="flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised" onClick={() => toggleSet(set.id)} type="button">
                 <SetIcon className="size-9 [&_svg]:size-5" icon={set.icon} />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate">{set.name}</span>
                   <span className="block text-[0.8125rem] text-ink-muted">{set.wordCount} 個單字{set.questionCount ? ` · ${set.questionCount} 題` : ""}</span>
                 </span>
                 <span aria-hidden className={cn("grid size-6 place-items-center rounded-full border-2 transition-colors", on ? "border-contrast bg-contrast text-on-contrast" : "border-ink-faint/50")}>
-                  {on ? <Check className="size-3.5" weight="bold" /> : null}
+                  {on ? <Check className="mark-in size-3.5" weight="bold" /> : null}
                 </span>
               </button>
             </li>
@@ -121,7 +121,7 @@ export default function SetupPage() {
             {available.map((task) => {
               const on = tasks.includes(task);
               return (
-                <button aria-pressed={on} className={cn("rounded-tile border p-3.5 text-left outline-none transition-colors duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]", on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised")} key={task} onClick={() => toggleTask(task)} type="button">
+                <button aria-pressed={on} className={cn("rounded-tile border p-3.5 text-left outline-none transition-[background-color,border-color,scale] duration-[var(--motion-control)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]", on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised")} key={task} onClick={() => toggleTask(task)} type="button">
                   <span className={cn("block font-semibold", on && "text-accent-ink")}>{TASK_LABELS[task]}</span>
                   <span className="block text-[0.8125rem] text-ink-muted">{TASK_HINTS[task]}</span>
                 </button>

@@ -102,7 +102,7 @@ export default function AppAuthPage() {
           <Panel className="grid gap-3">
             <p className="text-[0.9375rem] text-ink-muted">用 Google 登入後會自動回到 App。</p>
             <Button className="justify-self-start" onClick={() => void start()} size="lg" status={status} variant="primary"><GoogleLogo weight="bold" />用 Google 登入</Button>
-            {error && <p className="text-sm text-danger" role="alert">{error}</p>}
+            {error && <p className="message-in text-sm text-danger" role="alert">{error}</p>}
           </Panel>
         )}
       </Page>

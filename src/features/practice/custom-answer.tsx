@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useId, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Check, X } from "@phosphor-icons/react";
-import { Button, Input, cn } from "design-kit";
+import { Button, Input, cn, timing } from "design-kit";
 import { isRight, type Choice, type CustomStep } from "@/domain/custom";
 
 type Mode<M extends CustomStep["mode"]> = Extract<CustomStep, { mode: M }>;
@@ -12,8 +13,8 @@ interface Props<M extends CustomStep["mode"]> {
 }
 
 const latin = (text: string) => /[A-Za-z]/.test(text);
-const tile = "rounded-tile border px-4 py-3 text-left text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
-const chip = "rounded-chip border px-3 py-2 font-latin text-base outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const tile = "rounded-tile border px-4 py-3 text-left text-base outline-none transition-[background-color,border-color,color,opacity,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
+const chip = "rounded-chip border px-3 py-2 font-latin text-base outline-none transition-[background-color,border-color,color,opacity,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default";
 
 function Confirm({ disabled, onClick }: { disabled: boolean; onClick: () => void }) {
   return <Button className="justify-self-end" disabled={disabled} onClick={onClick} size="lg" variant="primary"><Check weight="bold" />確認</Button>;
@@ -45,8 +46,8 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
               onClick={() => toggle(index)}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold", right ? "text-base text-positive-ink" : wrong ? "text-base text-danger-ink" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
-                {right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : on ? <Check weight="bold" /> : index + 1}
+              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-chip text-sm font-semibold transition-colors duration-[var(--motion-control)]", right ? "text-base text-positive-ink" : wrong ? "text-base text-danger-ink" : on ? "bg-contrast text-on-contrast" : "bg-surface-raised text-ink-muted")}>
+                {right ? <Check className="mark-in" key="right" weight="bold" /> : wrong ? <X className="mark-in" key="wrong" weight="bold" /> : on ? <Check className="mark-in" key="on" weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", latin(option) && "font-latin")} lang={latin(option) ? "en" : undefined}>{option}</span>
             </button>
@@ -70,7 +71,7 @@ function Typed({ step, chosen, revealed, submit }: Props<"input">) {
         autoComplete="off"
         autoCorrect="off"
         autoFocus
-        className={cn("h-14 font-latin text-lg", revealed && (right ? "border-positive bg-positive/12" : "border-danger bg-danger/12"))}
+        className={cn("h-14 font-latin text-lg transition-colors duration-[var(--motion-control)]", revealed && (right ? "border-positive bg-positive/12" : "border-danger bg-danger/12"))}
         disabled={revealed}
         lang="en"
         onChange={(event) => setText(event.target.value)}
@@ -85,6 +86,10 @@ function Typed({ step, chosen, revealed, submit }: Props<"input">) {
 function Order({ step, chosen, revealed, submit }: Props<"order">) {
   const [placed, setPlaced] = useState<number[]>([]);
   const line = revealed && Array.isArray(chosen) ? chosen : placed;
+  // One piece is one element in both places, so it travels between them.
+  const group = useId();
+  const reduced = useReducedMotion();
+  const move = { layout: "position" as const, transition: reduced ? { duration: 0 } : timing("control", "move") };
   const left = step.pieces.map((_, index) => index).filter((index) => !line.includes(index));
   return (
     <div className="grid gap-3">
@@ -92,17 +97,19 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
         {line.map((index, at) => {
           const right = revealed && step.order[at] === index;
           return (
-            <button
+            <motion.button
               className={cn(chip, revealed ? (right ? "border-positive bg-positive/12 text-positive-ink" : "border-danger bg-danger/12 text-danger-ink") : "border-contrast bg-accent-soft active:scale-[var(--motion-press-scale)]")}
               disabled={revealed}
               key={index}
+              {...move}
+              layoutId={`${group}-${index}`}
               lang="en"
               onClick={() => setPlaced((current) => current.filter((value) => value !== index))}
               role="listitem"
               type="button"
             >
               {step.pieces[index]}
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -110,9 +117,9 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
         <>
           <div aria-label="還沒排的片段" className="flex flex-wrap gap-2" role="group">
             {left.map((index) => (
-              <button className={cn(chip, "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]")} key={index} lang="en" onClick={() => setPlaced((current) => [...current, index])} type="button">
+              <motion.button className={cn(chip, "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]")} key={index} {...move} lang="en" layoutId={`${group}-${index}`} onClick={() => setPlaced((current) => [...current, index])} type="button">
                 {step.pieces[index]}
-              </button>
+              </motion.button>
             ))}
           </div>
           <Confirm disabled={left.length > 0} onClick={() => submit(placed)} />
@@ -143,7 +150,7 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
                 aria-pressed={!revealed && active === index}
                 className={cn(
                   tile, "flex min-h-14 items-center gap-2",
-                  revealed ? (right ? "border-positive bg-positive/12" : "border-danger bg-danger/12") : active === index ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised",
+                  revealed ? (right ? "border-positive bg-positive/12" : "border-danger bg-danger/12") : active === index ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]",
                 )}
                 disabled={revealed}
                 key={index}
@@ -161,14 +168,14 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
             const owner = shown.indexOf(index);
             return (
               <button
-                className={cn(tile, "flex min-h-14 items-center gap-2", owner === -1 ? "border-line bg-surface hover:bg-surface-raised" : "border-contrast/40 bg-surface-raised", revealed && "opacity-80")}
+                className={cn(tile, "flex min-h-14 items-center gap-2", owner === -1 ? "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]" : "border-contrast/40 bg-surface-raised", revealed && "opacity-80")}
                 disabled={revealed}
                 key={index}
                 onClick={() => pick(index)}
                 type="button"
               >
                 <span className={cn("min-w-0 flex-1", latin(text) && "font-latin")} lang={latin(text) ? "en" : undefined}>{text}</span>
-                {owner === -1 ? null : <span aria-label={`配給第 ${owner + 1} 項`} className="grid size-6 shrink-0 place-items-center rounded-full bg-contrast font-latin text-xs font-semibold text-on-contrast">{owner + 1}</span>}
+                {owner === -1 ? null : <span aria-label={`配給第 ${owner + 1} 項`} className="mark-in grid size-6 shrink-0 place-items-center rounded-full bg-contrast font-latin text-xs font-semibold text-on-contrast">{owner + 1}</span>}
               </button>
             );
           })}

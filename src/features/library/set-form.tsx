@@ -50,7 +50,7 @@ export function SetForm({ value, onChange, folders, error }: {
             return (
               <label className="cursor-pointer" key={icon}>
                 <input checked={selected} className="peer sr-only" name="icon" onChange={() => onChange({ ...value, icon })} type="radio" />
-                <span className={cn("grid aspect-square place-items-center rounded-tile border transition-colors duration-[var(--motion-control)] peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--focus-ring)] [&_svg]:size-6", selected ? "border-contrast bg-accent-soft text-accent-ink" : "border-line text-ink-muted hover:bg-surface-raised")}>
+                <span className={cn("grid aspect-square place-items-center rounded-tile border transition-[background-color,border-color,color,scale] duration-[var(--motion-control)] active:scale-[var(--motion-press-scale)] peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--focus-ring)] [&_svg]:size-6", selected ? "border-contrast bg-accent-soft text-accent-ink" : "border-line text-ink-muted hover:bg-surface-raised")}>
                   <Component aria-hidden weight={selected ? "fill" : "regular"} />
                 </span>
                 <span className="sr-only">{ICON_LABELS[icon]}</span>

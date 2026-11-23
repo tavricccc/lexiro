@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { Check, Copy, Crown, Play, SignOut, Stop, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { AppLink, Button, Chip, EmptyState, HeaderButton, ListGroup, ListRow, Panel, ProgressBar, Spinner, cn } from "design-kit";
+import { AnimatedNumber, AppLink, Button, Chip, EmptyState, HeaderButton, ListGroup, ListRow, Panel, ProgressBar, Spinner, cn } from "design-kit";
 import { useAuth } from "@/data/auth";
 import { useRemaining, useRoomSocket } from "@/data/room-socket";
 import { TASK_LABELS } from "@/domain/labels";
@@ -98,7 +98,7 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
           return (
             <button
               className={cn(
-                "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left outline-none transition-[background-color,border-color,transform] duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
+                "flex min-h-14 items-center gap-3 rounded-tile border px-4 py-3 text-left outline-none transition-[background-color,border-color,opacity,scale] duration-[var(--motion-control)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:cursor-default",
                 !locked && "border-line bg-surface hover:bg-surface-raised active:scale-[var(--motion-press-scale)]",
                 !reveal && picked && "border-contrast bg-accent-soft",
                 reveal && right && "border-positive bg-positive/12",
@@ -110,8 +110,8 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
               onClick={() => send({ type: "answer", index: state.index, choice: index })}
               type="button"
             >
-              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold", reveal && right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
-                {reveal && right ? <Check weight="bold" /> : wrong ? <X weight="bold" /> : index + 1}
+              <span aria-hidden className={cn("grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold transition-colors duration-[var(--motion-control)]", reveal && right ? "bg-positive text-white" : wrong ? "bg-danger text-white" : "bg-surface-raised text-ink-muted")}>
+                {reveal && right ? <Check className="mark-in" key="right" weight="bold" /> : wrong ? <X className="mark-in" key="wrong" weight="bold" /> : index + 1}
               </span>
               <span className={cn("min-w-0 flex-1", /[A-Za-z]/.test(option) && "font-latin")}>{option}</span>
             </button>
@@ -123,7 +123,7 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
           <p className={cn("font-semibold", gained ? "text-positive" : "text-danger")}>{gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}</p>
           {reveal.explanation ? <p className="text-[0.9375rem] text-ink-muted">{reveal.explanation}</p> : null}
         </Panel>
-      ) : chosen !== null ? <p className="px-1 text-sm text-ink-muted">已作答，等其他人…</p> : null}
+      ) : chosen !== null ? <p className="message-in px-1 text-sm text-ink-muted">已作答，等其他人…</p> : null}
       <Scoreboard hostUid={state.hostUid} players={state.players} title="排名" you={state.you} />
       {host ? <Button className="justify-self-start" onClick={() => send({ type: "end" })} variant="ghost"><Stop weight="fill" />提前結束</Button> : null}
     </>
@@ -202,7 +202,8 @@ function Scoreboard({ players, you, hostUid, title }: { players: RoomPlayer[]; y
               {player.uid === you ? <Chip>你</Chip> : null}
             </span>
           }
-          value={<span className="tabular-nums">{player.score}</span>}
+          ranked
+          value={<AnimatedNumber value={player.score} />}
         />
       ))}
     </ListGroup>

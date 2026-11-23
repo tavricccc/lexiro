@@ -16,7 +16,7 @@ function greeting(hour: number) {
   return hour < 5 ? "夜深了" : hour < 11 ? "早安" : hour < 18 ? "午安" : "晚安";
 }
 
-const tileClass = "flex min-h-32 flex-col justify-between gap-3 rounded-[1.625rem] bg-surface p-4 outline-none transition-[background-color,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-solid hover:shadow-panel active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]";
+const tileClass = "flex min-h-32 flex-col justify-between gap-3 rounded-[1.625rem] bg-surface p-4 outline-none transition-[background-color,box-shadow,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] hover:bg-surface-solid hover:shadow-panel active:scale-[var(--motion-card-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]";
 
 export default function TodayPage() {
   const { learning } = useLearning();
@@ -39,7 +39,7 @@ export default function TodayPage() {
             align="start"
             items={DAILY_GOALS.map((goal) => ({ key: String(goal), icon: Target, label: `每天 ${goal} 題`, onSelect: () => void changeGoal(goal) }))}
             title="每日目標"
-            trigger={<button className="-mx-1.5 flex items-center gap-1 rounded-full px-1.5 py-0.5 outline-none hover:text-canvas focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]" type="button">今日目標 <span className="font-latin">{learning.goal}</span> 題<CaretDown className="size-3.5" weight="bold" /></button>}
+            trigger={<button className="-mx-1.5 flex items-center gap-1 rounded-full px-1.5 py-0.5 outline-none transition-[color,scale] duration-[var(--motion-control)] hover:text-canvas active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]" type="button">今日目標 <span className="font-latin">{learning.goal}</span> 題<CaretDown className="size-3.5" weight="bold" /></button>}
           />
           {days ? <span className="flex items-center gap-1"><Fire className="text-highlight" weight="fill" />連續 <span className="font-latin">{days}</span> 天</span> : null}
         </div>

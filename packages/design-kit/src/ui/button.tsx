@@ -6,7 +6,7 @@ import { cn } from "../lib/utils";
 import { Spinner } from "./feedback";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap outline-none select-none transition-[background-color,color,opacity,transform] duration-[var(--motion-control)] ease-[var(--ease-move)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[1.125rem]",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap outline-none select-none relative transition-[background-color,color,opacity,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[1.125rem]",
   {
     variants: {
       variant: {
@@ -56,9 +56,15 @@ export function Button({
       type={type ?? "button"}
       {...props}
     >
-      {status === "loading" ? <Spinner className="size-4 border-current border-t-transparent" /> : null}
-      {status === "success" ? <Check aria-hidden weight="bold" /> : null}
-      {children}
+      {status === "idle" ? children : (
+        <>
+          {/* The label keeps its place, so the button keeps its width. */}
+          <span className="inline-flex items-center justify-center gap-2 opacity-0">{children}</span>
+          <span aria-hidden className="mark-in absolute inset-0 grid place-items-center" key={status}>
+            {status === "loading" ? <Spinner className="size-4 border-current border-t-transparent" /> : <Check weight="bold" />}
+          </span>
+        </>
+      )}
     </button>
   );
 }
