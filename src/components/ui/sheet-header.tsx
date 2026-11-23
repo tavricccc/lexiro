@@ -1,10 +1,10 @@
 import { router } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import type { ReactNode } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, useColorScheme } from "react-native";
 
 import { haptics } from "@/lib/haptics";
-import { colors, latin, space, type } from "@/lib/theme";
+import { colors, latin, plain, space, type } from "@/lib/theme";
 
 /** Compact native-style top bar for formSheet & modal screens. */
 export function SheetHeader({
@@ -22,8 +22,17 @@ export function SheetHeader({
   trailing?: ReactNode;
   onClose?: () => void;
 }) {
+  const canvas = useColorScheme() === "dark" ? plain.canvas.dark : plain.canvas.light;
   return (
     <View style={styles.bar}>
+      {/* Soft edge: content fades out under the bar instead of being cut. */}
+      <View
+        pointerEvents="none"
+        style={[
+          styles.fade,
+          { experimental_backgroundImage: `linear-gradient(to bottom, ${canvas}, ${canvas}00)` },
+        ]}
+      />
       <View style={styles.titleBlock}>
         <Text
           style={[styles.title, latinTitle && latin.bold]}
@@ -68,6 +77,14 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingBottom: 12,
     backgroundColor: colors.canvas,
+    zIndex: 1,
+  },
+  fade: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: "100%",
+    height: 24,
   },
   titleBlock: {
     flex: 1,

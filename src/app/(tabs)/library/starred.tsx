@@ -29,7 +29,7 @@ export default function StarredScreen() {
   const total = shown.reduce((sum, group) => sum + group.words.length, 0);
 
   return (
-    <View style={styles.root}>
+    <>
       <Stack.Screen options={{ title: "標星單字" }} />
       <Screen
         refreshControl={<SyncRefreshControl />}
@@ -106,7 +106,7 @@ export default function StarredScreen() {
           </GlassSurface>
         </View>
       ) : null}
-    </View>
+    </>
   );
 }
 
@@ -136,7 +136,6 @@ function StarredWordRow({ setId, word }: { setId: string; word: Word }) {
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.canvas },
   loader: { paddingVertical: 48, alignItems: "center" },
   body: { gap: 14 },
   summary: {
