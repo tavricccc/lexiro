@@ -14,19 +14,18 @@ import {
 } from "react";
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
-import Animated, {
-  useAnimatedStyle,
+import Animated, { LayoutAnimationConfig, useAnimatedStyle,
   useSharedValue,
   withSequence,
-  withTiming,
-} from "react-native-reanimated";
+  withTiming } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { CustomAnswer } from "@/components/practice/custom-answer";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { Button } from "@/components/ui/button";
 import { DescriptionPoints } from "@/components/ui/description-points";
-import { CONTENT_MAX_WIDTH, EmptyState, SPLIT_MAX_WIDTH } from "@/components/ui/layout";
+import { CONTENT_MAX_WIDTH, EmptyState, SPLIT_MAX_WIDTH, PageCover } from "@/components/ui/layout";
+import { usePageReady } from "@/components/ui/use-page-ready";
 import {
   glide,
   pop,
@@ -130,6 +129,7 @@ function MarkStar({ word }: { word: string }) {
 export default function SessionScreen() {
   const [round, setRound] = useState<Round | null>(loadRound);
   const headerHeight = useHeaderHeight();
+  const ready = usePageReady();
 
   useEffect(() => {
     if (round && !finished(round)) saveRound(round);
@@ -247,6 +247,8 @@ export default function SessionScreen() {
             setRound(again);
           }}
         />
+      ) : !ready ? (
+        <View style={styles.root} />
       ) : (
         <PracticeCard
           round={shown}
@@ -256,6 +258,7 @@ export default function SessionScreen() {
           accept={back > 0 ? undefined : accept}
         />
       )}
+      {ready ? <PageCover /> : null}
     </MarksContext.Provider>
   );
 }
@@ -385,81 +388,84 @@ function PracticeCard({
         </View>
 
         {/* Main Content */}
-        <Animated.View
-          key={round.index}
-          entering={place.back ? slideBack : slideNext}
-          exiting={swapOut}
-          style={styles.stage}
-        >
-          {split ? (
-            <View style={styles.splitRow}>
-              <View style={styles.flex}>
-                <ScrollView
-                  {...side.scrollProps}
-                  contentContainerStyle={[styles.scrollContent, styles.paneLeft, bottomPad]}
-                  alwaysBounceVertical={false}
-                  showsVerticalScrollIndicator={false}
-                >
-                  {promptCard}
-                </ScrollView>
-                <ScrollMore
-                  visible={side.more}
-                  onPress={side.scrollOn}
-                  bottom={Math.max(insets.bottom, 8) + 8}
-                />
+        {/* The first question comes with the page; only later ones slide in. */}
+        <LayoutAnimationConfig skipEntering>
+          <Animated.View
+            key={round.index}
+            entering={place.back ? slideBack : slideNext}
+            exiting={swapOut}
+            style={styles.stage}
+          >
+            {split ? (
+              <View style={styles.splitRow}>
+                <View style={styles.flex}>
+                  <ScrollView
+                    {...side.scrollProps}
+                    contentContainerStyle={[styles.scrollContent, styles.paneLeft, bottomPad]}
+                    alwaysBounceVertical={false}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    {promptCard}
+                  </ScrollView>
+                  <ScrollMore
+                    visible={side.more}
+                    onPress={side.scrollOn}
+                    bottom={Math.max(insets.bottom, 8) + 8}
+                  />
+                </View>
+                <View style={styles.flex}>
+                  <View style={styles.flex}>
+                    <ScrollView
+                      {...main.scrollProps}
+                      contentContainerStyle={[
+                        styles.scrollContent,
+                        styles.paneRight,
+                        bottomPad,
+                      ]}
+                      alwaysBounceVertical={false}
+                      keyboardShouldPersistTaps="handled"
+                      showsVerticalScrollIndicator={false}
+                    >
+                      {answerBlock}
+                      {feedback}
+                    </ScrollView>
+                    {scrollMore}
+                  </View>
+                  {nextBar}
+                </View>
               </View>
-              <View style={styles.flex}>
+            ) : (
+              <>
                 <View style={styles.flex}>
                   <ScrollView
                     {...main.scrollProps}
-                    contentContainerStyle={[
-                      styles.scrollContent,
-                      styles.paneRight,
-                      bottomPad,
-                    ]}
+                    contentContainerStyle={[styles.scrollContent, bottomPad]}
                     alwaysBounceVertical={false}
+                    keyboardDismissMode="interactive"
                     keyboardShouldPersistTaps="handled"
                     showsVerticalScrollIndicator={false}
                   >
-                    {answerBlock}
+                    <View
+                      style={[
+                        styles.question,
+                        round.revealed && {
+                          flexGrow: 0,
+                          minHeight: Math.max(0, main.height - FEEDBACK_PEEK - barHeight),
+                        },
+                      ]}
+                    >
+                      {promptCard}
+                      {answerBlock}
+                    </View>
                     {feedback}
                   </ScrollView>
                   {scrollMore}
                 </View>
                 {nextBar}
-              </View>
-            </View>
-          ) : (
-            <>
-              <View style={styles.flex}>
-                <ScrollView
-                  {...main.scrollProps}
-                  contentContainerStyle={[styles.scrollContent, bottomPad]}
-                  alwaysBounceVertical={false}
-                  keyboardDismissMode="interactive"
-                  keyboardShouldPersistTaps="handled"
-                  showsVerticalScrollIndicator={false}
-                >
-                  <View
-                    style={[
-                      styles.question,
-                      round.revealed && {
-                        flexGrow: 0,
-                        minHeight: Math.max(0, main.height - FEEDBACK_PEEK - barHeight),
-                      },
-                    ]}
-                  >
-                    {promptCard}
-                    {answerBlock}
-                  </View>
-                  {feedback}
-                </ScrollView>
-                {scrollMore}
-              </View>
-              {nextBar}
-            </>
-          )}
-        </Animated.View>
+              </>
+            )}
+          </Animated.View>
+        </LayoutAnimationConfig>
       </View>
     </KeyboardAvoidingView>
   );

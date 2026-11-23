@@ -1,5 +1,5 @@
 import { SymbolView } from "expo-symbols";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import ReanimatedSwipeable, {
   type SwipeableMethods,
@@ -9,6 +9,7 @@ import { descriptionPoints, type Word } from "@/core/contract";
 import { haptics } from "@/lib/haptics";
 import { colors, latin, space, type } from "@/lib/theme";
 import { DescriptionPoints } from "./description-points";
+import { CheckMark } from "./list";
 import { PressableRow } from "./pressable-row";
 import { StarButton } from "./star-button";
 
@@ -31,12 +32,16 @@ export function meaningLine(word: Word, supplementary?: boolean): string {
  * - Tap: opens WordSheet
  * - Swipe right: toggles star with medium haptic feedback
  * - Swipe left: deletes word (when online)
+ * With `checked` set it is being selected: a tap toggles it and swipes are off.
+ * Memoized and one row for both, so a long list changes mode without remounting;
+ * the handlers take the word and must be stable.
  */
-export function SwipeableWordRow({
+export const SwipeableWordRow = memo(function SwipeableWordRow({
   setId,
   word,
   showMeanings = true,
   online = true,
+  checked,
   onPress,
   onToggleStar,
   onDelete,
@@ -45,9 +50,10 @@ export function SwipeableWordRow({
   word: Word;
   showMeanings?: boolean;
   online?: boolean;
-  onPress: () => void;
-  onToggleStar: () => void;
-  onDelete?: () => void;
+  checked?: boolean;
+  onPress: (word: Word) => void;
+  onToggleStar: (word: Word) => void;
+  onDelete?: (word: Word) => void;
 }) {
   const swipeRef = useRef<SwipeableMethods>(null);
   const main = meaningLine(word, false);
@@ -59,7 +65,7 @@ export function SwipeableWordRow({
       onPress={() => {
         swipeRef.current?.close();
         haptics.confirm();
-        onToggleStar();
+        onToggleStar(word);
       }}
       style={[styles.swipeAction, styles.starAction]}
     >
@@ -79,7 +85,7 @@ export function SwipeableWordRow({
         onPress={() => {
           swipeRef.current?.close();
           haptics.warning();
-          onDelete();
+          onDelete(word);
         }}
         style={[styles.swipeAction, styles.deleteAction]}
       >
@@ -91,6 +97,7 @@ export function SwipeableWordRow({
   return (
     <ReanimatedSwipeable
       ref={swipeRef}
+      enabled={checked === undefined}
       friction={2}
       leftThreshold={52}
       rightThreshold={52}
@@ -101,7 +108,7 @@ export function SwipeableWordRow({
       onSwipeableOpen={(direction) => {
         if (direction === "left") {
           haptics.confirm();
-          onToggleStar();
+          onToggleStar(word);
           swipeRef.current?.close();
         }
       }}
@@ -110,8 +117,9 @@ export function SwipeableWordRow({
         <PressableRow
           onPress={() => {
             haptics.select();
-            onPress();
+            onPress(word);
           }}
+          accessibilityState={checked === undefined ? undefined : { checked }}
           style={styles.main}
         >
           <View style={styles.textCol}>
@@ -137,17 +145,23 @@ export function SwipeableWordRow({
           </View>
         </PressableRow>
         <View style={styles.starWrap}>
-          <StarButton
-            setId={setId}
-            wordId={word.id}
-            starred={word.starred}
-            word={word.word}
-          />
+          {checked === undefined ? (
+            <StarButton
+              setId={setId}
+              wordId={word.id}
+              starred={word.starred}
+              word={word.word}
+            />
+          ) : (
+            <View pointerEvents="none" style={styles.check}>
+              <CheckMark checked={checked} />
+            </View>
+          )}
         </View>
       </View>
     </ReanimatedSwipeable>
   );
-}
+});
 
 const styles = StyleSheet.create({
   rowContainer: {
@@ -185,6 +199,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: colors.inkFaint,
   },
+  check: { width: 38, height: 38, alignItems: "center", justifyContent: "center" },
   starWrap: {
     paddingRight: 8,
   },

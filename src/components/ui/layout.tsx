@@ -1,6 +1,6 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 import { SymbolView, type SymbolViewProps } from "expo-symbols";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -13,14 +13,15 @@ import {
   type ViewStyle,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import { LayoutAnimationConfig } from "react-native-reanimated";
+import Animated, { LayoutAnimationConfig } from "react-native-reanimated";
 
 import { OfflineBanner } from "@/components/offline-banner";
 import { errorMessage } from "@/data/api";
 import { colors, radius, space, type } from "@/lib/theme";
 import { Button } from "./button";
 import { ScrollMore, useScrollMore, useScrollMoreInset } from "./scroll-more";
-import { useTransitionDone } from "./use-transition-done";
+import { uncover } from "./motion";
+import { usePageReady } from "./use-page-ready";
 
 export const CONTENT_MAX_WIDTH = 720;
 export const SPLIT_MAX_WIDTH = 1120;
@@ -52,13 +53,19 @@ function usePageScrollMore(
   };
 }
 
+/** Fades a page in that fills after it was pushed. Render it over the page. */
+export function PageCover() {
+  return <Animated.View pointerEvents="none" style={[styles.cover, uncover]} />;
+}
+
 /** Standard scrolling screen under a native iOS header. */
 export function Screen({
   children,
   showOffline = true,
   ...props
 }: ScrollViewProps & { children: ReactNode; showOffline?: boolean }) {
-  const ready = useTransitionDone();
+  const ready = usePageReady();
+  const [instant] = useState(ready);
   const { scrollProps, button } = usePageScrollMore(props.contentContainerStyle, props.onScroll);
   return (
     <>
@@ -80,6 +87,7 @@ export function Screen({
           </View>
         ) : null}
       </ScrollView>
+      {ready && !instant ? <PageCover /> : null}
       {button}
     </>
   );
@@ -262,6 +270,7 @@ export function Loaded<T>({
 }
 
 const styles = StyleSheet.create({
+  cover: { ...StyleSheet.absoluteFill, backgroundColor: colors.canvas },
   screen: {
     flex: 1,
     backgroundColor: colors.canvas,

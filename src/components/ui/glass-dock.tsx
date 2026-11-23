@@ -48,6 +48,8 @@ export type DockAction = Pick<
 };
 
 const GAP = 8;
+/** Glass closer than this melts together, so it stays under the gap: apart at rest. */
+const MELT = GAP / 2;
 
 /**
  * A row of buttons whose glass flows from one set into the next: one button
@@ -72,7 +74,7 @@ export function GlassDock({
   const [visit, setVisit] = useState(0);
   const { fontScale } = useWindowDimensions();
   // The native namespace unregisters when the page is covered; a new id registers it again.
-  useFocusEffect(useCallback(() => setVisit((count) => count + 1), []));
+  useFocusEffect(useCallback(() => () => setVisit((count) => count + 1), []));
 
   if (Platform.OS !== "ios") {
     return (
@@ -101,7 +103,7 @@ export function GlassDock({
   return (
     <Host style={[{ height: dims.minHeight * Math.max(1, fontScale) }, style]} ignoreSafeArea="all">
       <Namespace id={namespace}>
-        <GlassEffectContainer spacing={GAP * 2} modifiers={[flow]}>
+        <GlassEffectContainer spacing={MELT} modifiers={[flow]}>
           <HStack
             spacing={GAP}
             modifiers={[

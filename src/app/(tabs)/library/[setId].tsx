@@ -1,5 +1,12 @@
 import { router, Stack, useLocalSearchParams } from "expo-router";
-import { useMemo, useState } from "react";
+import {
+  useCallback,
+  useDeferredValue,
+  useMemo,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import {
   Alert,
   StyleSheet,
@@ -15,11 +22,12 @@ import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { GlassDock } from "@/components/ui/glass-dock";
 import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
-import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
+import { ListGroup, ListRow } from "@/components/ui/list";
+import { usePageReady } from "@/components/ui/use-page-ready";
 import { barButton, barMenu } from "@/components/ui/sheet-header";
 import { Segmented } from "@/components/ui/segmented";
-import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
-import type { Question, SetContent } from "@/core/contract";
+import { SwipeableWordRow } from "@/components/ui/swipeable-word-row";
+import type { Question, SetContent, Word } from "@/core/contract";
 import { KIND_LABELS } from "@/core/domain/labels";
 import { errorMessage } from "@/data/api";
 import { deleteWords, starWords } from "@/data/library";
@@ -32,6 +40,8 @@ import { toast } from "@/platform/toast";
 
 type Tab = "words" | "questions";
 const STARRED_FIRST_KEY = "lexiro:starredFirst";
+/** Rows mounted while the page is pushed in: a screenful. */
+const PUSH_ROWS = 12;
 /** Rows mounted at first, and added each time the list nears its end. */
 const FIRST_ROWS = 40;
 const MORE_ROWS = 80;
@@ -42,11 +52,16 @@ export default function SetDetailScreen() {
   const [tab, setTab] = useState<Tab>("words");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Set<string> | null>(null);
-  const [rows, setRows] = useState(FIRST_ROWS);
+  const [limit, setRows] = useState(FIRST_ROWS);
+  const ready = usePageReady();
+  const arrived = usePageReady("transitionEnd");
+  const rows = useDeferredValue(arrived ? limit : PUSH_ROWS);
+  // The dock answers at once; the list follows.
+  const listSelected = useDeferredValue(selected);
   const insets = useSafeAreaInsets();
   const online = useOnline();
   const name = content.data?.set.name ?? "單字集";
-  const total = content.data?.words.length ?? 0;
+  const total = Math.max(content.data?.words.length ?? 0, content.data?.questions.length ?? 0);
 
   const search = (text: string) => {
     setQuery(text);
@@ -57,7 +72,7 @@ export default function SetDetailScreen() {
     const { contentOffset, layoutMeasurement, contentSize } = nativeEvent;
     const nearEnd =
       contentOffset.y + layoutMeasurement.height > contentSize.height - layoutMeasurement.height;
-    if (nearEnd && rows < total) setRows((count) => count + MORE_ROWS);
+    if (nearEnd && limit < total) setRows((count) => count + MORE_ROWS);
   };
 
   const deleteSelected = () => {
@@ -143,7 +158,7 @@ export default function SetDetailScreen() {
       <Screen
         refreshControl={<SyncRefreshControl />}
         contentContainerStyle={{ paddingBottom: 112 }}
-        onScroll={tab === "words" ? onScroll : undefined}
+        onScroll={onScroll}
         scrollEventThrottle={100}
       >
         <Loaded query={content}>
@@ -158,7 +173,8 @@ export default function SetDetailScreen() {
               }}
               query={query}
               rows={rows}
-              selected={selected}
+              selected={listSelected}
+              selecting={!!selected}
               onSelected={setSelected}
             />
           )}
@@ -166,7 +182,7 @@ export default function SetDetailScreen() {
       </Screen>
 
       {/* Bottom Floating Liquid Glass Action Dock */}
-      {content.data && content.data.words.length > 0 ? (
+      {ready && content.data && content.data.words.length > 0 ? (
         <View
           style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
           pointerEvents="box-none"
@@ -228,6 +244,7 @@ function SetBody({
   query,
   rows,
   selected,
+  selecting,
   onSelected,
 }: {
   content: SetContent;
@@ -236,7 +253,9 @@ function SetBody({
   query: string;
   rows: number;
   selected: Set<string> | null;
-  onSelected: (next: Set<string> | null) => void;
+  /** Ahead of `selected`, which follows when the rows have changed. */
+  selecting: boolean;
+  onSelected: Dispatch<SetStateAction<Set<string> | null>>;
 }) {
   if (!content.words.length) {
     return (
@@ -276,10 +295,11 @@ function SetBody({
           query={query}
           rows={rows}
           selected={selected}
+          selecting={selecting}
           onSelected={onSelected}
         />
       ) : (
-        <QuestionList content={content} query={query} />
+        <QuestionList content={content} query={query} rows={rows} />
       )}
     </View>
   );
@@ -290,13 +310,16 @@ function WordList({
   query,
   rows,
   selected,
+  selecting,
   onSelected,
 }: {
   content: SetContent;
   query: string;
   rows: number;
   selected: Set<string> | null;
-  onSelected: (next: Set<string> | null) => void;
+  /** Ahead of `selected`, which follows when the rows have changed. */
+  selecting: boolean;
+  onSelected: Dispatch<SetStateAction<Set<string> | null>>;
 }) {
   const setId = content.set.id;
   const online = useOnline();
@@ -333,65 +356,73 @@ function WordList({
   const top = allTop.slice(0, rows);
   const rest = allRest.slice(0, Math.max(0, rows - top.length));
 
-  const toggleSelect = (id: string) => {
-    const next = new Set(selected);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    onSelected(next);
-  };
+  const picking = selected !== null;
+  const pressWord = useCallback(
+    (word: Word) => {
+      if (!picking) {
+        router.push({
+          pathname: "/sets/[setId]/words/[wordId]",
+          params: { setId, wordId: word.id },
+        });
+        return;
+      }
+      onSelected((current) => {
+        if (!current) return current;
+        const next = new Set(current);
+        if (!next.delete(word.id)) next.add(word.id);
+        return next;
+      });
+    },
+    [picking, setId, onSelected],
+  );
 
-  const confirmDeleteOne = (wordId: string, label: string) => {
-    Alert.alert(`刪除「${label}」？`, "用到這個單字的題目也會一起刪除。", [
-      { text: "取消", style: "cancel" },
-      {
-        text: "刪除",
-        style: "destructive",
-        onPress: () => {
-          deleteWords(setId, [wordId])
-            .then(() => {
-              haptics.success();
-              toast.success("已刪除");
-            })
-            .catch((reason) => {
-              haptics.error();
-              toast.error(errorMessage(reason));
-            });
+  const toggleStar = useCallback(
+    (word: Word) => {
+      starWords(setId, [word.id], !word.starred).catch((reason) => {
+        haptics.error();
+        toast.error(errorMessage(reason));
+      });
+    },
+    [setId],
+  );
+
+  const confirmDeleteOne = useCallback(
+    (word: Word) => {
+      Alert.alert(`刪除「${word.word}」？`, "用到這個單字的題目也會一起刪除。", [
+        { text: "取消", style: "cancel" },
+        {
+          text: "刪除",
+          style: "destructive",
+          onPress: () => {
+            deleteWords(setId, [word.id])
+              .then(() => {
+                haptics.success();
+                toast.success("已刪除");
+              })
+              .catch((reason) => {
+                haptics.error();
+                toast.error(errorMessage(reason));
+              });
+          },
         },
-      },
-    ]);
-  };
+      ]);
+    },
+    [setId],
+  );
 
-  const renderWord = (word: SetContent["words"][number]) =>
-    selected ? (
-      <CheckRow
-        key={word.id}
-        title={word.word}
-        subtitle={showMeanings ? meaningLine(word) : undefined}
-        checked={selected.has(word.id)}
-        onPress={() => toggleSelect(word.id)}
-      />
-    ) : (
-      <SwipeableWordRow
-        key={word.id}
-        setId={setId}
-        word={word}
-        showMeanings={showMeanings}
-        online={online}
-        onPress={() =>
-          router.push({
-            pathname: "/sets/[setId]/words/[wordId]",
-            params: { setId, wordId: word.id },
-          })
-        }
-        onToggleStar={() => {
-          starWords(setId, [word.id], !word.starred).catch((reason) => {
-            haptics.error();
-            toast.error(errorMessage(reason));
-          });
-        }}
-        onDelete={() => confirmDeleteOne(word.id, word.word)}
-      />
-    );
+  const renderWord = (word: Word) => (
+    <SwipeableWordRow
+      key={word.id}
+      setId={setId}
+      word={word}
+      showMeanings={showMeanings}
+      online={online}
+      checked={selected?.has(word.id)}
+      onPress={pressWord}
+      onToggleStar={toggleStar}
+      onDelete={confirmDeleteOne}
+    />
+  );
 
   return (
     <View style={styles.wordSection}>
@@ -411,12 +442,12 @@ function WordList({
         )}
 
         <GlassDock
-          expanded={!selected}
+          expanded={!selecting}
           size="sm"
           fill={false}
           style={styles.toolGroup}
           actions={
-            selected
+            selecting
               ? [
                   {
                     id: "done",
@@ -478,7 +509,15 @@ function questionPreview(question: Question): string {
   return question.prompt;
 }
 
-function QuestionList({ content, query }: { content: SetContent; query: string }) {
+function QuestionList({
+  content,
+  query,
+  rows,
+}: {
+  content: SetContent;
+  query: string;
+  rows: number;
+}) {
   if (!content.questions.length) {
     return (
       <EmptyState
@@ -499,12 +538,20 @@ function QuestionList({ content, query }: { content: SetContent; query: string }
     groups.set(question.kind, [...(groups.get(question.kind) ?? []), question]);
   }
 
+  // Only the first `rows` rows mount; the screen raises `rows` as it scrolls.
+  let left = rows;
+  const shown = [...groups].flatMap(([kind, all]) => {
+    const questions = all.slice(0, left);
+    left -= questions.length;
+    return questions.length ? [{ kind, total: all.length, questions }] : [];
+  });
+
   return (
     <View style={styles.questionGroups}>
-      {[...groups].map(([kind, questions]) => (
+      {shown.map(({ kind, total, questions }) => (
         <ListGroup
           key={kind}
-          title={`${KIND_LABELS[kind as Question["kind"]]} · ${questions.length}`}
+          title={`${KIND_LABELS[kind as Question["kind"]]} · ${total}`}
         >
           {questions.map((question) => (
             <ListRow

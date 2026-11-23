@@ -173,6 +173,23 @@ export function ListRow({
   );
 }
 
+export function CheckMark({ checked }: { checked: boolean }) {
+  return (
+    <View style={[styles.checkCircle, checked && styles.checkCircleOn]}>
+      {checked ? (
+        <Animated.View entering={pop} exiting={popOut}>
+          <SymbolView
+            name="checkmark"
+            size={12}
+            weight="bold"
+            tintColor={colors.onContrast}
+          />
+        </Animated.View>
+      ) : null}
+    </View>
+  );
+}
+
 export function CheckRow({
   title,
   subtitle,
@@ -202,18 +219,7 @@ export function CheckRow({
       disabled={disabled}
       onPress={onPress}
       accessory={
-        <View style={[styles.checkCircle, checked && styles.checkCircleOn]}>
-          {checked ? (
-            <Animated.View entering={pop} exiting={popOut}>
-              <SymbolView
-                name="checkmark"
-                size={12}
-                weight="bold"
-                tintColor={colors.onContrast}
-              />
-            </Animated.View>
-          ) : null}
-        </View>
+        <CheckMark checked={checked} />
       }
     />
   );

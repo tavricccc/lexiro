@@ -7,6 +7,7 @@ import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { EmptyState, Screen } from "@/components/ui/layout";
 import { ListGroup, PickerRow } from "@/components/ui/list";
+import { usePageReady } from "@/components/ui/use-page-ready";
 import { PressableRow } from "@/components/ui/pressable-row";
 import { StarButton } from "@/components/ui/star-button";
 import { meaningLine } from "@/components/ui/swipeable-word-row";
@@ -21,6 +22,7 @@ export default function StarredScreen() {
   const { groups, loading, count } = useStarredWords();
   const [filter, setFilter] = useState(ALL);
   const insets = useSafeAreaInsets();
+  const ready = usePageReady();
 
   const activeFilter = groups.some((group) => group.set.id === filter) ? filter : ALL;
   const shown =
@@ -81,7 +83,7 @@ export default function StarredScreen() {
         )}
       </Screen>
 
-      {total > 0 ? (
+      {ready && total > 0 ? (
         <View
           style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
           pointerEvents="box-none"

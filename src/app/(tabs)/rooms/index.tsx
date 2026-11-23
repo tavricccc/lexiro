@@ -229,7 +229,7 @@ function HostForm({ defaultName, online }: { defaultName: string; online: boolea
 
       <Button
         label="開房間"
-        icon="bolt.shield.fill"
+        icon="bolt.fill"
         size="lg"
         busy={busy}
         disabled={!online || !picked || !content.data}

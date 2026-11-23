@@ -4,7 +4,7 @@ import { useHeaderHeight } from "expo-router/react-navigation";
 import { SymbolView } from "expo-symbols";
 import { useEffect, useRef } from "react";
 import { ActivityIndicator, ScrollView, Share, StyleSheet, Text, View } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { LayoutAnimationConfig } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button } from "@/components/ui/button";
@@ -74,14 +74,16 @@ export default function LiveRoomScreen() {
           ) : state.phase === "ended" ? (
             <EndedView state={state} />
           ) : (
-            <Animated.View key={state.index} entering={slideNext} style={styles.liveWrap}>
-              <LiveQuestionView
-                host={state.you === state.hostUid}
-                offset={room.offset}
-                send={room.send}
-                state={state}
-              />
-            </Animated.View>
+            <LayoutAnimationConfig skipEntering>
+              <Animated.View key={state.index} entering={slideNext} style={styles.liveWrap}>
+                <LiveQuestionView
+                  host={state.you === state.hostUid}
+                  offset={room.offset}
+                  send={room.send}
+                  state={state}
+                />
+              </Animated.View>
+            </LayoutAnimationConfig>
           )}
         </ScrollView>
         <ScrollMore visible={more} onPress={scrollOn} bottom={Math.max(insets.bottom, 8) + 8} />
@@ -432,7 +434,7 @@ function EndedView({ state }: { state: RoomState }) {
         <Text style={styles.perfectText}>全部答對，太強了。</Text>
       ) : null}
 
-      <Button label="再開一場" icon="bolt.shield.fill" size="lg" onPress={() => router.back()} />
+      <Button label="再開一場" icon="bolt.fill" size="lg" onPress={() => router.back()} />
     </View>
   );
 }

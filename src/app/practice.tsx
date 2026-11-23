@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "@/components/ui/button";
 import { EmptyState, Panel, Screen } from "@/components/ui/layout";
 import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
+import { usePageReady } from "@/components/ui/use-page-ready";
 import { Segmented } from "@/components/ui/segmented";
 import { SetIcon } from "@/components/ui/set-icon";
 import type { PracticeTask } from "@/core/contract";
@@ -61,7 +62,8 @@ export default function PracticeSetupScreen() {
     queries: ids.map((id) => setQuery(id, true)),
   });
 
-  const loaded = contents.length > 0 && contents.every((query) => query.data);
+  const ready = usePageReady();
+  const loaded = ready && contents.length > 0 && contents.every((query) => query.data);
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
   const data = useMemo(
     () => contents.flatMap((query) => (query.data ? [query.data] : [])),
@@ -251,22 +253,24 @@ export default function PracticeSetupScreen() {
         ) : null}
       </Screen>
 
-      <View
-        style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
-        pointerEvents="box-none"
-      >
-        <View style={styles.dock}>
-          <Button
-            label="開始練習"
-            icon="play.fill"
-            size="lg"
-            disabled={!loaded || !activeTasks.length}
-            haptic="confirm"
-            onPress={start}
-            style={styles.startBtn}
-          />
+      {ready ? (
+        <View
+          style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
+          pointerEvents="box-none"
+        >
+          <View style={styles.dock}>
+            <Button
+              label="開始練習"
+              icon="play.fill"
+              size="lg"
+              disabled={!loaded || !activeTasks.length}
+              haptic="confirm"
+              onPress={start}
+              style={styles.startBtn}
+            />
+          </View>
         </View>
-      </View>
+      ) : null}
     </View>
   );
 }

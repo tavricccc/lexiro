@@ -37,6 +37,14 @@ export const timing = {
 export const swapIn = FadeIn.duration(DURATION.state);
 export const swapOut = FadeOut.duration(DURATION.press);
 
+/** A page's cover lifting: fades the page in without touching the opacity of its glass. */
+export const uncover = {
+  animationName: { from: { opacity: 1 }, to: { opacity: 0 } },
+  animationDuration: DURATION.state,
+  animationTimingFunction: "ease-out",
+  animationFillMode: "forwards",
+} as const;
+
 /** A pressed row letting go. */
 export const highlightOut = FadeOut.duration(DURATION.move);
 
