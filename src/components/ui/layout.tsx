@@ -1,6 +1,6 @@
 import type { UseQueryResult } from "@tanstack/react-query";
 import { SymbolView, type SymbolViewProps } from "expo-symbols";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -13,13 +13,12 @@ import {
   type ViewStyle,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import Animated, { LayoutAnimationConfig } from "react-native-reanimated";
+import { LayoutAnimationConfig } from "react-native-reanimated";
 
 import { OfflineBanner } from "@/components/offline-banner";
 import { errorMessage } from "@/data/api";
 import { colors, radius, space, type } from "@/lib/theme";
 import { Button } from "./button";
-import { settleIn } from "./motion";
 import { ScrollMore, useScrollMore, useScrollMoreInset } from "./scroll-more";
 import { useTransitionDone } from "./use-transition-done";
 
@@ -60,7 +59,6 @@ export function Screen({
   ...props
 }: ScrollViewProps & { children: ReactNode; showOffline?: boolean }) {
   const ready = useTransitionDone();
-  const [instant] = useState(ready);
   const { scrollProps, button } = usePageScrollMore(props.contentContainerStyle, props.onScroll);
   return (
     <>
@@ -74,12 +72,12 @@ export function Screen({
         contentContainerStyle={[styles.content, props.contentContainerStyle]}
       >
         {ready ? (
-          <Animated.View entering={instant ? undefined : settleIn} style={styles.body}>
+          <View style={styles.body}>
             <LayoutAnimationConfig skipEntering>
               {showOffline ? <OfflineBanner /> : null}
               {children}
             </LayoutAnimationConfig>
-          </Animated.View>
+          </View>
         ) : null}
       </ScrollView>
       {button}

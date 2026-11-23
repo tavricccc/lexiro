@@ -14,11 +14,12 @@ import {
 
 /**
  * Three speeds for everything that moves: an answer to a finger, a change of
- * state, and a change of place. Springs are kept for things thrown by hand
+ * state, and a change of place; `morph` is glass flowing into other glass.
+ * Pages have no entrance beyond the system's own. Springs are kept for things thrown by hand
  * (the flashcards); elsewhere their settle read as drifting. Reanimated skips
  * all of these when the system asks for reduced motion.
  */
-export const DURATION = { press: 100, state: 180, move: 300 } as const;
+export const DURATION = { press: 100, state: 180, move: 300, morph: 450 } as const;
 
 /** Fast off the mark, then a long soft landing with no overshoot. */
 export const EASE_OUT = Easing.bezier(0.22, 1, 0.36, 1);
@@ -35,6 +36,9 @@ export const timing = {
 /** Swapping one view for another, such as a tab panel, or a row being added. */
 export const swapIn = FadeIn.duration(DURATION.state);
 export const swapOut = FadeOut.duration(DURATION.press);
+
+/** A pressed row letting go. */
+export const highlightOut = FadeOut.duration(DURATION.move);
 
 /** Neighbours glide when something above them changes size. */
 export const glide = LinearTransition.duration(DURATION.move).easing(EASE_MOVE);
@@ -85,9 +89,4 @@ export const riseIn = () => {
 export const toastIn = () => {
   "worklet";
   return along("translateY", -140);
-};
-/** A page or panel settling into place. */
-export const settleIn = () => {
-  "worklet";
-  return along("translateY", 10);
 };

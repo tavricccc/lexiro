@@ -71,8 +71,6 @@ export const colors = {
   heroMuted: pair("rgba(242,243,240,0.65)", "rgba(12,15,13,0.62)"),
   heroFaint: pair("rgba(242,243,240,0.45)", "rgba(12,15,13,0.42)"),
   heroTrack: pair("rgba(242,243,240,0.14)", "rgba(12,15,13,0.14)"),
-  heroButtonBg: pair("#f2f3f0", "#0c0f0d"),
-  heroButtonText: pair("#111512", "#eef3f0"),
   heroGhostBg: pair("rgba(242,243,240,0.13)", "rgba(12,15,13,0.11)"),
 } as const;
 

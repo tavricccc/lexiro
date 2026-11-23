@@ -45,20 +45,19 @@ import { PressableScale } from "./pressable-scale";
 
 export type ButtonVariant =
   | "primary"
-  | "solid"
   | "secondary"
   | "ghost"
   /** A switched-on toggle. */
   | "accent"
   | "danger"
-  | "hero"
+  /** On an ink card. */
   | "heroGhost";
 
 export type ButtonSize = "sm" | "md" | "lg";
 
 const glass = isLiquidGlassAvailable();
 /** Liquid Glass where the system has it; `flat` inside a bar that is glass itself. */
-function surface(prominent = false, flat = false) {
+export function surface(prominent = false, flat = false) {
   if (glass && !flat) return prominent ? "glassProminent" : "glass";
   return prominent ? "borderedProminent" : "bordered";
 }
@@ -66,29 +65,39 @@ function surface(prominent = false, flat = false) {
 type SwiftSymbol = ComponentProps<typeof Image>["systemName"];
 
 /** `tint` fills a prominent button, and washes a bordered one. */
-const fills: Record<
+export const fills: Record<
   ButtonVariant,
   { bg: ColorValue; text: ColorValue; border?: ColorValue; tint: ColorValue; prominent?: boolean }
 > = {
   primary: { bg: colors.contrast, text: colors.onContrast, tint: colors.contrast, prominent: true },
-  solid: { bg: colors.heroBg, text: colors.heroText, tint: colors.heroBg, prominent: true },
   secondary: { bg: colors.surface, text: colors.ink, border: colors.line, tint: colors.inkMuted },
   ghost: { bg: colors.surfaceRaised, text: colors.ink, tint: colors.inkMuted },
   accent: { bg: colors.contrast, text: colors.onContrast, tint: colors.contrast, prominent: true },
   danger: { bg: colors.dangerSoft, text: colors.dangerInk, tint: colors.danger },
-  hero: {
-    bg: colors.heroButtonBg,
-    text: colors.heroButtonText,
-    tint: colors.heroButtonBg,
-    prominent: true,
-  },
   heroGhost: { bg: colors.heroGhostBg, text: colors.heroText, tint: colors.heroText },
 };
 
-const heights: Record<ButtonSize, { minHeight: number; paddingHorizontal: number; fontSize: number; icon: number }> = {
+export const heights: Record<ButtonSize, { minHeight: number; paddingHorizontal: number; fontSize: number; icon: number }> = {
   sm: { minHeight: 38, paddingHorizontal: 14, fontSize: 14, icon: 15 },
   md: { minHeight: 46, paddingHorizontal: 18, fontSize: 16, icon: 16 },
   lg: { minHeight: 52, paddingHorizontal: 22, fontSize: 17, icon: 17 },
+};
+
+export type ButtonProps = {
+  label: string;
+  icon?: SymbolViewProps["name"];
+  trailingIcon?: SymbolViewProps["name"];
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  busy?: boolean;
+  disabled?: boolean;
+  haptic?: "auto" | "confirm" | "tap" | "none";
+  /** No glass: for a button inside a glass bar. */
+  flat?: boolean;
+  /** Fades away, keeping its place. Glass must not be faded by a parent. */
+  hidden?: boolean;
+  onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 export function Button({
@@ -104,22 +113,7 @@ export function Button({
   hidden = false,
   onPress,
   style,
-}: {
-  label: string;
-  icon?: SymbolViewProps["name"];
-  trailingIcon?: SymbolViewProps["name"];
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  busy?: boolean;
-  disabled?: boolean;
-  haptic?: "auto" | "confirm" | "tap" | "none";
-  /** No glass: for a button inside a glass bar. */
-  flat?: boolean;
-  /** Fades away, keeping its place. Glass must not be faded by a parent. */
-  hidden?: boolean;
-  onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
-}) {
+}: ButtonProps) {
   const fill = fills[variant];
   const dims = heights[size];
   const inactive = disabled || busy || hidden;
@@ -135,7 +129,7 @@ export function Button({
       haptics.tap();
       return;
     }
-    if (variant === "primary" || variant === "solid" || variant === "hero") {
+    if (variant === "primary") {
       haptics.tap();
     } else {
       haptics.select();

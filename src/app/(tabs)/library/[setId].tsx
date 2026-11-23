@@ -8,16 +8,14 @@ import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
 } from "react-native";
-import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { moveItem } from "@/components/library/folder-actions";
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
+import { GlassDock } from "@/components/ui/glass-dock";
 import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
 import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
-import { settleIn } from "@/components/ui/motion";
 import { barButton, barMenu } from "@/components/ui/sheet-header";
 import { Segmented } from "@/components/ui/segmented";
 import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
@@ -28,7 +26,7 @@ import { deleteWords, starWords } from "@/data/library";
 import { useOnline } from "@/data/network";
 import { usePrefs, useSet } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
-import { colors, latin, space, type } from "@/lib/theme";
+import { colors, space, type } from "@/lib/theme";
 import { syncStorage } from "@/platform/install";
 import { toast } from "@/platform/toast";
 
@@ -173,49 +171,50 @@ export default function SetDetailScreen() {
           style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
           pointerEvents="box-none"
         >
-          {selected ? (
-            <GlassSurface style={styles.selectionBar}>
-              <Text style={styles.selectionCount}>
-                已選 <Text style={latin.bold}>{selected.size}</Text> 個
-              </Text>
-              <Button
-                label="複製到…"
-                icon="doc.on.doc"
-                size="sm"
-                variant="secondary"
-                flat
-                disabled={!selected.size || !online}
-                onPress={() => {
-                  router.push({
-                    pathname: "/sets/[setId]/copy",
-                    params: { setId, ids: [...selected].join(",") },
-                  });
-                  setSelected(null);
-                }}
-              />
-              <Button
-                label="刪除"
-                icon="trash"
-                size="sm"
-                variant="danger"
-                flat
-                disabled={!selected.size || !online}
-                onPress={deleteSelected}
-              />
-            </GlassSurface>
-          ) : (
-            <View style={styles.practiceDock}>
-              <Button
-                label="練習這組"
-                icon="play.fill"
-                size="lg"
-                variant="primary"
-                haptic="confirm"
-                onPress={() => router.push({ pathname: "/practice", params: { set: setId } })}
-                style={styles.practiceBtn}
-              />
-            </View>
-          )}
+          <GlassDock
+            expanded={!!selected}
+            style={styles.dock}
+            actions={
+              selected
+                ? [
+                    {
+                      id: "copy",
+                      shape: "main",
+                      label: selected.size ? `複製 ${selected.size} 個` : "複製",
+                      icon: "doc.on.doc",
+                      variant: "secondary",
+                      disabled: !selected.size || !online,
+                      onPress: () => {
+                        router.push({
+                          pathname: "/sets/[setId]/copy",
+                          params: { setId, ids: [...selected].join(",") },
+                        });
+                        setSelected(null);
+                      },
+                    },
+                    {
+                      id: "delete",
+                      shape: "second",
+                      label: selected.size ? `刪除 ${selected.size} 個` : "刪除",
+                      icon: "trash",
+                      variant: "danger",
+                      haptic: "none",
+                      disabled: !selected.size || !online,
+                      onPress: deleteSelected,
+                    },
+                  ]
+                : [
+                    {
+                      id: "practice",
+                      shape: "main",
+                      label: "練習這組",
+                      icon: "play.fill",
+                      haptic: "confirm",
+                      onPress: () => router.push({ pathname: "/practice", params: { set: setId } }),
+                    },
+                  ]
+            }
+          />
         </View>
       ) : null}
     </>
@@ -271,19 +270,17 @@ function SetBody({
           { value: "questions", label: `題目 ${content.questions.length}` },
         ]}
       />
-      <Animated.View key={tab} entering={settleIn}>
-        {tab === "words" ? (
-          <WordList
-            content={content}
-            query={query}
-            rows={rows}
-            selected={selected}
-            onSelected={onSelected}
-          />
-        ) : (
-          <QuestionList content={content} query={query} />
-        )}
-      </Animated.View>
+      {tab === "words" ? (
+        <WordList
+          content={content}
+          query={query}
+          rows={rows}
+          selected={selected}
+          onSelected={onSelected}
+        />
+      ) : (
+        <QuestionList content={content} query={query} />
+      )}
     </View>
   );
 }
@@ -413,30 +410,45 @@ function WordList({
           <View />
         )}
 
-        <View style={styles.toolGroup}>
-          {!selected ? (
-            <Button
-              label="單字卡"
-              icon="rectangle.on.rectangle.angled"
-              size="sm"
-              variant="ghost"
-              onPress={() =>
-                router.push({
-                  pathname: "/sets/[setId]/cards",
-                  params: { setId },
-                })
-              }
-            />
-          ) : null}
-          <Button
-            label={selected ? "結束選取" : "多選"}
-            icon={selected ? "xmark" : "checklist"}
-            size="sm"
-            variant={selected ? "accent" : "ghost"}
-            disabled={!online}
-            onPress={() => onSelected(selected ? null : new Set())}
-          />
-        </View>
+        <GlassDock
+          expanded={!selected}
+          size="sm"
+          fill={false}
+          style={styles.toolGroup}
+          actions={
+            selected
+              ? [
+                  {
+                    id: "done",
+                    shape: "select",
+                    label: "結束選取",
+                    icon: "xmark",
+                    variant: "accent",
+                    onPress: () => onSelected(null),
+                  },
+                ]
+              : [
+                  {
+                    id: "cards",
+                    shape: "cards",
+                    label: "單字卡",
+                    icon: "rectangle.on.rectangle.angled",
+                    variant: "ghost",
+                    onPress: () =>
+                      router.push({ pathname: "/sets/[setId]/cards", params: { setId } }),
+                  },
+                  {
+                    id: "select",
+                    shape: "select",
+                    label: "多選",
+                    icon: "checklist",
+                    variant: "ghost",
+                    disabled: !online,
+                    onPress: () => onSelected(new Set()),
+                  },
+                ]
+          }
+        />
       </View>
 
       {words.length === 0 ? (
@@ -524,7 +536,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  toolGroup: { flexDirection: "row", gap: 8 },
+  toolGroup: { flex: 1 },
   disabled: { opacity: 0.45 },
   emptySearch: {
     ...type.body,
@@ -539,27 +551,8 @@ const styles = StyleSheet.create({
     right: space.gutter,
     alignItems: "center",
   },
-  practiceDock: {
-    width: "100%",
-    maxWidth: 420,
-  },
-  practiceBtn: {
-    width: "100%",
-  },
-  selectionBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    paddingVertical: 8,
-    paddingLeft: 18,
-    paddingRight: 8,
+  dock: {
     width: "100%",
     maxWidth: 480,
-  },
-  selectionCount: {
-    flex: 1,
-    fontSize: 15,
-    fontWeight: "600",
-    color: colors.ink,
   },
 });

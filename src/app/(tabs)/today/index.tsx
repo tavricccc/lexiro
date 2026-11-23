@@ -113,7 +113,7 @@ export default function TodayScreen() {
           <Button
             label={`繼續上次 ${Math.min(saved.index + 1, saved.items.length)}/${saved.items.length}`}
             icon="play.fill"
-            variant="hero"
+            variant="primary"
             size="lg"
             haptic="confirm"
             onPress={() => router.push("/session")}
@@ -122,7 +122,7 @@ export default function TodayScreen() {
           <Button
             label={left ? `再練 ${left} 題` : "多練幾題"}
             icon="play.fill"
-            variant="hero"
+            variant="primary"
             size="lg"
             haptic="confirm"
             onPress={() => router.push("/practice")}

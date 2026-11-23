@@ -31,7 +31,6 @@ import {
   glide,
   pop,
   riseIn,
-  settleIn,
   slideBack,
   slideNext,
   swapIn,
@@ -318,7 +317,7 @@ function PracticeCard({
   );
 
   const answerBlock = (
-    <Animated.View key={`${round.index}-${round.step}`} entering={round.step > 0 ? settleIn : undefined} layout={glide}>
+    <Animated.View key={`${round.index}-${round.step}`} layout={glide}>
       {isCustomStep(step) && step.mode !== "single" ? (
         <View style={styles.customBox}>
           <CustomAnswer step={step} chosen={chosen} revealed={round.revealed} submit={pick} />
@@ -351,7 +350,7 @@ function PracticeCard({
       <Button
         label={last ? "看結果" : "下一題"}
         trailingIcon={last ? "flag.checkered" : "arrow.right"}
-        variant="solid"
+        variant="primary"
         size="lg"
         onPress={next}
         style={styles.nextBtn}
@@ -971,7 +970,7 @@ function ResultsView({
                 <Button
                   label={`再練錯的 ${outcome.missed.length} 題`}
                   icon="arrow.counterclockwise"
-                  variant="hero"
+                  variant="primary"
                   size="lg"
                   onPress={() => onAgain(outcome.missed)}
                   style={styles.retryBtn}
@@ -980,7 +979,7 @@ function ResultsView({
               <Button
                 label="完成"
                 trailingIcon="arrow.right"
-                variant={outcome.missed.length > 0 ? "heroGhost" : "hero"}
+                variant={outcome.missed.length > 0 ? "heroGhost" : "primary"}
                 size="lg"
                 onPress={() => router.replace("/(tabs)/today")}
                 style={outcome.missed.length > 0 ? styles.doneBtn : styles.doneFullBtn}

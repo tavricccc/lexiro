@@ -122,6 +122,10 @@ export function ScrollMore({
   onPress: () => void;
   bottom: number;
 }) {
+  // Mounted the first time it is needed; most pages never show it.
+  const [needed, setNeeded] = useState(visible);
+  if (visible && !needed) setNeeded(true);
+  if (!needed) return null;
   return (
     <View pointerEvents={visible ? "box-none" : "none"} style={[styles.place, { bottom }]}>
       <Host matchContents>

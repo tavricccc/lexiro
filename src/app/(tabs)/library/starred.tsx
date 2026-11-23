@@ -90,7 +90,7 @@ export default function StarredScreen() {
             <Button
               label={`練習這 ${total} 個字`}
               icon="play.fill"
-              variant="solid"
+              variant="primary"
               size="lg"
               haptic="confirm"
               onPress={() => {

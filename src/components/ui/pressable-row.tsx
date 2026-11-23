@@ -1,47 +1,43 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   Pressable,
   StyleSheet,
+  View,
   type PressableProps,
   type StyleProp,
   type ViewStyle,
 } from "react-native";
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 import { colors } from "@/lib/theme";
-import { timing } from "./motion";
+import { highlightOut } from "./motion";
 
 /**
- * A list row that highlights like the system's: at once under the finger,
+ * A list row that highlights like the system: at once under the finger,
  * fading out on release, and not while a scroll is only passing over it.
+ * The highlight exists only while pressed, so a long list pays nothing for it.
  */
 export function PressableRow({
   style,
   children,
-  onPressIn,
-  onPressOut,
   ...props
-}: Omit<PressableProps, "style" | "children"> & {
+}: Omit<PressableProps, "style" | "children" | "onPressIn" | "onPressOut"> & {
   style?: StyleProp<ViewStyle>;
   children: ReactNode;
 }) {
-  const lit = useSharedValue(0);
-  const highlight = useAnimatedStyle(() => ({ opacity: lit.value }));
+  const [lit, setLit] = useState(false);
+  if (!props.onPress) return <View style={style}>{children}</View>;
   return (
     <Pressable
       unstable_pressDelay={60}
       {...props}
-      onPressIn={(event) => {
-        lit.set(1);
-        onPressIn?.(event);
-      }}
-      onPressOut={(event) => {
-        lit.set(withTiming(0, timing.move));
-        onPressOut?.(event);
-      }}
+      onPressIn={() => setLit(true)}
+      onPressOut={() => setLit(false)}
       style={style}
     >
-      <Animated.View pointerEvents="none" style={[styles.highlight, highlight]} />
+      {lit ? (
+        <Animated.View exiting={highlightOut} pointerEvents="none" style={styles.highlight} />
+      ) : null}
       {children}
     </Pressable>
   );
