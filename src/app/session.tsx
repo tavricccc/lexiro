@@ -45,7 +45,7 @@ import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
 import { Segmented } from "@/components/ui/segmented";
-import { SheetHeader } from "@/components/ui/sheet-header";
+import { barButton, SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { StarButton } from "@/components/ui/star-button";
 import {
@@ -76,6 +76,7 @@ import {
   choose,
   currentStep,
   finished,
+  lookBack,
   newRound,
   result,
   usedBankOptions,
@@ -205,6 +206,13 @@ export default function SessionScreen() {
     setRound((current) => (current ? acceptTyped(current) : current));
   }, []);
 
+  // Answered steps can be looked at again, as they were answered.
+  const [back, setBack] = useState(0);
+  const shown = round && !finished(round) ? lookBack(round, back) : round;
+  const canGoBack = Boolean(
+    shown && !finished(shown) && (shown.index > 0 || shown.step > 0),
+  );
+
   const words = useSetWords(round?.setIds ?? []);
   const mark = useCallback((word: string, on: boolean) => {
     setRound((current) => {
@@ -221,7 +229,7 @@ export default function SessionScreen() {
     [words, round?.marked, mark],
   );
 
-  if (!round) {
+  if (!round || !shown) {
     return (
       <View style={[styles.root, { paddingTop: headerHeight, paddingHorizontal: space.gutter }]}>
         <SheetHeader title="練習" />
@@ -237,7 +245,16 @@ export default function SessionScreen() {
   return (
     <MarksContext.Provider value={marks}>
       <SheetHeader
-        title={finished(round) ? "" : `${round.index + 1} / ${round.items.length}`}
+        title={finished(round) ? "" : `${shown.index + 1} / ${shown.items.length}`}
+        items={
+          finished(round)
+            ? []
+            : [
+                barButton("上一題", "chevron.left", () => setBack(back + 1), {
+                  disabled: !canGoBack,
+                }),
+              ]
+        }
         closeLabel="離開練習（進度會保留）"
       />
       {finished(round) ? (
@@ -251,7 +268,13 @@ export default function SessionScreen() {
           }}
         />
       ) : (
-        <PracticeCard round={round} pick={pick} next={next} accept={accept} />
+        <PracticeCard
+          round={shown}
+          lookingBack={back > 0}
+          pick={pick}
+          next={back > 0 ? () => setBack(back - 1) : next}
+          accept={back > 0 ? undefined : accept}
+        />
       )}
     </MarksContext.Provider>
   );
@@ -259,14 +282,16 @@ export default function SessionScreen() {
 
 function PracticeCard({
   round,
+  lookingBack,
   pick,
   next,
   accept,
 }: {
   round: Round;
+  lookingBack: boolean;
   pick: (option: Choice | null) => void;
   next: () => void;
-  accept: () => void;
+  accept?: () => void;
 }) {
   const insets = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
@@ -278,7 +303,9 @@ function PracticeCard({
   const chosen = round.choices[round.index][round.step];
   const used = usedBankOptions(round);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
-  const last = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+  const last =
+    !lookingBack &&
+    round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
 
   const bottomPad = { paddingBottom: Math.max(insets.bottom, 20) };
 
@@ -813,7 +840,7 @@ function FeedbackCard({
   item: PracticeItem;
   step: Step | CustomStep;
   chosen: Choice | null | undefined;
-  accept: () => void;
+  accept?: () => void;
 }) {
   const right = isRight(step, chosen);
   const typedWrong =
@@ -842,7 +869,7 @@ function FeedbackCard({
             </>
           )}
         </Text>
-        {typedWrong ? (
+        {typedWrong && accept ? (
           <Button label="我其實答對了" size="sm" variant="ghost" onPress={accept} />
         ) : null}
       </View>

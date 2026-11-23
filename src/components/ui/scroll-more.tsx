@@ -51,6 +51,8 @@ export function useScrollMore({
 
   const ref = useCallback((node: Pick<ScrollView, "scrollTo"> | null) => {
     view.current = node;
+    // A scroll view that is new starts at its top.
+    metrics.current.offset = null;
   }, []);
 
   const handleScroll = useCallback(
