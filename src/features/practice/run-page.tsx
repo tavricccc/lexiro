@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useLayoutEffect, use
 import { useQueries } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
-import { ArrowRight, ArrowCounterClockwise, Check, Star, X } from "@phosphor-icons/react";
+import { ArrowRight, ArrowCounterClockwise, CaretLeft, Check, Star, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask } from "@lexiro/contract";
 import { AnimatedNumber, AppLink, Button, HeaderButton, ProgressBar, Segmented, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
@@ -14,7 +14,7 @@ import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { TASK_LABELS } from "@/domain/labels";
 import { isCustomStep, isRight, rightAnswerText, type Choice, type CustomStep } from "@/domain/custom";
 import { passageParts, type PracticeItem, type Step } from "@/domain/practice";
-import { acceptTyped, advance, choose, currentStep, finished, newRound, result, usedBankOptions, type Round } from "@/domain/round";
+import { acceptTyped, advance, choose, currentStep, finished, lookBack, newRound, result, usedBankOptions, type Round } from "@/domain/round";
 import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
 import { ScrollMore } from "@/ui/scroll-more";
@@ -129,7 +129,12 @@ export default function RunPage() {
   );
 }
 
-function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
+function Card({ round: live, pick, next: onward, accept }: { round: Round; pick: (option: Choice | null) => void; next: () => void; accept: () => void }) {
+  // Answered steps can be looked at again, as they were answered.
+  const [back, setBack] = useState(0);
+  const round = lookBack(live, back);
+  const first = round.index === 0 && round.step === 0;
+  const next = useCallback(() => { if (back) setBack(back - 1); else onward(); }, [back, onward]);
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
@@ -150,7 +155,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
   const prompt = useRef<HTMLElement>(null);
   const answers = useRef<HTMLDivElement>(null);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
-  const last = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+  const last = !back && round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
   const question = (
     <>
       <div className="flex items-center justify-between gap-2">
@@ -171,8 +176,8 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
         : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
     </div>
   );
-  const feedback = round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null;
-  const onward = round.revealed ? (
+  const feedback = round.revealed ? <Feedback accept={back ? undefined : accept} chosen={chosen} item={item} step={step} /> : null;
+  const nextBar = round.revealed ? (
     <div className="shrink-0 max-md:pt-2">
       <Button autoFocus className="h-14 w-full rounded-[1.125rem]" onClick={next} size="lg" variant="solid">
         {last ? "看結果" : "下一題"}
@@ -185,6 +190,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
     <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-xl flex-col overscroll-none md:max-w-6xl md:px-6 px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="flex items-center gap-3 px-1">
         <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
+        <HeaderButton aria-label="上一題" disabled={first} onClick={() => setBack(back + 1)}><CaretLeft weight="bold" /></HeaderButton>
         <ProgressBar className="flex-1" label="練習進度" value={progress} />
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
         <Button className={cn(round.revealed && "invisible")} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
@@ -201,7 +207,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
                 <div className="flex h-full flex-col gap-2 overflow-y-auto overscroll-contain" ref={answers}>{options}{feedback}</div>
                 <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={answers} />
               </div>
-              {onward}
+              {nextBar}
             </div>
           </div>
         ) : (
@@ -217,7 +223,7 @@ function Card({ round, pick, next, accept }: { round: Round; pick: (option: Choi
               </div>
               <ScrollMore className="absolute bottom-2 left-1/2 -translate-x-1/2" target={page} />
             </div>
-            {onward}
+            {nextBar}
           </>
         )}
       </div>
@@ -397,7 +403,7 @@ function Explanation({ item, step, chosen, brief = false }: { item: PracticeItem
   );
 }
 
-function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: Step | CustomStep; chosen: Choice | null | undefined; accept: () => void }) {
+function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: Step | CustomStep; chosen: Choice | null | undefined; accept?: () => void }) {
   const right = isRight(step, chosen);
   const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
   const answer = rightAnswerText(step);
@@ -408,7 +414,7 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
             <span aria-hidden className={cn("grid shrink-0 place-items-center text-lg", right ? "text-positive-ink" : "text-danger-ink")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>
             {right ? "答對了" : <span>正確答案是 <span {...latinProps(answer)}>{answer}</span></span>}
           </p>
-          {typedWrong ? <Button onClick={accept} size="sm" variant="ghost">我其實答對了</Button> : null}
+          {typedWrong && accept ? <Button onClick={accept} size="sm" variant="ghost">我其實答對了</Button> : null}
         </div>
         {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? <p className="font-latin text-[0.9375rem] text-ink-muted">{step.accepted.join(" / ")}</p> : null}
         <Explanation brief chosen={chosen} item={item} step={step} />

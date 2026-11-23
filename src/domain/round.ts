@@ -45,6 +45,19 @@ export function advance(round: Round): Round {
   return { ...round, index: round.index + 1, step: 0, revealed: false };
 }
 
+/** The round as it stood so many answered steps ago, for another look. The round itself stays where it is. */
+export function lookBack(round: Round, steps: number): Round {
+  let { index, step } = round;
+  for (let left = steps; left > 0 && (index > 0 || step > 0); left -= 1) {
+    if (step > 0) step -= 1;
+    else {
+      index -= 1;
+      step = round.items[index].steps.length - 1;
+    }
+  }
+  return index === round.index && step === round.step ? round : { ...round, index, step, revealed: true };
+}
+
 export interface RoundResult {
   total: number;
   correct: number;

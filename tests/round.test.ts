@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { advance, choose, finished, newRound, result, usedBankOptions } from "@/domain/round";
+import { advance, choose, finished, lookBack, newRound, result, usedBankOptions } from "@/domain/round";
 import type { PracticeItem } from "@/domain/practice";
 
 const step = (answer: number) => ({ prompt: "p", options: ["a", "b", "c", "d"], answer, senseId: "s", wordId: "w" });
@@ -40,4 +40,14 @@ describe("a practice round", () => {
     const round = advance(choose(advance(choose(newRound(items, []), 0)), 1));
     expect([...usedBankOptions(round)]).toEqual([1]);
   });
+});
+
+it("looking back walks answered steps and leaves the round alone", () => {
+  const items = [{ steps: [{}, {}] }, { steps: [{}] }] as unknown as PracticeItem[];
+  const round = { ...newRound(items, []), index: 1, choices: [[0, 1], []] };
+  expect(lookBack(round, 0)).toBe(round);
+  expect(lookBack(round, 1)).toMatchObject({ index: 0, step: 1, revealed: true });
+  expect(lookBack(round, 2)).toMatchObject({ index: 0, step: 0, revealed: true });
+  expect(lookBack(round, 9)).toMatchObject({ index: 0, step: 0 });
+  expect(round).toMatchObject({ index: 1, step: 0, revealed: false });
 });
