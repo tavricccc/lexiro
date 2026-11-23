@@ -68,6 +68,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -75,6 +77,10 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Set the version
+        id: version
+        run: echo "version=$(node scripts/set-version.mjs)" >> "$GITHUB_OUTPUT"
 
       - name: Generate the native iOS project
         run: npx expo prebuild --platform ios --clean
@@ -94,12 +100,19 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             | tail -n 200
 
+      # The version goes into the built app rather than app.json, where it would
+      # change the fingerprint (the runtime version) on every push.
       - name: Package the .ipa
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
           mkdir -p "$RUNNER_TEMP/ipa/Payload"
           cp -R "$RUNNER_TEMP/Lexiro.xcarchive/Products/Applications/Lexiro.app" "$RUNNER_TEMP/ipa/Payload/"
           cd "$RUNNER_TEMP/ipa"
-          zip -qry "$GITHUB_WORKSPACE/Lexiro-${GITHUB_SHA::7}.ipa" Payload
+          plist=Payload/Lexiro.app/Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$plist"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${VERSION##*.}" "$plist"
+          zip -qry "$GITHUB_WORKSPACE/Lexiro-$VERSION.ipa" Payload
 
       - uses: actions/upload-artifact@v4
         with:

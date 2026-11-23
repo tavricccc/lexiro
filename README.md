@@ -27,7 +27,12 @@ expo-updates, so the over-the-air flow below only runs in the sideloaded build.
   publishes every push to `main` to the `production` channel (needs the
   `EXPO_TOKEN` repo secret). `runtimeVersion` uses the fingerprint policy, so a
   native change reaches the phone only through a new `.ipa`.
-  `src/lib/app-updates.ts` checks on foreground.
+  A cold start waits behind an update screen (`src/components/launch-update.tsx`)
+  for the check and download, then restarts into the update; offline or past a
+  limit the app opens as it is. `src/lib/app-updates.ts` also checks on foreground.
+- Version: both workflows run `scripts/set-version.mjs` (major.minor from
+  `package.json`, patch = commit count). Leave `app.json`'s version alone: it is
+  part of the fingerprint.
 
 ## Sign-in
 

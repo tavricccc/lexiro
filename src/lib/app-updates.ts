@@ -1,6 +1,9 @@
 import * as Updates from "expo-updates";
-import { useEffect, useRef } from "react";
-import { AppState } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Appearance, AppState } from "react-native";
+
+import { DURATION } from "@/components/ui/motion";
+import { plain } from "@/lib/theme";
 
 /** How often a foregrounded app asks for a newer JS bundle. */
 const CHECK_INTERVAL_MS = 30 * 60 * 1000;
@@ -11,8 +14,56 @@ const CHECK_INTERVAL_MS = 30 * 60 * 1000;
  */
 const APPLY_AFTER_AWAY_MS = 10 * 60 * 1000;
 
+/** How long a launch waits to hear whether there is a newer version. */
+const CHECK_LIMIT_MS = 5_000;
+/** How long a launch waits for that version to download. */
+const DOWNLOAD_LIMIT_MS = 30_000;
+
+/** Restarts into the downloaded update behind a plain canvas that fades away. */
+export function applyUpdate() {
+  const dark = Appearance.getColorScheme() === "dark";
+  return Updates.reloadAsync({
+    reloadScreenOptions: {
+      backgroundColor: dark ? plain.canvas.dark : plain.canvas.light,
+      spinner: { enabled: false },
+      fade: true,
+    },
+  });
+}
+
 /**
- * expo-updates checks on every cold start (checkAutomatically ON_LOAD), but
+ * The launch's own update: expo-updates checks and downloads on every cold
+ * start (checkAutomatically ON_LOAD); the app waits for it, then restarts into
+ * what it got. Offline, on an error or past the limits the app opens as it is,
+ * and a download that finishes later is applied by `useAppUpdates`.
+ */
+export function useLaunchUpdate() {
+  const { isStartupProcedureRunning, isDownloading, isUpdateAvailable, isUpdatePending, downloadProgress } =
+    Updates.useUpdates();
+  const [done, setDone] = useState(__DEV__ || !Updates.isEnabled);
+  const updating = isUpdateAvailable || isDownloading || isUpdatePending;
+
+  if (!done && !isStartupProcedureRunning && !isDownloading && !isUpdatePending) setDone(true);
+
+  useEffect(() => {
+    if (done) return;
+    const timer = setTimeout(() => setDone(true), updating ? DOWNLOAD_LIMIT_MS : CHECK_LIMIT_MS);
+    return () => clearTimeout(timer);
+  }, [done, updating]);
+
+  useEffect(() => {
+    if (done || !isUpdatePending) return;
+    // Long enough for the bar to be seen reaching its end.
+    const timer = setTimeout(() => {
+      applyUpdate().catch(() => setDone(true));
+    }, DURATION.morph);
+    return () => clearTimeout(timer);
+  }, [done, isUpdatePending]);
+
+  return { done, updating, progress: isUpdatePending ? 1 : (downloadProgress ?? 0) };
+}
+
+/**
  * iOS keeps the app alive for days, so this also checks on returning to the
  * foreground and applies a downloaded update after a long absence.
  */
@@ -53,7 +104,7 @@ export function useAppUpdates() {
       const away = backgroundedAt === null ? 0 : Date.now() - backgroundedAt;
       backgroundedAt = null;
       if (pending.current && away >= APPLY_AFTER_AWAY_MS) {
-        void Updates.reloadAsync();
+        void applyUpdate();
         return;
       }
       if (Date.now() - lastCheck >= CHECK_INTERVAL_MS) void fetchNewer();

@@ -1,4 +1,3 @@
-import Constants from "expo-constants";
 import { SymbolView } from "expo-symbols";
 import * as Updates from "expo-updates";
 import { useState } from "react";
@@ -7,14 +6,15 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "@/components/ui/button";
 import { Panel, Screen } from "@/components/ui/layout";
 import { ListGroup, ListRow } from "@/components/ui/list";
+import { applyUpdate as restartIntoUpdate } from "@/lib/app-updates";
 import { haptics } from "@/lib/haptics";
 import { colors, latin, radius, type } from "@/lib/theme";
+import { APP_VERSION } from "@/lib/version";
 import { toast } from "@/platform/toast";
 
 export default function AboutScreen() {
   const { isUpdatePending, isUpdateAvailable } = Updates.useUpdates();
   const [checking, setChecking] = useState(false);
-  const version = Constants.expoConfig?.version ?? "1.0.0";
   const supported = !__DEV__ && Updates.isEnabled;
 
   const checkUpdate = async () => {
@@ -40,7 +40,7 @@ export default function AboutScreen() {
 
   const applyUpdate = () => {
     haptics.confirm();
-    void Updates.reloadAsync();
+    void restartIntoUpdate();
   };
 
   const statusText = !supported
@@ -59,7 +59,7 @@ export default function AboutScreen() {
         </View>
         <Text style={styles.brand}>Lexiro</Text>
         <Text style={styles.tagline}>把背單字變成每天的小習慣。</Text>
-        <Text style={styles.version}>版本 {version}</Text>
+        <Text style={styles.version}>版本 {APP_VERSION}</Text>
       </Panel>
 
       <ListGroup title="更新">

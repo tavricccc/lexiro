@@ -10,17 +10,20 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import Animated, { FadeOut } from "react-native-reanimated";
 
+import { LaunchUpdate } from "@/components/launch-update";
 import { SignInPrompt } from "@/components/sign-in-prompt";
 import { ToastHost } from "@/components/toast-host";
+import { DURATION } from "@/components/ui/motion";
 import { useAuth } from "@/data/auth";
 import { useAnswerFlush } from "@/data/learning";
 import { restoreTheme, useThemeSync } from "@/data/prefs";
 import { queryClient, startPersistence, stopPersistence, useRevisionWatch } from "@/data/queries";
-import { useAppUpdates } from "@/lib/app-updates";
+import { useAppUpdates, useLaunchUpdate } from "@/lib/app-updates";
 import { modalHeaderOptions, softEdges } from "@/components/stack-options";
 import { PINE_DARK, PINE_LIGHT, colors, fonts, plain, type } from "@/lib/theme";
 
 SplashScreen.preventAutoHideAsync();
+SplashScreen.setOptions({ fade: true, duration: DURATION.state });
 
 export default function RootLayout() {
   const [storageReady, setStorageReady] = useState(false);
@@ -58,6 +61,8 @@ function AppShell({
   const [restoredUid, setRestoredUid] = useState<string | null>(null);
 
   useAppUpdates();
+  const launchUpdate = useLaunchUpdate();
+  const launching = !launchUpdate.done;
   const workspaceReady = Boolean(storageReady && ready && uid && restoredUid === uid);
   useRevisionWatch(workspaceReady);
   useAnswerFlush(workspaceReady);
@@ -81,11 +86,12 @@ function AppShell({
   }, [storageReady, ready, uid]);
 
   useEffect(() => {
-    if (!fontsSettled || !storageReady || !ready) return;
-    if (!uid || restoredUid === uid) {
+    if (!fontsSettled || !storageReady) return;
+    // The update screen stands where the splash does, so it can take over at once.
+    if (launching || (ready && (!uid || restoredUid === uid))) {
       void SplashScreen.hideAsync();
     }
-  }, [fontsSettled, storageReady, ready, uid, restoredUid]);
+  }, [fontsSettled, storageReady, ready, uid, restoredUid, launching]);
 
   const dark = scheme === "dark";
   const base = dark ? DarkTheme : DefaultTheme;
@@ -221,6 +227,7 @@ function AppShell({
       ) : null}
 
       <ToastHost />
+      <LaunchUpdate {...launchUpdate} />
     </ThemeProvider>
   );
 }

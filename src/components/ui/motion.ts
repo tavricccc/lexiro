@@ -45,6 +45,15 @@ export const uncover = {
   animationFillMode: "forwards",
 } as const;
 
+/** The mark on the update screen, breathing while the app waits. */
+export const breathe = {
+  animationName: { from: { opacity: 1 }, to: { opacity: 0.55 } },
+  animationDuration: 1100,
+  animationTimingFunction: "ease-in-out",
+  animationIterationCount: "infinite",
+  animationDirection: "alternate",
+} as const;
+
 /** A pressed row letting go. */
 export const highlightOut = FadeOut.duration(DURATION.move);
 
