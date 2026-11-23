@@ -100,4 +100,7 @@ export const shareOf = (setId: string) => api<{ id: string | null }>(path(setId,
 export async function unshareSet(setId: string) {
   await api(path(setId, "/share"), { method: "DELETE" });
 }
-export const sharedSet = (shareId: string) => api<SetContent>(`/shared/${encodeURIComponent(shareId)}`, { auth: false });
+export const sharedSet = (code: string) => api<SetContent>(`/shared/${encodeURIComponent(code)}`, { auth: false });
+/** Copies a shared set into this account. */
+export const addShared = (code: string, folderId: string | null) =>
+  write<SetSummary>(`/shared/${encodeURIComponent(code)}/add`, { method: "POST", json: { folderId } });

@@ -26,7 +26,8 @@ export const keys = {
   starred: ["starred"] as const,
   learning: ["learning"] as const,
   prefs: ["prefs"] as const,
-  shared: (id: string) => ["shared", id] as const,
+  shared: (code: string) => ["shared", code] as const,
+  share: (setId: string) => ["share", setId] as const,
   connections: ["connections"] as const,
 };
 

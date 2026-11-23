@@ -1,12 +1,13 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
-import { FolderSimple, FolderSimplePlus, MagnifyingGlass, Plus, SlidersHorizontal } from "@phosphor-icons/react";
+import { FolderSimple, FolderSimplePlus, Hash, MagnifyingGlass, Plus, SlidersHorizontal } from "@phosphor-icons/react";
 import { compareWords, type Folder, type SetSummary } from "@lexiro/contract";
 import { AppLink, Button, EmptyState, HeaderButton, Input, Menu, Panel, Segmented } from "design-kit";
 import { useLibrary } from "@/data/queries";
 import { Loaded, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
 import { FolderSheet } from "./folder-sheet";
+import { JoinSheet } from "./join-sheet";
 import { StarredLink } from "./starred-page";
 
 const ALL = "all", LOOSE = "none";
@@ -21,7 +22,9 @@ export default function LibraryPage() {
   const [params, setParams] = useSearchParams();
   const [query, setQuery] = useState("");
   const [folders, setFolders] = useState(false);
+  const [join, setJoin] = useState(false);
   const folder = params.get("folder") ?? ALL;
+  const inFolder = folder !== ALL && folder !== LOOSE ? `?folder=${encodeURIComponent(folder)}` : "";
   return (
     <Page
       actions={
@@ -33,9 +36,14 @@ export default function LibraryPage() {
             title="單字集選項"
             trigger={<HeaderButton aria-label="單字集選項"><SlidersHorizontal weight="bold" /></HeaderButton>}
           />
-          <HeaderButton aria-label="新增單字集" asChild prominent>
-            <AppLink href={folder !== ALL && folder !== LOOSE ? `/app/sets/new?folder=${folder}` : "/app/sets/new"}><Plus weight="bold" /></AppLink>
-          </HeaderButton>
+          <Menu
+            items={[
+              { key: "set", icon: Plus, label: "新增單字集", href: `/app/sets/new${inFolder}` },
+              { key: "join", icon: Hash, label: "用代碼加入", onSelect: () => setJoin(true) },
+            ]}
+            title="新增"
+            trigger={<HeaderButton aria-label="新增" prominent><Plus weight="bold" /></HeaderButton>}
+          />
         </>
       }
       title="我的單字"
@@ -46,6 +54,7 @@ export default function LibraryPage() {
             folder={folder}
             folders={all}
             onFolder={(next) => setParams(next === ALL ? {} : { folder: next }, { replace: true })}
+            onJoin={() => setJoin(true)}
             onQuery={setQuery}
             query={query}
             sets={sets}
@@ -53,16 +62,18 @@ export default function LibraryPage() {
         )}
       </Loaded>
       <FolderSheet onOpenChange={setFolders} open={folders} />
+      <JoinSheet folder={inFolder} onOpenChange={setJoin} open={join} />
     </Page>
   );
 }
 
-function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
+function LibraryBody({ folder, folders, sets, query, onFolder, onJoin, onQuery }: {
   folder: string;
   folders: Folder[];
   sets: SetSummary[];
   query: string;
   onFolder: (folder: string) => void;
+  onJoin: () => void;
   onQuery: (query: string) => void;
 }) {
   const visible = useMemo(() => {
@@ -73,7 +84,12 @@ function LibraryBody({ folder, folders, sets, query, onFolder, onQuery }: {
   if (!sets.length)
     return (
       <EmptyState
-        action={<Button asChild variant="primary"><AppLink href="/app/sets/new"><Plus weight="bold" />建立第一個單字集</AppLink></Button>}
+        action={
+          <div className="flex flex-wrap justify-center gap-2">
+            <Button asChild variant="primary"><AppLink href="/app/sets/new"><Plus weight="bold" />建立第一個單字集</AppLink></Button>
+            <Button onClick={onJoin}><Hash weight="bold" />用代碼加入</Button>
+          </div>
+        }
         description="單字集是一組要一起練習的單字，例如一課課文或一次考試的範圍。"
         title="還沒有單字集"
       />

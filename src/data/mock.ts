@@ -106,6 +106,9 @@ learning.tasks = { meaning: { answered: 120, correct: 101 }, reverse: { answered
 
 let prefs: Prefs = { practiceSize: 20, showMeanings: true, theme: "light" };
 
+const MOCK_CODE = "ABCD2345";
+let shared = false;
+
 /** Answers what the Worker would; writes are accepted and mostly ignored. */
 export async function mockApi(path: string, init: { method?: string; json?: unknown }): Promise<unknown> {
   await new Promise((r) => setTimeout(r, 120));
@@ -119,8 +122,15 @@ export async function mockApi(path: string, init: { method?: string; json?: unkn
     if (path === "/starred") return { words: Object.values(contents).flatMap((content) => content.words.filter((word) => word.starred)) };
     if (path === "/admin/status") return { admin: false };
     if (set && contents[decodeURIComponent(set[1]!)]) return contents[decodeURIComponent(set[1]!)];
-    if (path.endsWith("/share")) return { id: null };
+    if (path.endsWith("/share")) return { id: shared ? MOCK_CODE : null };
+    if (path === `/shared/${MOCK_CODE}`) return { ...contents.toeic, set: { ...contents.toeic!.set, id: "someone-else" } };
+    if (path.startsWith("/shared/")) throw new Error("找不到這個分享，代碼可能打錯，或對方已停止分享。");
   }
+  if (path.endsWith("/share")) {
+    shared = method === "POST";
+    return { id: MOCK_CODE };
+  }
+  if (path.startsWith("/shared/")) return contents.toeic!.set;
   if (path === "/prefs" && method === "PUT") return (prefs = { ...prefs, ...(init.json as Partial<Prefs>) });
   if (path.endsWith("/questions") && method === "POST") return { saved: [], failed: [], warnings: [] };
   if (path.endsWith("/words") && method === "POST") return { words: [], removedQuestionIds: [] };
