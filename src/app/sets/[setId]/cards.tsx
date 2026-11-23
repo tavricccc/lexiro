@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { SymbolView } from "expo-symbols";
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import {
   Pressable,
   StyleSheet,
@@ -22,6 +22,7 @@ import Animated, {
   withSequence,
   withSpring,
   withTiming,
+  type SharedValue,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -64,9 +65,29 @@ function shuffled<T>(items: T[]): T[] {
 /** Spring that settles a released card without a visible wobble. */
 const SETTLE = { damping: 20, stiffness: 240, mass: 0.8 } as const;
 /** Spring for turning a card over: quick, with a small overshoot you can feel. */
-const TURN = { damping: 16, stiffness: 120, mass: 1 } as const;
-const COMMIT_DISTANCE = 110;
-const COMMIT_VELOCITY = 750;
+const TURN = { damping: 17, stiffness: 150, mass: 0.9 } as const;
+/** A thrown card keeps the finger's speed and is not slowed by a bounce. */
+const THROW = { damping: 24, stiffness: 120, overshootClamping: true } as const;
+const COMMIT_DISTANCE = 100;
+const COMMIT_VELOCITY = 650;
+/** Points of vertical drag that turn the card half a turn. */
+const TURN_DISTANCE = 260;
+
+type Ghost = {
+  key: number;
+  word: Word;
+  x: number;
+  y: number;
+  flip: number;
+  velocity: number;
+  step: 1 | -1;
+};
+
+/** Which way a card faces after `flip` half-turns: 0 front, 180 back. */
+function faceAngle(flip: number) {
+  "worklet";
+  return (((flip * 180) % 360) + 360) % 360;
+}
 
 function Deck({ content }: { content: SetContent }) {
   const insets = useSafeAreaInsets();
@@ -79,9 +100,10 @@ function Deck({ content }: { content: SetContent }) {
   const [shuffle, setShuffle] = useState(false);
   const [starredOnly, setStarredOnly] = useState(false);
   const [index, setIndex] = useState(0);
-  const [flippedId, setFlippedId] = useState<string | null>(null);
   /** Which neighbour sits under the top card: the next one, or the previous while dragging right. */
   const [peek, setPeek] = useState<1 | -1>(1);
+  /** Cards already thrown, still flying off screen while the next one is in play. */
+  const [ghosts, setGhosts] = useState<Ghost[]>([]);
 
   const byId = useMemo(
     () => new Map(content.words.map((word) => [word.id, word])),
@@ -99,26 +121,33 @@ function Deck({ content }: { content: SetContent }) {
   const at = Math.min(index, Math.max(0, deck.length - 1));
   const word = deck[at];
   const under = deck[at + peek];
-  const flipped = !!word && flippedId === word.id;
   const canNext = at < deck.length - 1;
   const canPrev = at > 0;
 
   const x = useSharedValue(0);
   const y = useSharedValue(0);
   const flip = useSharedValue(0);
+  /** Where the turning card is headed, in half-turns; taps add to it so quick taps keep spinning. */
+  const aim = useSharedValue(0);
+  const turnBase = useSharedValue(0);
   const press = useSharedValue(1);
   const armed = useSharedValue(false);
-  const busy = useSharedValue(false);
+  const entering = useSharedValue(false);
 
-  // The card underneath becomes the top card: put the stage back in the same
-  // commit that shows the new word, so nothing jumps.
+  // The card underneath becomes the top card in the same commit that shows
+  // the new word, so nothing jumps; it grows from where the stack held it.
   const wordId = word?.id;
   useLayoutEffect(() => {
     x.set(0);
     y.set(0);
     flip.set(0);
-    busy.set(false);
-  }, [wordId, x, y, flip, busy]);
+    aim.set(0);
+    if (entering.get()) {
+      entering.set(false);
+      press.set(0.94);
+      press.set(withSpring(1, SETTLE));
+    }
+  }, [wordId, x, y, flip, aim, press, entering]);
 
   useAnimatedReaction(
     () => (x.get() > 0 ? -1 : 1),
@@ -126,66 +155,66 @@ function Deck({ content }: { content: SetContent }) {
       if (side !== previous) runOnJS(setPeek)(side as 1 | -1);
     },
   );
+  // A light tick each time the card shows its other face.
+  useAnimatedReaction(
+    () => Math.round(flip.get()),
+    (face, previous) => {
+      if (previous !== null && face !== previous) runOnJS(haptics.select)();
+    },
+  );
 
-  const commit = (step: 1 | -1) => {
+  const throwCard = (
+    step: 1 | -1,
+    velocity: number,
+    from: { x: number; y: number; flip: number },
+  ) => {
+    if (!word) return;
     haptics.confirm();
+    setGhosts((list) => [
+      ...list.slice(-3),
+      { key: Date.now() + Math.random(), word, ...from, velocity, step },
+    ]);
+    entering.set(true);
+    setPeek(step);
     setIndex(at + step);
   };
 
-  /** Throws the top card off the side it leaves from, then shows its neighbour. */
-  const fling = (step: 1 | -1, velocity: number) => {
-    busy.set(true);
+  const bump = (step: 1 | -1) => {
+    haptics.warning();
+    // A small shove that springs back: there is no card on that side.
     x.set(
-      withSpring(
-        -step * width * 1.35,
-        { velocity, damping: 26, stiffness: 180, overshootClamping: true },
-        (done) => {
-          if (done) runOnJS(commit)(step);
-        },
+      withSequence(
+        withTiming(-step * 22, { duration: 80 }),
+        withSpring(0, SETTLE),
       ),
     );
-    y.set(withSpring(y.get() * 1.6, SETTLE));
   };
 
   const go = (step: 1 | -1) => {
-    if (busy.get()) return;
-    if ((step === 1 && !canNext) || (step === -1 && !canPrev)) {
-      haptics.warning();
-      // A small shove that springs back: there is no card on that side.
-      x.set(
-        withSequence(
-          withTiming(-step * 22, { duration: 90 }),
-          withSpring(0, SETTLE),
-        ),
-      );
-      return;
-    }
-    setPeek(step);
-    fling(step, -step * 1400);
+    if ((step === 1 && !canNext) || (step === -1 && !canPrev))
+      return bump(step);
+    throwCard(step, -step * 1800, { x: x.get(), y: y.get(), flip: flip.get() });
   };
 
-  const toggleFlip = () => {
+  const turn = () => {
     haptics.tap();
-    const next = !flipped;
-    setFlippedId(next && word ? word.id : null);
-    // Always turn the same way, half a turn per tap, so the card keeps rolling
-    // over instead of swinging back on its hinge.
-    flip.set(withSpring(Math.round(flip.get()) + 1, TURN));
+    aim.set(Math.round(aim.get()) + 1);
+    flip.set(withSpring(aim.get(), TURN));
   };
 
-  const pan = Gesture.Pan()
+  const swipe = Gesture.Pan()
     .activeOffsetX([-10, 10])
+    .failOffsetY([-18, 18])
     .onBegin(() => {
       press.set(withSpring(0.98, SETTLE));
     })
     .onUpdate((event) => {
-      if (busy.get()) return;
       const blocked =
         (event.translationX < 0 && !canNext) ||
         (event.translationX > 0 && !canPrev);
       // Rubber band past either end of the deck.
       x.set(blocked ? event.translationX * 0.22 : event.translationX);
-      y.set(event.translationY * 0.18);
+      y.set(event.translationY * 0.25);
       const past = !blocked && Math.abs(event.translationX) > COMMIT_DISTANCE;
       if (past !== armed.get()) {
         armed.set(past);
@@ -193,7 +222,6 @@ function Deck({ content }: { content: SetContent }) {
       }
     })
     .onEnd((event) => {
-      if (busy.get()) return;
       const step: 1 | -1 = event.translationX < 0 ? 1 : -1;
       const allowed = step === 1 ? canNext : canPrev;
       const thrown =
@@ -201,7 +229,11 @@ function Deck({ content }: { content: SetContent }) {
         (Math.abs(event.velocityX) > COMMIT_VELOCITY &&
           Math.sign(event.velocityX) === Math.sign(event.translationX));
       if (allowed && thrown) {
-        runOnJS(fling)(step, event.velocityX);
+        runOnJS(throwCard)(step, event.velocityX, {
+          x: x.get(),
+          y: y.get(),
+          flip: flip.get(),
+        });
       } else {
         if (thrown) runOnJS(haptics.warning)();
         x.set(withSpring(0, { ...SETTLE, velocity: event.velocityX }));
@@ -213,13 +245,31 @@ function Deck({ content }: { content: SetContent }) {
       press.set(withSpring(1, SETTLE));
     });
 
+  // Drag up or down to turn the card by hand; let go and it keeps spinning
+  // with the flick's speed, then lands on whichever face is nearer.
+  const spin = Gesture.Pan()
+    .activeOffsetY([-10, 10])
+    .failOffsetX([-18, 18])
+    .onBegin(() => {
+      turnBase.set(flip.get());
+    })
+    .onUpdate((event) => {
+      flip.set(turnBase.get() - event.translationY / TURN_DISTANCE);
+    })
+    .onEnd((event) => {
+      const speed = -event.velocityY / TURN_DISTANCE;
+      const target = Math.round(flip.get() + speed * 0.22);
+      aim.set(target);
+      flip.set(withSpring(target, { ...TURN, velocity: speed }));
+    });
+
   const tap = Gesture.Tap()
-    .maxDuration(300)
+    .maxDuration(250)
     .onBegin(() => {
       press.set(withSpring(0.97, SETTLE));
     })
     .onEnd(() => {
-      runOnJS(toggleFlip)();
+      runOnJS(turn)();
     })
     .onFinalize(() => {
       press.set(withSpring(1, SETTLE));
@@ -232,36 +282,20 @@ function Deck({ content }: { content: SetContent }) {
     return {
       transform: [
         { translateX: x.get() },
-        { translateY: y.get() - turning * 30 },
-        {
-          rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14]) + turning * 2}deg`,
-        },
-        { scale: press.get() * (1 + turning * 0.07) },
+        { translateY: y.get() - turning * 26 },
+        { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
+        { scale: press.get() * (1 + turning * 0.06) },
       ],
     };
   });
   const underMove = useAnimatedStyle(() => {
-    const t = Math.min(Math.abs(x.get()) / (width * 0.6), 1);
+    const t = Math.min(Math.abs(x.get()) / (width * 0.55), 1);
     return {
-      opacity: interpolate(t, [0, 1], [0.55, 1]),
+      opacity: interpolate(t, [0, 1], [0.6, 1]),
       transform: [
         { translateY: interpolate(t, [0, 1], [14, 0]) },
-        { scale: interpolate(t, [0, 1], [0.92, 1]) },
+        { scale: interpolate(t, [0, 1], [0.94, 1]) },
       ],
-    };
-  });
-  const front = useAnimatedStyle(() => {
-    const angle = (((flip.get() * 180) % 360) + 360) % 360;
-    return {
-      transform: [{ perspective: 1000 }, { rotateY: `${angle}deg` }],
-      opacity: angle < 90 || angle > 270 ? 1 : 0,
-    };
-  });
-  const back = useAnimatedStyle(() => {
-    const angle = (((flip.get() * 180) % 360) + 360) % 360;
-    return {
-      transform: [{ perspective: 1000 }, { rotateY: `${angle + 180}deg` }],
-      opacity: angle >= 90 && angle <= 270 ? 1 : 0,
     };
   });
 
@@ -322,45 +356,25 @@ function Deck({ content }: { content: SetContent }) {
                 </Text>
               </Animated.View>
             ) : null}
-            <GestureDetector gesture={Gesture.Exclusive(pan, tap)}>
+            <GestureDetector
+              gesture={Gesture.Exclusive(Gesture.Race(swipe, spin), tap)}
+            >
               <Animated.View style={[StyleSheet.absoluteFill, cardMove]}>
-                <Animated.View style={[styles.card, front]}>
-                  <Text
-                    style={styles.word}
-                    adjustsFontSizeToFit
-                    numberOfLines={2}
-                  >
-                    {word.word}
-                  </Text>
-                </Animated.View>
-                <Animated.View style={[styles.card, styles.cardBack, back]}>
-                  <Text style={styles.backWord} numberOfLines={1}>
-                    {word.word}
-                  </Text>
-                  <ScrollView
-                    style={styles.backScroll}
-                    contentContainerStyle={styles.senses}
-                    showsVerticalScrollIndicator={false}
-                  >
-                    {word.senses
-                      .filter((sense) => !sense.supplementary)
-                      .map((sense) => (
-                        <SenseBlock key={sense.id} sense={sense} />
-                      ))}
-                    {word.senses.some((sense) => sense.supplementary) ? (
-                      <View style={styles.extraGroup}>
-                        <Chip label="補充" tone="info" />
-                        {word.senses
-                          .filter((sense) => sense.supplementary)
-                          .map((sense) => (
-                            <SenseBlock key={sense.id} sense={sense} />
-                          ))}
-                      </View>
-                    ) : null}
-                  </ScrollView>
-                </Animated.View>
+                <CardFaces word={word} flip={flip} />
               </Animated.View>
             </GestureDetector>
+            {ghosts.map((ghost) => (
+              <FlyingCard
+                key={ghost.key}
+                ghost={ghost}
+                width={width}
+                onGone={() =>
+                  setGhosts((list) =>
+                    list.filter((entry) => entry.key !== ghost.key),
+                  )
+                }
+              />
+            ))}
           </View>
           <View style={styles.cardActions}>
             <SpeakButton text={word.word} size={22} />
@@ -391,7 +405,7 @@ function Deck({ content }: { content: SetContent }) {
           icon="arrow.trianglehead.2.clockwise.rotate.90"
           label="翻面"
           disabled={!word}
-          onPress={toggleFlip}
+          onPress={turn}
         />
         <NavButton
           icon="chevron.right"
@@ -401,6 +415,100 @@ function Deck({ content }: { content: SetContent }) {
         />
       </View>
     </View>
+  );
+}
+
+/** Both faces of one card, turned by `flip` half-turns. */
+function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
+  const front = useAnimatedStyle(() => {
+    const angle = faceAngle(flip.get());
+    return {
+      transform: [{ perspective: 1000 }, { rotateY: `${angle}deg` }],
+      opacity: angle < 90 || angle > 270 ? 1 : 0,
+    };
+  });
+  const back = useAnimatedStyle(() => {
+    const angle = faceAngle(flip.get());
+    return {
+      transform: [{ perspective: 1000 }, { rotateY: `${angle + 180}deg` }],
+      opacity: angle >= 90 && angle <= 270 ? 1 : 0,
+    };
+  });
+  const original = word.senses.filter((sense) => !sense.supplementary);
+  const extra = word.senses.filter((sense) => sense.supplementary);
+
+  return (
+    <>
+      <Animated.View style={[styles.card, front]}>
+        <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
+          {word.word}
+        </Text>
+      </Animated.View>
+      <Animated.View style={[styles.card, styles.cardBack, back]}>
+        <Text style={styles.backWord} numberOfLines={1}>
+          {word.word}
+        </Text>
+        <ScrollView
+          style={styles.backScroll}
+          contentContainerStyle={styles.senses}
+          showsVerticalScrollIndicator={false}
+        >
+          {original.map((sense) => (
+            <SenseBlock key={sense.id} sense={sense} />
+          ))}
+          {extra.length ? (
+            <View style={styles.extraGroup}>
+              <Chip label="補充" tone="info" />
+              {extra.map((sense) => (
+                <SenseBlock key={sense.id} sense={sense} />
+              ))}
+            </View>
+          ) : null}
+        </ScrollView>
+      </Animated.View>
+    </>
+  );
+}
+
+/** A thrown card: carries on from where the finger let go, with its speed, and leaves the screen. */
+function FlyingCard({
+  ghost,
+  width,
+  onGone,
+}: {
+  ghost: Ghost;
+  width: number;
+  onGone: () => void;
+}) {
+  const x = useSharedValue(ghost.x);
+  const y = useSharedValue(ghost.y);
+  const flip = useSharedValue(ghost.flip);
+
+  useEffect(() => {
+    const target = -ghost.step * width * 1.5;
+    x.set(
+      withSpring(target, { ...THROW, velocity: ghost.velocity }, (done) => {
+        if (done) runOnJS(onGone)();
+      }),
+    );
+    y.set(withSpring(ghost.y * 2 + 40, THROW));
+    flip.set(withSpring(Math.round(ghost.flip), TURN));
+    // Runs once: the card is already in flight.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const move = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: x.get() },
+      { translateY: y.get() },
+      { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
+    ],
+  }));
+
+  return (
+    <Animated.View style={[StyleSheet.absoluteFill, move]} pointerEvents="none">
+      <CardFaces word={ghost.word} flip={flip} />
+    </Animated.View>
   );
 }
 
