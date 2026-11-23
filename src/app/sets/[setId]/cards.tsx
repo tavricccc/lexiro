@@ -284,7 +284,7 @@ function Deck({ content }: { content: SetContent }) {
         { translateX: x.get() },
         { translateY: y.get() - turning * 26 },
         { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
-        { scale: press.get() * (1 + turning * 0.06) },
+        { scale: press.get() },
       ],
     };
   });
@@ -423,15 +423,23 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
   const front = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 1000 }, { rotateY: `${angle}deg` }],
+      transform: [{ perspective: 2400 }, { rotateY: `${angle}deg` }],
       opacity: angle < 90 || angle > 270 ? 1 : 0,
     };
   });
   const back = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 1000 }, { rotateY: `${angle + 180}deg` }],
+      transform: [{ perspective: 2400 }, { rotateY: `${angle + 180}deg` }],
       opacity: angle >= 90 && angle <= 270 ? 1 : 0,
+    };
+  });
+  // The shadow lives on a flat plate that narrows with the turn, so the
+  // turning faces carry no shadow and their text stays sharp.
+  const plate = useAnimatedStyle(() => {
+    const angle = faceAngle(flip.get());
+    return {
+      transform: [{ scaleX: Math.max(Math.abs(Math.cos((angle * Math.PI) / 180)), 0.02) }],
     };
   });
   const original = word.senses.filter((sense) => !sense.supplementary);
@@ -439,6 +447,7 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
 
   return (
     <>
+      <Animated.View style={[styles.plate, plate]} />
       <Animated.View style={[styles.card, front]}>
         <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
           {word.word}
@@ -641,6 +650,13 @@ const styles = StyleSheet.create({
     backfaceVisibility: "hidden",
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.line,
+  },
+  plate: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: colors.surface,
+    borderRadius: radius.hero,
+    borderCurve: "continuous",
+    boxShadow: "0 8px 24px rgba(17,21,18,0.08)",
   },
   cardBack: {
     alignItems: "stretch",
