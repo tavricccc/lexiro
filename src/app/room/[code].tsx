@@ -1,5 +1,6 @@
 import * as Clipboard from "expo-clipboard";
 import { router, useLocalSearchParams } from "expo-router";
+import { useHeaderHeight } from "expo-router/react-navigation";
 import { SymbolView } from "expo-symbols";
 import { useEffect, useRef } from "react";
 import { ActivityIndicator, ScrollView, Share, StyleSheet, Text, View } from "react-native";
@@ -9,6 +10,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "@/components/ui/button";
 import { Chip, CONTENT_MAX_WIDTH, EmptyState, Panel } from "@/components/ui/layout";
 import { ListGroup, ListRow } from "@/components/ui/list";
+import { SheetHeader } from "@/components/ui/sheet-header";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { TASK_LABELS } from "@/core/domain/labels";
@@ -27,33 +29,19 @@ export default function LiveRoomScreen() {
   const { code = "" } = useLocalSearchParams<{ code: string }>();
   const { account } = useAuth();
   const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
   const room = useRoomSocket(code.toUpperCase(), account?.name.slice(0, 40) || "Player");
   const { state, connection } = room;
 
   return (
-    <View style={[styles.root, { paddingTop: insets.top }]}>
+    <View style={[styles.root, { paddingTop: headerHeight }]}>
+      <SheetHeader title={state?.title ?? "對戰"} closeLabel="離開房間" />
       <View style={styles.column}>
-        <View style={styles.header}>
-          <View style={styles.headerMeta}>
-            <Text style={styles.headerTitle} numberOfLines={1}>
-              {state?.title ?? "對戰"}
-            </Text>
-            {state ? <Text style={styles.headerCode}>{state.code}</Text> : null}
+        {connection === "reconnecting" ? (
+          <View style={styles.header}>
+            <Chip label="重新連線中…" tone="highlight" />
           </View>
-          {connection === "reconnecting" ? <Chip label="重新連線中…" tone="highlight" /> : null}
-          <PressableScale
-            scaleTo={0.88}
-            hitSlop={10}
-            accessibilityLabel="離開房間"
-            onPress={() => {
-              haptics.select();
-              router.back();
-            }}
-            style={styles.leaveBtn}
-          >
-            <SymbolView name="rectangle.portrait.and.arrow.right" size={16} weight="semibold" tintColor={colors.ink} />
-          </PressableScale>
-        </View>
+        ) : null}
 
         <ScrollView
           contentContainerStyle={[
@@ -455,17 +443,6 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingHorizontal: space.gutter,
     paddingVertical: 10,
-  },
-  headerMeta: { flex: 1, gap: 2 },
-  headerTitle: { fontSize: 16, fontWeight: "700", color: colors.ink },
-  headerCode: { ...latin.semibold, fontSize: 13, letterSpacing: 2.5, color: colors.inkMuted },
-  leaveBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: colors.surface,
-    alignItems: "center",
-    justifyContent: "center",
   },
   scrollContent: { paddingHorizontal: space.gutter, paddingTop: 6 },
   loader: { paddingVertical: 80, alignItems: "center", gap: 12 },

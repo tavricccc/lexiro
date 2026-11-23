@@ -1,7 +1,7 @@
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 
 import { Chip, EmptyState, Loaded, Panel, Screen } from "@/components/ui/layout";
 import {
@@ -13,6 +13,7 @@ import {
 } from "@/core/contract";
 import { KIND_LABELS } from "@/core/domain/labels";
 import { passageParts } from "@/core/domain/practice";
+import { barButton } from "@/components/ui/sheet-header";
 import { errorMessage } from "@/data/api";
 import { deleteQuestions } from "@/data/library";
 import { useOnline } from "@/data/network";
@@ -68,23 +69,15 @@ export default function QuestionPreviewScreen() {
       <Stack.Screen
         options={{
           title,
-          headerRight: () =>
-            question ? (
-              <Pressable
-                hitSlop={10}
-                disabled={!online || deleting}
-                accessibilityLabel="刪除這一題"
-                onPress={confirmDelete}
-                style={styles.deleteBtn}
-              >
-                <SymbolView
-                  name="trash"
-                  size={19}
-                  weight="medium"
-                  tintColor={online ? colors.danger : colors.inkFaint}
-                />
-              </Pressable>
-            ) : null,
+          unstable_headerRightItems: () =>
+            question
+              ? [
+                  barButton("刪除這一題", "trash", confirmDelete, {
+                    disabled: !online || deleting,
+                    tintColor: colors.danger,
+                  }),
+                ]
+              : [],
         }}
       />
       <Screen>
@@ -298,12 +291,6 @@ function QuestionBody({ question, content }: { question: Question; content: SetC
 }
 
 const styles = StyleSheet.create({
-  deleteBtn: {
-    width: 34,
-    height: 34,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   body: { gap: 14 },
   subLabel: { ...type.hint, fontWeight: "600", color: colors.inkMuted },
   prompt: { ...latin.semibold, fontSize: 17, lineHeight: 25, color: colors.ink },

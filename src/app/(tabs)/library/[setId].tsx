@@ -3,7 +3,6 @@ import { SymbolView } from "expo-symbols";
 import { useMemo, useState } from "react";
 import {
   Alert,
-  Pressable,
   StyleSheet,
   Text,
   View,
@@ -12,6 +11,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { moveItem } from "@/components/library/folder-actions";
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
@@ -20,9 +20,9 @@ import {
   CheckRow,
   ListGroup,
   ListRow,
-  NativeMenuTrigger,
 } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
+import { barButton, barMenu } from "@/components/ui/sheet-header";
 import { Segmented } from "@/components/ui/segmented";
 import {
   SwipeableWordRow,
@@ -119,74 +119,40 @@ export default function SetDetailScreen() {
             onChangeText: (event) => search(event.nativeEvent.text),
             onCancelButtonPress: () => search(""),
           },
-          headerRight: () =>
-            content.data ? (
-              <View style={styles.headerActions}>
-                <NativeMenuTrigger
-                  label="更多動作"
-                  items={[
+          unstable_headerRightItems: () =>
+            content.data
+              ? [
+                  barMenu("更多動作", "ellipsis", [
                     {
-                      key: "settings",
-                      label: "單字集設定",
-                      systemImage: "gearshape",
-                      onPress: () =>
-                        router.push({
-                          pathname: "/sets/[setId]/settings",
-                          params: { setId },
-                        }),
-                    },
-                    {
-                      key: "cards",
                       label: "單字卡",
-                      systemImage: "rectangle.on.rectangle.angled",
+                      symbol: "rectangle.on.rectangle.angled",
                       onPress: () =>
-                        router.push({
-                          pathname: "/sets/[setId]/cards",
-                          params: { setId },
-                        }),
+                        router.push({ pathname: "/sets/[setId]/cards", params: { setId } }),
                     },
                     {
-                      key: "share",
-                      label: "分享單字集",
-                      systemImage: "square.and.arrow.up",
-                      onPress: () =>
-                        router.push({
-                          pathname: "/sets/[setId]/share",
-                          params: { setId },
-                        }),
+                      label: "移動…",
+                      symbol: "folder",
+                      disabled: !online,
+                      onPress: () => moveItem({ set: setId }),
                     },
-                  ]}
-                >
-                  <View style={styles.headerBtn}>
-                    <SymbolView
-                      name="ellipsis.circle"
-                      size={22}
-                      weight="medium"
-                      tintColor={colors.ink}
-                    />
-                  </View>
-                </NativeMenuTrigger>
-                <Pressable
-                  hitSlop={8}
-                  accessibilityLabel="新增單字"
-                  onPress={() => {
-                    haptics.tap();
-                    router.push({
-                      pathname: "/sets/[setId]/add",
-                      params: { setId },
-                    });
-                  }}
-                  style={styles.headerBtn}
-                >
-                  <SymbolView
-                    name="plus"
-                    size={20}
-                    weight="semibold"
-                    tintColor={colors.ink}
-                  />
-                </Pressable>
-              </View>
-            ) : null,
+                    {
+                      label: "分享單字集",
+                      symbol: "square.and.arrow.up",
+                      onPress: () =>
+                        router.push({ pathname: "/sets/[setId]/share", params: { setId } }),
+                    },
+                    {
+                      label: "單字集設定",
+                      symbol: "gearshape",
+                      onPress: () =>
+                        router.push({ pathname: "/sets/[setId]/settings", params: { setId } }),
+                    },
+                  ]),
+                  barButton("新增單字", "plus", () =>
+                    router.push({ pathname: "/sets/[setId]/add", params: { setId } }),
+                  ),
+                ]
+              : [],
         }}
       />
 
@@ -624,18 +590,6 @@ function QuestionList({
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.canvas },
-  headerActions: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-  },
-  headerBtn: {
-    width: 34,
-    height: 34,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   body: { gap: 14 },
   wordSection: { gap: 12 },
   toolbar: {

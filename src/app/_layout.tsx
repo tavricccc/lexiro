@@ -17,7 +17,7 @@ import { useAnswerFlush } from "@/data/learning";
 import { restoreTheme, useThemeSync } from "@/data/prefs";
 import { queryClient, startPersistence, stopPersistence, useRevisionWatch } from "@/data/queries";
 import { useAppUpdates } from "@/lib/app-updates";
-import { softEdges } from "@/components/stack-options";
+import { modalHeaderOptions, softEdges } from "@/components/stack-options";
 import { PINE_DARK, PINE_LIGHT, colors, fonts, plain, type } from "@/lib/theme";
 
 SplashScreen.preventAutoHideAsync();
@@ -123,19 +123,20 @@ function AppShell({
         />
         <Stack.Screen
           name="session"
-          options={{ presentation: "fullScreenModal", gestureEnabled: false }}
+          options={{ ...modalHeaderOptions, presentation: "fullScreenModal", gestureEnabled: false }}
         />
         <Stack.Screen
           name="room/[code]"
-          options={{ presentation: "fullScreenModal", gestureEnabled: false }}
+          options={{ ...modalHeaderOptions, presentation: "fullScreenModal", gestureEnabled: false }}
         />
         <Stack.Screen
           name="sets/new"
-          options={{ presentation: "formSheet", sheetGrabberVisible: true }}
+          options={{ ...modalHeaderOptions, presentation: "formSheet", sheetGrabberVisible: true }}
         />
         <Stack.Screen
-          name="sets/folders"
+          name="sets/move"
           options={{
+            ...modalHeaderOptions,
             presentation: "formSheet",
             sheetAllowedDetents: [0.68, 0.95],
             sheetGrabberVisible: true,
@@ -143,15 +144,16 @@ function AppShell({
         />
         <Stack.Screen
           name="sets/shared/[shareId]"
-          options={{ presentation: "modal" }}
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
         />
         <Stack.Screen
           name="sets/[setId]/settings"
-          options={{ presentation: "modal" }}
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
         />
         <Stack.Screen
           name="sets/[setId]/share"
           options={{
+            ...modalHeaderOptions,
             presentation: "formSheet",
             sheetAllowedDetents: [0.5, 0.78],
             sheetGrabberVisible: true,
@@ -160,6 +162,7 @@ function AppShell({
         <Stack.Screen
           name="sets/[setId]/copy"
           options={{
+            ...modalHeaderOptions,
             presentation: "formSheet",
             sheetAllowedDetents: [0.68, 0.95],
             sheetGrabberVisible: true,
@@ -167,15 +170,16 @@ function AppShell({
         />
         <Stack.Screen
           name="sets/[setId]/cards"
-          options={{ presentation: "fullScreenModal" }}
+          options={{ ...modalHeaderOptions, presentation: "fullScreenModal" }}
         />
         <Stack.Screen
           name="sets/[setId]/add"
-          options={{ presentation: "modal" }}
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
         />
         <Stack.Screen
           name="sets/[setId]/words/[wordId]/index"
           options={{
+            ...modalHeaderOptions,
             presentation: "formSheet",
             sheetAllowedDetents: [0.72, 0.96],
             sheetGrabberVisible: true,
@@ -183,7 +187,7 @@ function AppShell({
         />
         <Stack.Screen
           name="sets/[setId]/words/[wordId]/edit"
-          options={{ presentation: "modal" }}
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
         />
         <Stack.Screen
           name="sets/[setId]/questions/[questionId]"

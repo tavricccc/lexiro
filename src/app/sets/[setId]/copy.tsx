@@ -11,6 +11,7 @@ import type { SetSummary } from "@/core/contract";
 import { errorMessage } from "@/data/api";
 import { copyWords, createFolder, createSet } from "@/data/library";
 import { orderedSets, useLibrary } from "@/data/queries";
+import { folderTree } from "@/lib/folders";
 import { haptics } from "@/lib/haptics";
 import { colors, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
@@ -30,7 +31,7 @@ export default function CopyWordsSheet() {
   const [error, setError] = useState("");
 
   const targets = orderedSets((library.data?.sets ?? []).filter((set) => set.id !== setId));
-  const folders = library.data?.folders ?? [];
+  const tree = folderTree(library.data?.folders ?? []);
 
   const copyTo = async (target: Pick<SetSummary, "id" | "name">) => {
     await copyWords(setId, wordIds, target.id);
@@ -72,7 +73,6 @@ export default function CopyWordsSheet() {
     <View style={styles.root}>
       <SheetHeader
         title={`複製 ${wordIds.length} 個單字到…`}
-        subtitle="同樣拼法的單字會合併，補上缺少的意思。"
       />
       <KeyboardScreen>
         {creating ? (
@@ -94,7 +94,10 @@ export default function CopyWordsSheet() {
                 value={folder}
                 options={[
                   { value: NO_FOLDER, label: "不放資料夾" },
-                  ...folders.map((entry) => ({ value: entry.id, label: entry.name })),
+                  ...tree.flat.map(({ folder: entry }) => ({
+                    value: entry.id,
+                    label: tree.path(entry.id),
+                  })),
                   { value: NEW_FOLDER, label: "新資料夾…" },
                 ]}
                 onChange={setFolder}
@@ -140,7 +143,7 @@ export default function CopyWordsSheet() {
         )}
 
         {targets.length > 0 ? (
-          <ListGroup title="現有單字集">
+          <ListGroup title="現有單字集" footer="同樣拼法的單字會合併，補上缺少的意思。">
             {targets.map((set) => (
               <ListRow
                 key={set.id}

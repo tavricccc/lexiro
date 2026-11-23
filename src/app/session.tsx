@@ -1,5 +1,6 @@
 import { useQueries } from "@tanstack/react-query";
 import { router } from "expo-router";
+import { useHeaderHeight } from "expo-router/react-navigation";
 import { SymbolView } from "expo-symbols";
 import {
   createContext,
@@ -38,6 +39,7 @@ import {
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { Segmented } from "@/components/ui/segmented";
+import { SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { StarButton } from "@/components/ui/star-button";
 import {
@@ -130,7 +132,7 @@ function MarkStar({ word }: { word: string }) {
 
 export default function SessionScreen() {
   const [round, setRound] = useState<Round | null>(loadRound);
-  const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
 
   useEffect(() => {
     if (round && !finished(round)) saveRound(round);
@@ -210,7 +212,8 @@ export default function SessionScreen() {
 
   if (!round) {
     return (
-      <View style={[styles.root, { paddingTop: insets.top, paddingHorizontal: space.gutter }]}>
+      <View style={[styles.root, { paddingTop: headerHeight, paddingHorizontal: space.gutter }]}>
+        <SheetHeader title="練習" />
         <EmptyState
           icon="play.circle"
           title="沒有進行中的練習"
@@ -222,6 +225,10 @@ export default function SessionScreen() {
 
   return (
     <MarksContext.Provider value={marks}>
+      <SheetHeader
+        title={finished(round) ? "" : `${round.index + 1} / ${round.items.length}`}
+        closeLabel="離開練習（進度會保留）"
+      />
       {finished(round) ? (
         <ResultsView
           round={round}
@@ -251,6 +258,7 @@ function PracticeCard({
   accept: () => void;
 }) {
   const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
   const split = useSplitView();
   const item = round.items[round.index];
   const step = currentStep(round)!;
@@ -304,7 +312,7 @@ function PracticeCard({
   return (
     <KeyboardAvoidingView
       behavior="padding"
-      style={[styles.root, { paddingTop: insets.top }]}
+      style={[styles.root, { paddingTop: headerHeight }]}
     >
       <View
         style={[
@@ -314,24 +322,9 @@ function PracticeCard({
       >
         {/* Top Progress Header */}
         <View style={styles.topBar}>
-          <PressableScale
-            scaleTo={0.88}
-            hitSlop={10}
-            accessibilityLabel="離開練習（進度會保留）"
-            onPress={() => {
-              haptics.select();
-              router.back();
-            }}
-            style={styles.closeBtn}
-          >
-            <SymbolView name="xmark" size={15} weight="bold" tintColor={colors.ink} />
-          </PressableScale>
           <View style={styles.progressWrap}>
             <ProgressBar value={progress} />
           </View>
-          <Text style={styles.counter}>
-            {round.index + 1} / {round.items.length}
-          </Text>
         </View>
 
         {/* Main Content */}
@@ -851,6 +844,7 @@ function ResultsView({
   onAgain: (items: PracticeItem[]) => void;
 }) {
   const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
   const outcome = useMemo(() => result(round), [round]);
   const { words, marked } = useContext(MarksContext);
   const [endedAt] = useState(() => Date.now());
@@ -895,7 +889,7 @@ function ResultsView({
       contentContainerStyle={[
         styles.resultsContent,
         {
-          paddingTop: insets.top + 16,
+          paddingTop: headerHeight + 16,
           paddingBottom: Math.max(insets.bottom, 24) + 16,
         },
       ]}
@@ -1078,21 +1072,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 10,
   },
-  closeBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: colors.surface,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   progressWrap: { flex: 1 },
-  counter: {
-    ...latin.semibold,
-    fontSize: 14,
-    color: colors.inkMuted,
-    fontVariant: ["tabular-nums"],
-  },
   stage: { flex: 1 },
   scrollContent: {
     paddingHorizontal: space.gutter,

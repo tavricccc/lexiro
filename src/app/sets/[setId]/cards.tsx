@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
+import { useHeaderHeight } from "expo-router/react-navigation";
 import { SymbolView } from "expo-symbols";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import {
@@ -48,6 +49,7 @@ export default function CardsScreen() {
   const content = useSet(setId);
   return (
     <View style={styles.root}>
+      {content.data ? null : <SheetHeader title="單字卡" />}
       <Loaded query={content}>{(data) => <Deck content={data} />}</Loaded>
     </View>
   );
@@ -105,6 +107,7 @@ function turned(angle: number) {
 
 function Deck({ content }: { content: SetContent }) {
   const insets = useSafeAreaInsets();
+  const headerHeight = useHeaderHeight();
   const { width } = useWindowDimensions();
   const [order, setOrder] = useState<string[]>(() =>
     [...content.words]
@@ -316,11 +319,8 @@ function Deck({ content }: { content: SetContent }) {
   const starredCount = content.words.filter((entry) => entry.starred).length;
 
   return (
-    <View style={[styles.root, { paddingTop: insets.top }]}>
-      <SheetHeader
-        title="單字卡"
-        subtitle={deck.length ? `${at + 1} / ${deck.length}` : undefined}
-      />
+    <View style={[styles.root, { paddingTop: headerHeight }]}>
+      <SheetHeader title={deck.length ? `${at + 1} / ${deck.length}` : "單字卡"} />
 
       <View style={styles.options}>
         <Toggle

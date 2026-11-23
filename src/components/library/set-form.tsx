@@ -5,6 +5,7 @@ import { InputRow, ListGroup, PickerRow } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { SET_ICON_LABELS, SET_ICON_SYMBOLS, SetIcon } from "@/components/ui/set-icon";
 import { SET_ICONS, type Folder, type SetHue, type SetIcon as SetIconName } from "@/core/contract";
+import { folderTree } from "@/lib/folders";
 import { haptics } from "@/lib/haptics";
 import { colors, radius, type } from "@/lib/theme";
 
@@ -26,6 +27,7 @@ export function SetForm({
   folders: Folder[];
   error?: string;
 }) {
+  const tree = folderTree(folders);
   return (
     <View style={styles.form}>
       <View style={styles.previewRow}>
@@ -55,7 +57,7 @@ export function SetForm({
             value={value.folderId ?? "none"}
             options={[
               { value: "none", label: "不放資料夾" },
-              ...folders.map((folder) => ({ value: folder.id, label: folder.name })),
+              ...tree.flat.map(({ folder }) => ({ value: folder.id, label: tree.path(folder.id) })),
             ]}
             onChange={(next) =>
               onChange({ ...value, folderId: next === "none" ? null : next })

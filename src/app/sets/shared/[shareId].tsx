@@ -76,10 +76,6 @@ export default function SharedSetScreen() {
     <View style={styles.root}>
       <SheetHeader
         title={content?.set.name ?? "分享單字集"}
-        subtitle={
-          content ? `${content.words.length} 個單字 · ${content.questions.length} 題` : undefined
-        }
-        leading={content ? <SetIcon icon={content.set.icon} size={36} /> : undefined}
       />
       <Screen>
         {shared.isError ? (
@@ -95,6 +91,12 @@ export default function SharedSetScreen() {
         ) : (
           <View style={styles.body}>
             <Panel>
+              <View style={styles.summary}>
+                <SetIcon icon={content.set.icon} size={44} />
+                <Text style={styles.desc}>
+                  {content.words.length} 個單字 · {content.questions.length} 題
+                </Text>
+              </View>
               <Text style={styles.desc}>
                 有人分享了這個單字集給你。加入後會複製一份到你的帳號，之後可以自由修改和練習。
               </Text>
@@ -148,6 +150,7 @@ export default function SharedSetScreen() {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.canvas },
+  summary: { flexDirection: "row", alignItems: "center", gap: 12 },
   loader: { paddingVertical: 48, alignItems: "center" },
   body: { gap: 16 },
   desc: { ...type.body, color: colors.inkMuted },

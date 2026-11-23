@@ -56,7 +56,6 @@ export default function ShareSetSheet() {
     <View style={styles.root}>
       <SheetHeader
         title={`分享「${set?.name ?? "單字集"}」`}
-        subtitle="拿到連結的人都能看到這個單字集目前的單字，並複製到自己的帳號。"
       />
       <Screen>
         {link === undefined ? (
@@ -65,6 +64,9 @@ export default function ShareSetSheet() {
           </View>
         ) : link ? (
           <Panel>
+            <Text style={styles.desc}>
+              拿到連結的人都能看到這個單字集目前的單字，並複製到自己的帳號。
+            </Text>
             <View style={styles.urlBox}>
               <Text style={styles.urlText} selectable>
                 {url}

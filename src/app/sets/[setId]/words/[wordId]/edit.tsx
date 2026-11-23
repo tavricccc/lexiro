@@ -86,7 +86,7 @@ function EditorBody({ content, wordId }: { content: SetContent; wordId: string }
 
   return (
     <View style={styles.root}>
-      <SheetHeader title="編輯單字" subtitle={word.word} />
+      <SheetHeader title="編輯單字" />
       <KeyboardScreen contentContainerStyle={{ paddingBottom: 120 }}>
         <WordEditor
           draft={draft}

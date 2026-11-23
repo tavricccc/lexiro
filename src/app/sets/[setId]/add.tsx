@@ -35,7 +35,7 @@ export default function AddWordsScreen() {
 
   return (
     <View style={styles.root}>
-      <SheetHeader title="新增單字" subtitle={content.data?.set.name} />
+      <SheetHeader title="新增單字" />
       <Loaded query={content}>{(data) => <AddWordsBody content={data} />}</Loaded>
     </View>
   );

@@ -6,17 +6,17 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "@/components/ui/button";
 import { DescriptionPoints } from "@/components/ui/description-points";
 import { Chip, EmptyState, Loaded, Panel, Screen } from "@/components/ui/layout";
-import { SheetHeader } from "@/components/ui/sheet-header";
+import { barButton, SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
-import { StarButton } from "@/components/ui/star-button";
 import type { SetContent } from "@/core/contract";
 import { FAMILIARITY_LABELS } from "@/core/domain/labels";
 import { errorMessage } from "@/data/api";
 import { useLearning } from "@/data/learning";
-import { deleteWords } from "@/data/library";
+import { deleteWords, starWords } from "@/data/library";
 import { useOnline } from "@/data/network";
 import { useSet } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
+import { speak } from "@/lib/speech";
 import { colors, latin, radius, space, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
 
@@ -91,11 +91,20 @@ function WordSheetBody({ content, wordId }: { content: SetContent; wordId: strin
     <View style={styles.root}>
       <SheetHeader
         title={word.word}
-        latinTitle
-        leading={<SpeakButton text={word.word} />}
-        trailing={
-          <StarButton setId={setId} wordId={word.id} starred={word.starred} word={word.word} />
-        }
+        items={[
+          barButton(`朗讀 ${word.word}`, "speaker.wave.2", () => speak(word.word)),
+          barButton(
+            word.starred ? `取消標星 ${word.word}` : `標星 ${word.word}`,
+            word.starred ? "star.fill" : "star",
+            () => {
+              starWords(setId, [word.id], !word.starred).catch((reason) => {
+                haptics.error();
+                toast.error(errorMessage(reason));
+              });
+            },
+            { tintColor: word.starred ? colors.highlight : colors.ink },
+          ),
+        ]}
       />
 
       <Screen contentContainerStyle={{ paddingBottom: 100 }}>

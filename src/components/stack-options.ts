@@ -18,6 +18,17 @@ export const largeTitleOptions = {
   contentStyle: { backgroundColor: colors.canvas },
 } as const;
 
+/** Sheets and modals: a native bar whose buttons `SheetHeader` sets. */
+export const modalHeaderOptions = {
+  ...softEdges,
+  headerShown: true,
+  headerTransparent: true,
+  headerShadowVisible: false,
+  headerBackVisible: false,
+  headerTintColor: colors.ink as string,
+  title: "",
+} as const;
+
 export const standardHeaderOptions = {
   ...softEdges,
   headerLargeTitleEnabled: false,
