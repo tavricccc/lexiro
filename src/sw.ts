@@ -11,7 +11,7 @@ declare const self: ServiceWorkerGlobalScope;
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
-  // A new version waits until the app asks it to take over (Me › About).
+  // A new version waits until the app asks it to take over (src/app/update.ts).
   skipWaiting: false,
   clientsClaim: true,
   navigationPreload: true,

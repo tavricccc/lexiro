@@ -240,8 +240,8 @@ function Prompt({ item, step, round, chosen }: { item: PracticeItem; step: Step;
     return (
       <div className="mt-auto grid gap-3">
         {item.kind === "meaning"
-          ? <h1 className="break-words font-latin text-5xl font-semibold tracking-[-0.03em] md:text-6xl" lang="en">{item.word}</h1>
-          : <h1 className="text-4xl font-bold md:text-5xl">{item.sense.meaning}</h1>}
+          ? <h1 className="break-words font-latin text-5xl font-semibold tracking-[-0.03em]" lang="en">{item.word}</h1>
+          : <h1 className="text-4xl font-bold">{item.sense.meaning}</h1>}
         <div className="flex items-center gap-2 text-sm text-ink-muted">
           <span className="font-latin">{item.sense.pos}</span>
           <span className="ml-auto flex gap-1">
@@ -360,7 +360,7 @@ function CustomPrompt({ item, step }: { item: Extract<PracticeItem, { kind: "cus
     <div className="grid gap-3">
       {item.instructions ? <p className="text-[0.9375rem] text-ink-muted">{item.instructions}</p> : null}
       {item.passage ? <div className="rounded-[1.25rem] bg-surface-raised px-4 py-3"><p className="whitespace-pre-line font-latin text-[1.0625rem] leading-[1.8]" lang="en">{item.passage}</p></div> : null}
-      <p className={cn("leading-relaxed", isLatin(step.prompt) ? "font-latin text-xl md:text-2xl" : "text-xl font-semibold")} lang={isLatin(step.prompt) ? "en" : undefined}>{step.prompt}</p>
+      <p className={cn("leading-relaxed", isLatin(step.prompt) ? "font-latin text-xl" : "text-xl font-semibold")} lang={isLatin(step.prompt) ? "en" : undefined}>{step.prompt}</p>
     </div>
   );
 }
@@ -462,7 +462,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
       <section className="content-in grid gap-4 rounded-[2rem] bg-ink p-5 text-canvas">
         <div>
           <p className="text-sm text-canvas/65">這一輪完成了</p>
-          <p className="mt-1 font-latin text-7xl font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={score} /><span className="text-3xl text-canvas/55">%</span></p>
+          <p className="mt-1 font-latin text-[4.25rem] font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={score} /><span className="text-3xl text-canvas/55">%</span></p>
         </div>
         <dl className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-canvas/70">
           {[["答對", String(outcome.correct)], ["答錯", String(wrong)], ["標星", String(marked.length)], ["用時", duration(round.startedAt, endedAt)]].map(([label, value]) => (

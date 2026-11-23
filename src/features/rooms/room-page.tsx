@@ -132,11 +132,11 @@ function Live({ state, host, send, offset }: { state: RoomState; host: boolean; 
 
 function Prompt({ question, revealed }: { question: LiveQuestion; revealed: Record<number, string> }) {
   if (question.type === "meaning")
-    return <p className="py-6 text-center font-latin text-4xl font-bold tracking-tight md:text-5xl" lang="en">{question.prompt}</p>;
+    return <p className="py-6 text-center font-latin text-[2.5rem] font-bold tracking-tight" lang="en">{question.prompt}</p>;
   if (question.type === "reverse")
-    return <p className="py-6 text-center text-3xl font-bold md:text-4xl">{question.prompt}</p>;
+    return <p className="py-6 text-center text-3xl font-bold">{question.prompt}</p>;
   if (!question.passage)
-    return <p className="whitespace-pre-line py-4 font-latin text-xl leading-relaxed md:text-2xl" lang="en">{question.prompt}</p>;
+    return <p className="whitespace-pre-line py-4 font-latin text-xl leading-relaxed" lang="en">{question.prompt}</p>;
   return (
     <div className="grid gap-3">
       <Panel>

@@ -43,7 +43,7 @@ export default function TodayPage() {
           />
           {days ? <span className="flex items-center gap-1"><Fire className="text-highlight" weight="fill" />連續 <span className="font-latin">{days}</span> 天</span> : null}
         </div>
-        <p className="font-latin text-7xl font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={done} /><span className="text-3xl text-canvas/45"> / {learning.goal}</span></p>
+        <p className="font-latin text-[4.25rem] font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={done} /><span className="text-3xl text-canvas/45"> / {learning.goal}</span></p>
         <div aria-hidden className="grid gap-[3px]" style={{ gridTemplateColumns: `repeat(${learning.goal}, minmax(0, 1fr))` }}>
           {Array.from({ length: learning.goal }, (_, index) => <i className={cn("h-3.5 rounded-[0.3rem] transition-colors", index < done ? "bg-canvas" : "bg-canvas/14")} key={index} />)}
         </div>

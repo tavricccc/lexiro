@@ -31,6 +31,25 @@
  * mark sets apart. Right and wrong answers keep their own clear green and
  * coral so they never read as the brand colour.
  */
+/* Everything is sized in rem; at 15px the web's type, controls and 720px column
+   match the app's. A percentage, so a reader's own browser size still counts. */
+html { font-size: 93.75%; }
+
+/* iOS zooms the page into a field set smaller than 16px. */
+@media (pointer: coarse) {
+  input, textarea, select { font-size: 16px; }
+}
+
+/* The update screen, the same as the app's. */
+.update-mark { animation: update-breathe var(--motion-sweep) ease-in-out infinite alternate; }
+.update-track > i { animation: update-sweep var(--motion-sweep) var(--ease-move) infinite; }
+@keyframes update-breathe { to { opacity: 0.55; } }
+@keyframes update-sweep { from { translate: -100%; } to { translate: 250%; } }
+@media (prefers-reduced-motion: reduce) {
+  .update-mark { animation: none; }
+  .update-track > i { width: 100%; animation: update-breathe var(--motion-pulse) ease-in-out infinite alternate; }
+}
+
 :root {
   --kit-font-sans: "HarmonyOS Sans TC", ui-sans-serif, system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
   color-scheme: light;

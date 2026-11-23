@@ -11,5 +11,7 @@ Lexiro 是純前端 SPA：Vite 8、React 19、React Router 8（data router，畫
 - 瀏覽器設定從 `NEXT_PUBLIC_*` 環境變數讀（`src/data/config.ts`）；`vercel.json` 負責 Firebase `/__/auth` proxy、舊網址轉址與 SPA fallback。
 - 一個 sense 的 `description` 一行一點、不加符號；用 `descriptionPoints()` 讀。`meaning` 只放中文意思（會當選項）。單字集裡的字一律 A→Z 顯示。
 - 朗讀不自動播放，只有按鈕會念。拉丁文字（單字、分數、代碼）用 `font-latin`。
+- 版本號由 CI 產生（`scripts/set-version.mjs`：`package.json` 的 major.minor + commit 數）。開啟時 `UpdateGate`（`src/app/update.ts`）擋住畫面檢查新版，裝好後重新載入。
+- 根字級是 93.75%（15px），讓 rem 尺寸和 App 一致；放大某個元素前先對照 App 的 pt。
 - 推之前：`npm run typecheck`、`npm run lint`、`npm test`、`npm run build`。
 - 測試斷言使用者或呼叫端看得到的行為（回傳資料、儲存狀態、顯示文字）。一個 `it` 一個行為；預期的拒絕要斷言錯誤，不寫裸 `toThrow()`。

@@ -79,7 +79,7 @@ export function PageHeader({ actions, back, className, description, title }: {
       </div>
     )}
     <header className={cn("grid gap-1", className)}>
-      <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-[1.75rem]">{title}</h1>
+      <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight">{title}</h1>
       {description ? <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
     </header>
     </>

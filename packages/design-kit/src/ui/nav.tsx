@@ -63,7 +63,7 @@ export function PrimaryNav({
             className={cn(
               "relative isolate flex min-w-0 items-center rounded-full font-medium outline-none transition-[color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
               active ? "text-on-contrast" : "text-ink-muted hover:text-ink",
-              variant === "dock" && "flex-1 flex-col justify-center gap-0.5 text-[0.6875rem]",
+              variant === "dock" && "flex-1 flex-col justify-center gap-0.5 text-xs",
               variant === "rail" && "h-11 gap-3 px-3.5 text-[0.9375rem]",
             )}
             href={href}

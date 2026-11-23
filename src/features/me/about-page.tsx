@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowsClockwise } from "@phosphor-icons/react";
 import { Button, ListGroup, ListRow, Panel } from "design-kit";
+import { applyUpdate } from "@/app/update";
 import { Brand } from "@/ui/brand";
 import { Page } from "@/ui/page";
 
@@ -26,11 +27,7 @@ function useUpdate() {
     });
     return () => { cancelled = true; };
   }, []);
-  const apply = () => {
-    if (!waiting) return;
-    navigator.serviceWorker.addEventListener("controllerchange", () => window.location.reload(), { once: true });
-    waiting.postMessage({ type: "SKIP_WAITING" });
-  };
+  const apply = () => { if (waiting) applyUpdate(waiting); };
   return { state, apply };
 }
 
