@@ -46,7 +46,7 @@ export function Segmented<Value extends string>({
               className={cn(
                 "relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full font-medium outline-none transition-[color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
                 size === "lg" ? "h-11 px-5 text-[0.9375rem]" : "h-9 px-4 text-sm",
-                selected ? "text-on-contrast" : "text-ink-muted hover:text-ink",
+                selected ? "text-canvas" : "text-ink-muted hover:text-ink",
               )}
               key={option.value}
               value={option.value}
@@ -54,7 +54,7 @@ export function Segmented<Value extends string>({
               {selected ? (
                 <motion.span
                   aria-hidden
-                  className="absolute inset-0 -z-10 rounded-full bg-contrast"
+                  className="absolute inset-0 -z-10 rounded-full bg-ink"
                   initial={false}
                   layoutId={pillId}
                   transition={timing("nav", "nav")}

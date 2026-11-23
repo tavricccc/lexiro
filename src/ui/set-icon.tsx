@@ -15,7 +15,7 @@ export const SET_ICON_COMPONENTS: Record<SetIconName, Icon> = {
 export function SetIcon({ icon, className }: { icon: SetIconName; className?: string }) {
   const Component = SET_ICON_COMPONENTS[icon] ?? Books;
   return (
-    <span aria-hidden className={cn("grid size-11 shrink-0 place-items-center rounded-tile [&_svg]:size-6", "bg-accent-soft text-accent-ink", className)}>
+    <span aria-hidden className={cn("grid size-11 shrink-0 place-items-center rounded-tile [&_svg]:size-6", "bg-surface-raised text-ink", className)}>
       <Component weight="duotone" />
     </span>
   );
