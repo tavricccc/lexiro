@@ -20,15 +20,37 @@ import { errorMessage } from "@/data/api";
 import { colors, radius, space, type } from "@/lib/theme";
 import { Button } from "./button";
 import { swapIn } from "./motion";
+import { ScrollMore, useScrollMore, useScrollMoreInset } from "./scroll-more";
 import { useTransitionDone } from "./use-transition-done";
 
 export const CONTENT_MAX_WIDTH = 720;
 export const SPLIT_MAX_WIDTH = 1120;
 const SPLIT_MIN_WINDOW = 960;
 
-/** Whether the window has room for a reading passage beside its question (iPad landscape). */
+/** Whether the window has room for two columns (iPad landscape). */
 export function useSplitView() {
   return useWindowDimensions().width >= SPLIT_MIN_WINDOW;
+}
+
+/** A page with a footer pads its content this much or more; the button sits above the footer. */
+const FOOTER_PADDING = 100;
+const FOOTER_HEIGHT = 72;
+
+function usePageScrollMore(
+  contentContainerStyle: ScrollViewProps["contentContainerStyle"],
+  onScroll: ScrollViewProps["onScroll"],
+) {
+  const { scrollProps, more, scrollOn } = useScrollMore({
+    underHeader: true,
+    onScroll: onScroll ?? undefined,
+  });
+  const inset = useScrollMoreInset();
+  const padding = Number(StyleSheet.flatten(contentContainerStyle)?.paddingBottom) || 0;
+  const bottom = padding >= FOOTER_PADDING ? inset + FOOTER_HEIGHT : inset;
+  return {
+    scrollProps,
+    button: <ScrollMore visible={more} onPress={scrollOn} bottom={bottom} />,
+  };
 }
 
 /** Standard scrolling screen under a native iOS header. */
@@ -39,24 +61,29 @@ export function Screen({
 }: ScrollViewProps & { children: ReactNode; showOffline?: boolean }) {
   const ready = useTransitionDone();
   const [instant] = useState(ready);
+  const { scrollProps, button } = usePageScrollMore(props.contentContainerStyle, props.onScroll);
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      keyboardDismissMode="interactive"
-      keyboardShouldPersistTaps="handled"
-      style={styles.screen}
-      {...props}
-      contentContainerStyle={[styles.content, props.contentContainerStyle]}
-    >
-      {ready ? (
-        <Animated.View entering={instant ? undefined : swapIn} style={styles.body}>
-          <LayoutAnimationConfig skipEntering>
-            {showOffline ? <OfflineBanner /> : null}
-            {children}
-          </LayoutAnimationConfig>
-        </Animated.View>
-      ) : null}
-    </ScrollView>
+    <>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardDismissMode="interactive"
+        keyboardShouldPersistTaps="handled"
+        style={styles.screen}
+        {...props}
+        {...scrollProps}
+        contentContainerStyle={[styles.content, props.contentContainerStyle]}
+      >
+        {ready ? (
+          <Animated.View entering={instant ? undefined : swapIn} style={styles.body}>
+            <LayoutAnimationConfig skipEntering>
+              {showOffline ? <OfflineBanner /> : null}
+              {children}
+            </LayoutAnimationConfig>
+          </Animated.View>
+        ) : null}
+      </ScrollView>
+      {button}
+    </>
   );
 }
 
@@ -74,21 +101,26 @@ export function KeyboardScreen({
   showOffline?: boolean;
   bottomOffset?: number;
 }) {
+  const { scrollProps, button } = usePageScrollMore(contentContainerStyle, props.onScroll);
   return (
-    <KeyboardAwareScrollView
-      bottomOffset={bottomOffset}
-      contentInsetAdjustmentBehavior="automatic"
-      keyboardDismissMode="interactive"
-      keyboardShouldPersistTaps="handled"
-      style={styles.screen}
-      {...props}
-      contentContainerStyle={[styles.content, contentContainerStyle]}
-    >
-      <View style={styles.body}>
-        {showOffline ? <OfflineBanner /> : null}
-        {children}
-      </View>
-    </KeyboardAwareScrollView>
+    <>
+      <KeyboardAwareScrollView
+        bottomOffset={bottomOffset}
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardDismissMode="interactive"
+        keyboardShouldPersistTaps="handled"
+        style={styles.screen}
+        {...props}
+        {...scrollProps}
+        contentContainerStyle={[styles.content, contentContainerStyle]}
+      >
+        <View style={styles.body}>
+          {showOffline ? <OfflineBanner /> : null}
+          {children}
+        </View>
+      </KeyboardAwareScrollView>
+      {button}
+    </>
   );
 }
 

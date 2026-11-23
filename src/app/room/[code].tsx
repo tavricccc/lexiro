@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button } from "@/components/ui/button";
 import { Chip, CONTENT_MAX_WIDTH, EmptyState, Panel } from "@/components/ui/layout";
+import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
 import { ListGroup, ListRow } from "@/components/ui/list";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { PressableScale } from "@/components/ui/pressable-scale";
@@ -32,6 +33,7 @@ export default function LiveRoomScreen() {
   const headerHeight = useHeaderHeight();
   const room = useRoomSocket(code.toUpperCase(), account?.name.slice(0, 40) || "Player");
   const { state, connection } = room;
+  const { scrollProps, more, scrollOn } = useScrollMore();
 
   return (
     <View style={[styles.root, { paddingTop: headerHeight }]}>
@@ -44,6 +46,7 @@ export default function LiveRoomScreen() {
         ) : null}
 
         <ScrollView
+          {...scrollProps}
           contentContainerStyle={[
             styles.scrollContent,
             { paddingBottom: Math.max(insets.bottom, 24) + 16 },
@@ -79,6 +82,7 @@ export default function LiveRoomScreen() {
             </Animated.View>
           )}
         </ScrollView>
+        <ScrollMore visible={more} onPress={scrollOn} bottom={Math.max(insets.bottom, 8) + 8} />
       </View>
     </View>
   );

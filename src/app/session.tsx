@@ -11,9 +11,15 @@ import {
   useMemo,
   useRef,
   useState,
-  type ReactNode,
 } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import Animated, {
   FadeIn,
@@ -34,10 +40,10 @@ import {
   CONTENT_MAX_WIDTH,
   EmptyState,
   SPLIT_MAX_WIDTH,
-  useSplitView,
 } from "@/components/ui/layout";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
+import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
 import { Segmented } from "@/components/ui/segmented";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
@@ -83,6 +89,11 @@ import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { haptics } from "@/lib/haptics";
 import { colors, hasLatin, latin, radius, space, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
+
+/** From here up (every iPad) the question sits beside its options. */
+const SPLIT_MIN_WIDTH = 700;
+/** How much of the feedback card shows before scrolling to it. */
+const FEEDBACK_PEEK = 76;
 
 interface Marks {
   words: Map<string, SetWord>;
@@ -259,7 +270,9 @@ function PracticeCard({
 }) {
   const insets = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
-  const split = useSplitView();
+  const split = useWindowDimensions().width >= SPLIT_MIN_WIDTH;
+  const main = useScrollMore();
+  const side = useScrollMore();
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
@@ -267,16 +280,7 @@ function PracticeCard({
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   const last = round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
 
-  const hasPassage =
-    ("passage" in item && Boolean(item.passage)) ||
-    (item.kind === "custom" && Boolean(item.passage));
-  const useTwoCols = split && hasPassage;
-
-  // Fills the screen, and scrolls only when the question is longer than it.
-  const scrollContent = [
-    styles.scrollContent,
-    !round.revealed && { paddingBottom: Math.max(insets.bottom, 20) },
-  ];
+  const bottomPad = { paddingBottom: Math.max(insets.bottom, 20) };
 
   const promptCard = (
     <View style={styles.promptCard}>
@@ -315,6 +319,35 @@ function PracticeCard({
     </Animated.View>
   );
 
+  const feedback = round.revealed ? (
+    <FeedbackCard item={item} step={step} chosen={chosen} accept={accept} />
+  ) : null;
+  const nextBar = round.revealed ? (
+    <View
+      style={[
+        styles.nextBar,
+        split && styles.nextBarSplit,
+        { paddingBottom: Math.max(insets.bottom, 14) },
+      ]}
+    >
+      <Button
+        label={last ? "看結果" : "下一題"}
+        trailingIcon={last ? "flag.checkered" : "arrow.right"}
+        variant="solid"
+        size="lg"
+        onPress={next}
+        style={styles.nextBtn}
+      />
+    </View>
+  ) : null;
+  const scrollMore = (
+    <ScrollMore
+      visible={main.more}
+      onPress={main.scrollOn}
+      bottom={round.revealed ? 8 : Math.max(insets.bottom, 8) + 8}
+    />
+  );
+
   return (
     <KeyboardAvoidingView
       behavior="padding"
@@ -323,7 +356,7 @@ function PracticeCard({
       <View
         style={[
           styles.column,
-          { maxWidth: useTwoCols ? SPLIT_MAX_WIDTH : CONTENT_MAX_WIDTH },
+          { maxWidth: split ? SPLIT_MAX_WIDTH : CONTENT_MAX_WIDTH },
         ]}
       >
         {/* Top Progress Header */}
@@ -354,60 +387,74 @@ function PracticeCard({
           entering={FadeInRight.duration(240)}
           style={styles.stage}
         >
-          {useTwoCols ? (
-            <View style={[styles.splitRow, round.revealed && styles.mainRevealed]}>
-              <ScrollView
-                style={styles.splitLeft}
-                contentContainerStyle={scrollContent}
-                alwaysBounceVertical={false}
-                showsVerticalScrollIndicator={false}
-              >
-                {promptCard}
-              </ScrollView>
-              <ScrollView
-                style={styles.splitRight}
-                contentContainerStyle={scrollContent}
-                alwaysBounceVertical={false}
-                keyboardShouldPersistTaps="handled"
-                showsVerticalScrollIndicator={false}
-              >
-                {answerBlock}
-              </ScrollView>
+          {split ? (
+            <View style={styles.splitRow}>
+              <View style={styles.flex}>
+                <ScrollView
+                  {...side.scrollProps}
+                  contentContainerStyle={[styles.scrollContent, styles.paneLeft, bottomPad]}
+                  alwaysBounceVertical={false}
+                  showsVerticalScrollIndicator={false}
+                >
+                  {promptCard}
+                </ScrollView>
+                <ScrollMore
+                  visible={side.more}
+                  onPress={side.scrollOn}
+                  bottom={Math.max(insets.bottom, 8) + 8}
+                />
+              </View>
+              <View style={styles.flex}>
+                <View style={styles.flex}>
+                  <ScrollView
+                    {...main.scrollProps}
+                    contentContainerStyle={[
+                      styles.scrollContent,
+                      styles.paneRight,
+                      !round.revealed && bottomPad,
+                    ]}
+                    alwaysBounceVertical={false}
+                    keyboardShouldPersistTaps="handled"
+                    showsVerticalScrollIndicator={false}
+                  >
+                    {answerBlock}
+                    {feedback}
+                  </ScrollView>
+                  {scrollMore}
+                </View>
+                {nextBar}
+              </View>
             </View>
           ) : (
-            <ScrollView
-              style={[styles.flex, round.revealed && styles.mainRevealed]}
-              contentContainerStyle={scrollContent}
-              alwaysBounceVertical={false}
-              keyboardDismissMode="interactive"
-              keyboardShouldPersistTaps="handled"
-              showsVerticalScrollIndicator={false}
-            >
-              {promptCard}
-              {answerBlock}
-            </ScrollView>
+            <>
+              <View style={styles.flex}>
+                <ScrollView
+                  {...main.scrollProps}
+                  contentContainerStyle={[styles.scrollContent, !round.revealed && bottomPad]}
+                  alwaysBounceVertical={false}
+                  keyboardDismissMode="interactive"
+                  keyboardShouldPersistTaps="handled"
+                  showsVerticalScrollIndicator={false}
+                >
+                  <View
+                    style={[
+                      styles.question,
+                      round.revealed && {
+                        flexGrow: 0,
+                        minHeight: Math.max(0, main.height - FEEDBACK_PEEK),
+                      },
+                    ]}
+                  >
+                    {promptCard}
+                    {answerBlock}
+                  </View>
+                  {feedback}
+                </ScrollView>
+                {scrollMore}
+              </View>
+              {nextBar}
+            </>
           )}
-
-          {/* Bottom Feedback */}
-          {round.revealed ? (
-            <FeedbackCard
-              item={item}
-              step={step}
-              chosen={chosen}
-              accept={accept}
-              bottomInset={insets.bottom}
-              action={
-                <Button
-                  label={last ? "看結果" : "下一題"}
-                  trailingIcon={last ? "flag.checkered" : "arrow.right"}
-                  variant="solid"
-                  size="lg"
-                  onPress={next}
-                  style={styles.nextBtn}
-                />
-              }
-            />
-          ) : null}
         </Animated.View>
       </View>
     </KeyboardAvoidingView>
@@ -762,15 +809,11 @@ function FeedbackCard({
   step,
   chosen,
   accept,
-  bottomInset,
-  action,
 }: {
   item: PracticeItem;
   step: Step | CustomStep;
   chosen: Choice | null | undefined;
   accept: () => void;
-  bottomInset: number;
-  action: ReactNode;
 }) {
   const right = isRight(step, chosen);
   const typedWrong =
@@ -780,44 +823,36 @@ function FeedbackCard({
   return (
     <Animated.View
       entering={FadeInDown.duration(240)}
-      style={[styles.feedbackCard, { paddingBottom: Math.max(bottomInset, 14) }]}
+      style={styles.feedbackCard}
     >
-      <ScrollView
-        style={styles.feedbackScroll}
-        contentContainerStyle={styles.feedbackInner}
-        alwaysBounceVertical={false}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.feedbackHead}>
-          <SymbolView
-            name={right ? "checkmark" : "xmark"}
-            size={18}
-            weight="bold"
-            tintColor={right ? colors.positiveInk : colors.dangerInk}
-          />
-          <Text style={styles.feedbackTitle}>
-            {right ? (
-              "答對了"
-            ) : (
-              <>
-                正確答案是{" "}
-                <Text style={hasLatin(answer) ? latin.bold : undefined}>{answer}</Text>
-              </>
-            )}
-          </Text>
-          {typedWrong ? (
-            <Button label="我其實答對了" size="sm" variant="ghost" onPress={accept} />
-          ) : null}
-        </View>
-        {typedWrong &&
-        isCustomStep(step) &&
-        step.mode === "input" &&
-        step.accepted.length > 1 ? (
-          <Text style={styles.acceptedAlt}>{step.accepted.join(" / ")}</Text>
+      <View style={styles.feedbackHead}>
+        <SymbolView
+          name={right ? "checkmark" : "xmark"}
+          size={18}
+          weight="bold"
+          tintColor={right ? colors.positiveInk : colors.dangerInk}
+        />
+        <Text style={styles.feedbackTitle}>
+          {right ? (
+            "答對了"
+          ) : (
+            <>
+              正確答案是{" "}
+              <Text style={hasLatin(answer) ? latin.bold : undefined}>{answer}</Text>
+            </>
+          )}
+        </Text>
+        {typedWrong ? (
+          <Button label="我其實答對了" size="sm" variant="ghost" onPress={accept} />
         ) : null}
-        <ExplanationBlock item={item} step={step} chosen={chosen} />
-      </ScrollView>
-      {action}
+      </View>
+      {typedWrong &&
+      isCustomStep(step) &&
+      step.mode === "input" &&
+      step.accepted.length > 1 ? (
+        <Text style={styles.acceptedAlt}>{step.accepted.join(" / ")}</Text>
+      ) : null}
+      <ExplanationBlock item={item} step={step} chosen={chosen} />
     </Animated.View>
   );
 }
@@ -860,6 +895,7 @@ function ResultsView({
 }) {
   const insets = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
+  const page = useScrollMore();
   const outcome = useMemo(() => result(round), [round]);
   const { words, marked } = useContext(MarksContext);
   const [endedAt] = useState(() => Date.now());
@@ -899,93 +935,101 @@ function ResultsView({
   ];
 
   return (
-    <ScrollView
-      style={styles.root}
-      contentContainerStyle={[
-        styles.resultsContent,
-        {
-          paddingTop: headerHeight + 16,
-          paddingBottom: Math.max(insets.bottom, 24) + 16,
-        },
-      ]}
-    >
-      <View style={styles.resultsColumn}>
-        <View style={styles.resultHero}>
-          <Text style={styles.resultLabel}>這一輪完成了</Text>
-          <View style={styles.resultScoreRow}>
-            <AnimatedNumber value={score} style={styles.resultBig} />
-            <Text style={styles.resultPercent}>%</Text>
-          </View>
+    <View style={styles.root}>
+      <ScrollView
+        {...page.scrollProps}
+        style={styles.root}
+        contentContainerStyle={[
+          styles.resultsContent,
+          {
+            paddingTop: headerHeight + 16,
+            paddingBottom: Math.max(insets.bottom, 24) + 16,
+          },
+        ]}
+      >
+        <View style={styles.resultsColumn}>
+          <View style={styles.resultHero}>
+            <Text style={styles.resultLabel}>這一輪完成了</Text>
+            <View style={styles.resultScoreRow}>
+              <AnimatedNumber value={score} style={styles.resultBig} />
+              <Text style={styles.resultPercent}>%</Text>
+            </View>
 
-          <View style={styles.statRow}>
-            {[
-              ["答對", String(outcome.correct)],
-              ["答錯", String(wrong)],
-              ["標星", String(marked.length)],
-              ["用時", formatDuration(round.startedAt, endedAt)],
-            ].map(([label, val]) => (
-              <View key={label} style={styles.statItem}>
-                <Text style={styles.statVal}>{val}</Text>
-                <Text style={styles.statLbl}>{label}</Text>
-              </View>
-            ))}
-          </View>
-
-          <View style={styles.resultActions}>
-            {outcome.missed.length > 0 ? (
-              <Button
-                label={`再練錯的 ${outcome.missed.length} 題`}
-                icon="arrow.counterclockwise"
-                variant="hero"
-                size="lg"
-                onPress={() => onAgain(outcome.missed)}
-                style={styles.retryBtn}
-              />
-            ) : null}
-            <Button
-              label="完成"
-              trailingIcon="arrow.right"
-              variant={outcome.missed.length > 0 ? "heroGhost" : "hero"}
-              size="lg"
-              onPress={() => router.replace("/(tabs)/today")}
-              style={outcome.missed.length > 0 ? styles.doneBtn : styles.doneFullBtn}
-            />
-          </View>
-        </View>
-
-        <Segmented<ReviewFilter>
-          value={filter}
-          onChange={setFilter}
-          options={filterOptions}
-        />
-
-        {filter === "starred" ? (
-          <View style={styles.starredCard}>
-            {marked.map((word, index) => {
-              const entry = words.get(normalizeWord(word));
-              return (
-                <View
-                  key={word}
-                  style={[styles.starredItem, index > 0 && styles.starredDivider]}
-                >
-                  <Text style={styles.starredWord}>{entry?.word ?? word}</Text>
-                  <Text style={styles.starredMeaning} numberOfLines={1}>
-                    {entry ? entry.meaning : "不在單字集，離開後不保留"}
-                  </Text>
-                  <MarkStar word={word} />
+            <View style={styles.statRow}>
+              {[
+                ["答對", String(outcome.correct)],
+                ["答錯", String(wrong)],
+                ["標星", String(marked.length)],
+                ["用時", formatDuration(round.startedAt, endedAt)],
+              ].map(([label, val]) => (
+                <View key={label} style={styles.statItem}>
+                  <Text style={styles.statVal}>{val}</Text>
+                  <Text style={styles.statLbl}>{label}</Text>
                 </View>
-              );
-            })}
+              ))}
+            </View>
+
+            <View style={styles.resultActions}>
+              {outcome.missed.length > 0 ? (
+                <Button
+                  label={`再練錯的 ${outcome.missed.length} 題`}
+                  icon="arrow.counterclockwise"
+                  variant="hero"
+                  size="lg"
+                  onPress={() => onAgain(outcome.missed)}
+                  style={styles.retryBtn}
+                />
+              ) : null}
+              <Button
+                label="完成"
+                trailingIcon="arrow.right"
+                variant={outcome.missed.length > 0 ? "heroGhost" : "hero"}
+                size="lg"
+                onPress={() => router.replace("/(tabs)/today")}
+                style={outcome.missed.length > 0 ? styles.doneBtn : styles.doneFullBtn}
+              />
+            </View>
           </View>
-        ) : (
-          <View style={styles.reviewList}>
-            {shown.map(({ item, step, key, at, choice }) => (
-              <ReviewCard key={key} item={item} step={step} at={at} choice={choice} />
-            ))}
-          </View>
-        )}
-      </View>
-    </ScrollView>
+
+          <Segmented<ReviewFilter>
+            value={filter}
+            onChange={setFilter}
+            options={filterOptions}
+          />
+
+          {filter === "starred" ? (
+            <View style={styles.starredCard}>
+              {marked.map((word, index) => {
+                const entry = words.get(normalizeWord(word));
+                return (
+                  <View
+                    key={word}
+                    style={[styles.starredItem, index > 0 && styles.starredDivider]}
+                  >
+                    <Text style={styles.starredWord}>{entry?.word ?? word}</Text>
+                    <Text style={styles.starredMeaning} numberOfLines={1}>
+                      {entry ? entry.meaning : "不在單字集，離開後不保留"}
+                    </Text>
+                    <MarkStar word={word} />
+                  </View>
+                );
+              })}
+            </View>
+          ) : (
+            <View style={styles.reviewList}>
+              {shown.map(({ item, step, key, at, choice }) => (
+                <ReviewCard key={key} item={item} step={step} at={at} choice={choice} />
+              ))}
+            </View>
+          )}
+        </View>
+      </ScrollView>
+      <ScrollMore
+        visible={page.more}
+        onPress={page.scrollOn}
+        bottom={Math.max(insets.bottom, 8) + 8}
+      />
+    </View>
   );
 }
 
@@ -1097,10 +1141,10 @@ const styles = StyleSheet.create({
     gap: 12,
     flexGrow: 1,
   },
-  mainRevealed: { minHeight: "64%" },
-  splitRow: { flex: 1, flexDirection: "row", gap: 8 },
-  splitLeft: { flex: 1.15 },
-  splitRight: { flex: 1 },
+  question: { flexGrow: 1, gap: 12 },
+  splitRow: { flex: 1, flexDirection: "row" },
+  paneLeft: { paddingRight: 6 },
+  paneRight: { paddingLeft: 6 },
   promptCard: {
     flexGrow: 1,
     minHeight: 190,
@@ -1233,19 +1277,14 @@ const styles = StyleSheet.create({
   optionLabelWrong: { color: colors.dangerInk },
   glossText: { fontSize: 13, lineHeight: 18, color: colors.inkMuted },
   feedbackCard: {
-    flexShrink: 1,
-    marginHorizontal: space.gutter - 4,
-    backgroundColor: colors.surfaceSolid,
-    borderTopLeftRadius: radius.hero,
-    borderTopRightRadius: radius.hero,
+    backgroundColor: colors.surface,
+    borderRadius: radius.hero,
     borderCurve: "continuous",
-    paddingHorizontal: 18,
-    paddingTop: 16,
-    gap: 12,
-    boxShadow: "0 -6px 28px rgba(17,38,30,0.12)",
+    padding: 18,
+    gap: 10,
   },
-  feedbackScroll: { flexGrow: 0, flexShrink: 1, maxHeight: 230 },
-  feedbackInner: { gap: 10 },
+  nextBar: { paddingHorizontal: space.gutter, paddingTop: 8 },
+  nextBarSplit: { paddingLeft: 6 },
   feedbackHead: {
     flexDirection: "row",
     alignItems: "center",
