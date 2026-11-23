@@ -238,6 +238,7 @@ export function IconButton({
   size = 38,
   destructive,
   disabled,
+  haptic = true,
   onPress,
 }: {
   label: string;
@@ -245,12 +246,14 @@ export function IconButton({
   size?: number;
   destructive?: boolean;
   disabled?: boolean;
+  /** False when the action gives its own feedback. */
+  haptic?: boolean;
   onPress: () => void;
 }) {
   const color = destructive ? colors.danger : colors.ink;
   const box = { width: size, height: size };
   const press = () => {
-    haptics.select();
+    if (haptic) haptics.select();
     onPress();
   };
   if (Platform.OS === "ios") {

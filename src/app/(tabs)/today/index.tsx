@@ -1,7 +1,7 @@
 import { router, useFocusEffect } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { useCallback, useMemo, useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { AnimatedNumber } from "@/components/ui/animated-number";
@@ -141,17 +141,13 @@ export default function TodayScreen() {
         <SectionTitle
           title="單字集"
           action={
-            <Pressable
-              hitSlop={8}
-              onPress={() => {
-                haptics.select();
-                router.push("/practice");
-              }}
-              style={styles.sectionLink}
-            >
-              <Text style={styles.sectionLinkText}>自選練習</Text>
-              <SymbolView name="arrow.right" size={13} weight="bold" tintColor={colors.ink} />
-            </Pressable>
+            <Button
+              label="自選練習"
+              trailingIcon="arrow.right"
+              size="sm"
+              variant="ghost"
+              onPress={() => router.push("/practice")}
+            />
           }
         />
 
@@ -285,16 +281,6 @@ const styles = StyleSheet.create({
   },
   section: {
     gap: 12,
-  },
-  sectionLink: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  sectionLinkText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: colors.ink,
   },
   tileGrid: {
     flexDirection: "row",

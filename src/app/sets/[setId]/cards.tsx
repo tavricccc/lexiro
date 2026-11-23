@@ -1,19 +1,8 @@
 import { useLocalSearchParams } from "expo-router";
 import { useHeaderHeight } from "expo-router/react-navigation";
-import { SymbolView } from "expo-symbols";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from "react-native";
-import {
-  Gesture,
-  GestureDetector,
-  ScrollView,
-} from "react-native-gesture-handler";
+import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { Gesture, GestureDetector, ScrollView } from "react-native-gesture-handler";
 import Animated, {
   interpolate,
   runOnJS,
@@ -28,13 +17,8 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { DescriptionPoints } from "@/components/ui/description-points";
-import {
-  CONTENT_MAX_WIDTH,
-  Chip,
-  EmptyState,
-  Loaded,
-} from "@/components/ui/layout";
-import { PressableScale } from "@/components/ui/pressable-scale";
+import { CONTENT_MAX_WIDTH, Chip, EmptyState, Loaded } from "@/components/ui/layout";
+import { Button, IconButton } from "@/components/ui/button";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { StarButton } from "@/components/ui/star-button";
@@ -110,9 +94,7 @@ function Deck({ content }: { content: SetContent }) {
   const headerHeight = useHeaderHeight();
   const { width } = useWindowDimensions();
   const [order, setOrder] = useState<string[]>(() =>
-    [...content.words]
-      .sort((a, b) => compareWords(a.word, b.word))
-      .map((word) => word.id),
+    [...content.words].sort((a, b) => compareWords(a.word, b.word)).map((word) => word.id),
   );
   const [shuffle, setShuffle] = useState(false);
   const [starredOnly, setStarredOnly] = useState(false);
@@ -130,9 +112,7 @@ function Deck({ content }: { content: SetContent }) {
     () =>
       order
         .map((id) => byId.get(id))
-        .filter(
-          (word): word is Word => !!word && (!starredOnly || word.starred),
-        ),
+        .filter((word): word is Word => !!word && (!starredOnly || word.starred)),
     [order, byId, starredOnly],
   );
   const at = Math.min(index, Math.max(0, deck.length - 1));
@@ -199,17 +179,11 @@ function Deck({ content }: { content: SetContent }) {
   const bump = (step: 1 | -1) => {
     haptics.warning();
     // A small shove that springs back: there is no card on that side.
-    x.set(
-      withSequence(
-        withTiming(-step * 22, { duration: 80 }),
-        withSpring(0, SETTLE),
-      ),
-    );
+    x.set(withSequence(withTiming(-step * 22, { duration: 80 }), withSpring(0, SETTLE)));
   };
 
   const go = (step: 1 | -1) => {
-    if ((step === 1 && !canNext) || (step === -1 && !canPrev))
-      return bump(step);
+    if ((step === 1 && !canNext) || (step === -1 && !canPrev)) return bump(step);
     throwCard(step, -step * 1800, { x: x.get(), y: y.get(), flip: flip.get() });
   };
 
@@ -226,9 +200,7 @@ function Deck({ content }: { content: SetContent }) {
       press.set(withSpring(0.98, SETTLE));
     })
     .onUpdate((event) => {
-      const blocked =
-        (event.translationX < 0 && !canNext) ||
-        (event.translationX > 0 && !canPrev);
+      const blocked = (event.translationX < 0 && !canNext) || (event.translationX > 0 && !canPrev);
       // Rubber band past either end of the deck.
       x.set(blocked ? event.translationX * 0.22 : event.translationX);
       y.set(event.translationY * 0.25);
@@ -357,22 +329,13 @@ function Deck({ content }: { content: SetContent }) {
         <View style={styles.stage}>
           <View style={styles.cardSlot}>
             {under ? (
-              <Animated.View
-                style={[styles.card, underMove]}
-                pointerEvents="none"
-              >
-                <Text
-                  style={styles.word}
-                  adjustsFontSizeToFit
-                  numberOfLines={2}
-                >
+              <Animated.View style={[styles.card, underMove]} pointerEvents="none">
+                <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
                   {under.word}
                 </Text>
               </Animated.View>
             ) : null}
-            <GestureDetector
-              gesture={Gesture.Exclusive(Gesture.Race(swipe, spin), tap)}
-            >
+            <GestureDetector gesture={Gesture.Exclusive(Gesture.Race(swipe, spin), tap)}>
               <Animated.View style={[StyleSheet.absoluteFill, cardMove]}>
                 <CardFaces word={word} flip={flip} />
               </Animated.View>
@@ -382,11 +345,7 @@ function Deck({ content }: { content: SetContent }) {
                 key={ghost.key}
                 ghost={ghost}
                 width={width}
-                onGone={() =>
-                  setGhosts((list) =>
-                    list.filter((entry) => entry.key !== ghost.key),
-                  )
-                }
+                onGone={() => setGhosts((list) => list.filter((entry) => entry.key !== ghost.key))}
               />
             ))}
           </View>
@@ -406,22 +365,26 @@ function Deck({ content }: { content: SetContent }) {
         </View>
       )}
 
-      <View
-        style={[styles.nav, { paddingBottom: Math.max(insets.bottom, 16) }]}
-      >
-        <NavButton
+      <View style={[styles.nav, { paddingBottom: Math.max(insets.bottom, 16) }]}>
+        <IconButton
+          size={56}
+          haptic={false}
           icon="chevron.left"
           label="上一張"
           disabled={!canPrev}
           onPress={() => go(-1)}
         />
-        <NavButton
+        <IconButton
+          size={56}
+          haptic={false}
           icon="arrow.trianglehead.2.clockwise.rotate.90"
           label="翻面"
           disabled={!word}
           onPress={turn}
         />
-        <NavButton
+        <IconButton
+          size={56}
+          haptic={false}
           icon="chevron.right"
           label="下一張"
           disabled={!canNext}
@@ -485,15 +448,7 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
 }
 
 /** A thrown card: carries on from where the finger let go, with its speed, and leaves the screen. */
-function FlyingCard({
-  ghost,
-  width,
-  onGone,
-}: {
-  ghost: Ghost;
-  width: number;
-  onGone: () => void;
-}) {
+function FlyingCard({ ghost, width, onGone }: { ghost: Ghost; width: number; onGone: () => void }) {
   const x = useSharedValue(ghost.x);
   const y = useSharedValue(ghost.y);
   const flip = useSharedValue(ghost.flip);
@@ -550,60 +505,13 @@ function Toggle({
   onPress: () => void;
 }) {
   return (
-    <PressableScale
-      scaleTo={0.95}
-      onPress={() => {
-        haptics.select();
-        onPress();
-      }}
-      style={[styles.toggle, active && styles.toggleActive]}
-    >
-      <SymbolView
-        name={icon}
-        size={14}
-        weight="semibold"
-        tintColor={active ? colors.canvas : colors.inkMuted}
-      />
-      <Text style={[styles.toggleText, active && { color: colors.canvas }]}>
-        {label}
-      </Text>
-    </PressableScale>
-  );
-}
-
-function NavButton({
-  icon,
-  label,
-  disabled,
-  onPress,
-}: {
-  icon:
-    | "chevron.left"
-    | "chevron.right"
-    | "arrow.trianglehead.2.clockwise.rotate.90";
-  label: string;
-  disabled: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      disabled={disabled}
+    <Button
+      label={label}
+      icon={icon}
+      size="sm"
+      variant={active ? "accent" : "ghost"}
       onPress={onPress}
-      style={({ pressed }) => [
-        styles.navBtn,
-        pressed && styles.navPressed,
-        disabled && styles.disabled,
-      ]}
-    >
-      <SymbolView
-        name={icon}
-        size={20}
-        weight="semibold"
-        tintColor={colors.ink}
-      />
-    </Pressable>
+    />
   );
 }
 
@@ -618,18 +526,6 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: CONTENT_MAX_WIDTH,
   },
-  toggle: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: radius.pill,
-    borderCurve: "continuous",
-    backgroundColor: colors.surface,
-  },
-  toggleActive: { backgroundColor: colors.ink },
-  toggleText: { fontSize: 13, fontWeight: "600", color: colors.inkMuted },
   stage: {
     flex: 1,
     paddingHorizontal: space.gutter,
@@ -689,14 +585,4 @@ const styles = StyleSheet.create({
     gap: 28,
     paddingTop: 10,
   },
-  navBtn: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: colors.surface,
-  },
-  navPressed: { backgroundColor: colors.surfacePressed },
-  disabled: { opacity: 0.35 },
 });

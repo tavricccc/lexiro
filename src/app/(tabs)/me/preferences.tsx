@@ -36,9 +36,9 @@ export default function PreferencesScreen() {
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>外觀主題</Text>
               <Segmented<Prefs["theme"]>
+                disabled={!online}
                 value={value.theme}
                 onChange={(theme) => {
-                  if (!online) return;
                   save({ theme });
                 }}
                 options={[
@@ -52,9 +52,9 @@ export default function PreferencesScreen() {
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>每輪預設題數</Text>
               <Segmented
+                disabled={!online}
                 value={SIZES.find((size) => Number(size) === value.practiceSize) ?? "20"}
                 onChange={(size) => {
-                  if (!online) return;
                   save({ practiceSize: Number(size) });
                 }}
                 options={SIZES.map((size) => ({ value: size, label: `${size} 題` }))}

@@ -10,6 +10,7 @@ import { EmptyState, Panel, Screen } from "@/components/ui/layout";
 import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
+import { Tone } from "@/components/ui/tone";
 import { SetIcon } from "@/components/ui/set-icon";
 import type { PracticeTask } from "@/core/contract";
 import { TASK_HINTS, TASK_LABELS } from "@/core/domain/labels";
@@ -219,8 +220,9 @@ export default function PracticeSetupScreen() {
                     accessibilityRole="checkbox"
                     accessibilityState={{ checked: on }}
                     onPress={() => toggleTask(task)}
-                    style={[styles.taskCard, on && styles.taskCardOn]}
+                    style={styles.taskCard}
                   >
+                    <Tone on={on} outset={1.5} style={styles.taskCardOn} />
                     <Text style={[styles.taskTitle, on && styles.taskTitleOn]}>
                       {TASK_LABELS[task]}
                     </Text>
@@ -324,6 +326,8 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   taskCardOn: {
+    borderRadius: radius.tile,
+    borderWidth: 1.5,
     backgroundColor: colors.accentSoft,
     borderColor: colors.contrast,
   },

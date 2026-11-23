@@ -4,14 +4,16 @@ import { useHeaderHeight } from "expo-router/react-navigation";
 import { SymbolView } from "expo-symbols";
 import { useEffect, useRef } from "react";
 import { ActivityIndicator, ScrollView, Share, StyleSheet, Text, View } from "react-native";
-import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button } from "@/components/ui/button";
 import { Chip, CONTENT_MAX_WIDTH, EmptyState, Panel } from "@/components/ui/layout";
 import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
+import { fade, Tone } from "@/components/ui/tone";
 import { ListGroup, ListRow } from "@/components/ui/list";
 import { SheetHeader } from "@/components/ui/sheet-header";
+import { enterDown, glide, pop, slideNext, swapIn } from "@/components/ui/motion";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { TASK_LABELS } from "@/core/domain/labels";
@@ -72,7 +74,7 @@ export default function LiveRoomScreen() {
           ) : state.phase === "ended" ? (
             <EndedView state={state} />
           ) : (
-            <Animated.View key={state.index} entering={FadeIn.duration(220)} style={styles.liveWrap}>
+            <Animated.View key={state.index} entering={slideNext} style={styles.liveWrap}>
               <LiveQuestionView
                 host={state.you === state.hostUid}
                 offset={room.offset}
@@ -225,56 +227,75 @@ function LiveQuestionView({
           const wrong = Boolean(reveal) && picked && !right;
           const locked = chosen !== null || Boolean(reveal) || used.has(option);
           return (
-            <PressableScale
+            <Animated.View
               key={index}
-              scaleTo={0.97}
-              disabled={locked}
-              onPress={() => {
-                haptics.tap();
-                send({ type: "answer", index: state.index, choice: index });
-              }}
-              style={[
-                styles.roomOption,
-                !reveal && picked && styles.roomOptionPicked,
-                reveal && right && styles.roomOptionRight,
-                wrong && styles.roomOptionWrong,
-                locked && !picked && !(reveal && right) && styles.roomOptionDim,
-              ]}
+              style={[fade, { opacity: locked && !picked && !(reveal && right) ? 0.5 : 1 }]}
             >
-              <View
-                style={[
-                  styles.roomBadge,
-                  reveal && right && styles.roomBadgeRight,
-                  wrong && styles.roomBadgeWrong,
-                ]}
+              <PressableScale
+                scaleTo={0.97}
+                disabled={locked}
+                onPress={() => {
+                  haptics.tap();
+                  send({ type: "answer", index: state.index, choice: index });
+                }}
+                style={styles.roomOption}
               >
-                {reveal && right ? (
-                  <SymbolView name="checkmark" size={13} weight="bold" tintColor="#ffffff" />
-                ) : wrong ? (
-                  <SymbolView name="xmark" size={13} weight="bold" tintColor="#ffffff" />
-                ) : (
-                  <Text style={styles.roomBadgeNum}>{index + 1}</Text>
-                )}
-              </View>
-              <Text style={[styles.roomOptionText, hasLatin(option) && latin.semibold]}>
-                {option}
-              </Text>
-            </PressableScale>
+                <Tone
+                  on={!reveal && picked}
+                  outset={1.5}
+                  style={[styles.roomTone, styles.roomOptionPicked]}
+                />
+                <Tone
+                  on={Boolean(reveal) && right}
+                  outset={1.5}
+                  style={[styles.roomTone, styles.roomOptionRight]}
+                />
+                <Tone on={wrong} outset={1.5} style={[styles.roomTone, styles.roomOptionWrong]} />
+                <View style={styles.roomBadge}>
+                  <Tone
+                    on={Boolean(reveal) && right}
+                    style={[styles.roomBadgeTone, styles.roomBadgeRight]}
+                  />
+                  <Tone on={wrong} style={[styles.roomBadgeTone, styles.roomBadgeWrong]} />
+                  {reveal && right ? (
+                    <Animated.View entering={pop}>
+                      <SymbolView name="checkmark" size={13} weight="bold" tintColor="#ffffff" />
+                    </Animated.View>
+                  ) : wrong ? (
+                    <Animated.View entering={pop}>
+                      <SymbolView name="xmark" size={13} weight="bold" tintColor="#ffffff" />
+                    </Animated.View>
+                  ) : (
+                    <Text style={styles.roomBadgeNum}>{index + 1}</Text>
+                  )}
+                </View>
+                <Text style={[styles.roomOptionText, hasLatin(option) && latin.semibold]}>
+                  {option}
+                </Text>
+              </PressableScale>
+            </Animated.View>
           );
         })}
       </View>
 
       {reveal ? (
-        <Animated.View entering={FadeInDown.duration(200)}>
+        <Animated.View entering={enterDown}>
           <Panel>
-            <Text style={[styles.verdictText, { color: gained ? colors.positiveInk : colors.dangerInk }]}>
+            <Text
+              style={[
+                styles.verdictText,
+                { color: gained ? colors.positiveInk : colors.dangerInk },
+              ]}
+            >
               {gained ? `答對了 +${gained}` : chosen === null ? "沒有作答" : "答錯了"}
             </Text>
             {reveal.explanation ? <Text style={styles.muted}>{reveal.explanation}</Text> : null}
           </Panel>
         </Animated.View>
       ) : chosen !== null ? (
-        <Text style={styles.waitHint}>已作答，等其他人…</Text>
+        <Animated.Text entering={swapIn} style={styles.waitHint}>
+          已作答，等其他人…
+        </Animated.Text>
       ) : null}
 
       <Scoreboard hostUid={state.hostUid} players={state.players} title="排名" you={state.you} />
@@ -376,7 +397,12 @@ function EndedView({ state }: { state: RoomState }) {
         <Text style={styles.endedScore}>{myScore} 分</Text>
       </View>
 
-      <Scoreboard hostUid={state.hostUid} players={state.players} title="最終排名" you={state.you} />
+      <Scoreboard
+        hostUid={state.hostUid}
+        players={state.players}
+        title="最終排名"
+        you={state.you}
+      />
 
       {review?.items.length ? (
         <ListGroup title={`答錯或沒答的 ${review.items.length} 題`}>
@@ -425,14 +451,15 @@ function Scoreboard({
   return (
     <ListGroup title={title}>
       {players.map((player, index) => (
-        <ListRow
-          key={player.uid}
-          title={`${index + 1}.  ${player.name}${player.uid === you ? "（你）" : ""}`}
-          subtitle={!player.connected ? "離線" : player.answered ? "已作答" : undefined}
-          icon={player.uid === hostUid ? "crown.fill" : "person.fill"}
-          iconTint={player.uid === hostUid ? colors.highlight : colors.inkMuted}
-          detail={String(player.score)}
-        />
+        <Animated.View key={player.uid} layout={glide}>
+          <ListRow
+            title={`${index + 1}.  ${player.name}${player.uid === you ? "（你）" : ""}`}
+            subtitle={!player.connected ? "離線" : player.answered ? "已作答" : undefined}
+            icon={player.uid === hostUid ? "crown.fill" : "person.fill"}
+            iconTint={player.uid === hostUid ? colors.highlight : colors.inkMuted}
+            detail={String(player.score)}
+          />
+        </Animated.View>
       ))}
     </ListGroup>
   );
@@ -461,7 +488,13 @@ const styles = StyleSheet.create({
   liveMeta: { flexDirection: "row", alignItems: "center", gap: 10 },
   answeredMeta: { ...latin.medium, fontSize: 13, color: colors.inkMuted, marginLeft: "auto" },
   centerPrompt: { alignItems: "center", paddingVertical: 28 },
-  roomWordEn: { ...latin.bold, fontSize: 38, letterSpacing: -1, color: colors.ink, textAlign: "center" },
+  roomWordEn: {
+    ...latin.bold,
+    fontSize: 38,
+    letterSpacing: -1,
+    color: colors.ink,
+    textAlign: "center",
+  },
   roomWordZh: { fontSize: 30, fontWeight: "700", color: colors.ink, textAlign: "center" },
   roomSentence: { ...latin.medium, fontSize: 19, lineHeight: 28, color: colors.ink },
   passageWrap: { gap: 10 },
@@ -471,7 +504,13 @@ const styles = StyleSheet.create({
   blankCurrent: { backgroundColor: colors.contrast, color: colors.onContrast },
   blankSolved: { backgroundColor: colors.positiveSoft, color: colors.positiveInk },
   blankIdle: { backgroundColor: colors.surfaceRaised, color: colors.inkMuted },
-  readingQ: { ...latin.semibold, fontSize: 17, lineHeight: 24, color: colors.ink, paddingHorizontal: 4 },
+  readingQ: {
+    ...latin.semibold,
+    fontSize: 17,
+    lineHeight: 24,
+    color: colors.ink,
+    paddingHorizontal: 4,
+  },
   optionList: { gap: 8 },
   roomOption: {
     flexDirection: "row",
@@ -489,7 +528,7 @@ const styles = StyleSheet.create({
   roomOptionPicked: { borderColor: colors.contrast, backgroundColor: colors.accentSoft },
   roomOptionRight: { borderColor: colors.positive, backgroundColor: colors.positiveSoft },
   roomOptionWrong: { borderColor: colors.danger, backgroundColor: colors.dangerSoft },
-  roomOptionDim: { opacity: 0.5 },
+  roomTone: { borderRadius: radius.tile, borderWidth: 1.5 },
   roomBadge: {
     width: 28,
     height: 28,
@@ -498,6 +537,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  roomBadgeTone: { borderRadius: 14 },
   roomBadgeRight: { backgroundColor: "#1f9d55" },
   roomBadgeWrong: { backgroundColor: "#d2445f" },
   roomBadgeNum: { ...latin.semibold, fontSize: 13, color: colors.inkMuted },

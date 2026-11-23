@@ -1,10 +1,12 @@
 import { SymbolView } from "expo-symbols";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import Animated, { LinearTransition } from "react-native-reanimated";
+import { StyleSheet, Text, TextInput, View, type ColorValue } from "react-native";
+import Animated from "react-native-reanimated";
 
 import { Button } from "@/components/ui/button";
+import { glide, pop, popOut } from "@/components/ui/motion";
 import { PressableScale } from "@/components/ui/pressable-scale";
+import { fade, Tone } from "@/components/ui/tone";
 import { isRight, type Choice, type CustomStep } from "@/core/domain/custom";
 import { haptics } from "@/lib/haptics";
 import { colors, hasLatin, latin, radius } from "@/lib/theme";
@@ -38,6 +40,33 @@ export function CustomAnswer(props: {
   }
 }
 
+/** The states a bordered tile fades between. */
+function TileTones({
+  selected = false,
+  right = false,
+  wrong = false,
+}: {
+  selected?: boolean;
+  right?: boolean;
+  wrong?: boolean;
+}) {
+  return (
+    <>
+      <Tone on={selected} outset={1.5} style={[styles.tone, styles.tileSelected]} />
+      <Tone on={right} outset={1.5} style={[styles.tone, styles.tileRight]} />
+      <Tone on={wrong} outset={1.5} style={[styles.tone, styles.tileWrong]} />
+    </>
+  );
+}
+
+function Mark({ name, tint }: { name: "checkmark" | "xmark"; tint: ColorValue }) {
+  return (
+    <Animated.View entering={pop}>
+      <SymbolView name={name} size={13} weight="bold" tintColor={tint} />
+    </Animated.View>
+  );
+}
+
 function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
   const [picked, setPicked] = useState<number[]>([]);
   const shown = revealed && Array.isArray(chosen) ? chosen : picked;
@@ -57,41 +86,38 @@ function Multiple({ step, chosen, revealed, submit }: Props<"multiple">) {
           const right = revealed && step.answers.includes(index);
           const wrong = revealed && on && !right;
           return (
-            <PressableScale
+            <Animated.View
               key={index}
-              scaleTo={0.98}
-              disabled={revealed}
-              onPress={() => toggle(index)}
-              style={[
-                styles.tile,
-                !revealed && on && styles.tileSelected,
-                right && styles.tileRight,
-                wrong && styles.tileWrong,
-                revealed && !right && !wrong && styles.tileDim,
-              ]}
+              style={[fade, { opacity: revealed && !right && !wrong ? 0.65 : 1 }]}
             >
-              <View
-                style={[
-                  styles.badge,
-                  on && !revealed && styles.badgeSelected,
-                  right && styles.badgeRight,
-                  wrong && styles.badgeWrong,
-                ]}
+              <PressableScale
+                scaleTo={0.98}
+                disabled={revealed}
+                onPress={() => toggle(index)}
+                style={styles.tile}
               >
-                {right ? (
-                  <SymbolView name="checkmark" size={13} weight="bold" tintColor={colors.positiveInk} />
-                ) : wrong ? (
-                  <SymbolView name="xmark" size={13} weight="bold" tintColor={colors.dangerInk} />
-                ) : on ? (
-                  <SymbolView name="checkmark" size={13} weight="bold" tintColor={colors.onContrast} />
-                ) : (
-                  <Text style={styles.badgeNum}>{index + 1}</Text>
-                )}
-              </View>
-              <Text style={[styles.tileText, hasLatin(option) && latin.semibold]}>
-                {option}
-              </Text>
-            </PressableScale>
+                <TileTones selected={!revealed && on} right={right} wrong={wrong} />
+                <View
+                  style={[
+                    styles.badge,
+                    on && !revealed && styles.badgeSelected,
+                    right && styles.badgeRight,
+                    wrong && styles.badgeWrong,
+                  ]}
+                >
+                  {right ? (
+                    <Mark key="right" name="checkmark" tint={colors.positiveInk} />
+                  ) : wrong ? (
+                    <Mark key="wrong" name="xmark" tint={colors.dangerInk} />
+                  ) : on ? (
+                    <Mark key="on" name="checkmark" tint={colors.onContrast} />
+                  ) : (
+                    <Text style={styles.badgeNum}>{index + 1}</Text>
+                  )}
+                </View>
+                <Text style={[styles.tileText, hasLatin(option) && latin.semibold]}>{option}</Text>
+              </PressableScale>
+            </Animated.View>
           );
         })}
       </View>
@@ -120,32 +146,26 @@ function Typed({ step, chosen, revealed, submit }: Props<"input">) {
 
   return (
     <View style={styles.wrap}>
-      <TextInput
-        accessibilityLabel="你的答案"
-        autoCapitalize="none"
-        autoComplete="off"
-        autoCorrect={false}
-        autoFocus={!revealed}
-        editable={!revealed}
-        value={value}
-        onChangeText={setText}
-        onSubmitEditing={send}
-        returnKeyType="done"
-        placeholder="輸入答案…"
-        placeholderTextColor={colors.inkFaint}
-        style={[
-          styles.textInput,
-          revealed && (right ? styles.inputRight : styles.inputWrong),
-        ]}
-      />
-      {!revealed ? (
-        <Button
-          label="確認"
-          icon="checkmark"
-          size="lg"
-          disabled={!text.trim()}
-          onPress={send}
+      <View style={styles.inputBox}>
+        <TileTones right={right} wrong={revealed && !right} />
+        <TextInput
+          accessibilityLabel="你的答案"
+          autoCapitalize="none"
+          autoComplete="off"
+          autoCorrect={false}
+          autoFocus={!revealed}
+          editable={!revealed}
+          value={value}
+          onChangeText={setText}
+          onSubmitEditing={send}
+          returnKeyType="done"
+          placeholder="輸入答案…"
+          placeholderTextColor={colors.inkFaint}
+          style={[styles.textInput, revealed && (right ? styles.textRight : styles.textWrong)]}
         />
+      </View>
+      {!revealed ? (
+        <Button label="確認" icon="checkmark" size="lg" disabled={!text.trim()} onPress={send} />
       ) : null}
     </View>
   );
@@ -158,39 +178,48 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
 
   return (
     <View style={styles.wrap}>
-      <Animated.View layout={LinearTransition.duration(220)} style={styles.tray}>
+      <Animated.View layout={glide} style={styles.tray}>
         {line.length === 0 ? (
           <Text style={styles.trayPlaceholder}>點擊下方片段依序排列</Text>
         ) : (
           line.map((index, at) => {
             const right = revealed && step.order[at] === index;
             return (
-              <PressableScale
-                key={index}
-                scaleTo={0.94}
-                disabled={revealed}
-                onPress={() => {
-                  haptics.select();
-                  setPlaced((current) => current.filter((v) => v !== index));
-                }}
-                style={[
-                  styles.chip,
-                  revealed
-                    ? right
-                      ? styles.chipRight
-                      : styles.chipWrong
-                    : styles.chipPlaced,
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.chipText,
-                    revealed && (right ? styles.textRight : styles.textWrong),
-                  ]}
+              <Animated.View key={index} layout={glide} entering={pop} exiting={popOut}>
+                <PressableScale
+                  scaleTo={0.94}
+                  disabled={revealed}
+                  onPress={() => {
+                    haptics.select();
+                    setPlaced((current) => current.filter((v) => v !== index));
+                  }}
+                  style={styles.chip}
                 >
-                  {step.pieces[index]}
-                </Text>
-              </PressableScale>
+                  <Tone
+                    on={!revealed}
+                    outset={1.5}
+                    style={[styles.chipTone, styles.tileSelected]}
+                  />
+                  <Tone
+                    on={revealed && right}
+                    outset={1.5}
+                    style={[styles.chipTone, styles.tileRight]}
+                  />
+                  <Tone
+                    on={revealed && !right}
+                    outset={1.5}
+                    style={[styles.chipTone, styles.tileWrong]}
+                  />
+                  <Text
+                    style={[
+                      styles.chipText,
+                      revealed && (right ? styles.textRight : styles.textWrong),
+                    ]}
+                  >
+                    {step.pieces[index]}
+                  </Text>
+                </PressableScale>
+              </Animated.View>
             );
           })
         )}
@@ -198,19 +227,20 @@ function Order({ step, chosen, revealed, submit }: Props<"order">) {
 
       {!revealed ? (
         <>
-          <Animated.View layout={LinearTransition.duration(220)} style={styles.pool}>
+          <Animated.View layout={glide} style={styles.pool}>
             {left.map((index) => (
-              <PressableScale
-                key={index}
-                scaleTo={0.94}
-                onPress={() => {
-                  haptics.select();
-                  setPlaced((current) => [...current, index]);
-                }}
-                style={styles.chip}
-              >
-                <Text style={styles.chipText}>{step.pieces[index]}</Text>
-              </PressableScale>
+              <Animated.View key={index} layout={glide} entering={pop} exiting={popOut}>
+                <PressableScale
+                  scaleTo={0.94}
+                  onPress={() => {
+                    haptics.select();
+                    setPlaced((current) => [...current, index]);
+                  }}
+                  style={styles.chip}
+                >
+                  <Text style={styles.chipText}>{step.pieces[index]}</Text>
+                </PressableScale>
+              </Animated.View>
             ))}
           </Animated.View>
           <Button
@@ -257,23 +287,13 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
                   haptics.select();
                   setActive(index);
                 }}
-                style={[
-                  styles.matchTile,
-                  revealed
-                    ? right
-                      ? styles.tileRight
-                      : styles.tileWrong
-                    : isActive
-                      ? styles.tileSelected
-                      : null,
-                ]}
+                style={styles.matchTile}
               >
+                <TileTones selected={isActive} right={right} wrong={revealed && !right} />
                 <View style={styles.matchNum}>
                   <Text style={styles.matchNumText}>{index + 1}</Text>
                 </View>
-                <Text style={[styles.matchLabel, hasLatin(text) && latin.semibold]}>
-                  {text}
-                </Text>
+                <Text style={[styles.matchLabel, hasLatin(text) && latin.semibold]}>{text}</Text>
               </PressableScale>
             );
           })}
@@ -283,26 +303,26 @@ function Match({ step, chosen, revealed, submit }: Props<"match">) {
           {step.right.map((text, index) => {
             const owner = shown.indexOf(index);
             return (
-              <PressableScale
-                key={index}
-                scaleTo={0.97}
-                disabled={revealed}
-                onPress={() => pickRight(index)}
-                style={[
-                  styles.matchTile,
-                  owner !== -1 && styles.matchAssigned,
-                  revealed && styles.tileDim,
-                ]}
-              >
-                <Text style={[styles.matchLabel, hasLatin(text) && latin.semibold]}>
-                  {text}
-                </Text>
-                {owner !== -1 ? (
-                  <View style={styles.ownerBadge}>
-                    <Text style={styles.ownerText}>{owner + 1}</Text>
-                  </View>
-                ) : null}
-              </PressableScale>
+              <Animated.View key={index} style={[fade, { opacity: revealed ? 0.65 : 1 }]}>
+                <PressableScale
+                  scaleTo={0.97}
+                  disabled={revealed}
+                  onPress={() => pickRight(index)}
+                  style={styles.matchTile}
+                >
+                  <Tone
+                    on={owner !== -1}
+                    outset={1.5}
+                    style={[styles.tone, styles.matchAssigned]}
+                  />
+                  <Text style={[styles.matchLabel, hasLatin(text) && latin.semibold]}>{text}</Text>
+                  {owner !== -1 ? (
+                    <Animated.View entering={pop} exiting={popOut} style={styles.ownerBadge}>
+                      <Text style={styles.ownerText}>{owner + 1}</Text>
+                    </Animated.View>
+                  ) : null}
+                </PressableScale>
+              </Animated.View>
             );
           })}
         </View>
@@ -337,6 +357,7 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.surface,
   },
+  tone: { borderRadius: radius.tile, borderWidth: 1.5 },
   tileSelected: {
     borderColor: colors.contrast,
     backgroundColor: colors.accentSoft,
@@ -349,7 +370,6 @@ const styles = StyleSheet.create({
     borderColor: colors.danger,
     backgroundColor: colors.dangerSoft,
   },
-  tileDim: { opacity: 0.65 },
   badge: {
     width: 26,
     height: 26,
@@ -363,27 +383,19 @@ const styles = StyleSheet.create({
   badgeWrong: { backgroundColor: "transparent" },
   badgeNum: { ...latin.semibold, fontSize: 13, color: colors.inkMuted },
   tileText: { fontSize: 16, color: colors.ink, flex: 1 },
-  textInput: {
-    ...latin.semibold,
-    minHeight: 54,
+  inputBox: {
     borderRadius: radius.tile,
     borderCurve: "continuous",
     borderWidth: 1.5,
     borderColor: colors.line,
     backgroundColor: colors.surface,
+  },
+  textInput: {
+    ...latin.semibold,
+    minHeight: 51,
     paddingHorizontal: 16,
     fontSize: 18,
     color: colors.ink,
-  },
-  inputRight: {
-    borderColor: colors.positive,
-    backgroundColor: colors.positiveSoft,
-    color: colors.positiveInk,
-  },
-  inputWrong: {
-    borderColor: colors.danger,
-    backgroundColor: colors.dangerSoft,
-    color: colors.dangerInk,
   },
   tray: {
     minHeight: 68,
@@ -409,18 +421,7 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.surface,
   },
-  chipPlaced: {
-    borderColor: colors.contrast,
-    backgroundColor: colors.accentSoft,
-  },
-  chipRight: {
-    borderColor: colors.positive,
-    backgroundColor: colors.positiveSoft,
-  },
-  chipWrong: {
-    borderColor: colors.danger,
-    backgroundColor: colors.dangerSoft,
-  },
+  chipTone: { borderRadius: radius.chip, borderWidth: 1.5 },
   chipText: { ...latin.semibold, fontSize: 15, color: colors.ink },
   textRight: { color: colors.positiveInk },
   textWrong: { color: colors.dangerInk },

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { InputRow, ListGroup, PickerRow } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
+import { Tone } from "@/components/ui/tone";
 import { SET_ICON_LABELS, SET_ICON_SYMBOLS, SetIcon } from "@/components/ui/set-icon";
 import { SET_ICONS, type Folder, type SetHue, type SetIcon as SetIconName } from "@/core/contract";
 import { folderTree } from "@/lib/folders";
@@ -88,8 +89,9 @@ export function SetForm({
                   haptics.select();
                   onChange({ ...value, icon });
                 }}
-                style={[styles.iconTile, selected && styles.iconTileSelected]}
+                style={styles.iconTile}
               >
+                <Tone on={selected} outset={1.5} style={styles.iconTileSelected} />
                 <SymbolView
                   name={SET_ICON_SYMBOLS[icon]}
                   size={24}
@@ -144,6 +146,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   iconTileSelected: {
+    borderRadius: radius.tile,
+    borderWidth: 1.5,
     backgroundColor: colors.accentSoft,
     borderColor: colors.contrast,
   },

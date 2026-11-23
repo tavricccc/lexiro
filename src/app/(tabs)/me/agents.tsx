@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import * as Clipboard from "expo-clipboard";
-import { SymbolView } from "expo-symbols";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 
+import { IconButton } from "@/components/ui/button";
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { EmptyState, Loaded, Panel, Screen } from "@/components/ui/layout";
 import { ListGroup, ListRow } from "@/components/ui/list";
@@ -73,14 +73,7 @@ export default function AgentsScreen() {
           <Text style={styles.urlText} numberOfLines={1} selectable>
             {endpoint}
           </Text>
-          <Pressable
-            hitSlop={8}
-            accessibilityLabel="複製網址"
-            onPress={copyEndpoint}
-            style={styles.copyBtn}
-          >
-            <SymbolView name="doc.on.doc" size={17} weight="semibold" tintColor={colors.ink} />
-          </Pressable>
+          <IconButton label="複製網址" icon="doc.on.doc" size={36} onPress={copyEndpoint} />
         </View>
         <Text style={styles.hint}>
           在助理的「新增連接器」貼上這個網址，依指示用你的 Lexiro 帳號登入並允許存取即可。
@@ -104,14 +97,13 @@ export default function AgentsScreen() {
                     connection.createdAt * (connection.createdAt < 1e12 ? 1000 : 1),
                   ).toLocaleDateString("zh-TW")}`}
                   accessory={
-                    <Pressable
-                      hitSlop={10}
-                      accessibilityLabel={`中斷 ${connection.clientName}`}
+                    <IconButton
+                      label={`中斷 ${connection.clientName}`}
+                      icon="link.badge.plus"
+                      size={36}
+                      destructive
                       onPress={() => confirmRevoke(connection)}
-                      style={styles.revokeBtn}
-                    >
-                      <SymbolView name="link.badge.plus" size={18} tintColor={colors.danger} />
-                    </Pressable>
+                    />
                   }
                 />
               ))}
@@ -144,19 +136,5 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   urlText: { ...latin.medium, fontSize: 13, color: colors.ink, flex: 1 },
-  copyBtn: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   hint: { ...type.hint, color: colors.inkMuted },
-  revokeBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    alignItems: "center",
-    justifyContent: "center",
-  },
 });

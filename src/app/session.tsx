@@ -12,19 +12,9 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 import Animated, {
-  FadeIn,
-  FadeInDown,
-  FadeInRight,
   useAnimatedStyle,
   useSharedValue,
   withSequence,
@@ -36,11 +26,17 @@ import { CustomAnswer } from "@/components/practice/custom-answer";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { Button } from "@/components/ui/button";
 import { DescriptionPoints } from "@/components/ui/description-points";
+import { CONTENT_MAX_WIDTH, EmptyState, SPLIT_MAX_WIDTH } from "@/components/ui/layout";
 import {
-  CONTENT_MAX_WIDTH,
-  EmptyState,
-  SPLIT_MAX_WIDTH,
-} from "@/components/ui/layout";
+  enterDown,
+  glide,
+  pop,
+  slideBack,
+  slideNext,
+  swapIn,
+  swapOut,
+  timing,
+} from "@/components/ui/motion";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
@@ -48,12 +44,8 @@ import { Segmented } from "@/components/ui/segmented";
 import { barButton, SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { StarButton } from "@/components/ui/star-button";
-import {
-  calendarDay,
-  descriptionPoints,
-  normalizeWord,
-  type PracticeTask,
-} from "@/core/contract";
+import { fade, Tone } from "@/components/ui/tone";
+import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask } from "@/core/contract";
 import {
   isCustomStep,
   isRight,
@@ -62,13 +54,7 @@ import {
   type CustomStep,
 } from "@/core/domain/custom";
 import { TASK_LABELS } from "@/core/domain/labels";
-import {
-  isMarked,
-  optionWord,
-  promptWord,
-  wordIndex,
-  type SetWord,
-} from "@/core/domain/marks";
+import { isMarked, optionWord, promptWord, wordIndex, type SetWord } from "@/core/domain/marks";
 import { passageParts, type PracticeItem, type Step } from "@/core/domain/practice";
 import {
   acceptTyped,
@@ -191,10 +177,7 @@ export default function SessionScreen() {
     if (!current || !current.revealed) return;
     haptics.tap();
     if (typed(current)) {
-      record(
-        current,
-        isRight(currentStep(current)!, current.choices[current.index][current.step]),
-      );
+      record(current, isRight(currentStep(current)!, current.choices[current.index][current.step]));
     }
     const advanced = advance(current);
     latest.current = advanced;
@@ -209,9 +192,7 @@ export default function SessionScreen() {
   // Answered steps can be looked at again, as they were answered.
   const [back, setBack] = useState(0);
   const shown = round && !finished(round) ? lookBack(round, back) : round;
-  const canGoBack = Boolean(
-    shown && !finished(shown) && (shown.index > 0 || shown.step > 0),
-  );
+  const canGoBack = Boolean(shown && !finished(shown) && (shown.index > 0 || shown.step > 0));
 
   const words = useSetWords(round?.setIds ?? []);
   const mark = useCallback((word: string, on: boolean) => {
@@ -304,13 +285,18 @@ function PracticeCard({
   const used = usedBankOptions(round);
   const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
   const last =
-    !lookingBack &&
-    round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+    !lookingBack && round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
 
   const bottomPad = { paddingBottom: Math.max(insets.bottom, 20) };
 
+  // Looking back slides the other way.
+  const [place, setPlace] = useState({ index: round.index, back: false });
+  if (place.index !== round.index) {
+    setPlace({ index: round.index, back: round.index < place.index });
+  }
+
   const promptCard = (
-    <View style={styles.promptCard}>
+    <Animated.View layout={glide} style={styles.promptCard}>
       <Text style={styles.kindBadge}>
         {kindLabel(item)}
         {item.steps.length > 1 ? ` · ${round.step + 1}/${item.steps.length}` : ""}
@@ -325,11 +311,11 @@ function PracticeCard({
           chosen={chosen as number | null | undefined}
         />
       )}
-    </View>
+    </Animated.View>
   );
 
   const answerBlock = (
-    <Animated.View key={`${round.index}-${round.step}`} entering={FadeIn.duration(180)}>
+    <Animated.View key={`${round.index}-${round.step}`} entering={swapIn} layout={glide}>
       {isCustomStep(step) && step.mode !== "single" ? (
         <View style={styles.customBox}>
           <CustomAnswer step={step} chosen={chosen} revealed={round.revealed} submit={pick} />
@@ -350,7 +336,8 @@ function PracticeCard({
     <FeedbackCard item={item} step={step} chosen={chosen} accept={accept} />
   ) : null;
   const nextBar = round.revealed ? (
-    <View
+    <Animated.View
+      entering={enterDown}
       style={[
         styles.nextBar,
         split && styles.nextBarSplit,
@@ -365,7 +352,7 @@ function PracticeCard({
         onPress={next}
         style={styles.nextBtn}
       />
-    </View>
+    </Animated.View>
   ) : null;
   const scrollMore = (
     <ScrollMore
@@ -376,24 +363,16 @@ function PracticeCard({
   );
 
   return (
-    <KeyboardAvoidingView
-      behavior="padding"
-      style={[styles.root, { paddingTop: headerHeight }]}
-    >
-      <View
-        style={[
-          styles.column,
-          { maxWidth: split ? SPLIT_MAX_WIDTH : CONTENT_MAX_WIDTH },
-        ]}
-      >
+    <KeyboardAvoidingView behavior="padding" style={[styles.root, { paddingTop: headerHeight }]}>
+      <View style={[styles.column, { maxWidth: split ? SPLIT_MAX_WIDTH : CONTENT_MAX_WIDTH }]}>
         {/* Top Progress Header */}
         <View style={styles.topBar}>
           <View style={styles.progressWrap}>
             <ProgressBar value={progress} />
           </View>
           {/* Keeps its place once answered, so the bar does not change length. */}
-          <View
-            style={round.revealed && styles.hidden}
+          <Animated.View
+            style={[fade, { opacity: round.revealed ? 0 : 1 }]}
             pointerEvents={round.revealed ? "none" : "auto"}
             accessibilityElementsHidden={round.revealed}
             importantForAccessibility={round.revealed ? "no-hide-descendants" : "auto"}
@@ -405,13 +384,14 @@ function PracticeCard({
               haptic="none"
               onPress={() => pick(null)}
             />
-          </View>
+          </Animated.View>
         </View>
 
         {/* Main Content */}
         <Animated.View
           key={round.index}
-          entering={FadeInRight.duration(240)}
+          entering={place.back ? slideBack : slideNext}
+          exiting={swapOut}
           style={styles.stage}
         >
           {split ? (
@@ -619,8 +599,7 @@ function OptionsGrid({
   used: Set<number>;
   pick: (option: number) => void;
 }) {
-  const wide =
-    step.options.length > 4 || step.options.some((option) => option.length > 18);
+  const wide = step.options.length > 4 || step.options.some((option) => option.length > 18);
 
   return (
     <View style={[styles.optionsWrap, !wide && styles.optionsGrid]}>
@@ -674,7 +653,7 @@ function OptionTile({
     if (wrong) {
       shake.set(
         withSequence(
-          withTiming(-7, { duration: 45 }),
+          withTiming(-7, { ...timing.press, duration: 45 }),
           withTiming(7, { duration: 55 }),
           withTiming(-4, { duration: 50 }),
           withTiming(0, { duration: 50 }),
@@ -689,61 +668,65 @@ function OptionTile({
 
   return (
     <Animated.View style={[wide ? styles.optionFull : styles.optionHalf, shakeStyle]}>
-      <PressableScale
-        scaleTo={0.97}
-        disabled={revealed || used}
-        onPress={onPick}
-        style={[
-          styles.optionTile,
-          wide ? styles.optionTileWide : styles.optionTileSquare,
-          right && styles.optionRight,
-          wrong && styles.optionWrong,
-          used && styles.optionUsed,
-        ]}
+      <Animated.View
+        style={[fade, { opacity: used ? 0.35 : revealed && !right && !wrong ? 0.7 : 1 }]}
       >
-        <View style={styles.optionTopRow}>
-          <View
-            style={[
-              styles.optionBadge,
-              (right || wrong) && styles.optionBadgeClear,
-            ]}
-          >
-            {right ? (
-              <SymbolView name="checkmark" size={14} weight="bold" tintColor={colors.positiveInk} />
-            ) : wrong ? (
-              <SymbolView name="xmark" size={14} weight="bold" tintColor={colors.dangerInk} />
-            ) : (
-              <Text style={styles.optionNum}>{index + 1}</Text>
-            )}
-          </View>
-          {!wide && starWord ? (
-            <View style={styles.optionStarCorner}>
-              <MarkStar word={starWord} />
+        <PressableScale
+          scaleTo={0.97}
+          disabled={revealed || used}
+          onPress={onPick}
+          style={[styles.optionTile, wide ? styles.optionTileWide : styles.optionTileSquare]}
+        >
+          <Tone on={right} style={[styles.optionTone, styles.optionRight]} />
+          <Tone on={wrong} style={[styles.optionTone, styles.optionWrong]} />
+          <View style={styles.optionTopRow}>
+            <View style={[styles.optionBadge, (right || wrong) && styles.optionBadgeClear]}>
+              {right ? (
+                <Animated.View entering={pop}>
+                  <SymbolView
+                    name="checkmark"
+                    size={14}
+                    weight="bold"
+                    tintColor={colors.positiveInk}
+                  />
+                </Animated.View>
+              ) : wrong ? (
+                <Animated.View entering={pop}>
+                  <SymbolView name="xmark" size={14} weight="bold" tintColor={colors.dangerInk} />
+                </Animated.View>
+              ) : (
+                <Text style={styles.optionNum}>{index + 1}</Text>
+              )}
             </View>
-          ) : null}
-        </View>
+            {!wide && starWord ? (
+              <View style={styles.optionStarCorner}>
+                <MarkStar word={starWord} />
+              </View>
+            ) : null}
+          </View>
 
-        <View style={[styles.optionCopy, wide && styles.optionCopyWide]}>
-          <Text
-            style={[
-              styles.optionLabel,
-              hasLatin(option) && latin.semibold,
-              right && styles.optionLabelRight,
-              wrong && styles.optionLabelWrong,
-            ]}
-          >
-            {option}
-          </Text>
-          {gloss ? (
-            <Text style={styles.glossText} numberOfLines={2}>
-              {pos ? <Text style={latin.medium}>{pos} </Text> : null}
-              <Text style={hasLatin(gloss) ? latin.medium : undefined}>{gloss}</Text>
+          <View style={[styles.optionCopy, wide && styles.optionCopyWide]}>
+            <Text
+              style={[
+                styles.optionLabel,
+                hasLatin(option) && latin.semibold,
+                right && styles.optionLabelRight,
+                wrong && styles.optionLabelWrong,
+              ]}
+            >
+              {option}
             </Text>
-          ) : null}
-        </View>
+            {gloss ? (
+              <Animated.Text entering={swapIn} style={styles.glossText} numberOfLines={2}>
+                {pos ? <Text style={latin.medium}>{pos} </Text> : null}
+                <Text style={hasLatin(gloss) ? latin.medium : undefined}>{gloss}</Text>
+              </Animated.Text>
+            ) : null}
+          </View>
 
-        {wide && starWord ? <MarkStar word={starWord} /> : null}
-      </PressableScale>
+          {wide && starWord ? <MarkStar word={starWord} /> : null}
+        </PressableScale>
+      </Animated.View>
     </Animated.View>
   );
 }
@@ -848,10 +831,7 @@ function FeedbackCard({
   const answer = rightAnswerText(step);
 
   return (
-    <Animated.View
-      entering={FadeInDown.duration(240)}
-      style={styles.feedbackCard}
-    >
+    <Animated.View entering={enterDown} style={styles.feedbackCard}>
       <View style={styles.feedbackHead}>
         <SymbolView
           name={right ? "checkmark" : "xmark"}
@@ -864,8 +844,7 @@ function FeedbackCard({
             "答對了"
           ) : (
             <>
-              正確答案是{" "}
-              <Text style={hasLatin(answer) ? latin.bold : undefined}>{answer}</Text>
+              正確答案是 <Text style={hasLatin(answer) ? latin.bold : undefined}>{answer}</Text>
             </>
           )}
         </Text>
@@ -873,10 +852,7 @@ function FeedbackCard({
           <Button label="我其實答對了" size="sm" variant="ghost" onPress={accept} />
         ) : null}
       </View>
-      {typedWrong &&
-      isCustomStep(step) &&
-      step.mode === "input" &&
-      step.accepted.length > 1 ? (
+      {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? (
         <Text style={styles.acceptedAlt}>{step.accepted.join(" / ")}</Text>
       ) : null}
       <ExplanationBlock item={item} step={step} chosen={chosen} />
@@ -890,9 +866,7 @@ function answeredText(step: Step | CustomStep, choice: Choice | null | undefined
   if (choice === null || choice === undefined) return "沒作答";
   if (typeof choice === "string") return choice;
   const options =
-    !isCustomStep(step) || step.mode === "single" || step.mode === "multiple"
-      ? step.options
-      : [];
+    !isCustomStep(step) || step.mode === "single" || step.mode === "multiple" ? step.options : [];
   return (Array.isArray(choice) ? choice : [choice]).map((i) => options[i]).join("、");
 }
 
@@ -951,9 +925,7 @@ function ResultsView({
   );
 
   const shown =
-    filter === "missed"
-      ? steps.filter((entry) => !isRight(entry.step, entry.choice))
-      : steps;
+    filter === "missed" ? steps.filter((entry) => !isRight(entry.step, entry.choice)) : steps;
 
   const filterOptions: { value: ReviewFilter; label: string }[] = [
     ...(wrong ? [{ value: "missed" as const, label: `答錯 ${wrong}` }] : []),
@@ -1018,21 +990,14 @@ function ResultsView({
             </View>
           </View>
 
-          <Segmented<ReviewFilter>
-            value={filter}
-            onChange={setFilter}
-            options={filterOptions}
-          />
+          <Segmented<ReviewFilter> value={filter} onChange={setFilter} options={filterOptions} />
 
           {filter === "starred" ? (
             <View style={styles.starredCard}>
               {marked.map((word, index) => {
                 const entry = words.get(normalizeWord(word));
                 return (
-                  <View
-                    key={word}
-                    style={[styles.starredItem, index > 0 && styles.starredDivider]}
-                  >
+                  <View key={word} style={[styles.starredItem, index > 0 && styles.starredDivider]}>
                     <Text style={styles.starredWord}>{entry?.word ?? word}</Text>
                     <Text style={styles.starredMeaning} numberOfLines={1}>
                       {entry ? entry.meaning : "不在單字集，離開後不保留"}
@@ -1075,16 +1040,14 @@ function ReviewCard({
   const answer = rightAnswerText(step);
   const word = promptWord(item, step);
   const wordTask = item.kind === "meaning" || item.kind === "reverse";
-  const title = wordTask
-    ? item.word
-    : step.prompt || `${kindLabel(item)} 第 ${at + 1} 格`;
+  const title = wordTask ? item.word : step.prompt || `${kindLabel(item)} 第 ${at + 1} 格`;
   const answered = answeredText(step, choice);
   const picked = pickedGloss(step, choice);
   const explained = hasExplanation(item, step, choice);
   const [open, setOpen] = useState(!right);
 
   return (
-    <View style={styles.reviewCard}>
+    <Animated.View layout={glide} style={styles.reviewCard}>
       <View style={styles.reviewTop}>
         <SymbolView
           name={right ? "checkmark" : "xmark"}
@@ -1093,7 +1056,8 @@ function ReviewCard({
           tintColor={right ? colors.positiveInk : colors.dangerInk}
           style={styles.reviewMark}
         />
-        <Pressable
+        <PressableScale
+          scaleTo={0.98}
           disabled={!explained}
           onPress={() => {
             haptics.tap();
@@ -1101,16 +1065,11 @@ function ReviewCard({
           }}
           style={styles.reviewTitleBtn}
         >
-          <Text
-            style={[
-              styles.reviewTitle,
-              (wordTask || hasLatin(title)) && latin.semibold,
-            ]}
-          >
+          <Text style={[styles.reviewTitle, (wordTask || hasLatin(title)) && latin.semibold]}>
             {title.replace("_____", "＿＿")}
-            {wordTask ? <Text style={styles.reviewPos}>  {item.sense.pos}</Text> : null}
+            {wordTask ? <Text style={styles.reviewPos}> {item.sense.pos}</Text> : null}
           </Text>
-        </Pressable>
+        </PressableScale>
         {word ? <MarkStar word={word} /> : null}
       </View>
 
@@ -1137,12 +1096,12 @@ function ReviewCard({
           </Text>
         ) : null}
         {open && explained ? (
-          <View style={styles.reviewExpWrap}>
+          <Animated.View entering={swapIn} exiting={swapOut} style={styles.reviewExpWrap}>
             <ExplanationBlock item={item} step={step} chosen={choice} />
-          </View>
+          </Animated.View>
         ) : null}
       </View>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -1159,7 +1118,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   progressWrap: { flex: 1 },
-  hidden: { opacity: 0 },
   stage: { flex: 1 },
   scrollContent: {
     paddingHorizontal: space.gutter,
@@ -1277,9 +1235,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 12,
   },
+  optionTone: { borderRadius: 22 },
   optionRight: { backgroundColor: colors.positiveSoft },
   optionWrong: { backgroundColor: colors.dangerSoft },
-  optionUsed: { opacity: 0.35 },
   optionTopRow: {
     flexDirection: "row",
     alignItems: "center",

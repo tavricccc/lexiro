@@ -1,5 +1,4 @@
 import { router, Stack, useLocalSearchParams } from "expo-router";
-import { SymbolView } from "expo-symbols";
 import { useMemo, useState } from "react";
 import {
   Alert,
@@ -9,6 +8,7 @@ import {
   type NativeScrollEvent,
   type NativeSyntheticEvent,
 } from "react-native";
+import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { moveItem } from "@/components/library/folder-actions";
@@ -16,18 +16,11 @@ import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
 import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
-import {
-  CheckRow,
-  ListGroup,
-  ListRow,
-} from "@/components/ui/list";
-import { PressableScale } from "@/components/ui/pressable-scale";
+import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
+import { swapIn } from "@/components/ui/motion";
 import { barButton, barMenu } from "@/components/ui/sheet-header";
 import { Segmented } from "@/components/ui/segmented";
-import {
-  SwipeableWordRow,
-  meaningLine,
-} from "@/components/ui/swipeable-word-row";
+import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
 import type { Question, SetContent } from "@/core/contract";
 import { KIND_LABELS } from "@/core/domain/labels";
 import { errorMessage } from "@/data/api";
@@ -35,7 +28,7 @@ import { deleteWords, starWords } from "@/data/library";
 import { useOnline } from "@/data/network";
 import { usePrefs, useSet } from "@/data/queries";
 import { haptics } from "@/lib/haptics";
-import { colors, latin, radius, space, type } from "@/lib/theme";
+import { colors, latin, space, type } from "@/lib/theme";
 import { syncStorage } from "@/platform/install";
 import { toast } from "@/platform/toast";
 
@@ -62,13 +55,10 @@ export default function SetDetailScreen() {
     setRows(FIRST_ROWS);
   };
 
-  const onScroll = ({
-    nativeEvent,
-  }: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { contentOffset, layoutMeasurement, contentSize } = nativeEvent;
     const nearEnd =
-      contentOffset.y + layoutMeasurement.height >
-      contentSize.height - layoutMeasurement.height;
+      contentOffset.y + layoutMeasurement.height > contentSize.height - layoutMeasurement.height;
     if (nearEnd && rows < total) setRows((count) => count + MORE_ROWS);
   };
 
@@ -76,33 +66,29 @@ export default function SetDetailScreen() {
     const ids = [...(selected ?? [])];
     if (!ids.length) return;
     haptics.warning();
-    Alert.alert(
-      `刪除 ${ids.length} 個單字？`,
-      "用到這些單字的題目也會一起刪除。",
-      [
-        { text: "取消", style: "cancel" },
-        {
-          text: "刪除",
-          style: "destructive",
-          onPress: () => {
-            deleteWords(setId, ids)
-              .then(({ removedQuestionIds }) => {
-                haptics.success();
-                toast.success(
-                  removedQuestionIds.length
-                    ? `已刪除，另移除 ${removedQuestionIds.length} 題`
-                    : "已刪除",
-                );
-                setSelected(null);
-              })
-              .catch((reason) => {
-                haptics.error();
-                toast.error(errorMessage(reason));
-              });
-          },
+    Alert.alert(`刪除 ${ids.length} 個單字？`, "用到這些單字的題目也會一起刪除。", [
+      { text: "取消", style: "cancel" },
+      {
+        text: "刪除",
+        style: "destructive",
+        onPress: () => {
+          deleteWords(setId, ids)
+            .then(({ removedQuestionIds }) => {
+              haptics.success();
+              toast.success(
+                removedQuestionIds.length
+                  ? `已刪除，另移除 ${removedQuestionIds.length} 題`
+                  : "已刪除",
+              );
+              setSelected(null);
+            })
+            .catch((reason) => {
+              haptics.error();
+              toast.error(errorMessage(reason));
+            });
         },
-      ],
-    );
+      },
+    ]);
   };
 
   // A fragment, not a wrapping View: the large title collapses only when the
@@ -184,10 +170,7 @@ export default function SetDetailScreen() {
       {/* Bottom Floating Liquid Glass Action Dock */}
       {content.data && content.data.words.length > 0 ? (
         <View
-          style={[
-            styles.floatingWrap,
-            { bottom: Math.max(insets.bottom, 12) + 8 },
-          ]}
+          style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
           pointerEvents="box-none"
         >
           {selected ? (
@@ -226,9 +209,7 @@ export default function SetDetailScreen() {
                 size="lg"
                 variant="primary"
                 haptic="confirm"
-                onPress={() =>
-                  router.push({ pathname: "/practice", params: { set: setId } })
-                }
+                onPress={() => router.push({ pathname: "/practice", params: { set: setId } })}
                 style={styles.practiceBtn}
               />
             </GlassSurface>
@@ -288,17 +269,19 @@ function SetBody({
           { value: "questions", label: `題目 ${content.questions.length}` },
         ]}
       />
-      {tab === "words" ? (
-        <WordList
-          content={content}
-          query={query}
-          rows={rows}
-          selected={selected}
-          onSelected={onSelected}
-        />
-      ) : (
-        <QuestionList content={content} query={query} />
-      )}
+      <Animated.View key={tab} entering={swapIn}>
+        {tab === "words" ? (
+          <WordList
+            content={content}
+            query={query}
+            rows={rows}
+            selected={selected}
+            onSelected={onSelected}
+          />
+        ) : (
+          <QuestionList content={content} query={query} />
+        )}
+      </Animated.View>
     </View>
   );
 }
@@ -416,80 +399,41 @@ function WordList({
       {/* Compact Toolbar: Starred-first + Multi-select */}
       <View style={styles.toolbar}>
         {starredCount > 0 ? (
-          <PressableScale
-            scaleTo={0.95}
+          <Button
+            label={`標星置頂 ${starredCount}`}
+            icon={starredFirst ? "star.fill" : "star"}
+            size="sm"
+            variant={starredFirst ? "accent" : "ghost"}
+            haptic="none"
             onPress={toggleStarredFirst}
-            style={[styles.toolChip, starredFirst && styles.toolChipStarred]}
-          >
-            <SymbolView
-              name={starredFirst ? "star.fill" : "star"}
-              size={14}
-              weight="semibold"
-              tintColor={starredFirst ? colors.highlight : colors.inkMuted}
-            />
-            <Text
-              style={[
-                styles.toolChipText,
-                starredFirst && { color: colors.highlight },
-              ]}
-            >
-              標星置頂 <Text style={latin.semibold}>{starredCount}</Text>
-            </Text>
-          </PressableScale>
+          />
         ) : (
           <View />
         )}
 
         <View style={styles.toolGroup}>
           {!selected ? (
-            <PressableScale
-              scaleTo={0.95}
-              onPress={() => {
-                haptics.select();
+            <Button
+              label="單字卡"
+              icon="rectangle.on.rectangle.angled"
+              size="sm"
+              variant="ghost"
+              onPress={() =>
                 router.push({
                   pathname: "/sets/[setId]/cards",
                   params: { setId },
-                });
-              }}
-              style={styles.toolChip}
-            >
-              <SymbolView
-                name="rectangle.on.rectangle.angled"
-                size={14}
-                weight="semibold"
-                tintColor={colors.inkMuted}
-              />
-              <Text style={styles.toolChipText}>單字卡</Text>
-            </PressableScale>
-          ) : null}
-          <PressableScale
-            scaleTo={0.95}
-            disabled={!online}
-            onPress={() => {
-              haptics.select();
-              onSelected(selected ? null : new Set());
-            }}
-            style={[
-              styles.toolChip,
-              selected && styles.toolChipActive,
-              !online && styles.disabled,
-            ]}
-          >
-            <SymbolView
-              name={selected ? "xmark" : "checklist"}
-              size={14}
-              weight="semibold"
-              tintColor={selected ? colors.canvas : colors.inkMuted}
+                })
+              }
             />
-            <Text
-              style={[
-                styles.toolChipText,
-                selected && { color: colors.canvas },
-              ]}
-            >
-              {selected ? "結束選取" : "多選"}
-            </Text>
-          </PressableScale>
+          ) : null}
+          <Button
+            label={selected ? "結束選取" : "多選"}
+            icon={selected ? "xmark" : "checklist"}
+            size="sm"
+            variant={selected ? "accent" : "ghost"}
+            disabled={!online}
+            onPress={() => onSelected(selected ? null : new Set())}
+          />
         </View>
       </View>
 
@@ -498,14 +442,10 @@ function WordList({
       ) : (
         <>
           {top.length > 0 ? (
-            <ListGroup title={`標星 · ${allTop.length}`}>
-              {top.map(renderWord)}
-            </ListGroup>
+            <ListGroup title={`標星 · ${allTop.length}`}>{top.map(renderWord)}</ListGroup>
           ) : null}
           {rest.length > 0 ? (
-            <ListGroup
-              title={allTop.length > 0 ? `其他 · ${allRest.length}` : undefined}
-            >
+            <ListGroup title={allTop.length > 0 ? `其他 · ${allRest.length}` : undefined}>
               {rest.map(renderWord)}
             </ListGroup>
           ) : null}
@@ -519,21 +459,12 @@ function questionPreview(question: Question): string {
   if (question.kind === "custom")
     return `${question.label}：${question.items[0].prompt}`.slice(0, 90);
   if ("items" in question) {
-    return (
-      question.title ||
-      question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90)
-    );
+    return question.title || question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90);
   }
   return question.prompt;
 }
 
-function QuestionList({
-  content,
-  query,
-}: {
-  content: SetContent;
-  query: string;
-}) {
+function QuestionList({ content, query }: { content: SetContent; query: string }) {
   if (!content.questions.length) {
     return (
       <EmptyState
@@ -547,11 +478,9 @@ function QuestionList({
   const groups = new Map<string, Question[]>();
   const needle = query.trim().toLocaleLowerCase();
   const matches = content.questions.filter(
-    (question) =>
-      !needle || questionPreview(question).toLocaleLowerCase().includes(needle),
+    (question) => !needle || questionPreview(question).toLocaleLowerCase().includes(needle),
   );
-  if (!matches.length)
-    return <Text style={styles.emptySearch}>沒有符合的題目</Text>;
+  if (!matches.length) return <Text style={styles.emptySearch}>沒有符合的題目</Text>;
   for (const question of matches) {
     groups.set(question.kind, [...(groups.get(question.kind) ?? []), question]);
   }
@@ -568,11 +497,7 @@ function QuestionList({
               key={question.id}
               title={questionPreview(question)}
               latinTitle
-              subtitle={
-                "items" in question
-                  ? `${question.items.length} 小題`
-                  : undefined
-              }
+              subtitle={"items" in question ? `${question.items.length} 小題` : undefined}
               accessory={<Chip label={`難度 ${question.difficulty}`} />}
               chevron
               onPress={() =>
@@ -598,27 +523,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   toolGroup: { flexDirection: "row", gap: 8 },
-  toolChip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: radius.pill,
-    borderCurve: "continuous",
-    backgroundColor: colors.surface,
-  },
-  toolChipStarred: {
-    backgroundColor: colors.highlightSoft,
-  },
-  toolChipActive: {
-    backgroundColor: colors.ink,
-  },
-  toolChipText: {
-    fontSize: 13,
-    fontWeight: "600",
-    color: colors.inkMuted,
-  },
   disabled: { opacity: 0.45 },
   emptySearch: {
     ...type.body,

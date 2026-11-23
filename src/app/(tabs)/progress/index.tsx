@@ -138,8 +138,10 @@ export default function ProgressScreen() {
                       setSelectedDay((prev) => (prev === day ? null : day));
                     }}
                     accessibilityLabel={`${day}：${answered} 題`}
-                    style={[
+                    hitSlop={2}
+                    style={({ pressed }) => [
                       styles.cell,
+                      pressed && styles.cellPressed,
                       level < 0
                         ? styles.cellFuture
                         : level === 0
@@ -267,6 +269,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderCurve: "continuous",
   },
+  cellPressed: { transform: [{ scale: 0.82 }] },
   cellFuture: {
     backgroundColor: "transparent",
   },
