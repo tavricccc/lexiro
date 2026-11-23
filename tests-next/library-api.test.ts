@@ -62,6 +62,15 @@ describe("library API", () => {
     expect(((await response!.json()) as any).set.name).toBe("Shared");
   });
 
+  it.each(["aB3_dE-fG7hIjK0lMn1oPq", "0b7c2a52-6b43-4c2e-9d0a-0f6c1f1c2d3e"])("still opens and adds the older share %s", async (code) => {
+    const uid = randomUUID(), lib = new Library(db, { unlimited: true });
+    const set = await lib.putSet(uid, undefined, { name: "Old" });
+    await db.prepare("INSERT INTO shares(id,uid,set_id,created_at) VALUES(?,?,?,?)").bind(code, uid, set.id, "2026-01-01").run();
+    const opened = await (await handleSharedSet(`/shared/${code}`, lib))!.json() as any;
+    const added = await call(lib, randomUUID(), "POST", `/shared/${code}/add`, { folderId: null });
+    expect([opened.set.name, added?.body.name]).toEqual(["Old", "Old"]);
+  });
+
   it("adds a shared set by a code typed in lower case", async () => {
     const uid = randomUUID(), lib = new Library(db, { unlimited: true });
     const set = await lib.putSet(uid, undefined, { name: "Shared" });
