@@ -105,8 +105,10 @@ export default function SetDetailScreen() {
     );
   };
 
+  // A fragment, not a wrapping View: the large title collapses only when the
+  // scroll view is the screen's first native child.
   return (
-    <View style={styles.root}>
+    <>
       <Stack.Screen
         options={{
           title: name,
@@ -267,7 +269,7 @@ export default function SetDetailScreen() {
           )}
         </View>
       ) : null}
-    </View>
+    </>
   );
 }
 

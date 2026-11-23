@@ -138,7 +138,7 @@ function Deck({ content }: { content: SetContent }) {
   const starredCount = content.words.filter((entry) => entry.starred).length;
 
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, { paddingTop: insets.top }]}>
       <SheetHeader
         title="單字卡"
         subtitle={deck.length ? `${at + 1} / ${deck.length}` : undefined}
