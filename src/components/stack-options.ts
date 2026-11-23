@@ -1,7 +1,13 @@
 import { colors } from "@/lib/theme";
 
+/** iOS 26: content fades softly under the bars on every edge. */
+export const softEdges = {
+  scrollEdgeEffects: { top: "soft", bottom: "soft", left: "soft", right: "soft" },
+} as const;
+
 /** Native iOS large title over the quiet v2 canvas; collapses into the nav bar on scroll. */
 export const largeTitleOptions = {
+  ...softEdges,
   headerLargeTitleEnabled: true,
   headerTransparent: true,
   headerLargeTitleShadowVisible: false,
@@ -13,6 +19,7 @@ export const largeTitleOptions = {
 } as const;
 
 export const standardHeaderOptions = {
+  ...softEdges,
   headerLargeTitleEnabled: false,
   headerTransparent: false,
   headerShadowVisible: false,

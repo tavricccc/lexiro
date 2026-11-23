@@ -17,6 +17,7 @@ import { useAnswerFlush } from "@/data/learning";
 import { restoreTheme, useThemeSync } from "@/data/prefs";
 import { queryClient, startPersistence, stopPersistence, useRevisionWatch } from "@/data/queries";
 import { useAppUpdates } from "@/lib/app-updates";
+import { softEdges } from "@/components/stack-options";
 import { PINE_DARK, PINE_LIGHT, colors, fonts, plain, type } from "@/lib/theme";
 
 SplashScreen.preventAutoHideAsync();
@@ -105,7 +106,7 @@ function AppShell({
 
   return (
     <ThemeProvider value={theme}>
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack screenOptions={{ ...softEdges, headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
