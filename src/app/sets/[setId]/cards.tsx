@@ -89,6 +89,20 @@ function faceAngle(flip: number) {
   return (((flip * 180) % 360) + 360) % 360;
 }
 
+/**
+ * The turn, drawn without a 3D transform: iOS samples a perspective layer coarsely,
+ * which stair-stepped the text and the card's edges. Narrowing plus a slight shear
+ * stays affine, which keeps the text layers at their own resolution.
+ */
+function turned(angle: number) {
+  "worklet";
+  const rad = (angle * Math.PI) / 180;
+  return [
+    { skewY: `${Math.sin(rad * 2) * 7}deg` },
+    { scaleX: Math.max(Math.abs(Math.cos(rad)), 0.001) },
+  ];
+}
+
 function Deck({ content }: { content: SetContent }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -423,14 +437,14 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
   const front = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 1400 }, { rotateY: `${angle}deg` }],
+      transform: turned(angle),
       opacity: angle < 90 || angle > 270 ? 1 : 0,
     };
   });
   const back = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 1400 }, { rotateY: `${angle + 180}deg` }],
+      transform: turned(angle),
       opacity: angle >= 90 && angle <= 270 ? 1 : 0,
     };
   });
@@ -438,19 +452,13 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
   const extra = word.senses.filter((sense) => sense.supplementary);
 
   return (
-    // Without shouldRasterizeIOS the layer's rasterizationScale stays at 1, so the
-    // offscreen pass of a 3D turn can draw the face at 1x. This draws face and
-    // shadow once at the screen's scale and turns that picture.
     <>
-      <Animated.View style={[styles.card, front]} shouldRasterizeIOS>
+      <Animated.View style={[styles.card, front]}>
         <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
           {word.word}
         </Text>
       </Animated.View>
-      <Animated.View
-        style={[styles.card, styles.cardBack, back]}
-        shouldRasterizeIOS
-      >
+      <Animated.View style={[styles.card, styles.cardBack, back]}>
         <Text style={styles.backWord} numberOfLines={1}>
           {word.word}
         </Text>
@@ -644,7 +652,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
-    backfaceVisibility: "hidden",
     boxShadow: "0 8px 24px rgba(17,21,18,0.08)",
   },
   cardBack: {
