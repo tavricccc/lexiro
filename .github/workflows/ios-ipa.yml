@@ -6,7 +6,8 @@ name: iOS IPA
 # Only native changes need a new .ipa; JS reaches the phone through EAS
 # Update. So a cheap Linux job resolves the iOS fingerprint (the runtime
 # version) first, and the macOS build runs only when no unexpired artifact
-# `ios-<fingerprint>` exists yet. Run it by hand with `force` to rebuild.
+# `ios-<fingerprint>` exists yet. A run with nothing to build cancels itself, so
+# a green check always means an .ipa. Run it by hand with `force` to rebuild.
 on:
   push:
     branches: [main]
@@ -23,7 +24,8 @@ concurrency:
 
 permissions:
   contents: read
-  actions: read
+  # Cancelling its own run (below).
+  actions: write
 
 jobs:
   fingerprint:
@@ -60,6 +62,16 @@ jobs:
           else
             echo "build=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # A run cannot end as skipped once a job has run; cancelled shows grey.
+      - name: Nothing to build
+        if: steps.resolve.outputs.build == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "::warning::Native code is unchanged; no .ipa was built."
+          gh run cancel "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY"
+          sleep 120
 
   build:
     needs: fingerprint
