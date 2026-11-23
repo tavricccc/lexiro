@@ -13,25 +13,25 @@ export default function TabLayout() {
       <NativeTabs.Trigger name="library">
         <NativeTabs.Trigger.Label>單字</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
-          sf={{ default: "books.vertical", selected: "books.vertical.fill" }}
+          sf={{ default: "book.closed", selected: "book.closed.fill" }}
         />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="progress">
         <NativeTabs.Trigger.Label>進度</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
-          sf={{ default: "chart.line.uptrend.xyaxis", selected: "chart.line.uptrend.xyaxis" }}
+          sf={{ default: "chart.bar", selected: "chart.bar.fill" }}
         />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="rooms">
         <NativeTabs.Trigger.Label>對戰</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
-          sf={{ default: "bolt.shield", selected: "bolt.shield.fill" }}
+          sf={{ default: "bolt", selected: "bolt.fill" }}
         />
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="me">
         <NativeTabs.Trigger.Label>我</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
-          sf={{ default: "person.circle", selected: "person.circle.fill" }}
+          sf={{ default: "person", selected: "person.fill" }}
         />
       </NativeTabs.Trigger>
     </NativeTabs>
