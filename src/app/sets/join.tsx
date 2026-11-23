@@ -22,14 +22,14 @@ export default function JoinScreen() {
       <KeyboardScreen>
         <TextInput
           accessibilityLabel="分享代碼"
-          autoCapitalize="characters"
+          autoCapitalize="none"
           autoComplete="off"
           autoCorrect={false}
           autoFocus
           onChangeText={(next) => {
-            // A pasted link becomes its code.
+            // A pasted link becomes its code; a code stays as typed, since old ones are case-sensitive.
             const found = parseShareCode(next);
-            setText(found ?? next);
+            setText(found && next.includes("/") ? found : next);
             setError(false);
             if (found && found !== code) haptics.select();
           }}
