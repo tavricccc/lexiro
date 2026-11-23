@@ -28,9 +28,10 @@ import { Button } from "@/components/ui/button";
 import { DescriptionPoints } from "@/components/ui/description-points";
 import { CONTENT_MAX_WIDTH, EmptyState, SPLIT_MAX_WIDTH } from "@/components/ui/layout";
 import {
-  enterDown,
   glide,
   pop,
+  riseIn,
+  settleIn,
   slideBack,
   slideNext,
   swapIn,
@@ -287,7 +288,9 @@ function PracticeCard({
   const last =
     !lookingBack && round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
 
-  const bottomPad = { paddingBottom: Math.max(insets.bottom, 20) };
+  // The next button floats over the page, so answering does not resize it.
+  const barHeight = 60 + Math.max(insets.bottom, 14);
+  const bottomPad = round.revealed ? { paddingBottom: barHeight + 12 } : { paddingBottom: Math.max(insets.bottom, 20) };
 
   // Looking back slides the other way.
   const [place, setPlace] = useState({ index: round.index, back: false });
@@ -315,7 +318,7 @@ function PracticeCard({
   );
 
   const answerBlock = (
-    <Animated.View key={`${round.index}-${round.step}`} entering={swapIn} layout={glide}>
+    <Animated.View key={`${round.index}-${round.step}`} entering={round.step > 0 ? settleIn : undefined} layout={glide}>
       {isCustomStep(step) && step.mode !== "single" ? (
         <View style={styles.customBox}>
           <CustomAnswer step={step} chosen={chosen} revealed={round.revealed} submit={pick} />
@@ -337,7 +340,8 @@ function PracticeCard({
   ) : null;
   const nextBar = round.revealed ? (
     <Animated.View
-      entering={enterDown}
+      entering={riseIn}
+      pointerEvents="box-none"
       style={[
         styles.nextBar,
         split && styles.nextBarSplit,
@@ -358,7 +362,7 @@ function PracticeCard({
     <ScrollMore
       visible={main.more}
       onPress={main.scrollOn}
-      bottom={round.revealed ? 8 : Math.max(insets.bottom, 8) + 8}
+      bottom={round.revealed ? barHeight + 8 : Math.max(insets.bottom, 8) + 8}
     />
   );
 
@@ -371,20 +375,14 @@ function PracticeCard({
             <ProgressBar value={progress} />
           </View>
           {/* Keeps its place once answered, so the bar does not change length. */}
-          <Animated.View
-            style={[fade, { opacity: round.revealed ? 0 : 1 }]}
-            pointerEvents={round.revealed ? "none" : "auto"}
-            accessibilityElementsHidden={round.revealed}
-            importantForAccessibility={round.revealed ? "no-hide-descendants" : "auto"}
-          >
-            <Button
-              label="看答案"
-              variant="secondary"
-              size="sm"
-              haptic="none"
-              onPress={() => pick(null)}
-            />
-          </Animated.View>
+          <Button
+            label="看答案"
+            variant="secondary"
+            size="sm"
+            haptic="none"
+            hidden={round.revealed}
+            onPress={() => pick(null)}
+          />
         </View>
 
         {/* Main Content */}
@@ -418,7 +416,7 @@ function PracticeCard({
                     contentContainerStyle={[
                       styles.scrollContent,
                       styles.paneRight,
-                      !round.revealed && bottomPad,
+                      bottomPad,
                     ]}
                     alwaysBounceVertical={false}
                     keyboardShouldPersistTaps="handled"
@@ -437,7 +435,7 @@ function PracticeCard({
               <View style={styles.flex}>
                 <ScrollView
                   {...main.scrollProps}
-                  contentContainerStyle={[styles.scrollContent, !round.revealed && bottomPad]}
+                  contentContainerStyle={[styles.scrollContent, bottomPad]}
                   alwaysBounceVertical={false}
                   keyboardDismissMode="interactive"
                   keyboardShouldPersistTaps="handled"
@@ -448,7 +446,7 @@ function PracticeCard({
                       styles.question,
                       round.revealed && {
                         flexGrow: 0,
-                        minHeight: Math.max(0, main.height - FEEDBACK_PEEK),
+                        minHeight: Math.max(0, main.height - FEEDBACK_PEEK - barHeight),
                       },
                     ]}
                   >
@@ -831,7 +829,7 @@ function FeedbackCard({
   const answer = rightAnswerText(step);
 
   return (
-    <Animated.View entering={enterDown} style={styles.feedbackCard}>
+    <Animated.View entering={riseIn} style={styles.feedbackCard}>
       <View style={styles.feedbackHead}>
         <SymbolView
           name={right ? "checkmark" : "xmark"}
@@ -1268,7 +1266,12 @@ const styles = StyleSheet.create({
     padding: 18,
     gap: 10,
   },
-  nextBar: { paddingHorizontal: space.gutter, paddingTop: 8 },
+  nextBar: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingHorizontal: space.gutter, paddingTop: 8 },
   nextBarSplit: { paddingLeft: 6 },
   feedbackHead: {
     flexDirection: "row",

@@ -12,7 +12,6 @@ import {
   type WordDraft,
 } from "@/components/library/word-editor";
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
 import { EmptyState, KeyboardScreen, Loaded } from "@/components/ui/layout";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import type { SetContent } from "@/core/contract";
@@ -109,7 +108,7 @@ function EditorBody({ content, wordId }: { content: SetContent; wordId: string }
 
       <KeyboardStickyView offset={{ closed: 0, opened: 8 }}>
         <View style={[styles.stickyBar, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-          <GlassSurface style={styles.dock}>
+          <View style={styles.dock}>
             <Button
               label="取消"
               variant="ghost"
@@ -126,7 +125,7 @@ function EditorBody({ content, wordId }: { content: SetContent; wordId: string }
               onPress={() => void submit()}
               style={styles.saveBtn}
             />
-          </GlassSurface>
+          </View>
         </View>
       </KeyboardStickyView>
     </View>
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
   caution: { ...type.hint, color: colors.caution, paddingHorizontal: 6 },
   error: { ...type.hint, color: colors.dangerInk, paddingHorizontal: 6 },
   stickyBar: { paddingHorizontal: space.gutter, paddingTop: 8 },
-  dock: { flexDirection: "row", gap: 8, padding: 6 },
+  dock: { flexDirection: "row", gap: 8 },
   cancelBtn: { flex: 0.85 },
   saveBtn: { flex: 1.35 },
 });

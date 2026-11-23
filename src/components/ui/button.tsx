@@ -7,7 +7,10 @@ import {
   Text as SwiftText,
 } from "@expo/ui/swift-ui";
 import {
+  accessibilityHidden,
   accessibilityLabel,
+  animation,
+  Animation,
   buttonBorderShape,
   buttonStyle,
   controlSize,
@@ -17,8 +20,10 @@ import {
   frame,
   lineLimit,
   minimumScaleFactor,
+  opacity,
   tint,
 } from "@expo/ui/swift-ui/modifiers";
+import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { SymbolView, type SymbolViewProps } from "expo-symbols";
 import type { ComponentProps } from "react";
 import {
@@ -35,6 +40,7 @@ import {
 
 import { haptics } from "@/lib/haptics";
 import { colors, radius } from "@/lib/theme";
+import { DURATION } from "./motion";
 import { PressableScale } from "./pressable-scale";
 
 export type ButtonVariant =
@@ -50,6 +56,13 @@ export type ButtonVariant =
 
 export type ButtonSize = "sm" | "md" | "lg";
 
+const glass = isLiquidGlassAvailable();
+/** Liquid Glass where the system has it; `flat` inside a bar that is glass itself. */
+function surface(prominent = false, flat = false) {
+  if (glass && !flat) return prominent ? "glassProminent" : "glass";
+  return prominent ? "borderedProminent" : "bordered";
+}
+
 type SwiftSymbol = ComponentProps<typeof Image>["systemName"];
 
 /** `tint` fills a prominent button, and washes a bordered one. */
@@ -61,7 +74,7 @@ const fills: Record<
   solid: { bg: colors.heroBg, text: colors.heroText, tint: colors.heroBg, prominent: true },
   secondary: { bg: colors.surface, text: colors.ink, border: colors.line, tint: colors.inkMuted },
   ghost: { bg: colors.surfaceRaised, text: colors.ink, tint: colors.inkMuted },
-  accent: { bg: colors.accentSoft, text: colors.accentInk, tint: colors.contrast },
+  accent: { bg: colors.contrast, text: colors.onContrast, tint: colors.contrast, prominent: true },
   danger: { bg: colors.dangerSoft, text: colors.dangerInk, tint: colors.danger },
   hero: {
     bg: colors.heroButtonBg,
@@ -87,6 +100,8 @@ export function Button({
   busy,
   disabled,
   haptic = "auto",
+  flat = false,
+  hidden = false,
   onPress,
   style,
 }: {
@@ -98,12 +113,16 @@ export function Button({
   busy?: boolean;
   disabled?: boolean;
   haptic?: "auto" | "confirm" | "tap" | "none";
+  /** No glass: for a button inside a glass bar. */
+  flat?: boolean;
+  /** Fades away, keeping its place. Glass must not be faded by a parent. */
+  hidden?: boolean;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
 }) {
   const fill = fills[variant];
   const dims = heights[size];
-  const inactive = disabled || busy;
+  const inactive = disabled || busy || hidden;
   const { fontScale } = useWindowDimensions();
 
   const fireHaptic = () => {
@@ -134,7 +153,7 @@ export function Button({
       <Image systemName={name as SwiftSymbol} size={points * fontScale} />
     );
     return (
-      <View style={style}>
+      <View style={style} pointerEvents={hidden ? "none" : "auto"}>
         {/* Holds the button's size from the first frame; SwiftUI reports its own too late. */}
         <View
           accessibilityElementsHidden
@@ -155,12 +174,15 @@ export function Button({
           <SwiftButton
             onPress={press}
             modifiers={[
-              buttonStyle(fill.prominent ? "borderedProminent" : "bordered"),
+              buttonStyle(surface(fill.prominent, flat)),
               buttonBorderShape("capsule"),
               controlSize("regular"),
               tint(fill.tint),
               accessibilityLabel(label),
-              disabledModifier(!!disabled),
+              accessibilityHidden(hidden),
+              disabledModifier(!!disabled || hidden),
+              opacity(hidden ? 0 : 1),
+              animation(Animation.easeOut({ duration: DURATION.state / 1000 }), hidden),
             ]}
           >
             <HStack
@@ -203,6 +225,7 @@ export function Button({
           borderColor: fill.border,
         },
         disabled && styles.disabled,
+        hidden && styles.hidden,
         style,
       ]}
     >
@@ -262,7 +285,7 @@ export function IconButton({
         <SwiftButton
           onPress={press}
           modifiers={[
-            buttonStyle("bordered"),
+            buttonStyle(surface()),
             buttonBorderShape("circle"),
             controlSize("mini"),
             tint(color),
@@ -305,6 +328,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 7,
   },
+  hidden: { opacity: 0 },
   sizer: { opacity: 0 },
   round: { backgroundColor: colors.surfaceRaised },
   label: {

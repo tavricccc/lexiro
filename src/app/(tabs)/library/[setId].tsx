@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
 import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
 import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
-import { swapIn } from "@/components/ui/motion";
+import { settleIn } from "@/components/ui/motion";
 import { barButton, barMenu } from "@/components/ui/sheet-header";
 import { Segmented } from "@/components/ui/segmented";
 import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
@@ -183,6 +183,7 @@ export default function SetDetailScreen() {
                 icon="doc.on.doc"
                 size="sm"
                 variant="secondary"
+                flat
                 disabled={!selected.size || !online}
                 onPress={() => {
                   router.push({
@@ -197,12 +198,13 @@ export default function SetDetailScreen() {
                 icon="trash"
                 size="sm"
                 variant="danger"
+                flat
                 disabled={!selected.size || !online}
                 onPress={deleteSelected}
               />
             </GlassSurface>
           ) : (
-            <GlassSurface style={styles.practiceDock}>
+            <View style={styles.practiceDock}>
               <Button
                 label="練習這組"
                 icon="play.fill"
@@ -212,7 +214,7 @@ export default function SetDetailScreen() {
                 onPress={() => router.push({ pathname: "/practice", params: { set: setId } })}
                 style={styles.practiceBtn}
               />
-            </GlassSurface>
+            </View>
           )}
         </View>
       ) : null}
@@ -269,7 +271,7 @@ function SetBody({
           { value: "questions", label: `題目 ${content.questions.length}` },
         ]}
       />
-      <Animated.View key={tab} entering={swapIn}>
+      <Animated.View key={tab} entering={settleIn}>
         {tab === "words" ? (
           <WordList
             content={content}
@@ -538,7 +540,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   practiceDock: {
-    padding: 6,
     width: "100%",
     maxWidth: 420,
   },

@@ -2,14 +2,14 @@ import {
   Easing,
   FadeIn,
   FadeInDown,
-  FadeInLeft,
-  FadeInRight,
   FadeInUp,
   FadeOut,
   FadeOutUp,
   LinearTransition,
   ZoomIn,
   ZoomOut,
+  withTiming,
+  type EntryAnimationsValues,
 } from "react-native-reanimated";
 
 /**
@@ -45,9 +45,49 @@ export const popOut = ZoomOut.duration(DURATION.press);
 
 /** Short fade-and-shift entrances. */
 export const enterDown = FadeInDown.duration(DURATION.move).easing(EASE_MOVE);
-/** From the top edge, and back out through it: toasts and banners. */
+/** A banner in the page: from above, and back out through it. */
 export const dropIn = FadeInUp.duration(DURATION.move).easing(EASE_MOVE);
 export const dropOut = FadeOutUp.duration(DURATION.state);
-/** The next question sliding in, or the one before. */
-export const slideNext = FadeInRight.duration(DURATION.move).easing(EASE_MOVE);
-export const slideBack = FadeInLeft.duration(DURATION.move).easing(EASE_MOVE);
+
+/**
+ * Entrances for views that hold Liquid Glass. They only travel: iOS does not
+ * draw glass at all under a parent whose opacity has been 0.
+ */
+const along = (axis: "translateX" | "translateY", from: number) => {
+  "worklet";
+  const at = (value: number) => (axis === "translateX" ? { translateX: value } : { translateY: value });
+  return {
+    initialValues: { transform: [at(from)] },
+    animations: {
+      transform: [
+        axis === "translateX"
+          ? { translateX: withTiming(0, timing.move) }
+          : { translateY: withTiming(0, timing.move) },
+      ],
+    },
+  };
+};
+/** The next question sliding in, or the one before, like a pushed page. */
+export const slideNext = (values: EntryAnimationsValues) => {
+  "worklet";
+  return along("translateX", values.windowWidth);
+};
+export const slideBack = (values: EntryAnimationsValues) => {
+  "worklet";
+  return along("translateX", -values.windowWidth);
+};
+/** Up from under the bottom edge: a bar, and the feedback that comes with it. */
+export const riseIn = () => {
+  "worklet";
+  return along("translateY", 140);
+};
+/** Down from above the top edge: a toast. */
+export const toastIn = () => {
+  "worklet";
+  return along("translateY", -140);
+};
+/** A page or panel settling into place. */
+export const settleIn = () => {
+  "worklet";
+  return along("translateY", 10);
+};

@@ -5,7 +5,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
 import { EmptyState, Screen } from "@/components/ui/layout";
 import { ListGroup, PickerRow } from "@/components/ui/list";
 import { PressableRow } from "@/components/ui/pressable-row";
@@ -87,7 +86,7 @@ export default function StarredScreen() {
           style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
           pointerEvents="box-none"
         >
-          <GlassSurface style={styles.floatingBar}>
+          <View style={styles.floatingBar}>
             <Button
               label={`練習這 ${total} 個字`}
               icon="play.fill"
@@ -105,7 +104,7 @@ export default function StarredScreen() {
               }}
               style={styles.floatingBtn}
             />
-          </GlassSurface>
+          </View>
         </View>
       ) : null}
     </>
@@ -179,7 +178,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   floatingBar: {
-    padding: 6,
     width: "100%",
     maxWidth: 420,
   },

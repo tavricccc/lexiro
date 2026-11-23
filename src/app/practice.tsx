@@ -5,12 +5,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
 import { EmptyState, Panel, Screen } from "@/components/ui/layout";
 import { CheckRow, ListGroup, ListRow } from "@/components/ui/list";
-import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
-import { Tone } from "@/components/ui/tone";
 import { SetIcon } from "@/components/ui/set-icon";
 import type { PracticeTask } from "@/core/contract";
 import { TASK_HINTS, TASK_LABELS } from "@/core/domain/labels";
@@ -20,7 +17,7 @@ import { useLearning } from "@/data/learning";
 import { orderedSets, setQuery, useLibrary, usePrefs } from "@/data/queries";
 import { clearRound, loadRound, saveRound } from "@/data/round-store";
 import { haptics } from "@/lib/haptics";
-import { colors, radius, space, type } from "@/lib/theme";
+import { colors, space, type } from "@/lib/theme";
 
 const AMOUNTS = ["10", "20", "30", "50"] as const;
 
@@ -111,7 +108,6 @@ export default function PracticeSetupScreen() {
   };
 
   const toggleTask = (task: PracticeTask) => {
-    haptics.select();
     setError("");
     setTasks(() =>
       activeTasks.includes(task)
@@ -207,36 +203,21 @@ export default function PracticeSetupScreen() {
           </ListGroup>
         )}
 
-        <View style={styles.section}>
-          <Text style={styles.sectionLabel}>題型</Text>
-          {loaded ? (
-            <View style={styles.taskGrid}>
-              {available.map((task) => {
-                const on = activeTasks.includes(task);
-                return (
-                  <PressableScale
-                    key={task}
-                    scaleTo={0.97}
-                    accessibilityRole="checkbox"
-                    accessibilityState={{ checked: on }}
-                    onPress={() => toggleTask(task)}
-                    style={styles.taskCard}
-                  >
-                    <Tone on={on} outset={1.5} style={styles.taskCardOn} />
-                    <Text style={[styles.taskTitle, on && styles.taskTitleOn]}>
-                      {TASK_LABELS[task]}
-                    </Text>
-                    <Text style={styles.taskHint} numberOfLines={2}>
-                      {TASK_HINTS[task]}
-                    </Text>
-                  </PressableScale>
-                );
-              })}
-            </View>
-          ) : (
-            <Text style={styles.loadingText}>正在讀取單字集…</Text>
-          )}
-        </View>
+        {loaded ? (
+          <ListGroup title="題型">
+            {available.map((task) => (
+              <CheckRow
+                key={task}
+                title={TASK_LABELS[task]}
+                subtitle={TASK_HINTS[task]}
+                checked={activeTasks.includes(task)}
+                onPress={() => toggleTask(task)}
+              />
+            ))}
+          </ListGroup>
+        ) : (
+          <Text style={styles.loadingText}>正在讀取單字集…</Text>
+        )}
 
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>出題方式</Text>
@@ -274,7 +255,7 @@ export default function PracticeSetupScreen() {
         style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
         pointerEvents="box-none"
       >
-        <GlassSurface style={styles.dock}>
+        <View style={styles.dock}>
           <Button
             label="開始練習"
             icon="play.fill"
@@ -284,7 +265,7 @@ export default function PracticeSetupScreen() {
             onPress={start}
             style={styles.startBtn}
           />
-        </GlassSurface>
+        </View>
       </View>
     </View>
   );
@@ -309,41 +290,6 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
     paddingHorizontal: 4,
   },
-  taskGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  taskCard: {
-    width: "48.5%",
-    flexGrow: 1,
-    backgroundColor: colors.surface,
-    borderRadius: radius.tile,
-    borderCurve: "continuous",
-    borderWidth: 1.5,
-    borderColor: colors.line,
-    padding: 14,
-    gap: 4,
-  },
-  taskCardOn: {
-    borderRadius: radius.tile,
-    borderWidth: 1.5,
-    backgroundColor: colors.accentSoft,
-    borderColor: colors.contrast,
-  },
-  taskTitle: {
-    fontSize: 15,
-    fontWeight: "600",
-    color: colors.ink,
-  },
-  taskTitleOn: {
-    color: colors.accentInk,
-  },
-  taskHint: {
-    fontSize: 12,
-    lineHeight: 17,
-    color: colors.inkMuted,
-  },
   loadingText: {
     ...type.hint,
     color: colors.inkFaint,
@@ -361,7 +307,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   dock: {
-    padding: 6,
     width: "100%",
     maxWidth: 420,
   },

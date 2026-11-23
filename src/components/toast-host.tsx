@@ -6,7 +6,7 @@ import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { FullWindowOverlay } from "react-native-screens";
 
-import { DURATION, dropIn, dropOut } from "@/components/ui/motion";
+import { DURATION, dropOut, toastIn } from "@/components/ui/motion";
 import { colors, radius, type } from "@/lib/theme";
 import { toast, useToasts, type ToastMessage } from "@/platform/toast";
 
@@ -63,7 +63,7 @@ function ToastPill({ toast: current }: { toast: ToastMessage }) {
 
   return (
     <Animated.View
-      entering={dropIn}
+      entering={toastIn}
       exiting={dropOut}
       style={[styles.wrap, { top: insets.top + 8 }]}
       pointerEvents="box-none"

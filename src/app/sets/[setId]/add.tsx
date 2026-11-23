@@ -12,7 +12,6 @@ import {
   type WordDraft,
 } from "@/components/library/word-editor";
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
 import { KeyboardScreen, Loaded, Panel } from "@/components/ui/layout";
 import { ListGroup, PickerRow } from "@/components/ui/list";
 import { Segmented } from "@/components/ui/segmented";
@@ -133,7 +132,7 @@ function AddOne({
 
       <KeyboardStickyView offset={{ closed: 0, opened: 8 }}>
         <View style={[styles.stickyBar, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-          <GlassSurface style={styles.actionDock}>
+          <View style={styles.actionDock}>
             <Button
               label="儲存返回"
               variant="ghost"
@@ -151,7 +150,7 @@ function AddOne({
               onPress={() => void save(true)}
               style={styles.primaryHalfBtn}
             />
-          </GlassSurface>
+          </View>
         </View>
       </KeyboardStickyView>
     </View>
@@ -255,7 +254,7 @@ function AddList({
 
       <KeyboardStickyView offset={{ closed: 0, opened: 8 }}>
         <View style={[styles.stickyBar, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-          <GlassSurface style={styles.actionDock}>
+          <View style={styles.actionDock}>
             <Button
               label={parsed.words.length ? `加入 ${parsed.words.length} 個單字` : "加入單字"}
               icon="plus"
@@ -266,7 +265,7 @@ function AddList({
               onPress={() => void submit()}
               style={styles.fullBtn}
             />
-          </GlassSurface>
+          </View>
         </View>
       </KeyboardStickyView>
     </View>
@@ -293,7 +292,6 @@ const styles = StyleSheet.create({
   actionDock: {
     flexDirection: "row",
     gap: 8,
-    padding: 6,
   },
   halfBtn: { flex: 0.9 },
   primaryHalfBtn: { flex: 1.3 },

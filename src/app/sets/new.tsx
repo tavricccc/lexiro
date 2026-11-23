@@ -7,7 +7,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { openSet } from "@/components/library/folder-actions";
 import { SetForm, type SetFormValue } from "@/components/library/set-form";
 import { Button } from "@/components/ui/button";
-import { GlassSurface } from "@/components/ui/glass-bar";
 import { KeyboardScreen } from "@/components/ui/layout";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { errorMessage } from "@/data/api";
@@ -66,7 +65,7 @@ export default function NewSetScreen() {
 
       <KeyboardStickyView offset={{ closed: 0, opened: 8 }}>
         <View style={[styles.stickyBar, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-          <GlassSurface style={styles.dock}>
+          <View style={styles.dock}>
             <Button
               label="建立單字集"
               icon="checkmark"
@@ -77,7 +76,7 @@ export default function NewSetScreen() {
               onPress={() => void submit()}
               style={styles.submitBtn}
             />
-          </GlassSurface>
+          </View>
         </View>
       </KeyboardStickyView>
     </View>
@@ -90,6 +89,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.gutter,
     paddingTop: 8,
   },
-  dock: { padding: 6 },
+  dock: {},
   submitBtn: { width: "100%" },
 });

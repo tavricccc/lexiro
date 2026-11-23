@@ -19,7 +19,7 @@ import { OfflineBanner } from "@/components/offline-banner";
 import { errorMessage } from "@/data/api";
 import { colors, radius, space, type } from "@/lib/theme";
 import { Button } from "./button";
-import { swapIn } from "./motion";
+import { settleIn } from "./motion";
 import { ScrollMore, useScrollMore, useScrollMoreInset } from "./scroll-more";
 import { useTransitionDone } from "./use-transition-done";
 
@@ -74,7 +74,7 @@ export function Screen({
         contentContainerStyle={[styles.content, props.contentContainerStyle]}
       >
         {ready ? (
-          <Animated.View entering={instant ? undefined : swapIn} style={styles.body}>
+          <Animated.View entering={instant ? undefined : settleIn} style={styles.body}>
             <LayoutAnimationConfig skipEntering>
               {showOffline ? <OfflineBanner /> : null}
               {children}
