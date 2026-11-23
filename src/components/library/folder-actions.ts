@@ -71,5 +71,9 @@ export function removeSet(set: SetSummary) {
   );
 }
 
+/** Opens a set in the library, putting away the sheets over it. */
+export const openSet = (setId: string) =>
+  router.dismissTo({ pathname: "/library/[setId]", params: { setId } }, { withAnchor: true });
+
 export const moveItem = (item: { set: string } | { folder: string }) =>
   router.push({ pathname: "/sets/move", params: item });

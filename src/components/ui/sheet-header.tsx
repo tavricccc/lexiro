@@ -67,10 +67,19 @@ export function barMenu(
   };
 }
 
+/** A sheet opened straight from a link has nothing under it to go back to. */
+const close = () => (router.canGoBack() ? router.back() : router.replace("/"));
+
 /**
  * Title and close button of a sheet or modal, in its native navigation bar. The
  * route must use `modalHeaderOptions` in the root layout: showing the bar later
  * would remount the screen.
+ *
+ * In a `formSheet`, the scroll view must be the screen's first native view:
+ * render this and `Screen` in a fragment, with any footer after it positioned
+ * absolutely. react-native-screens sizes the sheet's scroll view itself while the
+ * sheet is dragged, and one nested in another view is given the sheet's own
+ * frame, offset included, which moves the content out of sight.
  */
 export function SheetHeader({
   title,
@@ -87,7 +96,7 @@ export function SheetHeader({
       options={{
         title,
         unstable_headerLeftItems: () => items,
-        unstable_headerRightItems: () => [barButton(closeLabel, "xmark", () => router.back())],
+        unstable_headerRightItems: () => [barButton(closeLabel, "xmark", close)],
       }}
     />
   );

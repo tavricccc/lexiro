@@ -26,11 +26,9 @@ export default function WordDetailSheet() {
   const content = useSet(setId);
 
   return (
-    <View style={styles.root}>
-      <Loaded query={content}>
-        {(data) => <WordSheetBody content={data} wordId={wordId} />}
-      </Loaded>
-    </View>
+    <Loaded query={content}>
+      {(data) => <WordSheetBody content={data} wordId={wordId} />}
+    </Loaded>
   );
 }
 
@@ -44,12 +42,12 @@ function WordSheetBody({ content, wordId }: { content: SetContent; wordId: strin
 
   if (!word) {
     return (
-      <View style={styles.root}>
+      <>
         <SheetHeader title="找不到單字" />
         <Screen>
           <EmptyState icon="questionmark.circle" title="找不到這個單字" />
         </Screen>
-      </View>
+      </>
     );
   }
 
@@ -88,7 +86,7 @@ function WordSheetBody({ content, wordId }: { content: SetContent; wordId: strin
   };
 
   return (
-    <View style={styles.root}>
+    <>
       <SheetHeader
         title={word.word}
         items={[
@@ -107,7 +105,7 @@ function WordSheetBody({ content, wordId }: { content: SetContent; wordId: strin
         ]}
       />
 
-      <Screen contentContainerStyle={{ paddingBottom: 100 }}>
+      <Screen contentContainerStyle={{ paddingBottom: 100 + insets.bottom }}>
         {word.senses.map((sense) => {
           const progress = learning.senses[sense.id];
           return (
@@ -162,12 +160,11 @@ function WordSheetBody({ content, wordId }: { content: SetContent; wordId: strin
           style={styles.editBtn}
         />
       </View>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.canvas },
   senseHead: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -207,6 +204,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
     flexDirection: "row",
     gap: 10,
     paddingHorizontal: space.gutter,

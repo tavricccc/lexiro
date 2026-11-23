@@ -1,9 +1,10 @@
-import { router, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { KeyboardStickyView } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { openSet } from "@/components/library/folder-actions";
 import { SetForm, type SetFormValue } from "@/components/library/set-form";
 import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
@@ -40,7 +41,7 @@ export default function NewSetScreen() {
     try {
       const created = await createSet({ ...value, name: value.name.trim() });
       haptics.success();
-      router.replace({ pathname: "/library/[setId]", params: { setId: created.id } });
+      openSet(created.id);
     } catch (reason) {
       haptics.error();
       setError(errorMessage(reason));

@@ -1,8 +1,9 @@
 import { GlassView, isLiquidGlassAvailable } from "expo-glass-effect";
 import { SymbolView } from "expo-symbols";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Platform, Pressable, StyleSheet, Text } from "react-native";
 import Animated, { FadeInUp, FadeOutUp } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { FullWindowOverlay } from "react-native-screens";
 
 import { colors, radius, type } from "@/lib/theme";
 import { toast, useToasts } from "@/platform/toast";
@@ -15,7 +16,10 @@ const ICONS = {
 
 const hasGlass = isLiquidGlassAvailable();
 
-/** Floating top toast capsule with Liquid Glass on iOS 26 and crisp elevated surface elsewhere. */
+/**
+ * Floating top toast capsule with Liquid Glass on iOS 26 and crisp elevated surface elsewhere. On iOS it
+ * sits in a window overlay, mounted with each toast, so native sheets never cover it.
+ */
 export function ToastHost() {
   const current = useToasts((state) => state.current);
   const insets = useSafeAreaInsets();
@@ -37,7 +41,7 @@ export function ToastHost() {
     </Pressable>
   );
 
-  return (
+  const pill = (
     <Animated.View
       key={current.id}
       entering={FadeInUp.duration(240)}
@@ -53,6 +57,12 @@ export function ToastHost() {
         <Animated.View style={styles.fallbackPill}>{content}</Animated.View>
       )}
     </Animated.View>
+  );
+  if (Platform.OS !== "ios") return pill;
+  return (
+    <FullWindowOverlay key={current.id} unstable_accessibilityContainerViewIsModal={false}>
+      {pill}
+    </FullWindowOverlay>
   );
 }
 

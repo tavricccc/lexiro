@@ -2,6 +2,9 @@ import { Stack } from "expo-router";
 
 import { largeTitleOptions } from "@/components/stack-options";
 
+// A set opened from outside the library still has the library to go back to.
+export const unstable_settings = { initialRouteName: "index" };
+
 export default function LibraryLayout() {
   return (
     <Stack screenOptions={largeTitleOptions}>

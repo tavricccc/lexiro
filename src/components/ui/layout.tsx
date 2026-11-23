@@ -69,6 +69,8 @@ export function KeyboardScreen({
   ...props
 }: ScrollViewProps & {
   children: ReactNode;
+  /** A `formSheet` needs "layout": "insets" wraps the scroll view (see SheetHeader). */
+  mode?: "insets" | "layout";
   showOffline?: boolean;
   bottomOffset?: number;
 }) {

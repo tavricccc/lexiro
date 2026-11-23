@@ -131,7 +131,11 @@ function AppShell({
         />
         <Stack.Screen
           name="sets/new"
-          options={{ ...modalHeaderOptions, presentation: "formSheet", sheetGrabberVisible: true }}
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
+        />
+        <Stack.Screen
+          name="sets/join"
+          options={{ ...modalHeaderOptions, presentation: "modal" }}
         />
         <Stack.Screen
           name="sets/move"
@@ -155,7 +159,7 @@ function AppShell({
           options={{
             ...modalHeaderOptions,
             presentation: "formSheet",
-            sheetAllowedDetents: [0.5, 0.78],
+            sheetAllowedDetents: [0.58, 0.9],
             sheetGrabberVisible: true,
           }}
         />

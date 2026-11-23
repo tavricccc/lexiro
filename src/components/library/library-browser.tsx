@@ -83,6 +83,16 @@ export function LibraryBrowser({ folderId }: { folderId: string | null }) {
                         }),
                     },
                     {
+                      label: "用代碼加入",
+                      symbol: "number",
+                      disabled: !online,
+                      onPress: () =>
+                        router.push({
+                          pathname: "/sets/join",
+                          params: folderId ? { folder: folderId } : {},
+                        }),
+                    },
+                    {
                       label: "新增資料夾",
                       symbol: "folder.badge.plus",
                       disabled: !online,
@@ -157,7 +167,16 @@ function Level({
         title="還沒有單字集"
         description="單字集是一組要一起練習的單字，例如一課課文或一次考試的範圍。"
         action={
-          <Button label="建立第一個單字集" icon="plus" onPress={() => router.push("/sets/new")} />
+          <View style={styles.emptyActions}>
+            <Button label="建立第一個單字集" icon="plus" onPress={() => router.push("/sets/new")} />
+            <Button
+              label="用代碼加入"
+              icon="number"
+              variant="ghost"
+              disabled={!online}
+              onPress={() => router.push("/sets/join")}
+            />
+          </View>
         }
       />
     );
@@ -394,6 +413,7 @@ const styles = StyleSheet.create({
   cardMeta: { flex: 1, gap: 2 },
   cardTitle: { fontSize: 16, fontWeight: "600", color: colors.ink },
   cardSub: { ...type.hint, color: colors.inkMuted },
+  emptyActions: { gap: 10 },
   empty: {
     ...type.body,
     color: colors.inkMuted,

@@ -70,11 +70,9 @@ export default function CopyWordsSheet() {
   };
 
   return (
-    <View style={styles.root}>
-      <SheetHeader
-        title={`複製 ${wordIds.length} 個單字到…`}
-      />
-      <KeyboardScreen>
+    <>
+      <SheetHeader title={`複製 ${wordIds.length} 個單字到…`} />
+      <KeyboardScreen mode="layout">
         {creating ? (
           <View style={styles.createBlock}>
             <ListGroup title="建立新單字集">
@@ -166,12 +164,11 @@ export default function CopyWordsSheet() {
           </ListGroup>
         ) : null}
       </KeyboardScreen>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: colors.canvas },
   createBlock: { gap: 12 },
   createActions: { flexDirection: "row", gap: 10 },
   halfBtn: { flex: 1 },
