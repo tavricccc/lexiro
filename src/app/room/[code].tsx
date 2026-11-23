@@ -13,7 +13,7 @@ import { ScrollMore, useScrollMore } from "@/components/ui/scroll-more";
 import { fade, Tone } from "@/components/ui/tone";
 import { ListGroup, ListRow } from "@/components/ui/list";
 import { SheetHeader } from "@/components/ui/sheet-header";
-import { enterDown, glide, pop, slideNext, swapIn } from "@/components/ui/motion";
+import { glide, pop, slideNext, swapIn } from "@/components/ui/motion";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { ProgressBar } from "@/components/ui/progress";
 import { TASK_LABELS } from "@/core/domain/labels";
@@ -279,7 +279,7 @@ function LiveQuestionView({
       </View>
 
       {reveal ? (
-        <Animated.View entering={enterDown}>
+        <Animated.View entering={swapIn}>
           <Panel>
             <Text
               style={[

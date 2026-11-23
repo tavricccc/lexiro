@@ -30,7 +30,6 @@ import { CONTENT_MAX_WIDTH, EmptyState, SPLIT_MAX_WIDTH } from "@/components/ui/
 import {
   glide,
   pop,
-  riseIn,
   slideBack,
   slideNext,
   swapIn,
@@ -337,10 +336,10 @@ function PracticeCard({
   const feedback = round.revealed ? (
     <FeedbackCard item={item} step={step} chosen={chosen} accept={accept} />
   ) : null;
-  const nextBar = round.revealed ? (
-    <Animated.View
-      entering={riseIn}
-      pointerEvents="box-none"
+  // Always mounted: glass fades itself in, and must not be faded by a parent.
+  const nextBar = (
+    <View
+      pointerEvents={round.revealed ? "box-none" : "none"}
       style={[
         styles.nextBar,
         split && styles.nextBarSplit,
@@ -352,11 +351,12 @@ function PracticeCard({
         trailingIcon={last ? "flag.checkered" : "arrow.right"}
         variant="primary"
         size="lg"
+        hidden={!round.revealed}
         onPress={next}
         style={styles.nextBtn}
       />
-    </Animated.View>
-  ) : null;
+    </View>
+  );
   const scrollMore = (
     <ScrollMore
       visible={main.more}
@@ -828,7 +828,7 @@ function FeedbackCard({
   const answer = rightAnswerText(step);
 
   return (
-    <Animated.View entering={riseIn} style={styles.feedbackCard}>
+    <Animated.View entering={swapIn} style={styles.feedbackCard}>
       <View style={styles.feedbackHead}>
         <SymbolView
           name={right ? "checkmark" : "xmark"}
@@ -846,7 +846,7 @@ function FeedbackCard({
           )}
         </Text>
         {typedWrong && accept ? (
-          <Button label="我其實答對了" size="sm" variant="ghost" onPress={accept} />
+          <Button label="我其實答對了" size="sm" variant="ghost" flat onPress={accept} />
         ) : null}
       </View>
       {typedWrong && isCustomStep(step) && step.mode === "input" && step.accepted.length > 1 ? (

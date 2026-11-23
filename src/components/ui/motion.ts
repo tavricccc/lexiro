@@ -1,7 +1,6 @@
 import {
   Easing,
   FadeIn,
-  FadeInDown,
   FadeInUp,
   FadeOut,
   FadeOutUp,
@@ -15,9 +14,10 @@ import {
 /**
  * Three speeds for everything that moves: an answer to a finger, a change of
  * state, and a change of place; `morph` is glass flowing into other glass.
- * Pages have no entrance beyond the system's own. Springs are kept for things thrown by hand
- * (the flashcards); elsewhere their settle read as drifting. Reanimated skips
- * all of these when the system asks for reduced motion.
+ * Nothing floats up into place: pages use the system's transition, and
+ * content that appears fades quickly where it stands. Springs are kept for
+ * things thrown by hand (the flashcards); elsewhere their settle read as
+ * drifting. Reanimated skips all of these when the system asks for reduced motion.
  */
 export const DURATION = { press: 100, state: 180, move: 300, morph: 450 } as const;
 
@@ -47,8 +47,6 @@ export const glide = LinearTransition.duration(DURATION.move).easing(EASE_MOVE);
 export const pop = ZoomIn.duration(DURATION.state).easing(EASE_OUT);
 export const popOut = ZoomOut.duration(DURATION.press);
 
-/** Short fade-and-shift entrances. */
-export const enterDown = FadeInDown.duration(DURATION.move).easing(EASE_MOVE);
 /** A banner in the page: from above, and back out through it. */
 export const dropIn = FadeInUp.duration(DURATION.move).easing(EASE_MOVE);
 export const dropOut = FadeOutUp.duration(DURATION.state);
@@ -79,11 +77,6 @@ export const slideNext = (values: EntryAnimationsValues) => {
 export const slideBack = (values: EntryAnimationsValues) => {
   "worklet";
   return along("translateX", -values.windowWidth);
-};
-/** Up from under the bottom edge: a bar, and the feedback that comes with it. */
-export const riseIn = () => {
-  "worklet";
-  return along("translateY", 140);
 };
 /** Down from above the top edge: a toast. */
 export const toastIn = () => {
