@@ -12,9 +12,12 @@ import { DescriptionPoints } from "./description-points";
 import { StarButton } from "./star-button";
 
 /** "n. 銀行；河岸 · v. 存錢" grouped by part of speech. */
-export function meaningLine(word: Word): string {
+/** With `supplementary` set, only the original (false) or the added (true) senses. */
+export function meaningLine(word: Word, supplementary?: boolean): string {
   const groups = new Map<string, string[]>();
-  for (const sense of word.senses) {
+  for (const sense of word.senses.filter(
+    (entry) => supplementary === undefined || entry.supplementary === supplementary,
+  )) {
     groups.set(sense.pos, [...(groups.get(sense.pos) ?? []), sense.meaning]);
   }
   return [...groups]
@@ -46,6 +49,8 @@ export function SwipeableWordRow({
   onDelete?: () => void;
 }) {
   const swipeRef = useRef<SwipeableMethods>(null);
+  const main = meaningLine(word, false);
+  const extra = meaningLine(word, true);
   const points = word.senses.flatMap((sense) => descriptionPoints(sense.description));
 
   const renderLeftActions = () => (
@@ -112,10 +117,18 @@ export function SwipeableWordRow({
             <Text style={styles.word} numberOfLines={1}>
               {word.word}
             </Text>
-            {showMeanings ? (
+            {showMeanings && main ? (
               <Text style={styles.meaning} numberOfLines={1}>
-                {meaningLine(word)}
+                {main}
               </Text>
+            ) : null}
+            {showMeanings && extra ? (
+              <View style={styles.extraRow}>
+                <Text style={styles.extraTag}>補充</Text>
+                <Text style={styles.meaning} numberOfLines={2}>
+                  {extra}
+                </Text>
+              </View>
             ) : null}
             {showMeanings && points.length > 0 ? (
               <DescriptionPoints points={points} boxed compact />
@@ -163,6 +176,16 @@ const styles = StyleSheet.create({
   meaning: {
     ...type.hint,
     color: colors.inkMuted,
+  },
+  extraRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 6,
+  },
+  extraTag: {
+    ...type.hint,
+    fontWeight: "600",
+    color: colors.inkFaint,
   },
   starWrap: {
     paddingRight: 8,

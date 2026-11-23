@@ -79,7 +79,7 @@ export default function AgentsScreen() {
             onPress={copyEndpoint}
             style={styles.copyBtn}
           >
-            <SymbolView name="doc.on.doc" size={17} weight="semibold" tintColor={colors.contrast} />
+            <SymbolView name="doc.on.doc" size={17} weight="semibold" tintColor={colors.ink} />
           </Pressable>
         </View>
         <Text style={styles.hint}>

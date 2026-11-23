@@ -16,10 +16,18 @@ import { SyncRefreshControl } from "@/components/sync-refresh-control";
 import { Button } from "@/components/ui/button";
 import { GlassSurface } from "@/components/ui/glass-bar";
 import { Chip, EmptyState, Loaded, Screen } from "@/components/ui/layout";
-import { CheckRow, ListGroup, ListRow, NativeMenuTrigger } from "@/components/ui/list";
+import {
+  CheckRow,
+  ListGroup,
+  ListRow,
+  NativeMenuTrigger,
+} from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { Segmented } from "@/components/ui/segmented";
-import { SwipeableWordRow, meaningLine } from "@/components/ui/swipeable-word-row";
+import {
+  SwipeableWordRow,
+  meaningLine,
+} from "@/components/ui/swipeable-word-row";
 import type { Question, SetContent } from "@/core/contract";
 import { KIND_LABELS } from "@/core/domain/labels";
 import { errorMessage } from "@/data/api";
@@ -54,10 +62,13 @@ export default function SetDetailScreen() {
     setRows(FIRST_ROWS);
   };
 
-  const onScroll = ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onScroll = ({
+    nativeEvent,
+  }: NativeSyntheticEvent<NativeScrollEvent>) => {
     const { contentOffset, layoutMeasurement, contentSize } = nativeEvent;
     const nearEnd =
-      contentOffset.y + layoutMeasurement.height > contentSize.height - layoutMeasurement.height;
+      contentOffset.y + layoutMeasurement.height >
+      contentSize.height - layoutMeasurement.height;
     if (nearEnd && rows < total) setRows((count) => count + MORE_ROWS);
   };
 
@@ -65,29 +76,33 @@ export default function SetDetailScreen() {
     const ids = [...(selected ?? [])];
     if (!ids.length) return;
     haptics.warning();
-    Alert.alert(`刪除 ${ids.length} 個單字？`, "用到這些單字的題目也會一起刪除。", [
-      { text: "取消", style: "cancel" },
-      {
-        text: "刪除",
-        style: "destructive",
-        onPress: () => {
-          deleteWords(setId, ids)
-            .then(({ removedQuestionIds }) => {
-              haptics.success();
-              toast.success(
-                removedQuestionIds.length
-                  ? `已刪除，另移除 ${removedQuestionIds.length} 題`
-                  : "已刪除",
-              );
-              setSelected(null);
-            })
-            .catch((reason) => {
-              haptics.error();
-              toast.error(errorMessage(reason));
-            });
+    Alert.alert(
+      `刪除 ${ids.length} 個單字？`,
+      "用到這些單字的題目也會一起刪除。",
+      [
+        { text: "取消", style: "cancel" },
+        {
+          text: "刪除",
+          style: "destructive",
+          onPress: () => {
+            deleteWords(setId, ids)
+              .then(({ removedQuestionIds }) => {
+                haptics.success();
+                toast.success(
+                  removedQuestionIds.length
+                    ? `已刪除，另移除 ${removedQuestionIds.length} 題`
+                    : "已刪除",
+                );
+                setSelected(null);
+              })
+              .catch((reason) => {
+                haptics.error();
+                toast.error(errorMessage(reason));
+              });
+          },
         },
-      },
-    ]);
+      ],
+    );
   };
 
   return (
@@ -95,14 +110,13 @@ export default function SetDetailScreen() {
       <Stack.Screen
         options={{
           title: name,
-          headerSearchBarOptions:
-            tab === "words" && (content.data?.words.length ?? 0) > 0
-              ? {
-                  placeholder: "搜尋英文或中文",
-                  onChangeText: (event) => search(event.nativeEvent.text),
-                  onCancelButtonPress: () => search(""),
-                }
-              : undefined,
+          // Always mounted: adding the search bar after the first layout leaves
+          // the scroll inset short and the large title over the list.
+          headerSearchBarOptions: {
+            placeholder: "搜尋英文或中文",
+            onChangeText: (event) => search(event.nativeEvent.text),
+            onCancelButtonPress: () => search(""),
+          },
           headerRight: () =>
             content.data ? (
               <View style={styles.headerActions}>
@@ -114,14 +128,30 @@ export default function SetDetailScreen() {
                       label: "單字集設定",
                       systemImage: "gearshape",
                       onPress: () =>
-                        router.push({ pathname: "/sets/[setId]/settings", params: { setId } }),
+                        router.push({
+                          pathname: "/sets/[setId]/settings",
+                          params: { setId },
+                        }),
+                    },
+                    {
+                      key: "cards",
+                      label: "單字卡",
+                      systemImage: "rectangle.on.rectangle.angled",
+                      onPress: () =>
+                        router.push({
+                          pathname: "/sets/[setId]/cards",
+                          params: { setId },
+                        }),
                     },
                     {
                       key: "share",
                       label: "分享單字集",
                       systemImage: "square.and.arrow.up",
                       onPress: () =>
-                        router.push({ pathname: "/sets/[setId]/share", params: { setId } }),
+                        router.push({
+                          pathname: "/sets/[setId]/share",
+                          params: { setId },
+                        }),
                     },
                   ]}
                 >
@@ -139,11 +169,19 @@ export default function SetDetailScreen() {
                   accessibilityLabel="新增單字"
                   onPress={() => {
                     haptics.tap();
-                    router.push({ pathname: "/sets/[setId]/add", params: { setId } });
+                    router.push({
+                      pathname: "/sets/[setId]/add",
+                      params: { setId },
+                    });
                   }}
                   style={styles.headerBtn}
                 >
-                  <SymbolView name="plus" size={20} weight="semibold" tintColor={colors.contrast} />
+                  <SymbolView
+                    name="plus"
+                    size={20}
+                    weight="semibold"
+                    tintColor={colors.ink}
+                  />
                 </Pressable>
               </View>
             ) : null,
@@ -178,7 +216,10 @@ export default function SetDetailScreen() {
       {/* Bottom Floating Liquid Glass Action Dock */}
       {content.data && content.data.words.length > 0 ? (
         <View
-          style={[styles.floatingWrap, { bottom: Math.max(insets.bottom, 12) + 8 }]}
+          style={[
+            styles.floatingWrap,
+            { bottom: Math.max(insets.bottom, 12) + 8 },
+          ]}
           pointerEvents="box-none"
         >
           {selected ? (
@@ -217,7 +258,9 @@ export default function SetDetailScreen() {
                 size="lg"
                 variant="primary"
                 haptic="confirm"
-                onPress={() => router.push({ pathname: "/practice", params: { set: setId } })}
+                onPress={() =>
+                  router.push({ pathname: "/practice", params: { set: setId } })
+                }
                 style={styles.practiceBtn}
               />
             </GlassSurface>
@@ -256,7 +299,10 @@ function SetBody({
             label="新增單字"
             icon="plus"
             onPress={() =>
-              router.push({ pathname: "/sets/[setId]/add", params: { setId: content.set.id } })
+              router.push({
+                pathname: "/sets/[setId]/add",
+                params: { setId: content.set.id },
+              })
             }
           />
         }
@@ -283,7 +329,7 @@ function SetBody({
           onSelected={onSelected}
         />
       ) : (
-        <QuestionList content={content} />
+        <QuestionList content={content} query={query} />
       )}
     </View>
   );
@@ -413,7 +459,12 @@ function WordList({
               weight="semibold"
               tintColor={starredFirst ? colors.highlight : colors.inkMuted}
             />
-            <Text style={[styles.toolChipText, starredFirst && { color: colors.highlight }]}>
+            <Text
+              style={[
+                styles.toolChipText,
+                starredFirst && { color: colors.highlight },
+              ]}
+            >
               標星置頂 <Text style={latin.semibold}>{starredCount}</Text>
             </Text>
           </PressableScale>
@@ -421,29 +472,57 @@ function WordList({
           <View />
         )}
 
-        <PressableScale
-          scaleTo={0.95}
-          disabled={!online}
-          onPress={() => {
-            haptics.select();
-            onSelected(selected ? null : new Set());
-          }}
-          style={[
-            styles.toolChip,
-            selected && styles.toolChipActive,
-            !online && styles.disabled,
-          ]}
-        >
-          <SymbolView
-            name={selected ? "xmark" : "checklist"}
-            size={14}
-            weight="semibold"
-            tintColor={selected ? colors.onContrast : colors.inkMuted}
-          />
-          <Text style={[styles.toolChipText, selected && { color: colors.onContrast }]}>
-            {selected ? "結束選取" : "多選"}
-          </Text>
-        </PressableScale>
+        <View style={styles.toolGroup}>
+          {!selected ? (
+            <PressableScale
+              scaleTo={0.95}
+              onPress={() => {
+                haptics.select();
+                router.push({
+                  pathname: "/sets/[setId]/cards",
+                  params: { setId },
+                });
+              }}
+              style={styles.toolChip}
+            >
+              <SymbolView
+                name="rectangle.on.rectangle.angled"
+                size={14}
+                weight="semibold"
+                tintColor={colors.inkMuted}
+              />
+              <Text style={styles.toolChipText}>單字卡</Text>
+            </PressableScale>
+          ) : null}
+          <PressableScale
+            scaleTo={0.95}
+            disabled={!online}
+            onPress={() => {
+              haptics.select();
+              onSelected(selected ? null : new Set());
+            }}
+            style={[
+              styles.toolChip,
+              selected && styles.toolChipActive,
+              !online && styles.disabled,
+            ]}
+          >
+            <SymbolView
+              name={selected ? "xmark" : "checklist"}
+              size={14}
+              weight="semibold"
+              tintColor={selected ? colors.canvas : colors.inkMuted}
+            />
+            <Text
+              style={[
+                styles.toolChipText,
+                selected && { color: colors.canvas },
+              ]}
+            >
+              {selected ? "結束選取" : "多選"}
+            </Text>
+          </PressableScale>
+        </View>
       </View>
 
       {words.length === 0 ? (
@@ -456,7 +535,9 @@ function WordList({
             </ListGroup>
           ) : null}
           {rest.length > 0 ? (
-            <ListGroup title={allTop.length > 0 ? `其他 · ${allRest.length}` : undefined}>
+            <ListGroup
+              title={allTop.length > 0 ? `其他 · ${allRest.length}` : undefined}
+            >
               {rest.map(renderWord)}
             </ListGroup>
           ) : null}
@@ -467,14 +548,24 @@ function WordList({
 }
 
 function questionPreview(question: Question): string {
-  if (question.kind === "custom") return `${question.label}：${question.items[0].prompt}`.slice(0, 90);
+  if (question.kind === "custom")
+    return `${question.label}：${question.items[0].prompt}`.slice(0, 90);
   if ("items" in question) {
-    return question.title || question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90);
+    return (
+      question.title ||
+      question.passage.replace(/__(\d+)__/g, "（$1）").slice(0, 90)
+    );
   }
   return question.prompt;
 }
 
-function QuestionList({ content }: { content: SetContent }) {
+function QuestionList({
+  content,
+  query,
+}: {
+  content: SetContent;
+  query: string;
+}) {
   if (!content.questions.length) {
     return (
       <EmptyState
@@ -486,7 +577,14 @@ function QuestionList({ content }: { content: SetContent }) {
   }
 
   const groups = new Map<string, Question[]>();
-  for (const question of content.questions) {
+  const needle = query.trim().toLocaleLowerCase();
+  const matches = content.questions.filter(
+    (question) =>
+      !needle || questionPreview(question).toLocaleLowerCase().includes(needle),
+  );
+  if (!matches.length)
+    return <Text style={styles.emptySearch}>沒有符合的題目</Text>;
+  for (const question of matches) {
     groups.set(question.kind, [...(groups.get(question.kind) ?? []), question]);
   }
 
@@ -502,7 +600,11 @@ function QuestionList({ content }: { content: SetContent }) {
               key={question.id}
               title={questionPreview(question)}
               latinTitle
-              subtitle={"items" in question ? `${question.items.length} 小題` : undefined}
+              subtitle={
+                "items" in question
+                  ? `${question.items.length} 小題`
+                  : undefined
+              }
               accessory={<Chip label={`難度 ${question.difficulty}`} />}
               chevron
               onPress={() =>
@@ -539,6 +641,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  toolGroup: { flexDirection: "row", gap: 8 },
   toolChip: {
     flexDirection: "row",
     alignItems: "center",
@@ -553,7 +656,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.highlightSoft,
   },
   toolChipActive: {
-    backgroundColor: colors.contrast,
+    backgroundColor: colors.ink,
   },
   toolChipText: {
     fontSize: 13,

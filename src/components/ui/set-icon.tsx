@@ -46,7 +46,7 @@ export function SetIcon({
         name={SET_ICON_SYMBOLS[icon] ?? "books.vertical.fill"}
         size={symbolSize}
         weight="medium"
-        tintColor={colors.accentInk}
+        tintColor={colors.ink}
       />
     </View>
   );
@@ -54,7 +54,7 @@ export function SetIcon({
 
 const styles = StyleSheet.create({
   box: {
-    backgroundColor: colors.accentSoft,
+    backgroundColor: colors.surfaceRaised,
     borderCurve: "continuous",
     alignItems: "center",
     justifyContent: "center",

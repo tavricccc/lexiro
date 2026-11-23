@@ -61,7 +61,7 @@ export default function ShareSetSheet() {
       <Screen>
         {link === undefined ? (
           <View style={styles.loader}>
-            <ActivityIndicator size="small" color={colors.contrast as string} />
+            <ActivityIndicator size="small" color={colors.inkMuted as string} />
           </View>
         ) : link ? (
           <Panel>

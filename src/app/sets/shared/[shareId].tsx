@@ -90,7 +90,7 @@ export default function SharedSetScreen() {
           />
         ) : !content ? (
           <View style={styles.loader}>
-            <ActivityIndicator size="small" color={colors.contrast as string} />
+            <ActivityIndicator size="small" color={colors.inkMuted as string} />
           </View>
         ) : (
           <View style={styles.body}>

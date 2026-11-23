@@ -37,7 +37,7 @@ export default function StarredScreen() {
       >
         {loading && !groups.length ? (
           <View style={styles.loader}>
-            <ActivityIndicator size="small" color={colors.contrast as string} />
+            <ActivityIndicator size="small" color={colors.inkMuted as string} />
           </View>
         ) : !groups.length ? (
           <EmptyState

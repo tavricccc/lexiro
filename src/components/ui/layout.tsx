@@ -179,7 +179,7 @@ export function EmptyState({
   return (
     <Panel style={styles.empty}>
       <View style={styles.emptyIconWrap}>
-        <SymbolView name={icon} size={26} weight="medium" tintColor={colors.accentInk} />
+        <SymbolView name={icon} size={26} weight="medium" tintColor={colors.inkMuted} />
       </View>
       <Text style={styles.emptyTitle}>{title}</Text>
       {description ? <Text style={styles.emptyBody}>{description}</Text> : null}
@@ -208,7 +208,7 @@ export function Loaded<T>({
   if (query.isPending) {
     return (
       <View style={styles.loadingWrap}>
-        <ActivityIndicator size="small" color={colors.contrast as string} />
+        <ActivityIndicator size="small" color={colors.inkMuted as string} />
       </View>
     );
   }

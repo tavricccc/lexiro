@@ -150,7 +150,7 @@ export default function TodayScreen() {
               style={styles.sectionLink}
             >
               <Text style={styles.sectionLinkText}>自選練習</Text>
-              <SymbolView name="arrow.right" size={13} weight="bold" tintColor={colors.contrast} />
+              <SymbolView name="arrow.right" size={13} weight="bold" tintColor={colors.ink} />
             </Pressable>
           }
         />
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
   sectionLinkText: {
     fontSize: 14,
     fontWeight: "600",
-    color: colors.contrast,
+    color: colors.ink,
   },
   tileGrid: {
     flexDirection: "row",

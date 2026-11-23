@@ -73,7 +73,7 @@ export default function LiveRoomScreen() {
             />
           ) : !state ? (
             <View style={styles.loader}>
-              <ActivityIndicator size="small" color={colors.contrast as string} />
+              <ActivityIndicator size="small" color={colors.inkMuted as string} />
               <Text style={styles.loaderText}>正在進入房間…</Text>
             </View>
           ) : state.phase === "lobby" ? (

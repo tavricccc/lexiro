@@ -137,7 +137,7 @@ export function ListRow({
           name={icon}
           size={21}
           weight="medium"
-          tintColor={destructive ? colors.danger : (iconTint ?? colors.contrast)}
+          tintColor={destructive ? colors.danger : (iconTint ?? colors.ink)}
           style={styles.icon}
         />
       ) : null}
@@ -378,7 +378,7 @@ export function ActionRow({
   disabled?: boolean;
   onPress: () => void;
 }) {
-  const tint = destructive ? colors.danger : colors.contrast;
+  const tint = destructive ? colors.danger : colors.ink;
   return (
     <Pressable
       accessibilityRole="button"

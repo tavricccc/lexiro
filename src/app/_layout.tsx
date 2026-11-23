@@ -165,6 +165,10 @@ function AppShell({
           }}
         />
         <Stack.Screen
+          name="sets/[setId]/cards"
+          options={{ presentation: "fullScreenModal" }}
+        />
+        <Stack.Screen
           name="sets/[setId]/add"
           options={{ presentation: "modal" }}
         />
@@ -202,7 +206,7 @@ function AppShell({
 
       {restoring ? (
         <View style={[StyleSheet.absoluteFill, styles.restoring]}>
-          <ActivityIndicator size="small" color={dark ? PINE_DARK : PINE_LIGHT} />
+          <ActivityIndicator size="small" color={dark ? plain.inkMuted.dark : plain.inkMuted.light} />
           <Text style={styles.restoringText}>正在載入你的單字…</Text>
         </View>
       ) : null}
