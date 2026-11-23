@@ -423,37 +423,34 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
   const front = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 2400 }, { rotateY: `${angle}deg` }],
+      transform: [{ perspective: 1400 }, { rotateY: `${angle}deg` }],
       opacity: angle < 90 || angle > 270 ? 1 : 0,
     };
   });
   const back = useAnimatedStyle(() => {
     const angle = faceAngle(flip.get());
     return {
-      transform: [{ perspective: 2400 }, { rotateY: `${angle + 180}deg` }],
+      transform: [{ perspective: 1400 }, { rotateY: `${angle + 180}deg` }],
       opacity: angle >= 90 && angle <= 270 ? 1 : 0,
-    };
-  });
-  // The shadow lives on a flat plate that narrows with the turn, so the
-  // turning faces carry no shadow and their text stays sharp.
-  const plate = useAnimatedStyle(() => {
-    const angle = faceAngle(flip.get());
-    return {
-      transform: [{ scaleX: Math.max(Math.abs(Math.cos((angle * Math.PI) / 180)), 0.02) }],
     };
   });
   const original = word.senses.filter((sense) => !sense.supplementary);
   const extra = word.senses.filter((sense) => sense.supplementary);
 
   return (
+    // Without shouldRasterizeIOS the layer's rasterizationScale stays at 1, so the
+    // offscreen pass of a 3D turn can draw the face at 1x. This draws face and
+    // shadow once at the screen's scale and turns that picture.
     <>
-      <Animated.View style={[styles.plate, plate]} />
-      <Animated.View style={[styles.card, front]}>
+      <Animated.View style={[styles.card, front]} shouldRasterizeIOS>
         <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
           {word.word}
         </Text>
       </Animated.View>
-      <Animated.View style={[styles.card, styles.cardBack, back]}>
+      <Animated.View
+        style={[styles.card, styles.cardBack, back]}
+        shouldRasterizeIOS
+      >
         <Text style={styles.backWord} numberOfLines={1}>
           {word.word}
         </Text>
@@ -648,14 +645,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 20,
     backfaceVisibility: "hidden",
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.line,
-  },
-  plate: {
-    ...StyleSheet.absoluteFill,
-    backgroundColor: colors.surface,
-    borderRadius: radius.hero,
-    borderCurve: "continuous",
     boxShadow: "0 8px 24px rgba(17,21,18,0.08)",
   },
   cardBack: {
