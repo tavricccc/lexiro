@@ -138,7 +138,7 @@ function Segment({
   const palette = hexPalette(useColorScheme() === "dark");
   const cover = useDerivedValue(() => Math.max(0, 1 - Math.abs(position.value - index)));
   const text = useAnimatedStyle(() => ({
-    color: interpolateColor(cover.value, [0, 1], [palette.inkMuted, palette.onContrast]),
+    color: interpolateColor(cover.value, [0, 1], [palette.inkMuted, palette.canvas]),
   }));
   return (
     <Pressable
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     left: PADDING,
     borderRadius: radius.pill,
     borderCurve: "continuous",
-    backgroundColor: colors.contrast,
+    backgroundColor: colors.ink,
   },
   segment: {
     flex: 1,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   scrollPillActive: {
-    backgroundColor: colors.contrast,
+    backgroundColor: colors.ink,
   },
   scrollLabel: {
     fontSize: 14,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     color: colors.inkMuted,
   },
   scrollLabelActive: {
-    color: colors.onContrast,
+    color: colors.canvas,
     fontWeight: "600",
   },
 });
