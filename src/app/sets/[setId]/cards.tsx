@@ -19,6 +19,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { DescriptionPoints } from "@/components/ui/description-points";
 import { CONTENT_MAX_WIDTH, Chip, EmptyState, Loaded } from "@/components/ui/layout";
 import { Button, IconButton } from "@/components/ui/button";
+import { timing } from "@/components/ui/motion";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { StarButton } from "@/components/ui/star-button";
@@ -77,7 +78,8 @@ type Ghost = {
   axis: number;
   grab: number;
   velocity: number;
-  step: 1 | -1;
+  /** The side it leaves by: -1 left, 1 right. */
+  side: 1 | -1;
 };
 
 /** Which way a card faces after `flip` half-turns: 0 front, 180 back. */
@@ -152,6 +154,8 @@ function Deck({ content }: { content: SetContent }) {
   const [index, setIndex] = useState(0);
   /** Cards already thrown, still flying off screen while the next one is in play. */
   const [ghosts, setGhosts] = useState<Ghost[]>([]);
+  /** The side each thrown card left by, so going back brings it in from there. */
+  const [leftBy, setLeftBy] = useState<Record<string, 1 | -1>>({});
 
   const byId = useMemo(
     () => new Map(content.words.map((word) => [word.id, word])),
@@ -188,7 +192,7 @@ function Deck({ content }: { content: SetContent }) {
   const armed = useSharedValue(false);
   /**
    * How far the whole pile has moved up by one card: toward 1 while the top
-   * card is pulled away, toward -1 while the previous card is pulled back on.
+   * card is pulled away, toward -1 while the previous card flies back on.
    * Every card lies at its depth minus this.
    */
   const shift = useSharedValue(0);
@@ -226,7 +230,7 @@ function Deck({ content }: { content: SetContent }) {
   );
 
   const throwCard = (
-    step: 1 | -1,
+    side: 1 | -1,
     velocity: number,
     from: { x: number; y: number; flip: number },
   ) => {
@@ -241,18 +245,20 @@ function Deck({ content }: { content: SetContent }) {
         axis: axis.get(),
         grab: grab.get(),
         velocity,
-        step,
+        side,
       },
     ]);
+    setLeftBy((sides) => ({ ...sides, [word.id]: side }));
     pendingArrive.set(1 - Math.min(Math.max(shift.get(), 0), 1));
-    setIndex(at + step);
+    setIndex(at + 1);
   };
 
-  /** The previous card has landed back on the pile. */
+  /** The previous card has landed back on the pile, with a small thud. */
   const putBack = () => {
     haptics.confirm();
     pendingArrive.set(0);
     setIndex((current) => Math.max(0, current - 1));
+    press.set(withSequence(withTiming(0.975, timing.press), withSpring(1, SETTLE)));
   };
 
   const bump = (step: 1 | -1) => {
@@ -264,6 +270,7 @@ function Deck({ content }: { content: SetContent }) {
   const go = (step: 1 | -1) => {
     if ((step === 1 && !canNext) || (step === -1 && !canPrev)) return bump(step);
     if (step === -1) {
+      // The card that went last flies back in from the side it left by.
       shift.set(
         withSpring(-1, LAND, (done) => {
           if (done) runOnJS(putBack)();
@@ -272,7 +279,7 @@ function Deck({ content }: { content: SetContent }) {
       return;
     }
     grab.set(1);
-    throwCard(1, -1800, { x: x.get(), y: y.get(), flip: flip.get() });
+    throwCard(-1, -1800, { x: x.get(), y: y.get(), flip: flip.get() });
   };
 
   const turn = () => {
@@ -292,24 +299,18 @@ function Deck({ content }: { content: SetContent }) {
       lift.set(withSpring(1, SETTLE));
     })
     .onUpdate((event) => {
+      // Either way off the pile is the next card; going back is the button's job.
       const tx = event.translationX;
-      const back = tx > 0;
-      const blocked = back ? !canPrev : !canNext;
+      const blocked = !canNext;
       if (blocked) {
-        // Rubber band past either end of the deck.
+        // Rubber band at the end of the deck.
         x.set(tx * 0.22);
         y.set(event.translationY * 0.25);
         shift.set(0);
-      } else if (back) {
-        // The card that went last comes back from the left under the finger;
-        // the top card stays and sinks into the pile.
-        x.set(0);
-        y.set(0);
-        shift.set(-Math.min(tx / width, 1));
       } else {
         x.set(tx);
         y.set(event.translationY * 0.25);
-        shift.set(Math.min(-tx / (width * 0.6), 1));
+        shift.set(Math.min(Math.abs(tx) / (width * 0.6), 1));
       }
       const past = !blocked && Math.abs(tx) > COMMIT_DISTANCE;
       if (past !== armed.get()) {
@@ -319,20 +320,13 @@ function Deck({ content }: { content: SetContent }) {
     })
     .onEnd((event) => {
       const tx = event.translationX;
-      const back = tx > 0;
-      const allowed = back ? canPrev : canNext;
+      const allowed = canNext;
       const thrown =
         Math.abs(tx) > COMMIT_DISTANCE ||
         (Math.abs(event.velocityX) > COMMIT_VELOCITY &&
           Math.sign(event.velocityX) === Math.sign(tx));
-      if (allowed && thrown && back) {
-        shift.set(
-          withSpring(-1, { ...LAND, velocity: -event.velocityX / width }, (done) => {
-            if (done) runOnJS(putBack)();
-          }),
-        );
-      } else if (allowed && thrown) {
-        runOnJS(throwCard)(1, event.velocityX, {
+      if (allowed && thrown) {
+        runOnJS(throwCard)(tx < 0 ? -1 : 1, event.velocityX, {
           x: x.get(),
           y: y.get(),
           flip: flip.get(),
@@ -462,7 +456,13 @@ function Deck({ content }: { content: SetContent }) {
               </Animated.View>
             </GestureDetector>
             {previous ? (
-              <ReturningCard key={previous.id} word={previous} shift={shift} width={width} />
+              <ReturningCard
+                key={previous.id}
+                word={previous}
+                side={leftBy[previous.id] ?? -1}
+                shift={shift}
+                width={width}
+              />
             ) : null}
             {ghosts.map((ghost) => (
               <FlyingCard
@@ -555,24 +555,32 @@ const PileCard = memo(function PileCard({
   );
 });
 
-/** The card before this one, off to the left, pulled back onto the pile while going back. */
+/**
+ * The card before this one, waiting off screen on the side it was thrown to.
+ * Going back, it flies in along a low arc, held a little above the pile, and
+ * drops onto it.
+ */
 const ReturningCard = memo(function ReturningCard({
   word,
+  side,
   shift,
   width,
 }: {
   word: Word;
+  side: 1 | -1;
   shift: SharedValue<number>;
   width: number;
 }) {
   const move = useAnimatedStyle(() => {
     const on = Math.min(Math.max(-shift.get(), 0), 1);
+    const away = 1 - on;
     return {
       opacity: on > 0 ? 1 : 0,
       transform: [
-        { translateX: -width * (1 - on) },
-        { translateY: (1 - on) * 30 },
-        { rotateZ: `${-(1 - on) * 14}deg` },
+        { translateX: side * width * 1.2 * away },
+        { translateY: away * 40 - Math.sin(on * Math.PI) * 34 },
+        { rotateZ: `${side * away * 18}deg` },
+        { scale: 1 + away * 0.06 },
       ],
     };
   });
@@ -681,7 +689,7 @@ function FlyingCard({ ghost, width, onGone }: { ghost: Ghost; width: number; onG
   const lift = useSharedValue(1);
 
   useEffect(() => {
-    const target = -ghost.step * width * 1.5;
+    const target = ghost.side * width * 1.5;
     x.set(
       withSpring(target, { ...THROW, velocity: ghost.velocity }, (done) => {
         if (done) runOnJS(onGone)();
