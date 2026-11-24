@@ -1,0 +1,68 @@
+name: EAS Update
+
+# Publishes the JS bundle over the air to the production channel, which the
+# sideloaded .ipa listens on. A native change gives a new fingerprint runtime
+# version, so only an .ipa built from that commit picks its update up.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: eas-update-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      # node_modules itself, so a push with the same lockfile skips npm ci.
+      - name: Restore node_modules
+        id: modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      # Metro's transform cache (under the temp dir), carried from the last
+      # publish, so only files that changed are transformed again. It restarts
+      # empty whenever the lockfile changes, so it cannot grow without end.
+      - name: Restore the Metro cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/metro-cache
+          key: metro-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: metro-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+
+      - name: Set the version
+        id: version
+        run: echo "version=$(node scripts/set-version.mjs)" >> "$GITHUB_OUTPUT"
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Publish the update
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          MESSAGE: ${{ github.event.head_commit.message }}
+          # Metro keeps its cache in os.tmpdir(); point it at the restored one.
+          TMPDIR: ${{ runner.temp }}
+        run: |
+          eas update --channel production --environment production \
+            --platform ios --non-interactive \
+            --message "v$VERSION $(printf '%s' "${MESSAGE:-manual}" | head -n 1)"
