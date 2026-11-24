@@ -38,6 +38,7 @@ export const routes: RouteObject[] = [
               { path: "starred", lazy: screen(() => import("@/features/library/starred-page")) },
               { path: "sets/new", lazy: screen(() => import("@/features/library/new-set-page")) },
               { path: "sets/:setId", lazy: screen(() => import("@/features/library/set-page")) },
+              { path: "sets/:setId/cards", lazy: screen(() => import("@/features/library/cards-page")) },
               { path: "sets/:setId/settings", lazy: screen(() => import("@/features/library/set-settings-page")) },
               { path: "sets/:setId/add", lazy: screen(() => import("@/features/library/add-words-page")) },
               { path: "sets/:setId/words/:wordId", lazy: screen(() => import("@/features/library/set-page")) },

@@ -27,8 +27,11 @@ export function activeDestination(pathname: string): string | null {
   return match?.href ?? (pathname === "/app" ? "/app" : null);
 }
 
-/** Screens that take the whole screen: a practice round and a live room. */
-const immersive = (pathname: string) => pathname.startsWith("/app/practice/run") || /^\/app\/rooms\/[^/]+/.test(pathname);
+/** Screens that take the whole screen: a practice round, flashcards, and a live room. */
+const immersive = (pathname: string) =>
+  pathname.startsWith("/app/practice/run") ||
+  /^\/app\/rooms\/[^/]+/.test(pathname) ||
+  /^\/app\/sets\/[^/]+\/cards$/.test(pathname);
 
 /** Only the five destinations show the dock; deeper pages lead back with their own control. */
 const isDestination = (pathname: string) => NAV.some((item) => item.href === pathname);
