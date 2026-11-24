@@ -42,7 +42,16 @@ jobs:
           node-version: 24
           cache: npm
 
-      - run: npm ci
+      # node_modules itself, so a push with the same lockfile skips npm ci.
+      - name: Restore node_modules
+        id: modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.modules.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Resolve the runtime version
         id: resolve
@@ -88,7 +97,16 @@ jobs:
           node-version: 24
           cache: npm
 
-      - run: npm ci
+      # node_modules itself, so a push with the same lockfile skips npm ci.
+      - name: Restore node_modules
+        id: modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+
+      - if: steps.modules.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Set the version
         id: version
