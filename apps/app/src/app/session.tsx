@@ -190,6 +190,7 @@ export default function SessionScreen() {
 
   // Answered steps can be looked at again, as they were answered.
   const [back, setBack] = useState(0);
+  const [repeated, setRepeated] = useState(false);
   const shown = round && !finished(round) ? lookBack(round, back) : round;
   const canGoBack = Boolean(shown && !finished(shown) && (shown.index > 0 || shown.step > 0));
 
@@ -245,6 +246,7 @@ export default function SessionScreen() {
             const again = newRound(items, round.setIds);
             saveRound(again);
             setRound(again);
+            setRepeated(true);
           }}
         />
       ) : !ready ? (
@@ -252,6 +254,7 @@ export default function SessionScreen() {
       ) : (
         <PracticeCard
           round={shown}
+          arrives={repeated}
           lookingBack={back > 0}
           pick={pick}
           next={back > 0 ? () => setBack(back - 1) : next}
@@ -265,12 +268,15 @@ export default function SessionScreen() {
 
 function PracticeCard({
   round,
+  arrives,
   lookingBack,
   pick,
   next,
   accept,
 }: {
   round: Round;
+  /** Takes the results' place, instead of coming with the page. */
+  arrives: boolean;
   lookingBack: boolean;
   pick: (option: Choice | null) => void;
   next: () => void;
@@ -279,8 +285,6 @@ function PracticeCard({
   const insets = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
   const split = useWindowDimensions().width >= SPLIT_MIN_WIDTH;
-  const main = useScrollMore();
-  const side = useScrollMore();
   const item = round.items[round.index];
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
@@ -291,7 +295,11 @@ function PracticeCard({
 
   // The next button floats over the page, so answering does not resize it.
   const barHeight = 60 + Math.max(insets.bottom, 14);
-  const bottomPad = round.revealed ? { paddingBottom: barHeight + 12 } : { paddingBottom: Math.max(insets.bottom, 20) };
+  const padding = round.revealed ? barHeight + 12 : Math.max(insets.bottom, 20);
+  const bottomPad = { paddingBottom: padding };
+  // The bar lies over the answers, and over a phone's whole page.
+  const main = useScrollMore({ blank: round.revealed ? 12 : padding });
+  const side = useScrollMore({ blank: padding });
 
   // Looking back slides the other way.
   const [place, setPlace] = useState({ index: round.index, back: false });
@@ -363,7 +371,7 @@ function PracticeCard({
   const scrollMore = (
     <ScrollMore
       visible={main.more}
-      onPress={main.scrollOn}
+      onPress={main.scrollToEnd}
       bottom={round.revealed ? barHeight + 8 : Math.max(insets.bottom, 8) + 8}
     />
   );
@@ -389,7 +397,7 @@ function PracticeCard({
 
         {/* Main Content */}
         {/* The first question comes with the page; only later ones slide in. */}
-        <LayoutAnimationConfig skipEntering>
+        <LayoutAnimationConfig skipEntering={!arrives}>
           <Animated.View
             key={round.index}
             entering={place.back ? slideBack : slideNext}
@@ -409,7 +417,7 @@ function PracticeCard({
                   </ScrollView>
                   <ScrollMore
                     visible={side.more}
-                    onPress={side.scrollOn}
+                    onPress={side.scrollToEnd}
                     bottom={Math.max(insets.bottom, 8) + 8}
                   />
                 </View>
@@ -899,7 +907,8 @@ function ResultsView({
 }) {
   const insets = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
-  const page = useScrollMore();
+  const padding = Math.max(insets.bottom, 24) + 16;
+  const page = useScrollMore({ blank: padding });
   const outcome = useMemo(() => result(round), [round]);
   const { words, marked } = useContext(MarksContext);
   const [endedAt] = useState(() => Date.now());
@@ -937,7 +946,7 @@ function ResultsView({
   ];
 
   return (
-    <View style={styles.root}>
+    <Animated.View entering={slideNext} style={styles.root}>
       <ScrollView
         {...page.scrollProps}
         style={styles.root}
@@ -945,7 +954,7 @@ function ResultsView({
           styles.resultsContent,
           {
             paddingTop: headerHeight + 16,
-            paddingBottom: Math.max(insets.bottom, 24) + 16,
+            paddingBottom: padding,
           },
         ]}
       >
@@ -1021,10 +1030,10 @@ function ResultsView({
       </ScrollView>
       <ScrollMore
         visible={page.more}
-        onPress={page.scrollOn}
+        onPress={page.scrollToEnd}
         bottom={Math.max(insets.bottom, 8) + 8}
       />
-    </View>
+    </Animated.View>
   );
 }
 

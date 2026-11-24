@@ -35,7 +35,8 @@ export default function LiveRoomScreen() {
   const headerHeight = useHeaderHeight();
   const room = useRoomSocket(code.toUpperCase(), account?.name.slice(0, 40) || "Player");
   const { state, connection } = room;
-  const { scrollProps, more, scrollOn } = useScrollMore();
+  const padding = Math.max(insets.bottom, 24) + 16;
+  const { scrollProps, more, scrollToEnd } = useScrollMore({ blank: padding });
 
   return (
     <View style={[styles.root, { paddingTop: headerHeight }]}>
@@ -51,7 +52,7 @@ export default function LiveRoomScreen() {
           {...scrollProps}
           contentContainerStyle={[
             styles.scrollContent,
-            { paddingBottom: Math.max(insets.bottom, 24) + 16 },
+            { paddingBottom: padding },
           ]}
           showsVerticalScrollIndicator={false}
         >
@@ -69,24 +70,31 @@ export default function LiveRoomScreen() {
               <ActivityIndicator size="small" color={colors.inkMuted as string} />
               <Text style={styles.loaderText}>正在進入房間…</Text>
             </View>
-          ) : state.phase === "lobby" ? (
-            <LobbyView host={state.you === state.hostUid} send={room.send} state={state} />
-          ) : state.phase === "ended" ? (
-            <EndedView state={state} />
           ) : (
             <LayoutAnimationConfig skipEntering>
-              <Animated.View key={state.index} entering={slideNext} style={styles.liveWrap}>
-                <LiveQuestionView
-                  host={state.you === state.hostUid}
-                  offset={room.offset}
-                  send={room.send}
-                  state={state}
-                />
+              {/* The lobby, each question and the results follow one another from the side. */}
+              <Animated.View
+                key={state.phase === "lobby" || state.phase === "ended" ? state.phase : state.index}
+                entering={slideNext}
+                style={styles.liveWrap}
+              >
+                {state.phase === "lobby" ? (
+                  <LobbyView host={state.you === state.hostUid} send={room.send} state={state} />
+                ) : state.phase === "ended" ? (
+                  <EndedView state={state} />
+                ) : (
+                  <LiveQuestionView
+                    host={state.you === state.hostUid}
+                    offset={room.offset}
+                    send={room.send}
+                    state={state}
+                  />
+                )}
               </Animated.View>
             </LayoutAnimationConfig>
           )}
         </ScrollView>
-        <ScrollMore visible={more} onPress={scrollOn} bottom={Math.max(insets.bottom, 8) + 8} />
+        <ScrollMore visible={more} onPress={scrollToEnd} bottom={Math.max(insets.bottom, 8) + 8} />
       </View>
     </View>
   );

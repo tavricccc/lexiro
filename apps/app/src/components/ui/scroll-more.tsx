@@ -29,23 +29,28 @@ import { haptics } from "@/lib/haptics";
 import { DURATION } from "./motion";
 
 const glass = isLiquidGlassAvailable();
-/** Less than this below the fold is only padding. */
+/** Less than this below the fold is not worth a button. */
 const SLACK = 8;
 
 /**
  * Follows a scroll view and tells whether content is left below. Spread
  * `scrollProps` on the scroll view and render `ScrollMore` after it.
- * `underHeader` is for a scroll view whose content the system insets.
+ * `underHeader` is for a scroll view whose content the system insets; `blank`
+ * is the empty padding after its content, which is nothing to scroll to.
  */
 export function useScrollMore({
   underHeader = false,
+  blank = 0,
   onScroll,
 }: {
   underHeader?: boolean;
+  blank?: number;
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 } = {}) {
   const header = useContext(HeaderHeightContext) ?? 0;
+  const insets = useSafeAreaInsets();
   const start = underHeader ? -header : 0;
+  const end = underHeader ? insets.bottom : 0;
   const view = useRef<Pick<ScrollView, "scrollTo"> | null>(null);
   const metrics = useRef({ offset: null as number | null, height: 0, content: 0 });
   const [more, setMore] = useState(false);
@@ -53,8 +58,8 @@ export function useScrollMore({
 
   const measure = useCallback(() => {
     const { offset, height, content } = metrics.current;
-    setMore(height > 0 && content - height - (offset ?? start) > SLACK);
-  }, [start]);
+    setMore(height > 0 && content + end - height - (offset ?? start) - blank > SLACK);
+  }, [start, end, blank]);
 
   const ref = useCallback((node: Pick<ScrollView, "scrollTo"> | null) => {
     view.current = node;
@@ -86,23 +91,24 @@ export function useScrollMore({
     [measure],
   );
 
-  /** One page further, keeping the last lines in sight. */
-  const scrollOn = useCallback(() => {
-    const { offset, height } = metrics.current;
+  const scrollToEnd = useCallback(() => {
+    const { height, content } = metrics.current;
     haptics.select();
-    view.current?.scrollTo({ y: (offset ?? start) + height * 0.7, animated: true });
-  }, [start]);
+    view.current?.scrollTo({ y: Math.max(start, content + end - height), animated: true });
+  }, [start, end]);
 
   return {
     more,
     height,
-    scrollOn,
+    scrollToEnd,
     scrollProps: {
       ref,
       onScroll: handleScroll,
       onLayout,
       onContentSizeChange,
       scrollEventThrottle: 16,
+      // Without it the end stops short by what the system insets (home indicator, tab bar).
+      scrollToOverflowEnabled: true,
     },
   };
 }
@@ -135,7 +141,7 @@ export function ScrollMore({
             buttonStyle(glass ? "glass" : "bordered"),
             buttonBorderShape("circle"),
             controlSize("large"),
-            accessibilityLabel("往下捲"),
+            accessibilityLabel("捲到最底"),
             accessibilityHidden(!visible),
             disabled(!visible),
             opacity(visible ? 1 : 0),

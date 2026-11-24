@@ -40,16 +40,17 @@ function usePageScrollMore(
   contentContainerStyle: ScrollViewProps["contentContainerStyle"],
   onScroll: ScrollViewProps["onScroll"],
 ) {
-  const { scrollProps, more, scrollOn } = useScrollMore({
+  const padding = Number(StyleSheet.flatten([styles.content, contentContainerStyle]).paddingBottom) || 0;
+  const footer = padding >= FOOTER_PADDING ? FOOTER_HEIGHT : 0;
+  const { scrollProps, more, scrollToEnd } = useScrollMore({
     underHeader: true,
+    blank: padding - footer,
     onScroll: onScroll ?? undefined,
   });
-  const inset = useScrollMoreInset();
-  const padding = Number(StyleSheet.flatten(contentContainerStyle)?.paddingBottom) || 0;
-  const bottom = padding >= FOOTER_PADDING ? inset + FOOTER_HEIGHT : inset;
+  const bottom = useScrollMoreInset() + footer;
   return {
     scrollProps,
-    button: <ScrollMore visible={more} onPress={scrollOn} bottom={bottom} />,
+    button: <ScrollMore visible={more} onPress={scrollToEnd} bottom={bottom} />,
   };
 }
 
