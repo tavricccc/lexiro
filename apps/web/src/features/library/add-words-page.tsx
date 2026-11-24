@@ -67,7 +67,7 @@ function AddOne({ content }: { content: SetContent }) {
       <Reveal gap="1.5rem" open={Boolean(existing)}><p className="px-1 text-sm text-info">這個單字集已經有「{known?.word}」，新的意思會加到它下面。</p></Reveal>
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
       <BottomBar>
-        <div className="glass-float flex justify-end gap-2 rounded-full p-1.5">
+        <div className="glass-float flex gap-2 rounded-full p-1.5 max-md:*:flex-1 md:justify-end">
           <Button disabled={!online || status !== "idle"} onClick={() => void save(false)} variant="ghost">儲存並返回</Button>
           <Button disabled={!online} status={status} type="submit" variant="primary">儲存，再加一個</Button>
         </div>

@@ -62,7 +62,7 @@
 
 /* Tabs swap inside one surface; a push draws its leading edge over the last page. */
 .screen[data-presentation="push"] { overflow: visible; }
-.screen[data-presentation="push"] > .screen-surface { box-shadow: 0 0 2.5rem rgb(0 0 0 / 14%); }
+.screen:is([data-presentation="push"], [data-presentation="full"]) > .screen-surface { box-shadow: 0 0 2.5rem rgb(0 0 0 / 14%); }
 
 .screen[data-recessed] > .screen-surface {
   border-radius: 0.75rem;
@@ -110,13 +110,24 @@
 }
 
 /* Room for whatever lies over the foot; not padding, which browsers disagree on for sticky bars. */
-.screen-scroller::after { content: ""; display: block; height: var(--screen-foot); }
+.screen-scroller::after { content: ""; display: block; flex: none; height: var(--screen-foot); }
 
 .screen-body {
   width: 100%;
   max-width: 48rem;
   margin-inline: auto;
   padding: calc(var(--safe-top) + 1.5rem) var(--gutter) 2rem;
+}
+
+/* On a phone the main action waits at the foot even when little stands above it. */
+@media (max-width: 47.99rem) {
+  .screen-scroller { display: flex; flex-direction: column; }
+  .screen-scroller > * { flex: none; }
+  .screen-scroller > .screen-body:has([data-bottom-bar]) { flex: 1 0 auto; }
+  .screen-body:has([data-bottom-bar]),
+  .screen-body :has([data-bottom-bar]) { display: flex; flex-direction: column; }
+  .screen-body :has([data-bottom-bar]) { flex: 1 0 auto; }
+  .screen-body [data-bottom-bar] { margin-top: auto; }
 }
 
 /* How much of the foot the dock or the home indicator lies over. */

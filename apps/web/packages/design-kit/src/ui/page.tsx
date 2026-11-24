@@ -76,18 +76,14 @@ export function PageHeader({ actions, back, className, description, sheet = fals
   );
   return (
     <>
-    {back || actions ? (
-      // Outside the header so it stays pinned for the whole page; the small title is centred on the buttons' line.
-      // It starts on the line it is pinned to, so it never shifts as the page begins to scroll.
-      <div className={cn(toolbarClass, "-mb-2 -mt-4 md:-mt-6")}>
-        <div className="flex">{control}</div>
-        {smallTitle}
-        <div className="flex items-center justify-end gap-2">{actions}</div>
-      </div>
-    ) : (
-      // Takes no room of its own: it lies over the page's first lines, unseen until they have scrolled away.
-      <div className={cn(toolbarClass, "pointer-events-none -mb-15 grid-cols-1 justify-items-center px-16")}>{smallTitle}</div>
-    )}
+    {/* Outside the header so it stays pinned for the whole page; the small title is centred on the buttons' line.
+        It starts on the line it is pinned to, so it never shifts as the page begins to scroll, and is there
+        without buttons too, so every page's title stands at the same height. */}
+    <div className={cn(toolbarClass, "-mb-2 -mt-4 md:-mt-6", !back && !actions && "pointer-events-none")}>
+      <div className="flex">{control}</div>
+      {smallTitle}
+      <div className="flex items-center justify-end gap-2">{actions}</div>
+    </div>
     <header className={cn("grid gap-1", className)}>
       <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight">{title}</h1>
       {description ? <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}

@@ -32,6 +32,7 @@ function away(presentation: Presentation, { compact, still }: Viewing): Pose {
 function under(over: Presentation, { compact, still }: Viewing): Pose {
   if (still) return REST;
   if (over === "push") return { ...REST, x: "-30%", dim: 1 };
+  if (over === "full") return { ...REST, dim: 1 };
   if (over === "modal" && compact) return { ...REST, y: "var(--stage-recede)", scale: 0.92 };
   return REST;
 }

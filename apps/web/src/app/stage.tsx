@@ -226,8 +226,11 @@ export function Stage({ rail, dock }: {
           {tab ? dock(tab) : null}
         </Layer>
       ) : null}
-      {entries.map((entry, i) => (entry.presentation === "tab" ? null : layer(entry, depth(i), i === entries.length - 1)))}
-      {leaving.map((entry, i) => layer(entry, (over >= 0 || isOverlay(entry.presentation) ? 70 : 20) + i, false))}
+      {/* One list: a screen on its way out is still the screen it was. */}
+      {[
+        ...entries.map((entry, i) => (entry.presentation === "tab" ? null : layer(entry, depth(i), i === entries.length - 1))),
+        ...leaving.map((entry, i) => layer(entry, (over >= 0 || isOverlay(entry.presentation) ? 70 : 20) + i, false)),
+      ]}
     </div>
   );
 }

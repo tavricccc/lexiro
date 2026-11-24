@@ -80,7 +80,7 @@ function Detail({ content, word }: { content: SetContent; word: Word }) {
         })}
       </div>
       <BottomBar>
-        <div className="glass-float flex justify-end gap-2 rounded-full p-1.5">
+        <div className="glass-float flex gap-2 rounded-full p-1.5 max-md:*:flex-1 md:justify-end">
           <Button disabled={!online} onClick={() => setRemoving(true)} variant="danger"><Trash weight="bold" />刪除</Button>
           <Button asChild variant="primary"><AppLink href={`/app/sets/${setId}/words/${word.id}/edit`}><PencilSimple weight="bold" />編輯</AppLink></Button>
         </div>

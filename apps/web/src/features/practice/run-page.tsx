@@ -485,13 +485,14 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
   const score = outcome.total ? Math.round((outcome.correct / outcome.total) * 100) : 0;
   const wrong = outcome.total - outcome.correct;
   const [filter, setFilter] = useState<ReviewFilter>(wrong ? "missed" : "all");
+  const [switched, setSwitched] = useState(false);
   const steps = round.items.flatMap((item, index) => (item.steps as (Step | CustomStep)[]).map((step, at) => ({ item, step, key: `${index}-${at}`, at, choice: round.choices[index]?.[at] })));
   const shown = filter === "missed" ? steps.filter((entry) => !isRight(entry.step, entry.choice)) : steps;
   return (
     <div className="relative min-h-0 flex-1">
       <div className="h-full overflow-y-auto overscroll-contain" ref={page}>
         <div className="mx-auto grid w-full max-w-xl content-start gap-3 px-3 pb-[calc(var(--safe-bottom)+2.5rem)] pt-[calc(var(--safe-top)+1rem)] md:pt-[calc(var(--safe-top)+2.5rem)]">
-          <section className="content-in grid gap-4 rounded-[2rem] bg-ink p-5 text-canvas">
+          <section className="grid gap-4 rounded-[2rem] bg-ink p-5 text-canvas">
             <div>
               <p className="text-sm text-canvas/65">這一輪完成了</p>
               <p className="mt-1 font-latin text-[4.25rem] font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={score} /><span className="text-3xl text-canvas/55">%</span></p>
@@ -511,7 +512,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
           <Segmented<ReviewFilter>
             className="justify-self-start"
             label="復盤範圍"
-            onChange={setFilter}
+            onChange={(next) => { setFilter(next); setSwitched(true); }}
             options={[
               ...(wrong ? [{ value: "missed" as const, label: `答錯 ${wrong}` }] : []),
               ...(marked.length ? [{ value: "starred" as const, label: `標星 ${marked.length}` }] : []),
@@ -533,7 +534,7 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
               })}
             </ul>
           ) : (
-            <ol className="content-in grid gap-2" key={filter}>
+            <ol className={cn("grid gap-2", switched && "content-in")} key={filter}>
               {shown.map(({ item, step, key, at, choice }) => <ReviewItem at={at} choice={choice} item={item} key={key} step={step} />)}
             </ol>
           )}

@@ -12,6 +12,7 @@ import { availableTasks, buildRound, type Focus } from "@/domain/practice";
 import { newRound } from "@/domain/round";
 import { orderedSets } from "@/features/library/library-page";
 import { BottomBar, Page } from "@/ui/page";
+import { useScreen } from "@/ui/screen";
 import { SetIcon } from "@/ui/set-icon";
 
 const AMOUNTS = ["10", "20", "30", "50"] as const;
@@ -24,6 +25,14 @@ export default function SetupPage() {
   const { learning } = useLearning();
   const saved = useSavedRound();
   const unfinished = useLast(saved);
+  // The round just started shows up here only once it covers this page.
+  const { active } = useScreen();
+  const [starting, setStarting] = useState(false);
+  useEffect(() => {
+    if (active) return;
+    const covered = setTimeout(() => setStarting(false), 700);
+    return () => { clearTimeout(covered); setStarting(false); };
+  }, [active]);
   const sets = orderedSets(library.data?.sets ?? []).filter((set) => set.wordCount > 0);
   // Opened from a set: practise that set; no second pick.
   const [fromSets] = useState(() => params.getAll("set"));
@@ -75,12 +84,13 @@ export default function SetupPage() {
   const start = () => {
     const items = buildRound({ contents: data, tasks, amount: Number(size), focus, learning });
     if (!items.length) return setError(focus === "starred" ? "選的單字集裡沒有標星的單字。" : "這些題型在選的單字集裡沒有可以出的題目。");
+    if (!saved) setStarting(true);
     saveRound(newRound(items, ids));
     navigate("/app/practice/run");
   };
   return (
     <Page back={back} title="練習">
-      <Reveal gap="1.5rem" open={saved !== null}>
+      <Reveal gap="1.5rem" open={saved !== null && !starting}>
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="font-semibold">有一輪還沒做完</p>

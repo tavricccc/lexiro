@@ -57,7 +57,7 @@ function Editor({ content, word }: { content: SetContent; word: Word }) {
         <Reveal gap="1.5rem" open={removed > 0}><p className="px-1 text-sm text-caution">刪掉的 {shownRemoved} 個意思，相關題目會一起移除。</p></Reveal>
         {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
         <BottomBar>
-          <div className="glass-float flex justify-end gap-2 rounded-full p-1.5">
+          <div className="glass-float flex gap-2 rounded-full p-1.5 max-md:*:flex-1 md:justify-end">
             <Button onClick={() => leave.back(back)} variant="ghost">取消</Button>
             <Button disabled={!online} status={status} type="submit" variant="primary">儲存</Button>
           </div>
