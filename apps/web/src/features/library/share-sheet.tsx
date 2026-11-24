@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Copy, LinkBreak, ShareNetwork } from "@phosphor-icons/react";
+import { Check, Copy, LinkBreak, ShareNetwork } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { SetSummary } from "@lexiro/contract";
-import { Button, ConfirmDialog, ListGroup, ListRow, Sheet } from "design-kit";
+import { Button, ConfirmDialog, ListGroup, ListRow, Panel, Sheet, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { shareOf, shareSet, unshareSet } from "@/data/library";
 import { keys, queryClient } from "@/data/queries";
 import { useOnline } from "@/ui/offline-banner";
 import { Loaded } from "@/ui/page";
-
-const copy = (text: string, done: string) =>
-  navigator.clipboard.writeText(text).then(() => toast.success(done), () => toast.error("無法複製，請手動選取。"));
 
 /**
  * A share works like a shared document: whoever has its link or code sees the
@@ -44,28 +41,39 @@ function ShareBody({ set }: { set: SetSummary }) {
     <Loaded query={share}>
       {(code) => {
         if (!code)
-          return <Button disabled={busy || !online} onClick={() => void run(() => shareSet(set.id))} size="lg" variant="primary"><ShareNetwork />開始分享</Button>;
+          return <Button disabled={busy || !online} onClick={() => void run(() => shareSet(set.id))} size="lg" variant="primary"><ShareNetwork weight="bold" />開始分享</Button>;
         const url = `${location.origin}/shared/${code}`;
         return (
-          <div className="grid gap-5">
+          <div className="grid gap-4">
+            <Panel className="grid gap-5 pt-6">
+              <p
+                aria-label={`分享代碼 ${code.split("").join(" ")}`}
+                className={cn(
+                  "select-all break-all text-center font-latin font-bold text-ink",
+                  code.length > 12 ? "text-lg tracking-normal" : "text-[2.125rem] leading-none tracking-[0.2em]",
+                )}
+              >
+                {code}
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <CopyButton label="複製代碼" text={code} />
+                <CopyButton label="複製連結" text={url} />
+              </div>
+            </Panel>
+            {"share" in navigator ? (
+              <Button onClick={() => void navigator.share({ title: set.name, url }).catch(() => {})} size="lg" variant="primary">
+                <ShareNetwork weight="bold" />分享連結…
+              </Button>
+            ) : null}
             <ListGroup>
               <ListRow
-                detail={<span className="select-all break-all font-latin">{code}</span>}
-                label="代碼"
-                trailing={<Button aria-label="複製代碼" onClick={() => void copy(code, "已複製代碼")} size="icon-sm" variant="ghost"><Copy /></Button>}
-              />
-              <ListRow
-                detail={<span className="select-all break-all font-latin">{url}</span>}
-                label="連結"
-                trailing={<Button aria-label="複製連結" onClick={() => void copy(url, "已複製連結")} size="icon-sm" variant="ghost"><Copy /></Button>}
+                disabled={busy || !online}
+                icon={<LinkBreak />}
+                label="停止分享"
+                onClick={() => setStopping(true)}
+                tone="danger"
               />
             </ListGroup>
-            <div className="flex flex-wrap gap-2">
-              {"share" in navigator
-                ? <Button onClick={() => void navigator.share({ title: set.name, url }).catch(() => {})} variant="primary"><ShareNetwork />分享…</Button>
-                : null}
-              <Button disabled={busy || !online} onClick={() => setStopping(true)} variant="danger"><LinkBreak />停止分享</Button>
-            </div>
             <ConfirmDialog
               confirmLabel="停止分享"
               description="現在的連結和代碼會失效，已經加入的人不受影響。"
@@ -86,5 +94,29 @@ function ShareBody({ set }: { set: SetSummary }) {
         );
       }}
     </Loaded>
+  );
+}
+
+function CopyButton({ label, text }: { label: string; text: string }) {
+  const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 1600);
+    return () => clearTimeout(timer);
+  }, [copied]);
+  return (
+    <Button
+      className={cn(copied && "bg-accent-soft text-accent-ink hover:bg-accent-soft")}
+      onClick={() => {
+        void navigator.clipboard.writeText(text).then(
+          () => setCopied(true),
+          () => toast.error("無法複製，請手動選取。"),
+        );
+      }}
+      variant="ghost"
+    >
+      {copied ? <Check className="mark-in" weight="bold" /> : <Copy weight="bold" />}
+      {copied ? "已複製" : label}
+    </Button>
   );
 }

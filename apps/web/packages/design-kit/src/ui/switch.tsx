@@ -6,12 +6,12 @@ export function Switch({ className, ...props }: React.ComponentProps<typeof Swit
   return (
     <SwitchPrimitive.Root
       className={cn(
-        "inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-surface-pressed p-0.5 outline-none transition-[background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:opacity-40 data-[state=checked]:bg-contrast",
+        "inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full bg-surface-pressed p-0.5 outline-none transition-[background-color,scale] duration-[var(--motion-control)] ease-[var(--ease-move)] active:scale-[0.95] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] disabled:pointer-events-none disabled:opacity-40 data-[state=checked]:bg-contrast",
         className,
       )}
       {...props}
     >
-      <SwitchPrimitive.Thumb className="size-6 rounded-full bg-ink-muted transition-[translate,background-color] duration-[var(--motion-control)] ease-[var(--ease-move)] data-[state=checked]:translate-x-5 data-[state=checked]:bg-on-contrast" />
+      <SwitchPrimitive.Thumb className="size-6 rounded-full bg-ink-muted transition-[translate,background-color] duration-[var(--motion-control)] ease-[var(--ease-bounce)] data-[state=checked]:translate-x-5 data-[state=checked]:bg-on-contrast" />
     </SwitchPrimitive.Root>
   );
 }

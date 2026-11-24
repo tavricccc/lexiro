@@ -143,14 +143,15 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest("input,textarea")) return;
-      if (round.revealed && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); next(); return; }
+      if (event.key === "ArrowLeft" && !first) { event.preventDefault(); setBack((value) => value + 1); return; }
+      if (round.revealed && (event.key === "Enter" || event.key === " " || event.key === "ArrowRight")) { event.preventDefault(); next(); return; }
       const number = Number(event.key);
       const options = isCustomStep(step) ? (step.mode === "single" ? step.options : []) : step.options;
       if (!round.revealed && number >= 1 && number <= options.length && !used.has(number - 1)) pick(number - 1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [round.revealed, step, used, pick, next]);
+  }, [round.revealed, first, step, used, pick, next]);
   // Looking back deals the card in from the other side.
   const [place, setPlace] = useState({ index: round.index, back: false });
   if (place.index !== round.index) setPlace({ index: round.index, back: round.index < place.index });
@@ -413,7 +414,7 @@ function Feedback({ item, step, chosen, accept }: { item: PracticeItem; step: St
   const typedWrong = !right && typeof chosen === "string" && isCustomStep(step) && step.mode === "input";
   const answer = rightAnswerText(step);
   return (
-    <div className="message-in grid shrink-0 gap-2.5 rounded-[2rem] bg-surface p-5" role="status">
+    <div className="content-in grid shrink-0 gap-2.5 rounded-[2rem] bg-surface p-5" role="status">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="flex items-center gap-2.5 font-semibold">
             <span aria-hidden className={cn("grid shrink-0 place-items-center text-lg", right ? "text-positive-ink" : "text-danger-ink")}>{right ? <Check weight="bold" /> : <X weight="bold" />}</span>

@@ -63,8 +63,14 @@ export default function SetupPage() {
         <EmptyState action={<Button asChild variant="primary"><AppLink href="/app/library">去加單字</AppLink></Button>} description="先在單字集裡加一些單字，就能開始練習。" title="還沒有可以練習的單字" />
       </Page>
     );
-  const toggleSet = (id: string) => setChosen((current) => (current.includes(id) ? current.filter((value) => value !== id) : [...current, id]));
-  const toggleTask = (task: PracticeTask) => setTasks((current) => (current.includes(task) ? (current.length > 1 ? current.filter((value) => value !== task) : current) : [...current, task]));
+  const toggleSet = (id: string) => {
+    setError("");
+    setChosen((current) => (current.includes(id) ? current.filter((value) => value !== id) : [...current, id]));
+  };
+  const toggleTask = (task: PracticeTask) => {
+    setError("");
+    setTasks((current) => (current.includes(task) ? (current.length > 1 ? current.filter((value) => value !== task) : current) : [...current, task]));
+  };
   const start = () => {
     const items = buildRound({ contents: data, tasks, amount: Number(size), focus, learning });
     if (!items.length) return setError(focus === "starred" ? "選的單字集裡沒有標星的單字。" : "這些題型在選的單字集裡沒有可以出的題目。");
@@ -114,25 +120,42 @@ export default function SetupPage() {
           );
         })}
       </ListGroup>}
-      <section className="grid gap-2">
-        <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題型</h2>
-        {loaded ? (
-          <div className="grid gap-2 sm:grid-cols-2">
-            {available.map((task) => {
-              const on = tasks.includes(task);
-              return (
-                <button aria-pressed={on} className={cn("rounded-tile border p-3.5 text-left outline-none transition-[background-color,border-color,scale] duration-[var(--motion-control)] active:scale-[var(--motion-press-scale)] focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]", on ? "border-contrast bg-accent-soft" : "border-line bg-surface hover:bg-surface-raised")} key={task} onClick={() => toggleTask(task)} type="button">
-                  <span className={cn("block font-semibold", on && "text-accent-ink")}>{TASK_LABELS[task]}</span>
-                  <span className="block text-[0.8125rem] text-ink-muted">{TASK_HINTS[task]}</span>
+      {loaded ? (
+        <ListGroup title="題型">
+          {available.map((task) => {
+            const on = tasks.includes(task);
+            return (
+              <li key={task}>
+                <button
+                  aria-pressed={on}
+                  className={cn(
+                    "flex min-h-14 w-full items-center gap-3.5 px-4 py-2.5 text-left outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised",
+                    on && "bg-accent-soft/35 hover:bg-accent-soft/50",
+                  )}
+                  onClick={() => toggleTask(task)}
+                  type="button"
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-medium">{TASK_LABELS[task]}</span>
+                    <span className="block text-[0.8125rem] text-ink-muted">{TASK_HINTS[task]}</span>
+                  </span>
+                  <span aria-hidden className={cn("grid size-6 shrink-0 place-items-center rounded-full border-2 transition-colors duration-[var(--motion-control)]", on ? "border-contrast bg-contrast text-on-contrast" : "border-ink-faint/50")}>
+                    {on ? <Check className="mark-in size-3.5" weight="bold" /> : null}
+                  </span>
                 </button>
-              );
-            })}
-          </div>
-        ) : <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>}
-      </section>
+              </li>
+            );
+          })}
+        </ListGroup>
+      ) : (
+        <section className="grid gap-2">
+          <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題型</h2>
+          <p className="px-1 text-sm text-ink-faint">正在讀取單字集…</p>
+        </section>
+      )}
       <section className="grid gap-2">
         <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">出題方式</h2>
-        <Segmented label="出題方式" onChange={setFocus} options={[{ value: "all", label: "隨機" }, { value: "weak", label: "不熟的優先" }, { value: "starred", label: "只練標星" }]} value={focus} />
+        <Segmented label="出題方式" onChange={(next) => { setFocus(next); setError(""); }} options={[{ value: "all", label: "隨機" }, { value: "weak", label: "不熟的優先" }, { value: "starred", label: "只練標星" }]} value={focus} />
       </section>
       <section className="grid gap-2">
         <h2 className="px-1 text-[0.8125rem] font-medium text-ink-muted">題數</h2>

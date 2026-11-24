@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { calendarDay, PRACTICE_TASKS, shiftDay, streak, type Tally } from "@lexiro/contract";
 import { AnimatedNumber, EmptyState, AppLink, Button, Panel, SectionTitle, Tile, cn } from "design-kit";
 import { useLearning } from "@/data/learning";
@@ -11,6 +11,7 @@ const percent = (tally?: Tally) => (tally?.answered ? Math.round((tally.correct 
 export default function ProgressPage() {
   const { learning } = useLearning();
   const today = calendarDay(new Date());
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const stats = useMemo(() => {
     const days = Object.values(learning.days);
     const total = days.reduce((sum, day) => ({ answered: sum.answered + day.answered, correct: sum.correct + day.correct }), { answered: 0, correct: 0 });
@@ -51,26 +52,49 @@ export default function ProgressPage() {
         ))}
       </div>
       <Panel className="grid gap-3">
-        <SectionTitle>最近 {WEEKS} 週</SectionTitle>
-        <div className="flex gap-1 overflow-x-auto pb-1" role="img" aria-label={`最近 ${WEEKS} 週每天的作答量`}>
+        <SectionTitle
+          action={
+            selectedDay ? (
+              <span className="content-in text-[0.8125rem] font-semibold text-accent-ink" key={selectedDay}>
+                <span className="font-latin">{selectedDay}</span> · <span className="font-latin">{learning.days[selectedDay]?.answered ?? 0}</span> 題
+              </span>
+            ) : null
+          }
+        >
+          最近 {WEEKS} 週
+        </SectionTitle>
+        <div className="flex gap-1 overflow-x-auto pb-1" role="group" aria-label={`最近 ${WEEKS} 週每天的作答量`}>
           {grid.map((week, index) => (
             <div className="grid shrink-0 gap-1" key={index}>
               {week.map((day) => {
                 const answered = learning.days[day]?.answered ?? 0;
-                const level = day > today ? -1 : answered === 0 ? 0 : answered >= learning.goal ? 4 : Math.ceil((answered / peak) * 3);
+                const future = day > today;
+                const level = future ? -1 : answered === 0 ? 0 : answered >= learning.goal ? 4 : Math.ceil((answered / peak) * 3);
+                const selected = day === selectedDay;
                 return (
-                  <span
-                    className={cn("size-4 rounded-[4px] md:size-5", level < 0 ? "bg-transparent" : level === 0 ? "bg-surface-raised" : "bg-contrast", day === today && "ring-2 ring-highlight")}
+                  <button
+                    aria-label={`${day}：${answered} 題`}
+                    aria-pressed={selected}
+                    className={cn(
+                      "size-4 rounded-[4px] outline-none transition-[scale,box-shadow] duration-[var(--motion-control)] md:size-5",
+                      !future && "cursor-pointer active:scale-85 focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)]",
+                      level < 0 ? "bg-transparent" : level === 0 ? "bg-surface-raised" : "bg-contrast",
+                      day === today && !selected && "ring-2 ring-highlight",
+                      selected && "ring-2 ring-ink",
+                    )}
+                    disabled={future}
                     key={day}
+                    onClick={() => setSelectedDay((prev) => (prev === day ? null : day))}
                     style={level > 0 ? { opacity: [0, 0.35, 0.6, 0.8, 1][level] } : undefined}
                     title={`${day}：${answered} 題`}
+                    type="button"
                   />
                 );
               })}
             </div>
           ))}
         </div>
-        <p className="text-[0.8125rem] text-ink-muted">顏色越深代表那天練得越多，最深代表達成每日目標（{learning.goal} 題）。</p>
+        <p className="text-[0.8125rem] text-ink-muted">點選格子查看當天作答數，最深代表達成每日目標（{learning.goal} 題）。</p>
       </Panel>
       <div className="grid gap-4 md:grid-cols-2">
         <Panel className="grid gap-3">

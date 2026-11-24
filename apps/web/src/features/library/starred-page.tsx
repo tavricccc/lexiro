@@ -44,7 +44,7 @@ export default function StarredPage() {
               {group.words.map((word) => <StarredRow key={word.id} setId={group.set.id} word={word} />)}
             </ListGroup>
           ))}
-          <Button asChild className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-end" size="lg" variant="solid">
+          <Button asChild className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-end" size="lg" variant="primary">
             <AppLink href={practice}><Play weight="fill" />練習這 <span className="font-latin">{total}</span> 個字</AppLink>
           </Button>
         </div>
@@ -56,7 +56,7 @@ export default function StarredPage() {
 function StarredRow({ setId, word }: { setId: string; word: Word }) {
   return (
     <li className="flex items-center">
-      <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors hover:bg-surface-raised focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
+      <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
         <span className="shrink-0 font-latin text-[1.0625rem] font-semibold" lang="en">{word.word}</span>
         <span className="min-w-0 flex-1 truncate text-right text-[0.875rem] text-ink-muted">{meaningLine(word)}</span>
       </AppLink>

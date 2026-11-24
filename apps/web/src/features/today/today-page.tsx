@@ -49,7 +49,7 @@ export default function TodayPage() {
         </div>
         {saved ? (
           <Button asChild className="bg-canvas text-ink hover:bg-canvas/90" size="lg">
-            <AppLink href="/app/practice/run"><Play weight="fill" />繼續上次 <span className="font-latin">{saved.index + 1}/{saved.items.length}</span></AppLink>
+            <AppLink href="/app/practice/run"><Play weight="fill" />繼續上次 <span className="font-latin">{Math.min(saved.index + 1, saved.items.length)}/{saved.items.length}</span></AppLink>
           </Button>
         ) : (
           <Button asChild className="bg-canvas text-ink hover:bg-canvas/90" size="lg">
