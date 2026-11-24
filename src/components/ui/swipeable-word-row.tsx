@@ -18,7 +18,8 @@ import { StarButton } from "./star-button";
 export function meaningLine(word: Word, supplementary?: boolean): string {
   const groups = new Map<string, string[]>();
   for (const sense of word.senses.filter(
-    (entry) => supplementary === undefined || entry.supplementary === supplementary,
+    (entry) =>
+      supplementary === undefined || entry.supplementary === supplementary,
   )) {
     groups.set(sense.pos, [...(groups.get(sense.pos) ?? []), sense.meaning]);
   }
@@ -58,7 +59,9 @@ export const SwipeableWordRow = memo(function SwipeableWordRow({
   const swipeRef = useRef<SwipeableMethods>(null);
   const main = meaningLine(word, false);
   const extra = meaningLine(word, true);
-  const points = word.senses.flatMap((sense) => descriptionPoints(sense.description));
+  const points = word.senses.flatMap((sense) =>
+    descriptionPoints(sense.description),
+  );
 
   const renderLeftActions = () => (
     <Pressable
@@ -89,7 +92,12 @@ export const SwipeableWordRow = memo(function SwipeableWordRow({
         }}
         style={[styles.swipeAction, styles.deleteAction]}
       >
-        <SymbolView name="trash.fill" size={20} weight="semibold" tintColor="#ffffff" />
+        <SymbolView
+          name="trash.fill"
+          size={20}
+          weight="semibold"
+          tintColor="#ffffff"
+        />
         <Text style={styles.swipeLabel}>刪除</Text>
       </Pressable>
     ) : null;
@@ -143,21 +151,23 @@ export const SwipeableWordRow = memo(function SwipeableWordRow({
               <DescriptionPoints points={points} boxed compact />
             ) : null}
           </View>
+          {/* Inside the row, so while selecting the check is part of one big
+              target; the star is its own button and takes its own taps. */}
+          <View style={styles.starWrap}>
+            {checked === undefined ? (
+              <StarButton
+                setId={setId}
+                wordId={word.id}
+                starred={word.starred}
+                word={word.word}
+              />
+            ) : (
+              <View pointerEvents="none" style={styles.check}>
+                <CheckMark checked={checked} />
+              </View>
+            )}
+          </View>
         </PressableRow>
-        <View style={styles.starWrap}>
-          {checked === undefined ? (
-            <StarButton
-              setId={setId}
-              wordId={word.id}
-              starred={word.starred}
-              word={word.word}
-            />
-          ) : (
-            <View pointerEvents="none" style={styles.check}>
-              <CheckMark checked={checked} />
-            </View>
-          )}
-        </View>
       </View>
     </ReanimatedSwipeable>
   );
@@ -171,14 +181,16 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
     minHeight: 58,
-    paddingVertical: 11,
     paddingLeft: space.row,
-    paddingRight: 4,
-    justifyContent: "center",
   },
   textCol: {
+    flex: 1,
     gap: 2,
+    paddingVertical: 11,
+    paddingRight: 4,
   },
   word: {
     ...latin.semibold,
@@ -199,7 +211,12 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: colors.inkFaint,
   },
-  check: { width: 38, height: 38, alignItems: "center", justifyContent: "center" },
+  check: {
+    width: 38,
+    height: 38,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   starWrap: {
     paddingRight: 8,
   },

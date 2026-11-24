@@ -54,8 +54,8 @@ function shuffled<T>(items: T[]): T[] {
  * it further and it takes a moment to get going and to stop.
  */
 const SETTLE = { damping: 26, stiffness: 260, mass: 1.2 } as const;
-/** Turning over: heavy enough to coast on a flick, landing with a small rock. */
-const TURN = { damping: 26, stiffness: 200, mass: 1.4 } as const;
+/** Turning over: firm enough to land quickly, with a small rock as it settles. */
+const TURN = { damping: 26, stiffness: 340, mass: 1 } as const;
 /** A thrown card keeps the finger's speed and is not slowed by a bounce. */
 const THROW = { damping: 24, stiffness: 120, overshootClamping: true } as const;
 /** A card put back on the pile lands and stays: no bounce off the table. */
