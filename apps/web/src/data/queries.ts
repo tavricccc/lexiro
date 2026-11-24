@@ -38,10 +38,32 @@ export const keys = {
  */
 const SET_STALE_MS = 10 * 60_000;
 
-/** Query options for one set's content. */
-export const setQuery = (id: string) => ({
+const fetchSet = (id: string) => api<SetContent>(`/sets/${encodeURIComponent(id)}`);
+
+/**
+ * Sets loaded for practice across sets run a few at a time so they stay under
+ * the Worker's per-minute limit and never queue ahead of the set on screen.
+ */
+const BACKGROUND_LIMIT = 3;
+let backgroundRunning = 0;
+const backgroundWaiting: (() => void)[] = [];
+async function inBackground<T>(task: () => Promise<T>): Promise<T> {
+  while (backgroundRunning >= BACKGROUND_LIMIT) {
+    await new Promise<void>((resolve) => backgroundWaiting.push(resolve));
+  }
+  backgroundRunning++;
+  try {
+    return await task();
+  } finally {
+    backgroundRunning--;
+    backgroundWaiting.shift()?.();
+  }
+}
+
+/** Query options for one set's content; `background` queues it behind the limit. */
+export const setQuery = (id: string, background = false) => ({
   queryKey: keys.set(id),
-  queryFn: () => api<SetContent>(`/sets/${encodeURIComponent(id)}`),
+  queryFn: () => (background ? inBackground(() => fetchSet(id)) : fetchSet(id)),
   staleTime: SET_STALE_MS,
 });
 
@@ -49,13 +71,13 @@ export const setQuery = (id: string) => ({
 const libraryQuery = { queryKey: keys.library, queryFn: () => fetchLibrary() };
 
 export const useLibrary = () => useQuery(libraryQuery);
-export const useSet = (id: string) => useQuery(setQuery(id));
+export const useSet = (id: string) => useQuery({ ...setQuery(id), enabled: Boolean(id) });
 export const useLearningRemote = () => useQuery({ queryKey: keys.learning, queryFn: () => api<Learning>("/learning") });
 export const usePrefs = () => useQuery({ queryKey: keys.prefs, queryFn: () => api<Prefs>("/prefs") });
 
 /** Fetches every set's content into the cache, for practice across sets. */
 export async function loadSets(ids: string[]): Promise<SetContent[]> {
-  return Promise.all(ids.map((id) => queryClient.fetchQuery(setQuery(id))));
+  return Promise.all(ids.map((id) => queryClient.fetchQuery(setQuery(id, true))));
 }
 
 /** Every set's starred words, A to Z, grouped by set in library order: one request. */
@@ -197,6 +219,7 @@ export function useRevisionWatch(enabled: boolean) {
         if (!cached || revision !== cached.revision) await syncLibrary();
       } catch { /* the next check tries again */ }
     };
+    void check();
     const timer = setInterval(check, 30_000);
     const onVisible = () => void check();
     document.addEventListener("visibilitychange", onVisible);
@@ -216,14 +239,35 @@ const PERSISTED = new Set(["library", "set", "starred", "learning", "prefs"]);
 const cacheKey = (uid: string) => `lexiro:cache:${uid}`;
 let unsubscribe: (() => void) | null = null;
 
+/**
+ * Empties the cache for another account without detaching what is on
+ * screen: in-flight reads are cancelled and reverted, unused queries are
+ * dropped, and the rest go back to their empty state (clearing them would
+ * leave mounted screens watching queries the cache no longer holds).
+ */
+async function resetCache() {
+  await queryClient.cancelQueries();
+  queryClient.removeQueries({ type: "inactive" });
+  for (const query of queryClient.getQueryCache().getAll()) query.reset();
+}
+
 /** Restores the account's cached reads, then keeps saving them as they change. */
 export async function startPersistence(uid: string) {
   unsubscribe?.();
-  queryClient.clear();
+  await resetCache();
   try {
     const saved = await get(cacheKey(uid));
     if (saved) hydrate(queryClient, saved);
   } catch { /* a cache that cannot be read is rebuilt from the network */ }
+  // What is on screen without a cached answer loads now, as do learning and
+  // prefs (today's numbers move with the date); the library and its sets are
+  // checked against the revision by the revision watch.
+  void queryClient.refetchQueries({
+    type: "active",
+    predicate: (query) =>
+      query.state.data === undefined ||
+      (["learning", "prefs"].includes(String(query.queryKey[0])) && query.isStale()),
+  });
   let timer: ReturnType<typeof setTimeout> | undefined;
   unsubscribe = queryClient.getQueryCache().subscribe((event) => {
     if (event.type !== "updated" && event.type !== "removed") return;
@@ -241,6 +285,6 @@ export async function startPersistence(uid: string) {
 export async function stopPersistence(uid?: string) {
   unsubscribe?.();
   unsubscribe = null;
-  queryClient.clear();
+  await resetCache();
   if (uid) await del(cacheKey(uid)).catch(() => {});
 }

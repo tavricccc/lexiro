@@ -38,7 +38,7 @@ export default function SetupPage() {
   // With nothing chosen yet, the round draws from every set.
   const ids = chosen.length ? chosen : sets.map((set) => set.id);
   const contents = useQueries({
-    queries: ids.map((id) => setQuery(id)),
+    queries: ids.map((id) => setQuery(id, true)),
   });
   const loaded = contents.every((query) => query.data);
   // useQueries hands back a new array every render; key the derived data on

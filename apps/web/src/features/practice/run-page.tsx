@@ -30,7 +30,7 @@ const latinProps = (text: string | undefined) => (isLatin(text) ? { className: "
 const kindLabel = (item: PracticeItem) => (item.kind === "custom" ? item.label : TASK_LABELS[item.kind as PracticeTask]);
 
 function useSetWords(setIds: string[]) {
-  const contents = useQueries({ queries: setIds.map((id) => setQuery(id)) });
+  const contents = useQueries({ queries: setIds.map((id) => setQuery(id, true)) });
   const stamp = contents.map((query) => query.dataUpdatedAt).join();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => wordIndex(contents.flatMap((query) => (query.data ? [query.data] : []))), [stamp]);
