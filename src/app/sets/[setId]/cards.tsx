@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { useHeaderHeight } from "expo-router/react-navigation";
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { memo, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import { Gesture, GestureDetector, ScrollView } from "react-native-gesture-handler";
 import Animated, {
@@ -48,16 +48,25 @@ function shuffled<T>(items: T[]): T[] {
   return out;
 }
 
-/** Spring that settles a released card without a visible wobble. */
-const SETTLE = { damping: 20, stiffness: 240, mass: 0.8 } as const;
-/** Spring for turning a card over: quick, with a small overshoot you can feel. */
-const TURN = { damping: 17, stiffness: 150, mass: 0.9 } as const;
+/**
+ * Springs for a card with some weight to it: more mass means a flick carries
+ * it further and it takes a moment to get going and to stop.
+ */
+const SETTLE = { damping: 26, stiffness: 260, mass: 1.2 } as const;
+/** Turning over: heavy enough to coast on a flick, landing with a small rock. */
+const TURN = { damping: 26, stiffness: 200, mass: 1.4 } as const;
 /** A thrown card keeps the finger's speed and is not slowed by a bounce. */
 const THROW = { damping: 24, stiffness: 120, overshootClamping: true } as const;
+/** A card put back on the pile lands and stays: no bounce off the table. */
+const LAND = { damping: 30, stiffness: 220, mass: 1.2, overshootClamping: true } as const;
 const COMMIT_DISTANCE = 100;
 const COMMIT_VELOCITY = 650;
 /** Points of vertical drag that turn the card half a turn. */
 const TURN_DISTANCE = 260;
+/** How deep the turn looks: the distance, in points, from the eye to the card. */
+const PERSPECTIVE = 1200;
+/** Cards drawn under the top one. */
+const PILE = 3;
 
 type Ghost = {
   key: number;
@@ -65,6 +74,8 @@ type Ghost = {
   x: number;
   y: number;
   flip: number;
+  axis: number;
+  grab: number;
   velocity: number;
   step: 1 | -1;
 };
@@ -75,18 +86,58 @@ function faceAngle(flip: number) {
   return (((flip * 180) % 360) + 360) % 360;
 }
 
-/**
- * The turn, drawn without a 3D transform: iOS samples a perspective layer coarsely,
- * which stair-stepped the text and the card's edges. Narrowing plus a slight shear
- * stays affine, which keeps the text layers at their own resolution.
- */
-function turned(angle: number) {
+/** An angle folded into (-180, 180]. */
+function signed(angle: number) {
   "worklet";
-  const rad = (angle * Math.PI) / 180;
+  const a = ((angle % 360) + 360) % 360;
+  return a > 180 ? a - 360 : a;
+}
+
+/**
+ * A face turned in real 3D around the card's middle. At rest the face gets no
+ * 3D transform at all: a perspective layer is drawn without edge smoothing on
+ * iOS, so it only exists while the card is actually turning.
+ */
+function faceTurn(local: number, axis: number) {
+  "worklet";
+  if (Math.abs(local) < 0.05) return [{ translateX: 0 }];
   return [
-    { skewY: `${Math.sin(rad * 2) * 7}deg` },
-    { scaleX: Math.max(Math.abs(Math.cos(rad)), 0.001) },
+    { perspective: PERSPECTIVE },
+    axis === 1 ? { rotateX: `${local}deg` } : { rotateY: `${local}deg` },
   ];
+}
+
+/** A steady scatter for each word, so the pile looks the same every time it is seen. */
+function scatterOf(id: string) {
+  let h = 2166136261;
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  const unit = (shift: number) => (((h >>> shift) & 0xff) / 255) * 2 - 1;
+  const r = unit(0);
+  return {
+    rot: Math.sign(r || 1) * (1.4 + Math.abs(r) * 2.6),
+    dx: unit(8) * 10,
+    dy: unit(16) * 4,
+  };
+}
+type Scatter = ReturnType<typeof scatterOf>;
+
+/**
+ * Where a card lies in the pile at `depth` (0 the top, fractions while cards
+ * move): lower, a touch smaller, and askew, so the edges of the cards under
+ * the top one show.
+ */
+function piled(depth: number, scatter: Scatter) {
+  "worklet";
+  const askew = Math.min(Math.max(depth, 0), 1);
+  return {
+    x: scatter.dx * askew,
+    y: depth * 9 + scatter.dy * askew,
+    rot: scatter.rot * askew,
+    scale: 1 - depth * 0.035,
+  };
 }
 
 function Deck({ content }: { content: SetContent }) {
@@ -99,8 +150,6 @@ function Deck({ content }: { content: SetContent }) {
   const [shuffle, setShuffle] = useState(false);
   const [starredOnly, setStarredOnly] = useState(false);
   const [index, setIndex] = useState(0);
-  /** Which neighbour sits under the top card: the next one, or the previous while dragging right. */
-  const [peek, setPeek] = useState<1 | -1>(1);
   /** Cards already thrown, still flying off screen while the next one is in play. */
   const [ghosts, setGhosts] = useState<Ghost[]>([]);
 
@@ -117,46 +166,62 @@ function Deck({ content }: { content: SetContent }) {
   );
   const at = Math.min(index, Math.max(0, deck.length - 1));
   const word = deck[at];
-  const under = deck[at + peek];
+  const previous = deck[at - 1];
+  const pile = deck.slice(at + 1, at + 1 + PILE);
   const canNext = at < deck.length - 1;
   const canPrev = at > 0;
 
   const x = useSharedValue(0);
   const y = useSharedValue(0);
   const flip = useSharedValue(0);
+  /** 0 turns the card left to right (a tap), 1 top over bottom (a drag up or down). */
+  const axis = useSharedValue(0);
   /** Where the turning card is headed, in half-turns; taps add to it so quick taps keep spinning. */
   const aim = useSharedValue(0);
   const turnBase = useSharedValue(0);
   const press = useSharedValue(1);
+  /** 1 while a finger holds the card up off the pile. */
+  const lift = useSharedValue(0);
+  /** Where the card was held: 1 near the top edge, -1 near the bottom; decides which way it swings. */
+  const grab = useSharedValue(1);
+  const slotHeight = useSharedValue(1);
   const armed = useSharedValue(false);
-  const entering = useSharedValue(false);
+  /**
+   * How far the whole pile has moved up by one card: toward 1 while the top
+   * card is pulled away, toward -1 while the previous card is pulled back on.
+   * Every card lies at its depth minus this.
+   */
+  const shift = useSharedValue(0);
+  /**
+   * After a throw, how far the new top card still has to rise out of the
+   * pile, in cards; it drops to 0 as the pile settles.
+   */
+  const arrive = useSharedValue(0);
+  /** What `arrive` starts from once the new top card is in place. */
+  const pendingArrive = useSharedValue(0);
 
   // The card underneath becomes the top card in the same commit that shows
-  // the new word, so nothing jumps; it grows from where the stack held it.
+  // the new word, and `arrive` takes over what `shift` held, so every card in
+  // the pile carries on from exactly where it was.
   const wordId = word?.id;
   useLayoutEffect(() => {
     x.set(0);
     y.set(0);
     flip.set(0);
     aim.set(0);
-    if (entering.get()) {
-      entering.set(false);
-      press.set(0.94);
-      press.set(withSpring(1, SETTLE));
-    }
-  }, [wordId, x, y, flip, aim, press, entering]);
+    axis.set(0);
+    shift.set(0);
+    const from = pendingArrive.get();
+    pendingArrive.set(0);
+    arrive.set(from);
+    if (from !== 0) arrive.set(withSpring(0, LAND));
+  }, [wordId, x, y, flip, aim, axis, shift, arrive, pendingArrive]);
 
-  useAnimatedReaction(
-    () => (x.get() > 0 ? -1 : 1),
-    (side, previous) => {
-      if (side !== previous) runOnJS(setPeek)(side as 1 | -1);
-    },
-  );
   // A light tick each time the card shows its other face.
   useAnimatedReaction(
     () => Math.round(flip.get()),
-    (face, previous) => {
-      if (previous !== null && face !== previous) runOnJS(haptics.select)();
+    (face, last) => {
+      if (last !== null && face !== last) runOnJS(haptics.select)();
     },
   );
 
@@ -169,11 +234,25 @@ function Deck({ content }: { content: SetContent }) {
     haptics.confirm();
     setGhosts((list) => [
       ...list.slice(-3),
-      { key: Date.now() + Math.random(), word, ...from, velocity, step },
+      {
+        key: Date.now() + Math.random(),
+        word,
+        ...from,
+        axis: axis.get(),
+        grab: grab.get(),
+        velocity,
+        step,
+      },
     ]);
-    entering.set(true);
-    setPeek(step);
+    pendingArrive.set(1 - Math.min(Math.max(shift.get(), 0), 1));
     setIndex(at + step);
+  };
+
+  /** The previous card has landed back on the pile. */
+  const putBack = () => {
+    haptics.confirm();
+    pendingArrive.set(0);
+    setIndex((current) => Math.max(0, current - 1));
   };
 
   const bump = (step: 1 | -1) => {
@@ -184,11 +263,22 @@ function Deck({ content }: { content: SetContent }) {
 
   const go = (step: 1 | -1) => {
     if ((step === 1 && !canNext) || (step === -1 && !canPrev)) return bump(step);
-    throwCard(step, -step * 1800, { x: x.get(), y: y.get(), flip: flip.get() });
+    if (step === -1) {
+      shift.set(
+        withSpring(-1, LAND, (done) => {
+          if (done) runOnJS(putBack)();
+        }),
+      );
+      return;
+    }
+    grab.set(1);
+    throwCard(1, -1800, { x: x.get(), y: y.get(), flip: flip.get() });
   };
 
   const turn = () => {
     haptics.tap();
+    // A turn under way keeps its axis; a card at rest turns left to right.
+    if (Math.abs(flip.get() - Math.round(flip.get())) < 0.02) axis.set(0);
     aim.set(Math.round(aim.get()) + 1);
     flip.set(withSpring(aim.get(), TURN));
   };
@@ -196,29 +286,53 @@ function Deck({ content }: { content: SetContent }) {
   const swipe = Gesture.Pan()
     .activeOffsetX([-10, 10])
     .failOffsetY([-18, 18])
-    .onBegin(() => {
-      press.set(withSpring(0.98, SETTLE));
+    .onBegin((event) => {
+      const fromMiddle = Math.min(Math.max(1 - (2 * event.y) / slotHeight.get(), -1), 1);
+      grab.set(Math.sign(fromMiddle || 1) * (0.45 + 0.55 * Math.abs(fromMiddle)));
+      lift.set(withSpring(1, SETTLE));
     })
     .onUpdate((event) => {
-      const blocked = (event.translationX < 0 && !canNext) || (event.translationX > 0 && !canPrev);
-      // Rubber band past either end of the deck.
-      x.set(blocked ? event.translationX * 0.22 : event.translationX);
-      y.set(event.translationY * 0.25);
-      const past = !blocked && Math.abs(event.translationX) > COMMIT_DISTANCE;
+      const tx = event.translationX;
+      const back = tx > 0;
+      const blocked = back ? !canPrev : !canNext;
+      if (blocked) {
+        // Rubber band past either end of the deck.
+        x.set(tx * 0.22);
+        y.set(event.translationY * 0.25);
+        shift.set(0);
+      } else if (back) {
+        // The card that went last comes back from the left under the finger;
+        // the top card stays and sinks into the pile.
+        x.set(0);
+        y.set(0);
+        shift.set(-Math.min(tx / width, 1));
+      } else {
+        x.set(tx);
+        y.set(event.translationY * 0.25);
+        shift.set(Math.min(-tx / (width * 0.6), 1));
+      }
+      const past = !blocked && Math.abs(tx) > COMMIT_DISTANCE;
       if (past !== armed.get()) {
         armed.set(past);
         runOnJS(haptics.select)();
       }
     })
     .onEnd((event) => {
-      const step: 1 | -1 = event.translationX < 0 ? 1 : -1;
-      const allowed = step === 1 ? canNext : canPrev;
+      const tx = event.translationX;
+      const back = tx > 0;
+      const allowed = back ? canPrev : canNext;
       const thrown =
-        Math.abs(event.translationX) > COMMIT_DISTANCE ||
+        Math.abs(tx) > COMMIT_DISTANCE ||
         (Math.abs(event.velocityX) > COMMIT_VELOCITY &&
-          Math.sign(event.velocityX) === Math.sign(event.translationX));
-      if (allowed && thrown) {
-        runOnJS(throwCard)(step, event.velocityX, {
+          Math.sign(event.velocityX) === Math.sign(tx));
+      if (allowed && thrown && back) {
+        shift.set(
+          withSpring(-1, { ...LAND, velocity: -event.velocityX / width }, (done) => {
+            if (done) runOnJS(putBack)();
+          }),
+        );
+      } else if (allowed && thrown) {
+        runOnJS(throwCard)(1, event.velocityX, {
           x: x.get(),
           y: y.get(),
           flip: flip.get(),
@@ -227,27 +341,32 @@ function Deck({ content }: { content: SetContent }) {
         if (thrown) runOnJS(haptics.warning)();
         x.set(withSpring(0, { ...SETTLE, velocity: event.velocityX }));
         y.set(withSpring(0, SETTLE));
+        shift.set(withSpring(0, SETTLE));
       }
     })
     .onFinalize(() => {
       armed.set(false);
-      press.set(withSpring(1, SETTLE));
+      lift.set(withSpring(0, SETTLE));
     });
 
-  // Drag up or down to turn the card by hand; let go and it keeps spinning
-  // with the flick's speed, then lands on whichever face is nearer.
+  // Drag up or down to turn the card over top to bottom; let go and it keeps
+  // spinning with the flick's speed, then lands on whichever face is nearer.
   const spin = Gesture.Pan()
     .activeOffsetY([-10, 10])
     .failOffsetX([-18, 18])
     .onBegin(() => {
       turnBase.set(flip.get());
     })
+    .onStart(() => {
+      // Switching axis is only invisible while a face lies flat.
+      if (Math.abs(flip.get() - Math.round(flip.get())) < 0.02) axis.set(1);
+    })
     .onUpdate((event) => {
       flip.set(turnBase.get() - event.translationY / TURN_DISTANCE);
     })
     .onEnd((event) => {
       const speed = -event.velocityY / TURN_DISTANCE;
-      const target = Math.round(flip.get() + speed * 0.22);
+      const target = Math.round(flip.get() + speed * 0.3);
       aim.set(target);
       flip.set(withSpring(target, { ...TURN, velocity: speed }));
     });
@@ -264,26 +383,21 @@ function Deck({ content }: { content: SetContent }) {
       press.set(withSpring(1, SETTLE));
     });
 
+  const scatter = useMemo(() => (word ? scatterOf(word.id) : scatterOf("")), [word]);
   const cardMove = useAnimatedStyle(() => {
-    // 0 at rest, 1 when the card stands on its edge mid-turn: it lifts off the
-    // table and comes closer while it turns, then settles back down.
+    // 0 at rest, 1 when the card stands on its edge mid-turn: it rises off the
+    // pile while it turns, then drops back down.
     const turning = Math.abs(flip.get() - Math.round(flip.get())) * 2;
+    // Pulled back under the card coming on, or still settling after the one
+    // above it was thrown.
+    const lying = piled(Math.max(-shift.get(), 0) + arrive.get(), scatter);
+    const swing = interpolate(x.get(), [-width, width], [-16, 16]) * grab.get();
     return {
       transform: [
-        { translateX: x.get() },
-        { translateY: y.get() - turning * 26 },
-        { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
-        { scale: press.get() * (1 + turning * 0.08) },
-      ],
-    };
-  });
-  const underMove = useAnimatedStyle(() => {
-    const t = Math.min(Math.abs(x.get()) / (width * 0.55), 1);
-    return {
-      opacity: interpolate(t, [0, 1], [0.6, 1]),
-      transform: [
-        { translateY: interpolate(t, [0, 1], [14, 0]) },
-        { scale: interpolate(t, [0, 1], [0.94, 1]) },
+        { translateX: x.get() + lying.x },
+        { translateY: y.get() + lying.y - turning * 22 - lift.get() * 4 },
+        { rotateZ: `${swing + lying.rot}deg` },
+        { scale: press.get() * lying.scale },
       ],
     };
   });
@@ -327,19 +441,29 @@ function Deck({ content }: { content: SetContent }) {
 
       {word ? (
         <View style={styles.stage}>
-          <View style={styles.cardSlot}>
-            {under ? (
-              <Animated.View style={[styles.card, underMove]} pointerEvents="none">
-                <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
-                  {under.word}
-                </Text>
-              </Animated.View>
-            ) : null}
+          <View
+            style={styles.cardSlot}
+            onLayout={(event) => slotHeight.set(event.nativeEvent.layout.height || 1)}
+          >
+            {pile
+              .map((entry, i) => (
+                <PileCard
+                  key={entry.id}
+                  word={entry}
+                  depth={i + 1}
+                  shift={shift}
+                  arrive={arrive}
+                />
+              ))
+              .reverse()}
             <GestureDetector gesture={Gesture.Exclusive(Gesture.Race(swipe, spin), tap)}>
               <Animated.View style={[StyleSheet.absoluteFill, cardMove]}>
-                <CardFaces word={word} flip={flip} />
+                <CardFaces word={word} flip={flip} axis={axis} lift={lift} />
               </Animated.View>
             </GestureDetector>
+            {previous ? (
+              <ReturningCard key={previous.id} word={previous} shift={shift} width={width} />
+            ) : null}
             {ghosts.map((ghost) => (
               <FlyingCard
                 key={ghost.key}
@@ -395,33 +519,133 @@ function Deck({ content }: { content: SetContent }) {
   );
 }
 
-/** Both faces of one card, turned by `flip` half-turns. */
-function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
-  const front = useAnimatedStyle(() => {
-    const angle = faceAngle(flip.get());
+/** A card waiting in the pile under the top one; it moves up as the cards above it go. */
+const PileCard = memo(function PileCard({
+  word,
+  depth,
+  shift,
+  arrive,
+}: {
+  word: Word;
+  depth: number;
+  shift: SharedValue<number>;
+  arrive: SharedValue<number>;
+}) {
+  const scatter = useMemo(() => scatterOf(word.id), [word.id]);
+  const move = useAnimatedStyle(() => {
+    const d = depth - shift.get() + arrive.get();
+    const lying = piled(d, scatter);
     return {
-      transform: turned(angle),
-      opacity: angle < 90 || angle > 270 ? 1 : 0,
+      // The bottom card of the pile appears from under it rather than popping in.
+      opacity: interpolate(d, [PILE, PILE + 0.6], [1, 0], "clamp"),
+      transform: [
+        { translateX: lying.x },
+        { translateY: lying.y },
+        { rotateZ: `${lying.rot}deg` },
+        { scale: lying.scale },
+      ],
+    };
+  });
+  return (
+    <Animated.View style={[styles.card, styles.pileCard, move]} pointerEvents="none">
+      <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
+        {word.word}
+      </Text>
+    </Animated.View>
+  );
+});
+
+/** The card before this one, off to the left, pulled back onto the pile while going back. */
+const ReturningCard = memo(function ReturningCard({
+  word,
+  shift,
+  width,
+}: {
+  word: Word;
+  shift: SharedValue<number>;
+  width: number;
+}) {
+  const move = useAnimatedStyle(() => {
+    const on = Math.min(Math.max(-shift.get(), 0), 1);
+    return {
+      opacity: on > 0 ? 1 : 0,
+      transform: [
+        { translateX: -width * (1 - on) },
+        { translateY: (1 - on) * 30 },
+        { rotateZ: `${-(1 - on) * 14}deg` },
+      ],
+    };
+  });
+  return (
+    <Animated.View style={[styles.card, styles.lifted, move]} pointerEvents="none">
+      <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
+        {word.word}
+      </Text>
+    </Animated.View>
+  );
+});
+
+/** Both faces of one card, turned by `flip` half-turns. */
+function CardFaces({
+  word,
+  flip,
+  axis,
+  lift,
+}: {
+  word: Word;
+  flip: SharedValue<number>;
+  axis: SharedValue<number>;
+  lift?: SharedValue<number>;
+}) {
+  // The shadow lies on the table under the card: it narrows with the turn and
+  // spreads and softens as the card rises, so the faces themselves carry none.
+  const plate = useAnimatedStyle(() => {
+    const angle = faceAngle(flip.get());
+    const lean = Math.abs(Math.cos((angle * Math.PI) / 180));
+    const turning = Math.abs(flip.get() - Math.round(flip.get())) * 2;
+    const up = Math.max(turning, lift ? lift.get() : 0);
+    const narrow = Math.max(lean * (1 - turning * 0.08), 0.02);
+    return {
+      boxShadow: `0 ${6 + up * 18}px ${16 + up * 30}px rgba(17,21,18,${0.12 - up * 0.04})`,
+      transform: [axis.get() === 1 ? { scaleY: narrow } : { scaleX: narrow }],
+    };
+  });
+  const front = useAnimatedStyle(() => {
+    const local = signed(faceAngle(flip.get()));
+    return {
+      transform: faceTurn(local, axis.get()),
+      opacity: Math.abs(local) < 90 ? 1 : 0,
     };
   });
   const back = useAnimatedStyle(() => {
-    const angle = faceAngle(flip.get());
+    const local = signed(faceAngle(flip.get()) - 180);
     return {
-      transform: turned(angle),
-      opacity: angle >= 90 && angle <= 270 ? 1 : 0,
+      transform: faceTurn(local, axis.get()),
+      opacity: Math.abs(local) <= 90 ? 1 : 0,
     };
+  });
+  // A face tipped away from the light darkens as it turns.
+  const frontShade = useAnimatedStyle(() => {
+    const local = signed(faceAngle(flip.get()));
+    return { opacity: (1 - Math.abs(Math.cos((local * Math.PI) / 180))) * 0.35 };
+  });
+  const backShade = useAnimatedStyle(() => {
+    const local = signed(faceAngle(flip.get()) - 180);
+    return { opacity: (1 - Math.abs(Math.cos((local * Math.PI) / 180))) * 0.35 };
   });
   const original = word.senses.filter((sense) => !sense.supplementary);
   const extra = word.senses.filter((sense) => sense.supplementary);
 
   return (
     <>
-      <Animated.View style={[styles.card, front]}>
+      <Animated.View style={[styles.plate, plate]} />
+      <Animated.View style={[styles.card, styles.face, front]}>
         <Text style={styles.word} adjustsFontSizeToFit numberOfLines={2}>
           {word.word}
         </Text>
+        <Animated.View style={[styles.shade, frontShade]} pointerEvents="none" />
       </Animated.View>
-      <Animated.View style={[styles.card, styles.cardBack, back]}>
+      <Animated.View style={[styles.card, styles.face, styles.cardBack, back]}>
         <Text style={styles.backWord} numberOfLines={1}>
           {word.word}
         </Text>
@@ -442,6 +666,7 @@ function CardFaces({ word, flip }: { word: Word; flip: SharedValue<number> }) {
             </View>
           ) : null}
         </ScrollView>
+        <Animated.View style={[styles.shade, backShade]} pointerEvents="none" />
       </Animated.View>
     </>
   );
@@ -452,6 +677,8 @@ function FlyingCard({ ghost, width, onGone }: { ghost: Ghost; width: number; onG
   const x = useSharedValue(ghost.x);
   const y = useSharedValue(ghost.y);
   const flip = useSharedValue(ghost.flip);
+  const axis = useSharedValue(ghost.axis);
+  const lift = useSharedValue(1);
 
   useEffect(() => {
     const target = -ghost.step * width * 1.5;
@@ -470,13 +697,13 @@ function FlyingCard({ ghost, width, onGone }: { ghost: Ghost; width: number; onG
     transform: [
       { translateX: x.get() },
       { translateY: y.get() },
-      { rotateZ: `${interpolate(x.get(), [-width, width], [-14, 14])}deg` },
+      { rotateZ: `${interpolate(x.get(), [-width, width], [-16, 16]) * ghost.grab}deg` },
     ],
   }));
 
   return (
     <Animated.View style={[StyleSheet.absoluteFill, move]} pointerEvents="none">
-      <CardFaces word={ghost.word} flip={flip} />
+      <CardFaces word={ghost.word} flip={flip} axis={axis} lift={lift} />
     </Animated.View>
   );
 }
@@ -548,7 +775,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
-    boxShadow: "0 8px 24px rgba(17,21,18,0.08)",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.line,
+  },
+  /** Under the top card: a short shadow of its own, so each edge in the pile reads. */
+  pileCard: { boxShadow: "0 2px 6px rgba(17,21,18,0.10)" },
+  /** Held in the hand, above the pile. */
+  lifted: { boxShadow: "0 20px 40px rgba(17,21,18,0.14)" },
+  /** A turning face clips its shade to the card's corners. */
+  face: { overflow: "hidden" },
+  /** Only its shadow is drawn: a filled plate would show past the far edge of a turning face. */
+  plate: {
+    ...StyleSheet.absoluteFill,
+    borderRadius: radius.hero,
+    borderCurve: "continuous",
+  },
+  shade: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: "#000",
   },
   cardBack: {
     alignItems: "stretch",
