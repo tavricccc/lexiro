@@ -1,0 +1,47 @@
+name = "lexiro-agent"
+main = "src/index.ts"
+account_id = "3a6b9f53daa83fc24242d05bc590a2ee"
+compatibility_date = "2026-10-10"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[triggers]
+crons = ["17 * * * *"]
+
+[vars]
+AGENT_PUBLIC_URL = "https://lexiro-agent.tavric.workers.dev"
+APP_ORIGIN = "https://lexiro.vercel.app"
+EXTRA_APP_ORIGINS = "https://lexiro-beta.vercel.app"
+FIREBASE_PROJECT_ID = "wordmem-497209"
+
+[[d1_databases]]
+binding = "AGENT_DB"
+database_name = "lexiro-agent-access"
+database_id = "8d68c8b8-cb7c-4b04-8d07-40555bb34f72"
+migrations_dir = "agent-migrations"
+[[d1_databases]]
+binding = "CLOUD_DB"
+database_name = "lexiro-library"
+database_id = "95e08f1b-c448-40c5-bb65-ec99226e1ecf"
+migrations_dir = "library-migrations"
+
+[[kv_namespaces]]
+binding = "OAUTH_KV"
+id = "8dbae4f064ff4a5f8f0c7037b6c57345"
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "GameRoom"
+
+[[migrations]]
+tag = "game-room-v1"
+new_sqlite_classes = ["GameRoom"]
+
+# Per-account burst throttle (src/agent/guard.ts). Approximate and counted
+# per Cloudflare location; the daily write limit lives in D1.
+[[ratelimits]]
+name = "USER_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60

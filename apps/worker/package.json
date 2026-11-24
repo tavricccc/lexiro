@@ -1,0 +1,35 @@
+{
+  "name": "lexiro-worker",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint --ignore-pattern src/agent/legacy src tests-next scripts",
+    "test": "vitest run",
+    "build": "esbuild src/index.ts --bundle --platform=browser --format=esm --external:cloudflare:* --outdir=dist",
+    "dev:agent": "wrangler dev --config wrangler.agent-local.toml --port 8791",
+    "db:migrate:agent": "wrangler d1 migrations apply AGENT_DB --local --config wrangler.agent-local.toml",
+    "db:migrate:cloud": "wrangler d1 migrations apply CLOUD_DB --local --config wrangler.agent-local.toml",
+    "test:agent": "node scripts/agent-smoke.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261010.1",
+    "@types/node": "^26.1.2",
+    "@types/ws": "^8.18.2",
+    "esbuild": "^0.28.2",
+    "gpt-tokenizer": "^4.0.0",
+    "miniflare": "^5.20261006.1-alpha",
+    "oxlint": "^1.41.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.149.0",
+    "ws": "^8.22.0"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^1.2.3",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "jose": "^6.2.12",
+    "zod": "^4.6.2"
+  }
+}

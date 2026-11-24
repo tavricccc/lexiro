@@ -1,0 +1,67 @@
+name: Verify and deploy Agent Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - src/**
+      - vendor/**
+      - agent-migrations/**
+      - library-migrations/**
+      - wrangler.agent.toml
+      - package.json
+      - package-lock.json
+      - .github/workflows/deploy-agent.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lexiro-agent-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      ADMIN_EMAILS: ${{ secrets.ADMIN_EMAILS }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+      - name: Validate Agent credentials
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+      - name: Apply Agent access migrations
+        run: npx wrangler d1 migrations apply AGENT_DB --remote --config wrangler.agent.toml
+      - name: Apply cloud library migrations
+        run: npx wrangler d1 migrations apply CLOUD_DB --remote --config wrangler.agent.toml
+      - name: Deploy Agent
+        run: npx wrangler deploy --config wrangler.agent.toml
+      # The operator emails live in the GitHub Production secret and are copied
+      # to the Worker on each deploy. An empty secret leaves the Worker's value
+      # alone instead of clearing it.
+      - name: Send administrator emails to the Worker
+        run: |
+          if [ -z "$ADMIN_EMAILS" ]; then
+            echo "::warning::ADMIN_EMAILS is not set in the Production environment; the Worker keeps its current value"
+          else
+            printf '%s' "$ADMIN_EMAILS" | npx wrangler secret put ADMIN_EMAILS --config wrangler.agent.toml
+          fi
+      - name: Verify public OAuth discovery
+        run: |
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/health
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/.well-known/oauth-authorization-server
+          curl --fail --silent --show-error --retry 6 --retry-all-errors --retry-delay 2 https://lexiro-agent.tavric.workers.dev/.well-known/oauth-protected-resource/mcp
+          status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://lexiro-agent.tavric.workers.dev/mcp)
+          test "$status" = 401
