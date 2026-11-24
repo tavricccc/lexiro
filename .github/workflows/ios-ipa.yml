@@ -11,6 +11,9 @@ name: iOS IPA
 on:
   push:
     branches: [main]
+    paths:
+      - apps/app/**
+      - .github/workflows/ios-ipa.yml
   workflow_dispatch:
     inputs:
       force:
@@ -27,6 +30,10 @@ permissions:
   # Cancelling its own run (below).
   actions: write
 
+defaults:
+  run:
+    working-directory: apps/app
+
 jobs:
   fingerprint:
     runs-on: ubuntu-latest
@@ -41,14 +48,15 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: apps/app/package-lock.json
 
       # node_modules itself, so a push with the same lockfile skips npm ci.
       - name: Restore node_modules
         id: modules
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+          path: apps/app/node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('apps/app/package-lock.json') }}
 
       - if: steps.modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -96,14 +104,15 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: apps/app/package-lock.json
 
       # node_modules itself, so a push with the same lockfile skips npm ci.
       - name: Restore node_modules
         id: modules
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+          path: apps/app/node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('apps/app/package-lock.json') }}
 
       - if: steps.modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -116,7 +125,7 @@ jobs:
         run: npx expo prebuild --platform ios --clean
 
       - name: Archive without signing
-        working-directory: ios
+        working-directory: apps/app/ios
         run: |
           set -o pipefail
           xcodebuild archive \

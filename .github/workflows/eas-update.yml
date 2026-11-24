@@ -6,11 +6,18 @@ name: EAS Update
 on:
   push:
     branches: [main]
+    paths:
+      - apps/app/**
+      - .github/workflows/eas-update.yml
   workflow_dispatch:
 
 concurrency:
   group: eas-update-${{ github.ref }}
   cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: apps/app
 
 jobs:
   update:
@@ -25,14 +32,15 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: apps/app/package-lock.json
 
       # node_modules itself, so a push with the same lockfile skips npm ci.
       - name: Restore node_modules
         id: modules
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('package-lock.json') }}
+          path: apps/app/node_modules
+          key: node-modules-${{ runner.os }}-${{ runner.arch }}-node24-${{ hashFiles('apps/app/package-lock.json') }}
 
       - if: steps.modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -44,8 +52,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/metro-cache
-          key: metro-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
-          restore-keys: metro-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-
+          key: metro-${{ runner.os }}-${{ hashFiles('apps/app/package-lock.json') }}-${{ github.sha }}
+          restore-keys: metro-${{ runner.os }}-${{ hashFiles('apps/app/package-lock.json') }}-
 
       - name: Set the version
         id: version

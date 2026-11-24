@@ -19,7 +19,7 @@ flowchart LR
     U[學習者] --> SPA[React SPA / PWA]
     SPA --> Cache[(IndexedDB<br/>查詢快取)]
     SPA --> Auth[Firebase Auth]
-    SPA <-->|REST + WebSocket| W[lexiro-worker<br/>Cloudflare Workers]
+    SPA <-->|REST + WebSocket| W[apps/worker<br/>Cloudflare Workers]
     MCP[AI 助理 / MCP] --> W
     W --> D1[(D1)]
     W --> DO[Durable Object<br/>對戰房間]

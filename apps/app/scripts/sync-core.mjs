@@ -4,14 +4,14 @@
  * the app and web share one source of truth for schemas, question formats,
  * practice dealing, round state, custom grading, rooms, and bulk parsing.
  *
- *   node scripts/sync-core.mjs [path/to/lexiro]   (default ../lexiro)
+ *   node scripts/sync-core.mjs [path/to/web]   (default ../web)
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const app = join(dirname(fileURLToPath(import.meta.url)), "..");
-const web = process.argv[2] ?? join(app, "..", "lexiro");
+const web = process.argv[2] ?? join(app, "..", "web");
 const core = join(app, "src", "core");
 
 const SOURCES = [

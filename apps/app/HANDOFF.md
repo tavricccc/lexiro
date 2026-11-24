@@ -25,12 +25,12 @@ then `README.md` and `AGENTS.md`.
 
 ## Environment
 
-- Develop in WSL Ubuntu at `~/projects/lexiro-app`. Sibling repos:
-  `~/projects/lexiro` (client-only Vite + React Router web app, deployed to
-  https://lexiro.vercel.app) and `~/projects/lexiro-worker` (Cloudflare
+- Develop in `apps/app` of the Lexiro monorepo. Siblings:
+  `apps/web` (client-only Vite + React Router web app, deployed to
+  https://lexiro.vercel.app) and `apps/worker` (Cloudflare
   Workers; the agent Worker is https://lexiro-agent.tavric.workers.dev).
-- Remote: github.com/tavricccc/lexiro-app (public), branch `main`. A push to
-  `main` publishes an EAS Update and may build a new .ipa.
+- Remote: github.com/tavricccc/lexiro (private), branch `main`. A push to
+  `main` that changes `apps/app` publishes an EAS Update and may build a new .ipa.
 - Node 24 comes from nvm and only loads in interactive bash. From Windows run
   `wsl.exe -d Ubuntu -- bash -ic '<cmd>'`. The user's login shell is fish, so
   give them commands that work there (for example `bash -ic '…'`).
@@ -67,7 +67,7 @@ three repos, run `npm ci` there before checks.
   - `practice.tsx` and `session.tsx`: setup, then the question session.
   - `sets/*`: new set, add words, settings, share, word and question detail
     and edit sheets, shared-set preview.
-- `src/core`: the web app's platform-free code, mirrored from `../lexiro` by
+- `src/core`: the web app's platform-free code, mirrored from `../web` by
   `scripts/sync-core.mjs` (types, library, sync, question and practice logic,
   stores). Change the web file first, then mirror the same edit here; the copies
   differ only in import paths and the "Synced from" header. The script's

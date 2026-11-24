@@ -2,14 +2,24 @@ name: Verify and deploy lexiro
 
 on:
   pull_request:
+    paths:
+      - apps/web/**
+      - .github/workflows/deploy-web.yml
   push:
     branches:
       - main
+    paths:
+      - apps/web/**
+      - .github/workflows/deploy-web.yml
   workflow_dispatch:
 
 concurrency:
   group: vercel-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: apps/web
 
 jobs:
   verify:
@@ -42,7 +52,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: apps/web/package-lock.json
 
       - name: Install dependencies
         run: npm ci

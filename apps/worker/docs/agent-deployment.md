@@ -33,7 +33,7 @@ Agent Worker 不需要 Google service-account secret 或模型 API key。
 ## 下次發布
 
 ```powershell
-gh workflow run deploy-agent.yml --repo tavricccc/lexiro-worker --ref main
+gh workflow run deploy-agent.yml --repo tavricccc/lexiro --ref main
 ```
 
 獨立 workflow 執行 typecheck／lint／test／build、兩組 D1 migrations、deploy、health／OAuth discovery／MCP 401 檢查。Cloudflare 初次網址傳播的有限重試保留；不呼叫模型。

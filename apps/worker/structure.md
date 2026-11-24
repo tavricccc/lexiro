@@ -1,6 +1,6 @@
 # Lexiro Worker 檔案地圖
 
-獨立 private 後端工作區，只保留 Agent Worker。main push 由 GitHub Actions 驗證後套用兩組 D1 migrations 並部署；本地測試不代表正式 Firebase、D1 累積用量或 Cloudflare CPU 已驗收。AI 生成 Worker 已封存於分支 `archive/managed-ai`。現行決策見 `docs/product-decisions.md`，部署與 secrets 見 `docs/agent-deployment.md`。
+private monorepo 的後端，只保留 Agent Worker。main push 動到本目錄時由 GitHub Actions 驗證後套用兩組 D1 migrations 並部署；本地測試不代表正式 Firebase、D1 累積用量或 Cloudflare CPU 已驗收。AI 生成 Worker 已封存於分支 `archive/managed-ai`。現行決策見 `docs/product-decisions.md`，部署與 secrets 見 `docs/agent-deployment.md`。
 
 | 路徑 | 責任 |
 | --- | --- |

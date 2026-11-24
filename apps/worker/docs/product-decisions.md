@@ -4,7 +4,7 @@
 
 原始完整規格是 [backend-blueprint.html](backend-blueprint.html)，2026-09-12 從使用者指定的 [Claude artifact](https://claude.ai/code/artifact/b803b459-390b-4006-a077-a45d90d1dc20) 匯入，僅移除平台脚本與登入包裝。原稿不覆寫；優先順序為使用者最新指示 → 本檔補充 → 原始藍圖。
 
-前端 lexiro 與 private lexiro-worker 是同層獨立 repository，直接在 main 分段提交。原實作批次的推送與 Release 授權只適用於當次工作；後續是否推送依該次使用者要求。Main push 會觸發 Agent 部署，本機開發不操作正式 D1 或手動部署 Worker。
+前端、App 與後端同在 private monorepo `tavricccc/lexiro` 的 `apps/`，直接在 main 分段提交。原實作批次的推送與 Release 授權只適用於當次工作；後續是否推送依該次使用者要求。Main push 會觸發 Agent 部署，本機開發不操作正式 D1 或手動部署 Worker。
 
 ## 目前決策
 

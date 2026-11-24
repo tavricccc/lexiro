@@ -18,13 +18,13 @@ expo-updates, so the over-the-air flow below only runs in the sideloaded build.
 
 ## Install and update
 
-- Install: the `iOS IPA` workflow (`.github/workflows/ios-ipa.yml`) builds an
+- Install: the `iOS IPA` workflow (`../../.github/workflows/ios-ipa.yml`) builds an
   unsigned `.ipa` for sideloading (AltStore, SideStore, Sideloadly re-sign it
   with your Apple ID). It builds only when the iOS native fingerprint changes;
   the artifact is named `ios-<fingerprint12>` and kept for 14 days. Run it by
   hand with `force` to rebuild.
-- Update: the `EAS Update` workflow (`.github/workflows/eas-update.yml`)
-  publishes every push to `main` to the `production` channel (needs the
+- Update: the `EAS Update` workflow (`../../.github/workflows/eas-update.yml`)
+  publishes every push to `main` that changes `apps/app` to the `production` channel (needs the
   `EXPO_TOKEN` repo secret). `runtimeVersion` uses the fingerprint policy, so a
   native change reaches the phone only through a new `.ipa`.
   A cold start waits behind an update screen (`src/components/launch-update.tsx`)
@@ -50,7 +50,7 @@ npx expo lint
 npx expo export --platform ios   # bundling smoke test
 ```
 
-There is no test runner in this repo.
+There is no test runner in this app.
 
 ## Layout
 

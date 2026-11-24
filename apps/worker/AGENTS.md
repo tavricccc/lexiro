@@ -1,6 +1,6 @@
 # Lexiro Worker
 
-先讀 `structure.md`。本目錄是獨立的 private 後端 repository `tavricccc/lexiro-worker`；不要將它放進 public Lexiro repo，也不要把 secret 寫入任何版控檔案。
+先讀 `structure.md`。本目錄是 private monorepo `tavricccc/lexiro` 的後端；repo 不得轉為 public，也不要把 secret 寫入任何版控檔案。
 
 - 原始藍圖在 `docs/backend-blueprint.html`，使用者補充決策在 `docs/product-decisions.md`；與藍圖衝突時以補充決策為準。
 - 教材與偏好存於專用 D1，由 Agent Worker 驗證 Firebase Auth 並限定 uid；前端同步與 MCP 共用 repository。管理員只由 `ADMIN_EMAILS` secret 與已驗證 email 決定。Firestore 已停用，不做舊資料遷移或 fallback。
@@ -11,7 +11,7 @@
 - 使用 FastCtx 讀取與搜尋本地檔案。型別嚴格，不用 any。測試斷言回傳資料、串流及儲存狀態，不比對原始碼字串。
 - 每次實作後執行 `npm run typecheck`、`npm run lint`、`npm run test`、`npm run build`。
 - Node 24 只在互動式 bash 載入：用 `bash -ic '<cmd>'` 執行。`git pull` 後先 `npm ci`。
-- 資料格式在 `src/contract`，是前端 `packages/contract` 的複本：兩邊要保持一致，改動先在前端改，再複製過來。只保留最新 API，不做版本並存。
+- 資料格式在 `src/contract`，是前端 `../web/packages/contract` 的複本：兩邊要保持一致，改動先在前端改，再複製過來。只保留最新 API，不做版本並存。
 - MCP 工具說明有長度上限（`agent-d1.test.ts` 檢查總長 < 9000 字元，因為每次連線都會送給模型）。改 `src/agent/mcp.ts` 的說明時保持精簡，加字就要刪等量的字。
 - 給 agent 的資料格式寫在 `src/agent/mcp.ts` 與 `src/agent/instructions.ts`，兩處要一致：`meaningZh` 只放中文意思（會當成選項）；課本補充放 `description`，一點一行用 `\n` 分隔，行首不加符號或編號（App 與網頁會自己加 bullet）。
 - 測試一個 `it` 只測一個行為，標題寫出那個行為；需要共同資料時寫 seed helper，不要把多個行為串在同一個測試裡。預期的拒絕要斷言錯誤代碼或訊息，不寫裸的 `toThrow()`，否則 revision 過期等不相干的錯誤也會讓測試通過（zod schema 錯誤除外）。

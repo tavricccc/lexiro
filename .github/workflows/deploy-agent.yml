@@ -5,13 +5,12 @@ on:
   push:
     branches: [main]
     paths:
-      - src/**
-      - vendor/**
-      - agent-migrations/**
-      - library-migrations/**
-      - wrangler.agent.toml
-      - package.json
-      - package-lock.json
+      - apps/worker/src/**
+      - apps/worker/agent-migrations/**
+      - apps/worker/library-migrations/**
+      - apps/worker/wrangler.agent.toml
+      - apps/worker/package.json
+      - apps/worker/package-lock.json
       - .github/workflows/deploy-agent.yml
 
 permissions:
@@ -20,6 +19,10 @@ permissions:
 concurrency:
   group: lexiro-agent-production
   cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: apps/worker
 
 jobs:
   deploy:
@@ -34,6 +37,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: apps/worker/package-lock.json
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
