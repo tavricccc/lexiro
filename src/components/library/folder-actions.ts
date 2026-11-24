@@ -37,8 +37,18 @@ function askName(title: string, confirm: string, initial: string, save: (name: s
   );
 }
 
-export const newFolder = (parentId: string | null, order: number) =>
-  askName("新增資料夾", "新增", "", (name) => void run(createFolder({ name, parentId, order })));
+/** Asks for a name and makes a folder inside `parentId`; `done` gets the new folder. */
+export const newFolder = (
+  parentId: string | null,
+  order: number,
+  done?: (folder: Folder) => void,
+) =>
+  askName(
+    "新增資料夾",
+    "新增",
+    "",
+    (name) => void run(createFolder({ name, parentId, order }).then((folder) => done?.(folder))),
+  );
 
 export const renameFolder = (folder: Folder) =>
   askName("重新命名資料夾", "儲存", folder.name, (name) => void run(updateFolder(folder, { name })));

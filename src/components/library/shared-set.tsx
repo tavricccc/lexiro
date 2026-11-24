@@ -3,9 +3,10 @@ import { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import { openSet } from "@/components/library/folder-actions";
+import { FolderPickerRow } from "@/components/library/folder-picker";
 import { Button } from "@/components/ui/button";
 import { EmptyState, Panel } from "@/components/ui/layout";
-import { ListGroup, ListRow, PickerRow } from "@/components/ui/list";
+import { ListGroup, ListRow } from "@/components/ui/list";
 import { SetIcon } from "@/components/ui/set-icon";
 import { meaningLine } from "@/components/ui/swipeable-word-row";
 import type { SetContent } from "@/core/contract";
@@ -15,13 +16,11 @@ import { SignInCancelled, signIn, useAuth } from "@/data/auth";
 import { addShared, sharedSet } from "@/data/library";
 import { useOnline } from "@/data/network";
 import { keys, useLibrary } from "@/data/queries";
-import { folderTree } from "@/lib/folders";
 import { haptics } from "@/lib/haptics";
 import { colors, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
 
 const MAX_WORDS = 200;
-const NO_FOLDER = "none";
 const gone = (error: unknown) => error instanceof ApiError && error.status === 404;
 
 /** What a shared set holds, and the way to add it. */
@@ -137,9 +136,9 @@ function AddShared({
 }) {
   const library = useLibrary();
   const online = useOnline();
-  const tree = folderTree(library.data?.folders ?? []);
-  const [picked, setPicked] = useState(folderId ?? NO_FOLDER);
-  const folder = tree.get(picked) ? picked : NO_FOLDER;
+  const folders = library.data?.folders ?? [];
+  const [picked, setPicked] = useState<string | null>(folderId ?? null);
+  const folder = folders.some((entry) => entry.id === picked) ? picked : null;
   const [busy, setBusy] = useState(false);
 
   if (library.data?.sets.some((set) => set.id === content.set.id))
@@ -155,7 +154,7 @@ function AddShared({
   const add = async () => {
     setBusy(true);
     try {
-      const set = await addShared(code, folder === NO_FOLDER ? null : folder);
+      const set = await addShared(code, folder);
       haptics.success();
       toast.success(`已加入「${set.name}」`);
       openSet(set.id);
@@ -168,24 +167,15 @@ function AddShared({
 
   return (
     <>
-      {tree.flat.length > 0 ? (
-        <ListGroup>
-          <PickerRow
-            title="資料夾"
-            icon="folder"
-            value={folder}
-            options={[
-              { value: NO_FOLDER, label: "不放資料夾" },
-              ...tree.flat.map(({ folder: entry }) => ({
-                value: entry.id,
-                label: tree.path(entry.id),
-              })),
-            ]}
-            onChange={setPicked}
-            disabled={busy}
-          />
-        </ListGroup>
-      ) : null}
+      <ListGroup>
+        <FolderPickerRow
+          folders={folders}
+          value={folder}
+          onChange={setPicked}
+          canCreate={online}
+          disabled={busy}
+        />
+      </ListGroup>
       <Button
         label="加入我的單字"
         icon="square.and.arrow.down"

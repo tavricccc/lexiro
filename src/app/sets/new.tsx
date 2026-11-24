@@ -53,6 +53,7 @@ export default function NewSetScreen() {
       <SheetHeader title="新增單字集" />
       <KeyboardScreen contentContainerStyle={{ paddingBottom: 110 }}>
         <SetForm
+          online={online}
           value={value}
           folders={library.data?.folders ?? []}
           error={error}

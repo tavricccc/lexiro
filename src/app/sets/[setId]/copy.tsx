@@ -1,37 +1,56 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { FolderPickerRow, LIBRARY_ROOT } from "@/components/library/folder-picker";
 import { Button } from "@/components/ui/button";
 import { KeyboardScreen } from "@/components/ui/layout";
-import { InputRow, ListGroup, ListRow, PickerRow } from "@/components/ui/list";
+import { InputRow, ListGroup, ListRow } from "@/components/ui/list";
 import { SetIcon } from "@/components/ui/set-icon";
 import { SheetHeader } from "@/components/ui/sheet-header";
 import type { SetSummary } from "@/core/contract";
 import { errorMessage } from "@/data/api";
-import { copyWords, createFolder, createSet } from "@/data/library";
+import { copyWords, createSet } from "@/data/library";
+import { useOnline } from "@/data/network";
 import { orderedSets, useLibrary } from "@/data/queries";
 import { folderTree } from "@/lib/folders";
 import { haptics } from "@/lib/haptics";
 import { colors, type } from "@/lib/theme";
 import { toast } from "@/platform/toast";
 
-const NO_FOLDER = "none";
-const NEW_FOLDER = "new";
-
 export default function CopyWordsSheet() {
   const { setId = "", ids = "" } = useLocalSearchParams<{ setId: string; ids: string }>();
   const wordIds = ids ? ids.split(",").filter(Boolean) : [];
   const library = useLibrary();
+  const online = useOnline();
   const [busy, setBusy] = useState(false);
   const [creating, setCreating] = useState(false);
   const [name, setName] = useState("");
-  const [folder, setFolder] = useState(NO_FOLDER);
-  const [folderName, setFolderName] = useState("");
+  const source = library.data?.sets.find((set) => set.id === setId);
+  /** Where the new set goes; until picked, beside the set the words come from. */
+  const [picked, setPicked] = useState<string | null | undefined>(undefined);
+  const folder = picked === undefined ? (source?.folderId ?? null) : picked;
   const [error, setError] = useState("");
 
-  const targets = orderedSets((library.data?.sets ?? []).filter((set) => set.id !== setId));
-  const tree = folderTree(library.data?.folders ?? []);
+  const folders = library.data?.folders;
+  const tree = useMemo(() => folderTree(folders ?? []), [folders]);
+  // The other sets, laid out as the library is: 我的單字 first, then each
+  // folder in tree order, named by its path.
+  const groups = useMemo(() => {
+    const others = (library.data?.sets ?? []).filter((set) => set.id !== setId);
+    const inFolder = (folderId: string | null) =>
+      orderedSets(
+        others.filter((set) => (tree.get(set.folderId) ? set.folderId : null) === folderId),
+      );
+    return [
+      { key: "root", title: LIBRARY_ROOT, sets: inFolder(null) },
+      ...tree.flat.map(({ folder: entry }) => ({
+        key: entry.id,
+        title: tree.path(entry.id),
+        sets: inFolder(entry.id),
+      })),
+    ].filter((group) => group.sets.length > 0);
+  }, [library.data?.sets, setId, tree]);
 
   const copyTo = async (target: Pick<SetSummary, "id" | "name">) => {
     await copyWords(setId, wordIds, target.id);
@@ -46,21 +65,13 @@ export default function CopyWordsSheet() {
       setError("請輸入單字集名稱");
       return;
     }
-    if (folder === NEW_FOLDER && !folderName.trim()) {
-      haptics.error();
-      setError("請輸入資料夾名稱");
-      return;
-    }
     setBusy(true);
     setError("");
     try {
-      const folderId =
-        folder === NEW_FOLDER
-          ? (await createFolder({ name: folderName.trim() })).id
-          : folder === NO_FOLDER
-            ? null
-            : folder;
-      const created = await createSet({ name: name.trim(), folderId });
+      const created = await createSet({
+        name: name.trim(),
+        folderId: tree.get(folder) ? folder : null,
+      });
       await copyTo(created);
     } catch (reason) {
       haptics.error();
@@ -87,31 +98,13 @@ export default function CopyWordsSheet() {
                 maxLength={200}
                 autoFocus
               />
-              <PickerRow
-                title="資料夾"
+              <FolderPickerRow
+                folders={folders ?? []}
                 value={folder}
-                options={[
-                  { value: NO_FOLDER, label: "不放資料夾" },
-                  ...tree.flat.map(({ folder: entry }) => ({
-                    value: entry.id,
-                    label: tree.path(entry.id),
-                  })),
-                  { value: NEW_FOLDER, label: "新資料夾…" },
-                ]}
-                onChange={setFolder}
+                onChange={setPicked}
+                canCreate={online}
+                disabled={busy}
               />
-              {folder === NEW_FOLDER ? (
-                <InputRow
-                  label="資料夾名稱"
-                  value={folderName}
-                  onChangeText={(text) => {
-                    setFolderName(text);
-                    setError("");
-                  }}
-                  placeholder="例如：高三上"
-                  maxLength={80}
-                />
-              ) : null}
             </ListGroup>
             {error ? <Text style={styles.error}>{error}</Text> : null}
             <View style={styles.createActions}>
@@ -140,9 +133,13 @@ export default function CopyWordsSheet() {
           />
         )}
 
-        {targets.length > 0 ? (
-          <ListGroup title="現有單字集" footer="同樣拼法的單字會合併，補上缺少的意思。">
-            {targets.map((set) => (
+        {groups.map((group, i) => (
+          <ListGroup
+            key={group.key}
+            title={group.title}
+            footer={i === groups.length - 1 ? "同樣拼法的單字會合併，補上缺少的意思。" : undefined}
+          >
+            {group.sets.map((set) => (
               <ListRow
                 key={set.id}
                 title={set.name}
@@ -162,7 +159,7 @@ export default function CopyWordsSheet() {
               />
             ))}
           </ListGroup>
-        ) : null}
+        ))}
       </KeyboardScreen>
     </>
   );

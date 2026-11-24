@@ -100,6 +100,7 @@ function SettingsBody({ content }: { content: SetContent }) {
   return (
     <View style={styles.body}>
       <SetForm
+        online={online}
         value={value}
         folders={library.data?.folders ?? []}
         error={error}

@@ -1,12 +1,12 @@
 import { SymbolView } from "expo-symbols";
 import { StyleSheet, Text, View } from "react-native";
 
-import { InputRow, ListGroup, PickerRow } from "@/components/ui/list";
+import { FolderPickerRow } from "@/components/library/folder-picker";
+import { InputRow, ListGroup } from "@/components/ui/list";
 import { PressableScale } from "@/components/ui/pressable-scale";
 import { Tone } from "@/components/ui/tone";
 import { SET_ICON_LABELS, SET_ICON_SYMBOLS, SetIcon } from "@/components/ui/set-icon";
 import { SET_ICONS, type Folder, type SetHue, type SetIcon as SetIconName } from "@/core/contract";
-import { folderTree } from "@/lib/folders";
 import { haptics } from "@/lib/haptics";
 import { colors, radius, type } from "@/lib/theme";
 
@@ -22,13 +22,15 @@ export function SetForm({
   onChange,
   folders,
   error,
+  online = true,
 }: {
   value: SetFormValue;
   onChange: (next: SetFormValue) => void;
   folders: Folder[];
   error?: string;
+  /** Making a folder from the picker needs the Worker. */
+  online?: boolean;
 }) {
-  const tree = folderTree(folders);
   return (
     <View style={styles.form}>
       <View style={styles.previewRow}>
@@ -51,20 +53,12 @@ export function SetForm({
           invalid={Boolean(error)}
           autoFocus={!value.name}
         />
-        {folders.length > 0 ? (
-          <PickerRow
-            title="資料夾"
-            icon="folder"
-            value={value.folderId ?? "none"}
-            options={[
-              { value: "none", label: "不放資料夾" },
-              ...tree.flat.map(({ folder }) => ({ value: folder.id, label: tree.path(folder.id) })),
-            ]}
-            onChange={(next) =>
-              onChange({ ...value, folderId: next === "none" ? null : next })
-            }
-          />
-        ) : null}
+        <FolderPickerRow
+          folders={folders}
+          value={value.folderId}
+          onChange={(folderId) => onChange({ ...value, folderId })}
+          canCreate={online}
+        />
       </ListGroup>
 
       {error ? (

@@ -485,6 +485,31 @@ export function PickerRow<T extends string>({
   );
 }
 
+/**
+ * A row that opens a native menu of any SwiftUI menu content, nested `Menu`s
+ * included (they open as submenus).
+ */
+export function MenuRow({
+  title,
+  icon,
+  detail,
+  disabled,
+  children,
+}: {
+  title: string;
+  icon?: SymbolViewProps["name"];
+  detail?: string;
+  disabled?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <View style={disabled && styles.disabled}>
+      <ListRow title={title} icon={icon} detail={detail} accessory={menuChevron} />
+      {disabled ? null : <RowMenu label={title}>{children}</RowMenu>}
+    </View>
+  );
+}
+
 /** Native iOS SwiftUI multi-select menu anchored to a row. */
 export function MultiPickerRow({
   title,
