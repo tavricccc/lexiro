@@ -1,6 +1,6 @@
 # Lexiro Worker
 
-Lexiro 的 private 後端只保留 Agent Worker。Agent Worker 負責教材 D1 同步、MCP OAuth、單集授權 URL、連線對戰與網站同步；Firebase 只負責登入。AI 生成 Worker 已封存於分支 `archive/managed-ai`，目前教材內容由 MCP（Agent Worker）寫入，服務本身不呼叫模型。
+Lexiro 的後端只保留 Agent Worker。Agent Worker 負責教材 D1 同步、MCP OAuth、單集授權 URL、連線對戰與網站同步；Firebase 只負責登入。AI 生成 Worker 已封存於分支 `archive/managed-ai`，目前教材內容由 MCP（Agent Worker）寫入，服務本身不呼叫模型。
 
 ## 請求流程
 

@@ -30,6 +30,8 @@ defaults:
 
 jobs:
   admin:
+    # The log names accounts, and a public repo's logs are public.
+    if: github.event.repository.private
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment: Production

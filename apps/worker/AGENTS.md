@@ -1,6 +1,6 @@
 # Lexiro Worker
 
-先讀 `structure.md`。本目錄是 private monorepo `tavricccc/lexiro` 的後端；repo 不得轉為 public，也不要把 secret 寫入任何版控檔案。
+先讀 `structure.md`。本目錄是 public monorepo `tavricccc/lexiro` 的後端；不要把 secret 或使用者資料寫入任何版控檔案或 workflow 輸出。
 
 - 原始藍圖在 `docs/backend-blueprint.html`，使用者補充決策在 `docs/product-decisions.md`；與藍圖衝突時以補充決策為準。
 - 教材與偏好存於專用 D1，由 Agent Worker 驗證 Firebase Auth 並限定 uid；前端同步與 MCP 共用 repository。管理員只由 `ADMIN_EMAILS` secret 與已驗證 email 決定。Firestore 已停用，不做舊資料遷移或 fallback。

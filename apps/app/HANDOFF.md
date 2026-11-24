@@ -29,7 +29,7 @@ then `README.md` and `AGENTS.md`.
   `apps/web` (client-only Vite + React Router web app, deployed to
   https://lexiro.vercel.app) and `apps/worker` (Cloudflare
   Workers; the agent Worker is https://lexiro-agent.tavric.workers.dev).
-- Remote: github.com/tavricccc/lexiro (private), branch `main`. A push to
+- Remote: github.com/tavricccc/lexiro (public), branch `main`. A push to
   `main` that changes `apps/app` publishes an EAS Update and may build a new .ipa.
 - Node 24 comes from nvm and only loads in interactive bash. From Windows run
   `wsl.exe -d Ubuntu -- bash -ic '<cmd>'`. The user's login shell is fish, so
