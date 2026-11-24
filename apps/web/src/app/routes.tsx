@@ -34,6 +34,7 @@ export const routes: RouteObject[] = [
             children: [
               { index: true, lazy: screen(() => import("@/features/today/today-page")) },
               { path: "library", lazy: screen(() => import("@/features/library/library-page")) },
+              { path: "library/folder/:folderId", lazy: screen(() => import("@/features/library/library-page")) },
               { path: "starred", lazy: screen(() => import("@/features/library/starred-page")) },
               { path: "sets/new", lazy: screen(() => import("@/features/library/new-set-page")) },
               { path: "sets/:setId", lazy: screen(() => import("@/features/library/set-page")) },

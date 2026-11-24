@@ -50,7 +50,7 @@ function Settings({ content }: { content: SetContent }) {
           }
         }}
       >
-        <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} value={value} />
+        <SetForm error={error} folders={library.data?.folders ?? []} onChange={(next) => { setValue(next); setError(""); }} online={online} value={value} />
         <Button className="justify-self-start" disabled={!changed || !online} size="lg" status={saving} type="submit" variant="primary">儲存</Button>
       </form>
       <ListGroup footer="單字、題目和分享連結會一起刪除，無法復原。練習紀錄會保留。" title="危險區">

@@ -8,6 +8,7 @@ import { Sheet } from "./sheet";
 import { useCompactViewport } from "./use-compact-viewport";
 
 export interface MenuItem {
+  disabled?: boolean;
   href?: string;
   icon: Icon;
   key: string;
@@ -17,7 +18,7 @@ export interface MenuItem {
 }
 
 const itemClass =
-  "flex h-11 cursor-pointer items-center gap-3 rounded-tile px-3 text-[0.9375rem] text-ink outline-none data-[highlighted]:bg-surface-raised [&_svg]:size-5 [&_svg]:text-ink-muted";
+  "flex h-11 cursor-pointer items-center gap-3 rounded-tile px-3 text-[0.9375rem] text-ink outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-40 data-[highlighted]:bg-surface-raised [&_svg]:size-5 [&_svg]:text-ink-muted";
 
 /**
  * The few things that can be done here: a menu hung off the trigger on a
@@ -46,11 +47,12 @@ export function Menu({
         {React.cloneElement(trigger, { onClick: () => setOpen(true) })}
         <Sheet description={description} onOpenChange={setOpen} open={open} title={title}>
           <ListGroup>
-            {items.map(({ href, icon: ItemIcon, key, label, onSelect, tone }) =>
-              href ? (
+            {items.map(({ disabled, href, icon: ItemIcon, key, label, onSelect, tone }) =>
+              href && !disabled ? (
                 <ListRow href={href} icon={<ItemIcon />} key={key} label={label} onClick={() => setOpen(false)} tone={tone} />
               ) : (
                 <ListRow
+                  disabled={disabled}
                   icon={<ItemIcon />}
                   key={key}
                   label={label}
@@ -80,15 +82,15 @@ export function Menu({
               <span className="block truncate text-xs text-ink-muted">{description}</span>
             </DropdownMenu.Label>
           ) : null}
-          {items.map(({ href, icon: ItemIcon, key, label, onSelect, tone }) => {
+          {items.map(({ disabled, href, icon: ItemIcon, key, label, onSelect, tone }) => {
             const content = <><ItemIcon aria-hidden className={cn(tone === "danger" && "!text-danger")} />{label}</>;
             const className = cn(itemClass, tone === "danger" && "text-danger");
-            return href ? (
+            return href && !disabled ? (
               <DropdownMenu.Item asChild className={className} key={key}>
                 <AppLink href={href}>{content}</AppLink>
               </DropdownMenu.Item>
             ) : (
-              <DropdownMenu.Item className={className} key={key} onSelect={onSelect}>{content}</DropdownMenu.Item>
+              <DropdownMenu.Item className={className} disabled={disabled} key={key} onSelect={onSelect}>{content}</DropdownMenu.Item>
             );
           })}
         </DropdownMenu.Content>

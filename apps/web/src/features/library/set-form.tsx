@@ -1,7 +1,7 @@
 import { SET_ICONS, type Folder, type SetHue, type SetIcon as SetIconName } from "@lexiro/contract";
 import { Field, Input, cn } from "design-kit";
-import { LabeledSelect } from "@/ui/labeled-select";
 import { SET_ICON_COMPONENTS, SetIcon } from "@/ui/set-icon";
+import { FolderPickerField } from "./folder-picker";
 
 export interface SetFormValue {
   name: string;
@@ -15,11 +15,12 @@ const ICON_LABELS: Record<SetIconName, string> = {
 };
 
 /** Name, folder, and icon of a set. */
-export function SetForm({ value, onChange, folders, error }: {
+export function SetForm({ value, onChange, folders, error, online = true }: {
   value: SetFormValue;
   onChange: (value: SetFormValue) => void;
   folders: Folder[];
   error?: string;
+  online?: boolean;
 }) {
   return (
     <div className="grid gap-6">
@@ -33,14 +34,13 @@ export function SetForm({ value, onChange, folders, error }: {
           </Field>
         </div>
       </div>
-      {folders.length ? (
-        <LabeledSelect
-          label="資料夾"
-          onChange={(folderId) => onChange({ ...value, folderId: folderId === "none" ? null : folderId })}
-          options={[{ value: "none", label: "不放資料夾" }, ...folders.map((folder) => ({ value: folder.id, label: folder.name }))]}
-          value={value.folderId ?? "none"}
-        />
-      ) : null}
+      <FolderPickerField
+        canCreate={online}
+        disabled={!online}
+        folders={folders}
+        onChange={(folderId) => onChange({ ...value, folderId })}
+        value={value.folderId}
+      />
       <fieldset className="grid gap-2">
         <legend className="mb-2 px-1 text-sm font-medium text-ink-muted">圖示</legend>
         <div className="grid grid-cols-6 gap-2">

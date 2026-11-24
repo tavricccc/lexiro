@@ -10,9 +10,10 @@ import { signIn, useAuth } from "@/data/auth";
 import { addShared, sharedSet } from "@/data/library";
 import { keys, useLibrary } from "@/data/queries";
 import { KIND_LABELS } from "@/domain/labels";
+import { FolderPickerField } from "@/features/library/folder-picker";
 import { meaningLine } from "@/features/library/set-page";
 import { Brand } from "@/ui/brand";
-import { LabeledSelect } from "@/ui/labeled-select";
+import { useOnline } from "@/ui/offline-banner";
 import { Page } from "@/ui/page";
 import { ScrollMore } from "@/ui/scroll-more";
 import { SetIcon } from "@/ui/set-icon";
@@ -65,22 +66,21 @@ export default function SharedPage() {
   );
 }
 
-const NO_FOLDER = "none";
-
 function AddForm({ code, content }: { code: string; content: SetContent }) {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const library = useLibrary();
+  const online = useOnline();
   const folders = library.data?.folders ?? [];
-  const [picked, setPicked] = useState(params.get("folder") ?? NO_FOLDER);
-  const folder = folders.some((entry) => entry.id === picked) ? picked : NO_FOLDER;
+  const [picked, setPicked] = useState<string | null>(params.get("folder"));
+  const folder = folders.some((entry) => entry.id === picked) ? picked : null;
   const [status, setStatus] = useState<ActionStatus>("idle");
   if (library.data?.sets.some((set) => set.id === content.set.id))
     return <Button asChild className="justify-self-start" size="lg" variant="primary"><AppLink href={`/app/sets/${content.set.id}`}>開啟你的單字集<ArrowRight weight="bold" /></AppLink></Button>;
   const add = async () => {
     setStatus("loading");
     try {
-      const set = await addShared(code, folder === NO_FOLDER ? null : folder);
+      const set = await addShared(code, folder);
       toast.success(`已加入「${set.name}」`);
       navigate(`/app/sets/${set.id}`, { replace: true });
     } catch (error) {
@@ -90,10 +90,14 @@ function AddForm({ code, content }: { code: string; content: SetContent }) {
   };
   return (
     <>
-      {folders.length ? (
-        <LabeledSelect label="資料夾" onChange={setPicked} options={[{ value: NO_FOLDER, label: "不放資料夾" }, ...folders.map((entry) => ({ value: entry.id, label: entry.name }))]} value={folder} />
-      ) : null}
-      <Button className="justify-self-start" disabled={library.isPending} onClick={() => void add()} size="lg" status={status} variant="primary"><DownloadSimple weight="bold" />加入我的單字</Button>
+      <FolderPickerField
+        canCreate={online}
+        disabled={status !== "idle" || !online}
+        folders={folders}
+        onChange={setPicked}
+        value={folder}
+      />
+      <Button className="justify-self-start" disabled={!online || library.isPending} onClick={() => void add()} size="lg" status={status} variant="primary"><DownloadSimple weight="bold" />加入我的單字</Button>
     </>
   );
 }
