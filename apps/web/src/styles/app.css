@@ -3,6 +3,7 @@
 @import "../../node_modules/harmonyos-sans-webfont-splitted/dist/HarmonyOS_Sans_TC/Bold.css";
 @import "tailwindcss";
 @import "design-kit/styles.css";
+@import "./stage.css";
 
 @source "../";
 
@@ -124,8 +125,3 @@ html { font-size: 93.75%; }
   --scrim: rgb(0 0 0 / 58%);
 }
 
-
-/* The page's down arrow sits above a bar stuck to the bottom of the page. */
-body:has(main .sticky[class*="bottom-["]) .page-scroll-more {
-  margin-bottom: 4.5rem;
-}

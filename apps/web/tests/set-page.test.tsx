@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createMemoryRouter, RouterProvider } from "react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
 globalThis.IntersectionObserver ??= class { observe() {} disconnect() {} unobserve() {} } as never;
-window.matchMedia ??= ((query: string) => ({ matches: false, media: query, addEventListener() {}, removeEventListener() {} })) as never;
 
 let showMeanings = true;
 const setContent = {
@@ -66,7 +65,7 @@ test("separates supplementary senses and toggles selection across the whole row"
   expect(row).toHaveAttribute("aria-pressed", "false");
   fireEvent.click(row);
   expect(row).toHaveAttribute("aria-pressed", "true");
-  expect(screen.getByText(/已選/)).toHaveTextContent("已選 1 個");
+  await waitFor(() => expect(screen.getByText(/已選/)).toHaveTextContent("已選 1 個"));
 });
 
 test("hides meanings and notes when showMeanings preference is off", async () => {

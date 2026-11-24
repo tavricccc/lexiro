@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { ArrowRight, CaretDown, Fire, Play, Star, Target } from "@phosphor-icons/react";
 import { calendarDay, DAILY_GOALS, streak, type DailyGoal } from "@lexiro/contract";
 import { AnimatedNumber, AppLink, Button, EmptyState, Menu, SectionTitle, cn } from "design-kit";
@@ -6,7 +5,7 @@ import { toast } from "sonner";
 import { errorMessage } from "@/data/api";
 import { setGoal, usePendingAnswers, useLearning } from "@/data/learning";
 import { useLibrary } from "@/data/queries";
-import { loadRound } from "@/data/round-store";
+import { useSavedRound } from "@/data/round-store";
 import { orderedSets } from "@/features/library/library-page";
 import { useStarredWords } from "@/features/library/starred-page";
 import { Page } from "@/ui/page";
@@ -23,7 +22,7 @@ export default function TodayPage() {
   const library = useLibrary();
   const pending = usePendingAnswers();
   const starred = useStarredWords();
-  const saved = useMemo(loadRound, []);
+  const saved = useSavedRound();
   const today = calendarDay(new Date());
   const done = learning.days[today]?.answered ?? 0;
   const left = Math.max(0, learning.goal - done);

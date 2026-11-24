@@ -16,12 +16,12 @@ export function JoinSheet({ open, onOpenChange, folder }: {
 }) {
   return (
     <Sheet onOpenChange={onOpenChange} open={open} title="用代碼加入">
-      <JoinForm folder={folder} />
+      <JoinForm folder={folder} onFound={() => onOpenChange(false)} />
     </Sheet>
   );
 }
 
-function JoinForm({ folder }: { folder: string }) {
+function JoinForm({ folder, onFound }: { folder: string; onFound: () => void }) {
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const [error, setError] = useState("");
@@ -32,7 +32,8 @@ function JoinForm({ folder }: { folder: string }) {
     setStatus("loading");
     try {
       await queryClient.fetchQuery({ queryKey: keys.shared(code), queryFn: () => sharedSet(code), staleTime: 0 });
-      navigate(`/shared/${code}${folder}`);
+      onFound();
+      navigate(`/app/library/shared/${code}${folder}`);
     } catch (reason) {
       setError(errorMessage(reason));
       setStatus("idle");

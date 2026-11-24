@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Trash } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { SetContent } from "@lexiro/contract";
@@ -7,6 +7,7 @@ import { Button, ConfirmDialog, ListGroup, ListRow } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteSet, updateSet } from "@/data/library";
 import { useLibrary, useSet } from "@/data/queries";
+import { useLeave } from "@/ui/leave";
 import { useOnline } from "@/ui/offline-banner";
 import { Loaded, Page } from "@/ui/page";
 import { SetForm, type SetFormValue } from "./set-form";
@@ -24,7 +25,7 @@ export default function SetSettingsPage() {
 function Settings({ content }: { content: SetContent }) {
   const { set } = content;
   const library = useLibrary();
-  const navigate = useNavigate();
+  const leave = useLeave();
   const online = useOnline();
   const [value, setValue] = useState<SetFormValue>({ name: set.name, folderId: set.folderId, hue: set.hue, icon: set.icon });
   const [error, setError] = useState("");
@@ -63,8 +64,9 @@ function Settings({ content }: { content: SetContent }) {
           setDeleting("loading");
           try {
             await deleteSet(set.id);
+            setRemoving(false);
             toast.success(`已刪除「${set.name}」`);
-            navigate("/app/library", { replace: true });
+            leave.popTo(set.folderId ? `/app/library/folder/${set.folderId}` : "/app/library");
           } catch (reason) {
             toast.error(errorMessage(reason));
             setDeleting("idle");

@@ -2,9 +2,10 @@ import { createContext, useCallback, useContext, useEffect, useLayoutEffect, use
 import { useQueries } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { useIsPresent } from "motion/react";
 import { ArrowRight, ArrowCounterClockwise, CaretLeft, Check, X } from "@phosphor-icons/react";
 import { calendarDay, descriptionPoints, normalizeWord, type PracticeTask } from "@lexiro/contract";
-import { AnimatedNumber, AppLink, Button, HeaderButton, ProgressBar, Segmented, cn } from "design-kit";
+import { AnimatedNumber, AppLink, Button, HeaderButton, ProgressBar, Segmented, StepSlide, cn } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { recordAnswer } from "@/data/learning";
 import { starWords } from "@/data/library";
@@ -17,6 +18,7 @@ import { passageParts, type PracticeItem, type Step } from "@/domain/practice";
 import { acceptTyped, advance, choose, currentStep, finished, lookBack, newRound, result, usedBankOptions, type Round } from "@/domain/round";
 import { CustomAnswer } from "./custom-answer";
 import { useDocumentTitle } from "@/ui/title";
+import { useScreen } from "@/ui/screen";
 import { ScrollMore } from "@/ui/scroll-more";
 import { SpeakButton } from "@/ui/speak";
 import { StarMark } from "@/ui/star-button";
@@ -107,7 +109,7 @@ export default function RunPage() {
   }, []);
   const next = useCallback(() => {
     const current = latest.current;
-    if (!current || !current.revealed) return;
+    if (!current || finished(current) || !current.revealed) return;
     if (typed(current)) record(current, isRight(currentStep(current)!, current.choices[current.index][current.step]));
     latest.current = advance(current);
     setRound((state) => (state ? advance(state) : state));
@@ -123,9 +125,11 @@ export default function RunPage() {
   if (!round) return null;
   return (
     <MarksContext.Provider value={marks}>
-      {finished(round)
-        ? <Results onAgain={(items) => { const again = newRound(items, round.setIds); saveRound(again); setRound(again); }} round={round} />
-        : <Card accept={accept} next={next} pick={pick} round={round} />}
+      <StepSlide className="absolute inset-0 flex flex-col" direction={1} step={`${round.startedAt}:${finished(round)}`}>
+        {finished(round)
+          ? <Results onAgain={(items) => { const again = newRound(items, round.setIds); saveRound(again); setRound(again); }} round={round} />
+          : <Card accept={accept} next={next} pick={pick} round={round} />}
+      </StepSlide>
     </MarksContext.Provider>
   );
 }
@@ -140,7 +144,10 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
   const step = currentStep(round)!;
   const chosen = round.choices[round.index][round.step];
   const used = usedBankOptions(round);
+  const { active } = useScreen();
+  const present = useIsPresent();
   useEffect(() => {
+    if (!active || !present) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey || (event.target as HTMLElement).closest("input,textarea")) return;
       if (event.key === "ArrowLeft" && !first) { event.preventDefault(); setBack((value) => value + 1); return; }
@@ -151,16 +158,47 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [round.revealed, first, step, used, pick, next]);
-  // Looking back deals the card in from the other side.
+  }, [active, present, round.revealed, first, step, used, pick, next]);
+  // Looking back brings the card in from the other side.
   const [place, setPlace] = useState({ index: round.index, back: false });
   if (place.index !== round.index) setPlace({ index: round.index, back: round.index < place.index });
+  const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
+  const last = !back && round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
+  return (
+    // The round sits still on the screen; the question and answers scroll only when they are longer than it.
+    <div className="mx-auto flex min-h-0 w-full max-w-xl flex-1 flex-col overscroll-none px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:max-w-6xl md:px-6 md:pt-[calc(var(--safe-top)+1rem)]">
+      <header className="flex items-center gap-3 px-1">
+        <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink back href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
+        <HeaderButton aria-label="上一題" disabled={first} onClick={() => setBack(back + 1)}><CaretLeft weight="bold" /></HeaderButton>
+        <ProgressBar className="flex-1" label="練習進度" value={progress} />
+        <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
+        <Button className={cn(round.revealed && "pointer-events-none opacity-0")} inert={round.revealed} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
+      </header>
+      <StepSlide className="-mx-3 flex min-h-0 flex-1 flex-col md:-mx-6" direction={place.back ? -1 : 1} step={round.index}>
+        <div className="flex min-h-0 flex-1 flex-col px-3 md:px-6">
+          <QuestionCard accept={back ? undefined : accept} chosen={chosen} item={item} last={last} next={next} pick={pick} round={round} step={step} used={used} />
+        </div>
+      </StepSlide>
+    </div>
+  );
+}
+
+/** One question with its answers; a card that has been moved on from stays as it was answered. */
+function QuestionCard({ round, item, step, chosen, used, last, pick, next, accept }: {
+  round: Round;
+  item: PracticeItem;
+  step: Step | CustomStep;
+  chosen: Choice | null | undefined;
+  used: Set<number>;
+  last: boolean;
+  pick: (option: Choice | null) => void;
+  next: () => void;
+  accept?: () => void;
+}) {
   const wide = useWide();
   const page = useRef<HTMLDivElement>(null);
   const prompt = useRef<HTMLElement>(null);
   const answers = useRef<HTMLDivElement>(null);
-  const progress = (round.index + (round.revealed ? 1 : 0)) / round.items.length;
-  const last = !back && round.index + 1 === round.items.length && round.step + 1 === item.steps.length;
   const question = (
     <>
       <div className="flex items-center justify-between gap-2">
@@ -181,7 +219,7 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
         : <Options chosen={chosen as number | null | undefined} pick={pick} revealed={round.revealed} step={step as Step} used={used} />}
     </div>
   );
-  const feedback = round.revealed ? <Feedback accept={back ? undefined : accept} chosen={chosen} item={item} step={step} /> : null;
+  const feedback = round.revealed ? <Feedback accept={accept} chosen={chosen} item={item} step={step} /> : null;
   const nextBar = round.revealed ? (
     <div className="content-in shrink-0 max-md:pt-2">
       <Button autoFocus className="h-14 w-full rounded-[1.125rem]" onClick={next} size="lg" variant="solid">
@@ -191,48 +229,38 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
     </div>
   ) : null;
   return (
-    // The round sits still on the screen; the question and answers scroll only when they are longer than it.
-    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-xl flex-col overscroll-none md:max-w-6xl md:px-6 px-3 pb-[max(0.75rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
-      <header className="flex items-center gap-3 px-1">
-        <HeaderButton aria-label="離開練習（進度會保留）" asChild><AppLink href="/app/practice"><X weight="bold" /></AppLink></HeaderButton>
-        <HeaderButton aria-label="上一題" disabled={first} onClick={() => setBack(back + 1)}><CaretLeft weight="bold" /></HeaderButton>
-        <ProgressBar className="flex-1" label="練習進度" value={progress} />
-        <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
-        <Button className={cn(round.revealed && "pointer-events-none opacity-0")} inert={round.revealed} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
-      </header>
-      <div className="card-in flex min-h-0 flex-1 flex-col" data-back={place.back || undefined} key={round.index}>
-        {wide ? (
-          <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[minmax(0,1fr)] gap-2 pt-4">
-            <div className="relative min-h-0">
-              <section className="flex h-full flex-col gap-3 overflow-y-auto overscroll-contain rounded-[2rem] bg-surface p-6" ref={prompt}>{question}</section>
-              <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={prompt} />
-            </div>
-            <div className="flex min-h-0 flex-col gap-2">
-              <div className="relative min-h-0 flex-1">
-                <div className="flex h-full flex-col gap-2 overflow-y-auto overscroll-contain" ref={answers}>{options}{feedback}</div>
-                <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={answers} />
-              </div>
-              {nextBar}
-            </div>
+    <>
+      {wide ? (
+        <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[minmax(0,1fr)] gap-2 pt-4">
+          <div className="relative min-h-0">
+            <section className="flex h-full flex-col gap-3 overflow-y-auto overscroll-contain rounded-[2rem] bg-surface p-6" ref={prompt}>{question}</section>
+            <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={prompt} />
           </div>
-        ) : (
-          <>
+          <div className="flex min-h-0 flex-col gap-2">
             <div className="relative min-h-0 flex-1">
-              <div className="h-full overflow-y-auto overscroll-contain pt-3" ref={page}>
-                {/* Once answered, the top of the feedback shows below the question. */}
-                <div className={cn("flex flex-col gap-2 pb-2 transition-[min-height] duration-[var(--motion-control)] ease-[var(--ease-move)] motion-reduce:transition-none", round.revealed ? "min-h-[calc(100%-4.25rem)]" : "min-h-full")}>
-                  <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">{question}</section>
-                  {options}
-                </div>
-                {feedback}
-              </div>
-              <ScrollMore className="absolute bottom-2 left-1/2 -translate-x-1/2" target={page} />
+              <div className="flex h-full flex-col gap-2 overflow-y-auto overscroll-contain" ref={answers}>{options}{feedback}</div>
+              <ScrollMore className="absolute bottom-3 left-1/2 -translate-x-1/2" target={answers} />
             </div>
             {nextBar}
-          </>
-        )}
-      </div>
-    </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="relative min-h-0 flex-1">
+            <div className="h-full overflow-y-auto overscroll-contain pt-3" ref={page}>
+              {/* Once answered, the top of the feedback shows below the question. */}
+              <div className={cn("flex flex-col gap-2 pb-2 transition-[min-height] duration-[var(--motion-control)] ease-[var(--ease-move)] motion-reduce:transition-none", round.revealed ? "min-h-[calc(100%-4.25rem)]" : "min-h-full")}>
+                <section className="flex min-h-44 flex-auto flex-col gap-3 rounded-[2rem] bg-surface p-5">{question}</section>
+                {options}
+              </div>
+              {feedback}
+            </div>
+            <ScrollMore className="absolute bottom-2 left-1/2 -translate-x-1/2" target={page} />
+          </div>
+          {nextBar}
+        </>
+      )}
+    </>
   );
 }
 
@@ -451,6 +479,7 @@ type ReviewFilter = "missed" | "starred" | "all";
 function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeItem[]) => void }) {
   const outcome = useMemo(() => result(round), [round]);
   const { words, marked } = useContext(MarksContext);
+  const page = useRef<HTMLDivElement>(null);
   const [endedAt] = useState(() => Date.now());
   useEffect(() => clearRound(), []);
   const score = outcome.total ? Math.round((outcome.correct / outcome.total) * 100) : 0;
@@ -459,53 +488,58 @@ function Results({ round, onAgain }: { round: Round; onAgain: (items: PracticeIt
   const steps = round.items.flatMap((item, index) => (item.steps as (Step | CustomStep)[]).map((step, at) => ({ item, step, key: `${index}-${at}`, at, choice: round.choices[index]?.[at] })));
   const shown = filter === "missed" ? steps.filter((entry) => !isRight(entry.step, entry.choice)) : steps;
   return (
-    <div className="mx-auto grid w-full max-w-xl content-start gap-3 px-3 pb-[calc(var(--safe-bottom)+2.5rem)] pt-[calc(var(--safe-top)+1rem)] md:pt-[calc(var(--safe-top)+2.5rem)]">
-      <section className="content-in grid gap-4 rounded-[2rem] bg-ink p-5 text-canvas">
-        <div>
-          <p className="text-sm text-canvas/65">這一輪完成了</p>
-          <p className="mt-1 font-latin text-[4.25rem] font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={score} /><span className="text-3xl text-canvas/55">%</span></p>
+    <div className="relative min-h-0 flex-1">
+      <div className="h-full overflow-y-auto overscroll-contain" ref={page}>
+        <div className="mx-auto grid w-full max-w-xl content-start gap-3 px-3 pb-[calc(var(--safe-bottom)+2.5rem)] pt-[calc(var(--safe-top)+1rem)] md:pt-[calc(var(--safe-top)+2.5rem)]">
+          <section className="content-in grid gap-4 rounded-[2rem] bg-ink p-5 text-canvas">
+            <div>
+              <p className="text-sm text-canvas/65">這一輪完成了</p>
+              <p className="mt-1 font-latin text-[4.25rem] font-bold leading-none tracking-[-0.04em]"><AnimatedNumber value={score} /><span className="text-3xl text-canvas/55">%</span></p>
+            </div>
+            <dl className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-canvas/70">
+              {[["答對", String(outcome.correct)], ["答錯", String(wrong)], ["標星", String(marked.length)], ["用時", duration(round.startedAt, endedAt)]].map(([label, value]) => (
+                <div className="flex items-baseline gap-1" key={label}><dt className="order-2">{label}</dt><dd className="font-latin text-base font-semibold text-canvas">{value}</dd></div>
+              ))}
+            </dl>
+            <div className="grid grid-cols-[1.4fr_1fr] gap-2">
+              {outcome.missed.length ? (
+                <Button className="bg-canvas text-ink hover:bg-canvas/90" onClick={() => onAgain(outcome.missed)} size="lg"><ArrowCounterClockwise weight="bold" />再練錯的 {outcome.missed.length} 題</Button>
+              ) : null}
+              <Button asChild className={cn(outcome.missed.length ? "bg-canvas/12 text-canvas hover:bg-canvas/20" : "col-span-2 bg-canvas text-ink hover:bg-canvas/90")} size="lg"><AppLink href="/app">完成<ArrowRight weight="bold" /></AppLink></Button>
+            </div>
+          </section>
+          <Segmented<ReviewFilter>
+            className="justify-self-start"
+            label="復盤範圍"
+            onChange={setFilter}
+            options={[
+              ...(wrong ? [{ value: "missed" as const, label: `答錯 ${wrong}` }] : []),
+              ...(marked.length ? [{ value: "starred" as const, label: `標星 ${marked.length}` }] : []),
+              { value: "all", label: `全部 ${steps.length}` },
+            ]}
+            value={filter}
+          />
+          {filter === "starred" ? (
+            <ul className="content-in grid rounded-[1.5rem] bg-surface px-2 py-1">
+              {marked.map((word) => {
+                const entry = words.get(normalizeWord(word));
+                return (
+                  <li className="flex items-center gap-2 border-t border-line py-1.5 pl-2 first:border-t-0" key={word}>
+                    <span className="font-latin font-semibold" lang="en">{entry?.word ?? word}</span>
+                    <span className="min-w-0 flex-1 truncate text-right text-[0.9375rem] text-ink-muted">{entry ? entry.meaning : "不在單字集，離開後不保留"}</span>
+                    <MarkStar word={word} />
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <ol className="content-in grid gap-2" key={filter}>
+              {shown.map(({ item, step, key, at, choice }) => <ReviewItem at={at} choice={choice} item={item} key={key} step={step} />)}
+            </ol>
+          )}
         </div>
-        <dl className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-canvas/70">
-          {[["答對", String(outcome.correct)], ["答錯", String(wrong)], ["標星", String(marked.length)], ["用時", duration(round.startedAt, endedAt)]].map(([label, value]) => (
-            <div className="flex items-baseline gap-1" key={label}><dt className="order-2">{label}</dt><dd className="font-latin text-base font-semibold text-canvas">{value}</dd></div>
-          ))}
-        </dl>
-        <div className="grid grid-cols-[1.4fr_1fr] gap-2">
-          {outcome.missed.length ? (
-            <Button className="bg-canvas text-ink hover:bg-canvas/90" onClick={() => onAgain(outcome.missed)} size="lg"><ArrowCounterClockwise weight="bold" />再練錯的 {outcome.missed.length} 題</Button>
-          ) : null}
-          <Button asChild className={cn(outcome.missed.length ? "bg-canvas/12 text-canvas hover:bg-canvas/20" : "col-span-2 bg-canvas text-ink hover:bg-canvas/90")} size="lg"><AppLink href="/app">完成<ArrowRight weight="bold" /></AppLink></Button>
-        </div>
-      </section>
-      <Segmented<ReviewFilter>
-        className="justify-self-start"
-        label="復盤範圍"
-        onChange={setFilter}
-        options={[
-          ...(wrong ? [{ value: "missed" as const, label: `答錯 ${wrong}` }] : []),
-          ...(marked.length ? [{ value: "starred" as const, label: `標星 ${marked.length}` }] : []),
-          { value: "all", label: `全部 ${steps.length}` },
-        ]}
-        value={filter}
-      />
-      {filter === "starred" ? (
-        <ul className="content-in grid rounded-[1.5rem] bg-surface px-2 py-1">
-          {marked.map((word) => {
-            const entry = words.get(normalizeWord(word));
-            return (
-              <li className="flex items-center gap-2 border-t border-line py-1.5 pl-2 first:border-t-0" key={word}>
-                <span className="font-latin font-semibold" lang="en">{entry?.word ?? word}</span>
-                <span className="min-w-0 flex-1 truncate text-right text-[0.9375rem] text-ink-muted">{entry ? entry.meaning : "不在單字集，離開後不保留"}</span>
-                <MarkStar word={word} />
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <ol className="content-in grid gap-2" key={filter}>
-          {shown.map(({ item, step, key, at, choice }) => <ReviewItem at={at} choice={choice} item={item} key={key} step={step} />)}
-        </ol>
-      )}
+      </div>
+      <ScrollMore className="absolute bottom-[calc(var(--safe-bottom)+1rem)] left-1/2 -translate-x-1/2" target={page} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Check, Trash } from "@phosphor-icons/react";
 import { itemOptions, type CustomItem, type CustomQuestion, type Question, type SetContent } from "@lexiro/contract";
 import { toast } from "sonner";
@@ -9,6 +9,7 @@ import { deleteQuestions } from "@/data/library";
 import { useSet } from "@/data/queries";
 import { KIND_LABELS } from "@/domain/labels";
 import { passageParts } from "@/domain/practice";
+import { useLeave } from "@/ui/leave";
 import { useOnline } from "@/ui/offline-banner";
 import { Loaded, Page } from "@/ui/page";
 
@@ -102,25 +103,31 @@ function Preview({ question, content }: { question: Question; content: SetConten
 export default function QuestionPage() {
   const { setId = "", questionId = "" } = useParams();
   const content = useSet(setId);
-  const navigate = useNavigate();
+  const leave = useLeave();
   const online = useOnline();
   const [status, setStatus] = useState<ActionStatus>("idle");
+  const [removing, setRemoving] = useState(false);
   const back = { href: `/app/sets/${setId}?tab=questions`, label: content.data?.set.name ?? "單字集" };
   const remove = async () => {
     setStatus("loading");
     try {
       await deleteQuestions(setId, [questionId]);
-      navigate(back.href, { replace: true });
+      setRemoving(false);
+      leave.back(back.href);
     } catch (error) {
       setStatus("idle");
       toast.error(errorMessage(error));
     }
   };
-  const question = content.data?.questions.find((entry) => entry.id === questionId);
+  const found = content.data?.questions.find((entry) => entry.id === questionId);
+  // A question just deleted is still shown while its page goes away.
+  const [last, setLast] = useState(found);
+  if (found && found !== last) setLast(found);
+  const question = found ?? (last?.id === questionId ? last : undefined);
   return (
     <Page
       actions={question ? (
-        <ConfirmDialog confirmLabel="刪除" description="這一題會從單字集移除。" onConfirm={() => void remove()} status={status} title="刪除這一題？" tone="danger"
+        <ConfirmDialog confirmLabel="刪除" description="這一題會從單字集移除。" onConfirm={() => void remove()} onOpenChange={setRemoving} open={removing} status={status} title="刪除這一題？" tone="danger"
           trigger={<HeaderButton aria-label="刪除這一題" disabled={!online}><Trash weight="bold" /></HeaderButton>} />
       ) : undefined}
       back={back}

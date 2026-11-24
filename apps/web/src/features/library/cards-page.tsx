@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { animate, motion, useMotionValue, useReducedMotion, useTransform, type MotionValue } from "motion/react";
 import { ArrowsClockwise, CaretLeft, CaretRight, Shuffle, Star, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
@@ -8,7 +8,9 @@ import { AppLink, Button, Chip, EmptyState, HeaderButton, cn } from "design-kit"
 import { errorMessage } from "@/data/api";
 import { starWords } from "@/data/library";
 import { useSet } from "@/data/queries";
+import { useLeave } from "@/ui/leave";
 import { Loaded } from "@/ui/page";
+import { useScreen } from "@/ui/screen";
 import { SpeakButton, speak } from "@/ui/speak";
 import { StarButton } from "@/ui/star-button";
 import { useDocumentTitle } from "@/ui/title";
@@ -19,7 +21,7 @@ export default function CardsPage() {
   const content = useSet(setId);
   useDocumentTitle(content.data ? `${content.data.set.name} · 單字卡` : "單字卡");
   return (
-    <Loaded query={content}>
+    <Loaded className="absolute inset-0" query={content}>
       {(data) => <Deck content={data} />}
     </Loaded>
   );
@@ -101,7 +103,8 @@ function piled(depth: number, scatter: Scatter) {
 }
 
 function Deck({ content }: { content: SetContent }) {
-  const navigate = useNavigate();
+  const leave = useLeave();
+  const { active } = useScreen();
   const reduced = useReducedMotion();
   const [order, setOrder] = useState<string[]>(() =>
     [...content.words].sort((a, b) => compareWords(a.word, b.word)).map((word) => word.id),
@@ -256,6 +259,7 @@ function Deck({ content }: { content: SetContent }) {
 
   // Keyboard shortcuts for crisp desktop control.
   useEffect(() => {
+    if (!active) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       if ((event.target as HTMLElement | null)?.closest("input,textarea,button,a")) return;
@@ -276,12 +280,12 @@ function Deck({ content }: { content: SetContent }) {
         speak(word.word);
       } else if (event.key === "Escape") {
         event.preventDefault();
-        navigate(`/app/sets/${content.set.id}`);
+        leave.back(`/app/sets/${content.set.id}`);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [turn, go, word, content.set.id, navigate]);
+  }, [active, turn, go, word, content.set.id, leave]);
 
   // Pointer gesture handling: tap to flip, drag sideways to throw, drag vertically to spin.
   const gesture = useRef<{
@@ -437,7 +441,7 @@ function Deck({ content }: { content: SetContent }) {
   const starredCount = content.words.filter((entry) => entry.starred).length;
 
   return (
-    <div className="fixed inset-0 z-30 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
+    <div className="absolute inset-0 mx-auto flex w-full max-w-2xl flex-col overscroll-none px-[var(--gutter)] pb-[max(1rem,var(--safe-bottom))] pt-[calc(var(--safe-top)+0.5rem)] md:pt-[calc(var(--safe-top)+1rem)]">
       <header className="grid h-10 shrink-0 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2">
         <div className="flex items-center">
           <HeaderButton aria-label={`回到 ${content.set.name}`} asChild>

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { FolderSimplePlus, Plus } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { Folder, SetSummary } from "@lexiro/contract";
-import { Button, Field, Input, ListGroup, ListRow, Sheet, type ActionStatus } from "design-kit";
+import { Button, Field, Input, ListGroup, ListRow, Reveal, Sheet, useLast, type ActionStatus } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { copyWords, createSet } from "@/data/library";
 import { useLibrary } from "@/data/queries";
@@ -59,22 +59,25 @@ export function CopySheet({ fromSetId, ids, open, onOpenChange, onDone }: {
       description="同樣拼法的單字會合併，補上缺少的意思。"
       onOpenChange={(next) => { onOpenChange(next); if (!next) setCreating(false); }}
       open={open}
-      title={`複製 ${ids.length} 個單字到…`}
+      title={`複製 ${useLast(open ? ids.length : null) ?? ids.length} 個單字到…`}
     >
       <div className="grid gap-4">
-        {creating ? (
-          <NewTarget
-            defaultFolderId={source?.folderId ?? null}
-            folders={folders ?? []}
-            onCancel={() => setCreating(false)}
-            onCreated={copyTo}
-            online={online}
-          />
-        ) : (
-          <Button className="justify-self-start" disabled={!online} onClick={() => setCreating(true)} variant="secondary">
-            <Plus weight="bold" />建立新單字集
-          </Button>
-        )}
+        <div className="grid grid-cols-[minmax(0,1fr)]">
+          <Reveal open={!creating}>
+            <Button disabled={!online} onClick={() => setCreating(true)} variant="secondary">
+              <Plus weight="bold" />建立新單字集
+            </Button>
+          </Reveal>
+          <Reveal open={creating}>
+            <NewTarget
+              defaultFolderId={source?.folderId ?? null}
+              folders={folders ?? []}
+              onCancel={() => setCreating(false)}
+              onCreated={copyTo}
+              online={online}
+            />
+          </Reveal>
+        </div>
         {groups.map((group) => (
           <ListGroup key={group.key} title={group.title}>
             {group.sets.map((set) => (

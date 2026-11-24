@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { Check, Copy, Crown, Play, SignOut, Stop, X } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { AnimatedNumber, AppLink, Button, Chip, EmptyState, HeaderButton, ListGroup, ListRow, Panel, ProgressBar, Spinner, cn } from "design-kit";
+import { AnimatedNumber, AppLink, Button, Chip, EmptyState, HeaderButton, ListGroup, ListRow, Panel, ProgressBar, Spinner, StepSlide, cn } from "design-kit";
 import { useAuth } from "@/data/auth";
 import { useRemaining, useRoomSocket } from "@/data/room-socket";
 import { TASK_LABELS } from "@/domain/labels";
@@ -17,11 +17,11 @@ export default function RoomPage() {
   const room = useRoomSocket(code.toUpperCase(), account?.name.slice(0, 40) || "Player");
   useDocumentTitle(room.state?.title ?? "對戰");
   const { state, connection } = room;
-  const leave = <HeaderButton aria-label="離開房間" asChild><AppLink href="/app/rooms"><SignOut weight="bold" /></AppLink></HeaderButton>;
+  const leave = <HeaderButton aria-label="離開房間" asChild><AppLink back href="/app/rooms"><SignOut weight="bold" /></AppLink></HeaderButton>;
   if (connection === "failed" || connection === "replaced")
     return (
       <Shell leave={leave}>
-        <EmptyState action={<Button asChild variant="primary"><AppLink href="/app/rooms">回到對戰</AppLink></Button>} description={connection === "replaced" ? "你在另一台裝置進入了這個房間。" : room.error} title="無法留在這個房間" />
+        <EmptyState action={<Button asChild variant="primary"><AppLink back href="/app/rooms">回到對戰</AppLink></Button>} description={connection === "replaced" ? "你在另一台裝置進入了這個房間。" : room.error} title="無法留在這個房間" />
       </Shell>
     );
   if (!state)
@@ -29,9 +29,13 @@ export default function RoomPage() {
   const host = state.you === state.hostUid;
   return (
     <Shell leave={leave} state={state} reconnecting={connection === "reconnecting"}>
-      {state.phase === "lobby" ? <Lobby host={host} send={room.send} state={state} />
-        : state.phase === "ended" ? <Ended state={state} />
-        : <div className="card-in grid gap-5" key={state.index}><Live host={host} offset={room.offset} send={room.send} state={state} /></div>}
+      <StepSlide direction={1} step={state.phase === "lobby" || state.phase === "ended" ? state.phase : state.index}>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-5">
+          {state.phase === "lobby" ? <Lobby host={host} send={room.send} state={state} />
+            : state.phase === "ended" ? <Ended state={state} />
+            : <Live host={host} offset={room.offset} send={room.send} state={state} />}
+        </div>
+      </StepSlide>
     </Shell>
   );
 }
@@ -182,7 +186,7 @@ function Ended({ state }: { state: RoomState }) {
           })}
         </ListGroup>
       ) : review ? <p className="px-1 text-sm text-positive">全部答對，太強了。</p> : null}
-      <Button asChild className="justify-self-start" variant="primary"><AppLink href="/app/rooms">再開一場</AppLink></Button>
+      <Button asChild className="justify-self-start" variant="primary"><AppLink back href="/app/rooms">再開一場</AppLink></Button>
     </>
   );
 }

@@ -3,13 +3,15 @@
 :root {
   /* How long. A touch is acknowledged in a tenth of a second, a control
      settles in a quarter, something genuinely new takes long enough to be
-     read as arriving, navigation has a longer deceleration, and a layer
+     read as arriving, navigation has a longer deceleration, a pushed screen
+     crosses the whole width, and a layer
      presented over the current place takes longest because it travels
      furthest. Leaving is always quicker than arriving. */
   --motion-touch: 100ms;
   --motion-control: 250ms;
   --motion-reveal: 400ms;
   --motion-nav: 460ms;
+  --motion-push: 520ms;
   --motion-sheet: 560ms;
   --motion-control-exit: 190ms;
   --motion-sheet-exit: 400ms;

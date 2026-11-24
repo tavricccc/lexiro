@@ -1,17 +1,14 @@
 import * as React from "react";
 import { AppLink } from "./app-link";
-import { ArrowClockwise, CaretLeft, Tray, WarningCircle } from "@phosphor-icons/react/ssr";
+import { ArrowClockwise, CaretLeft, Tray, WarningCircle, X } from "@phosphor-icons/react/ssr";
+import { useLabels } from "../lib/provider";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
 import { Skeleton } from "./feedback";
 import { Panel } from "./panel";
 
-/** Pins a page's top row under the status bar while the page scrolls beneath it. */
-// Pinned at the offset it starts at, so it never shifts when the page begins to scroll.
-export const pinnedHeaderClass = "sticky top-[calc(var(--safe-top)+1.5rem)] z-30 md:top-[calc(var(--safe-top)+2.5rem)]";
-
 /** Where the pinned toolbar sits: the back control, the small title and the actions share this line. */
-const toolbarTop = "top-[calc(var(--safe-top)+0.5rem)] md:top-[calc(var(--safe-top)+1rem)]";
+const toolbarClass = "sticky top-[calc(var(--safe-top)+0.5rem)] z-40 grid h-9 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2 md:top-[calc(var(--safe-top)+1rem)]";
 
 /**
  * A round, icon-only control for a page's toolbar, like iOS's bar buttons.
@@ -28,16 +25,19 @@ export function HeaderButton({ prominent, ...props }: Omit<React.ComponentProps<
  * The top of a page. The way back sits top-left and the page's actions
  * top-right, pinned there as the page scrolls; pass the actions as
  * `HeaderButton`s. Like a large title on iOS, the title scrolls away and a
- * small one appears centred between them.
+ * small one appears centred between them. On a `sheet` there is only the
+ * small one, and the way back is a close button.
  */
-export function PageHeader({ actions, back, className, description, title }: {
+export function PageHeader({ actions, back, className, description, sheet = false, title }: {
   actions?: React.ReactNode;
   /** Where the back control leads, with its accessible name. */
   back?: { href: string; label: string };
   className?: string;
   description?: React.ReactNode;
+  sheet?: boolean;
   title: React.ReactNode;
 }) {
+  const labels = useLabels();
   const titleRef = React.useRef<HTMLHeadingElement>(null);
   const [collapsed, setCollapsed] = React.useState(false);
   React.useEffect(() => {
@@ -46,13 +46,29 @@ export function PageHeader({ actions, back, className, description, title }: {
     const observer = new IntersectionObserver(([entry]) => setCollapsed(!entry.isIntersecting && entry.boundingClientRect.top < 0));
     observer.observe(title);
     return () => observer.disconnect();
-  }, []);
+  }, [sheet]);
+  const control = back ? (
+    <HeaderButton aria-label={sheet ? labels.close : back.label} asChild>
+      <AppLink back href={back.href}>{sheet ? <X weight="bold" /> : <CaretLeft weight="bold" />}</AppLink>
+    </HeaderButton>
+  ) : null;
+  if (sheet)
+    return (
+      <header className={cn("grid gap-2", className)}>
+        <div className={cn(toolbarClass, "top-4 md:top-5")}>
+          <div className="flex">{control}</div>
+          <h1 className="min-w-0 truncate text-center text-[1.0625rem] font-semibold">{title}</h1>
+          <div className="flex items-center justify-end gap-2">{actions}</div>
+        </div>
+        {description ? <p className="text-center text-[0.9375rem] leading-relaxed text-ink-muted">{description}</p> : null}
+      </header>
+    );
   const smallTitle = (
     <span
       aria-hidden
       className={cn(
         "pointer-events-none min-w-0 truncate text-center text-[0.9375rem] font-semibold transition-[opacity,translate] duration-[var(--motion-control)] ease-[var(--ease-move)]",
-        collapsed ? "opacity-100" : "-translate-y-1 opacity-0",
+        collapsed ? "opacity-100" : "translate-y-1 opacity-0",
       )}
     >
       {title}
@@ -62,21 +78,15 @@ export function PageHeader({ actions, back, className, description, title }: {
     <>
     {back || actions ? (
       // Outside the header so it stays pinned for the whole page; the small title is centred on the buttons' line.
-      <div className={cn("sticky z-40 -mb-2 grid h-9 grid-cols-[minmax(max-content,1fr)_minmax(0,max-content)_minmax(max-content,1fr)] items-center gap-2", toolbarTop)}>
-        <div className="flex">
-          {back ? (
-            <HeaderButton aria-label={back.label} asChild>
-              <AppLink back href={back.href}><CaretLeft weight="bold" /></AppLink>
-            </HeaderButton>
-          ) : null}
-        </div>
+      // It starts on the line it is pinned to, so it never shifts as the page begins to scroll.
+      <div className={cn(toolbarClass, "-mb-2 -mt-4 md:-mt-6")}>
+        <div className="flex">{control}</div>
         {smallTitle}
         <div className="flex items-center justify-end gap-2">{actions}</div>
       </div>
     ) : (
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center px-16 pt-[calc(var(--safe-top)+0.5rem)] md:left-70 md:pt-[calc(var(--safe-top)+1rem)]">
-        <div className="flex h-9 min-w-0 items-center">{smallTitle}</div>
-      </div>
+      // Takes no room of its own: it lies over the page's first lines, unseen until they have scrolled away.
+      <div className={cn(toolbarClass, "pointer-events-none -mb-15 grid-cols-1 justify-items-center px-16")}>{smallTitle}</div>
     )}
     <header className={cn("grid gap-1", className)}>
       <h1 ref={titleRef} className="text-balance text-2xl font-bold leading-tight tracking-tight">{title}</h1>

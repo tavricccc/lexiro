@@ -3,15 +3,15 @@ import { useNavigate, useSearchParams } from "react-router";
 import { useQueries } from "@tanstack/react-query";
 import { Check, Play } from "@phosphor-icons/react";
 import type { PracticeTask } from "@lexiro/contract";
-import { AppLink, Button, EmptyState, ListGroup, Panel, Segmented, cn } from "design-kit";
+import { AppLink, Button, EmptyState, ListGroup, Panel, Reveal, Segmented, cn, useLast } from "design-kit";
 import { useLearning } from "@/data/learning";
 import { setQuery, useLibrary, usePrefs } from "@/data/queries";
-import { clearRound, loadRound, saveRound } from "@/data/round-store";
+import { clearRound, saveRound, useSavedRound } from "@/data/round-store";
 import { TASK_HINTS, TASK_LABELS } from "@/domain/labels";
 import { availableTasks, buildRound, type Focus } from "@/domain/practice";
 import { newRound } from "@/domain/round";
 import { orderedSets } from "@/features/library/library-page";
-import { Page } from "@/ui/page";
+import { BottomBar, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
 
 const AMOUNTS = ["10", "20", "30", "50"] as const;
@@ -22,7 +22,8 @@ export default function SetupPage() {
   const library = useLibrary();
   const prefs = usePrefs();
   const { learning } = useLearning();
-  const [saved, setSaved] = useState(loadRound);
+  const saved = useSavedRound();
+  const unfinished = useLast(saved);
   const sets = orderedSets(library.data?.sets ?? []).filter((set) => set.wordCount > 0);
   // Opened from a set: practise that set; no second pick.
   const [fromSets] = useState(() => params.getAll("set"));
@@ -79,16 +80,16 @@ export default function SetupPage() {
   };
   return (
     <Page back={back} title="練習">
-      {saved ? (
+      <Reveal gap="1.5rem" open={saved !== null}>
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="font-semibold">有一輪還沒做完</p>
-            <p className="text-sm text-ink-muted">做到第 {Math.min(saved.index + 1, saved.items.length)} / {saved.items.length} 題</p>
+            <p className="text-sm text-ink-muted">{unfinished ? `做到第 ${Math.min(unfinished.index + 1, unfinished.items.length)} / ${unfinished.items.length} 題` : null}</p>
           </div>
-          <Button onClick={() => { clearRound(); setSaved(null); }} variant="ghost">捨棄</Button>
+          <Button onClick={clearRound} variant="ghost">捨棄</Button>
           <Button asChild variant="primary"><AppLink href="/app/practice/run">繼續</AppLink></Button>
         </Panel>
-      ) : null}
+      </Reveal>
       {fromSets.length ? (
         <ListGroup title="單字集">
           {sets.filter((set) => fromSets.includes(set.id)).map((set) => (
@@ -162,7 +163,7 @@ export default function SetupPage() {
         <Segmented label="題數" onChange={setAmount} options={AMOUNTS.map((value) => ({ value, label: `${value} 題` }))} value={size} />
       </section>
       {error ? <p className="message-in px-1 text-sm text-danger" role="alert">{error}</p> : null}
-      <Button className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-start" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button>
+      <BottomBar className="md:justify-self-start"><Button className="w-full shadow-[var(--elevation-glass)] md:w-auto" disabled={!loaded || !tasks.length} onClick={start} size="lg" variant="primary"><Play weight="fill" />開始練習</Button></BottomBar>
     </Page>
   );
 }

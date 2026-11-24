@@ -1,6 +1,7 @@
 import { Plus, Trash, X } from "@phosphor-icons/react";
 import { PARTS_OF_SPEECH, type Word, type WordInput } from "@lexiro/contract";
-import { Button, Field, Input, Panel, Textarea } from "design-kit";
+import { AnimatePresence } from "motion/react";
+import { Button, Field, Input, Panel, RevealItem, Textarea } from "design-kit";
 import { LabeledSelect } from "@/ui/labeled-select";
 
 export interface SenseDraft {
@@ -66,8 +67,11 @@ export function WordEditor({ draft, onChange, autoFocus }: { draft: WordDraft; o
           <Input autoCapitalize="none" autoComplete="off" autoFocus={autoFocus} className="font-latin text-lg" id={id} lang="en" maxLength={200} onChange={(event) => onChange({ ...draft, word: event.target.value })} placeholder="例如：rescue" spellCheck={false} value={draft.word} />
         )}
       </Field>
+      <div className="grid grid-cols-[minmax(0,1fr)]">
+      <AnimatePresence initial={false}>
       {draft.senses.map((sense, index) => (
-        <Panel className="grid gap-4" key={sense.key}>
+        <RevealItem className="[&:not(:first-child)]:pt-5" key={sense.key}>
+        <Panel className="grid gap-4">
           <div className="flex items-center justify-between gap-3">
             <h3 className="text-sm font-semibold text-ink-muted">意思 {index + 1}</h3>
             {draft.senses.length > 1 ? (
@@ -94,7 +98,10 @@ export function WordEditor({ draft, onChange, autoFocus }: { draft: WordDraft; o
             <Button className="justify-self-start" onClick={() => updateSense(index, { examples: [...sense.examples, ""] })} size="sm" variant="ghost"><Plus />加例句</Button>
           </div>
         </Panel>
+        </RevealItem>
       ))}
+      </AnimatePresence>
+      </div>
       <Button className="justify-self-start" onClick={() => onChange({ ...draft, senses: [...draft.senses, emptySense()] })}><Plus weight="bold" />再加一個意思</Button>
     </div>
   );

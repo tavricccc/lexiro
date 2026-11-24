@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type * as React from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, DownloadSimple, GoogleLogo } from "@phosphor-icons/react";
@@ -20,53 +21,72 @@ import { SetIcon } from "@/ui/set-icon";
 
 const gone = (error: unknown) => error instanceof ApiError && error.status === 404;
 
-/** Anyone with the link or code can look; adding it copies the set into the visitor's own account. */
-export default function SharedPage() {
+export function useShared() {
   const { shareId = "" } = useParams();
   const code = parseShareCode(shareId) ?? shareId;
-  const { ready, account } = useAuth();
   const shared = useQuery({ queryKey: keys.shared(code), queryFn: () => sharedSet(code), retry: (count, error) => !gone(error) && count < 2 });
-  const content = shared.data;
+  return { code, shared };
+}
+
+/** Anyone with the link or code can look; adding it copies the set into the visitor's own account. */
+export default function SharedPage() {
+  const { code, shared } = useShared();
+  const { ready, account } = useAuth();
   return (
     <div className="mx-auto grid w-full max-w-2xl gap-6 px-[var(--gutter)] pb-12 pt-[calc(var(--safe-top)+1.5rem)]">
       <ScrollMore className="fixed bottom-[calc(var(--safe-bottom)+1rem)] left-1/2 -translate-x-1/2" />
       <AppLink className="justify-self-start" href={account ? "/app/library" : "/"}><Brand /></AppLink>
-      {content ? (
-        <Page description={`${content.words.length} 個單字 · ${content.questions.length} 題`} documentTitle={content.set.name} title={<span className="flex items-center gap-3"><SetIcon icon={content.set.icon} />{content.set.name}</span>}>
-          <Panel className="grid gap-4">
-            <p className="text-[0.9375rem] text-ink-muted">加入後會複製一份到你的帳號，之後可以自由修改和練習。</p>
+      {shared.data ? (
+        <Page description={<SharedCount content={shared.data} />} documentTitle={shared.data.set.name} title={<span className="flex items-center gap-3"><SetIcon icon={shared.data.set.icon} />{shared.data.set.name}</span>}>
+          <SharedContent content={shared.data}>
             {!ready ? null : account ? (
-              <AddForm code={code} content={content} />
+              <AddForm code={code} content={shared.data} />
             ) : (
               <Button className="justify-self-start" onClick={() => void signIn().catch((error) => toast.error(errorMessage(error)))} size="lg" variant="primary"><GoogleLogo weight="bold" />用 Google 登入後加入</Button>
             )}
-          </Panel>
-          {content.words.length ? (
-            <ListGroup title="單字">
-              {content.words.slice(0, 200).map((word) => <ListRow detail={meaningLine(word)} key={word.id} label={<span className="font-latin" lang="en">{word.word}</span>} />)}
-            </ListGroup>
-          ) : null}
-          {content.words.length > 200 ? <p className="text-center text-sm text-ink-muted">還有 {content.words.length - 200} 個單字，加入後可以看到全部。</p> : null}
-          {content.questions.length ? (
-            <ListGroup title="題目">
-              {Object.entries(Object.groupBy(content.questions, (question) => question.kind)).map(([kind, list]) => <ListRow key={kind} label={KIND_LABELS[kind as keyof typeof KIND_LABELS]} value={`${list?.length ?? 0} 題`} />)}
-            </ListGroup>
-          ) : null}
+          </SharedContent>
         </Page>
-      ) : shared.isError ? (
-        <EmptyState
-          action={gone(shared.error) ? undefined : <Button onClick={() => void shared.refetch()}>再試一次</Button>}
-          description={errorMessage(shared.error)}
-          title="無法開啟這個分享"
-        />
-      ) : (
-        <Page title="載入中…" />
-      )}
+      ) : shared.isError ? <SharedError shared={shared} /> : <Page title="載入中…" />}
     </div>
   );
 }
 
-function AddForm({ code, content }: { code: string; content: SetContent }) {
+export const SharedCount = ({ content }: { content: SetContent }) => <>{content.words.length} 個單字 · {content.questions.length} 題</>;
+
+export function SharedError({ shared }: { shared: ReturnType<typeof useShared>["shared"] }) {
+  return (
+    <EmptyState
+      action={gone(shared.error) ? undefined : <Button onClick={() => void shared.refetch()}>再試一次</Button>}
+      description={errorMessage(shared.error)}
+      title="無法開啟這個分享"
+    />
+  );
+}
+
+/** What a shared set holds; `children` are the way to take it. */
+export function SharedContent({ content, children }: { content: SetContent; children: React.ReactNode }) {
+  return (
+    <>
+      <Panel className="grid gap-4">
+        <p className="text-[0.9375rem] text-ink-muted">加入後會複製一份到你的帳號，之後可以自由修改和練習。</p>
+        {children}
+      </Panel>
+      {content.words.length ? (
+        <ListGroup title="單字">
+          {content.words.slice(0, 200).map((word) => <ListRow detail={meaningLine(word)} key={word.id} label={<span className="font-latin" lang="en">{word.word}</span>} />)}
+        </ListGroup>
+      ) : null}
+      {content.words.length > 200 ? <p className="text-center text-sm text-ink-muted">還有 {content.words.length - 200} 個單字，加入後可以看到全部。</p> : null}
+      {content.questions.length ? (
+        <ListGroup title="題目">
+          {Object.entries(Object.groupBy(content.questions, (question) => question.kind)).map(([kind, list]) => <ListRow key={kind} label={KIND_LABELS[kind as keyof typeof KIND_LABELS]} value={`${list?.length ?? 0} 題`} />)}
+        </ListGroup>
+      ) : null}
+    </>
+  );
+}
+
+export function AddForm({ code, content }: { code: string; content: SetContent }) {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const library = useLibrary();
@@ -76,7 +96,7 @@ function AddForm({ code, content }: { code: string; content: SetContent }) {
   const folder = folders.some((entry) => entry.id === picked) ? picked : null;
   const [status, setStatus] = useState<ActionStatus>("idle");
   if (library.data?.sets.some((set) => set.id === content.set.id))
-    return <Button asChild className="justify-self-start" size="lg" variant="primary"><AppLink href={`/app/sets/${content.set.id}`}>開啟你的單字集<ArrowRight weight="bold" /></AppLink></Button>;
+    return <Button asChild className="justify-self-start" size="lg" variant="primary"><AppLink href={`/app/sets/${content.set.id}`} replace>開啟你的單字集<ArrowRight weight="bold" /></AppLink></Button>;
   const add = async () => {
     setStatus("loading");
     try {

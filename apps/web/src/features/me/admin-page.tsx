@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, ConfirmDialog, EmptyState, Field, Input, ListGroup, ListRow, Tile, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, EmptyState, Field, Input, ListGroup, ListRow, Tile, useLast, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
 import { useIsAdministrator } from "@/data/admin";
@@ -25,6 +25,7 @@ export default function AdminPage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<AdminAccount[] | null>(null);
   const [target, setTarget] = useState<Target | null>(null);
+  const asked = useLast(target);
   const [reason, setReason] = useState("");
   const [status, setStatus] = useState<ActionStatus>("idle");
   const search = async (event: React.FormEvent) => {
@@ -91,16 +92,16 @@ export default function AdminPage() {
       </form>
       {results ? <ListGroup title="搜尋結果">{results.length ? results.map(row) : <ListRow label="找不到符合的帳號" />}</ListGroup> : null}
       <ConfirmDialog
-        confirmLabel={target?.disabled ? "恢復帳號" : "停用帳號"}
-        description={target ? (target.disabled ? `「${target.label}」將可以再次使用 Lexiro。` : `「${target.label}」將無法讀寫資料，直到你恢復它。`) : undefined}
+        confirmLabel={asked?.disabled ? "恢復帳號" : "停用帳號"}
+        description={asked ? (asked.disabled ? `「${asked.label}」將可以再次使用 Lexiro。` : `「${asked.label}」將無法讀寫資料，直到你恢復它。`) : undefined}
         onConfirm={() => void toggle()}
         onOpenChange={(open) => { if (!open) setTarget(null); }}
         open={target !== null}
         status={status}
-        title={target?.disabled ? "恢復帳號？" : "停用帳號？"}
-        tone={target?.disabled ? "default" : "danger"}
+        title={asked?.disabled ? "恢復帳號？" : "停用帳號？"}
+        tone={asked?.disabled ? "default" : "danger"}
       >
-        {target && !target.disabled ? <Field label="原因（選填）">{({ id }) => <Input id={id} maxLength={200} onChange={(event) => setReason(event.target.value)} value={reason} />}</Field> : null}
+        {asked && !asked.disabled ? <Field label="原因（選填）">{({ id }) => <Input id={id} maxLength={200} onChange={(event) => setReason(event.target.value)} value={reason} />}</Field> : null}
       </ConfirmDialog>
     </Page>
   );

@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Books, Check, FolderSimple, FolderSimplePlus } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { Folder, SetSummary } from "@lexiro/contract";
-import { Button, ConfirmDialog, Input, ListGroup, Sheet, cn, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, Input, ListGroup, Sheet, cn, useLast, type ActionStatus } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { createFolder, deleteFolder, deleteSet, updateFolder, updateSet } from "@/data/library";
 import { useLibrary } from "@/data/queries";
@@ -19,27 +19,16 @@ export function FolderNameDialog({
   onClose: () => void;
   onCreated?: (folder: Folder) => void;
 }) {
-  return (
-    <FolderNameDialogInner
-      key={mode ? (mode.type === "rename" ? mode.folder.id : `new:${mode.parentId ?? "root"}`) : "closed"}
-      mode={mode}
-      onClose={onClose}
-      onCreated={onCreated}
-    />
-  );
-}
-
-function FolderNameDialogInner({
-  mode,
-  onClose,
-  onCreated,
-}: {
-  mode: { type: "create"; parentId: string | null; order: number; parentName?: string } | { type: "rename"; folder: Folder } | null;
-  onClose: () => void;
-  onCreated?: (folder: Folder) => void;
-}) {
-  const [name, setName] = useState(mode?.type === "rename" ? mode.folder.name : "");
+  const shown = useLast(mode);
+  const [name, setName] = useState("");
   const [status, setStatus] = useState<ActionStatus>("idle");
+  // Each opening starts from its own name; closing keeps what is there until it is out of sight.
+  const [openedFor, setOpenedFor] = useState<typeof mode>(null);
+  if (mode && mode !== openedFor) {
+    setOpenedFor(mode);
+    setName(mode.type === "rename" ? mode.folder.name : "");
+    setStatus("idle");
+  }
 
   const submit = async () => {
     if (!mode || status !== "idle") return;
@@ -66,13 +55,13 @@ function FolderNameDialogInner({
 
   return (
     <ConfirmDialog
-      confirmLabel={mode?.type === "rename" ? "儲存" : "新增"}
-      description={mode?.type === "create" && mode.parentName ? `位置：${mode.parentName}` : undefined}
+      confirmLabel={shown?.type === "rename" ? "儲存" : "新增"}
+      description={shown?.type === "create" && shown.parentName ? `位置：${shown.parentName}` : undefined}
       onConfirm={() => void submit()}
       onOpenChange={(next) => { if (!next) onClose(); }}
       open={mode !== null}
       status={status}
-      title={mode?.type === "rename" ? "重新命名資料夾" : "新增資料夾"}
+      title={shown?.type === "rename" ? "重新命名資料夾" : "新增資料夾"}
     >
       <form onSubmit={(event) => { event.preventDefault(); void submit(); }}>
         <Input
@@ -98,6 +87,7 @@ export function DeleteFolderDialog({
   onDeleted?: () => void;
 }) {
   const [status, setStatus] = useState<ActionStatus>("idle");
+  const shown = useLast(folder);
   return (
     <ConfirmDialog
       confirmLabel="刪除"
@@ -118,7 +108,7 @@ export function DeleteFolderDialog({
       onOpenChange={(next) => { if (!next) onClose(); }}
       open={folder !== null}
       status={status}
-      title={`刪除「${folder?.name ?? ""}」？`}
+      title={`刪除「${shown?.name ?? ""}」？`}
       tone="danger"
     />
   );
@@ -134,10 +124,11 @@ export function DeleteSetDialog({
   onDeleted?: () => void;
 }) {
   const [status, setStatus] = useState<ActionStatus>("idle");
+  const shown = useLast(set);
   return (
     <ConfirmDialog
       confirmLabel="刪除"
-      description={set ? `${set.wordCount} 個單字和 ${set.questionCount} 題會一起刪除，無法復原。` : undefined}
+      description={shown ? `${shown.wordCount} 個單字和 ${shown.questionCount} 題會一起刪除，無法復原。` : undefined}
       onConfirm={async () => {
         if (!set) return;
         setStatus("loading");
@@ -155,7 +146,7 @@ export function DeleteSetDialog({
       onOpenChange={(next) => { if (!next) onClose(); }}
       open={set !== null}
       status={status}
-      title={`刪除「${set?.name ?? ""}」？`}
+      title={`刪除「${shown?.name ?? ""}」？`}
       tone="danger"
     />
   );
@@ -165,7 +156,7 @@ export type MoveTarget = { type: "set"; set: SetSummary } | { type: "folder"; fo
 
 /** Picks the folder a set or folder moves into, mirroring the real folder tree. */
 export function MoveSheet({
-  target,
+  target: asked,
   onClose,
 }: {
   target: MoveTarget | null;
@@ -173,6 +164,7 @@ export function MoveSheet({
 }) {
   const library = useLibrary();
   const online = useOnline();
+  const target = useLast(asked);
   const [busy, setBusy] = useState(false);
   const [creating, setCreating] = useState<{ type: "create"; parentId: string | null; order: number; parentName?: string } | null>(null);
   const tree = useMemo(() => folderTree(library.data?.folders ?? []), [library.data?.folders]);
@@ -187,7 +179,7 @@ export function MoveSheet({
   );
 
   const moveTo = async (destination: string | null) => {
-    if (!target) return;
+    if (!target || !asked) return;
     if (destination === current) {
       onClose();
       return;
@@ -207,7 +199,7 @@ export function MoveSheet({
 
   return (
     <>
-      <Sheet onOpenChange={(next) => { if (!next && !busy) onClose(); }} open={target !== null} title={name ? `移動「${name}」` : "移動"}>
+      <Sheet onOpenChange={(next) => { if (!next && !busy) onClose(); }} open={asked !== null} title={name ? `移動「${name}」` : "移動"}>
         <div className="grid gap-4">
           <ListGroup label="選擇目標資料夾">
             <TreeRow

@@ -18,25 +18,25 @@ import {
 } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import { descriptionPoints, type Question, type SetContent, type Word } from "@lexiro/contract";
-import { AppLink, Button, Chip, ConfirmDialog, EmptyState, HeaderButton, Input, ListGroup, ListRow, Menu, Segmented, cn } from "design-kit";
+import { AnimatePresence, motion } from "motion/react";
+import { AnimatedNumber, AppLink, Button, Chip, ConfirmDialog, EmptyState, HeaderButton, Input, ListGroup, ListRow, Menu, Pane, Segmented, cn, timing, useStepDirection } from "design-kit";
 import { errorMessage } from "@/data/api";
 import { deleteWords } from "@/data/library";
 import { useLibrary, usePrefs, useSet } from "@/data/queries";
 import { KIND_LABELS } from "@/domain/labels";
 import { useOnline } from "@/ui/offline-banner";
-import { Loaded, Page } from "@/ui/page";
+import { BottomBar, Loaded, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
 import { StarButton } from "@/ui/star-button";
 import { CopySheet } from "./copy-sheet";
 import { MoveSheet, type MoveTarget } from "./folder-dialogs";
 import { folderTree } from "./folders";
 import { ShareSheet } from "./share-sheet";
-import { WordSheet } from "./word-page";
 
 type Tab = "words" | "questions";
 
 export default function SetPage() {
-  const { setId = "", wordId } = useParams();
+  const { setId = "" } = useParams();
   const content = useSet(setId);
   const library = useLibrary();
   const online = useOnline();
@@ -87,7 +87,6 @@ export default function SetPage() {
       ) : name}
     >
       <Loaded query={content}>{(data) => <SetBody content={data} />}</Loaded>
-      {content.data ? <WordSheet content={content.data} wordId={wordId} /> : null}
       {content.data ? <ShareSheet onOpenChange={setShare} open={share} set={content.data.set} /> : null}
       <MoveSheet onClose={() => setMoving(null)} target={moving} />
     </Page>
@@ -98,6 +97,7 @@ function SetBody({ content }: { content: SetContent }) {
   const [params, setParams] = useSearchParams();
   const [query, setQuery] = useState("");
   const tab: Tab = params.get("tab") === "questions" ? "questions" : "words";
+  const direction = useStepDirection(tab, tab === "words" ? 0 : 1);
   const setTab = (next: Tab) => setParams(next === "words" ? {} : { tab: next }, { replace: true });
   if (!content.words.length)
     return (
@@ -126,14 +126,16 @@ function SetBody({ content }: { content: SetContent }) {
           value={query}
         />
       </div>
-      {tab === "words" ? (
-        <WordList content={content} query={query} />
-      ) : (
-        <>
-          <QuestionList content={content} query={query} />
-          <PracticeButton setId={content.set.id} />
-        </>
-      )}
+      <Pane className="grid grid-cols-[minmax(0,1fr)] gap-4" direction={direction} step={tab}>
+        {tab === "words" ? (
+          <WordList content={content} query={query} />
+        ) : (
+          <>
+            <QuestionList content={content} query={query} />
+            <BottomBar className="md:justify-self-end"><PracticeButton setId={content.set.id} /></BottomBar>
+          </>
+        )}
+      </Pane>
     </div>
   );
 }
@@ -141,7 +143,7 @@ function SetBody({ content }: { content: SetContent }) {
 /** The set's main action, kept where a thumb reaches it. */
 function PracticeButton({ setId }: { setId: string }) {
   return (
-    <Button asChild className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-end" size="lg" variant="primary">
+    <Button asChild className="w-full shadow-[var(--elevation-glass)] md:w-auto" size="lg" variant="primary">
       <AppLink href={`/app/practice?set=${setId}`}><Play weight="fill" />練習這組</AppLink>
     </Button>
   );
@@ -258,13 +260,25 @@ function WordList({ content, query }: { content: SetContent; query: string }) {
         <p className="py-6 text-center text-[0.9375rem] text-ink-muted">沒有符合的單字</p>
       )}
 
-      {selected ? (
-        <div className="content-in glass-float sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 flex items-center gap-2 rounded-full p-1.5 pl-5 md:bottom-[calc(var(--safe-bottom)+1.5rem)]">
-          <span className="flex-1 text-[0.9375rem] font-medium">已選 <span className="font-latin">{selected.size}</span> 個</span>
-          <Button disabled={!selected.size || !online} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
-          <Button disabled={!selected.size || !online} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>
-        </div>
-      ) : <PracticeButton setId={setId} />}
+      <BottomBar className={cn("grid", !selected && "md:justify-self-end")}>
+        <AnimatePresence initial={false} mode="popLayout">
+          <motion.div
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            initial={{ opacity: 0, scale: 0.97 }}
+            key={selected ? "selecting" : "practice"}
+            transition={timing("control")}
+          >
+            {selected ? (
+              <div className="glass-float flex items-center gap-2 rounded-full p-1.5 pl-5">
+                <span className="flex-1 text-[0.9375rem] font-medium">已選 <AnimatedNumber className="font-latin" value={selected.size} /> 個</span>
+                <Button disabled={!selected.size || !online} onClick={() => setCopying(true)} size="sm"><Copy />複製到…</Button>
+                <Button disabled={!selected.size || !online} onClick={() => setRemoving(true)} size="sm" variant="danger"><Trash />刪除</Button>
+              </div>
+            ) : <PracticeButton setId={setId} />}
+          </motion.div>
+        </AnimatePresence>
+      </BottomBar>
 
       <CopySheet fromSetId={setId} ids={[...(selected ?? [])]} onDone={() => setSelected(null)} onOpenChange={setCopying} open={copying} />
       <ConfirmDialog
@@ -319,38 +333,28 @@ function WordRow({
   checked?: boolean;
   onToggle: () => void;
 }) {
-  if (checked !== undefined) {
-    return (
-      <li>
-        <button
-          aria-pressed={checked}
-          className={cn(
-            "flex min-h-14 w-full items-center gap-3 px-4 py-2.5 text-left outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised",
-            checked && "bg-accent-soft/45 hover:bg-accent-soft/60",
-          )}
-          onClick={onToggle}
-          type="button"
-        >
-          <WordText showMeanings={showMeanings} word={word} />
-          <span
-            aria-hidden
-            className={cn(
-              "grid size-6 shrink-0 place-items-center rounded-full border-2 transition-colors duration-[var(--motion-control)]",
-              checked ? "border-contrast bg-contrast text-on-contrast" : "border-ink-faint/50",
-            )}
-          >
-            {checked ? <Check className="mark-in size-3.5" weight="bold" /> : null}
-          </span>
-        </button>
-      </li>
-    );
-  }
+  const selecting = checked !== undefined;
+  const row = "flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 text-left outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised";
+  const text = <WordText showMeanings={showMeanings} word={word} />;
   return (
-    <li className="flex items-center">
-      <AppLink className="flex min-h-14 min-w-0 flex-1 items-center gap-3 py-2.5 pl-4 outline-none transition-colors duration-[var(--motion-control)] hover:bg-surface-raised active:bg-surface-pressed focus-visible:bg-surface-raised" href={`/app/sets/${setId}/words/${word.id}`}>
-        <WordText showMeanings={showMeanings} word={word} />
-      </AppLink>
-      <span className="pr-2"><StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} /></span>
+    <li className={cn("relative flex items-center transition-colors duration-[var(--motion-control)]", checked && "bg-accent-soft/45")}>
+      {selecting
+        ? <button aria-pressed={checked} className={cn(row, "pr-14")} onClick={onToggle} type="button">{text}</button>
+        : <AppLink className={cn(row, "pr-14")} href={`/app/sets/${setId}/words/${word.id}`}>{text}</AppLink>}
+      {/* The star and the check share one place and trade it. */}
+      <span className={cn("absolute right-2 grid transition-[opacity,scale] duration-[var(--motion-control)]", selecting && "pointer-events-none scale-75 opacity-0")} aria-hidden={selecting} inert={selecting}>
+        <StarButton setId={setId} starred={word.starred} word={word.word} wordId={word.id} />
+      </span>
+      <span
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute right-4 grid size-6 place-items-center rounded-full border-2 transition-[background-color,border-color,opacity,scale] duration-[var(--motion-control)]",
+          checked ? "border-contrast bg-contrast text-on-contrast" : "border-ink-faint/50",
+          !selecting && "scale-75 opacity-0",
+        )}
+      >
+        {checked ? <Check className="mark-in size-3.5" weight="bold" /> : null}
+      </span>
     </li>
   );
 }

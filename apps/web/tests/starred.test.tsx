@@ -4,7 +4,6 @@ import { createMemoryRouter, RouterProvider } from "react-router";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
 globalThis.IntersectionObserver ??= class { observe() {} disconnect() {} unobserve() {} } as never;
-window.matchMedia ??= ((query: string) => ({ matches: false, media: query, addEventListener() {}, removeEventListener() {} })) as never;
 const word = (set: string, text: string, starred: boolean) => ({ id: `${set}-${text}`, setId: set, word: text, starred, updatedAt: "", senses: [{ id: `${set}-${text}-s`, pos: "n.", meaning: `${text} 的意思`, examples: [] }] });
 const summary = (id: string, name: string) => ({ id, name, folderId: null, hue: "mint", icon: "books", order: null, createdAt: "", updatedAt: "", wordCount: 3, questionCount: 0 });
 const sets: Record<string, unknown> = {

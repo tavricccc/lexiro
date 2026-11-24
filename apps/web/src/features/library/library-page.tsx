@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import {
   Cards,
   CaretRight,
@@ -16,8 +16,9 @@ import {
   Trash,
 } from "@phosphor-icons/react";
 import type { Folder, LibraryIndex, SetSummary } from "@lexiro/contract";
-import { AppLink, Button, EmptyState, HeaderButton, Input, Menu, cn, type MenuItem } from "design-kit";
+import { AppLink, Button, EmptyState, HeaderButton, Input, Menu, cn, useLast, type MenuItem } from "design-kit";
 import { useLibrary } from "@/data/queries";
+import { useLeave } from "@/ui/leave";
 import { useOnline } from "@/ui/offline-banner";
 import { Loaded, Page } from "@/ui/page";
 import { SetIcon } from "@/ui/set-icon";
@@ -39,7 +40,7 @@ export { orderedSets };
 export default function LibraryPage() {
   const { folderId: rawFolderId } = useParams();
   const folderId = rawFolderId ?? null;
-  const navigate = useNavigate();
+  const leave = useLeave();
   const library = useLibrary();
   const online = useOnline();
   const [query, setQuery] = useState("");
@@ -51,6 +52,7 @@ export default function LibraryPage() {
   const [removingFolder, setRemovingFolder] = useState<Folder | null>(null);
   const [removingSet, setRemovingSet] = useState<SetSummary | null>(null);
   const [sharing, setSharing] = useState<SetSummary | null>(null);
+  const shared = useLast(sharing);
 
   const tree = useMemo(() => folderTree(library.data?.folders ?? []), [library.data?.folders]);
   const folder = tree.get(folderId);
@@ -143,14 +145,12 @@ export default function LibraryPage() {
         onClose={() => setRemovingFolder(null)}
         onDeleted={() => {
           if (removingFolder && removingFolder.id === folderId) {
-            navigate(parent ? `/app/library/folder/${parent.id}` : "/app/library", { replace: true });
+            leave.back(parent ? `/app/library/folder/${parent.id}` : "/app/library");
           }
         }}
       />
       <DeleteSetDialog onClose={() => setRemovingSet(null)} set={removingSet} />
-      {sharing ? (
-        <ShareSheet onOpenChange={(open) => { if (!open) setSharing(null); }} open set={sharing} />
-      ) : null}
+      {shared ? <ShareSheet onOpenChange={(open) => { if (!open) setSharing(null); }} open={sharing !== null} set={shared} /> : null}
     </Page>
   );
 }

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { DownloadSimple, UploadSimple } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, ConfirmDialog, ListGroup, Panel, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, ListGroup, Panel, useLast, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { calendarDay } from "@lexiro/contract";
 import { invalidate } from "@/data/queries";
@@ -14,6 +14,7 @@ export default function DataPage() {
   const [exporting, setExporting] = useState<ActionStatus>("idle");
   const [importing, setImporting] = useState<ActionStatus>("idle");
   const [file, setFile] = useState<File | null>(null);
+  const asked = useLast(file);
   const download = async () => {
     setExporting("loading");
     try {
@@ -60,7 +61,7 @@ export default function DataPage() {
       </ListGroup>
       <ConfirmDialog
         confirmLabel="匯入"
-        description={file ? `要從「${file.name}」匯入嗎？內容會加到你現有的單字集旁邊。` : undefined}
+        description={asked ? `要從「${asked.name}」匯入嗎？內容會加到你現有的單字集旁邊。` : undefined}
         onConfirm={() => void restore()}
         onOpenChange={(open) => { if (!open) setFile(null); }}
         open={file !== null}

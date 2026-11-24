@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const DURATIONS = ['touch', 'control', 'reveal', 'nav', 'sheet', 'controlExit', 'sheetExit'];
+const DURATIONS = ['touch', 'control', 'reveal', 'nav', 'push', 'sheet', 'controlExit', 'sheetExit'];
 const EASINGS = ['arrive', 'depart', 'move', 'nav', 'navDepart', 'bounce'];
 const TRAVEL = ['lift', 'pressScale', 'cardPressScale', 'surfaceScale', 'routeTravel'];
 const LOOPS = ['spin', 'sweep', 'pulse'];
@@ -78,7 +78,8 @@ function renderStylesheet(config) {
     ':root {',
     '  /* How long. A touch is acknowledged in a tenth of a second, a control',
     '     settles in a quarter, something genuinely new takes long enough to be',
-    '     read as arriving, navigation has a longer deceleration, and a layer',
+    '     read as arriving, navigation has a longer deceleration, a pushed screen',
+    '     crosses the whole width, and a layer',
     '     presented over the current place takes longest because it travels',
     '     furthest. Leaving is always quicker than arriving. */',
   ];

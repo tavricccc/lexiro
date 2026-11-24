@@ -1,0 +1,199 @@
+/*
+ * The stage: one layer per screen. A layer fills the pane (beside the rail on
+ * a wide screen) or, for a full screen, everything; its surface is what moves.
+ */
+.stage {
+  --rail: 0px;
+  --stage-recede: calc(var(--safe-top) + 0.25rem);
+  position: relative;
+  isolation: isolate;
+  height: 100dvh;
+  overflow: clip;
+  background: var(--canvas);
+}
+
+/* Installed on iOS the dynamic viewport can end short of the screen's foot. */
+@media (display-mode: standalone) {
+  .stage { height: 100vh; }
+}
+
+/* A page pushed back by a modal stands against black, as on iOS. */
+.stage[data-recessed] { background: #000; }
+
+.stage-rail {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 40;
+  width: 17.5rem;
+  display: none;
+  background: var(--canvas);
+}
+
+@media (min-width: 48rem) {
+  .stage { --rail: 17.5rem; }
+  .stage-rail { display: flex; }
+}
+
+.screen {
+  position: absolute;
+  inset: 0 0 0 var(--rail);
+  overflow: clip;
+  pointer-events: none;
+}
+
+.screen[data-shown="false"] { visibility: hidden; }
+
+.screen[data-presentation="full"],
+.screen[data-presentation="sheet"],
+.screen[data-presentation="modal"] { left: 0; }
+
+.screen-surface {
+  /* The containing block of anything fixed inside, moving or not. */
+  contain: layout paint;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--canvas);
+  pointer-events: auto;
+  outline: none;
+  transform-origin: top center;
+}
+
+/* Tabs swap inside one surface; a push draws its leading edge over the last page. */
+.screen[data-presentation="push"] { overflow: visible; }
+.screen[data-presentation="push"] > .screen-surface { box-shadow: 0 0 2.5rem rgb(0 0 0 / 14%); }
+
+.screen[data-recessed] > .screen-surface {
+  border-radius: 0.75rem;
+  transition: border-radius var(--motion-control) var(--ease-move);
+}
+
+.screen-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  border-radius: inherit;
+  background: rgb(0 0 0 / 12%);
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-theme="dark"] .screen-dim { background: rgb(0 0 0 / 45%); }
+
+.screen-scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  opacity: 0;
+  pointer-events: auto;
+}
+
+/* ---- inside a surface ---- */
+
+.screen-view {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+.screen[data-presentation="tab"] .screen-view { position: absolute; inset: 0; }
+.screen-view[data-hidden] { visibility: hidden; }
+
+.screen-scroller {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Room for whatever lies over the foot; not padding, which browsers disagree on for sticky bars. */
+.screen-scroller::after { content: ""; display: block; height: var(--screen-foot); }
+
+.screen-body {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: calc(var(--safe-top) + 1.5rem) var(--gutter) 2rem;
+}
+
+/* How much of the foot the dock or the home indicator lies over. */
+.screen { --screen-foot: var(--safe-bottom); }
+.screen[data-presentation="tab"] { --screen-foot: calc(var(--bottom-nav-height) + var(--bottom-nav-gap)); }
+.screen:not([data-presentation="tab"]) { --bottom-nav-height: 0px; --bottom-nav-gap: var(--safe-bottom); }
+
+@media (min-width: 48rem) {
+  .screen[data-presentation="tab"] { --screen-foot: var(--safe-bottom); }
+  .screen-body { padding: calc(var(--safe-top) + 2.5rem) 2.5rem 4rem; }
+}
+
+/* The offline notice takes the top, and the space the status bar needs with it. */
+.screen-offline { flex: none; }
+.screen-offline[data-on] ~ .screen-scroller { --safe-top: 0px; }
+
+.screen-top { position: sticky; top: 0; z-index: 20; height: 0; }
+.screen-edge-top { position: absolute; height: calc(var(--safe-top) + 5rem); }
+.screen-edge-bottom { position: absolute; height: calc(var(--screen-foot) + 1.75rem); }
+
+/* The arrow to the end stands clear of the dock, and of a bar stuck to the foot. */
+.screen-more { position: absolute; left: 50%; bottom: calc(var(--screen-foot) + 0.75rem); translate: -50% 0; }
+.screen-view:has(> .screen-scroller [data-bottom-bar]) > .screen-more { bottom: calc(var(--screen-foot) + 5rem); }
+
+.screen-dock {
+  position: absolute;
+  inset: auto 0 var(--bottom-nav-gap);
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--gutter);
+  pointer-events: none;
+}
+.screen-dock > * { pointer-events: auto; }
+@media (min-width: 48rem) { .screen-dock { display: none; } }
+
+/* ---- sheets ---- */
+
+.screen-grabber { display: none; }
+
+.screen:is([data-presentation="sheet"], [data-presentation="modal"]) > .screen-surface {
+  --safe-top: 0px;
+  --edge-fade: var(--canvas);
+  inset: auto 0 0;
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  overflow: clip;
+}
+.screen:is([data-presentation="sheet"], [data-presentation="modal"]) .screen-body { padding: 1rem var(--gutter) 1.5rem; }
+.screen:is([data-presentation="sheet"], [data-presentation="modal"]) .screen-edge-top { height: 4rem; }
+
+@media (max-width: 47.99rem) {
+  .screen[data-presentation="modal"] > .screen-surface { top: calc(env(safe-area-inset-top, 0px) + 0.875rem); }
+  .screen[data-presentation="sheet"] > .screen-surface { max-height: calc(100% - env(safe-area-inset-top, 0px) - 3rem); }
+  .screen-grabber {
+    position: absolute;
+    top: 0.375rem;
+    left: 50%;
+    z-index: 50;
+    display: block;
+    width: 2.25rem;
+    height: 0.3125rem;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--ink-faint) 55%, transparent);
+    translate: -50% 0;
+  }
+}
+
+@media (min-width: 48rem) {
+  .screen:is([data-presentation="sheet"], [data-presentation="modal"]) > .screen-surface {
+    inset: 0;
+    width: min(40rem, calc(100vw - 4rem));
+    height: fit-content;
+    max-height: min(46rem, calc(100% - 4rem));
+    margin: auto;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--elevation-float);
+    transform-origin: center;
+  }
+  .screen:is([data-presentation="sheet"], [data-presentation="modal"]) .screen-body { padding: 1.25rem 1.5rem 1.75rem; }
+}

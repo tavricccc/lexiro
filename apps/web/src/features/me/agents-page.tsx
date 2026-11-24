@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Copy, LinkBreak, Robot } from "@phosphor-icons/react";
 import { toast } from "sonner";
-import { Button, ConfirmDialog, EmptyState, ListGroup, ListRow, Panel, type ActionStatus } from "design-kit";
+import { Button, ConfirmDialog, EmptyState, ListGroup, ListRow, Panel, useLast, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { workerUrl } from "@/data/config";
 import { Loaded, Page } from "@/ui/page";
@@ -12,6 +12,7 @@ interface Connection { id: string; clientId: string; clientName: string; created
 export default function AgentsPage() {
   const connections = useQuery({ queryKey: ["connections"], queryFn: () => api<{ connections: Connection[] }>("/connections").then((r) => r.connections) });
   const [revoking, setRevoking] = useState<Connection | null>(null);
+  const asked = useLast(revoking);
   const [status, setStatus] = useState<ActionStatus>("idle");
   const endpoint = `${workerUrl}/mcp`;
   const copy = () => navigator.clipboard.writeText(endpoint).then(() => toast.success("已複製網址"), () => toast.error("無法複製，請手動選取。"));
@@ -55,7 +56,7 @@ export default function AgentsPage() {
       </Loaded>
       <ConfirmDialog
         confirmLabel="中斷連線"
-        description={revoking ? `「${revoking.clientName}」將不能再存取你的單字集。` : undefined}
+        description={asked ? `「${asked.clientName}」將不能再存取你的單字集。` : undefined}
         onConfirm={() => void revoke()}
         onOpenChange={(open) => { if (!open) setRevoking(null); }}
         open={revoking !== null}

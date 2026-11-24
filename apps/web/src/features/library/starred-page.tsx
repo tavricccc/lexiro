@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Play, Star } from "@phosphor-icons/react";
 import type { Word } from "@lexiro/contract";
-import { AppLink, Button, EmptyState, ListGroup, LoadingList, Panel, Segmented, cn } from "design-kit";
+import { AppLink, Button, EmptyState, ListGroup, LoadingList, Pane, Panel, Segmented, cn, useStepDirection } from "design-kit";
 import { useStarredWords as useStarredWordsIn } from "@/data/queries";
-import { Page } from "@/ui/page";
+import { BottomBar, Page } from "@/ui/page";
 import { StarButton } from "@/ui/star-button";
 import { orderedSets } from "./library-page";
 import { meaningLine } from "./set-page";
@@ -17,6 +17,7 @@ export const useStarredWords = () => useStarredWordsIn(orderedSets);
 export default function StarredPage() {
   const { groups, loading } = useStarredWords();
   const [filter, setFilter] = useState(ALL);
+  const direction = useStepDirection(filter, filter === ALL ? 0 : groups.findIndex((group) => group.set.id === filter) + 1);
   const shown = filter === ALL ? groups : groups.filter((group) => group.set.id === filter);
   const total = shown.reduce((sum, group) => sum + group.words.length, 0);
   const all = groups.reduce((sum, group) => sum + group.words.length, 0);
@@ -39,14 +40,18 @@ export default function StarredPage() {
               value={groups.some((group) => group.set.id === filter) ? filter : ALL}
             />
           ) : null}
-          {shown.map((group) => (
-            <ListGroup key={group.set.id} title={`${group.set.name} · ${group.words.length}`}>
-              {group.words.map((word) => <StarredRow key={word.id} setId={group.set.id} word={word} />)}
-            </ListGroup>
-          ))}
-          <Button asChild className="sticky bottom-[calc(var(--safe-bottom)+1rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-end" size="lg" variant="primary">
-            <AppLink href={practice}><Play weight="fill" />練習這 <span className="font-latin">{total}</span> 個字</AppLink>
-          </Button>
+          <Pane className="grid grid-cols-[minmax(0,1fr)] gap-4" direction={direction} step={filter}>
+            {shown.map((group) => (
+              <ListGroup key={group.set.id} title={`${group.set.name} · ${group.words.length}`}>
+                {group.words.map((word) => <StarredRow key={word.id} setId={group.set.id} word={word} />)}
+              </ListGroup>
+            ))}
+          </Pane>
+          <BottomBar className="md:justify-self-end">
+            <Button asChild className="w-full shadow-[var(--elevation-glass)] md:w-auto" size="lg" variant="primary">
+              <AppLink href={practice}><Play weight="fill" />練習這 <span className="font-latin">{total}</span> 個字</AppLink>
+            </Button>
+          </BottomBar>
         </div>
       )}
     </Page>

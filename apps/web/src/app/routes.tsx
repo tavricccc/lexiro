@@ -4,8 +4,17 @@ import { RequireAccount, RootLayout } from "./root";
 import { WorkspaceShell } from "./shell";
 import { RouteError } from "./route-error";
 
-/** A screen whose code is fetched on its first visit. */
-const screen = (load: () => Promise<{ default: ComponentType }>) => async () => ({ Component: (await load()).default });
+type Load = () => Promise<{ default: ComponentType }>;
+const loads: Load[] = [];
+
+/** A screen whose code is fetched on its first visit, or before by `preloadScreens`. */
+const screen = (load: Load) => {
+  loads.push(load);
+  return async () => ({ Component: (await load()).default });
+};
+
+/** Fetches the code of every screen ahead of time; one that fails is fetched again when visited. */
+export const preloadScreens = () => { for (const load of loads) load().catch(() => undefined); };
 
 function SharedRedirect() {
   const { shareId = "" } = useParams();
@@ -35,13 +44,14 @@ export const routes: RouteObject[] = [
               { index: true, lazy: screen(() => import("@/features/today/today-page")) },
               { path: "library", lazy: screen(() => import("@/features/library/library-page")) },
               { path: "library/folder/:folderId", lazy: screen(() => import("@/features/library/library-page")) },
+              { path: "library/shared/:shareId", lazy: screen(() => import("@/features/share/shared-sheet")) },
               { path: "starred", lazy: screen(() => import("@/features/library/starred-page")) },
               { path: "sets/new", lazy: screen(() => import("@/features/library/new-set-page")) },
               { path: "sets/:setId", lazy: screen(() => import("@/features/library/set-page")) },
               { path: "sets/:setId/cards", lazy: screen(() => import("@/features/library/cards-page")) },
               { path: "sets/:setId/settings", lazy: screen(() => import("@/features/library/set-settings-page")) },
               { path: "sets/:setId/add", lazy: screen(() => import("@/features/library/add-words-page")) },
-              { path: "sets/:setId/words/:wordId", lazy: screen(() => import("@/features/library/set-page")) },
+              { path: "sets/:setId/words/:wordId", lazy: screen(() => import("@/features/library/word-page")) },
               { path: "sets/:setId/words/:wordId/edit", lazy: screen(() => import("@/features/library/word-edit-page")) },
               { path: "sets/:setId/questions/:questionId", lazy: screen(() => import("@/features/questions/question-page")) },
               { path: "practice", lazy: screen(() => import("@/features/practice/setup-page")) },

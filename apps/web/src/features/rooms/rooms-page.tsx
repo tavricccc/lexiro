@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Sword } from "@phosphor-icons/react";
 import { toast } from "sonner";
 import type { PracticeTask } from "@lexiro/contract";
-import { AppLink, Button, Field, Input, ListGroup, ListRow, Panel, Segmented, type ActionStatus } from "design-kit";
+import { AppLink, Button, Field, Input, ListGroup, ListRow, Panel, Reveal, Segmented, useLast, type ActionStatus } from "design-kit";
 import { api, errorMessage } from "@/data/api";
 import { useAuth } from "@/data/auth";
 import { useLearning } from "@/data/learning";
@@ -14,7 +14,8 @@ import { availableTasks, buildRound } from "@/domain/practice";
 import { ROOM_CODE, roomQuestions } from "@/domain/room";
 import { orderedSets } from "@/features/library/library-page";
 import { LabeledSelect } from "@/ui/labeled-select";
-import { Page } from "@/ui/page";
+import { BottomBar, Page } from "@/ui/page";
+import { useScreen } from "@/ui/screen";
 
 const AMOUNTS = ["10", "20", "30"] as const;
 const SECONDS = ["auto", "15", "25", "40"] as const;
@@ -25,6 +26,12 @@ export default function RoomsPage() {
   const navigate = useNavigate();
   const { account } = useAuth();
   const active = useQuery({ queryKey: ["rooms", "active"], queryFn: () => api<{ room: { code: string; title: string; phase: string } | null }>("/rooms/active") });
+  // Coming back from a room, whether it is still open may have changed.
+  const { active: here } = useScreen();
+  const { refetch } = active;
+  useEffect(() => { if (here) void refetch(); }, [here, refetch]);
+  const room = active.data?.room;
+  const shown = useLast(room);
   const [code, setCode] = useState("");
   const normalized = code.trim().toUpperCase();
   const join = () => {
@@ -33,15 +40,15 @@ export default function RoomsPage() {
   };
   return (
     <Page description="用同一組題目和朋友即時比快、比準。" title="對戰">
-      {active.data?.room ? (
+      <Reveal gap="1.5rem" open={Boolean(room)}>
         <Panel className="flex flex-wrap items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="font-semibold">你開的房間還在進行</p>
-            <p className="truncate text-sm text-ink-muted">{active.data.room.title} · <span className="font-latin">{active.data.room.code}</span></p>
+            <p className="truncate text-sm text-ink-muted">{shown?.title} · <span className="font-latin">{shown?.code}</span></p>
           </div>
-          <Button asChild variant="primary"><AppLink href={`/app/rooms/${active.data.room.code}`}>回到房間</AppLink></Button>
+          <Button asChild variant="primary"><AppLink href={`/app/rooms/${shown?.code}`}>回到房間</AppLink></Button>
         </Panel>
-      ) : null}
+      </Reveal>
       <Panel className="grid gap-3">
         <h2 className="font-semibold">加入房間</h2>
         <form className="flex gap-2" onSubmit={(event) => { event.preventDefault(); join(); }}>
@@ -81,8 +88,9 @@ function HostForm({ name: defaultName }: { name: string }) {
       const { code } = await api<{ code: string }>("/rooms", { method: "POST", json: { name: name.trim() || defaultName, title: `${set.name} · ${TASK_LABELS[picked]}`.slice(0, 120), ...(seconds === "auto" ? {} : { seconds: Number(seconds) }), questions } });
       navigate(`/app/rooms/${code}`);
     } catch (error) {
-      setStatus("idle");
       toast.error(errorMessage(error));
+    } finally {
+      setStatus("idle");
     }
   };
   return (
@@ -101,7 +109,7 @@ function HostForm({ name: defaultName }: { name: string }) {
         <h3 className="px-1 text-sm font-medium text-ink-muted">每題秒數</h3>
         <Segmented label="每題秒數" onChange={setSeconds} options={SECONDS.map((value) => ({ value, label: value === "auto" ? "依題型" : `${value} 秒` }))} value={seconds} />
       </section>
-      <Button className="sticky bottom-[calc(var(--bottom-nav-height)+var(--bottom-nav-gap)+0.75rem)] z-30 w-full shadow-[var(--elevation-glass)] md:bottom-[calc(var(--safe-bottom)+1.5rem)] md:w-auto md:justify-self-start" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary"><Sword weight="fill" />開房間</Button>
+      <BottomBar className="md:justify-self-start"><Button className="w-full shadow-[var(--elevation-glass)] md:w-auto" disabled={!picked || !content.data} onClick={() => void host()} size="lg" status={status} variant="primary"><Sword weight="fill" />開房間</Button></BottomBar>
     </Panel>
   );
 }

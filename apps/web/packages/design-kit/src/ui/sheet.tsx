@@ -8,18 +8,18 @@ import { cn } from "../lib/utils";
 import { Button } from "./button";
 import { useCompactViewport } from "./use-compact-viewport";
 
-// How far, or how fast, the grabber has to be pulled before letting go puts the sheet away.
+// How far, or how fast, the header has to be pulled before letting go puts the sheet away.
 const DISMISS_DISTANCE = 120;
 const DISMISS_VELOCITY = 0.6;
 
-/** Pulling the grabber down: the sheet follows the finger, and lets go either away or back home. */
+/** Pulling the header down: the sheet follows the finger, and lets go either away or back home. */
 function useGrabber(onDismiss: () => void) {
   const offset = useMotionValue(0);
   const start = React.useRef<{ time: number; y: number } | null>(null);
   const handlers = {
     onPointerCancel: () => { start.current = null; void animate(offset, 0, timing("control", "nav")); },
     onPointerDown: (event: React.PointerEvent) => {
-      if (event.button !== 0) return;
+      if (event.button !== 0 || (event.target as Element).closest("a, button, input")) return;
       event.currentTarget.setPointerCapture(event.pointerId);
       start.current = { time: event.timeStamp, y: event.clientY };
     },
@@ -40,10 +40,10 @@ function useGrabber(onDismiss: () => void) {
 
 /**
  * A layer over the current page. On a phone it rises from the bottom edge on
- * the iOS presentation curve and is pulled away by its grabber; from the
+ * the iOS presentation curve and is pulled away by its header; from the
  * tablet breakpoint up it is a centred panel that settles into place.
  * `layout="record"` gives a phone the whole screen for a record or composer.
- * Escape, the scrim, the grabber and the close button all route through
+ * Escape, the scrim, the pull and the close button all route through
  * `onOpenChange`, so a caller guarding unsaved work sees every exit.
  */
 export function Sheet({
@@ -84,13 +84,14 @@ export function Sheet({
             <Dialog.Overlay asChild forceMount>
               <motion.div
                 animate={{ opacity: 1 }}
-                className="fixed inset-0 z-50 bg-[var(--scrim)]"
-                // The scrim leaves at once: iOS tints the status bar from it, and the bar should be back the moment the sheet is let go.
-                exit={{ opacity: 0, transition: { duration: 0 } }}
+                className="fixed inset-0 z-50"
+                // Ahead of the sheet: iOS tints the status bar from the scrim, and the bar should be back as the sheet lands.
+                exit={{ opacity: 0, transition: timing("controlExit", "depart") }}
                 initial={{ opacity: 0 }}
-                style={compact ? { opacity: scrimOpacity } : undefined}
                 transition={timing("sheet", "nav")}
-              />
+              >
+                <motion.div className="size-full bg-[var(--scrim)]" style={compact ? { opacity: scrimOpacity } : undefined} />
+              </motion.div>
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount>
               <motion.div
@@ -113,9 +114,9 @@ export function Sheet({
                 transition={compact ? timing("sheet", "nav") : timing("nav", "nav")}
               >
                 <div className="flex min-h-0 flex-1 flex-col">
-                  <header className="relative flex shrink-0 items-start gap-3 px-5 pb-2 pt-4 md:px-6 md:pt-5">
+                  <header className="relative flex shrink-0 items-start gap-3 px-5 pb-2 pt-4 max-md:touch-none md:px-6 md:pt-5" {...(compact ? grabber.handlers : {})}>
                     {compact ? (
-                      <div aria-hidden className="absolute inset-x-0 top-0 flex h-8 touch-none cursor-grab justify-center pt-2" {...grabber.handlers}>
+                      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 flex h-8 justify-center pt-2">
                         <span className="h-1.5 w-10 rounded-full bg-ink-faint/60" />
                       </div>
                     ) : null}

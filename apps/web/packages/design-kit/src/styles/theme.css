@@ -176,7 +176,7 @@ body {
 @supports (animation-timeline: scroll()) {
   .edge-blur[data-side="top"] {
     animation: edge-blur-in linear both;
-    animation-timeline: scroll(root block);
+    animation-timeline: scroll(nearest block);
     animation-range: 0 3rem;
   }
 }

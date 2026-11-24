@@ -4,6 +4,7 @@
     "control": 250,
     "reveal": 400,
     "nav": 460,
+    "push": 520,
     "sheet": 560,
     "controlExit": 190,
     "sheetExit": 400

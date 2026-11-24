@@ -4,7 +4,6 @@ import { createMemoryRouter, RouterProvider } from "react-router";
 import { afterEach, expect, test, vi } from "vitest";
 
 globalThis.IntersectionObserver ??= class { observe() {} disconnect() {} unobserve() {} } as never;
-window.matchMedia ??= ((query: string) => ({ matches: false, media: query, addEventListener() {}, removeEventListener() {} })) as never;
 
 const data = {
   set: { id: "s1", name: "Unit 1", folderId: null, hue: "mint", icon: "books", order: null, createdAt: "", updatedAt: "", wordCount: 2, questionCount: 0 },

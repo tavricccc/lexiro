@@ -15,6 +15,8 @@ export interface Navigation {
   navigate(path: string, options?: { replace?: boolean }): boolean;
   /** Back to `parent`: a step back in history when that is where the user came from. Defaults to replacing with `parent`. */
   back?(parent: string): void;
+  /** Unwinds to `path`, however many screens lie over it. Defaults to replacing with it. */
+  popTo?(path: string): void;
 }
 
 export interface Labels {

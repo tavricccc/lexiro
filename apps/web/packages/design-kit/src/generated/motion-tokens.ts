@@ -7,6 +7,7 @@ export const motionSeconds = {
   control: 0.25,
   reveal: 0.4,
   nav: 0.46,
+  push: 0.52,
   sheet: 0.56,
   controlExit: 0.19,
   sheetExit: 0.4,
