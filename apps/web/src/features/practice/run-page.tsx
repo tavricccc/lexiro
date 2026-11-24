@@ -174,8 +174,8 @@ function Card({ round: live, pick, next: onward, accept }: { round: Round; pick:
         <span className="font-latin text-sm tabular-nums text-ink-muted">{round.index + 1} / {round.items.length}</span>
         <Button className={cn(round.revealed && "pointer-events-none opacity-0")} inert={round.revealed} onClick={() => pick(null)} size="sm" variant="secondary">看答案</Button>
       </header>
-      <StepSlide className="-mx-3 flex min-h-0 flex-1 flex-col md:-mx-6" direction={place.back ? -1 : 1} step={round.index}>
-        <div className="flex min-h-0 flex-1 flex-col px-3 md:px-6">
+      <StepSlide className="mx-[calc(50%-50vw)] flex min-h-0 flex-1 flex-col" direction={place.back ? -1 : 1} step={round.index}>
+        <div className="mx-auto flex min-h-0 w-full max-w-xl flex-1 flex-col px-3 md:max-w-6xl md:px-6">
           <QuestionCard accept={back ? undefined : accept} chosen={chosen} item={item} last={last} next={next} pick={pick} round={round} step={step} used={used} />
         </div>
       </StepSlide>

@@ -3,6 +3,9 @@
 Lexiro 是純前端 SPA：Vite 8、React 19、React Router 8（data router，畫面全是 lazy route）、Tailwind 4、TanStack Query。沒有 server rendering。後端在 `../worker`。
 
 - 結構：`src/app`（router、shell、導覽）、`src/data`（Worker API、Firebase Auth、query、學習紀錄佇列）、`src/domain`（無 UI 的純邏輯：出題、回合、房間題目、批次輸入解析）、`src/features/<區塊>`（各畫面）、`src/ui`（跨畫面的小元件）。
+- 畫面分層：`src/app/stage.tsx` 讓每個畫面自成一層、各自捲動，舊畫面留在底下不卸載。怎麼進場由 `src/app/hierarchy.ts` 的 `presentationOf` 決定（`tab`、`push`、`sheet`、`modal`、`full`），新路由要在那裡歸類；堆疊規則是 `stack.ts` 的純函式。底下的畫面還掛著，所以不能靠卸載來關對話框或重設狀態，快捷鍵要看 `useScreen().active`。
+- 離開畫面用 `useLeave()`（`back(父頁)`、`popTo(路徑)`）；連到已在底下的畫面會自動退回去。先關對話框再離開。
+- 畫面主要動作放 `BottomBar`。會來去的區塊用 `Reveal`，同一畫面內換步驟用 `StepSlide`，兄弟檢視用 `Pane`。捲到最底的箭頭由 `ScreenScroller` 提供；畫面自己有捲動區才另放 `ScrollMore`。
 - UI 元件一律用 `packages/design-kit`（`design-kit`）；toast 從 `sonner` 匯入。主色是 pine green，顏色只用 design-kit 的 token class（`text-danger`、`text-positive`、`text-highlight`、`bg-accent-soft` …），不要寫死色碼。
 - Worker 的請求只走 `src/data/api.ts` 的 `api()`，錯誤用 `errorMessage()` 顯示。`ApiError.offline` 代表沒連上。
 - 資料格式在 `packages/contract`（`@lexiro/contract`，zod + 型別）。Worker 的 `src/contract` 是同一份的複本：改了這裡就複製過去（`cp packages/contract/src/*.ts ../worker/src/contract/`），兩邊一起跑檢查。只保留最新 API，不做版本並存或舊資料相容。

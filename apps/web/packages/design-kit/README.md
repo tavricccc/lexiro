@@ -36,6 +36,7 @@ Primitives never import a router. `DesignKitProvider` takes a `navigation`:
 | `href(path)` | The address an anchor shows (`/settings` → `#/settings` for hash routing) |
 | `navigate(path, { replace })` | Move in place; return `false` to let the browser follow the link |
 | `back(parent)` | Optional. Step back to `parent` through history when that is where the user came from |
+| `popTo(path)` | Optional. Back to the screen at `path`, through whatever lies over it |
 
 `hashNavigation()` is cc-remote's routing. For a path router (Novae's React
 Router), pass `{ href: (p) => p, navigate: (p, o) => { router.navigate(p, o); return true; } }`.
@@ -56,11 +57,15 @@ the TypeScript module from it; JavaScript animations use `timing(rung, curve)`.
 
 ### Screens
 
-The app keys a `motion.div` by the path and spreads `routeMotion` on it: a
-screen arrives with one quick fade and does not travel. Inside a run (a quiz, a game), the next card wears
-`card-in`. The dock belongs to the primary destinations only; it slides away on deeper
-screens instead of unmounting, and every deeper screen has a back control
-that leads to its parent.
+Each screen is a layer with its own scroll, as on iOS. A deeper screen pushes
+in from the right over the one before it, dock included, while that one moves
+off a little and darkens; going back reverses it and finds the screen as it was
+left. A task (create, edit, settings) rises as a sheet, a run (a quiz, a game)
+takes the whole screen, and the primary destinations swap without moving. The
+dock lives on the destinations' own layer and has no exit of its own. `push` is
+the ladder's rung for a screen; the app drives the layers.
+
+Inside a run, `StepSlide` pushes one step off with the next.
 
 ### Preview
 
@@ -109,7 +114,7 @@ controls). Elevation: `shadow-panel`, `shadow-float`.
 - Colour comes from tokens only. Emphasis comes from the contrast pill, not from hue.
 - Status colours describe state; they never become a control's theme.
 - Motion durations and curves come from the motion ladder; no raw `duration-*`, springs or inline easing.
-- Nothing appears or leaves on a single frame. Content that replaces a placeholder or joins a list wears `content-in` (a quick fade, never a float up), a message that appears under a control wears `message-in`, a proportion bar wears `bar-in`, and a block that can also leave uses `Reveal` inside `AnimatePresence`. Switching between sibling views moves sideways through `Pane`, never up from below. Each falls back to a plain fade under reduced motion.
+- Nothing appears or leaves on a single frame. Content that replaces a placeholder or joins a list wears `content-in` (a quick fade, never a float up), a message that appears under a control wears `message-in`, a proportion bar wears `bar-in`, and a block that can also leave uses `Reveal` (`RevealItem` inside an `AnimatePresence` list). A layer keeps its words while it closes: read them through `useLast`. Switching between sibling views moves sideways through `Pane`, never up from below. Each falls back to a plain fade under reduced motion.
 - Hover styles go through the `hover:` variant, which is gated to real pointers.
 - Primitives in `src/ui` import no app code: routing and words come through `DesignKitProvider`.
 - A scrolling edge is never a hard cut: `PageHeader` sticks to the top over an `edge-top` blur, the shell fades content under the dock or window bottom with `edge-bottom`, and scrolling areas inside layers use `edge-fade`.
@@ -121,8 +126,9 @@ Lessons from apps built on the kit; each one shipped once and was undone.
 
 - **No frosted glass.** Floating chrome, controls and scrims are solid. The only edge treatment is `EdgeBlur`, now one eased gradient into `--edge-fade` (the canvas by default) rather than backdrop blurs, where content passes under the status bar or dock.
 - **Translucent status bar, no band.** Use `apple-mobile-web-app-status-bar-style: black-translucent` and let a top `EdgeBlur` (about `safe-top + 5rem`) soften content beneath it. A solid strip under the status bar looks pasted on. An installed PWA keeps the status bar style it was installed with: reinstall before judging a change.
-- **The window is the scroller.** Stop the root bounce with `overscroll-behavior: none` on `html, body` (the kit sets it) and let inner areas use `overscroll-contain`. Moving page scrolling into a fixed inner container breaks `window.scrollY` restoration, the `scroll(root)` timeline that fades the top blur in, and iOS's own status-bar tap to scroll.
-- **Restore scroll per screen.** Remember `window.scrollY` per path and put it back when the screen returns; a new screen starts at the top.
+- **Each screen is its own scroller.** Two screens are on stage during a push, so the window cannot be the scroller. `EdgeBlur` follows the nearest scroller (`scroll(nearest block)`), and a screen beneath stays mounted so its scroll needs no restoring. The cost is iOS Safari's status-bar tap to scroll.
+- **A screen on its way out is still the same screen.** Keep it at the same key in the same list, or React mounts it anew: its scroll is lost and its effects run again.
+- **A bar at the foot leaves room with a block after the content, not with padding** of the scroller: browsers disagree on padding beneath sticky elements.
 - **Do not double-animate a screen.** When the route transition moves the screen, its contents must not also wear `content-in`.
 - **Cards on the canvas are panels.** A `Tile` reads as a grey disabled block when it sits straight on the page.
 - **No emoji** in copy or UI; icons come from Phosphor.
