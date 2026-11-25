@@ -4,12 +4,14 @@ on:
   pull_request:
     paths:
       - apps/web/**
+      - "!apps/web/landing/**"
       - .github/workflows/deploy-web.yml
   push:
     branches:
       - main
     paths:
       - apps/web/**
+      - "!apps/web/landing/**"
       - .github/workflows/deploy-web.yml
   workflow_dispatch:
 
