@@ -13,21 +13,14 @@ concurrency:
   group: github-pages
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: apps/web/landing
-
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  deploy:
+  upload:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -40,6 +33,14 @@ jobs:
         with:
           path: apps/web/landing
 
+  # A separate job: deploying right after the upload did not find the artifact yet.
+  deploy:
+    needs: upload
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
