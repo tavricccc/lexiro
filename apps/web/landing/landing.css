@@ -60,9 +60,14 @@ h2 .muted { color: var(--muted); }
 .scene__bg { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
 .scene__front { position: absolute; left: 43.993%; top: 25.99%; width: 56.007%; height: 45.99%; max-width: none; z-index: 2; pointer-events: none; }
 /* the cards stop above the front layer's foot, so they rise from behind the trees */
-.deckclip { position: absolute; z-index: 1; inset: 0 0 28.6% 0; overflow: hidden; }
+.deckclip { position: absolute; z-index: 1; inset: 0 0 28.6% 0; clip-path: inset(-100vh 0 0 0); }
 .deck { --k: 1; position: absolute; left: 67.6%; top: 9.8%; width: calc(23cqw * var(--k)); aspect-ratio: 10 / 16.4; translate: -50% 0; }
-.deck__hit { position: absolute; inset: 0 0 40% 0; z-index: 9; border: 0; background: none; cursor: pointer; border-radius: 2cqw; }
+.deck__hit { position: absolute; inset: 0 0 40% 0; z-index: 9; border: 0; background: none; pointer-events: none; border-radius: 2cqw; }
+/* the words lie over the scene: only their links and buttons take the pointer */
+.lx-hero > .wrap, .lx-hero > .wrap * { pointer-events: none; }
+.lx-hero > .wrap .btn { pointer-events: auto; }
+.wcard { cursor: grab; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.wcard.is-held { cursor: grabbing; z-index: 8; }
 .wcard {
   position: absolute; inset: 0; display: flex; flex-direction: column; padding: 8.5%; border-radius: calc(1.9cqw * var(--k));
   background: var(--paper); color: var(--p-ink); font-size: calc(1cqw * var(--k)); overflow: hidden;
@@ -79,10 +84,6 @@ h2 .muted { color: var(--muted); }
 .wcard[data-pos="2"] { z-index: 3; transform: translateX(-21%) rotate(-9.5deg) scale(.95); animation-delay: 300ms; }
 .wcard[data-pos="3"] { z-index: 2; transform: translateX(37%) rotate(13.5deg) scale(.92); animation-delay: 380ms; }
 .wcard[data-pos="4"] { z-index: 1; transform: translateX(-37%) rotate(-16deg) scale(.9); animation-delay: 440ms; }
-.wcard.is-leaving { transform: translate(-30%, -34%) rotate(-14deg); opacity: 0; transition-duration: 280ms; transition-timing-function: ease-in; }
-.deck:has(.deck__hit:hover) .wcard[data-pos="0"]:not(.is-leaving) { transform: translateY(-2.5%) rotate(-3deg); }
-.deck:has(.deck__hit:hover) .wcard[data-pos="1"] { transform: translateX(24%) rotate(8.5deg) scale(.97); }
-.deck:has(.deck__hit:hover) .wcard[data-pos="2"] { transform: translateX(-24%) rotate(-11deg) scale(.95); }
 @keyframes deck-rise { from { transform: translateY(62%) scale(.9); } }
 .wcard__top { display: flex; justify-content: space-between; align-items: center; font: 400 1.35em/1 var(--font-word); margin: 0; opacity: .72; }
 .wcard__top .i { color: var(--honey); font-size: 1.5em; opacity: 1; }
